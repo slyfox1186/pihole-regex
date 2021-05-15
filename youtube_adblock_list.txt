@@ -4,6 +4,8 @@
 
 # Updated: 05.15.2021
 
+# Version: 1.01
+
 0.0.0.0 googlehosted.l.googleusercontent.com
 0.0.0.0 r1---sn-25ge7n76.googlevideo.com
 0.0.0.0 r1---sn-25ge7n7d.googlevideo.com
