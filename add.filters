@@ -5,8 +5,11 @@
 ^.*adssl\.l\.google.com$
 ^.*clients\d\.youtube\.com$
 ^.*googlesyndication.*$
+^beacons\.gv[a-z\d]+?\.com$
 ^clients\d\.google\.com$
+^googlehosted\.[a-z]\.googleusercontent\.com$
 ^r\.sn.*googlevideo\.com$
+^yt[\d\.]+gg[a-z]+\.com$
 ^[a-z\d\.]+gg[a-z\d\.]+com$
 ^[a-z\d\.]+\.googleusercontent\.com$
 ^[a-z\d]+\.googleusercontent\.com$
@@ -14,6 +17,7 @@
 ^[a-z\d]{1,2}\.youtube\.com$
 ^[a-z\d]{1,2}\.yt[a-z\d]{1,3}\.com$
 ^[a-z\d]{1,3}\.gg[a-z\d]+\.com$
+^[a-z]{2}\.[a-z]{1}\.google\.com$
 
 # Add YouTube Domain Blacklists
 r1.sn-25ge7ns7.googlevideo.com
@@ -338,6 +342,8 @@ r4.sn-aigl6nl7.googlevideo.com
 r4.sn-aigzrn76.googlevideo.com
 r4.sn-cvh76n7d.googlevideo.com
 r4.sn-hp57knz6.googlevideo.com
+r4.sn-hp57yn7y.googlevideo.com
+r4.sn-hp57yne7.googlevideo.com
 r4.sn-hp57ynee.googlevideo.com
 r4.sn-hpa7zns6.googlevideo.com
 r4.sn-n4v7knl6.googlevideo.com
@@ -522,3 +528,4 @@ r8.sn-uxax3vh50nugp5-8px6.googlevideo.com
 r9.sn-4gxx-25ge7.googlevideo.com
 r9.sn-axq7sn76.googlevideo.com
 redirector.c.googlevideo.com
+yt3.ggpht.com
