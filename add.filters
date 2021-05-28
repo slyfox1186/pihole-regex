@@ -2,7 +2,6 @@
 # Profile: https://github.com/slyfox1186/
 
 # Add YouTube RegEx Blacklists
-^r[\d]*\.sn-[a-z\d]+\.c\.lh3.googleusercontent.com
 ^r[\d]*\.sn.*googlevideo\.com$
 ^.*clients\d\.youtube\.com$
 ^clients\d\.google\.com$
