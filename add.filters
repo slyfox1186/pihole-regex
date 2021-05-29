@@ -1,11 +1,10 @@
 # Created by: SlyFox1186
 # Profile: https://github.com/slyfox1186/
 
-# Add YouTube RegEx Blacklists
-^.*clients\d\.youtube\.com$
+## Add YouTube RegEx Blacklists
+
 ^.*googlesyndication.*$
 ^beacons\.gv[a-z\d]+?\.com$
-^clients\d\.google\.com$
 ^r[\d]*\.sn.*googlevideo\.com$
 ^[.]*googleusercontent\.com$
 ^[.]*\.l\.google.com$
@@ -13,6 +12,8 @@
 ^[.]*\.gg[.]+\.com$
 ^[a-z]{2}\.[a-z]\.google\.com$
 
-# Disabled
+## Disabled
 
 # ^.*yt.*com$
+# ^clients\d\.google\.com$
+# ^.*clients\d\.youtube\.com$
