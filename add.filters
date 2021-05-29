@@ -11,7 +11,7 @@
 ^[.]*\.l\.google.com$
 ^[a-z\d]{1,2}\.youtube\.com$
 ^[.]*\.gg[.]+\.com$
-^[a-z]{2}\.[a-z]{1}\.google\.com$
+^[a-z]{2}\.[a-z]\.google\.com$
 
 # Disabled
 
