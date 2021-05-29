@@ -4,7 +4,6 @@
 # Add YouTube RegEx Blacklists
 ^.*clients\d\.youtube\.com$
 ^.*googlesyndication.*$
-^.*yt.*com$
 ^beacons\.gv[a-z\d]+?\.com$
 ^clients\d\.google\.com$
 ^r[\d]*\.sn.*googlevideo\.com$
@@ -13,3 +12,7 @@
 ^[a-z\d]{1,2}\.youtube\.com$
 ^[.]*\.gg[.]+\.com$
 ^[a-z]{2}\.[a-z]{1}\.google\.com$
+
+# Disabled
+
+# ^.*yt.*com$
