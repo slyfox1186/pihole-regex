@@ -12,8 +12,5 @@
 ^[.]*\.gg[.]+\.com$
 ^[a-z]{2}\.[a-z]\.google\.com$
 
-## Disabled
-
-# ^.*yt.*com$
-# ^clients\d\.google\.com$
-# ^.*clients\d\.youtube\.com$
+## Standard Domains
+clients.l.google.com
