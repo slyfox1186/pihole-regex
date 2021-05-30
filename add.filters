@@ -3,10 +3,6 @@
 
 ## Add YouTube RegEx Blacklists
 
-#### I am feeling better and better about these being a huge source of the ads.
-^r[\d]*[-]{3}sn-.*googlevideo\.com$
-^r6[-]{3}sn-.*googlevideo\.com$
-
 # If the above it true then these can go down the drain with them.
 ^.*googlesyndication.*$
 ^beacons\.gv[a-z\d]+?\.com$
@@ -15,6 +11,7 @@
 ^[a-z\d]{1,2}\.youtube\.com$
 ^[.]*\.gg[a-z\d]+?\.com$
 ^[a-z]{2}\.[a-z]\.google\.com$
+^r[\d]*[-]{3}sn-.*googlevideo\.com$
 
 ## Standard Domains
 clients.l.google.com
