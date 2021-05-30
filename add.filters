@@ -9,7 +9,7 @@
 ^[.]*googleusercontent\.com$
 ^[.]*\.l\.google.com$
 ^[a-z\d]{1,2}\.youtube\.com$
-^[.]*\.gg[.]+\.com$
+^[.]*\.gg[a-z\d]+\.com$
 ^[a-z]{2}\.[a-z]\.google\.com$
 
 ## Standard Domains
