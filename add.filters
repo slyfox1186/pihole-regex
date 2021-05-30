@@ -5,7 +5,7 @@
 
 ^.*googlesyndication.*$
 ^beacons\.gv[a-z\d]+?\.com$
-^[a-z\d]*googleusercontent\.com$
+^[a-z\d]*.*googleusercontent\.com$
 ^[a-z\d]*\.l\.google.com$
 ^[a-z\d]{1,2}\.youtube\.com$
 ^[a-z\d]*\.gg[a-z\d]+?\.com$
