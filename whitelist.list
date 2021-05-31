@@ -4,20 +4,3 @@
 
 # Mobile Youtube
 m.youtube.com
-
-#### LG TV's
-0.0.0.0 ad.lgappstv.com
-0.0.0.0 ibis.lgappstv.com
-0.0.0.0 smartshare.lgtvsdp.com
-0.0.0.0 us.ibs.lgappstv.com
-0.0.0.0 us.info.lgsmartad.com
-0.0.0.0 us.lgtvsdp.com
-0.0.0.0 us.rdx2.lgtvsdp.com
-
-# Fork: https://www.reddit.com/r/pihole/comments/6qmpv6/blacklists_for_lg_webos_tvs/ and others
-0.0.0.0 lgad.cjpowercast.com.edgesuite.net
-0.0.0.0 ngfts.lge.com
-0.0.0.0 smartclip.com
-0.0.0.0 smartclip.net
-0.0.0.0 us.ad.lgsmartad.com
-0.0.0.0 yumenetworks.com
