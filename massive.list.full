@@ -1,6 +1,8 @@
-# This listed has been cleaned.
-# Duplicates removed and domains sorted alphabetically
+# This list has had it's duplicates removed, trimmed, and sorted alphabetically.
+# Original source file located: https://discourse.pi-hole.net/t/new-blocklist-over-5-million/23857
+# Direct Link: https://cloud.owncube.com/s/3NYXeWWDfD69CB7/download
 
+# Begin list
 --little--princess--.tumblr.com
 -allporn-.tumblr.com
 -becca-anal-.tumblr.com
