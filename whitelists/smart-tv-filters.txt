@@ -1,4 +1,4 @@
-# smart tv whitelist
+# smart tv whitelist for pihole
 # description above each entry if there is one
 
 # it's possible the tv could fail to receive new updates or other vital info so
