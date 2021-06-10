@@ -17,7 +17,7 @@ curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/
 ```
 
 ### False Positives ###
-You must manually add the whitelist if you want to fix any mobile youtube issues with your phone or tablets. [whitelist file](https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist.list). Use the adlists tool and restart gravity to enable the script.
+You must manually add the whitelist if you want to fix any mobile youtube issues with your phone or tablets. [whitelist file](https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelists/whitelist.list). Use the adlists tool and restart gravity to enable the script.
 
 ### Keep regexps up-to-date with cron (optional)
 The following instructions will create a cron job to run every monday at 02:30 (adjust the time to suit your needs):
