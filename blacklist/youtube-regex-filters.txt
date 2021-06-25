@@ -1,0 +1,21 @@
+# Created by: SlyFox1186
+# Profile: https://github.com/slyfox1186/
+
+# Use a Terminal and the below commands to install or uninstall these RegEx filters.
+
+# Install: curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/install.py | sudo python3
+# UnInstall: curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py | sudo python3
+
+# Begin List
+
+^.*googleadservices\.com$
+^.*googlesyndication\.com$
+^.*googleusercontent\.com$
+^.*\.l\.google.com$
+^beacons\.gv[\w]+\.com$
+^clients[\d]+\.google\.com$
+^clients[\d]+\.youtube\.com$
+^r[\d-]+sn-8xgp1vo-xfgd\.googlevideo\.com$
+^r[\d-]+sn-8xgp1vo-xfgee\.googlevideo\.com$
+^r[\d-]+sn-p5qs7n7s\.googlevideo\.com$
+^r[\d]+\.sn.*googlevideo\.com$
