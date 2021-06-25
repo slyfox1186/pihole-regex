@@ -1,10 +1,9 @@
-## Regex Filters for Pi-hole
-This is a custom regex filter file for use with Pi-hole v4+ (FTLDNS).
+## RegEx Filters for Pi-hole
+Customized RegEx filters for use with Pi-hole v4+ (FTLDNS).
 
-The purpose of this list is to compliment your existing blocklists using powerful regular expressions that can cover a very broad range of domains.
+Purpose: Compliment your existing blocklist's using powerful regular expressions that can cover a broad range of domains in one go.
 
-All commands will need to be entered via a Terminal after logging in and you need to have [**Python v3.6 or higher**] installed.
-Some programs you can use are PuTTY or your SSH client of choice if you're not using the pc running Pi-hole.
+All commands need to be entered via a Terminal after logging in and you need to have [**Python v3.6 or higher**] installed to execute the curl commands below. You can use PuTTY or your SSH client of choice if you're not on the pc running Pi-hole.
 
 ### Add RegEx filters to Pi-hole:
 ```
