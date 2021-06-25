@@ -1,6 +1,6 @@
-# DNS blocklist for the PiHole to block unnecessary connections to Xiaomi Domains
+# Pi-hole blocklist for unnecessary xiaomi domains
 
-# Start List
+# Start list
 
 a.stat.xiaomi.com
 abtest.mistat.intl.xiaomi.com
