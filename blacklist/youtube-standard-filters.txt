@@ -1,5 +1,6 @@
-# Youtube Ads Test
-# Add at your own peril!
+# Pi-hole blocklist for additional YouTube domains
+
+# This has not give me any trouble so far but add at your own peril!
 
 2542116.fls.doubleclick.net
 2975c.v.fwmrm.net
@@ -76,6 +77,7 @@ s.innovid.com
 s.newsmaxfeednetwork.com
 s.tpctrust.com
 s.w.org
+s.youtube.com
 s10.histats.com
 s3.amazonaws.com
 secure-ds.serving-sys.com
