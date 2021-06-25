@@ -1,12 +1,12 @@
 # Created by: SlyFox1186
 # Profile: https://github.com/slyfox1186/
 
-# Use a Terminal and the below commands to install or uninstall these RegEx filters.
+# To install or uninstall these RegEx filters use a terminal and the below curl commands.
 
 # Install: curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/install.py | sudo python3
 # UnInstall: curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py | sudo python3
 
-# Begin List
+# Start List
 
 ^.*googleadservices\.com$
 ^.*googlesyndication\.com$
