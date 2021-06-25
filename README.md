@@ -4,23 +4,23 @@ This is a custom regex filter file for use with Pi-hole v4+ (FTLDNS).
 The purpose of this list is to compliment your existing blocklists using powerful regular expressions that can cover a very broad range of domains.
 
 All commands will need to be entered via a Terminal after logging in and you need to have [**Python v3.6 or higher**] installed.
-Some programs you can use are PuTTY or your SSH client of choice if you're not on the server pc.
+Some programs you can use are PuTTY or your SSH client of choice if you're not using the pc running Pi-hole.
 
-### Add to Pi-hole:
+### Add RegEx filters to Pi-hole:
 ```
 curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/install.py | sudo python3
 ```
 
-### Remove from Pi-hole:
+### Remove RegEx filters from Pi-hole:
 ```
 curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py | sudo python3
 ```
 
 ### False Positives ###
-You must manually add the whitelist if you want to fix any mobile youtube issues with your phone or tablets. [whitelist file](https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelists/whitelist.list). Use the adlists tool and restart gravity to enable the script.
+You must manually add any white or black lists if desired. This can fix a few known issues such as blocking the mobile versions of websites. [whitelist file](https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/general-filters.txt). Use the adlists tool and restart gravity to enable these lists.
 
-### Keep regexps up-to-date with cron (optional)
-The following instructions will create a cron job to run every monday at 02:30 (adjust the time to suit your needs):
+### Keep these RegEx filters up-to-date with cron (optional)
+Instructions to create a cron job to auto update the RegEx filters every Sunday at 05:00 AM (adjust as needed):
 
 1. Edit the root user's crontab (`sudo crontab -u root -e`)
 
@@ -28,11 +28,12 @@ The following instructions will create a cron job to run every monday at 02:30 (
 ```
 SHELL=/bin/bash
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-30 2 * * 1 /usr/bin/curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/install.py | sudo /usr/bin/python3
+0 5 * * 0 /usr/bin/curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py | sudo /usr/bin/python3
+1 5 * * 0 /usr/bin/curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/install.py | sudo /usr/bin/python3
 ```
 3. Save changes
 
-#### Removing the manually created cron job
+### Removing the manually created cron job
 If this script is the only thing you've added to the root user's crontab, you can run:
 
 `sudo crontab -u root -r`
