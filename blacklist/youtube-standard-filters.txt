@@ -17,6 +17,7 @@ c1.popads.net
 c2.popads.net
 cdn.taboola.com
 cdn1.extremereach.io
+clients.l.google.com
 clksite.com
 cloud.cashtrafic.info
 cm.g.doubleclick.net
