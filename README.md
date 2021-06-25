@@ -40,4 +40,4 @@ If this script is the only thing you've added to the root user's crontab, you ca
 
 Otherwise, run:
 
-`sudo crontab -u root -e` and remove the four lines listed above in the install instructions.
+`sudo crontab -u root -e` and manually remove the four lines listed above in the install instructions.
