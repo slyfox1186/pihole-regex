@@ -1,9 +1,13 @@
 # Created by: SlyFox1186
 # Profile: https://github.com/slyfox1186/
 
-# For: YouTube Video Ads
+## Use a Terminal and the below commands to install or uninstall these RegEx filters.
 
-## RegEx Filters
+## To install:  curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/install.py | sudo python3
+## To uninstall:  curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py | sudo python3
+
+# YouTube RegEx Filters
+
 .*googlesyndication.*
 beacons\.gv[a-z\d]+?\.com
 [a-z\d]+.*googleusercontent\.com
@@ -12,6 +16,3 @@ beacons\.gv[a-z\d]+?\.com
 [a-z\d]+\.gg[a-z\d]+?\.com
 [a-z]{2}\.[a-z]\.google\.com
 r[\d]+---.*googlevideo\.com
-
-## Standard Filters
-clients.l.google.com
