@@ -1,3 +1,9 @@
+# Created by: SlyFox1186
+# Profile: https://github.com/slyfox1186/
+
+# Apple iOS filter list for Pi-hole
+# Add at your own peril!
+
 0.r.msn.com
 005.free-counter.co.uk
 006.free-counter.co.uk
