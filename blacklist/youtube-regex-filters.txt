@@ -8,14 +8,12 @@
 
 # Start List
 
-^.*googleadservices\.com$
-^.*googlesyndication\.com$
-^.*googleusercontent\.com$
-^.*\.l\.google.com$
-^beacons\.gv[\w]+\.com$
-^clients[\d]+\.google\.com$
-^clients[\d]+\.youtube\.com$
-^r[\d-]+sn-8xgp1vo-xfgd\.googlevideo\.com$
-^r[\d-]+sn-8xgp1vo-xfgee\.googlevideo\.com$
-^r[\d-]+sn-p5qs7n7s\.googlevideo\.com$
-^r[\d]+\.sn.*googlevideo\.com$
+^([\w\-\_\.]*?(google|adservices|syndication|usercontent|)\.com)$
+^beacons\.gv[\w]+?\.com$
+^clients[\d]*?\.google\.com$
+^clients[\d]*?\.youtube\.com$
+^r[\d-]*?sn-8xgp1vo-xfgd\.googlevideo\.com$
+^r[\d-]*?sn-8xgp1vo-xfgee\.googlevideo\.com$
+^r[\d-]*?sn-p5qs7n7s\.googlevideo\.com$
+^r[\d]+?\.sn.*\.googlevideo\.com$
+^[\w\-_]+?\.l\.google\.com$
