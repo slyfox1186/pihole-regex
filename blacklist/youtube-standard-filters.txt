@@ -3,9 +3,8 @@
 
 # YouTube standard blocklist for Pi-hole
 
-# This has not give me any trouble so far, however, add at your own peril!
-
-# Always make sure to let me know if you have any issues!
+# This has not give me any trouble so far, however, add at your own peril and
+# always make sure to let me know if you have any issues!
 
 2542116.fls.doubleclick.net
 2975c.v.fwmrm.net
