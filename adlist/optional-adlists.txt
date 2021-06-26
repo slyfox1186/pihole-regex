@@ -1,0 +1,39 @@
+# These are my personal adlists and are a mix white and blacklists of my own concoction
+#  as well as others that I have determined work well for my network needs.
+
+# Use at your own peril!
+
+## anudeep's white and blacklists
+https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt
+https://hosts.anudeep.me/mirror/adservers.txt
+
+## Blocklist Project
+https://blocklistproject.github.io/Lists/alt-version/abuse-nl.txt
+https://blocklistproject.github.io/Lists/alt-version/ads-nl.txt
+https://blocklistproject.github.io/Lists/alt-version/crypto-nl.txt
+https://blocklistproject.github.io/Lists/alt-version/fraud-nl.txt
+https://blocklistproject.github.io/Lists/alt-version/malware-nl.txt
+https://blocklistproject.github.io/Lists/alt-version/phishing-nl.txt
+https://blocklistproject.github.io/Lists/alt-version/ransomware-nl.txt
+https://blocklistproject.github.io/Lists/alt-version/redirect-nl.txt
+https://blocklistproject.github.io/Lists/alt-version/scam-nl.txt
+https://blocklistproject.github.io/Lists/alt-version/tiktok-nl.txt
+https://blocklistproject.github.io/Lists/alt-version/tracking-nl.txt
+
+## easylist and easyprivacy blacklists
+https://raw.githubusercontent.com/0Zinc/easylists-for-pihole/master/easylist.txt
+https://raw.githubusercontent.com/0Zinc/easylists-for-pihole/master/easyprivacy.txt
+
+## Great Wall of DOH blacklist
+https://raw.githubusercontent.com/Sekhan/TheGreatWall/master/TheGreatWall.txt
+
+## SlyFox1186's white and blacklists
+https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/blacklist/ios-filters.txt
+https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/blacklist/smart-tv-filters.txt
+https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/blacklist/xiaomi-filters.txt
+https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/blacklist/youtube-standard-filters.txt
+https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/apple-filters.txt
+https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/general-filters.txt
+https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/optional-filters.txt
+https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/smart-tv-filters.txt
+https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
