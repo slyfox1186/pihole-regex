@@ -1,6 +1,6 @@
-  
 # Created by: SlyFox1186
 # Profile: https://github.com/slyfox1186/
+
 # Additional RegEx filters
 
 # See the README.md file for additional information and always make
