@@ -37,7 +37,7 @@ def fetch_url(url):
 
 
 url_regexps_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/blacklist/youtube-regex-filters.txt'
-install_comment = 'SlyFox1186 Blacklist'
+install_comment = 'YouTube RegEx Blacklist SlyFox1186'
 
 cmd_restart = ['pihole', 'restartdns', 'reload']
 
