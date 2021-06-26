@@ -37,3 +37,7 @@ https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/white
 https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/optional-filters.txt
 https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/smart-tv-filters.txt
 https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+
+## Other recommended
+
+
