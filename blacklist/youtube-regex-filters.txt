@@ -4,17 +4,16 @@
 # See the README.md file for additional information and always make
 # sure to let me know if you have any issues or other feedback on these!
 
-# To install or uninstall the RegEx filters use a terminal and the below commands.
-
 # Install: curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/install.py | sudo python3
 # UnInstall: curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py | sudo python3
 
-^([\w\-\_\.]*?(google|adservices|syndication|usercontent|)\.com)$
+^([\w\-\.]*?(google|adservices|syndication|usercontent|)\.com)$
 ^beacons\.gv[\w]+?\.com$
 ^clients[\d]*?\.google\.com$
 ^clients[\d]*?\.youtube\.com$
-^r[\d-]*?sn-8xgp1vo-xfgd\.googlevideo\.com$
-^r[\d-]*?sn-8xgp1vo-xfgee\.googlevideo\.com$
-^r[\d-]*?sn-p5qs7n7s\.googlevideo\.com$
-^r[\d]+?\.sn.*\.googlevideo\.com$
-^[\w\-_]+?\.l\.google\.com$
+^r[\d-]?sn-8xgp1vo-xfgd\.googlevideo\.com$
+^r[\d-]?sn-8xgp1vo-xfgee\.googlevideo\.com$
+^r[\d-]?sn-p5qs7n7s\.googlevideo\.com$
+^r[\d\.]?sn.*googlevideo\.com$
+^[\w\-\.]*?manifest\.google\.com$
+^[\w\-\.]+?l\.google\.com$
