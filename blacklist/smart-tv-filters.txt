@@ -1,5 +1,8 @@
+# Created by: SlyFox1186
+# Profile: https://github.com/slyfox1186/
+
 # Smart TV blacklist for Pi-hole
-# If available there will be a description above the entry.
+# The filters are listed in alphabetical order
 
 # It is possible your TV could fail to receive updates so please report if apps or services no longer work.
 
