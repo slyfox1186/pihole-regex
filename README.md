@@ -21,7 +21,9 @@ You must manually add any white or black lists if desired. This can fix a few kn
 ### Keep these RegEx filters up-to-date with cron (optional)
 Instructions to create a cron job to auto update the RegEx filters every Sunday at 05:00 AM (adjust as needed):
 
-1. Edit the root user's crontab: `sudo crontab -u root -e`
+1. Edit the root user's crontab:
+
+`sudo crontab -u root -e`
 
 2. Enter the following:
 ```
