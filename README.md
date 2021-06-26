@@ -27,7 +27,8 @@ Instructions to create a cron job to auto update the RegEx filters every Sunday 
 ```
 SHELL=/bin/bash
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-0 5 * * 0 /usr/bin/curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py | sudo /usr/bin/python3 && /usr/bin/curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/install.py | sudo /usr/bin/python3
+0 5 * * 0 /usr/bin/curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py | sudo /usr/bin/python3 && \
+/usr/bin/curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/install.py | sudo /usr/bin/python3
 ```
 3. Save changes
 
