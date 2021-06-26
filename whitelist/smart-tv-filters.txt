@@ -2,11 +2,9 @@
 # Profile: https://github.com/slyfox1186/
 
 # Smart TV whitelist for Pi-hole
-
-# It is possible your TV could fail to receive updates so please report if apps or
-# services no longer work and always make sure to let me know if you have any issues!
-
 # Descriptions are above each entry if there is one.
+
+# Always make sure to let me know if you have any issues or other feeback!
 
 # [ Panasonic Viera & Panny TV ]
 # Internet connection test
