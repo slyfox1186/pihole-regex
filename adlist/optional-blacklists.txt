@@ -1,5 +1,5 @@
-# These are my personal adlists and are a mix white and blacklists of my own concoction
-#  as well as others that I have determined work well for my network needs.
+# These are my personal adlist blacklist's and are a mix of my own concoctions
+#  as well as others which I have determined work well for my network needs.
 
 # Use at your own peril!
 
