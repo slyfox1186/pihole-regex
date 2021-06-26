@@ -1,0 +1,44 @@
+  
+# Created by: SlyFox1186
+# Profile: https://github.com/slyfox1186/
+# Additional RegEx filters
+
+# See the README.md file for additional information and always make
+# sure to let me know if you have any issues or other feedback!
+
+# To install or uninstall: curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/testing/additional-regex.py | sudo python3
+
+^(?:ibs\.|(?:[\w\-\.]*?))lg(?:smartad|tvsdp|appstv)?\.com$
+^api\.[\w\-\.]*hismarttv\.com$
+^cl[\d]*?\.apple\.com$
+^[\w\-\.]*?(?:at|y)\.atwola\.com$
+^[\w\-\.]*?ads.*\.(?:com|net)$
+^[\w\-\.]*?adtechus\.com$
+^[\w\-\.]*?advertising[\w\-\.]*?(?:com|net)$
+^[\w\-\.]*?associates-amazon\.com$
+^[\w\-\.]*?beacons[\w\-\.]*?(?:com|net)$
+^[\w\-\.]*?branch\.io$
+^[\w\-\.]*?casalemedia\.com$
+^[\w\-\.]*?cdn\.krxd\.net$
+^[\w\-\.]*?coin-hive\.com$
+^[\w\-\.]*?conviva\.com$
+^[\w\-\.]*?demdex\.net$
+^[\w\-\.]*?doubleclick\.net$
+^[\w\-\.]*?edgecastcdn\.net$
+^[\w\-\.]*?edge\.quantserve\.com$
+^[\w\-\.]*?giraffic\.com$
+^[\w\-\.]*?iad[\w\-\.]*?(?:com|net)$
+^[\w\-\.]*?imrworldwide\.com$
+^[\w\-\.]*?insightexpressai\.com$
+^[\w\-\.]*?internetat\.tv$
+^[\w\-\.]*?markmonitor\.com$
+^[\w\-\.]*?metric.*\.sonos\.com$
+^[\w\-\.]*?overwolf\.com$
+^[\w\-\.]*?pavv\.co\.kr$
+^[\w\-\.]*?pubmatic\.com$
+^[\w\-\.]*?redd\.it$
+^[\w\-\.]*?samsung(?:cloudcdn|cloudsolution|electronics|otn|rm)\.(?:com|net)$
+^[\w\-\.]*?scorecardresearch\.com$
+^[\w\-\.]*?script\.ioam\.de$
+^[\w\-\.]*?tvinteractive\.tv$
+^[\w\-\.]*?v\.fwmrm\.net$
