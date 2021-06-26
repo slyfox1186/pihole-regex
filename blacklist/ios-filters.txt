@@ -4,6 +4,8 @@
 # Apple iOS filter list for Pi-hole
 # Add at your own peril!
 
+# Always make sure to let me know if you have any issues!
+
 0.r.msn.com
 005.free-counter.co.uk
 006.free-counter.co.uk
