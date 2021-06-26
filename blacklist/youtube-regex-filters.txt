@@ -16,5 +16,5 @@
 ^r[\d]?-sn-p5qs7n7s\.googlevideo\.com$
 ^r[\d]?\.sn.*googlevideo\.com$
 ^[\w\-\.]*?google(?:adservices|apis|syndication|usercontent)?\.com$
-^[\w\-\.]*?\.l\.google\.com$
-^[\w\-\.]*?\.manifest\.google\.com$
+^[\w\-\.]*?l\.google\.com$
+^[\w\-\.]*?manifest\.google\.com$
