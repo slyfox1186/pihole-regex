@@ -1,0 +1,13 @@
+# These are my personal adlist whitelist's and are a mix of my own concoctions
+#  as well as others which I have determined work well for my network needs.
+
+# Use at your own peril!
+
+## anudeep's whitelists
+https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt
+
+## SlyFox1186's whitelists
+https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/apple-filters.txt
+https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/general-filters.txt
+https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/optional-filters.txt
+https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/smart-tv-filters.txt
