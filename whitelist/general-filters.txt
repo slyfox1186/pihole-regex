@@ -5,7 +5,6 @@
 
 # Add at your own peril and always make sure to let me know if you have any issues!
 
-# Mobile Youtube
 0.client-channel.google.com
 1drv.com
 2.android.pool.ntp.org
