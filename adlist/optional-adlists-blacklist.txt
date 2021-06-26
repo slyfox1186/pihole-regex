@@ -3,8 +3,7 @@
 
 # Use at your own peril!
 
-## anudeep's white and blacklists
-https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt
+## anudeep's blacklists
 https://hosts.anudeep.me/mirror/adservers.txt
 
 ## Blocklist Project
@@ -27,15 +26,13 @@ https://raw.githubusercontent.com/0Zinc/easylists-for-pihole/master/easyprivacy.
 ## Great Wall of DOH blacklist
 https://raw.githubusercontent.com/Sekhan/TheGreatWall/master/TheGreatWall.txt
 
-## SlyFox1186's white and blacklists
+## SlyFox1186's blacklists
 https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/blacklist/ios-filters.txt
 https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/blacklist/smart-tv-filters.txt
 https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/blacklist/xiaomi-filters.txt
 https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/blacklist/youtube-standard-filters.txt
-https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/apple-filters.txt
-https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/general-filters.txt
-https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/optional-filters.txt
-https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/smart-tv-filters.txt
+
+## Default Pi-hole adlist by Steven Black
 https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 
 ## Other recommended
