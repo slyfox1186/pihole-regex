@@ -34,7 +34,7 @@ def fetch_url(url):
     # Return the hosts
     return response
 
-url_regexps_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/blacklist/additional-regex.txt'
+url_regexps_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/blacklist/additional-regex-filters.txt'
 install_comment = 'Additional RegEx Blacklist SlyFox1186'
 
 cmd_restart = ['pihole', 'restartdns', 'reload']
