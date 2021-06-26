@@ -1,6 +1,11 @@
-# Pi-hole blocklist for additional YouTube domains
+# Created by: SlyFox1186
+# Profile: https://github.com/slyfox1186/
 
-# This has not give me any trouble so far but add at your own peril!
+# YouTube standard blocklist for Pi-hole
+
+# This has not give me any trouble so far however, add at your own peril!
+
+# Always make sure to let me know if you have any issues!
 
 2542116.fls.doubleclick.net
 2975c.v.fwmrm.net
