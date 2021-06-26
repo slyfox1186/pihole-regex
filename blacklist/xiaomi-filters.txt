@@ -1,7 +1,9 @@
 # Created by: SlyFox1186
 # Profile: https://github.com/slyfox1186/
 
-# Pi-hole blocklist for unnecessary xiaomi domains
+# Pi-hole blocklist for unnecessary xiaomi domains.
+
+# Always make sure to let me know if you have any issues!
 
 a.stat.xiaomi.com
 abtest.mistat.intl.xiaomi.com
