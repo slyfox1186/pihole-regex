@@ -1,0 +1,616 @@
+# Created by: SlyFox1186
+# Profile: https://github.com/slyfox1186/
+
+# All whitelist filters combined for Pi-hole
+
+pmd.cdn.turner.com # Adult Swim Videos on Amazon Firestick
+i.cdn.turner.com # Adult Swim Videos on Amazon Firestick
+s.cdn.turner.com # Adult Swim Videos on Amazon Firestick
+z.cdn.turner.com # Adult Swim Videos on Amazon Firestick
+amd.cdn.turner.com # Adult Swim Videos on Amazon Firestick
+
+cognito-identity.us-east-1.amazonaws.com # Amazon Kindle
+unagi-na.amazon.com # Amazon Kindle
+ocsp.rootg2.amazontrust.com # Amazon Kindle
+det-ta-g7g.amazon.com # Amazon Kindle
+todo-ta-g7g.amazon.com # Amazon Kindle
+device-messaging-na.amazon.com # Amazon Kindle
+s3-eu-west-1.amazonaws.com # Amazon Kindle
+us-east-1.amazonaws.com # Amazon Kindle
+
+creative.ak.fbcdn.net # Facebook
+external-lhr0-1.xx.fbcdn.net # Facebook
+external-lhr10-1.xx.fbcdn.net # Facebook
+external-lhr1-1.xx.fbcdn.net # Facebook
+external-lhr2-1.xx.fbcdn.net # Facebook
+external-lhr3-1.xx.fbcdn.net # Facebook
+external-lhr4-1.xx.fbcdn.net # Facebook
+external-lhr5-1.xx.fbcdn.net # Facebook
+external-lhr6-1.xx.fbcdn.net # Facebook
+external-lhr7-1.xx.fbcdn.net # Facebook
+external-lhr8-1.xx.fbcdn.net # Facebook
+external-lhr9-1.xx.fbcdn.net # Facebook
+fbcdn-creative-a.akamaihd.net # Facebook
+graph.facebook.com # Facebook
+graph.instagram.com # Facebook
+instagram.c10r.facebook.com # Facebook
+scontent-lhr3-1.xx.fbcdn.net # Facebook
+scontent.xx.fbcdn.net # Facebook
+scontent.fgdl5-1.fna.fbcdn.net # Facebook
+facebook.com # Facebook
+facebook.net # Facebook
+fbcdn.net # Facebook
+cdn.fbsbx.com # Facebook
+edge-mqtt.facebook.com # Facebook
+0-edge-chat.facebook.com # Facebook
+1-edge-chat.facebook.com # Facebook
+2-edge-chat.facebook.com # Facebook
+3-edge-chat.facebook.com # Facebook
+4-edge-chat.facebook.com # Facebook
+5-edge-chat.facebook.com # Facebook
+6-edge-chat.facebook.com # Facebook
+edge-chat.facebook.com # Facebook
+mqtt-mini.facebook.com # Facebook
+
+events.gfe.nvidia.com # GeForce
+gfwsl.geforce.com # GeForce
+ota-downloads.nvidia.com # GeForce
+
+prod.telemetry.ros.rockstargames.com # GTA Online
+
+hosts-file.net # Host files
+hostsfile.mine.nu # Host files
+hostsfile.org # Host files
+pgl.yoyo.org # Host files
+raw.githubusercontent.com # Host files
+someonewhocares.org # Host files
+sysctl.org # Host files
+v.firebog.net # Host files
+winhelp2002.mvps.org # Host files
+zeustracker.abuse.ch # Host files
+
+api-global.netflix.com # Netflix
+appboot.netflix.com # Netflix
+secure.netflix.com # Netflix
+
+images.pluto.tv # Pluto.tv
+stitcher.pluto.tv # Pluto.tv
+siloh.pluto.tv # Pluto.tv
+silo.pluto.tv # Pluto.tv
+cdn-mobile.api.pluto.tv # Pluto.tv
+api.pluto.tv # Pluto.tv
+players.pluto.tv # Pluto.tv
+
+time.samsungcloudsolution.com # Samsung TV's Amazon Prime video app
+cdn.samsungcloudsolution.com # Samsung TV's network issue
+
+dsms0mj1bbhn4.cloudfront.net # Share buttons on websites
+shareaholic.com # Share buttons on websites
+
+mobile-ap.spotify.com # Spotify premium with Denon Heos speakers
+apresolve.spotify.com # Spotify premium with Denon Heos speakers
+upgrade.scdn.com # Spotify premium with Denon Heos speakers
+market.spotify.com # Spotify premium with Denon Heos speakers
+spclient.wg.spotify.com # Spotify premium with Denon Heos speakers
+
+adf.ly # URL shorteners
+www.adf.ly # URL shorteners
+bit.ly # URL shorteners
+www.bit.ly # URL shorteners
+goo.gl # URL shorteners
+ow.ly # URL shorteners
+www.ow.ly # URL shorteners
+amzn.to # URL shorteners
+amzn.com # URL shorteners
+
+v10.events.data.microsoft.com # Xbox Achievements and game stats sync
+v20.events.data.microsoft.com # Xbox Achievements and game stats sync
+
+stats.streamelements.com # streamelements.com (Blocked by Pi-hole regex)
+
+lm.licenses.adobe.com # Adobe licence verification endpoints
+activate.adobe.com # Adobe licence verification endpoints
+
+0.client-channel.google.com # General
+1drv.com # General
+2.android.pool.ntp.org # General
+akamaihd.net # General
+akamaitechnologies.com # General
+akamaized.net # General
+alluremedia.com.au # General
+amazonaws.com # General
+android.clients.google.com # General
+api.ipify.org # General
+app-api.ted.com # General
+app.emby.media # General
+app.plex.tv # General
+appleid.apple.com # General
+apps.skype.com # General
+appsbackup-pa.clients6.google.com # General
+appsbackup-pa.googleapis.com # General
+apt.sonarr.tv # General
+aspnetcdn.com # General
+attestation.xboxlive.com # General
+aws.amazon.com # General
+ax.phobos.apple.com.edgesuite.net # General
+best.aliexpress.com # General
+bing.com # General
+bit.ly # General
+brightcove.net # General
+bufferapp.com # General
+bugmenot.com # General
+c.s-microsoft.com # General
+cdn.cloudflare.net # General
+cdn.embedly.com # General
+cdn.fbsbx.com # General
+cdn.optimizely.com # General
+cdn.vidible.tv # General
+cdn2.optimizely.com # General
+cdn3.optimizely.com # General
+cdnjs.cloudflare.com # General
+cert.mgt.xboxlive.com # General
+clientconfig.passport.net # General
+clients3.google.com # General
+clients5.google.com # General
+clients6.google.com # General
+cpms.spop10.ams.plex.bz # General
+cpms35.spop10.ams.plex.bz # General
+cse.google.com # General
+ctldl.windowsupdate.com # General
+d2c8v52ll5s99u.cloudfront.net # General
+d2gatte9o95jao.cloudfront.net # General
+dashboard.plex.tv # General
+dataplicity.com # General
+def-vef.xboxlive.com # General
+delivery.vidible.tv # General
+dev.virtualearth.net # General
+device.auth.xboxlive.com # General
+display.ugc.bazaarvoice.com # General
+displaycatalog.mp.microsoft.com # General
+dl.delivery.mp.microsoft.com # General
+dl.dropbox.com # General
+dl.dropboxusercontent.com # General
+dns.msftncsi.com # General
+download.sonarr.tv # General
+drift.com # General
+driftt.com # General
+dynupdate.no-ip.com # General
+ea.com # General
+ec-ns.sascdn.com # General
+ecn.dev.virtualearth.net # General
+edge.api.brightcove.com # General
+eds.xboxlive.com # General
+filament.io # General
+fivethirtyeight.com # General
+fonts.gstatic.com # General
+forms.gle # General
+forms.office.com # General
+forums.sonarr.tv # General
+fs.microsoft.com # General
+g.live.com # General
+geo-prod.do.dsp.mp.microsoft.com # General
+geo3.ggpht.com # General
+gfwsl.geforce.com # General
+giphy.com # General
+github.com # General
+github.io # General
+googleapis.com # General
+graph.oculus.com # General
+gravatar.com # General
+gstatic.com # General
+heartbeat.dm.origin.com # General
+help.ui.xboxlive.com # General
+hls.ted.com # General
+i.s-microsoft.com # General
+i.ytimg.com # General
+i1.ytimg.com # General
+icloud.com # General
+imagesak.secureserver.net # General
+img.vidible.tv # General
+imgix.net # General
+imgs.xkcd.com # General
+intercom.io # General
+j.mp # General
+jquery.com # General
+jsdelivr.net # General
+keystone.mwbsys.com # General
+lastfm-img2.akamaized.net # General
+licensing.xboxlive.com # General
+linkedin.com # General
+linuxtracker.org # General
+live.com # General
+login.aliexpress.com # General
+login.live.com # General
+login.microsoftonline.com # General
+m.hotmail.com # General
+m.youtube.com # General
+manifest.googlevideo.com # General
+medium.com # General
+meta-db-worker02.pop.ric.plex.bz # General
+meta.plex.bz # General
+meta.plex.tv # General
+microsoft.com # General
+microsoftonline.com # General
+mobile.pipe.aria.microsoft.com # General
+msftncsi.com # General
+my.plexapp.com # General
+netflix.com # General
+nexusrules.officeapps.live.com # General
+nine.plugins.plexapp.com # General
+no-ip.com # General
+node.plexapp.com # General
+notify.xboxlive.com # General
+ns1.dropbox.com # General
+ns2.dropbox.com # General
+o1.email.plex.tv # General
+o2.sg0.plex.tv # General
+office.com # General
+office.net # General
+office365.com # General
+officeclient.microsoft.com # General
+om.cbsi.com # General
+onedrive.live.com # General
+oscp.apple.com # General
+outlook.live.com # General
+outlook.office365.com # General
+pinterest.com # General
+placehold.it # General
+placeholdit.imgix.net # General
+players.brightcove.net # General
+plex.tv # General
+pricelist.skype.com # General
+products.office.com # General
+proxy.plex.bz # General
+proxy.plex.tv # General
+proxy02.pop.ord.plex.bz # General
+pubsub.plex.bz # General
+pubsub.plex.tv # General
+raw.githubusercontent.com # General
+reddit.com # General
+redirector.googlevideo.com # General
+res.cloudinary.com # General
+rover.ebay.com # General
+s.gateway.messenger.live.com # General
+s.marketwatch.com # General
+s.shopify.com # General
+s.youtube.com # General
+s.ytimg.com # General
+s1.wp.com # General
+s2.youtube.com # General
+s3.amazonaws.com # General
+sa.symcb.com # General
+secure.surveymonkey.com # General
+services.sonarr.tv # General
+sharepoint.com # General
+skyhook.sonarr.tv # General
+skype.com # General
+society6.com # General
+spclient.wg.spotify.com # General
+ssl.google-analytics.com # General
+ssl.p.jwpcdn.com # General
+staging.plex.tv # General
+static.opensubtitles.org # General
+status.plex.tv # General
+support.microsoft.com # General
+surveymonkey.com # General
+t.co # General
+t0.ssl.ak.dynamic.tiles.virtualearth.net # General
+t0.ssl.ak.tiles.virtualearth.net # General
+tawk.to # General
+tedcdn.com # General
+themoviedb.com # General
+thetvdb.com # General
+tinyurl.com # General
+title.auth.xboxlive.com # General
+title.mgt.xboxlive.com # General
+tvdb2.plex.tv # General
+tvthemes.plexapp.com # General
+twimg.com # General
+twitter.com # General
+ui.skype.com # General
+unsplash.com # General
+v.shopify.com # General
+v10.events.data.microsoft.com # General
+video-stats.l.google.com # General
+videos.vidible.tv # General
+vimeo.com # General
+weblb-wg.dual-gslb.spotify.com # General
+widget-cdn.rpxnow.com # General
+wikipedia.org # General
+win10.ipv6.microsoft.com # General
+win1710.ipv6.microsoft.com # General
+wordpress.com # General
+wp.com # General
+ws.audioscrobbler.com # General
+www.aliexpress.com # General
+www.dataplicity.com # General
+www.google-analytics.com # General
+www.googleapis.com # General
+www.howtogeek.com # General
+www.icloud.com # General
+www.linuxtracker.org # General
+www.msftncsi.com # General
+www.no-ip.com # General
+www.opensubtitles.org # General
+www.plex.tv # General
+www.propublica.org # General
+www.solaredge.com # General
+www.squaretrade.com # General
+www.twitter.com # General
+www.xboxlive.com # General
+www.youtube-nocookie.com # General
+xbox.ipv6.microsoft.com # General
+xboxexperiencesprod.experimentation.xboxlive.com # General
+xflight.xboxlive.com # General
+xkms.xbolive.com # General
+xsts.auth.xboxlive.com # General
+yahoo.com # General
+youtu.be # General
+youtube-nocookie.com # General
+youtube.com # General
+yt3.ggpht.com # General
+
+## Apple whitelists
+# Descriptions are after each entry if available.
+# Sources: https://support.apple.com/en-us/HT210060
+
+albert.apple.com # Device activation.
+appldnld.apple.com # iOS updates.
+appleid.apple.com
+ax.phobos.apple.com.edgesuite.net
+captive.apple.com # Internet connectivity validation for networks that use captive portals.
+cf.iadsdk.apple.com
+configuration.apple.com # Rosetta 2 updates.
+crl.apple.com # Security certificate validation.
+crl.entrust.net # Security certificate validation.
+crl3.digicert.com # Security certificate validation.
+crl4.digicert.com # Security certificate validation.
+deviceenrollment.apple.com # DEP provisional enrollment.
+deviceservices-external.apple.com
+diagassets.apple.com # Used by Apple devices to help detect possible hardware issues.
+gdmf.apple.com # Used by an MDM server to identify which software updates are available to devices that use managed software updates.
+gg.apple.com # iOS, tvOS, and macOS updates.
+gnf-mdn.apple.com # macOS updates.
+gnf-mr.apple.com # macOS updates.
+gs.apple.com
+gs.apple.com # macOS updates.
+humb.apple.com
+iadsdk.apple.com
+identity.apple.com # APNs certificate request portal.
+ig.apple.com # macOS updates.
+iprofiles.apple.com # Hosts enrollment profiles used when devices enroll in Apple School Manager or Apple Business Manager through Device Enrollment.
+isu.apple.com
+itunes-apple.com.akadns.net
+itunes.apple.com # App Store
+itunes.apple.com.edgesuite.net
+itunes.com
+lcdn-registration.apple.com #
+mdmenrollment.apple.com # MDM servers to upload enrollment profiles used by clients enrolling through Device Enrollment in Apple School Manager or Apple Business Manager, and to look up devices and accounts.
+mesu.apple.com # Hosts software update catalogs.
+metrics.icloud.com
+news.iadsdk.apple.com
+ns.itunes.apple.com
+ocsp.apple.com
+ocsp.apple.com # Security certificate validation.
+ocsp.digicert.com # Security certificate validation.
+ocsp.entrust.net # Security certificate validation.
+ocsp.verisign.net # Security certificate validation.
+oscdn.apple.com # macOS Recovery
+osrecovery.apple.com # macOS Recovery
+ppq.apple.com # Enterprise App validation
+radarsubmissions.apple.com
+serverstatus.apple.com # Content caching client public IP determination
+setup.icloud.com # Required to log in with a Managed Apple ID on Shared iPad.
+skl.apple.com # macOS updates.
+sq-device.apple.com # eSIM activation
+static.ips.apple.com
+swcdn.apple.com # macOS updates.
+swdist.apple.com # macOS updates.
+swdownload.apple.com # macOS updates.
+swpost.apple.com # macOS updates.
+swscan.apple.com # macOS updates.
+tbsc.apple.com
+time-ios.apple.com # Used by devices to set their date and time.
+time-macos.apple.com # Used by devices to set their date and time.
+time.apple.com # Used by devices to set their date and time.
+updates-http.cdn-apple.com
+updates.cdn-apple.com
+valid.apple.com # Security certificate validation.
+vpp.itunes.apple.com # MDM servers to perform operations related to Apps and Books, like assigning or revoking licenses on a device.
+ws-ee-maidsvc.icloud.com # Schoolwork Roster service.
+www.itunes.com
+xp.apple.com
+
+## anudeep's whitelists
+
+0.client-channel.google.com # anudeep
+1drv.com # anudeep
+2.android.pool.ntp.org # anudeep
+akamaihd.net # anudeep
+akamaitechnologies.com # anudeep
+akamaized.net # anudeep
+amazonaws.com # anudeep
+android.clients.google.com # anudeep
+api.ipify.org # anudeep
+api.rlje.net # anudeep
+app-api.ted.com # anudeep
+appleid.apple.com # anudeep
+apps.skype.com # anudeep
+appsbackup-pa.clients6.google.com # anudeep
+appsbackup-pa.googleapis.com # anudeep
+appspot-preview.l.google.com # anudeep
+apt.sonarr.tv # anudeep
+aspnetcdn.com # anudeep
+attestation.xboxlive.com # anudeep
+ax.phobos.apple.com.edgesuite.net # anudeep
+brightcove.net # anudeep
+c.s-microsoft.com # anudeep
+cdn.cloudflare.net # anudeep
+cdn.embedly.com # anudeep
+cdn.optimizely.com # anudeep
+cdn.vidible.tv # anudeep
+cdn2.optimizely.com # anudeep
+cdn3.optimizely.com # anudeep
+cdnjs.cloudflare.com # anudeep
+cert.mgt.xboxlive.com # anudeep
+clientconfig.passport.net # anudeep
+clients1.google.com # anudeep
+clients2.google.com # anudeep
+clients3.google.com # anudeep
+clients4.google.com # anudeep
+clients5.google.com # anudeep
+clients6.google.com # anudeep
+connectivitycheck.android.com # anudeep
+connectivitycheck.gstatic.com # anudeep
+continuum.dds.microsoft.com # anudeep
+cpms.spop10.ams.plex.bz # anudeep
+cpms35.spop10.ams.plex.bz # anudeep
+cse.google.com # anudeep
+ctldl.windowsupdate.com # anudeep
+cws.conviva.com # anudeep
+d2c8v52ll5s99u.cloudfront.net # anudeep
+d2gatte9o95jao.cloudfront.net # anudeep
+dashboard.plex.tv # anudeep
+dataplicity.com # anudeep
+def-vef.xboxlive.com # anudeep
+delivery.vidible.tv # anudeep
+dev.virtualearth.net # anudeep
+device.auth.xboxlive.com # anudeep
+display.ugc.bazaarvoice.com # anudeep
+displaycatalog.mp.microsoft.com # anudeep
+dl.delivery.mp.microsoft.com # anudeep
+dl.dropbox.com # anudeep
+dl.dropboxusercontent.com # anudeep
+dns.msftncsi.com # anudeep
+download.sonarr.tv # anudeep
+drift.com # anudeep
+driftt.com # anudeep
+dynupdate.no-ip.com # anudeep
+ecn.dev.virtualearth.net # anudeep
+edge.api.brightcove.com # anudeep
+eds.xboxlive.com # anudeep
+fonts.gstatic.com # anudeep
+forums.sonarr.tv # anudeep
+g.live.com # anudeep
+geo-prod.do.dsp.mp.microsoft.com # anudeep
+geo3.ggpht.com # anudeep
+gfwsl.geforce.com # anudeep
+giphy.com # anudeep
+github.com # anudeep
+github.io # anudeep
+googleapis.com # anudeep
+gravatar.com # anudeep
+gstatic.com # anudeep
+help.ui.xboxlive.com # anudeep
+hls.ted.com # anudeep
+i.ytimg.com # anudeep
+i1.ytimg.com # anudeep
+imagesak.secureserver.net # anudeep
+img.vidible.tv # anudeep
+imgix.net # anudeep
+imgs.xkcd.com # anudeep
+instantmessaging-pa.googleapis.com # anudeep
+intercom.io # anudeep
+jquery.com # anudeep
+jsdelivr.net # anudeep
+keystone.mwbsys.com # anudeep
+lastfm-img2.akamaized.net # anudeep
+licensing.xboxlive.com # anudeep
+live.com # anudeep
+livepassdl.conviva.com # anudeep
+login.live.com # anudeep
+login.microsoftonline.com # anudeep
+manifest.googlevideo.com # anudeep
+meta-db-worker02.pop.ric.plex.bz # anudeep
+meta.plex.bz # anudeep
+meta.plex.tv # anudeep
+microsoftonline.com # anudeep
+msftncsi.com # anudeep
+my.plexapp.com # anudeep
+nexusrules.officeapps.live.com # anudeep
+nine.plugins.plexapp.com # anudeep
+no-ip.com # anudeep
+node.plexapp.com # anudeep
+notify.xboxlive.com # anudeep
+npr-news.streaming.adswizz.com # anudeep
+ns1.dropbox.com # anudeep
+ns2.dropbox.com # anudeep
+o1.email.plex.tv # anudeep
+o2.sg0.plex.tv # anudeep
+ocsp.apple.com # anudeep
+office.com # anudeep
+office.net # anudeep
+office365.com # anudeep
+officeclient.microsoft.com # anudeep
+om.cbsi.com # anudeep
+onedrive.live.com # anudeep
+outlook.live.com # anudeep
+outlook.office365.com # anudeep
+pings.conviva.com # anudeep
+placehold.it # anudeep
+placeholdit.imgix.net # anudeep
+players.brightcove.net # anudeep
+pricelist.skype.com # anudeep
+products.office.com # anudeep
+proxy.plex.bz # anudeep
+proxy.plex.tv # anudeep
+proxy02.pop.ord.plex.bz # anudeep
+pubsub.plex.bz # anudeep
+pubsub.plex.tv # anudeep
+raw.githubusercontent.com # anudeep
+redirector.googlevideo.com # anudeep
+res.cloudinary.com # anudeep
+s.gateway.messenger.live.com # anudeep
+s.marketwatch.com # anudeep
+s.youtube.com # anudeep
+s.ytimg.com # anudeep
+s1.wp.com # anudeep
+s2.youtube.com # anudeep
+s3.amazonaws.com # anudeep
+sa.symcb.com # anudeep
+secure.avangate.com # anudeep
+secure.brightcove.com # anudeep
+secure.surveymonkey.com # anudeep
+services.sonarr.tv # anudeep
+skyhook.sonarr.tv # anudeep
+spclient.wg.spotify.com # anudeep
+ssl.p.jwpcdn.com # anudeep
+staging.plex.tv # anudeep
+status.plex.tv # anudeep
+t.co # anudeep
+t0.ssl.ak.dynamic.tiles.virtualearth.net # anudeep
+t0.ssl.ak.tiles.virtualearth.net # anudeep
+tawk.to # anudeep
+tedcdn.com # anudeep
+themoviedb.com # anudeep
+thetvdb.com # anudeep
+tinyurl.com # anudeep
+title.auth.xboxlive.com # anudeep
+title.mgt.xboxlive.com # anudeep
+traffic.libsyn.com # anudeep
+tvdb2.plex.tv # anudeep
+tvthemes.plexapp.com # anudeep
+twimg.com # anudeep
+ui.skype.com # anudeep
+video-stats.l.google.com # anudeep
+videos.vidible.tv # anudeep
+vidtech.cbsinteractive.com # anudeep
+widget-cdn.rpxnow.com # anudeep
+win10.ipv6.microsoft.com # anudeep
+wp.com # anudeep
+ws.audioscrobbler.com # anudeep
+www.dataplicity.com # anudeep
+www.googleapis.com # anudeep
+www.msftconnecttest.com # anudeep
+www.msftncsi.com # anudeep
+www.no-ip.com # anudeep
+www.youtube-nocookie.com # anudeep
+xbox.ipv6.microsoft.com # anudeep
+xboxexperiencesprod.experimentation.xboxlive.com # anudeep
+xflight.xboxlive.com # anudeep
+xkms.xboxlive.com # anudeep
+xsts.auth.xboxlive.com # anudeep
+youtu.be # anudeep
+youtube-nocookie.com # anudeep
+yt3.ggpht.com # anudeep
+zee.cws.conviva.com # anudeep
