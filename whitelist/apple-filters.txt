@@ -1,5 +1,8 @@
-# Apple exact blocklist
-# https://support.apple.com/en-us/HT210060
+# Apple exact whitelist for Pi-hole.
+
+# Descriptions are after each entry if available.
+
+# Sources: https://support.apple.com/en-us/HT210060
 
 albert.apple.com # Device activation.
 appldnld.apple.com # iOS updates.
