@@ -2,7 +2,7 @@
 # Profile: https://github.com/slyfox1186/
 
 # See the README.md file for additional information and always make
-# sure to let me know if you have any issues or other feedback on these!
+# sure to let me know if you have any issues or other feedback!
 
 # Install: curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/install.py | sudo python3
 # UnInstall: curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py | sudo python3
