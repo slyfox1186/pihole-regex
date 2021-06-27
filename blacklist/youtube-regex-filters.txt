@@ -18,3 +18,4 @@
 ^[\w\-\.]*?google(?:adservices|apis|syndication|usercontent)?\.com$
 ^[\w\-\.]*?l\.google\.com$
 ^[\w\-\.]*?manifest\.google\.com$
+^[a-z\d\.]*double(?:lick|click)\.net$
