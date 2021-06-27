@@ -35,7 +35,7 @@ https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/black
 ## Default Pi-hole adlist by Steven Black
 https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 
-## Other recommended
+## firebog.net's recommended lists
 https://adaway.org/hosts.txt
 https://bitbucket.org/ethanr/dns-blacklists/raw/8575c9f96e5b4a1308f2f12394abd86d0927a4a0/bad_lists/Mandiant_APT1_Report_Appendix_D.txt
 https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-malware.txt
@@ -65,3 +65,6 @@ https://v.firebog.net/hosts/Prigent-Crypto.txt
 https://v.firebog.net/hosts/Shalla-mal.txt
 https://v.firebog.net/hosts/static/w3kbl.txt
 https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser
+
+## Github misc.
+https://raw.githubusercontent.com/nickspaargaren/no-google/master/pihole-google.txt
