@@ -11,6 +11,12 @@ v10.events.data.microsoft.com # Microsoft/Windows 10
 v10.vortex-win.data.microsoft.com # Microsoft/Windows 10
 v20.vortex-win.data.microsoft.com # Microsoft/Windows 10
 
+apresolve.spotify.com # Spotify
+market.spotify.com # Spotify
+mobile-ap.spotify.com # Spotify
+spclient-wg.spotify.com # Spotify
+upgrade.scdn.co # Spotify
+
 ## Combined filters below
 pmd.cdn.turner.com # Adult Swim Videos on Amazon Firestick
 i.cdn.turner.com # Adult Swim Videos on Amazon Firestick
