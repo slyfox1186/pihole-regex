@@ -1,8 +1,17 @@
 # Created by: SlyFox1186
 # Profile: https://github.com/slyfox1186/
 
-# All whitelist filters combined for Pi-hole
+# All whitelist filters combined in a single file.
+# This list also has extra unique filters only found in this file which will preceed the other filters.
 
+## Filters Unique to this file only
+watson.telemetry.microsoft.com # Microsoft/Windows 10
+web.vortex.data.microsoft.com # Microsoft/Windows 10
+v10.events.data.microsoft.com # Microsoft/Windows 10
+v10.vortex-win.data.microsoft.com # Microsoft/Windows 10
+v20.vortex-win.data.microsoft.com # Microsoft/Windows 10
+
+## Combined filters below
 pmd.cdn.turner.com # Adult Swim Videos on Amazon Firestick
 i.cdn.turner.com # Adult Swim Videos on Amazon Firestick
 s.cdn.turner.com # Adult Swim Videos on Amazon Firestick
