@@ -8,24 +8,32 @@
 watson.telemetry.microsoft.com # Microsoft/Windows 10
 web.vortex.data.microsoft.com # Microsoft/Windows 10
 
-# You can add the below 3 entries using the RegEx filter: ^v[0-2\.]+(?:events|(?:vortex)-win)\.data\.microsoft\.com$
+## Microsoft/Windows 10
+## You can add the below 3 entries using the RegEx filter: ^v[0-2\.]+(?:events|(?:vortex)-win)\.data\.microsoft\.com$
 v10.events.data.microsoft.com # Microsoft/Windows 10
+v20.events.data.microsoft.com # Xbox Achievements and game stats sync
 v10.vortex-win.data.microsoft.com # Microsoft/Windows 10
 v20.vortex-win.data.microsoft.com # Microsoft/Windows 10
 
+## Spotify
 apresolve.spotify.com # Spotify
 market.spotify.com # Spotify
 mobile-ap.spotify.com # Spotify
 spclient-wg.spotify.com # Spotify
 upgrade.scdn.co # Spotify
 
-## Combined filters below
+################################
+###  Combined filters below  ###
+################################
+
+## Amazon Firestick
 pmd.cdn.turner.com # Adult Swim Videos on Amazon Firestick
 i.cdn.turner.com # Adult Swim Videos on Amazon Firestick
 s.cdn.turner.com # Adult Swim Videos on Amazon Firestick
 z.cdn.turner.com # Adult Swim Videos on Amazon Firestick
 amd.cdn.turner.com # Adult Swim Videos on Amazon Firestick
 
+## Amazon Kindle
 cognito-identity.us-east-1.amazonaws.com # Amazon Kindle
 unagi-na.amazon.com # Amazon Kindle
 ocsp.rootg2.amazontrust.com # Amazon Kindle
@@ -35,10 +43,21 @@ device-messaging-na.amazon.com # Amazon Kindle
 s3-eu-west-1.amazonaws.com # Amazon Kindle
 us-east-1.amazonaws.com # Amazon Kindle
 
+## Facebook
+0-edge-chat.facebook.com # Facebook
+1-edge-chat.facebook.com # Facebook
+2-edge-chat.facebook.com # Facebook
+3-edge-chat.facebook.com # Facebook
+4-edge-chat.facebook.com # Facebook
+5-edge-chat.facebook.com # Facebook
+6-edge-chat.facebook.com # Facebook
+cdn.fbsbx.com # Facebook
 creative.ak.fbcdn.net # Facebook
+edge-chat.facebook.com # Facebook
+edge-mqtt.facebook.com # Facebook
 external-lhr0-1.xx.fbcdn.net # Facebook
-external-lhr10-1.xx.fbcdn.net # Facebook
 external-lhr1-1.xx.fbcdn.net # Facebook
+external-lhr10-1.xx.fbcdn.net # Facebook
 external-lhr2-1.xx.fbcdn.net # Facebook
 external-lhr3-1.xx.fbcdn.net # Facebook
 external-lhr4-1.xx.fbcdn.net # Facebook
@@ -47,34 +66,27 @@ external-lhr6-1.xx.fbcdn.net # Facebook
 external-lhr7-1.xx.fbcdn.net # Facebook
 external-lhr8-1.xx.fbcdn.net # Facebook
 external-lhr9-1.xx.fbcdn.net # Facebook
+facebook.com # Facebook
+facebook.net # Facebook
 fbcdn-creative-a.akamaihd.net # Facebook
+fbcdn.net # Facebook
 graph.facebook.com # Facebook
 graph.instagram.com # Facebook
 instagram.c10r.facebook.com # Facebook
-scontent-lhr3-1.xx.fbcdn.net # Facebook
-scontent.xx.fbcdn.net # Facebook
-scontent.fgdl5-1.fna.fbcdn.net # Facebook
-facebook.com # Facebook
-facebook.net # Facebook
-fbcdn.net # Facebook
-cdn.fbsbx.com # Facebook
-edge-mqtt.facebook.com # Facebook
-0-edge-chat.facebook.com # Facebook
-1-edge-chat.facebook.com # Facebook
-2-edge-chat.facebook.com # Facebook
-3-edge-chat.facebook.com # Facebook
-4-edge-chat.facebook.com # Facebook
-5-edge-chat.facebook.com # Facebook
-6-edge-chat.facebook.com # Facebook
-edge-chat.facebook.com # Facebook
 mqtt-mini.facebook.com # Facebook
+scontent-lhr3-1.xx.fbcdn.net # Facebook
+scontent.fgdl5-1.fna.fbcdn.net # Facebook
+scontent.xx.fbcdn.net # Facebook
 
+## GeForce
 events.gfe.nvidia.com # GeForce
 gfwsl.geforce.com # GeForce
 ota-downloads.nvidia.com # GeForce
 
+## GTA Online
 prod.telemetry.ros.rockstargames.com # GTA Online
 
+## Host files
 hosts-file.net # Host files
 hostsfile.mine.nu # Host files
 hostsfile.org # Host files
@@ -86,48 +98,54 @@ v.firebog.net # Host files
 winhelp2002.mvps.org # Host files
 zeustracker.abuse.ch # Host files
 
+## 
 api-global.netflix.com # Netflix
 appboot.netflix.com # Netflix
 secure.netflix.com # Netflix
 
-images.pluto.tv # Pluto.tv
-stitcher.pluto.tv # Pluto.tv
-siloh.pluto.tv # Pluto.tv
-silo.pluto.tv # Pluto.tv
-cdn-mobile.api.pluto.tv # Pluto.tv
+## Pluto.tv
 api.pluto.tv # Pluto.tv
+cdn-mobile.api.pluto.tv # Pluto.tv
+images.pluto.tv # Pluto.tv
 players.pluto.tv # Pluto.tv
+silo.pluto.tv # Pluto.tv
+siloh.pluto.tv # Pluto.tv
+stitcher.pluto.tv # Pluto.tv
 
+## Samsung TV's Amazon Prime video app
 time.samsungcloudsolution.com # Samsung TV's Amazon Prime video app
 cdn.samsungcloudsolution.com # Samsung TV's network issue
 
+## Share buttons on websites
 dsms0mj1bbhn4.cloudfront.net # Share buttons on websites
 shareaholic.com # Share buttons on websites
 
-mobile-ap.spotify.com # Spotify premium with Denon Heos speakers
-apresolve.spotify.com # Spotify premium with Denon Heos speakers
-upgrade.scdn.com # Spotify premium with Denon Heos speakers
-market.spotify.com # Spotify premium with Denon Heos speakers
-spclient.wg.spotify.com # Spotify premium with Denon Heos speakers
+## Spotify Premium using Denon Heos speakers
+apresolve.spotify.com # Spotify Premium using Denon Heos speakers
+market.spotify.com # Spotify Premium using Denon Heos speakers
+mobile-ap.spotify.com # Spotify Premium using Denon Heos speakers
+spclient.wg.spotify.com # Spotify Premium using Denon Heos speakers
+upgrade.scdn.com # Spotify Premium using Denon Heos speakers
 
-adf.ly # URL shorteners
-www.adf.ly # URL shorteners
-bit.ly # URL shorteners
-www.bit.ly # URL shorteners
-goo.gl # URL shorteners
-ow.ly # URL shorteners
-www.ow.ly # URL shorteners
-amzn.to # URL shorteners
-amzn.com # URL shorteners
+## URL Shorteners
+adf.ly # URL Shorteners
+amzn.com # URL Shorteners
+amzn.to # URL Shorteners
+bit.ly # URL Shorteners
+goo.gl # URL Shorteners
+ow.ly # URL Shorteners
+www.adf.ly # URL Shorteners
+www.bit.ly # URL Shorteners
+www.ow.ly # URL Shorteners
 
-v10.events.data.microsoft.com # Xbox Achievements and game stats sync
-v20.events.data.microsoft.com # Xbox Achievements and game stats sync
+## Stream Elements (Blocked by Pi-hole regex)
+stats.streamelements.com # Stream Elements (Blocked by Pi-hole regex)
 
-stats.streamelements.com # streamelements.com (Blocked by Pi-hole regex)
-
+## Adobe licence verification endpoints
 lm.licenses.adobe.com # Adobe licence verification endpoints
 activate.adobe.com # Adobe licence verification endpoints
 
+## General
 0.client-channel.google.com # General
 1drv.com # General
 2.android.pool.ntp.org # General
@@ -371,6 +389,7 @@ yt3.ggpht.com # General
 # Descriptions are after each entry if available.
 # Sources: https://support.apple.com/en-us/HT210060
 
+## 
 albert.apple.com # Device activation.
 appldnld.apple.com # iOS updates.
 appleid.apple.com
@@ -437,197 +456,3 @@ vpp.itunes.apple.com # MDM servers to perform operations related to Apps and Boo
 ws-ee-maidsvc.icloud.com # Schoolwork Roster service.
 www.itunes.com
 xp.apple.com
-
-## anudeep's whitelists
-
-0.client-channel.google.com # anudeep
-1drv.com # anudeep
-2.android.pool.ntp.org # anudeep
-akamaihd.net # anudeep
-akamaitechnologies.com # anudeep
-akamaized.net # anudeep
-amazonaws.com # anudeep
-android.clients.google.com # anudeep
-api.ipify.org # anudeep
-api.rlje.net # anudeep
-app-api.ted.com # anudeep
-appleid.apple.com # anudeep
-apps.skype.com # anudeep
-appsbackup-pa.clients6.google.com # anudeep
-appsbackup-pa.googleapis.com # anudeep
-appspot-preview.l.google.com # anudeep
-apt.sonarr.tv # anudeep
-aspnetcdn.com # anudeep
-attestation.xboxlive.com # anudeep
-ax.phobos.apple.com.edgesuite.net # anudeep
-brightcove.net # anudeep
-c.s-microsoft.com # anudeep
-cdn.cloudflare.net # anudeep
-cdn.embedly.com # anudeep
-cdn.optimizely.com # anudeep
-cdn.vidible.tv # anudeep
-cdn2.optimizely.com # anudeep
-cdn3.optimizely.com # anudeep
-cdnjs.cloudflare.com # anudeep
-cert.mgt.xboxlive.com # anudeep
-clientconfig.passport.net # anudeep
-clients1.google.com # anudeep
-clients2.google.com # anudeep
-clients3.google.com # anudeep
-clients4.google.com # anudeep
-clients5.google.com # anudeep
-clients6.google.com # anudeep
-connectivitycheck.android.com # anudeep
-connectivitycheck.gstatic.com # anudeep
-continuum.dds.microsoft.com # anudeep
-cpms.spop10.ams.plex.bz # anudeep
-cpms35.spop10.ams.plex.bz # anudeep
-cse.google.com # anudeep
-ctldl.windowsupdate.com # anudeep
-cws.conviva.com # anudeep
-d2c8v52ll5s99u.cloudfront.net # anudeep
-d2gatte9o95jao.cloudfront.net # anudeep
-dashboard.plex.tv # anudeep
-dataplicity.com # anudeep
-def-vef.xboxlive.com # anudeep
-delivery.vidible.tv # anudeep
-dev.virtualearth.net # anudeep
-device.auth.xboxlive.com # anudeep
-display.ugc.bazaarvoice.com # anudeep
-displaycatalog.mp.microsoft.com # anudeep
-dl.delivery.mp.microsoft.com # anudeep
-dl.dropbox.com # anudeep
-dl.dropboxusercontent.com # anudeep
-dns.msftncsi.com # anudeep
-download.sonarr.tv # anudeep
-drift.com # anudeep
-driftt.com # anudeep
-dynupdate.no-ip.com # anudeep
-ecn.dev.virtualearth.net # anudeep
-edge.api.brightcove.com # anudeep
-eds.xboxlive.com # anudeep
-fonts.gstatic.com # anudeep
-forums.sonarr.tv # anudeep
-g.live.com # anudeep
-geo-prod.do.dsp.mp.microsoft.com # anudeep
-geo3.ggpht.com # anudeep
-gfwsl.geforce.com # anudeep
-giphy.com # anudeep
-github.com # anudeep
-github.io # anudeep
-googleapis.com # anudeep
-gravatar.com # anudeep
-gstatic.com # anudeep
-help.ui.xboxlive.com # anudeep
-hls.ted.com # anudeep
-i.ytimg.com # anudeep
-i1.ytimg.com # anudeep
-imagesak.secureserver.net # anudeep
-img.vidible.tv # anudeep
-imgix.net # anudeep
-imgs.xkcd.com # anudeep
-instantmessaging-pa.googleapis.com # anudeep
-intercom.io # anudeep
-jquery.com # anudeep
-jsdelivr.net # anudeep
-keystone.mwbsys.com # anudeep
-lastfm-img2.akamaized.net # anudeep
-licensing.xboxlive.com # anudeep
-live.com # anudeep
-livepassdl.conviva.com # anudeep
-login.live.com # anudeep
-login.microsoftonline.com # anudeep
-manifest.googlevideo.com # anudeep
-meta-db-worker02.pop.ric.plex.bz # anudeep
-meta.plex.bz # anudeep
-meta.plex.tv # anudeep
-microsoftonline.com # anudeep
-msftncsi.com # anudeep
-my.plexapp.com # anudeep
-nexusrules.officeapps.live.com # anudeep
-nine.plugins.plexapp.com # anudeep
-no-ip.com # anudeep
-node.plexapp.com # anudeep
-notify.xboxlive.com # anudeep
-npr-news.streaming.adswizz.com # anudeep
-ns1.dropbox.com # anudeep
-ns2.dropbox.com # anudeep
-o1.email.plex.tv # anudeep
-o2.sg0.plex.tv # anudeep
-ocsp.apple.com # anudeep
-office.com # anudeep
-office.net # anudeep
-office365.com # anudeep
-officeclient.microsoft.com # anudeep
-om.cbsi.com # anudeep
-onedrive.live.com # anudeep
-outlook.live.com # anudeep
-outlook.office365.com # anudeep
-pings.conviva.com # anudeep
-placehold.it # anudeep
-placeholdit.imgix.net # anudeep
-players.brightcove.net # anudeep
-pricelist.skype.com # anudeep
-products.office.com # anudeep
-proxy.plex.bz # anudeep
-proxy.plex.tv # anudeep
-proxy02.pop.ord.plex.bz # anudeep
-pubsub.plex.bz # anudeep
-pubsub.plex.tv # anudeep
-raw.githubusercontent.com # anudeep
-redirector.googlevideo.com # anudeep
-res.cloudinary.com # anudeep
-s.gateway.messenger.live.com # anudeep
-s.marketwatch.com # anudeep
-s.youtube.com # anudeep
-s.ytimg.com # anudeep
-s1.wp.com # anudeep
-s2.youtube.com # anudeep
-s3.amazonaws.com # anudeep
-sa.symcb.com # anudeep
-secure.avangate.com # anudeep
-secure.brightcove.com # anudeep
-secure.surveymonkey.com # anudeep
-services.sonarr.tv # anudeep
-skyhook.sonarr.tv # anudeep
-spclient.wg.spotify.com # anudeep
-ssl.p.jwpcdn.com # anudeep
-staging.plex.tv # anudeep
-status.plex.tv # anudeep
-t.co # anudeep
-t0.ssl.ak.dynamic.tiles.virtualearth.net # anudeep
-t0.ssl.ak.tiles.virtualearth.net # anudeep
-tawk.to # anudeep
-tedcdn.com # anudeep
-themoviedb.com # anudeep
-thetvdb.com # anudeep
-tinyurl.com # anudeep
-title.auth.xboxlive.com # anudeep
-title.mgt.xboxlive.com # anudeep
-traffic.libsyn.com # anudeep
-tvdb2.plex.tv # anudeep
-tvthemes.plexapp.com # anudeep
-twimg.com # anudeep
-ui.skype.com # anudeep
-video-stats.l.google.com # anudeep
-videos.vidible.tv # anudeep
-vidtech.cbsinteractive.com # anudeep
-widget-cdn.rpxnow.com # anudeep
-win10.ipv6.microsoft.com # anudeep
-wp.com # anudeep
-ws.audioscrobbler.com # anudeep
-www.dataplicity.com # anudeep
-www.googleapis.com # anudeep
-www.msftconnecttest.com # anudeep
-www.msftncsi.com # anudeep
-www.no-ip.com # anudeep
-www.youtube-nocookie.com # anudeep
-xbox.ipv6.microsoft.com # anudeep
-xboxexperiencesprod.experimentation.xboxlive.com # anudeep
-xflight.xboxlive.com # anudeep
-xkms.xboxlive.com # anudeep
-xsts.auth.xboxlive.com # anudeep
-youtu.be # anudeep
-youtube-nocookie.com # anudeep
-yt3.ggpht.com # anudeep
-zee.cws.conviva.com # anudeep
