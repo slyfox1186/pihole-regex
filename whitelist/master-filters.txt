@@ -8,7 +8,7 @@
 watson.telemetry.microsoft.com # Microsoft/Windows 10
 web.vortex.data.microsoft.com # Microsoft/Windows 10
 
-# You can the below 3 entries using the RegEx Filter: ^v[0-2\.]+(?:events|(?:vortex)-win)\.data\.microsoft\.com$
+# You can add the below 3 entries using the RegEx Filter: ^v[0-2\.]+(?:events|(?:vortex)-win)\.data\.microsoft\.com$
 # v10.events.data.microsoft.com # Microsoft/Windows 10
 # v10.vortex-win.data.microsoft.com # Microsoft/Windows 10
 # v20.vortex-win.data.microsoft.com # Microsoft/Windows 10
