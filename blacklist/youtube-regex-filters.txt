@@ -6,16 +6,17 @@
 # sure to let me know if you have any issues or other feedback!
 
 # Install: curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/install.py | sudo python3
-# UnInstall: curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py | sudo python3
+# Uninstall: curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py | sudo python3
 
-^beacons\.gv[a-z\d]*+\.com$
-^clients[\d]*?\.google\.com$
-^clients[\d]*?\.youtube\.com$
-^r[\d]?-sn-8xgp1vo-xfgd\.googlevideo\.com$
-^r[\d]?-sn-8xgp1vo-xfgee\.googlevideo\.com$
-^r[\d]?-sn-p5qs7n7s\.googlevideo\.com$
-^r[\d]?\.sn.*googlevideo\.com$
+^beacons\.gv[a-z\d]+?\.com$
+^clients\d+?\.google\.com$
+^clients\d+?\.youtube\.com$
+^r[\d\-]+?sn-8xgp1vo-xfgd\.googlevideo\.com$
+^r[\d\-]+?sn-8xgp1vo-xfgee\.googlevideo\.com$
+^r[\d\-]+?sn-p5qs7n7s\.googlevideo\.com$
+^r[\d\.]+?sn.*googlevideo\.com$
+^r[\d\-]+?sn[\w\-\.]+?googlevideo\.com$
 ^[\w\-\.]*?google(?:adservices|apis|syndication|usercontent)?\.com$
 ^[\w\-\.]*?l\.google\.com$
-^[\w\-\.]*?manifest\.google\.com$
-^[a-z\d\.]*double(?:lick|click)\.net$
+^[\w\-\.]*?manifest\.googlevideo\.com$
+^[\w\-\.]*?double(?:lick|click)\.net$
