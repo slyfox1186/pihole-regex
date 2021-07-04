@@ -5,14 +5,15 @@ The purpose of this filter list is to compliment your existing blocklist's using
 
 All commands need to be entered via a Terminal after logging in and you need to have [**Python v3.6 or higher**] installed to execute the curl commands below. You can use PuTTY or your SSH client of choice if you're not on the pc running Pi-hole.
 
-### Add RegEx filters to Pi-hole:
+### Add/Update the RegEx filters to Pi-hole:
 ```
-curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/install.py | sudo python3
+/usr/bin/curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py | sudo /usr/bin/python3 && \
+/usr/bin/curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/install.py | sudo /usr/bin/python3
 ```
 
 ### Remove RegEx filters from Pi-hole:
 ```
-curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py | sudo python3
+/usr/bin/curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py | sudo /usr/bin/python3
 ```
 
 ### False Positives ###
