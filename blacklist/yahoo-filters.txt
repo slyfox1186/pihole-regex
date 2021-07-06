@@ -1,4 +1,4 @@
-# Testing Yahoo Blocklists
+# Yahoo Blocklists
 
 a2sdlod013.bcst.cdn.a2s.yimg.com
 a2sdlod019.bcst.cdn.a2s.yimg.com
