@@ -1,3 +1,5 @@
+# Taken from other hostfile lists and converted into a simple list that is compatible with Pihole
+
 0cl.sldov.ru
 1008691.com
 10xg.in
