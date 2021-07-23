@@ -227,4 +227,3 @@ else:
     print('\n')
     print('Happy ad-blocking :)')
     print('\n')
-{"mode":"full","isActive":false}
