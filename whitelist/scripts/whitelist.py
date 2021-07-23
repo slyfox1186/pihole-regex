@@ -382,4 +382,3 @@ else:
     restart_pihole(args.docker)
     print('[i] Done. Happy ad-blocking :)')
     print('\n')
-{"mode":"full","isActive":false}
