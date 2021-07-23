@@ -66,11 +66,11 @@ if args.dir:
 else:
     pihole_location = r'/etc/pihole'
 
-whitelist_remote_url = 'https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt'
-remote_sql_url = 'https://raw.githubusercontent.com/anudeepND/whitelist/master/scripts/domains.sql'
+whitelist_remote_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/domains/whitelist.txt'
+remote_sql_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/scripts/domains.sql'
 gravity_whitelist_location = os.path.join(pihole_location, 'whitelist.txt')
 gravity_db_location = os.path.join(pihole_location, 'gravity.db')
-anudeep_whitelist_location = os.path.join(pihole_location, 'anudeep-whitelist.txt')
+anudeep_whitelist_location = os.path.join(pihole_location, 'slyfox-whitelist.txt')
 
 db_exists = False
 sqliteConnection = None
@@ -342,9 +342,6 @@ if db_exists:
         print('\n')
         print('Done. Happy ad-blocking :)')
         print('\n')
-        print('Star me on GitHub: https://github.com/anudeepND/whitelist')
-        print('Buy me a coffee: https://paypal.me/anudeepND')
-        print('\n')
 
 else:
 
@@ -384,8 +381,5 @@ else:
     print('[i] Restarting Pi-hole. This could take a few seconds')
     restart_pihole(args.docker)
     print('[i] Done. Happy ad-blocking :)')
-    print('\n')
-    print('Star me on GitHub: https://github.com/anudeepND/whitelist')
-    print('Buy me a coffee: https://paypal.me/anudeepND')
     print('\n')
 {"mode":"full","isActive":false}
