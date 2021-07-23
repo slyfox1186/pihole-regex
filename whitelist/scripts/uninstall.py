@@ -156,12 +156,12 @@ if db_exists:
         sqliteConnection = sqlite3.connect(gravity_db_location)
         cursor = sqliteConnection.cursor()
         print('[i] Successfully Connected to Gravity database')
-        total_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%qjz9zk%' ")
+        total_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%sly9zk%' ")
         
         totalDomains = len(total_domains.fetchall())
         print("[i] There are a total of {} domains in your whitelist which are added by my script" .format(totalDomains))
         print('[i] Removing domains in the Gravity database')
-        cursor.execute (" DELETE FROM domainlist WHERE type = 0 AND comment LIKE '%qjz9zk%' ")
+        cursor.execute (" DELETE FROM domainlist WHERE type = 0 AND comment LIKE '%sly9zk%' ")
 
         sqliteConnection.commit()
 
