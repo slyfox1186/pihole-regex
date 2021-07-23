@@ -16,8 +16,11 @@ All commands need to be entered via a Terminal after logging in and you need to 
 /usr/bin/curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py | sudo /usr/bin/python3
 ```
 
-### False Positives ###
-You must manually add any white or black lists if desired. This can fix a few known issues such as blocking the mobile versions of websites. [whitelist file](https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/general-filters.txt). Use the adlists tool and restart gravity to enable these lists.
+### Add whitelist filters to Pi-hole:
+```
+git clone https://github.com/slyfox1186/pihole.youtube.blocklist.git
+sudo /usr/bin/python3 pihole.youtube.blocklist/whitelist/scripts/whitelist.py
+```
 
 ### Keep these RegEx filters up-to-date with cron (optional)
 Instructions to create a cron job to auto update the RegEx filters every Sunday at 05:00 AM (adjust as needed):
