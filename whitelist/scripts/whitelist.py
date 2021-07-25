@@ -66,8 +66,8 @@ if args.dir:
 else:
     pihole_location = r'/etc/pihole'
 
-whitelist_remote_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/domains/whitelist.txt'
-remote_sql_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/scripts/domains.sql'
+whitelist_remote_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/scripts/lists/whitelist.txt'
+remote_sql_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/scripts/lists/whitelist.sql'
 gravity_whitelist_location = os.path.join(pihole_location, 'whitelist.txt')
 gravity_db_location = os.path.join(pihole_location, 'gravity.db')
 anudeep_whitelist_location = os.path.join(pihole_location, 'slyfox-whitelist.txt')
