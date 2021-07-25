@@ -5,8 +5,8 @@
 # See the README.md file for additional information and always make
 # sure to let me know if you have any issues or other feedback!
 
-# Install: curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/install.py | sudo python3
-# Uninstall: curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py | sudo python3
+# Install: /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py' | sudo /usr/bin/python3
+# Uninstall: /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/install.py' | sudo /usr/bin/python3
 
 ^beacons\.gv[a-z\d]+?\.com$
 ^clients\d+?\.google\.com$
