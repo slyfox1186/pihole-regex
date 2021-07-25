@@ -58,8 +58,6 @@ smartshare.lgtvsdp.com
 us.ad.lgsmartad.com
 us.ibs.lgappstv.com
 us.info.lgsmartad.com
-us.lgtvsdp.com
-us.rdx2.lgtvsdp.com
 yumenetworks.com
 
 # [ Netflix ]
