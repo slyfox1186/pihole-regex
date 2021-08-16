@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Project homepage: https://github.com/slyfox1186/pihole.youtube.blocklist/
 # ================================================================================
 
 import os
