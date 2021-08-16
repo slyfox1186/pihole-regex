@@ -11,7 +11,6 @@ import time
 
 today = int(time.time())
 
-
 def fetch_whitelist_url(url):
 
     if not url:
@@ -45,13 +44,11 @@ def fetch_whitelist_url(url):
     # Return the hosts
     return response
 
-
 def dir_path(string):
     if os.path.isdir(string):
         return string
     else:
         raise NotADirectoryError(string)
-
 
 def restart_pihole(docker):
     if docker is True:
@@ -62,7 +59,6 @@ def restart_pihole(docker):
         )
     else:
         subprocess.call(["pihole", "-g"], stdout=subprocess.DEVNULL)
-
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
