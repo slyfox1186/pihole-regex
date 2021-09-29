@@ -19,7 +19,7 @@ All commands need to be entered via a Terminal after logging in and you need to 
 ### Add whitelist filters to Pi-hole:
 ```
 git clone 'https://github.com/slyfox1186/pihole.youtube.blocklist.git'
-/usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/scripts/whitelist.py' | sudo /usr/bin/python3
+sudo python3 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/scripts/whitelist.py'
 ```
 
 ### Keep these RegEx filters up-to-date with cron (optional)
