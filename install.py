@@ -36,8 +36,8 @@ def fetch_url(url):
     return response
 
 
-url_regexps_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/master/regex.list'
-install_comment = 'github.com/slyfox1186/pihole-regex'
+url_regexps_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/blacklist/youtube-regex-filters.txt'
+install_comment = 'github.com/slyfox1186/pihole.youtube.blocklist'
 
 cmd_restart = ['pihole', 'restartdns', 'reload']
 
