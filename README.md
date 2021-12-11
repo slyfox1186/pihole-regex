@@ -7,7 +7,7 @@ All commands need to be entered via a Terminal after logging in and you need to 
 
 ### Add/Update the RegEx filters to Pi-hole:
 ```
-/usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/install.py' | sudo /usr/bin/python3 & \
+/usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/install.py' | sudo /usr/bin/python3 && \
 /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py' | sudo /usr/bin/python3
 ```
 
@@ -19,7 +19,7 @@ All commands need to be entered via a Terminal after logging in and you need to 
 ### Add whitelist filters to Pi-hole:
 ```
 git clone 'https://github.com/slyfox1186/pihole.youtube.blocklist.git'
-sudo python3 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/scripts/whitelist.py'
+sudo /usr/bin/python3 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/scripts/whitelist.py'
 ```
 
 ### Keep these RegEx filters up-to-date with cron (optional)
