@@ -7,8 +7,8 @@ All commands need to be entered via a Terminal after logging in and you need to 
 
 ### Add/Update the RegEx filters to Pi-hole:
 ```
-/usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py' | sudo /usr/bin/python3 && \
-/usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/install.py' | sudo /usr/bin/python3
+/usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/install.py' | sudo /usr/bin/python3 & \
+/usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py' | sudo /usr/bin/python3
 ```
 
 ### Remove RegEx filters from Pi-hole:
