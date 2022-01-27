@@ -8,12 +8,11 @@
 # Install: /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/install.py' | sudo /usr/bin/python3
 # Uninstall: /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py' | sudo /usr/bin/python3
 
-^[\w-.]?google(?:adservices|apis|syndication|usercontent)?\.com$
-^[\w-.]?l\.google\.com$
-^clients\d+?.google\.com$
-^r[-0-9]+sn[-.a-zA-Z0-9]+googlevideo\.com
-^r[.0-9]+sn.*googlevideo\.com$
-^[-.0-9a-zA-Z]double(?:lick|click)\.net$
-^[-.0-9a-zA-Z]?manifest\.googlevideo\.com$
-^beacons\.gv[-.0-9a-zA-Z]+\.com$
+^[\w-\.]+?google(?:adservices|apis|syndication|usercontent)?\.com$
+^[\w-\.]+?l\.google\.com$
+^[\w-\.]+double(?:lick|click)\.net$
+^[\w-\.]+manifest\.googlevideo\.com$
+^beacons\.gv[\w-\.]+\.com$
 ^clients[0-9]+\.youtube\.com$
+^clients[\d+]?.google\.com$
+^r[0-9-\.]+sn.*googlevideo\.com$
