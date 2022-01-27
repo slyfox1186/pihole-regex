@@ -13,6 +13,6 @@
 ^[\w-\.]+double(?:lick|click)\.net$
 ^[\w-\.]+manifest\.googlevideo\.com$
 ^beacons\.gv[\w-\.]+\.com$
-^clients[0-9]+\.youtube\.com$
-^clients[\d+]?.google\.com$
+^clients[\d]+?.google\.com$
+^clients[\d]+?\.youtube\.com$
 ^r[0-9-\.]+sn.*googlevideo\.com$
