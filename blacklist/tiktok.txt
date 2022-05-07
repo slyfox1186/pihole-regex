@@ -1,4 +1,4 @@
-# Tiktok Associated Domain's Blacklist
+# Tiktok's associated domains blacklist
 
 abtest-va-tiktok.byteoversea.com
 app.musemuse.cn
