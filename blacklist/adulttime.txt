@@ -1,3 +1,5 @@
+# adultime.com's unncessary blacklist
+
 app.getbeamer.com
 backend.getbeamer.com
 beam..com
