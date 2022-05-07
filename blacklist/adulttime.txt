@@ -1,4 +1,4 @@
-# adulttime.com's unncessary blacklist
+# adulttime.com associated domain blacklist
 
 app.getbeamer.com
 backend.getbeamer.com
