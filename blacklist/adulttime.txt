@@ -16,7 +16,6 @@ kosmos-assets-prod.react.gammacdn.com
 realtime.getbeamer.com
 static01-cms-fame.gammacdn.com
 static03-cms-fame.gammacdn.com
-transform.gammacdn.com
 tsmkfa364q-dsn.algolia.net
 usage.trackjs.com
 xtnzefcqrb.execute-api.us-east-1.amazonaws.com
