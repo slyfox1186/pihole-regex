@@ -6,7 +6,6 @@ beam.com
 cdn-cm.tiypa.com
 cdn.contentful.com
 cdn.polyfill.io
-client-rapi.recombee.us
 d3a3ewgd1iewwz.cloudfront.net
 engine-cm.tiypa.com
 insights.algolia.io
