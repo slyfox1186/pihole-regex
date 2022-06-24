@@ -1,9 +1,5 @@
 #!/bin/bash
-# This script will download and add domains from the rep to whitelist.txt file.
-# Project homepage: https://github.com/anudeepND/whitelist
-# Licence: https://github.com/anudeepND/whitelist/blob/master/LICENSE
-# Created by Anudeep
-#================================================================================
+
 TICK="[\e[32m ✔ \e[0m]"
 PIHOLE_LOCATION="/etc/pihole"
 GRAVITY_UPDATE_COMMAND="pihole -w -q"
