@@ -55,8 +55,8 @@ def restart_pihole(docker):
         subprocess.call(['pihole', '-g'], stdout=subprocess.DEVNULL)
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-d", "--dir", type=dir_path, help="Optional: Pi-hole etc directory")
-parser.add_argument("-D", "--docker",  action='store_true', help="Optional: Set if you're using Pi-hole in a docker environment.")
+parser.add_argument("-d", "--dir", type=dir_path, help="Optional: Pi-hole /etc directory")
+parser.add_argument("-D", "--docker",  action='store_true', help="Optional: Set if you're using Pi-hole in a Docker environment.")
 args = parser.parse_args()
 
 if args.dir:
@@ -81,7 +81,7 @@ whitelist_old_slyfox1186 = set()
 
 os.system('clear')
 print('\n')
-print('This script will download and add domains from the repository to the Pi-hole whitelist.')
+print('This script will add domains from the repository to the Pi-hole whitelist.')
 print('All of the domains in this repository are safe to add and do not contain any tracking or adserving domains.')
 print('\n')
 
@@ -90,9 +90,7 @@ if os.path.exists(pihole_location):
     print('[i] The Pi-hole path exists!')
 else:
     # Print(f'[X] {pihole_location} was not found')
-
     print("[X] {} was not found".format(pihole_location))
-
     print('\n')
     print('\n')
     exit(1)
@@ -104,7 +102,7 @@ if os.access(pihole_location, os.X_OK | os.W_OK):
     remote_whitelist_lines = whitelist_str.count('\n')
     remote_whitelist_lines += 1
 else:
-    print("[X] Write access is not available for {}. Please run as a privileged user." .format(
+    print("[X] Write access is not available for {}. Please run the script as a privileged user." .format(
         pihole_location))
     print('\n')
     print('\n')
@@ -120,8 +118,7 @@ if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) 
     remote_sql_lines += 1
 
     if len(remote_sql_str) > 0:
-        print("[i] The script discovered {} domains and {} SQL queries." .format(
-            remote_whitelist_lines, remote_sql_lines))
+        print("[i] The script discovered {} domains and {} SQL queries." .format(remote_whitelist_lines, remote_sql_lines))
     else:
         print('[X] No remote SQL queries found')
         print('\n')
@@ -141,7 +138,9 @@ else:
     exit(1)
 
 if db_exists:
+    # Create a DB connection
     print('[i] Attempting to connect to the Gravity database...')
+
     try: # Try to create a DB connection
         sqliteConnection = sqlite3.connect(gravity_db_location)
         cursor = sqliteConnection.cursor()
@@ -377,7 +376,8 @@ else:
         for line in sorted(whitelist_remote):
             fWrite.write("{}\n".format(line))
 
-    print('[i] The domains have been added to the Pi-Hole whitelist\n')
+    print('[i] The domains have been added to the Pi-Hole whitelist')
+    print('\n')
     print('[i] Please be patient while the Pi-hole restarts..')
     restart_pihole(args.docker)
     print('[i] The script has completed! Happy ad-blocking :)')
