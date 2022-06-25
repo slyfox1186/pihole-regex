@@ -1,0 +1,126 @@
+# Miscellaneous whitelist filters for Pi-hole
+
+# Adult Swim Videos on Amazon Firestick
+pmd.cdn.turner.com
+i.cdn.turner.com
+s.cdn.turner.com
+z.cdn.turner.com
+amd.cdn.turner.com
+loopback.ugdturner.com
+
+# Amazon Kindle
+cognito-identity.us-east-1.amazonaws.com
+unagi-na.amazon.com
+ocsp.rootg2.amazontrust.com
+det-ta-g7g.amazon.com
+todo-ta-g7g.amazon.com
+device-messaging-na.amazon.com
+s3-eu-west-1.amazonaws.com
+us-east-1.amazonaws.com
+
+# Facebook
+creative.ak.fbcdn.net
+external-lhr0-1.xx.fbcdn.net
+external-lhr10-1.xx.fbcdn.net
+external-lhr1-1.xx.fbcdn.net
+external-lhr2-1.xx.fbcdn.net
+external-lhr3-1.xx.fbcdn.net
+external-lhr4-1.xx.fbcdn.net
+external-lhr5-1.xx.fbcdn.net
+external-lhr6-1.xx.fbcdn.net
+external-lhr7-1.xx.fbcdn.net
+external-lhr8-1.xx.fbcdn.net
+external-lhr9-1.xx.fbcdn.net
+fbcdn-creative-a.akamaihd.net
+graph.facebook.com
+graph.instagram.com
+instagram.c10r.facebook.com
+scontent-lhr3-1.xx.fbcdn.net
+scontent.xx.fbcdn.net
+scontent.fgdl5-1.fna.fbcdn.net
+facebook.com
+facebook.net
+fbcdn.net
+cdn.fbsbx.com
+edge-mqtt.facebook.com
+\d+-edge-chat.facebook.com
+edge-chat.facebook.com
+mqtt-mini.facebook.com
+
+# GeForce Experience and Nvidia updates
+events.gfe.nvidia.com
+gfwsl.geforce.com
+ota-downloads.nvidia.com
+
+# GTA Online telemetry. Whitelist this domain to prevent the game from crashing.
+prod.telemetry.ros.rockstargames.com
+
+# Host files
+hosts-file.net
+hostsfile.mine.nu
+hostsfile.org
+pgl.yoyo.org
+raw.githubusercontent.com
+someonewhocares.org
+sysctl.org
+v.firebog.net
+winhelp2002.mvps.org
+zeustracker.abuse.ch
+
+# Images not loading on aliexpress.com
+ae01.alicdn.com
+
+# Netflix - Domains needed for netlix to work correctly
+api-global.netflix.com
+appboot.netflix.com
+secure.netflix.com
+
+# Pluto.tv
+images.pluto.tv
+stitcher.pluto.tv
+siloh.pluto.tv
+silo.pluto.tv
+cdn-mobile.api.pluto.tv
+api.pluto.tv
+players.pluto.tv
+
+# Refersion.com (affiliate marketing)
+cdn.refersion.com
+refersion.com
+www.refersion.com
+
+# Samsung TV's Amazon Prime Video app
+time.samsungcloudsolution.com
+
+# Samsung smart TV's network issue
+cdn.samsungcloudsolution.com
+
+# Share buttons on websites
+dsms0mj1bbhn4.cloudfront.net
+shareaholic.com
+
+# Spotify premium with Denon Heos speakers
+# https://github.com/anudeepND/whitelist/issues/93
+mobile-ap.spotify.com
+apresolve.spotify.com
+upgrade.scdn.com
+market.spotify.com
+spclient.wg.spotify.com
+
+# URL shorteners
+adf.ly
+www.adf.ly
+bit.ly
+www.bit.ly
+goo.gl
+ow.ly
+www.ow.ly
+amzn.to
+amzn.com
+
+# streamelements.com (Blocked by Pi-hole regex)
+stats.streamelements.com
+
+# Adobe licence verification endpoints
+lm.licenses.adobe.com
+activate.adobe.com
