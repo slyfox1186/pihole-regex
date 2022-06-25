@@ -28,7 +28,7 @@ api.accuweather.com
 api.euro.hismarttv.com
 api.ipify.org
 api.pluto.tv
-api.pluto.tv # Pluto.tv
+api.rlje.net
 api.us.hismarttv.com
 api.vizio.com
 apicache.vudu.com
@@ -42,6 +42,7 @@ applicast.ga.sony.net
 apps.skype.com
 appsbackup-pa.clients6.google.com
 appsbackup-pa.googleapis.com
+appspot-preview.l.google.com
 apresolve.spotify.com
 apt.sonarr.tv
 aspnetcdn.com
@@ -72,12 +73,18 @@ cdnjs.cloudflare.com
 cert.mgt.xboxlive.com
 cf.iadsdk.apple.com
 clientconfig.passport.net
+clients1.google.com
+clients2.google.com
 clients3.google.com
+clients4.google.com
 clients5.google.com
 clients6.google.com
 cognito-identity.us-east-1.amazonaws.com
 configuration.apple.com
+connectivitycheck.android.com
+connectivitycheck.gstatic.com
 connecttv.pelmorex.com
+continuum.dds.microsoft.com
 cpms.spop10.ams.plex.bz
 cpms35.spop10.ams.plex.bz
 creative.ak.fbcdn.net
@@ -87,6 +94,7 @@ crl3.digicert.com
 crl4.digicert.com
 cse.google.com
 ctldl.windowsupdate.com
+cws.conviva.com
 d1oxlq5h9kq8q5.cloudfront.net
 d2c8v52ll5s99u.cloudfront.net
 d2gatte9o95jao.cloudfront.net
@@ -193,6 +201,7 @@ imgix.net
 imgs.xkcd.com
 infolink.pavv.co.kr
 instagram.c10r.facebook.com
+instantmessaging-pa.googleapis.com
 intercom.io
 iprofiles.apple.com
 isu.apple.com
@@ -212,6 +221,7 @@ licensing.xboxlive.com
 linkedin.com
 linuxtracker.org
 live.com
+livepassdl.conviva.com
 lm.licenses.adobe.com
 location-api.hdhomerun.com
 login.aliexpress.com
@@ -251,6 +261,7 @@ nine.plugins.plexapp.com
 no-ip.com
 node.plexapp.com
 notify.xboxlive.com
+npr-news.streaming.adswizz.com
 nrdp.nccp.netflix.com
 ns.itunes.apple.com
 ns1.dropbox.com
@@ -283,6 +294,7 @@ outlook.live.com
 outlook.office365.com
 ow.ly
 pgl.yoyo.org
+pings.conviva.com
 pinterest.com
 placehold.it
 placeholdit.imgix.net
@@ -324,6 +336,8 @@ samsungotn.net
 scontent-lhr3-1.xx.fbcdn.net
 scontent.fgdl5-1.fna.fbcdn.net
 scontent.xx.fbcdn.net
+secure.avangate.com
+secure.brightcove.com
 secure.netflix.com
 secure.surveymonkey.com
 serverstatus.apple.com
@@ -357,6 +371,7 @@ swdownload.apple.com
 swpost.apple.com
 swscan.apple.com
 sysctl.org
+t.co
 t0.ssl.ak.dynamic.tiles.virtualearth.net
 t0.ssl.ak.tiles.virtualearth.net
 tawk.to
@@ -373,6 +388,7 @@ tinyurl.com
 title.auth.xboxlive.com
 title.mgt.xboxlive.com
 todo-ta-g7g.amazon.com
+traffic.libsyn.com
 tuner-api.hdhomerun.com
 tv.deezer.com
 tvdb2.plex.tv
@@ -398,6 +414,7 @@ valid.apple.com
 vcs.vdspf.com
 video-stats.l.google.com
 videos.vidible.tv
+vidtech.cbsinteractive.com
 vimeo.com
 vpp.itunes.apple.com
 watson.telemetry.microsoft.com
@@ -423,6 +440,7 @@ www.howtogeek.com
 www.icloud.com
 www.itunes.com
 www.linuxtracker.org
+www.msftconnecttest.com
 www.msftncsi.com
 www.no-ip.com
 www.opensubtitles.org
@@ -440,6 +458,7 @@ xbox.ipv6.microsoft.com
 xboxexperiencesprod.experimentation.xboxlive.com
 xflight.xboxlive.com
 xkms.xbolive.com
+xkms.xboxlive.com
 xp.apple.com
 xsts.auth.xboxlive.com
 yahoo.com
@@ -448,4 +467,5 @@ youtube-nocookie.com
 youtube.com
 yt3.ggpht.com
 z.cdn.turner.com
+zee.cws.conviva.com
 zeustracker.abuse.ch
