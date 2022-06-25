@@ -57,7 +57,7 @@ scontent-lhr3-1.xx.fbcdn.net
 scontent.fgdl5-1.fna.fbcdn.net
 scontent.xx.fbcdn.net
 
-# GeForce Experience and Nvidia updates
+# GeForce + Nvidia Updates
 cs486.wpc.2d930.phicdn.net
 cs486283.wpc.phicdn.net
 cs486284.wpc.phicdn.net
@@ -85,7 +85,7 @@ v.firebog.net
 winhelp2002.mvps.org
 zeustracker.abuse.ch
 
-# Netflix - Domains needed for netlix to work correctly
+# Netflix
 api-global.dradis.netflix.com
 api-global.netflix.com
 api-global.us-east-1.origin.prodaa.netflix.com
@@ -110,38 +110,6 @@ silo.pluto.tv
 siloh.pluto.tv
 stitcher.pluto.tv
 
-# Spotify
-25.224.186.35.bc.googleusercontent.com
-a528.c.akamai.net
-analytics.spotify.com
-ap.single-gslb.spotify.com
-api-tv.spotify.com
-apresolve.spotify.com
-audio-ake.spotify.com.edgesuite.net
-crashdump.spotify.com
-edge-web.dual-gslb.spotify.com
-heads-fa.spotify.com
-market.spotify.com
-mobile-ap.spotify.com
-partners.wg.spotify.com
-scdnco.spotify.map.fastly.net
-spclient.wg.spotify.com
-spotify.com.domain.name
-upgrade.scdn.com
-wl.spotify.com
-
-# URL shorteners
-adf.ly
-amzn.com
-amzn.to
-bit.ly
-goo.gl
-ow.ly
-t.ly
-www.adf.ly
-www.bit.ly
-www.ow.ly
-
 # Xbox achievements and game stats sync
 v10.events.data.microsoft.com
 v20.events.data.microsoft.com
@@ -153,8 +121,22 @@ onedscolprdeus02.eastus.cloudapp.azure.com
 # streamelements.com (Blocked by Pi-hole regex)
 stats.streamelements.com
 
+## URL Shorteners
+adf.ly
+amzn.com
+amzn.to
+bit.ly
+goo.gl
+ow.ly
+t.ly
+www.adf.ly
+www.bit.ly
+www.ow.ly
+
 # Adobe licence verification endpoints
+activate.adobe.com
 ethos.ethos03-prod-va6.ethos.adobe.net
 ethos03-prod-va6-k8s-pub2-0-6a902acc902d157e.elb.us-east-1.amazonaws.com
 lm.adobe.io
+lm.licenses.adobe.com
 lmlegacyract-va6.cloud.adobe.io
