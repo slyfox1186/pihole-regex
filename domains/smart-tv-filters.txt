@@ -2,120 +2,83 @@
 # Profile: https://github.com/slyfox1186/
 
 # Smart TV whitelist for Pi-hole
-# Descriptions are above or beside each entry if there is one.
 
 # Panasonic Viera & Panny TV
 mhc-ajax-eu-s2.myhomescreen.tv
 mhc-ajax-eu.myhomescreen.tv 
 mhc-ajax-us.myhomescreen.tv
-# Required for internet connectivity
 mhc-eu.myhomescreen.tv
 mhc-us.myhomescreen.tv
-# Required to start apps
 mhc-xpana-eu-s2.myhomescreen.tv
 mhc-xpana-eu.myhomescreen.tv
 mhc-xpana-us.myhomescreen.tv
-# If blocked, notified of new firmware but unable to download/install
 vcs.vdspf.com
 
 # Sony Bravia
-applicast.ga.sony.net # Needed for applications
-platform.cid.samba.tv see toshiba # If blocked no internet for applications
-portal.store.sonyentertainmentnetwork.com # If blocked no internet for applications
-# Required for updates
+applicast.ga.sony.net
+platform.cid.samba.tv
+portal.store.sonyentertainmentnetwork.com
 update.biv.sony.tv
 
 # LG
-ngfts.lge.com # Blocks thumbnails from loading in the LG content store
+ngfts.lge.com
 
 # Philips
-deviceportal.nettvservices.com # Needed for apps
-epg.corio.com # Needed for apps
-www.ecdinterface.philips.com # Needed for apps
+deviceportal.nettvservices.com
+epg.corio.com
+www.ecdinterface.philips.com
 
 # Samsung
-# Weather app tracking
-connecttv.pelmorex.com
-# App icons in Samsung app store
-d1oxlq5h9kq8q5.cloudfront.net
 auth.samsungosp.com
-# If blocked, Samsung accounts will fail to authenticate
 cdn.samsungcloudsolution.com
-# System update check on Samsung ue40f5500
+connecttv.pelmorex.com
+d1oxlq5h9kq8q5.cloudfront.net
 infolink.pavv.co.kr
-# Needed for appstore and login on Samsung ue40f5500
 lcprd1.samsungcloudsolution.net
-# Ping test, no beaconing
 ns11.whois.co.kr
-# Prevents Series 7 TVS from opening YouTube
 osb-ussvc.samsungqbe.com
-# Required for TV plus
 otn.samsungcloudcdn.com
-# Prevents updates on ue49ks7000 and qe55q9fna
 otnprd10.samsungcloudsolution.net
-# Required for software update
 otnprd11.samsungcloudsolution.net
 otnprd8.samsungcloudsolution.net
 otnprd9.samsungcloudsolution.net
 samsungosp.com
 samsungotn.net
-www.samsungotn.net
-# System update check on Samsung ue65ru7455
 time.samsungcloudsolution.com
+www.samsungotn.net
 
 # Vizio
-# No reason to block this
 announcements.vizio.com
-# Required for Vizio Smart TV features
 api.vizio.com
 images.vizio.com
 
 # HBBTV
-# Blocks prosieben apps from starting
-hbbtv.prosieben.de
-# Blocks zdf & prosieben apps from starting
-hbbtv.redbutton.de
-# Blocks zdf apps from starting
-hbbtv.zdf.de
-
-# Other unnecessary domains
-# Needed for Vudu's app, see issue22
 apicache.vudu.com
-# Blocks 500px on desktop
 drscdn.500px.org
-# Blocks Opera update
 geo.opera.com
-# Ard media library
+hbbtv.prosieben.de
+hbbtv.redbutton.de
+hbbtv.zdf.de
 itv.ard.de
 tv.deezer.com
 
 # Netflix
-# Breaks Netflix
 api-global.netflix.com
-# Netflix playback fails on Humax DTR-T2100 (YouView) STB
 appboot.netflix.com
 nrdp.nccp.netflix.com
 secure.netflix.com
 
-# Spotify
-# Required for TV and PS4 Spotify App
-api-tv.spotify.com
-
 # Sharp with Opera OS
-# Probably not a good idea to block this one
 api.accuweather.com
 time-a.timefreq.bldrdoc.gov
 
-# HiSense
-# May be for software/firmware updates
+# HiSense - May be for software/firmware updates
 api.euro.hismarttv.com
 api.us.hismarttv.com
 
-# SiliconDust HDHomeRun
-# Both required for firmware update
+# SiliconDust HDHomeRun - Both required for firmware update
 location-api.hdhomerun.com
 tuner-api.hdhomerun.com 
 
-# Yamaha AV receivers
-# Blocks system updates on rx-v685
+# Yamaha AV receivers - Blocks system updates on rx-v685
 avpro.global.yamaha.com

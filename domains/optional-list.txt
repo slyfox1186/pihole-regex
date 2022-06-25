@@ -1,13 +1,16 @@
+# Miscellaneous whitelist filters for Pi-hole
+
 # Adult Swim Videos on Amazon Firestick
 amd.cdn.turner.com
 i.cdn.turner.com
+loopback.ugdturner.com
 pmd.cdn.turner.com
 s.cdn.turner.com
 z.cdn.turner.com
 
 # Amazon Alexa and Amazon Shopping app
-device-metrics-us-2.amazon.com
 device-metrics-us.amazon.com
+device-metrics-us-2.amazon.com
 
 # Amazon Kindle
 cognito-identity.us-east-1.amazonaws.com
@@ -54,17 +57,15 @@ scontent-lhr3-1.xx.fbcdn.net
 scontent.fgdl5-1.fna.fbcdn.net
 scontent.xx.fbcdn.net
 
-# Nvidia GeForce Experience
-events.gfe.nvidia.com
-gfwsl.geforce.com
-fp274c.wpc.phicdn.net
-
-# Nvidia Updates
+# GeForce Experience and Nvidia updates
 cs486.wpc.2d930.phicdn.net
 cs486283.wpc.phicdn.net
 cs486284.wpc.phicdn.net
+events.gfe.nvidia.com
+fp274c.wpc.46392.phicdn.net
+fp274c.wpc.phicdn.net
+gfwsl.geforce.com
 hlb.apr-2d930-0.edgecastdns.net
-cs486284.wpc.phicdn.net
 lb.apr-2d930.edgecastdns.net
 ota-downloads.nvidia.com
 
@@ -72,26 +73,62 @@ ota-downloads.nvidia.com
 prod.telemetry.ros.rockstargames.com
 elb-telemetry-gtav-prod-336243739.us-west-2.elb.amazonaws.com
 
+# Host files
+hosts-file.net
+hostsfile.mine.nu
+hostsfile.org
+pgl.yoyo.org
+raw.githubusercontent.com
+someonewhocares.org
+sysctl.org
+v.firebog.net
+winhelp2002.mvps.org
+zeustracker.abuse.ch
+
 # Netflix - Domains needed for netlix to work correctly
+api-global.dradis.netflix.com
 api-global.netflix.com
 api-global.us-east-1.origin.prodaa.netflix.com
-api-global.dradis.netflix.com
+appboot.dradis.netflix.com
 appboot.netflix.com
 appboot.us-east-1.origin.prodaa.netflix.com
-appboot.dradis.netflix.com
-secure.netflix.com
 sec-oc.netflix.com
+secure.netflix.com
 
-# Spotify premium with Denon Heos speakers
+# Pluto.tv
+a1939.dscv.akamai.net
+api.pluto.tv
+cdn-mobile.api.pluto.tv
+d35uecs4asy1hh.cloudfront.net
+dh7tjojp94zlv.cloudfront.net
+images.pluto.tv
+images.pluto.tv.edgesuite.net
+players.pluto.tv
+prod-players-1991518375.us-east-1.elb.amazonaws.com
+service-stitcher.clusters.pluto.tv
+silo.pluto.tv
+siloh.pluto.tv
+stitcher.pluto.tv
+
+# Spotify
+25.224.186.35.bc.googleusercontent.com
 a528.c.akamai.net
+analytics.spotify.com
 ap.single-gslb.spotify.com
+api-tv.spotify.com
 apresolve.spotify.com
 audio-ake.spotify.com.edgesuite.net
+crashdump.spotify.com
 edge-web.dual-gslb.spotify.com
+heads-fa.spotify.com
 market.spotify.com
 mobile-ap.spotify.com
+partners.wg.spotify.com
+scdnco.spotify.map.fastly.net
 spclient.wg.spotify.com
+spotify.com.domain.name
 upgrade.scdn.com
+wl.spotify.com
 
 # URL shorteners
 adf.ly
@@ -105,15 +142,11 @@ www.adf.ly
 www.bit.ly
 www.ow.ly
 
-# Videos not playing on  arstechnica/wired/vogue/newyorker
-# Note: ads before videos may appear after whitelisting this domain
-d2c8v52ll5s99u.cloudfront.net
-
-# Xbox Achievements and game stats sync
+# Xbox achievements and game stats sync
 v10.events.data.microsoft.com
+v20.events.data.microsoft.com
 global.asimov.events.data.trafficmanager.net
 onedscolprdcus00.centralus.cloudapp.azure.com
-v20.events.data.microsoft.com
 global.asimov.events.data.trafficmanager.net
 onedscolprdeus02.eastus.cloudapp.azure.com
 
@@ -121,9 +154,7 @@ onedscolprdeus02.eastus.cloudapp.azure.com
 stats.streamelements.com
 
 # Adobe licence verification endpoints
-activate.adobe.com
 ethos.ethos03-prod-va6.ethos.adobe.net
 ethos03-prod-va6-k8s-pub2-0-6a902acc902d157e.elb.us-east-1.amazonaws.com
 lm.adobe.io
-lm.licenses.adobe.com
 lmlegacyract-va6.cloud.adobe.io
