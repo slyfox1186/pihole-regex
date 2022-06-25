@@ -1,0 +1,451 @@
+# Created by: SlyFox1186
+# Profile: https://github.com/slyfox1186/
+
+# All whitelist filters combined in a single file.
+# This list also has extra unique filters only found in this file which will preceed the other filters.
+
+## Filters Unique to this file only
+watson.telemetry.microsoft.com # Microsoft/Windows 10
+web.vortex.data.microsoft.com # Microsoft/Windows 10
+
+## Microsoft/Windows 10
+## You can add the below 3 entries using the RegEx filter: ^v[0-2\.]+(?:events|(?:vortex)-win)\.data\.microsoft\.com$
+v10.events.data.microsoft.com # Microsoft/Windows 10
+v20.events.data.microsoft.com # Xbox Achievements and game stats sync
+v10.vortex-win.data.microsoft.com # Microsoft/Windows 10
+v20.vortex-win.data.microsoft.com # Microsoft/Windows 10
+
+## Spotify
+apresolve.spotify.com # Spotify
+market.spotify.com # Spotify
+mobile-ap.spotify.com # Spotify
+spclient-wg.spotify.com # Spotify
+upgrade.scdn.co # Spotify
+
+################################
+###  Combined filters below  ###
+################################
+
+## Amazon Firestick
+amd.cdn.turner.com # Adult Swim Videos on Amazon Firestick
+i.cdn.turner.com # Adult Swim Videos on Amazon Firestick
+pmd.cdn.turner.com # Adult Swim Videos on Amazon Firestick
+s.cdn.turner.com # Adult Swim Videos on Amazon Firestick
+z.cdn.turner.com # Adult Swim Videos on Amazon Firestick
+
+## Amazon Kindle
+cognito-identity.us-east-1.amazonaws.com # Amazon Kindle
+det-ta-g7g.amazon.com # Amazon Kindle
+device-messaging-na.amazon.com # Amazon Kindle
+ocsp.rootg2.amazontrust.com # Amazon Kindle
+s3-eu-west-1.amazonaws.com # Amazon Kindle
+todo-ta-g7g.amazon.com # Amazon Kindle
+unagi-na.amazon.com # Amazon Kindle
+us-east-1.amazonaws.com # Amazon Kindle
+
+## Facebook
+0-edge-chat.facebook.com # Facebook
+1-edge-chat.facebook.com # Facebook
+2-edge-chat.facebook.com # Facebook
+3-edge-chat.facebook.com # Facebook
+4-edge-chat.facebook.com # Facebook
+5-edge-chat.facebook.com # Facebook
+6-edge-chat.facebook.com # Facebook
+cdn.fbsbx.com # Facebook
+creative.ak.fbcdn.net # Facebook
+edge-chat.facebook.com # Facebook
+edge-mqtt.facebook.com # Facebook
+external-lhr0-1.xx.fbcdn.net # Facebook
+external-lhr1-1.xx.fbcdn.net # Facebook
+external-lhr10-1.xx.fbcdn.net # Facebook
+external-lhr2-1.xx.fbcdn.net # Facebook
+external-lhr3-1.xx.fbcdn.net # Facebook
+external-lhr4-1.xx.fbcdn.net # Facebook
+external-lhr5-1.xx.fbcdn.net # Facebook
+external-lhr6-1.xx.fbcdn.net # Facebook
+external-lhr7-1.xx.fbcdn.net # Facebook
+external-lhr8-1.xx.fbcdn.net # Facebook
+external-lhr9-1.xx.fbcdn.net # Facebook
+facebook.com # Facebook
+facebook.net # Facebook
+fbcdn-creative-a.akamaihd.net # Facebook
+fbcdn.net # Facebook
+graph.facebook.com # Facebook
+graph.instagram.com # Facebook
+instagram.c10r.facebook.com # Facebook
+mqtt-mini.facebook.com # Facebook
+scontent-lhr3-1.xx.fbcdn.net # Facebook
+scontent.fgdl5-1.fna.fbcdn.net # Facebook
+scontent.xx.fbcdn.net # Facebook
+
+## GeForce
+events.gfe.nvidia.com # GeForce
+gfwsl.geforce.com # GeForce
+ota-downloads.nvidia.com # GeForce
+
+## GTA Online
+prod.telemetry.ros.rockstargames.com # GTA Online
+
+## Host files
+hosts-file.net # Host files
+hostsfile.mine.nu # Host files
+hostsfile.org # Host files
+pgl.yoyo.org # Host files
+raw.githubusercontent.com # Host files
+someonewhocares.org # Host files
+sysctl.org # Host files
+v.firebog.net # Host files
+winhelp2002.mvps.org # Host files
+zeustracker.abuse.ch # Host files
+
+## 
+api-global.netflix.com # Netflix
+appboot.netflix.com # Netflix
+secure.netflix.com # Netflix
+
+## Pluto.tv
+api.pluto.tv # Pluto.tv
+cdn-mobile.api.pluto.tv # Pluto.tv
+images.pluto.tv # Pluto.tv
+players.pluto.tv # Pluto.tv
+silo.pluto.tv # Pluto.tv
+siloh.pluto.tv # Pluto.tv
+stitcher.pluto.tv # Pluto.tv
+
+## Samsung TV's Amazon Prime video app
+time.samsungcloudsolution.com # Samsung TV's Amazon Prime video app
+cdn.samsungcloudsolution.com # Samsung TV's network issue
+
+## Share buttons on websites
+dsms0mj1bbhn4.cloudfront.net # Share buttons on websites
+shareaholic.com # Share buttons on websites
+
+## Spotify Premium using Denon Heos speakers
+apresolve.spotify.com # Spotify Premium using Denon Heos speakers
+market.spotify.com # Spotify Premium using Denon Heos speakers
+mobile-ap.spotify.com # Spotify Premium using Denon Heos speakers
+spclient.wg.spotify.com # Spotify Premium using Denon Heos speakers
+upgrade.scdn.com # Spotify Premium using Denon Heos speakers
+
+## URL Shorteners
+adf.ly # URL Shorteners
+amzn.com # URL Shorteners
+amzn.to # URL Shorteners
+bit.ly # URL Shorteners
+goo.gl # URL Shorteners
+ow.ly # URL Shorteners
+www.adf.ly # URL Shorteners
+www.bit.ly # URL Shorteners
+www.ow.ly # URL Shorteners
+
+## Stream Elements (Blocked by Pi-hole regex)
+stats.streamelements.com # Stream Elements (Blocked by Pi-hole regex)
+
+## Adobe licence verification endpoints
+lm.licenses.adobe.com # Adobe licence verification endpoints
+activate.adobe.com # Adobe licence verification endpoints
+
+## General
+0.client-channel.google.com # General
+1drv.com # General
+2.android.pool.ntp.org # General
+akamaihd.net # General
+akamaitechnologies.com # General
+akamaized.net # General
+alluremedia.com.au # General
+amazonaws.com # General
+android.clients.google.com # General
+api.ipify.org # General
+app-api.ted.com # General
+app.emby.media # General
+app.plex.tv # General
+appleid.apple.com # General
+apps.skype.com # General
+appsbackup-pa.clients6.google.com # General
+appsbackup-pa.googleapis.com # General
+apt.sonarr.tv # General
+aspnetcdn.com # General
+attestation.xboxlive.com # General
+aws.amazon.com # General
+ax.phobos.apple.com.edgesuite.net # General
+best.aliexpress.com # General
+bing.com # General
+bit.ly # General
+brightcove.net # General
+bufferapp.com # General
+bugmenot.com # General
+c.s-microsoft.com # General
+cdn.cloudflare.net # General
+cdn.embedly.com # General
+cdn.fbsbx.com # General
+cdn.optimizely.com # General
+cdn.vidible.tv # General
+cdn2.optimizely.com # General
+cdn3.optimizely.com # General
+cdnjs.cloudflare.com # General
+cert.mgt.xboxlive.com # General
+clientconfig.passport.net # General
+clients3.google.com # General
+clients5.google.com # General
+clients6.google.com # General
+cpms.spop10.ams.plex.bz # General
+cpms35.spop10.ams.plex.bz # General
+cse.google.com # General
+ctldl.windowsupdate.com # General
+d2c8v52ll5s99u.cloudfront.net # General
+d2gatte9o95jao.cloudfront.net # General
+dashboard.plex.tv # General
+dataplicity.com # General
+def-vef.xboxlive.com # General
+delivery.vidible.tv # General
+dev.virtualearth.net # General
+device.auth.xboxlive.com # General
+display.ugc.bazaarvoice.com # General
+displaycatalog.mp.microsoft.com # General
+dl.delivery.mp.microsoft.com # General
+dl.dropbox.com # General
+dl.dropboxusercontent.com # General
+dns.msftncsi.com # General
+download.sonarr.tv # General
+drift.com # General
+driftt.com # General
+dynupdate.no-ip.com # General
+ea.com # General
+ec-ns.sascdn.com # General
+ecn.dev.virtualearth.net # General
+edge.api.brightcove.com # General
+eds.xboxlive.com # General
+filament.io # General
+fivethirtyeight.com # General
+fonts.gstatic.com # General
+forms.gle # General
+forms.office.com # General
+forums.sonarr.tv # General
+fs.microsoft.com # General
+g.live.com # General
+geo-prod.do.dsp.mp.microsoft.com # General
+geo3.ggpht.com # General
+gfwsl.geforce.com # General
+giphy.com # General
+github.com # General
+github.io # General
+googleapis.com # General
+graph.oculus.com # General
+gravatar.com # General
+gstatic.com # General
+heartbeat.dm.origin.com # General
+help.ui.xboxlive.com # General
+hls.ted.com # General
+i.s-microsoft.com # General
+i.ytimg.com # General
+i1.ytimg.com # General
+icloud.com # General
+imagesak.secureserver.net # General
+img.vidible.tv # General
+imgix.net # General
+imgs.xkcd.com # General
+intercom.io # General
+j.mp # General
+jquery.com # General
+jsdelivr.net # General
+keystone.mwbsys.com # General
+lastfm-img2.akamaized.net # General
+licensing.xboxlive.com # General
+linkedin.com # General
+linuxtracker.org # General
+live.com # General
+login.aliexpress.com # General
+login.live.com # General
+login.microsoftonline.com # General
+m.hotmail.com # General
+m.youtube.com # General
+manifest.googlevideo.com # General
+medium.com # General
+meta-db-worker02.pop.ric.plex.bz # General
+meta.plex.bz # General
+meta.plex.tv # General
+microsoft.com # General
+microsoftonline.com # General
+mobile.pipe.aria.microsoft.com # General
+msftncsi.com # General
+my.plexapp.com # General
+netflix.com # General
+nexusrules.officeapps.live.com # General
+nine.plugins.plexapp.com # General
+no-ip.com # General
+node.plexapp.com # General
+notify.xboxlive.com # General
+ns1.dropbox.com # General
+ns2.dropbox.com # General
+o1.email.plex.tv # General
+o2.sg0.plex.tv # General
+office.com # General
+office.net # General
+office365.com # General
+officeclient.microsoft.com # General
+om.cbsi.com # General
+onedrive.live.com # General
+oscp.apple.com # General
+outlook.live.com # General
+outlook.office365.com # General
+pinterest.com # General
+placehold.it # General
+placeholdit.imgix.net # General
+players.brightcove.net # General
+plex.tv # General
+pricelist.skype.com # General
+products.office.com # General
+proxy.plex.bz # General
+proxy.plex.tv # General
+proxy02.pop.ord.plex.bz # General
+pubsub.plex.bz # General
+pubsub.plex.tv # General
+raw.githubusercontent.com # General
+reddit.com # General
+redirector.googlevideo.com # General
+res.cloudinary.com # General
+rover.ebay.com # General
+s.gateway.messenger.live.com # General
+s.marketwatch.com # General
+s.shopify.com # General
+s.youtube.com # General
+s.ytimg.com # General
+s1.wp.com # General
+s2.youtube.com # General
+s3.amazonaws.com # General
+sa.symcb.com # General
+secure.surveymonkey.com # General
+services.sonarr.tv # General
+sharepoint.com # General
+skyhook.sonarr.tv # General
+skype.com # General
+society6.com # General
+spclient.wg.spotify.com # General
+ssl.google-analytics.com # General
+ssl.p.jwpcdn.com # General
+staging.plex.tv # General
+static.opensubtitles.org # General
+status.plex.tv # General
+support.microsoft.com # General
+surveymonkey.com # General
+t.co # General
+t0.ssl.ak.dynamic.tiles.virtualearth.net # General
+t0.ssl.ak.tiles.virtualearth.net # General
+tawk.to # General
+tedcdn.com # General
+themoviedb.com # General
+thetvdb.com # General
+tinyurl.com # General
+title.auth.xboxlive.com # General
+title.mgt.xboxlive.com # General
+tvdb2.plex.tv # General
+tvthemes.plexapp.com # General
+twimg.com # General
+twitter.com # General
+ui.skype.com # General
+unsplash.com # General
+v.shopify.com # General
+v10.events.data.microsoft.com # General
+video-stats.l.google.com # General
+videos.vidible.tv # General
+vimeo.com # General
+weblb-wg.dual-gslb.spotify.com # General
+widget-cdn.rpxnow.com # General
+wikipedia.org # General
+win10.ipv6.microsoft.com # General
+win1710.ipv6.microsoft.com # General
+wordpress.com # General
+wp.com # General
+ws.audioscrobbler.com # General
+www.aliexpress.com # General
+www.dataplicity.com # General
+www.google-analytics.com # General
+www.googleapis.com # General
+www.howtogeek.com # General
+www.icloud.com # General
+www.linuxtracker.org # General
+www.msftncsi.com # General
+www.no-ip.com # General
+www.opensubtitles.org # General
+www.plex.tv # General
+www.propublica.org # General
+www.solaredge.com # General
+www.squaretrade.com # General
+www.twitter.com # General
+www.xboxlive.com # General
+www.youtube-nocookie.com # General
+xbox.ipv6.microsoft.com # General
+xboxexperiencesprod.experimentation.xboxlive.com # General
+xflight.xboxlive.com # General
+xkms.xbolive.com # General
+xsts.auth.xboxlive.com # General
+yahoo.com # General
+youtu.be # General
+youtube-nocookie.com # General
+youtube.com # General
+yt3.ggpht.com # General
+
+## Apple whitelists
+# Sources: https://support.apple.com/en-us/HT210060
+
+albert.apple.com # Apple - Device activation.
+appldnld.apple.com # Apple - iOS updates.
+appleid.apple.com # Apple
+ax.phobos.apple.com.edgesuite.net
+captive.apple.com # Apple - Internet connectivity validation for networks that use captive portals.
+configuration.apple.com # Apple - Rosetta 2 updates.
+crl.apple.com # Apple - Security certificate validation.
+crl.entrust.net # Apple - Security certificate validation..
+crl3.digicert.com # Apple - Security certificate validation.
+crl4.digicert.com # Apple - Security certificate validation.
+deviceenrollment.apple.com # Apple - DEP provisional enrollment.
+deviceservices-external.apple.com # Apple
+diagassets.apple.com # Apple - Used by Apple devices to help detect possible hardware issues.
+gdmf.apple.com # Apple - Used by an MDM server to identify which software updates are available to devices that use managed software updates.
+gg.apple.com # Apple - iOS, tvOS, and macOS updates.
+gnf-mdn.apple.com # Apple - macOS updates.
+gnf-mr.apple.com # Apple - macOS updates.
+gs.apple.com # Apple - macOS updates.
+humb.apple.com # Apple
+identity.apple.com # Apple - APNs certificate request portal.
+ig.apple.com # Apple - macOS updates.
+iprofiles.apple.com # Apple - Hosts enrollment profiles used when devices enroll in Apple School Manager or Apple Business Manager through Device Enrollment.
+isu.apple.com # Apple
+itunes-apple.com.akadns.net # Apple - App Store
+itunes.apple.com # Apple - App Store
+itunes.apple.com.edgesuite.net # Apple - App Store
+itunes.com # Apple - App Store
+www.itunes.com # Apple - App Store
+lcdn-registration.apple.com # Apple
+mdmenrollment.apple.com # Apple - MDM servers to upload enrollment profiles used by clients enrolling through Device Enrollment in Apple School Manager or Apple Business Manager, and to look up devices and accounts.
+mesu.apple.com # Apple - Hosts software update catalogs.
+metrics.icloud.com # Apple
+ns.itunes.apple.com # Apple
+ocsp.apple.com # Apple - Security certificate validation.
+ocsp.digicert.com # Apple - Security certificate validation.
+ocsp.entrust.net # Apple - Security certificate validation.
+ocsp.verisign.net # Apple - Security certificate validation.
+oscdn.apple.com # Apple - macOS Recovery
+osrecovery.apple.com # Apple - macOS Recovery
+ppq.apple.com # Apple - Enterprise App validation
+radarsubmissions.apple.com
+serverstatus.apple.com # Apple - Content caching client public IP determination
+setup.icloud.com # Apple - Required to log in with a Managed Apple ID on Shared iPad.
+skl.apple.com # Apple - macOS updates.
+sq-device.apple.com # Apple - eSIM activation
+static.ips.apple.com # Apple
+swcdn.apple.com # Apple - macOS updates.
+swdist.apple.com # Apple - macOS updates.
+swdownload.apple.com # Apple - macOS updates.
+swpost.apple.com # Apple - macOS updates.
+swscan.apple.com # Apple - macOS updates.
+tbsc.apple.com # Apple
+time-ios.apple.com # Apple - Used by devices to set their date and time.
+time-macos.apple.com # Apple - Used by devices to set their date and time.
+time.apple.com # Apple - Used by devices to set their date and time.
+updates-http.cdn-apple.com # Apple Updates
+updates.cdn-apple.com # Apple Updates
+valid.apple.com # Apple - Security certificate validation.
+vpp.itunes.apple.com # Apple - MDM servers to perform operations related to Apps and Books, like assigning or revoking licenses on a device.
+ws-ee-maidsvc.icloud.com # Apple - Schoolwork Roster service.
+xp.apple.com # Apple
