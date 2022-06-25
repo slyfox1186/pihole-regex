@@ -1,0 +1,129 @@
+# Adult Swim Videos on Amazon Firestick
+amd.cdn.turner.com
+i.cdn.turner.com
+pmd.cdn.turner.com
+s.cdn.turner.com
+z.cdn.turner.com
+
+# Amazon Alexa and Amazon Shopping app
+device-metrics-us-2.amazon.com
+device-metrics-us.amazon.com
+
+# Amazon Kindle
+cognito-identity.us-east-1.amazonaws.com
+det-ta-g7g.amazon.com
+device-messaging-na.amazon.com
+ocsp.rootg2.amazontrust.com
+s3-eu-west-1.amazonaws.com
+todo-ta-g7g.amazon.com
+unagi-na.amazon.com
+us-east-1.amazonaws.com
+
+# Facebook
+0-edge-chat.facebook.com
+1-edge-chat.facebook.com
+2-edge-chat.facebook.com
+3-edge-chat.facebook.com
+4-edge-chat.facebook.com
+5-edge-chat.facebook.com
+6-edge-chat.facebook.com
+cdn.fbsbx.com
+creative.ak.fbcdn.net
+edge-chat.facebook.com
+edge-mqtt.facebook.com
+external-lhr0-1.xx.fbcdn.net
+external-lhr1-1.xx.fbcdn.net
+external-lhr10-1.xx.fbcdn.net
+external-lhr2-1.xx.fbcdn.net
+external-lhr3-1.xx.fbcdn.net
+external-lhr4-1.xx.fbcdn.net
+external-lhr5-1.xx.fbcdn.net
+external-lhr6-1.xx.fbcdn.net
+external-lhr7-1.xx.fbcdn.net
+external-lhr8-1.xx.fbcdn.net
+external-lhr9-1.xx.fbcdn.net
+facebook.com
+facebook.net
+fbcdn-creative-a.akamaihd.net
+fbcdn.net
+graph.facebook.com
+graph.instagram.com
+instagram.c10r.facebook.com
+mqtt-mini.facebook.com
+scontent-lhr3-1.xx.fbcdn.net
+scontent.fgdl5-1.fna.fbcdn.net
+scontent.xx.fbcdn.net
+
+# Nvidia GeForce Experience
+events.gfe.nvidia.com
+gfwsl.geforce.com
+fp274c.wpc.phicdn.net
+
+# Nvidia Updates
+cs486.wpc.2d930.phicdn.net
+cs486283.wpc.phicdn.net
+cs486284.wpc.phicdn.net
+hlb.apr-2d930-0.edgecastdns.net
+cs486284.wpc.phicdn.net
+lb.apr-2d930.edgecastdns.net
+ota-downloads.nvidia.com
+
+# GTA Online telemetry. Whitelist this domain to prevent the game from crashing.
+prod.telemetry.ros.rockstargames.com
+elb-telemetry-gtav-prod-336243739.us-west-2.elb.amazonaws.com
+
+# Netflix - Domains needed for netlix to work correctly
+api-global.netflix.com
+api-global.us-east-1.origin.prodaa.netflix.com
+api-global.dradis.netflix.com
+appboot.netflix.com
+appboot.us-east-1.origin.prodaa.netflix.com
+appboot.dradis.netflix.com
+secure.netflix.com
+sec-oc.netflix.com
+
+# Spotify premium with Denon Heos speakers
+a528.c.akamai.net
+ap.single-gslb.spotify.com
+apresolve.spotify.com
+audio-ake.spotify.com.edgesuite.net
+edge-web.dual-gslb.spotify.com
+market.spotify.com
+mobile-ap.spotify.com
+spclient.wg.spotify.com
+upgrade.scdn.com
+
+# URL shorteners
+adf.ly
+amzn.com
+amzn.to
+bit.ly
+goo.gl
+ow.ly
+t.ly
+www.adf.ly
+www.bit.ly
+www.ow.ly
+
+# Videos not playing on  arstechnica/wired/vogue/newyorker
+# Note: ads before videos may appear after whitelisting this domain
+d2c8v52ll5s99u.cloudfront.net
+
+# Xbox Achievements and game stats sync
+v10.events.data.microsoft.com
+global.asimov.events.data.trafficmanager.net
+onedscolprdcus00.centralus.cloudapp.azure.com
+v20.events.data.microsoft.com
+global.asimov.events.data.trafficmanager.net
+onedscolprdeus02.eastus.cloudapp.azure.com
+
+# streamelements.com (Blocked by Pi-hole regex)
+stats.streamelements.com
+
+# Adobe licence verification endpoints
+activate.adobe.com
+ethos.ethos03-prod-va6.ethos.adobe.net
+ethos03-prod-va6-k8s-pub2-0-6a902acc902d157e.elb.us-east-1.amazonaws.com
+lm.adobe.io
+lm.licenses.adobe.com
+lmlegacyract-va6.cloud.adobe.io
