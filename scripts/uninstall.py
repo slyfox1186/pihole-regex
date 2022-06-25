@@ -199,7 +199,11 @@ else:
             print("[i] Removing any domains that matched those found in the script's repository.")
             whitelist_local.difference_update(whitelist_remote)
 
+<<<<<<< Updated upstream
     print("[i] Add existing {} domains to the {}" .format(
+=======
+    print("[i] Adding existing {} domains to {}" .format(
+>>>>>>> Stashed changes
         len(whitelist_local), gravity_whitelist_location))
     with open(gravity_whitelist_location, 'w') as fWrite:
         for line in sorted(whitelist_local):
