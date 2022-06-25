@@ -19,7 +19,7 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 
-	echo -e " \e[1m This script will download and add domains from the repo to whitelist.txt \e[0m"
+	echo -e " \e[1m This script will download and add domains from the repository to whitelist.txt \e[0m"
 	sleep 1
 	echo -e "\n"
 
@@ -29,7 +29,7 @@ then
 	fi
 
 
-	curl -sS https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/referral-sites.txt | sudo tee -a "${PIHOLE_LOCATION}"/whitelist.txt >/dev/null
+	curl -sS 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/referral-sites.txt' | sudo tee -a "${PIHOLE_LOCATION}"/whitelist.txt >/dev/null
 	echo -e " ${TICK} \e[32m Adding domains to whitelist... \e[0m"
 	sleep 0.5
 	echo -e " ${TICK} \e[32m Removing duplicates... \e[0m"
@@ -37,16 +37,13 @@ then
 	mv "${PIHOLE_LOCATION}"/whitelist.txt "${PIHOLE_LOCATION}"/whitelist.txt.old && cat "${PIHOLE_LOCATION}"/whitelist.txt.old | sort | uniq >> "${PIHOLE_LOCATION}"/whitelist.txt
 
 	wait
-	echo -e " [...] \e[32m Pi-hole gravity rebuilding lists. This may take a while \e[0m"
+	echo -e " [...] \e[32m Pi-hole Gravity rebuilding lists. This may take a while \e[0m"
 	${GRAVITY_UPDATE_COMMAND} $(cat "${PIHOLE_LOCATION}"/whitelist.txt | xargs) > /dev/null
 	wait
-	echo -e " ${TICK} \e[32m Pi-hole's gravity updated \e[0m"
-	echo -e " ${TICK} \e[32m Done! \e[0m"
-
-	
-	echo -e " \e[1m  Buy me a coffee: https://paypal.me/anudeepND \e[0m"
-	echo -e " \e[1m  Star me on GitHub, https://github.com/anudeepND/whitelist \e[0m"
-	echo -e " \e[1m  Happy AdBlocking :)\e[0m"
+	echo -e " ${TICK} \e[32m Pi-hole's Gravity database was updated! \e[0m"
+	echo -e " ${TICK} \e[32m Script Complete! \e[0m"
+	echo -e " \e[1m  Star me on GitHub, https://github.com/slyfox1186/pihole.regex \e[0m"
+	echo -e " \e[1m  Script complete! Happy ad-blocking :)\e[0m"
 	echo -e "\n\n"
 
 fi
