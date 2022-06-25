@@ -449,4 +449,4 @@ youtube.com
 yt3.ggpht.com
 z.cdn.turner.com
 zeustracker.abuse.ch
-{"mode":"full","isActive":false}
+^v[012]+\.events\.data\.microsoft\.com$

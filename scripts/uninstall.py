@@ -14,7 +14,7 @@ def fetch_whitelist_url(url):
         return
 
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0'}
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36'}
 
     try:
         response = urlopen(Request(url, headers=headers))
@@ -70,12 +70,12 @@ else:
     pihole_location = r'/etc/pihole'
 
 
-whitelist_remote_url = 'https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt'
-remote_sql_url = 'https://raw.githubusercontent.com/anudeepND/whitelist/master/scripts/domains.sql'
+whitelist_remote_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/whitelist.txt'
+remote_sql_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/domains.sql'
 gravity_whitelist_location = os.path.join(pihole_location, 'whitelist.txt')
 gravity_db_location = os.path.join(pihole_location, 'gravity.db')
-anudeep_whitelist_location = os.path.join(
-    pihole_location, 'anudeep-whitelist.txt')
+slyfox1186_whitelist_location = os.path.join(
+    pihole_location, 'slyfox1186-whitelist.txt')
 
 db_exists = False
 sqliteConnection = None
@@ -83,8 +83,8 @@ cursor = None
 
 whitelist_remote = set()
 whitelist_local = set()
-whitelist_anudeep_local = set()
-whitelist_old_anudeep = set()
+whitelist_slyfox1186_local = set()
+whitelist_old_slyfox1186 = set()
 
 os.system('clear')
 print('\n')
@@ -152,12 +152,12 @@ if db_exists:
         sqliteConnection = sqlite3.connect(gravity_db_location)
         cursor = sqliteConnection.cursor()
         print('[i] Successfully Connected to Gravity database')
-        total_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%qjz9zk%' ")
+        total_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%sly86%' ")
         
         totalDomains = len(total_domains.fetchall())
         print("[i] There are a total of {} domains in your whitelist which are added by my script" .format(totalDomains))
         print('[i] Removing domains in the Gravity database')
-        cursor.execute (" DELETE FROM domainlist WHERE type = 0 AND comment LIKE '%qjz9zk%' ")
+        cursor.execute (" DELETE FROM domainlist WHERE type = 0 AND comment LIKE '%sly86%' ")
 
         sqliteConnection.commit()
 
@@ -185,8 +185,8 @@ if db_exists:
             print('\n')
             print('Done. Happy ad-blocking :)')
             print('\n')
-            print('Star me on GitHub: https://github.com/anudeepND/whitelist')
-            print('Buy me a coffee: https://paypal.me/anudeepND')
+            print('Star me on GitHub: https://github.com/slyfox1186/whitelist')
+            print('Buy me a coffee: https://paypal.me/slyfox1186')
             print('\n')
 
 else:
@@ -199,16 +199,16 @@ else:
         print("[i] {} existing whitelisted domains identified" .format(
             len(whitelist_local)))
 
-        if os.path.isfile(anudeep_whitelist_location) and os.path.getsize(anudeep_whitelist_location) > 0:
-            print('[i] Existing anudeep-whitelist install identified')
-            with open(anudeep_whitelist_location, 'r') as fOpen:
-                whitelist_old_anudeep.update(x for x in map(
+        if os.path.isfile(slyfox1186_whitelist_location) and os.path.getsize(slyfox1186_whitelist_location) > 0:
+            print('[i] Existing slyfox1186-whitelist install identified')
+            with open(slyfox1186_whitelist_location, 'r') as fOpen:
+                whitelist_old_slyfox1186.update(x for x in map(
                     str.strip, fOpen) if x and x[:1] != '#')
 
-                if whitelist_old_anudeep:
-                    whitelist_local.difference_update(whitelist_old_anudeep)
+                if whitelist_old_slyfox1186:
+                    whitelist_local.difference_update(whitelist_old_slyfox1186)
 
-            os.remove(anudeep_whitelist_location)
+            os.remove(slyfox1186_whitelist_location)
 
         else:
             print('[i] Removing domains that match the remote repo')
@@ -226,6 +226,6 @@ else:
     print('\n')
     print('Happy ad-blocking :)')
     print('\n')
-    print('Star me on GitHub: https://github.com/anudeepND/whitelist')
-    print('Buy me a coffee: https://paypal.me/anudeepND')
+    print('Star me on GitHub: https://github.com/slyfox1186/whitelist')
+    print('Buy me a coffee: https://paypal.me/slyfox1186')
     print('\n')

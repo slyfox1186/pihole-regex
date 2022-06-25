@@ -6,6 +6,7 @@ i.cdn.turner.com
 s.cdn.turner.com
 z.cdn.turner.com
 amd.cdn.turner.com
+loopback.ugdturner.com
 
 # Amazon Kindle
 cognito-identity.us-east-1.amazonaws.com
@@ -42,13 +43,7 @@ facebook.net
 fbcdn.net
 cdn.fbsbx.com
 edge-mqtt.facebook.com
-0-edge-chat.facebook.com
-1-edge-chat.facebook.com
-2-edge-chat.facebook.com
-3-edge-chat.facebook.com
-4-edge-chat.facebook.com
-5-edge-chat.facebook.com
-6-edge-chat.facebook.com
+\d+-edge-chat.facebook.com
 edge-chat.facebook.com
 mqtt-mini.facebook.com
 
@@ -122,10 +117,6 @@ ow.ly
 www.ow.ly
 amzn.to
 amzn.com
-
-# Xbox Achievements and game stats sync
-v10.events.data.microsoft.com
-v20.events.data.microsoft.com
 
 # streamelements.com (Blocked by Pi-hole regex)
 stats.streamelements.com

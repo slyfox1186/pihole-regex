@@ -15,7 +15,8 @@ def fetch_whitelist_url(url):
     if not url:
         return
 
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36'}
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36'}
 
     try:
         response = urlopen(Request(url, headers=headers))
@@ -185,9 +186,9 @@ if db_exists:
         userAddTUPlen = len(userAddTUP)
         #
         #
-        # Check if whitelisted domains added by user are in script
+        # Check if  whitelisted domains added by user are in script
         userAddList = [None] * userAddTUPlen # Create a list that has the same size as the tuple is it compared to
-        uA = 0 # Used to count User Added domains in our script
+        uA = 0 # used to count User Added domains in our script
         uagl = False
         for userAddINgravity in userAddTUP: # For every whitelisted domain we found in the database do:
            if userAddINgravity[2] in newWhiteList: # If the domain we found added by user IS IN our new list count it
@@ -196,7 +197,7 @@ if db_exists:
                uA += 1 # Bump count if domain added (starts @ 0)
         #
         uA -= 1 # Subtract 1 so the count doesn't put us out of range
-        INgravityUSERaddListCount = uA # Save our count here so we know how many we have later
+        INgravityUSERaddListCount = uA # save our count here so we know how many we have later
         # Make us aware of User Added domains that are also in our script
         if uagl == True: # If we found user added domains from our list in gravity do:
             print ('[i] There are {} domain(s) that were added by the user that would have otherwise been added by script.\n' .format(INgravityUSERaddListCount+1)) # we have to add 1 for humans cause count starts @ 0
@@ -258,8 +259,8 @@ if db_exists:
         print('[i] Checking script for domains not in Gravity.')
         ilng = False
         for INnewNOTgravity in newWhiteList: # For every domain in the new script
-            if not INnewNOTgravity in gravScriptBeforeList and not INnewNOTgravity in userAddList: # Make sure it is not in gravity or added by user
-                INnewNOTgravityList[w] = INnewNOTgravity # Add domain to list we created
+            if not INnewNOTgravity in gravScriptBeforeList and not INnewNOTgravity in userAddList: # make Sure it is not in gravity or added by user
+                INnewNOTgravityList[w] = INnewNOTgravity # add domain to list we created
                 ilng = True
                 w += 1
         #
@@ -361,7 +362,7 @@ else:
                     str.strip, fOpen) if x and x[:1] != '#')
 
                 if whitelist_old_slyfox1186:
-                    print('[i] Removing any old whitelist files as a best practice!')
+                    print('[i] Removing any old whitelist files to keep the workspace clean!')
                     whitelist_local.difference_update(whitelist_old_slyfox1186)
 
     print("[i] Syncing with {}" .format(whitelist_remote_url))
