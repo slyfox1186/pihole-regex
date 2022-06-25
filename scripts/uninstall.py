@@ -79,12 +79,12 @@ whitelist_old_slyfox1186 = set()
 
 os.system('clear')
 print('\n')
-print('If you are using Pi-hole 5.0 or later, then this script will only remove domains associated with this script.')
+print('If the current version of Pi-hole is 5.0 or later, this script will only remove domains associated with this specific script.')
 print('\n')
 
 # Check if the pihole path exists
 if os.path.exists(pihole_location):
-    print('[i] The Pi-hole path exists!')
+    print("[i] The Pi-hole's file path exists!")
 else:
     print("[X] {} was not found".format(pihole_location))
     print('\n')
@@ -120,7 +120,7 @@ if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) 
         print('\n')
         exit(1)
 else:
-    print('[i] Legacy Pi-hole detected (Version older than 5.0)')
+    print("[i] The Pi-hole's current version is less than v5.0.")
 
 if whitelist_str:
     whitelist_remote.update(x for x in map(
@@ -133,7 +133,7 @@ else:
 
 if db_exists:
     # Create a DB connection
-    print('[i] Connecting to the Gravity database...')
+    print('[i] Attempting to connect to the Gravity database...')
 
     try:
         sqliteConnection = sqlite3.connect(gravity_db_location)
@@ -143,7 +143,7 @@ if db_exists:
 
         totalDomains = len(total_domains.fetchall())
         print('[i] A total of {} domains in the whitelist were added by this script.' .format(totalDomains))
-        print('[i] Removing the identified domains from Gravity\'s database.')
+        print("[i] Now removing matching domains from Gravity's database.")
         cursor.execute (" DELETE FROM domainlist WHERE type = 0 AND comment LIKE '%sly86%' ")
 
         sqliteConnection.commit()
@@ -156,7 +156,7 @@ if db_exists:
         cursor.close()
 
     except sqlite3.Error as error:
-        print('[X] Failed to remove domains from Gravity\'s database', error)
+        print("[X] Failed to remove domains from Gravity's database", error)
         print('\n')
         print('\n')
         exit(1)
@@ -185,7 +185,7 @@ else:
             len(whitelist_local)))
 
         if os.path.isfile(slyfox1186_whitelist_location) and os.path.getsize(slyfox1186_whitelist_location) > 0:
-            print('[i] Existing slyfox1186-whitelist install identified')
+            print('[i] The script located previously installed slyfox1186-whitelist files.')
             with open(slyfox1186_whitelist_location, 'r') as fOpen:
                 whitelist_old_slyfox1186.update(x for x in map(
                     str.strip, fOpen) if x and x[:1] != '#')
@@ -196,7 +196,7 @@ else:
             os.remove(slyfox1186_whitelist_location)
 
         else:
-            print('[i] Removing any domains that matched those found in this script\'s repository...')
+            print("[i] Removing any domains that matched those found in the script's repository.")
             whitelist_local.difference_update(whitelist_remote)
 
     print("[i] Add existing {} domains to the {}" .format(
@@ -207,7 +207,7 @@ else:
 
     print('[i] Please be patient while the Pi-hole restarts.')
     restart_pihole(args.docker)
-    print('[i] Any domain matches have been removed from your Pi-hole\'s whitelist.')
+    print("[i] Any domains that matched entries found inside the script's repository have been removed from the Pi-hole's whitelist.")
     print('\n')
     print('[i] The script has completed! Happy ad-blocking :)')
     print('\n')
