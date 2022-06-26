@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-import time
 import os
+import time
 import argparse
 import sqlite3
 import subprocess
