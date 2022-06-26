@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
+import time
 import os
 import argparse
 import sqlite3
 import subprocess
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
-import time
 
 today = int(time.time())
 
@@ -81,7 +81,7 @@ whitelist_old_slyfox1186 = set()
 
 os.system('clear')
 print('\n')
-print('This script will add domains from the repository to the Pi-hole whitelist.')
+print("Adding domains contained in the scripts repository to the Pi-hole's whitelist.")
 print('All of the domains in this repository are safe to add and do not contain any tracking or adserving domains.')
 print('\n')
 
@@ -120,12 +120,12 @@ if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) 
     if len(remote_sql_str) > 0:
         print("[i] The script discovered {} domains and {} SQL queries." .format(remote_whitelist_lines, remote_sql_lines))
     else:
-        print('[X] No remote SQL queries found')
+        print('[X] No remote SQL queries found.')
         print('\n')
         print('\n')
         exit(1)
 else:
-    print('[i] Legacy Pi-hole detected (Version older than 5.0)')
+    print('[i] Legacy Pi-hole detected (Version older than 5.0).')
 
 # If domains were fetched, remove any comments and add to set
 if whitelist_str:
@@ -144,9 +144,9 @@ if db_exists:
     try: # Try to create a DB connection
         sqliteConnection = sqlite3.connect(gravity_db_location)
         cursor = sqliteConnection.cursor()
-        print('[i] A connection has been successfully established to the Gravity database!')
+        print('[i] Successfully connected to the Gravity database!')
         #
-        print('[i] Checking Gravity for previously added domains by another version of this script.')
+        print("[i] Checking Gravity's database for domains previously added by an earlier version of the script.")
         # Check Gravity database for domains added by script
         gravityScript_before = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%sly86%' ")
         # Fetch all matching entries which will create a tuple for us
@@ -177,7 +177,7 @@ if db_exists:
             # Print(newWhiteList[nwl])
             nwl += 1 # count + 1
         # Check database for user added exact whitelisted domains
-        print('[i] Checking Gravity for domains added by user that are also in script.')
+        print("[i] Checking Gravity's database for any domains added by the user that are also in script.")
         # Check Gravity database for exact whitelisted domains added by user
         user_add = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment NOT LIKE '%sly86%' ")
         userAddTUP = user_add.fetchall()
@@ -216,7 +216,7 @@ if db_exists:
         if uagl == True:
             print('\n')
 
-        print('[i] Checking Gravity for any previously added domains by an older version of this script that are no longer found in the latest version.')
+        print("[i] Checking Gravity's database for any previously added domains that are no longer in the current respository.")
         ignl = False
         a = 0
         for INgravityNOTnew in gravScriptBeforeTUP: # For every domain previously added by script
@@ -266,7 +266,7 @@ if db_exists:
         INnewNOTgravityListCount = w
         # If there are domains in new list that are NOT in Gravity
         if ilng == True: # Add domains that are missing from new script and not user additions
-            print("[i] The script found {} domain's NOT in the Gravity database that are in the scripts repository.\n" .format(INnewNOTgravityListCount+1))
+            print("[i] The script found {} domain's NOT in Gravity's database that are in the scripts repository.\n" .format(INnewNOTgravityListCount+1))
             a = 0
             while w >= 0:
                 a += 1
@@ -293,7 +293,7 @@ if db_exists:
             ASGCOUNT = 0
             gravScriptAfterList = [None] * gravScriptAfterTUPlen
 
-            print('\n[i] Checking Gravity for newly added domains.\n')
+            print("\n[i] Checking Gravity's database for newly added domains.\n")
 
             for gravScriptAfterDomain in gravScriptAfterTUP:
                 gravScriptAfterList[ASGCOUNT] = gravScriptAfterTUP[ASGCOUNT][2]
@@ -314,7 +314,7 @@ if db_exists:
 
         else: # We should be done now
             # Do nothing and exit. All domains are accounted for.
-            print("[i] All {} domains to be added by script have been discovered in Gravity" .format(newWhiteListlen))
+            print("[i] All {} domains to be added have been discovered in Gravity" .format(newWhiteListlen))
         # Find total whitelisted domains (regex)
         total_domains_R = cursor.execute(" SELECT * FROM domainlist WHERE type = 2 ")
         tdr = len(total_domains_R.fetchall())
@@ -334,9 +334,10 @@ if db_exists:
         exit(1)
 
     finally:
-        print('Script completed! Happy ad-blocking :)')
+        print('Pi-hole is now updated! Happy ad-blocking :)')
         print('\n')
         print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
+        print('\n')
 
 else:
 
@@ -347,8 +348,9 @@ else:
                 str.strip, fRead) if x and x[:1] != '#')
 
     if whitelist_local:
-        print("[i] {} existing whitelist\'s identified".format(
+        print("[i] The script has located {} existing whitelisted domains." .format(
             len(whitelist_local)))
+
         if os.path.isfile(slyfox1186_whitelist_location) and os.path.getsize(slyfox1186_whitelist_location) > 0:
             print('[i] Existing slyfox1186-whitelist installation found.')
             with open(slyfox1186_whitelist_location, 'r') as fOpen:
@@ -372,15 +374,11 @@ else:
         for line in sorted(whitelist_remote):
             fWrite.write("{}\n".format(line))
 
-    print('[i] The domains have been added to the whitelist.')
+    print('[i] The repository domains have been added to the whitelist.')
     print('\n')
-    print('[i] Pi-hole has to reboot. Please be patient until it completes.')
+    print('[i] Restarting Pi-hole. Please wait for it to reboot.')
     restart_pihole(args.docker)
-    time.sleep(3)
-    os.system('clear')
-    print('[i] Pi-hole has finished rebooting.')
-    time.sleep(3)
-    os.system('clear')
-    print('[i] The script is finished! Happy ad-blocking :)')
+    print('Pi-hole is now running! Happy ad-blocking :)')
     print('\n')
     print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
+    print('\n')
