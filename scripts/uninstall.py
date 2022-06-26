@@ -58,7 +58,7 @@ def restart_pihole(docker):
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-d", "--dir", type=dir_path,
-                    help="Optional: Pi-hole etc directory")
+                    help="Optional: Pi-hole /etc directory")
 parser.add_argument(
     "-D", "--docker",  action='store_true', help="Optional: Set if you're using Pi-hole in a Docker environment")
 args = parser.parse_args()
@@ -94,7 +94,7 @@ Any other domains added by the user will remain uneffected.
 
 # Check for pihole path exsists
 if os.path.exists(pihole_location):
-    print("[i] Pi-hole's file path exists!")
+    print("[i] Pi-hole's file path was found!")
 else:
     print("[X] {} was not found".format(pihole_location))
     print('\n')
@@ -117,7 +117,7 @@ else:
 # Determine whether we are using DB or not
 if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) > 0:
     db_exists = True
-    print("[i] Pi-Hole's Gravity database was found.")
+    print("[i] The script successfully located Gravity's database.")
 
     remote_sql_str = fetch_whitelist_url(remote_sql_url)
     remote_sql_lines = remote_sql_str.count('\n')
@@ -137,7 +137,7 @@ if whitelist_str:
     whitelist_remote.update(x for x in map(
         str.strip, whitelist_str.splitlines()) if x and x[:1] != '#')
 else:
-    print('[X] No remote domains were found.')
+    print('[X] The script failed to find any remote domains to connect to.')
     print('\n')
     print('\n')
     exit(1)
@@ -167,7 +167,7 @@ if db_exists:
         cursor.close()
 
     except sqlite3.Error as error:
-        print("[X] Failed to remove the domains from Gravity's database.", error)
+        print("[X] The script failed to remove the domains from Gravity's database.", error)
         print('\n')
         print('\n')
         exit(1)
@@ -176,9 +176,10 @@ if db_exists:
         if (sqliteConnection):
             sqliteConnection.close()
 
-            print('[i] The connection to Gravity has been closed.')
-
-            print('[i] Restarting Pi-hole. Please wait for it to reboot.')
+            print("""[i] The connection to Gravity has been closed.
+            [i] Pi-hole will now reboot.
+            [i] Please wait for it to load.
+            """)
             restart_pihole(args.docker)
             print('\n')
             print('Pi-hole is now running! Happy ad-blocking :)')
@@ -188,6 +189,7 @@ if db_exists:
 
 else:
     if os.path.isfile(gravity_whitelist_location) and os.path.getsize(gravity_whitelist_location) > 0:
+        print('[i] Collecting existing entries from whitelist.txt')
         with open(gravity_whitelist_location, 'r') as fRead:
             whitelist_local.update(x for x in map(
                 str.strip, fRead) if x and x[:1] != '#')
@@ -221,7 +223,7 @@ else:
     restart_pihole(args.docker)
     print("[i] All matching domains have been successfully removed from Pi-hole's whitelist.")
     print('\n')
-   print('Pi-hole is now running! Happy ad-blocking :)')
+    print('Pi-hole is now running! Happy ad-blocking :)')
     print('\n')
     print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
     print('\n')
