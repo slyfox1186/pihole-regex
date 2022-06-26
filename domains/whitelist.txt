@@ -33,7 +33,7 @@ api.us.hismarttv.com
 api.vizio.com
 apicache.vudu.com
 app-api.ted.com
-app.emby.
+app.emby
 app.plex.tv
 appboot.netflix.com
 appldnld.apple.com
