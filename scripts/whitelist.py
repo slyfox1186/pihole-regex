@@ -328,7 +328,7 @@ if db_exists:
         print("[i] Adding domains to Gravity's database is complete and the connection will now close.")
         time.sleep(3)
         os.system('clear')
-        
+
         if ilng == True:
             print('[i] Pi-hole Please be patient while the Pi-hole restarts.')
             restart_pihole(args.docker)
