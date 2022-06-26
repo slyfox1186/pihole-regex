@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-
+#
+# Project homepage: https://github.com/slyfox1186/pihole.regex
+# Licence: https://github.com/slyfox1186/pihole.regex/blob/master/LICENSE
+# Created by slyfox1186
+# ================================================================================
 import os
 import argparse
 import sqlite3
@@ -58,9 +62,9 @@ def restart_pihole(docker):
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-d", "--dir", type=dir_path,
-                    help="optional: Pi-hole etc directory")
+                    help="Optional: Pi-hole etc directory")
 parser.add_argument(
-    "-D", "--docker",  action='store_true', help="optional: set if you're using Pi-hole in Docker environment")
+    "-D", "--docker",  action='store_true', help="Optional: Set if you're using Pi-hole in a Docker environment")
 args = parser.parse_args()
 
 if args.dir:
@@ -88,14 +92,14 @@ whitelist_old_slyfox1186 = set()
 os.system('clear')
 print('\n')
 print('''
-If you are using Pi-hole 5.0 or later, then this script will remove the domains which are only added by my script.
-Any other domains added by you will stay as it is.
+If you are using Pi-hole 5.0 or later, this script will remove the domains which are only added by this script.
+Any other domains added by the user will remain uneffected.
 ''')
 print('\n')
 
 # Check for pihole path exsists
 if os.path.exists(pihole_location):
-    print('[i] Pi-hole path exists')
+    print("[i] Pi-hole's file path exists!")
 else:
     print("[X] {} was not found".format(pihole_location))
     print('\n')
@@ -109,7 +113,7 @@ if os.access(pihole_location, os.X_OK | os.W_OK):
     remote_whitelist_lines = whitelist_str.count('\n')
     remote_whitelist_lines += 1
 else:
-    print("[X] Write access is not available for {}. Please run as root or other privileged user" .format(
+    print("[X] Write access is not available for {}. Please run as a privileged user." .format(
         pihole_location))
     print('\n')
     print('\n')
@@ -118,7 +122,7 @@ else:
 # Determine whether we are using DB or not
 if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) > 0:
     db_exists = True
-    print('[i] Pi-Hole Gravity database found')
+    print("[i] Pi-Hole's Gravity database was found.")
 
     remote_sql_str = fetch_whitelist_url(remote_sql_url)
     remote_sql_lines = remote_sql_str.count('\n')
@@ -127,12 +131,12 @@ if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) 
     if len(remote_sql_str) > 0:
         print("[i] {} domains discovered" .format(remote_whitelist_lines))
     else:
-        print('[X] No remote SQL queries found')
+        print('[X] No remote SQL queries were found.')
         print('\n')
         print('\n')
         exit(1)
 else:
-    print('[i] Legacy Pi-hole detected (Version older than 5.0)')
+    print('[i] Legacy Pi-hole detected (Version older than 5.0).')
 
 if whitelist_str:
     whitelist_remote.update(x for x in map(
@@ -145,12 +149,12 @@ else:
 
 if db_exists:
     # Create a DB connection
-    print('[i] Connecting to Gravity database')
+    print('[i] Connecting to the Gravity database.')
 
     try:
         sqliteConnection = sqlite3.connect(gravity_db_location)
         cursor = sqliteConnection.cursor()
-        print('[i] Successfully Connected to Gravity database')
+        print("[i] Successfully connected to Gravity's database")
         total_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%sly86%' ")
 
         totalDomains = len(total_domains.fetchall())
@@ -161,14 +165,14 @@ if db_exists:
         sqliteConnection.commit()
 
         # we only removed domains we added so use total_domains
-        print("[i] {} domains are removed" .format(totalDomains))
+        print("[i] {} domains were removed." .format(totalDomains))
         remaining_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 OR type = 2 ")
-        print("[i] There are a total of {} domains remaining in your whitelist" .format(len(remaining_domains.fetchall())))
+        print("[i] There are a total of {} domains remaining in your whitelist." .format(len(remaining_domains.fetchall())))
 
         cursor.close()
 
     except sqlite3.Error as error:
-        print('[X] Failed to remove domains from Gravity database', error)
+        print("[X] Failed to remove the domains from Gravity's database.", error)
         print('\n')
         print('\n')
         exit(1)
@@ -177,12 +181,12 @@ if db_exists:
         if (sqliteConnection):
             sqliteConnection.close()
 
-            print('[i] The database connection is closed')
+            print('[i] The database connection was closed.')
 
-            print('[i] Restarting Pi-hole. Please wait for it to finish.')
+            print('[i] Restarting Pi-hole. Please wait for it to reboot.')
             restart_pihole(args.docker)
             print('\n')
-            print('Done. Happy ad-blocking :)')
+            print('Pi-hole is now running! Happy ad-blocking :)')
             print('\n')
             print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
             print('\n')
@@ -198,7 +202,7 @@ else:
             len(whitelist_local)))
 
         if os.path.isfile(slyfox1186_whitelist_location) and os.path.getsize(slyfox1186_whitelist_location) > 0:
-            print('[i] Existing slyfox1186-whitelist install identified')
+            print('[i] Existing slyfox1186-whitelist install files were found.')
             with open(slyfox1186_whitelist_location, 'r') as fOpen:
                 whitelist_old_slyfox1186.update(x for x in map(
                     str.strip, fOpen) if x and x[:1] != '#')
@@ -218,9 +222,9 @@ else:
         for line in sorted(whitelist_local):
             fWrite.write("{}\n".format(line))
 
-    print('[i] Restarting Pi-hole. Please wait for it to finish.')
+    print('[i] Restarting Pi-hole. Please wait for it to reboot.')
     restart_pihole(args.docker)
-    print('[i] The script has finished! The domains have been removed from your Pi-Hole whitelist.')
+    print("[i] Domains were successfully removed from Pi-hole's whitelist.")
     print('\n')
     print('Happy ad-blocking :)')
     print('\n')
