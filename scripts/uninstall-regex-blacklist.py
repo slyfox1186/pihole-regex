@@ -40,7 +40,7 @@ def fetch_url(url):
 
 
 url_regexps_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/regex-blacklist.txt'
-install_comment = 'slyRegEx'
+install_comment = 'sly99'
 
 cmd_restart = ['pihole', 'restartdns', 'reload']
 
@@ -105,9 +105,9 @@ else:
 
 # Check for write access to /etc/pihole
 if os.access(path_pihole, os.X_OK | os.W_OK):
-    print(f'[i] The script HAS write access to {path_pihole}.')
+    print(f'[i] The script has write access to {path_pihole}.')
 else:
-    print(f'[e] The script DOES NOT have write access available for {path_pihole}. Please re-run the script as a privileged user.')
+    print(f'[e] The script does not have write access available for {path_pihole}. Please re-run the script as a privileged user.')
     exit(1)
 
 # Determine whether we are using DB or not
@@ -165,7 +165,7 @@ if db_exists:
     conn.close()
 
 else:
-    # If regex.list exists and is not empty, read it and add to a set
+    # If regex.list exists and is not empty, read it and add to a set.
     if os.path.isfile(path_legacy_regex) and os.path.getsize(path_legacy_regex) > 0:
         print('[i] The script is analyzing the current regex.list')
         with open(path_legacy_regex, 'r') as fRead:
