@@ -4,7 +4,7 @@ import json
 import os
 import time
 import sqlite3
-import subprocess
+import subprocess, platform
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
@@ -175,8 +175,10 @@ if db_exists:
     print('[i] Pi-hole must restart... please wait for it to boot.')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
     print('\n')
+    time.sleep(3)
 
     # Prepare final result
+    os.system("cls")
     print("[i] Pi-hole is now running! Script complete!\n")
 
     c.execute('Select domain FROM domainlist WHERE type = 3')
@@ -229,6 +231,7 @@ else:
     
 # Prepare final result
     print("[i] Pi-hole is now running! Script complete!\n")
+    time.sleep(3)
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
