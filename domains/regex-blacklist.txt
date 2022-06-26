@@ -47,7 +47,6 @@
 (\.|^)bytedance\.map\.fastly\.net$
 (\.|^)byteimg\.com$
 (\.|^)douyin\.com$
-(\.|^)ixigua|[videol]*\.com$
 (\.|^)muscdn\.com$
 (\.|^)musical\.ly$
 (\.|^)pstatp\.com$
