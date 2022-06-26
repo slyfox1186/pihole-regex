@@ -383,6 +383,5 @@ else:
     restart_pihole(args.docker)
     print('\n')
     print('[i] Pi-hole is now running! Script complete!')
-    print('\n')
     print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
     print('\n')
