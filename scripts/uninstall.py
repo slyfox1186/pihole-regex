@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-#
-# Project homepage: https://github.com/slyfox1186/pihole.regex
-# Licence: https://github.com/slyfox1186/pihole.regex/blob/master/LICENSE
-# Created by slyfox1186
-# ================================================================================
+
 import os
 import argparse
 import sqlite3
