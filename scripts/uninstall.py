@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
-
-import time
+#
+# Project homepage: https://github.com/slyfox1186/pihole.regex
+# Licence: https://github.com/slyfox1186/pihole.regex/blob/master/LICENSE
+# Created by slyfox1186
+# ================================================================================
 import os
 import argparse
 import sqlite3
@@ -34,11 +37,12 @@ def fetch_whitelist_url(url):
 
     # If there is data
     if response:
-        # Strip leading and trailing whitespaces
+        # Strip leading and trailing whitespace
         response = '\n'.join(x.strip() for x in response.splitlines())
 
     # Return the hosts
     return response
+
 
 def dir_path(string):
     if os.path.isdir(string):
@@ -46,16 +50,21 @@ def dir_path(string):
     else:
         raise NotADirectoryError(string)
 
+
 def restart_pihole(docker):
     if docker is True:
         subprocess.call("docker exec -it pihole pihole restartdns reload",
                         shell=True, stdout=subprocess.DEVNULL)
     else:
-        subprocess.call(['pihole', 'restartdns', 'reload'], stdout=subprocess.DEVNULL)
+        subprocess.call(['pihole', 'restartdns', 'reload'],
+                        stdout=subprocess.DEVNULL)
+
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-d", "--dir", type=dir_path, help="Optional: Pi-hole /etc directory")
-parser.add_argument("-D", "--docker",  action='store_true', help="Optional: Set if you're using Pi-hole in a Docker environment")
+parser.add_argument("-d", "--dir", type=dir_path,
+                    help="optional: Pi-hole etc directory")
+parser.add_argument(
+    "-D", "--docker",  action='store_true', help="optional: set if you're using Pi-hole in Docker environment")
 args = parser.parse_args()
 
 if args.dir:
@@ -63,11 +72,13 @@ if args.dir:
 else:
     pihole_location = r'/etc/pihole'
 
+
 whitelist_remote_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/whitelist.txt'
 remote_sql_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/domains.sql'
 gravity_whitelist_location = os.path.join(pihole_location, 'whitelist.txt')
 gravity_db_location = os.path.join(pihole_location, 'gravity.db')
-slyfox1186_whitelist_location = os.path.join(pihole_location, 'slyfox1186-whitelist.txt')
+slyfox1186_whitelist_location = os.path.join(
+    pihole_location, 'slyfox1186-whitelist.txt')
 
 db_exists = False
 sqliteConnection = None
@@ -80,12 +91,15 @@ whitelist_old_slyfox1186 = set()
 
 os.system('clear')
 print('\n')
-print('If the current version of Pi-hole is 5.0 or later this script will only remove domains associated with this specific script.')
+print('''
+If you are using Pi-hole 5.0 or later, then this script will remove the domains which are only added by my script.
+Any other domains added by you will stay as it is.
+''')
 print('\n')
 
-# Check if the pihole path exists
+# Check for pihole path exsists
 if os.path.exists(pihole_location):
-    print("[i] The Pi-hole's file path exists!")
+    print('[i] Pi-hole path exists')
 else:
     print("[X] {} was not found".format(pihole_location))
     print('\n')
@@ -99,7 +113,8 @@ if os.access(pihole_location, os.X_OK | os.W_OK):
     remote_whitelist_lines = whitelist_str.count('\n')
     remote_whitelist_lines += 1
 else:
-    print("[X] Write access is not available for {}. Please run the script as a privileged user." .format(pihole_location))
+    print("[X] Write access is not available for {}. Please run as root or other privileged user" .format(
+        pihole_location))
     print('\n')
     print('\n')
     exit(1)
@@ -107,21 +122,21 @@ else:
 # Determine whether we are using DB or not
 if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) > 0:
     db_exists = True
-    print('[i] The Gravity database exists!')
+    print('[i] Pi-Hole Gravity database found')
 
     remote_sql_str = fetch_whitelist_url(remote_sql_url)
     remote_sql_lines = remote_sql_str.count('\n')
     remote_sql_lines += 1
 
     if len(remote_sql_str) > 0:
-        print("[i] The script discovered {} domains!" .format(remote_whitelist_lines))
+        print("[i] {} domains discovered" .format(remote_whitelist_lines))
     else:
-        print('[X] No remote SQL queries were found.')
+        print('[X] No remote SQL queries found')
         print('\n')
         print('\n')
         exit(1)
 else:
-    print("[i] The Pi-hole's current version is less than v5.0.")
+    print('[i] Legacy Pi-hole detected (Version older than 5.0)')
 
 if whitelist_str:
     whitelist_remote.update(x for x in map(
@@ -134,30 +149,30 @@ else:
 
 if db_exists:
     # Create a DB connection
-    print('[i] Connecting to the Gravity database...')
+    print('[i] Connecting to Gravity database')
 
     try:
         sqliteConnection = sqlite3.connect(gravity_db_location)
         cursor = sqliteConnection.cursor()
-        print('[i] Connected to the Gravity database!')
+        print('[i] Successfully Connected to Gravity database')
         total_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%sly86%' ")
 
         totalDomains = len(total_domains.fetchall())
-        print('[i] {} domains in the whitelist were added.' .format(totalDomains))
-        print('[i] Removing matching domains in the Gravity database.')
+        print("[i] There are a total of {} domains in your whitelist which are added by my script" .format(totalDomains))
+        print('[i] Removing domains in the Gravity database')
         cursor.execute (" DELETE FROM domainlist WHERE type = 0 AND comment LIKE '%sly86%' ")
 
         sqliteConnection.commit()
 
-        # We only remove domains that were added by this script.
-        print("[i] {} domains identified by the script were removed from the whitelist." .format(totalDomains))
+        # we only removed domains we added so use total_domains
+        print("[i] {} domains are removed" .format(totalDomains))
         remaining_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 OR type = 2 ")
-        print("[i] {} domains still remain in the whitelist." .format(len(remaining_domains.fetchall())))
+        print("[i] There are a total of {} domains remaining in your whitelist" .format(len(remaining_domains.fetchall())))
 
         cursor.close()
 
     except sqlite3.Error as error:
-        print("[X] Failed to remove the domains from Gravity's database.", error)
+        print('[X] Failed to remove domains from Gravity database', error)
         print('\n')
         print('\n')
         exit(1)
@@ -166,16 +181,14 @@ if db_exists:
         if (sqliteConnection):
             sqliteConnection.close()
 
-            print('''[i] The database connection has been closed.
-            [i] Pi-hole has to reboot. Please be patient until it completes.
-            line three''')
+            print('[i] The database connection is closed')
+
+            print('[i] Restarting Pi-hole. Please wait for it to finish.')
             restart_pihole(args.docker)
-            time.sleep(3)
             print('\n')
-            print('''[i] Pi-hole has been updated.
-            Happy ad-blocking!
-            Star me on GitHub: https://github.com/slyfox1186/pihole.regex/
-            ''')
+            print('Done. Happy ad-blocking :)')
+            print('\n')
+            print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
             print('\n')
 
 else:
@@ -185,11 +198,11 @@ else:
                 str.strip, fRead) if x and x[:1] != '#')
 
     if whitelist_local:
-        print("[i] The script has identified {} existing whitelisted domains." .format(
+        print("[i] {} existing whitelisted domains identified" .format(
             len(whitelist_local)))
 
         if os.path.isfile(slyfox1186_whitelist_location) and os.path.getsize(slyfox1186_whitelist_location) > 0:
-            print('[i] Previously installed slyfox1186-whitelist files were found.')
+            print('[i] Existing slyfox1186-whitelist install identified')
             with open(slyfox1186_whitelist_location, 'r') as fOpen:
                 whitelist_old_slyfox1186.update(x for x in map(
                     str.strip, fOpen) if x and x[:1] != '#')
@@ -200,27 +213,20 @@ else:
             os.remove(slyfox1186_whitelist_location)
 
         else:
-            print("[i] Removing any domains that matched those found in the script's repository.")
+            print('[i] Removing domains that match the remote repo')
             whitelist_local.difference_update(whitelist_remote)
 
-<<<<<<< Updated upstream
-    print("[i] Add existing {} domains to the {}" .format(
-=======
-    print("[i] Adding existing {} domains to {}" .format(
->>>>>>> Stashed changes
+    print("[i] Adding exsisting {} domains to {}" .format(
         len(whitelist_local), gravity_whitelist_location))
     with open(gravity_whitelist_location, 'w') as fWrite:
         for line in sorted(whitelist_local):
             fWrite.write("{}\n".format(line))
 
-    print('''[i] The database connection has been closed.
-    [i] Pi-hole has to reboot. Please be patient until it completes.
-    line three''')
+    print('[i] Restarting Pi-hole. Please wait for it to finish.')
     restart_pihole(args.docker)
-    time.sleep(3)
+    print('[i] The script has finished! The domains have been removed from your Pi-Hole whitelist.')
     print('\n')
-    print('''[i] Pi-hole has been updated.
-    Happy ad-blocking!
-    Star me on GitHub: https://github.com/slyfox1186/pihole.regex/
-    ''')
+    print('Happy ad-blocking :)')
+    print('\n')
+    print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
     print('\n')
