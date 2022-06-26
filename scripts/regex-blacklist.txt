@@ -1,5 +1,5 @@
 # RegEx Blacklist for use with Pi-hole
-#
+# https://github.com/slyfox1186/pihole.regex/
 
 (\.|^)amemv\.com$
 (\.|^)bdurl\.com$
