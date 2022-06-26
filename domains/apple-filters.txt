@@ -1,71 +1,65 @@
-# Apple exact whitelist for Pi-hole.
-
-# Descriptions are after each entry if available.
-
-# Sources: https://support.apple.com/en-us/HT210060
-
-albert.apple.com # Device activation.
-appldnld.apple.com # iOS updates.
+albert.apple.com
+appldnld.apple.com
 appleid.apple.com
-ax.phobos.apple.com.edgesuite.net
-captive.apple.com # Internet connectivity validation for networks that use captive portals.
+ax.phobos.apple.com
+captive.apple.com
 cf.iadsdk.apple.com
-configuration.apple.com # Rosetta 2 updates.
-crl.apple.com # Security certificate validation.
-crl.entrust.net # Security certificate validation.
-crl3.digicert.com # Security certificate validation.
-crl4.digicert.com # Security certificate validation.
-deviceenrollment.apple.com # DEP provisional enrollment.
+configuration.apple.com
+crl.apple.com
+crl.entrust.net
+crl3.digicert.com
+crl4.digicert.com
+deviceenrollment.apple.com
 deviceservices-external.apple.com
-diagassets.apple.com # Used by Apple devices to help detect possible hardware issues.
-gdmf.apple.com # Used by an MDM server to identify which software updates are available to devices that use managed software updates.
-gg.apple.com # iOS, tvOS, and macOS updates.
-gnf-mdn.apple.com # macOS updates.
-gnf-mr.apple.com # macOS updates.
+diagassets.apple.com
+gdmf.apple.com
+gg.apple.com
+gnf-mdn.apple.com
+gnf-mr.apple.com
 gs.apple.com
-gs.apple.com # macOS updates.
+gs.apple.com
 humb.apple.com
 iadsdk.apple.com
-identity.apple.com # APNs certificate request portal.
-ig.apple.com # macOS updates.
-iprofiles.apple.com # Hosts enrollment profiles used when devices enroll in Apple School Manager or Apple Business Manager through Device Enrollment.
+identity.apple.com
+ig.apple.com
+iprofiles.apple.com
 isu.apple.com
-itunes-apple.com.akadns.net
-itunes.apple.com # App Store
-itunes.apple.com.edgesuite.net
+itunes-apple.com
+itunes.apple.com
+itunes.apple.com
 itunes.com
-lcdn-registration.apple.com #
-mdmenrollment.apple.com # MDM servers to upload enrollment profiles used by clients enrolling through Device Enrollment in Apple School Manager or Apple Business Manager, and to look up devices and accounts.
-mesu.apple.com # Hosts software update catalogs.
+lcdn-registration.apple.com
+mdmenrollment.apple.com
+mesu.apple.com
 news.iadsdk.apple.com
 ns.itunes.apple.com
 ocsp.apple.com
-ocsp.apple.com # Security certificate validation.
-ocsp.digicert.com # Security certificate validation.
-ocsp.entrust.net # Security certificate validation.
-ocsp.verisign.net # Security certificate validation.
-oscdn.apple.com # macOS Recovery
-osrecovery.apple.com # macOS Recovery
-ppq.apple.com # Enterprise App validation
+ocsp.apple.com
+ocsp.digicert.com
+ocsp.entrust.net
+ocsp.verisign.net
+oscdn.apple.com
+osrecovery.apple.com
+ppq.apple.com
 radarsubmissions.apple.com
-serverstatus.apple.com # Content caching client public IP determination
-setup.icloud.com # Required to log in with a Managed Apple ID on Shared iPad.
-skl.apple.com # macOS updates.
-sq-device.apple.com # eSIM activation
+serverstatus.apple.com
+setup.icloud.com
+skl.apple.com
+sq-device.apple.com
 static.ips.apple.com
-swcdn.apple.com # macOS updates.
-swdist.apple.com # macOS updates.
-swdownload.apple.com # macOS updates.
-swpost.apple.com # macOS updates.
-swscan.apple.com # macOS updates.
+swcdn.apple.com
+swdist.apple.com
+swdownload.apple.com
+swpost.apple.com
+swscan.apple.com
 tbsc.apple.com
-time-ios.apple.com # Used by devices to set their date and time.
-time-macos.apple.com # Used by devices to set their date and time.
-time.apple.com # Used by devices to set their date and time.
+time-ios.apple.com
+time-macos.apple.com
+time.apple.com
 updates-http.cdn-apple.com
 updates.cdn-apple.com
-valid.apple.com # Security certificate validation.
-vpp.itunes.apple.com # MDM servers to perform operations related to Apps and Books, like assigning or revoking licenses on a device.
-ws-ee-maidsvc.icloud.com # Schoolwork Roster service.
+valid.apple.com
+vpp.itunes.apple.com
+ws-ee-maidsvc.icloud.com
 www.itunes.com
 xp.apple.com
