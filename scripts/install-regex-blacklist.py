@@ -224,11 +224,11 @@ else:
         for line in sorted(regexps_remote):
             fWrite.write(f'{line}\n')
 
-    print('[i] Pi-hole must be restarted. Please be patient while it reboots.')
+    print('[i] Restarting Pi-hole')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
-    print('[i] Pi-hole is back up and running!\n')
+    print('[i] Done - Please see your installed regexps below\n')
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
