@@ -307,7 +307,7 @@ if db_exists:
 
             if gsa == True:
                 # All domains are accounted for.
-                print("\n[i] All {} missing domain's that were to be added have been discovered in Gravity." .format(newWhiteListlen))
+                print("\n[i] All {} missing domain's have been found in Gravity." .format(newWhiteListlen))
 
             else:
                 print("\n[i] All {} new domain's have not been added to Gravity." .format(INnewNOTgravityListCount+1))
@@ -324,23 +324,19 @@ if db_exists:
         total_domains = tdr + tde
         print("[i] There are a total of {} domains in your whitelist (regex({}) & exact({}))" .format(total_domains, tdr, tde))
         sqliteConnection.close()
-        print('[i] The database connection has been closed')
+        print('[i] The connection was closed.')
         if ilng == True:
             print('[i] Please be patient while the Pi-hole restarts.')
             restart_pihole(args.docker)
 
     except sqlite3.Error as error:
         print('[X] Failed to add domains to the Gravity database', error)
-        print('\n')
-        print('\n')
         exit(1)
 
     finally:
-        print('\n')
-        print('Script complete! Happy ad-blocking :)')
+        print('Script completed! Happy ad-blocking :)')
         print('\n')
         print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
-        print('\n')
 
 else:
 
@@ -376,11 +372,15 @@ else:
         for line in sorted(whitelist_remote):
             fWrite.write("{}\n".format(line))
 
-    print('[i] The domains have been added to the Pi-hole\'s whitelist')
+    print('[i] The domains have been added to the whitelist.')
     print('\n')
-    print('[i] Please be patient while the Pi-hole restarts..')
+    print('[i] Pi-hole has to reboot. Please be patient until it completes.')
     restart_pihole(args.docker)
-    print('[i] The script has completed! Happy ad-blocking :)')
+    time.sleep(3)
+    os.system('clear')
+    print('[i] Pi-hole has finished rebooting.')
+    time.sleep(3)
+    os.system('clear')
+    print('[i] The script is finished! Happy ad-blocking :)')
     print('\n')
     print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
-    print('\n')
