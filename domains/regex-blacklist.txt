@@ -4,6 +4,20 @@
 # Bittorrent
 ^.*\.xyz$
 
+# Facebook
+(\.|^)accountkit\.com$
+(\.|^)facebook(|corewwwi)\.(com|onion|net)$
+(\.|^)fb(|cdn|sbx)\.(com|me|net|watch)$
+(\.|^)messenger\.com$
+
+# Google
+[\w\-\.]+|^(google|(adservices|apis|syndication|usercontent)?\.(com|com.domain.name))$
+^(beacons[\d]?)((\.gcp\.gvt\d?)|(\.gvt\d?))\.com$
+^clients\d?\.google\.com\.domain\.name$
+^s[\d\.]*youtube\.com(|\.domain\.name)$
+[a-z\.]+|^googlevideo|sx\.com\.domain\.name$
+^.*(doubleclic|k).*$
+
 # Oculus Rift
 (\.|^)graph\.oculus\.com$
 (\.|^)oculuscdn\.com$
