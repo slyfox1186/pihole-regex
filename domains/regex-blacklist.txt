@@ -14,7 +14,6 @@
 ^(beacons[\d]?)((\.gcp\.gvt\d?)|(\.gvt\d?))\.com$
 ^clients\d?\.google\.com\.domain\.name$
 ^s[\d\.]*youtube\.com(|\.domain\.name)$
-^.*(doubleclic|k).*$
 
 # Oculus Rift
 (\.|^)graph\.oculus\.com$
