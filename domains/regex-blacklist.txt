@@ -11,11 +11,9 @@
 (\.|^)messenger\.com$
 
 # Google
-[\w\-\.]+|^(google|(adservices|apis|syndication|usercontent)?\.(com|com.domain.name))$
 ^(beacons[\d]?)((\.gcp\.gvt\d?)|(\.gvt\d?))\.com$
 ^clients\d?\.google\.com\.domain\.name$
 ^s[\d\.]*youtube\.com(|\.domain\.name)$
-[a-z\.]+|^googlevideo|sx\.com\.domain\.name$
 ^.*(doubleclic|k).*$
 
 # Oculus Rift
@@ -39,7 +37,7 @@
 (\.|^)snap(-dev|ads|chat|kit)\.(c|com|net)$
 
 # Spotify
-^log[\d]*\.spotify\.com$
+^log\d*\.spotify\.com$
 ^pixel(|-static)\.spotify\.com$
 
 # TikTok
