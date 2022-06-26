@@ -40,7 +40,7 @@ def fetch_url(url):
 
 
 url_regexps_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/regex-blacklist.txt'
-install_comment = 'https://github.com/slyfox1186/pihole.regex'
+install_comment = 'slyregex'
 
 cmd_restart = ['pihole', 'restartdns', 'reload']
 
@@ -105,17 +105,17 @@ else:
 
 # Check for write access to /etc/pihole
 if os.access(path_pihole, os.X_OK | os.W_OK):
-    print(f'[i] The script HAS write access to {path_pihole}.')
+    print(f'[i] The script has write access to {path_pihole}.')
 else:
-    print(f'[e] The script DOES NOT have write access available for {path_pihole}. Please re-run the script as a privileged user.')
+    print(f'[e] The script does not have write access available for {path_pihole}. Please re-run the script as a privileged user.')
     exit(1)
 
 # Determine whether we are using DB or not
 if os.path.isfile(path_pihole_db) and os.path.getsize(path_pihole_db) > 0:
     db_exists = True
-    print('[i] DB detected')
+    print('[i] Gravity database detected.')
 else:
-    print('[i] Legacy regex.list detected')
+    print('[i] Legacy regex.list detected.')
 
 # Fetch the remote regexps
 str_regexps_remote = fetch_url(url_regexps_remote)
@@ -174,9 +174,11 @@ if db_exists:
 
     print('[i] Pi-hole must be restarted. Please be patient while it reboots.')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
+    print('\n')
+
 
     # Prepare final result
-    print('Pi-hole is back up and running!\n')
+    print('[i] Pi-hole is back up and running!\n')
 
     c.execute('Select domain FROM domainlist WHERE type = 3')
     final_results = c.fetchall()
