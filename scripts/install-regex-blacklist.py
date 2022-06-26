@@ -224,7 +224,6 @@ else:
         for line in sorted(RegExStrings_remote):
             fWrite.write(f'{line}\n')
 
-    print('[i] Pi-hole must be restarted. Please give it time to reboot.')
     print('[i] Pi-hole must restart... please wait for it to boot.')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
     
