@@ -172,12 +172,12 @@ if db_exists:
     if os.path.exists(path_legacy_slyfox1186_regex):
         os.remove(path_legacy_slyfox1186_regex)
 
-    print('[i] Pi-hole must be restarted. Please give it time to reboot.')
+    print('[i] Pi-hole must restart... please wait for it to boot.')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
     print('\n')
 
     # Prepare final result
-    print("[i] Pi-hole is back up and running! Please see your installed RegExStrings below\n")
+    print("[i] Pi-hole is now running! Script complete!\n")
 
     c.execute('Select domain FROM domainlist WHERE type = 3')
     final_results = c.fetchall()
@@ -225,10 +225,11 @@ else:
             fWrite.write(f'{line}\n')
 
     print('[i] Pi-hole must be restarted. Please give it time to reboot.')
+    print('[i] Pi-hole must restart... please wait for it to boot.')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
-
-    # Prepare final result
-    print('[i] Script complete! Please see your installed RegExStrings below\n')
+    
+# Prepare final result
+    print("[i] Pi-hole is now running! Script complete!\n")
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
