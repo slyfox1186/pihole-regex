@@ -4,7 +4,7 @@ import os
 import time
 import argparse
 import sqlite3
-import subprocess
+import subprocess, platform
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
@@ -87,7 +87,7 @@ print('\n')
 
 # Check if the pihole path exists
 if os.path.exists(pihole_location):
-    print("[i] Pi-hole's path has been located!")
+    print("[i] Pi-hole's path was located!")
 else:
     # Print(f'[X] {pihole_location} was not found')
     print("[X] {} was not found.".format(pihole_location))
@@ -111,7 +111,7 @@ else:
 # Determine whether we are using DB or not
 if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) > 0:
     db_exists = True
-    print("[i] The Pi-hole's Gravity database has been located!")
+    print("[i] The Gravity database has been located!")
 
     remote_sql_str = fetch_whitelist_url(remote_sql_url)
     remote_sql_lines = remote_sql_str.count('\n')
@@ -144,16 +144,16 @@ if db_exists:
     try: # Try to create a DB connection
         sqliteConnection = sqlite3.connect(gravity_db_location)
         cursor = sqliteConnection.cursor()
-        print('[i] The script is now connected to the Gravity database!')
+        print('[i] Connected successfully to the Gravity database!')
         #
-        print("[i] Checking Gravity's database for domains previously added by an earlier version of the script.")
+        print("[i] Checking for domains previously added by an earlier version of the script.")
         # Check Gravity database for domains added by script
         gravityScript_before = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%sly86%' ")
         # Fetch all matching entries which will create a tuple for us
         gravScriptBeforeTUP = gravityScript_before.fetchall()
         # Number of domains in database from script
         gravScriptBeforeTUPlen = len(gravScriptBeforeTUP)
-        print("[i] The script found {} domains already in the current whitelist." .format(gravScriptBeforeTUPlen))
+        print("[i] {} domains already in the current whitelist." .format(gravScriptBeforeTUPlen))
         #
         # Make `remote_sql_str` a tuple so we can easily compare
         newWhiteTUP = remote_sql_str.split('\n')
@@ -177,7 +177,7 @@ if db_exists:
             # Print(newWhiteList[nwl])
             nwl += 1 # count + 1
         # Check database for user added exact whitelisted domains
-        print("[i] Checking Gravity's database for any domains added by a user that are also in script.")
+        print("[i] Checking for any domains added by a user that are also in the repository.")
         # Check Gravity database for exact whitelisted domains added by user
         user_add = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment NOT LIKE '%sly86%' ")
         userAddTUP = user_add.fetchall()
@@ -206,7 +206,7 @@ if db_exists:
                 uA -= 1 # Go backwards
         else: # If we don't find any
             INgravityUSERaddListCount = 0 # Make sure this is 0
-            print('[i] Found {} domains added by the user that will be added by script.' .format(INgravityUSERaddListCount)) # Notify of negative result
+            print('[i] Found {} domains added by a user that will be added by script.' .format(INgravityUSERaddListCount)) # Notify of negative result
         #
         #
         # Check Gravity database for domains added by script that are not in new script
@@ -216,7 +216,7 @@ if db_exists:
         if uagl == True:
             print('\n')
 
-        print("[i] Checking Gravity's database for any previously added domains that are no longer in the current script respository.")
+        print("[i] Any previously added domains that are no longer in the current script respository will be removed.")
         ignl = False
         a = 0
         for INgravityNOTnew in gravScriptBeforeTUP: # For every domain previously added by script
@@ -245,7 +245,7 @@ if db_exists:
         # If not keep going
         else:
             INgravityNOTnewListCount = 0
-            print("[i] {} domain's were discovered that no longer exist in the current script and will be removed." .format(INgravityNOTnewListCount))
+            print("[i] {} domain's are no longer in the current whitelist and will be removed." .format(INgravityNOTnewListCount))
         #
         #
         # Check Gravity database for new domains to be added by script
@@ -330,7 +330,7 @@ if db_exists:
         os.system('clear')
 
         if ilng == True:
-            print('[i] Pi-hole Please be patient while the Pi-hole restarts.')
+            print('[i] Please be patient while the Pi-hole restarts.')
             restart_pihole(args.docker)
 
     except sqlite3.Error as error:
@@ -338,7 +338,7 @@ if db_exists:
         exit(1)
 
     finally:
-        print('Pi-hole is now updated! Happy ad-blocking :)')
+        print('The whitelist filters have been added successfully! Script complete!')
         print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
         print('\n')
 
@@ -377,10 +377,12 @@ else:
         for line in sorted(whitelist_remote):
             fWrite.write("{}\n".format(line))
 
-    print("[i] The repository domains have been added to Pi-hole's whitelist.")
+    print('[i] The whitelist filters have been added successfully! Script complete!')
     print('\n')
-    print('[i] Pi-hole must now be rebooted. Please be patient while it restarts.')
+    print('[i] Pi-hole must restart... please wait for it to boot.')
     restart_pihole(args.docker)
-    print('Pi-hole is now running! Happy ad-blocking :)')
+    print('\n')
+    print('[i] Pi-hole is now running! Script complete!')
+    print('\n')
     print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
     print('\n')

@@ -4,7 +4,7 @@ import json
 import os
 import time
 import sqlite3
-import subprocess
+import subprocess, platform
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 

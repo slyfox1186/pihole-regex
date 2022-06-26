@@ -98,16 +98,16 @@ path_pihole_db = os.path.join(path_pihole, 'gravity.db')
 
 # Check that Pi-hole path exists
 if os.path.exists(path_pihole):
-    print("[i] Pi-hole's path has been located!")
+    print("[i] Pi-hole's path exists!")
 else:
     print(f'[e] {path_pihole} was not found.')
     exit(1)
 
 # Check for write access to /etc/pihole
 if os.access(path_pihole, os.X_OK | os.W_OK):
-    print(f'[i] The script has write access to {path_pihole}.')
+    print(f'[i] Write access to {path_pihole} verified.')
 else:
-    print(f'[e] The script does not have write access available for {path_pihole}. Please re-run the script as a privileged user.')
+    print(f'[e] Write access is not available for {path_pihole}. Please run as a privileged user.')
     exit(1)
 
 # Determine whether we are using DB or not
@@ -142,7 +142,7 @@ if db_exists:
     c = conn.cursor()
 
     # Add / update remote RegExStrings
-    print("[i] Updating the RegExStrings in Gravity's database.")
+    print('[i] Adding / updating the RegExStrings in Gravity.')
 
     c.executemany('INSERT OR IGNORE INTO domainlist (type, domain, enabled, comment) '
                   'VALUES (3, ?, 1, ?)',
@@ -160,11 +160,11 @@ if db_exists:
 
     # Remove any local entries that do not exist in the remote list
     # (will only work for previous installs where we've set the comment field)
-    print('[i] Removeing old RegExStrings from Gravity.')
+    print('[i] Identifying obsolete RegExStrings.')
     RegExStrings_remove = RegExStrings_slyfox1186_local.difference(RegExStrings_remote)
 
     if RegExStrings_remove:
-        print('[i] Removeing old RegExStrings from Gravity.')
+        print('[i] Removeing obsolete RegExStrings.')
         c.executemany('DELETE FROM domainlist WHERE type = 3 AND domain in (?)', [(x,) for x in RegExStrings_remove])
         conn.commit()
 
@@ -179,8 +179,7 @@ if db_exists:
 
     # Prepare final result
     os.system("cls")
-    print("[i] Pi-hole is now running! Script complete!\n")
-
+    print("[i] Pi-hole is back up and running! Script complete!\n")
     c.execute('Select domain FROM domainlist WHERE type = 3')
     final_results = c.fetchall()
     RegExStrings_local.update(x[0] for x in final_results)
@@ -192,7 +191,7 @@ if db_exists:
 else:
     # If regex.list exists and is not empty, read it and add to a set.
     if os.path.isfile(path_legacy_regex) and os.path.getsize(path_legacy_regex) > 0:
-        print('[i] The script is analyzing the current regex.list')
+        print('[i] Analyzing the current regex.list')
         with open(path_legacy_regex, 'r') as fRead:
             RegExStrings_local.update(x for x in map(str.strip, fRead) if x and x[:1] != '#')
 
@@ -207,7 +206,7 @@ else:
                 RegExStrings_legacy_slyfox1186.update(x for x in map(str.strip, fOpen) if x and x[:1] != '#')
 
                 if RegExStrings_legacy_slyfox1186:
-                    print('[i] The script is removing previously installed RegExStrings')
+                    print('[i] Removing previously installed RegExStrings')
                     RegExStrings_local.difference_update(RegExStrings_legacy_slyfox1186)
 
     # Add remote RegExStrings to local RegExStrings
@@ -220,8 +219,7 @@ else:
         for line in sorted(RegExStrings_local):
             fWrite.write(f'{line}\n')
 
-    # Output slyfox1186 remote RegExStrings to slyfox1186-regex.list
-    # for future install / uninstall
+    # Output slyfox1186 remote RegExStrings to slyfox1186-regex.list for future install / uninstall
     with open(path_legacy_slyfox1186_regex, 'w') as fWrite:
         for line in sorted(RegExStrings_remote):
             fWrite.write(f'{line}\n')
@@ -230,8 +228,7 @@ else:
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
     
 # Prepare final result
-    print("[i] Pi-hole is now running! Script complete!\n")
-    time.sleep(3)
+    print('[i] Pi-hole is back up and running! Script complete!\n')
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')

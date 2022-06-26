@@ -4,10 +4,9 @@ import os
 import time
 import argparse
 import sqlite3
-import subprocess
+import subprocess, platform
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
-
 
 def fetch_whitelist_url(url):
 
@@ -95,7 +94,7 @@ Any other domains added by the user will remain uneffected.
 
 # Check for pihole path exsists
 if os.path.exists(pihole_location):
-    print("[i] Pi-hole's file path was found!")
+    print("[i] Pi-hole's path exists.")
 else:
     print("[X] {} was not found".format(pihole_location))
     print('\n')
@@ -117,7 +116,7 @@ else:
 # Determine whether we are using DB or not
 if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) > 0:
     db_exists = True
-    print("[i] The script successfully located Gravity's database.")
+    print("[i] Located Gravity's database.")
 
     remote_sql_str = fetch_whitelist_url(remote_sql_url)
     remote_sql_lines = remote_sql_str.count('\n')
@@ -137,24 +136,24 @@ if whitelist_str:
     whitelist_remote.update(x for x in map(
         str.strip, whitelist_str.splitlines()) if x and x[:1] != '#')
 else:
-    print('[X] The script failed to find any remote domains to connect to.')
+    print('[X] No remote domains found.')
     print('\n')
     print('\n')
     exit(1)
 
 if db_exists:
     # Create a DB connection
-    print("[i] Attempting to connect to Pi-hole's Gravity database.")
+    print("[i] Connecting to Gravity's database.")
 
     try:
         sqliteConnection = sqlite3.connect(gravity_db_location)
         cursor = sqliteConnection.cursor()
-        print("[i] The script successfully connected to Gravity.")
+        print("[i] Successfully connected to Gravity's database.")
         total_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%sly86%' ")
 
         totalDomains = len(total_domains.fetchall())
-        print("[i] {} domains were added to Pi-hole's whitelist." .format(totalDomains))
-        print("[i] Removing domains from Gravity's database.")
+        print("[i] A total of {} domains were added by this script." .format(totalDomains))
+        print("[i] Removing domains in Gravity's database.")
         cursor.execute (" DELETE FROM domainlist WHERE type = 0 AND comment LIKE '%sly86%' ")
 
         sqliteConnection.commit()
@@ -162,12 +161,12 @@ if db_exists:
         # We only removed domains we added so use total_domains
         print("[i] {} domains were removed." .format(totalDomains))
         remaining_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 OR type = 2 ")
-        print("[i] {} domains are still in Gravity's database." .format(len(remaining_domains.fetchall())))
+        print("[i] There are a total of {} domains remaining in your whitelist." .format(len(remaining_domains.fetchall())))
 
         cursor.close()
 
     except sqlite3.Error as error:
-        print("[X] The script failed to remove the domains from Gravity's database.", error)
+        print("[X] Failed to remove domains from Gravity's database.", error)
         print('\n')
         print('\n')
         exit(1)
@@ -176,12 +175,12 @@ if db_exists:
         if (sqliteConnection):
             sqliteConnection.close()
 
-            print('[i] The connection to Gravity has been closed.')
-            print('[i] Pi-hole will now reboot.')
-            print('[i] Please wait for it to reload.')
+            print('[i] Connection to Gravity is closed.')
+            time.sleep(2)
+            print('[i] Pi-hole must restart... please wait for it to boot.')
             restart_pihole(args.docker)
             print('\n')
-            print('Pi-hole is now running! Happy ad-blocking :)')
+            print('[i] Pi-hole is back up and running! Script complete!\n')
             print('\n')
             print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
             print('\n')
@@ -218,11 +217,14 @@ else:
         for line in sorted(whitelist_local):
             fWrite.write("{}\n".format(line))
 
-    print('[i] Restarting Pi-hole. Please wait for it to reboot.')
-    restart_pihole(args.docker)
-    print("[i] All matching domains have been successfully removed from Pi-hole's whitelist.")
+
+    print('[i] The whitelist filters have been successfully added!')
+    time.sleep(3)
     print('\n')
-    print('Pi-hole is now running! Happy ad-blocking :)')
+    print('[i] Pi-hole must restart... please wait for it to boot.')
+    restart_pihole(args.docker)
+    print('\n')
+    print('[i] Pi-hole is now running! Script complete!')
     print('\n')
     print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
     print('\n')
