@@ -339,7 +339,6 @@ if db_exists:
 
     finally:
         print('Pi-hole is now updated! Happy ad-blocking :)')
-        print('\n')
         print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
         print('\n')
 
@@ -383,6 +382,5 @@ else:
     print('[i] Pi-hole must now be rebooted. Please be patient while it restarts.')
     restart_pihole(args.docker)
     print('Pi-hole is now running! Happy ad-blocking :)')
-    print('\n')
     print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
     print('\n')
