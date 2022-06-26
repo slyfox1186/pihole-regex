@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import time
 import argparse
 import sqlite3
 import subprocess
@@ -108,8 +109,7 @@ if os.access(pihole_location, os.X_OK | os.W_OK):
     remote_whitelist_lines = whitelist_str.count('\n')
     remote_whitelist_lines += 1
 else:
-    print("[X] Write access is not available for {}. Please run as a privileged user." .format(
-        pihole_location))
+    print("[X] Write access is not available for {}. Please run the script as a privileged user." .format(pihole_location))
     print('\n')
     print('\n')
     exit(1)
@@ -144,7 +144,7 @@ else:
 
 if db_exists:
     # Create a DB connection
-    print('[i] Connecting to the Gravity database.')
+    print("[i] Attempting to connect to Pi-hole's Gravity database.")
 
     try:
         sqliteConnection = sqlite3.connect(gravity_db_location)
@@ -178,7 +178,7 @@ if db_exists:
 
             print("""[i] The connection to Gravity has been closed.
             [i] Pi-hole will now reboot.
-            [i] Please wait for it to load.
+            [i] Please wait for it to reload.
             """)
             restart_pihole(args.docker)
             print('\n')
