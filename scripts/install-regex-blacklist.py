@@ -228,7 +228,7 @@ else:
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
-     print('[i] Pi-hole is back up and running!\n')
+    print('[i] Pi-hole is back up and running!\n')
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
