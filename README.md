@@ -39,6 +39,31 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 ```
 3. Save changes
 
+## <ins>Automated Update</ins>
+
+```Shell
+cd /opt/
+sudo git clone https://github.com/anudeepND/whitelist.git
+```
+
+Make the script to run the script at 1AM on the last day of the week
+
+```Shell
+sudo nano /etc/crontab
+```
+
+Add this line at the end of the file:
+
+```Text
+0 1 * * */7     root    /opt/whitelist/scripts/whitelist.py
+```
+
+CTRL + X then Y and Enter
+
+```Shell
+sudo python3 whitelist/scripts/whitelist.py
+```
+
 
 ### Removing the manually created cron job
 
