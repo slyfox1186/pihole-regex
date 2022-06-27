@@ -44,4 +44,4 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 If this script is the only thing you've added to the root user's crontab, you can run: `sudo crontab -u root -r`
 
-Otherwise, run: `sudo crontab -u root -e` and manually remove the four lines listed above in the install instructions.
+Otherwise, run: `sudo crontab -u root -e` and manually remove the three lines listed above in the install instructions.
