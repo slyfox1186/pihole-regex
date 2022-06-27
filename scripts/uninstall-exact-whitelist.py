@@ -4,9 +4,9 @@ import os
 import argparse
 import sqlite3
 import subprocess, platform
+import time
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
-import time
 
 def fetch_whitelist_url(url):
 
