@@ -55,3 +55,21 @@
 
 # Tinder
 (\.|^)[go]*tinder[sparks]*\.com$
+
+# adulttime.com
+app.getbeamer.com
+backend.getbeamer.com
+beam.com
+cdn-cm.tiypa.com
+cdn.contentful.com
+cdn.polyfill.io
+d3a3ewgd1iewwz.cloudfront.net
+engine-cm.tiypa.com
+insights.algolia.io
+jlduihq7lrcdxgw4vrndhdfcsq.appsync-api.us-east-1.amazonaws.com
+kinesis.us-east-1.amazonaws.com
+kosmos-assets-prod.react.gammacdn.com
+realtime.getbeamer.com
+tsmkfa364q-dsn.algolia.net
+usage.trackjs.com
+xtnzefcqrb.execute-api.us-east-1.amazonaws.com
