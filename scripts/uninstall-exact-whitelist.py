@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
 import os
-import time
 import argparse
 import sqlite3
 import subprocess, platform
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
+import time
 
 def fetch_whitelist_url(url):
 
@@ -116,7 +116,7 @@ else:
 # Determine whether we are using DB or not
 if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) > 0:
     db_exists = True
-    print("[i] Located Gravity's database.")
+    print('[i] Pi-hole Gravity database found.')
 
     remote_sql_str = fetch_whitelist_url(remote_sql_url)
     remote_sql_lines = remote_sql_str.count('\n')
@@ -152,8 +152,8 @@ if db_exists:
         total_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%sly86%' ")
 
         totalDomains = len(total_domains.fetchall())
-        print("[i] A total of {} domains were added by this script." .format(totalDomains))
-        print("[i] Removing domains in Gravity's database.")
+        print("[i] There are a total of {} domains in your whitelist which were added by this script." .format(totalDomains))
+        print('[i] Removing domains in the Gravity database.')
         cursor.execute (" DELETE FROM domainlist WHERE type = 0 AND comment LIKE '%sly86%' ")
 
         sqliteConnection.commit()
@@ -177,7 +177,8 @@ if db_exists:
 
             print('[i] Connection to Gravity is closed.')
             time.sleep(2)
-            print('[i] Pi-hole must restart... please wait for it to boot.')
+
+            print('[i] Pi-hole is rebooting... it could take a few seconds.')
             restart_pihole(args.docker)
             print('\n')
             print('[i] Pi-hole is back up and running! Script complete!\n')
@@ -193,11 +194,11 @@ else:
                 str.strip, fRead) if x and x[:1] != '#')
 
     if whitelist_local:
-        print("[i] The script has located {} existing whitelisted domains." .format(
+        print("[i] {} existing whitelisted domains identified" .format(
             len(whitelist_local)))
 
         if os.path.isfile(slyfox1186_whitelist_location) and os.path.getsize(slyfox1186_whitelist_location) > 0:
-            print('[i] Existing slyfox1186-whitelist install files were found.')
+            print('[i] Existing slyfox1186-whitelist installation located.')
             with open(slyfox1186_whitelist_location, 'r') as fOpen:
                 whitelist_old_slyfox1186.update(x for x in map(
                     str.strip, fOpen) if x and x[:1] != '#')
@@ -208,7 +209,7 @@ else:
             os.remove(slyfox1186_whitelist_location)
 
         else:
-            print('[i] Removing all domains that match ones found in the scripts repository.')
+            print('[i] Removing all domains that match the remote repo.')
             whitelist_local.difference_update(whitelist_remote)
 
     print("[i] Adding exsisting {} domains to {}" .format(
@@ -217,14 +218,9 @@ else:
         for line in sorted(whitelist_local):
             fWrite.write("{}\n".format(line))
 
-
-    print('[i] The whitelist filters have been successfully added!')
-    time.sleep(3)
-    print('\n')
     print('[i] Pi-hole must restart... please wait for it to boot.')
     restart_pihole(args.docker)
+    print('[i] The domains are now removed your Pi-hole whitelist.')
     print('\n')
-    print('[i] Pi-hole is now running! Script complete!')
-    print('\n')
-    print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
+    print('Star me on GitHub: https://github.com/anudeepND/whitelist.')
     print('\n')
