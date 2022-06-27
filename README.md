@@ -1,5 +1,5 @@
 ## RegEx Filters for Pi-hole
-Customized RegEx filters for use with Pi-hole v4+ (FTLDNS).
+Customized RegEx and exact filters for use with Pi-hole v5+ (FTLDNS).
 
 The purpose of this filter list is to compliment your existing blocklist's using powerful regular expressions that can cover a broad range of domains in one go.
 
@@ -7,19 +7,23 @@ All commands need to be entered via a Terminal after logging in and you need to 
 
 ### Add/Update the RegEx filters to Pi-hole:
 ```
-/usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/install.py' | sudo /usr/bin/python3 && \
-/usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py' | sudo /usr/bin/python3
+curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/install-regex-blacklist.py' | sudo python3
 ```
 
 ### Remove RegEx filters from Pi-hole:
 ```
-/usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py' | sudo /usr/bin/python3
+curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/uninstall-regex-blacklist.py' | sudo python3
 ```
 
-### Add whitelist filters to Pi-hole:
+### Add exact whitelist filters to Pi-hole:
 ```
-git clone 'https://github.com/slyfox1186/pihole.youtube.blocklist.git'
-sudo /usr/bin/python3 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/whitelist/scripts/whitelist.py'
+git clone 'https://github.com/slyfox1186/pihole.regex.git'
+sudo python3 'pihole.regex/scripts/install-exact-whitelist.py'
+```
+### Remove exact whitelist filters from Pi-hole:
+```
+git clone 'https://github.com/slyfox1186/pihole.regex.git'
+sudo python3 'pihole.regex/scripts/uninstall-exact-whitelist.py'
 ```
 
 ### Keep these RegEx filters up-to-date with cron (optional)
@@ -31,16 +35,13 @@ Instructions to create a cron job to auto update the RegEx filters every Sunday 
 ```
 SHELL=/bin/bash
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-0 5 * * 0 /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/uninstall.py' | sudo /usr/bin/python3 && \
-/usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.youtube.blocklist/main/install.py' | sudo /usr/bin/python3
+0 5 * * 0 curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/install-regex-blacklist.py' | sudo python3
 ```
 3. Save changes
 
+
 ### Removing the manually created cron job
-If this script is the only thing you've added to the root user's crontab, you can run:
 
-`sudo crontab -u root -r`
+If this script is the only thing you've added to the root user's crontab, you can run: `sudo crontab -u root -r`
 
-Otherwise, run:
-
-`sudo crontab -u root -e` and manually remove the four lines listed above in the install instructions.
+Otherwise, run: `sudo crontab -u root -e` and manually remove the four lines listed above in the install instructions.
