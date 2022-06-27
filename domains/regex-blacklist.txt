@@ -1,4 +1,7 @@
-##### RegEx Blacklist for use with Pi-hole #####
+###################################
+##### RegEx Blacklist Section #####
+###################################
+
 # https://github.com/slyfox1186/pihole.regex/
 
 # Bittorrent
