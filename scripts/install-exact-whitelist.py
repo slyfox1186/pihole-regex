@@ -338,6 +338,7 @@ if db_exists:
     finally:
         print('\n')
         print('The whitelist filters have been added successfully! Script complete!')
+        print('\n')
         print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
         print('\n')
 
