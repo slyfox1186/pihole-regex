@@ -1,8 +1,6 @@
-###################################
-##### RegEx Blacklist Section #####
-###################################
 
-# https://github.com/slyfox1186/pihole.regex/
+## RegEx Blacklist
+## Github repository: https://github.com/slyfox1186/pihole.regex/
 
 # Bittorrent
 ^.*\.xyz$
@@ -41,41 +39,22 @@
 # Spotify
 ^log\d*\.spotify\.com$
 ^pixel(|-static)\.spotify\.com$
+audio-sp-sea.spotifycdn.net	spotify
+scdnco.spotify.map.fastly.net
 
 # TikTok
-(\.|^)amemv\.com$
-(\.|^)bdurl\.com$
-(\.|^)bytecdn\.cn$
-(\.|^)bytedance\.map\.fastly\.net$
-(\.|^)byteimg\.com$
-(\.|^)douyin\.com$
-(\.|^)muscdn\.com$
-(\.|^)musical\.ly$
-(\.|^)pstatp\.com$
-(\.|^)snssdk\.com$
-(\.|^)tiktok[cdnv]*\.com$
-(\.|^)toutiao[cloud]*\.(com|net)$
+^(.*|^)amemv\.com$
+^(.*|^)bdurl\.com$
+^(.*|^)douyin\.com$
+^(.*|^)byte(cdn|dance|img|dtos|oversea).*\.(cn|com|fastly|map|net)$
+^(.*|^)pstatp\.com$
+^(.*|^)snssdk\.com$
+^(.*|^)toutiao.*\.(com|net)$
+^(.*|^)mus(cdn|ical|emuse)\.(ly|cn|com)$
+^(.*|^)tiktok\.com$
 
 # Tinder
-(\.|^)[go]*tinder[sparks]*\.com$
+^(.*|^)[go]*tinder[sparks]*\.com$
 
-
-##### whitelist below #####
-
-# adulttime.com
-app.getbeamer.com
-backend.getbeamer.com
-beam.com
-cdn-cm.tiypa.com
-cdn.contentful.com
-cdn.polyfill.io
-d3a3ewgd1iewwz.cloudfront.net
-engine-cm.tiypa.com
-insights.algolia.io
-jlduihq7lrcdxgw4vrndhdfcsq.appsync-api.us-east-1.amazonaws.com
-kinesis.us-east-1.amazonaws.com
-kosmos-assets-prod.react.gammacdn.com
-realtime.getbeamer.com
-tsmkfa364q-dsn.algolia.net
-usage.trackjs.com
-xtnzefcqrb.execute-api.us-east-1.amazonaws.com
+# Twitter
+(\.|^)twimg\.com$
