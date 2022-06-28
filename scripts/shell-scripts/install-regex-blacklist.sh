@@ -22,7 +22,7 @@ fi
 shopt -s nocasematch
 
 # Get the user input
-echo -e "Please choose an option:\\n[A]dd or [R]emove the RegEx blacklist filters: "
+echo -e "Please choose an option:\\n\\n[A]dd or [R]emove the RegEx blacklist filters: "
 read myChoice
 if [ "$myChoice" == "A" ]; then
     echo -e "Adding the custom RegEx filters to Pi-hole.\\n"
