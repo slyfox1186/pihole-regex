@@ -166,9 +166,9 @@ if db_exists:
         newWL = [None]
         newWhiteList = [None] * newWhiteListlen
         for newWhiteDomain in newWhiteTUP: # for each line found domains.sql
+          if newWhiteDomain.startswith('#'):
+            continue
             nW[nwl] = newWhiteDomain # Add line to a controlled list
-            if newWhiteDomain.startswith('#'):
-                continue
             removeBrace = nW[nwl].replace('(', '') # remove (
             removeBraces10 = removeBrace.replace(')', '') # remove )
             newWL = removeBraces10.split(', ') # split at commas to create a list
