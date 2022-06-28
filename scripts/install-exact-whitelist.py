@@ -166,9 +166,9 @@ if db_exists:
         newWL = [None]
         newWhiteList = [None] * newWhiteListlen
         for newWhiteDomain in newWhiteTUP: # For each line found domains.sql
-          li = line.strip()
+          li = newWhiteDomain.strip()
           if not li.startswith("/"):
-            print line.rstrip()
+            print newWhiteDomain.rstrip()
           nW[nwl] = newWhiteDomain # Add line to a controlled list
           removeBrace = nW[nwl].replace('(', '') # Remove (
           removeBraces10 = removeBrace.replace(')', '') # Remove )
