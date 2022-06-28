@@ -1,5 +1,22 @@
-## RegEx Blacklist
-## Github repository: https://github.com/slyfox1186/pihole.regex/
+###################################
+##### RegEx Blacklist Section #####
+###################################
+
+# Github repository: https://github.com/slyfox1186/pihole.regex/
+
+# Apple
+^(.*|^)amazonaws\.com
+^(.*|^)apps.apple\.com
+^(.*|^)cdn-apple\.com
+^(.*|^)deimos3.apple\.com
+^(.*|^)digicert\.com
+^(.*|^)gg.*apple\.com
+^(.*|^)itunes.apple\.com
+^(.*|^)mesu.apple\.com
+^(.*|^)mzstatic\.com
+^(.*|^)push.apple\.com
+^(.*|^)symcb\.com
+^(.*|^)symcd\.com
 
 # Bittorrent
 ^.*\.xyz$
@@ -27,6 +44,10 @@
 # OK.ru
 (\.|^)ok\.ru$
 
+# Reddit
+(\.|^)reddit\.com$
+(\.|^)redd\.it$
+
 # Roblox
 (\.|^)(roblox|(rbx)(cdn|trk))\.(com|plus)$
 
@@ -38,22 +59,30 @@
 # Spotify
 ^log\d*\.spotify\.com$
 ^pixel(|-static)\.spotify\.com$
-audio-sp-sea.spotifycdn.net	spotify
-scdnco.spotify.map.fastly.net
+
+# symcb.com
+s{1..5}.symcb.com
 
 # TikTok
-^(.*|^)amemv\.com$
-^(.*|^)bdurl\.com$
-^(.*|^)douyin\.com$
-^(.*|^)byte(cdn|dance|img|dtos|oversea).*\.(cn|com|fastly|map|net)$
-^(.*|^)pstatp\.com$
-^(.*|^)snssdk\.com$
-^(.*|^)toutiao.*\.(com|net)$
-^(.*|^)mus(cdn|ical|emuse)\.(ly|cn|com)$
-^(.*|^)tiktok\.com$
+(\.|^)amemv\.com$
+(\.|^)bdurl\.com$
+(\.|^)bytecdn\.cn$
+(\.|^)bytedance\.map\.fastly\.net$
+(\.|^)byteimg\.com$
+(\.|^)douyin\.com$
+(\.|^)muscdn\.com$
+(\.|^)musical\.ly$
+(\.|^)pstatp\.com$
+(\.|^)snssdk\.com$
+(\.|^)tiktok[cdnv]*\.com$
+(\.|^)toutiao[cloud]*\.(com|net)$
 
 # Tinder
-^(.*|^)[go]*tinder[sparks]*\.com$
+(\.|^)[go]*tinder[sparks]*\.com$
 
 # Twitter
 (\.|^)twimg\.com$
+
+# WhatsApp
+^((www|(w[0-9]\.)?web|media((-[a-z]{3}|\.[a-z]{4})[0-9]{1,2}-[0-9](\.|-)(cdn|fna))?)\.)?whatsapp\.(com|net)$
+^whatsapp-cdn-shv-[0-9]{2}-[a-z]{3}[0-9]\.fbcdn\.net$
