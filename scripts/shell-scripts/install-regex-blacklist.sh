@@ -3,15 +3,15 @@
 clear
 
 # Change the working directory to user's home
-cd ~
+cd $HOME
 
-# Create ~/myScripts directory if it doesn't exist
-if [ ! -d ~/myScripts ]; then
-    mkdir -pv ~/myScripts
+# Create $HOME/myScripts directory if it doesn't exist
+if [ ! -d "$HOME/myScripts" ]; then
+    mkdir -pv "$HOME/myScripts"
 fi
 
-# Change the working directory to the ~/myScripts directory
-cd ~/myScripts
+# Change the working directory to the $HOME/myScripts directory
+cd "$HOME/myScripts"
 
 # Delete any leftover files from previous runs.
 if [ -d pihole.regex ]; then
