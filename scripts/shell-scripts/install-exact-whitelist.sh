@@ -2,13 +2,16 @@
 
 clear
 
-# Create ~/myScripts directory if not exist
-if [ ! -d ~/myScripts ]; then
-    mkdir -pv ~/myScripts
+# Change to user's home directory
+cd $HOME
+
+# Create $HOME/myScripts directory if not exist
+if [ ! -d $HOME/myScripts ]; then
+    mkdir -pv $HOME/myScripts
 fi
 
-# Change to ~/myScripts directory
-cd ~/myScripts
+# Change to $HOME/myScripts directory
+cd $HOME/myScripts
 
 # Delete any leftover files from previous runs.
 if [ -d pihole.regex ]; then
