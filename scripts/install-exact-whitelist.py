@@ -169,7 +169,7 @@ if db_exists:
             nW[nwl] = newWhiteDomain # Add line to a controlled list
             removeComments = nW[nwl].startswith('/')
             if not removeComments:
-              print(newWhiteDomain)
+              continue
             removeBrace = nW[nwl].replace('(', '') # Remove (
             removeBraces10 = removeBrace.replace(')', '') # Remove )
             newWL = removeBraces10.split(', ') # Split at commas to create a list
