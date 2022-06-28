@@ -1,6 +1,7 @@
-## Exact Whitelist
+## Exact Blacklist
 ## Github repository: https://github.com/slyfox1186/pihole.regex/
 
 # Spotify
 audio-sp-sea.spotifycdn.net
 scdnco.spotify.map.fastly.net
+www.sslshopper.com
