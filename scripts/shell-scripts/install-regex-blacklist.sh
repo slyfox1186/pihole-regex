@@ -2,21 +2,26 @@
 
 clear
 
-# Change to user's home directory
+# Change the working directory to user's home
 cd $HOME
 
-# Create $HOME/myScripts directory if not exist
+# Create $HOME/myScripts directory if it doesn't exist
 if [ ! -d $HOME/myScripts ]; then
     mkdir -pv $HOME/myScripts
 fi
 
-# Change to $HOME/myScripts directory
+# Change the working directory to the $HOME/myScripts directory
 cd $HOME/myScripts
+
+# Delete any leftover files from previous runs.
+if [ -d pihole.regex ]; then
+    rm -R pihole.regex
+fi
 
 # Make user input case insensitive
 shopt -s nocasematch
 
-# Get user input
+# Get the user input
 echo "Please choose an option: [A]dd or [R]emove the custom RegEx blacklist filters: "
 read myChoice
 if [ "$myChoice" == "A" ]; then
