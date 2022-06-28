@@ -2,19 +2,6 @@
 
 clear
 
-# Create $HOME/myScripts directory if it doesn't exist
-if [ ! -d "$HOME/myScripts" ]; then
-    mkdir -pv "$HOME/myScripts"
-fi
-
-# Change the working directory to $HOME/myScripts
-pushd "$HOME/myScripts"
-
-# Delete any leftover files from previous runs.
-if [ -d pihole.regex ]; then
-    rm -R pihole.regex
-fi
-
 # Make user input case insensitive
 shopt -s nocasematch
 
@@ -33,5 +20,4 @@ elif [[ $a == "R" ]]; then
     /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/uninstall-regex-blacklist.py' | sudo python3
 else
     echo -e "Syntax failure!\\nYou must input either the letter 'A' or 'R'\\nTry running the commands again."
-    exit 1
 fi
