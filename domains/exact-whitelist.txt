@@ -52,8 +52,6 @@ cf.iadsdk.apple.com
 configuration.apple.com
 crl.apple.com
 crl.entrust.net
-crl3.digicert.com
-crl4.digicert.com
 cssubmissions.apple.com
 deviceenrollment.apple.com
 deviceservices-external.apple.com
@@ -94,8 +92,6 @@ metrics.icloud.com
 news.iadsdk.apple.com
 ns.itunes.apple.com
 ocsp.apple.com
-ocsp.digicert.cn
-ocsp.digicert.com
 ocsp.entrust.net
 ocsp2.apple.com
 oscdn.apple.com
@@ -152,6 +148,10 @@ pings.conviva.com
 zee.cws.conviva.com
 
 # Digicert
+crl3.digicert.com
+crl4.digicert.com
+ocsp.digicert.cn
+ocsp.digicert.com
 
 # DiscoveryPlus App
 x-default-stgec.uplynk.com
