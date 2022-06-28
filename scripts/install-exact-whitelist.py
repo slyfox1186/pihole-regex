@@ -165,16 +165,16 @@ if db_exists:
         nwl = 0 # keep a count
         newWL = [None]
         newWhiteList = [None] * newWhiteListlen
-        for newWhiteDomain in newWhiteTUP: # For each line found domains.sql
+        for newWhiteDomain in newWhiteTUP: # for each line found domains.sql
             nW[nwl] = newWhiteDomain # Add line to a controlled list
-            removeBrace = nW[nwl].replace('(', '') # Remove (
-            removeBraces10 = removeBrace.replace(')', '') # Remove )
-            newWL = removeBraces10.split(', ') # Split at commas to create a list
-            newWhiteList[nwl] = newWL[1].replace('\'', '') # Remove ' from domain and add to list
-            # Uncomment to see list of sql varables being imported
-            print(nW[nwl])
-            # Uncomment to see list of domains being imported
-            Print(newWhiteList[nwl])
+            removeBrace = nW[nwl].replace('(', '') # remove (
+            removeBraces10 = removeBrace.replace(')', '') # remove )
+            newWL = removeBraces10.split(', ') # split at commas to create a list
+            newWhiteList[nwl] = newWL[1].replace('\'', '') # remove ' from domain and add to list
+            # uncomment to see list of sql varables being imported
+            # print (nW[nwl])
+            # uncomment to see list of domains being imported
+            # print(newWhiteList[nwl])
             nwl += 1 # count + 1
         # Check database for user added exact whitelisted domains
         print('[i] Checking Gravity for domains added by a user that are also in the script.')
