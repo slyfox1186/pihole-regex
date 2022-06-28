@@ -166,6 +166,7 @@ if db_exists:
         nwl = 0 # keep a count
         newWL = [None]
         newWhiteList = [None] * newWhiteListlen
+        removeComments = [None] * (re.sub('^\/.*$', '', newWhiteListlen))
         for newWhiteDomain in newWhiteTUP: # For each line found domains.sql
             nW[nwl] = newWhiteDomain # Add line to a controlled list
             removeComments[nwl] = (re.sub('^\/.*$', '', nW[nwl]))
