@@ -2,15 +2,12 @@
 
 clear
 
-# Change the working directory to user's home
-cd $HOME
-
 # Create $HOME/myScripts directory if it doesn't exist
 if [ ! -d "$HOME/myScripts" ]; then
     mkdir -pv "$HOME/myScripts"
 fi
 
-# Change the working directory to the $HOME/myScripts directory
+# Change the working directory to $HOME/myScripts
 cd "$HOME/myScripts"
 
 # Delete any leftover files from previous runs.
@@ -20,8 +17,9 @@ fi
 
 # Make user input case insensitive
 shopt -s nocasematch
-# Get the user input
-echo -e "SlyFox1186's RegEx blacklist filters\\n\\nPlease choose an option: [A]dd or [R]emove: "
+
+# Get the user's input
+echo -e "Install script for SlyFox1186's RegEx blacklist filters\\n\\nPlease choose an option: [A]dd or [R]emove: "
 read a
 if [[ $a == "A" ]]; then
     clear
