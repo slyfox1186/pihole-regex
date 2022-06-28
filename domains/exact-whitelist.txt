@@ -509,6 +509,7 @@ reddit.map.fastly.net
 redditmedia.com
 sendbirdproxyk8s.chat.redditmedia.com
 styles.redditmedia.com
+v.reddit.com
 www.redditmedia.com
 www.redditstatic.com
 
