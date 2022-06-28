@@ -166,7 +166,7 @@ if db_exists:
         newWL = [None]
         newWhiteList = [None] * newWhiteListlen
         for newWhiteDomain in newWhiteTUP: # For each line found domains.sql
-          li = newWhiteDomain.strip()
+          li=newWhiteDomain.strip()
           if not li.startswith("/"):
             print newWhiteDomain.rstrip()
           nW[nwl] = newWhiteDomain # Add line to a controlled list
