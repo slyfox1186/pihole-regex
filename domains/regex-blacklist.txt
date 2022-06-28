@@ -50,7 +50,6 @@
 (\.|^)wmail.*$
 
 # Reddit
-(\.|^)reddit\.com$
 (\.|^)redd\.it$
 
 # Roblox
