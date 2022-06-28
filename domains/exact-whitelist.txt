@@ -1,13 +1,21 @@
+## Exact whitelist
+## Github repository: https://github.com/slyfox1186/pihole.regex/
+
+# Adobe
 activate.adobe.com
 assets.adobedtm.com
 entitlement.auth.adobe.com
 fpdownload.adobe.com
 lm.licenses.adobe.com
+
+# Akami
 akamaihd.net
 akamaitechnologies.com
 akamaized.net
 fbcdn-creative-a.akamaihd.net
 lastfm-img2.akamaized.net
+
+# Amazon
 amazonaws.com
 amzn.com
 amzn.to
@@ -24,6 +32,8 @@ todo-ta-g7g.amazon.com
 unagi-na.amazon.com
 us-east-1.amazonaws.com
 whispersystems-textsecure-attachments.s3-accelerate.amazonaws.com
+
+# Apple
 albert.apple.com
 appldnld.apple.com
 appldnld.apple.com.edgesuite.net
@@ -119,29 +129,47 @@ www.icloud.com
 www.itunes.com
 xp-cdn.apple.com
 xp.apple.com
+
+# Cloudflare
 cdn.cloudflare.net
 cdnjs.cloudflare.com
+
+# Cloudfront
 d1oxlq5h9kq8q5.cloudfront.net
 d2c8v52ll5s99u.cloudfront.net
 d2gatte9o95jao.cloudfront.net
 d83eunklitikj.cloudfront.net
 dsms0mj1bbhn4.cloudfront.net
+
+# Conviva
 cws.conviva.com
 livepassdl.conviva.com
 pings.conviva.com
 zee.cws.conviva.com
+
+# Digicert
 crl3.digicert.com
 crl4.digicert.com
 ocsp.digicert.cn
 ocsp.digicert.com
+
+# DiscoveryPlus App
 x-default-stgec.uplynk.com
+
+# Dropbox
 dl.dropbox.com
 dl.dropboxusercontent.com
 ns1.dropbox.com
 ns2.dropbox.com
+
+# Ebay
 rover.ebay.com
+
+# Epic Games
 graphql.epicgames.com
 tracking.epicgames.com
+
+# Facebook
 0-edge-chat.facebook.com
 1-edge-chat.facebook.com
 2-edge-chat.facebook.com
@@ -196,10 +224,16 @@ upload.facebook.com
 video.xx.fbcdn.net
 web.facebook.com
 www.facebook.com
+
+# Firefox / Mozilla
 tracking-protection.cdn.mozilla.net
+
+# Github
 github.com
 github.io
 raw.githubusercontent.com
+
+# Google
 0.client-channel.google.com
 2.android.pool.ntp.org
 android.clients.google.com
@@ -236,10 +270,16 @@ translate.google.com
 video-stats.l.google.com
 www.google-analytics.com
 www.googleapis.com
+
+# HisSmartTV
 api.euro.hismarttv.com
 api.us.hismarttv.com
+
+# Linux
 linuxtracker.org
 www.linuxtracker.org
+
+# Microsoft
 1drv.com
 2.tlu.dl.delivery.mp.microsoft.com
 4.tlu.dl.delivery.mp.microsoft.com
@@ -375,6 +415,8 @@ xflight.xboxlive.com
 xkms.xbolive.com
 xkms.xboxlive.com
 xsts.auth.xboxlive.com
+
+# MyHomeScreenTV
 mhc-ajax-eu-s2.myhomescreen.tv
 mhc-ajax-eu.myhomescreen.tv
 mhc-ajax-us.myhomescreen.tv
@@ -383,20 +425,30 @@ mhc-us.myhomescreen.tv
 mhc-xpana-eu-s2.myhomescreen.tv
 mhc-xpana-eu.myhomescreen.tv
 mhc-xpana-us.myhomescreen.tv
+
+# Netflix
 api-global.netflix.com
 appboot.netflix.com
 netflix.com
 nrdp.nccp.netflix.com
 secure.netflix.com
+
+# no-ip
 dynupdate.no-ip.com
 no-ip.com
 www.no-ip.com
+
+# Nvidia / Geforce
 events.gfe.nvidia.com
 gfwsl.geforce.com
 ota-downloads.nvidia.com
+
+# Optimizely
 cdn.optimizely.com
 cdn2.optimizely.com
 cdn3.optimizely.com
+
+# Plex Media Server
 106c06cd218b007d-b1e8a1331f68446599e96a4b46a050f5.ams.plex.services
 app.plex.tv
 apt.sonarr.tv
@@ -433,6 +485,8 @@ tvthemes.plexapp.com
 tvthemes.plexapp.com.cdn.cloudflare.net
 www.opensubtitles.org
 www.plex.tv
+
+# Pluto.tv
 api.pluto.tv
 cdn-mobile.api.pluto.tv
 images.pluto.tv
@@ -440,6 +494,8 @@ players.pluto.tv
 silo.pluto.tv
 siloh.pluto.tv
 stitcher.pluto.tv
+
+# Reddit
 api2.branch.io
 diagnostics.redditmedia.com
 events-test-v2.redditmedia.com
@@ -455,7 +511,11 @@ sendbirdproxyk8s.chat.redditmedia.com
 styles.redditmedia.com
 www.redditmedia.com
 www.redditstatic.com
+
+# Rockstar Games
 prod.telemetry.ros.rockstargames.com
+
+# Samsung
 auth.samsungosp.com
 cdn.samsungcloudsolution.com
 lcprd1.samsungcloudsolution.net
@@ -469,10 +529,14 @@ samsungosp.com
 samsungotn.net
 time.samsungcloudsolution.com
 www.samsungotn.net
+
+# Shopping websites
 s.shopify.com
 v.shopify.com
 www.aliexpress.com
 www.squaretrade.com
+
+# ShortLinks
 adf.ly
 bit.ly
 ow.ly
@@ -480,6 +544,8 @@ tinyurl.com
 www.adf.ly
 www.bit.ly
 www.ow.ly
+
+# Signal
 api.directory.signal.org
 cdn.signal.org
 chat.signal.org
@@ -489,9 +555,13 @@ storage.signal.org
 ud-chat.signal.org
 updates2.signal.org
 www.signal.org
+
+# Sony
 applicast.ga.sony.net
 portal.store.sonyentertainmentnetwork.com
 update.biv.sony.tv
+
+# Spotify
 accounts.spotify.com
 api-tv.spotify.com
 apresolve.spotify.com
@@ -512,14 +582,20 @@ spclient-wg.spotify.com
 spclient.wg.spotify.com
 t.scdn.co
 weblb-wg.dual-gslb.spotify.com
+
+# Target
 m.weeklyad.target.com
 weeklyad.target.com
 weeklyad.target.com.edgesuite.net
+
+# Turner
 amd.cdn.turner.com
 i.cdn.turner.com
 pmd.cdn.turner.com
 s.cdn.turner.com
 z.cdn.turner.com
+
+# Twitter
 api.twitter.com
 mobile.twitter.com
 t.co
@@ -527,17 +603,27 @@ twimg.com
 twitter.com
 upload.twitter.com
 www.twitter.com
+
+# Vizio
 announcements.vizio.com
 api.vizio.com
 images.vizio.com
+
+# Weather
 api.accuweather.com
 v.w-x.co
+
+# Wordpress
 s1.wp.com
 wordpress.com
 wp.com
+
+# Yahoo
 yahoo.com
 s.yimg.com
 s1.yimg.com
+
+# YouTube
 geo3.ggpht.com
 i.ytimg.com
 i1.ytimg.com
@@ -551,6 +637,8 @@ youtube-nocookie.com
 youtube.com
 youtubei.googleapis.com
 yt3.ggpht.com
+
+# Miscellaneous
 ae01.alicdn.com
 alluremedia.com
 api.ipify.org
