@@ -3,10 +3,7 @@
 clear
 
 # Change the working directory to the users home
-cd "$HOME"
-echo $PWD
-read -p "Press Enter to Exit"
-exit
+pushd $HOME
 
 # Create $HOME/myScripts directory if it doesn't exist
 if [ ! -d "$HOME/myScripts" ]; then
@@ -15,6 +12,9 @@ fi
 
 # Change the working directory to $HOME/myScripts
 cd "$HOME/myScripts"
+echo $PWD
+read -p "Press Enter to Exit"
+exit
 
 # Delete any leftover files from previous runs.
 if [ -d pihole.regex ]; then
