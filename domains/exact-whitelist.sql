@@ -1,13 +1,21 @@
+/* Exact whitelist
+/* Github repository: https://github.com/slyfox1186/pihole.regex/
+
+/* Adobe */
 (0, 'activate.adobe.com', 1, 'SlyEWL')
 (0, 'assets.adobedtm.com', 1, 'SlyEWL')
 (0, 'entitlement.auth.adobe.com', 1, 'SlyEWL')
 (0, 'fpdownload.adobe.com', 1, 'SlyEWL')
 (0, 'lm.licenses.adobe.com', 1, 'SlyEWL')
+
+/* Akami */
 (0, 'akamaihd.net', 1, 'SlyEWL')
 (0, 'akamaitechnologies.com', 1, 'SlyEWL')
 (0, 'akamaized.net', 1, 'SlyEWL')
 (0, 'fbcdn-creative-a.akamaihd.net', 1, 'SlyEWL')
 (0, 'lastfm-img2.akamaized.net', 1, 'SlyEWL')
+
+/* Amazon */
 (0, 'amazonaws.com', 1, 'SlyEWL')
 (0, 'amzn.com', 1, 'SlyEWL')
 (0, 'amzn.to', 1, 'SlyEWL')
@@ -24,6 +32,8 @@
 (0, 'unagi-na.amazon.com', 1, 'SlyEWL')
 (0, 'us-east-1.amazonaws.com', 1, 'SlyEWL')
 (0, 'whispersystems-textsecure-attachments.s3-accelerate.amazonaws.com', 1, 'SlyEWL')
+
+/* Apple */
 (0, 'albert.apple.com', 1, 'SlyEWL')
 (0, 'appldnld.apple.com', 1, 'SlyEWL')
 (0, 'appldnld.apple.com.edgesuite.net', 1, 'SlyEWL')
@@ -119,29 +129,47 @@
 (0, 'www.itunes.com', 1, 'SlyEWL')
 (0, 'xp-cdn.apple.com', 1, 'SlyEWL')
 (0, 'xp.apple.com', 1, 'SlyEWL')
+
+/* Cloudflare */
 (0, 'cdn.cloudflare.net', 1, 'SlyEWL')
 (0, 'cdnjs.cloudflare.com', 1, 'SlyEWL')
+
+/* Cloudfront */
 (0, 'd1oxlq5h9kq8q5.cloudfront.net', 1, 'SlyEWL')
 (0, 'd2c8v52ll5s99u.cloudfront.net', 1, 'SlyEWL')
 (0, 'd2gatte9o95jao.cloudfront.net', 1, 'SlyEWL')
 (0, 'd83eunklitikj.cloudfront.net', 1, 'SlyEWL')
 (0, 'dsms0mj1bbhn4.cloudfront.net', 1, 'SlyEWL')
+
+/* Conviva */
 (0, 'cws.conviva.com', 1, 'SlyEWL')
 (0, 'livepassdl.conviva.com', 1, 'SlyEWL')
 (0, 'pings.conviva.com', 1, 'SlyEWL')
 (0, 'zee.cws.conviva.com', 1, 'SlyEWL')
+
+/* Digicert */
 (0, 'crl3.digicert.com', 1, 'SlyEWL')
 (0, 'crl4.digicert.com', 1, 'SlyEWL')
 (0, 'ocsp.digicert.cn', 1, 'SlyEWL')
 (0, 'ocsp.digicert.com', 1, 'SlyEWL')
+
+/* DiscoveryPlus App */
 (0, 'x-default-stgec.uplynk.com', 1, 'SlyEWL')
+
+/* Dropbox */
 (0, 'dl.dropbox.com5', 1, 'SlyEWL')
 (0, 'dl.dropboxusercontent.com5', 1, 'SlyEWL')
 (0, 'ns1.dropbox.com5', 1, 'SlyEWL')
 (0, 'ns2.dropbox.com5', 1, 'SlyEWL')
+
+/* Ebay */
 (0, 'rover.ebay.com', 1, 'SlyEWL')
+
+/* Epic Games */
 (0, 'graphql.epicgames.com', 1, 'SlyEWL')
 (0, 'tracking.epicgames.com', 1, 'SlyEWL')
+
+/* Facebook */
 (0, '0-edge-chat.facebook.com', 1, 'SlyEWL')
 (0, '1-edge-chat.facebook.com', 1, 'SlyEWL')
 (0, '2-edge-chat.facebook.com', 1, 'SlyEWL')
@@ -196,10 +224,16 @@
 (0, 'video.xx.fbcdn.net', 1, 'SlyEWL')
 (0, 'web.facebook.com', 1, 'SlyEWL')
 (0, 'www.facebook.com', 1, 'SlyEWL')
+
+/* Firefox / Mozilla */
 (0, 'tracking-protection.cdn.mozilla.net', 1, 'SlyEWL')
+
+/* Github */
 (0, 'github.com', 1, 'SlyEWL')
 (0, 'github.io', 1, 'SlyEWL')
 (0, 'raw.githubusercontent.com', 1, 'SlyEWL')
+
+/* Google */
 (0, '0.client-channel.google.com', 1, 'SlyEWL')
 (0, '2.android.pool.ntp.org', 1, 'SlyEWL')
 (0, 'android.clients.google.com', 1, 'SlyEWL')
@@ -236,10 +270,16 @@
 (0, 'video-stats.l.google.com', 1, 'SlyEWL')
 (0, 'www.google-analytics.com', 1, 'SlyEWL')
 (0, 'www.googleapis.com', 1, 'SlyEWL')
+
+/* HisSmartTV */
 (0, 'api.euro.hismarttv.com', 1, 'SlyEWL')
 (0, 'api.us.hismarttv.com', 1, 'SlyEWL')
+
+/* Linux */
 (0, 'linuxtracker.org', 1, 'SlyEWL')
 (0, 'www.linuxtracker.org', 1, 'SlyEWL')
+
+/* Microsoft */
 (0, '1drv.com', 1, 'SlyEWL')
 (0, '2.tlu.dl.delivery.mp.microsoft.com', 1, 'SlyEWL')
 (0, '4.tlu.dl.delivery.mp.microsoft.com', 1, 'SlyEWL')
@@ -375,6 +415,8 @@
 (0, 'xkms.xbolive.com', 1, 'SlyEWL')
 (0, 'xkms.xboxlive.com', 1, 'SlyEWL')
 (0, 'xsts.auth.xboxlive.com', 1, 'SlyEWL')
+
+/* MyHomeScreenTV */
 (0, 'mhc-ajax-eu-s2.myhomescreen.tv', 1, 'SlyEWL')
 (0, 'mhc-ajax-eu.myhomescreen.tv', 1, 'SlyEWL')
 (0, 'mhc-ajax-us.myhomescreen.tv', 1, 'SlyEWL')
@@ -383,20 +425,30 @@
 (0, 'mhc-xpana-eu-s2.myhomescreen.tv', 1, 'SlyEWL')
 (0, 'mhc-xpana-eu.myhomescreen.tv', 1, 'SlyEWL')
 (0, 'mhc-xpana-us.myhomescreen.tv', 1, 'SlyEWL')
+
+/* Netflix */
 (0, 'api-global.netflix.com', 1, 'SlyEWL')
 (0, 'appboot.netflix.com', 1, 'SlyEWL')
 (0, 'netflix.com', 1, 'SlyEWL')
 (0, 'nrdp.nccp.netflix.com', 1, 'SlyEWL')
 (0, 'secure.netflix.com', 1, 'SlyEWL')
+
+/* no-ip */
 (0, 'dynupdate.no-ip.com', 1, 'SlyEWL')
 (0, 'no-ip.com', 1, 'SlyEWL')
 (0, 'www.no-ip.com', 1, 'SlyEWL')
+
+/* Nvidia / Geforce */
 (0, 'events.gfe.nvidia.com', 1, 'SlyEWL')
 (0, 'gfwsl.geforce.com', 1, 'SlyEWL')
 (0, 'ota-downloads.nvidia.com', 1, 'SlyEWL')
+
+/* Optimizely */
 (0, 'cdn.optimizely.com', 1, 'SlyEWL')
 (0, 'cdn2.optimizely.com', 1, 'SlyEWL')
 (0, 'cdn3.optimizely.com', 1, 'SlyEWL')
+
+/* Plex Media Server */
 (0, '106c06cd218b007d-b1e8a1331f68446599e96a4b46a050f5.ams.plex.services', 1, 'SlyEWL')
 (0, 'app.plex.tv', 1, 'SlyEWL')
 (0, 'apt.sonarr.tv', 1, 'SlyEWL')
@@ -433,6 +485,8 @@
 (0, 'tvthemes.plexapp.com.cdn.cloudflare.net', 1, 'SlyEWL')
 (0, 'www.opensubtitles.org', 1, 'SlyEWL')
 (0, 'www.plex.tv', 1, 'SlyEWL')
+
+/* Pluto.tv */
 (0, 'api.pluto.tv', 1, 'SlyEWL')
 (0, 'cdn-mobile.api.pluto.tv', 1, 'SlyEWL')
 (0, 'images.pluto.tv', 1, 'SlyEWL')
@@ -440,6 +494,8 @@
 (0, 'silo.pluto.tv', 1, 'SlyEWL')
 (0, 'siloh.pluto.tv', 1, 'SlyEWL')
 (0, 'stitcher.pluto.tv', 1, 'SlyEWL')
+
+/* Reddit */
 (0, 'api2.branch.io', 1, 'SlyEWL')
 (0, 'diagnostics.redditmedia.com', 1, 'SlyEWL')
 (0, 'events-test-v2.redditmedia.com', 1, 'SlyEWL')
@@ -455,7 +511,11 @@
 (0, 'styles.redditmedia.com', 1, 'SlyEWL')
 (0, 'www.redditmedia.com', 1, 'SlyEWL')
 (0, 'www.redditstatic.com', 1, 'SlyEWL')
+
+/* Rockstar Games */
 (0, 'prod.telemetry.ros.rockstargames.com', 1, 'SlyEWL')
+
+/* Samsung */
 (0, 'auth.samsungosp.com', 1, 'SlyEWL')
 (0, 'cdn.samsungcloudsolution.com', 1, 'SlyEWL')
 (0, 'lcprd1.samsungcloudsolution.net', 1, 'SlyEWL')
@@ -469,10 +529,14 @@
 (0, 'samsungotn.net', 1, 'SlyEWL')
 (0, 'time.samsungcloudsolution.com', 1, 'SlyEWL')
 (0, 'www.samsungotn.net', 1, 'SlyEWL')
+
+/* Shopping websites */
 (0, 's.shopify.com', 1, 'SlyEWL')
 (0, 'v.shopify.com', 1, 'SlyEWL')
 (0, 'www.aliexpress.com', 1, 'SlyEWL')
 (0, 'www.squaretrade.com', 1, 'SlyEWL')
+
+/* ShortLinks */
 (0, 'adf.ly', 1, 'SlyEWL')
 (0, 'bit.ly', 1, 'SlyEWL')
 (0, 'ow.ly', 1, 'SlyEWL')
@@ -480,6 +544,8 @@
 (0, 'www.adf.ly', 1, 'SlyEWL')
 (0, 'www.bit.ly', 1, 'SlyEWL')
 (0, 'www.ow.ly', 1, 'SlyEWL')
+
+/* Signal */
 (0, 'api.directory.signal.org', 1, 'SlyEWL')
 (0, 'cdn.signal.org', 1, 'SlyEWL')
 (0, 'chat.signal.org', 1, 'SlyEWL')
@@ -489,9 +555,13 @@
 (0, 'ud-chat.signal.org', 1, 'SlyEWL')
 (0, 'updates2.signal.org', 1, 'SlyEWL')
 (0, 'www.signal.org', 1, 'SlyEWL')
+
+/* Sony */
 (0, 'applicast.ga.sony.net', 1, 'SlyEWL')
 (0, 'portal.store.sonyentertainmentnetwork.com', 1, 'SlyEWL')
 (0, 'update.biv.sony.tv', 1, 'SlyEWL')
+
+/* Spotify */
 (0, 'accounts.spotify.com', 1, 'SlyEWL')
 (0, 'api-tv.spotify.com', 1, 'SlyEWL')
 (0, 'apresolve.spotify.com', 1, 'SlyEWL')
@@ -512,14 +582,20 @@
 (0, 'spclient.wg.spotify.com', 1, 'SlyEWL')
 (0, 't.scdn.co', 1, 'SlyEWL')
 (0, 'weblb-wg.dual-gslb.spotify.com', 1, 'SlyEWL')
+
+/* Target */
 (0, 'm.weeklyad.target.com', 1, 'SlyEWL')
 (0, 'weeklyad.target.com', 1, 'SlyEWL')
 (0, 'weeklyad.target.com.edgesuite.net', 1, 'SlyEWL')
+
+/* Turner */
 (0, 'amd.cdn.turner.com', 1, 'SlyEWL')
 (0, 'i.cdn.turner.com', 1, 'SlyEWL')
 (0, 'pmd.cdn.turner.com', 1, 'SlyEWL')
 (0, 's.cdn.turner.com', 1, 'SlyEWL')
 (0, 'z.cdn.turner.com', 1, 'SlyEWL')
+
+/* Twitter */
 (0, 'api.twitter.com', 1, 'SlyEWL')
 (0, 'mobile.twitter.com', 1, 'SlyEWL')
 (0, 't.co', 1, 'SlyEWL')
@@ -527,17 +603,27 @@
 (0, 'twitter.com', 1, 'SlyEWL')
 (0, 'upload.twitter.com', 1, 'SlyEWL')
 (0, 'www.twitter.com', 1, 'SlyEWL')
+
+/* Vizio */
 (0, 'announcements.vizio.com', 1, 'SlyEWL')
 (0, 'api.vizio.com', 1, 'SlyEWL')
 (0, 'images.vizio.com', 1, 'SlyEWL')
+
+/* Weather */
 (0, 'api.accuweather.com', 1, 'SlyEWL')
 (0, 'v.w-x.co', 1, 'SlyEWL')
+
+/* Wordpress */
 (0, 's1.wp.com', 1, 'SlyEWL')
 (0, 'wordpress.com', 1, 'SlyEWL')
 (0, 'wp.com', 1, 'SlyEWL')
+
+/* Yahoo */
 (0, 'yahoo.com', 1, 'SlyEWL')
 (0, 's.yimg.com', 1, 'SlyEWL')
 (0, 's1.yimg.com', 1, 'SlyEWL')
+
+/* YouTube */
 (0, 'geo3.ggpht.com', 1, 'SlyEWL')
 (0, 'i.ytimg.com', 1, 'SlyEWL')
 (0, 'i1.ytimg.com', 1, 'SlyEWL')
@@ -551,6 +637,8 @@
 (0, 'youtube.com', 1, 'SlyEWL')
 (0, 'youtubei.googleapis.com', 1, 'SlyEWL')
 (0, 'yt3.ggpht.com', 1, 'SlyEWL')
+
+/* Miscellaneous */
 (0, 'ae01.alicdn.com', 1, 'SlyEWL')
 (0, 'alluremedia.com', 1, 'SlyEWL')
 (0, 'api.ipify.org', 1, 'SlyEWL')
