@@ -168,7 +168,7 @@ if db_exists:
         for newWhiteDomain in newWhiteTUP: # For each line found domains.sql
           nW[nwl] = newWhiteDomain # Add line to a controlled list
           if nW[nwl].startswith('/'):
-          continue
+            continue
           removeBrace = nW[nwl].replace('(', '') # Remove (
           removeBraces10 = removeBrace.replace(')', '') # Remove )
           newWL = removeBraces10.split(', ') # Split at commas to create a list
