@@ -3,15 +3,15 @@
 clear
 
 # Change the working directory to user's home
-cd $HOME
+cd ~
 
-# Create $HOME/myScripts directory if it doesn't exist
-if [ ! -d $HOME/myScripts ]; then
-    mkdir -pv $HOME/myScripts
+# Create ~/myScripts directory if it doesn't exist
+if [ ! -d ~/myScripts ]; then
+    mkdir -pv ~/myScripts
 fi
 
-# Change the working directory to the $HOME/myScripts directory
-cd $HOME/myScripts
+# Change the working directory to the ~/myScripts directory
+cd ~/myScripts
 
 # Delete any leftover files from previous runs.
 if [ -d pihole.regex ]; then
@@ -34,5 +34,6 @@ elif [ "$myChoice" == "R" ]; then
     /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/uninstall-regex-blacklist.py' | sudo /usr/bin/python3
 else
     echo -e "Syntax failure!\\nYou must input either the letter 'A' or 'R'\\nTry running the commands again."
+    read -p "Press Enter to exit"
     exit 1
 fi
