@@ -2,6 +2,12 @@
 
 clear
 
+# Change the working directory to the users home
+cd "$HOME"
+echo $PWD
+read -p "Press Enter to Exit"
+exit
+
 # Create $HOME/myScripts directory if it doesn't exist
 if [ ! -d "$HOME/myScripts" ]; then
     mkdir -pv "$HOME/myScripts"
