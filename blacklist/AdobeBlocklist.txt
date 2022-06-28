@@ -1,516 +1,165 @@
-##
 ## Adobe® Creative Cloud Service Endpoints block list.
-##
 ## This is an official list of various network endpoints for Creative Cloud (last updated in August 2017)
-##
 ## Official document --> https://helpx.adobe.com/content/dam/help/attachments/Creative_Cloud_for_enterprise_Service_Endpoints.pdf
-##
 ## Discussion is here ---> https://www.reddit.com/r/pihole/comments/73t2tx/why_adobe_cc_is_calling_home_every_ten_minutes/
-##
 ## Use on your own risk. No warranties implied.
-## 
 
-## u/EnglandPJ suggestion. 
-hbrt.adobe.com
-
-## BROWSER-BASED SERVICES 
-## (More specific domains are way below)
-# Below are the top-level URLs for Adobe websites that provide access to Creative Cloud services and are 
-# accessed from a browser. The applications listed right most column are those that were known at time of 
-# publication to access these websites. Again, due to Creative Cloud updates, it is possible that other applications 
-# not listed also access those websites.
-# 
-# Blocking these URLs blocks access to storage from most or all sync/store/share services, the administrative control 
-# panel for users and teams, and other facilities accessed via the Creative Cloud website. It does not block access to 
-# services such as Typekit which has its own access points. In order to block access to sync/store/share and not block 
-# access to managing user accounts, make sure that administrators are exempted from the block. 
-#
-www.adobe.com
-assets.adobe.com 
-creative.adobe.com
-
-
-
-## ALL ADOBE SERVICES (GLOBAL BLOCKLIST)
-## If you want to block specific domains, scroll down.
-adobesc.com
-licenses.com
-adobelogin.com
-ftcdn.net
-behance.net
-adobedtm.com
-demdex.net
-demandbase.com
-adobeoobe.com
-macromedia.com 
+a3.behance.net
+acc.adobeoobe.com
+acrobat.com
+acrobat.com
+adbecrsl.com
 adbemdigitalmediarebootprod2.112.2o7.net
-edgefonts.net
-adobejanus.com
-adobesunbreak.com
-
-
-# Browser-based services
-adoberevel.com
-photoshop.com
-adobeexchange.com
-
-
-# Required for Creative Cloud for Enterprise services
+adbemdigitalmediarebootprod2.112.2o7.net
+adobe.com
+adobe.com
+adobe.com
+adobe.demdex.net
+adobe.demdex.net
+adobe.io
+adobe.io
+adobe.ly
+adobe.tt.omtrdc.net
+adobecc.com
 adobecce.com
-
-
-# Required for logging in to the Admin Console
+adobedtm.com
+adobeexchange.com
+adobeid-na1.services.adobe.com
+adobeid-na1.services.adobe.com
+adobejanus.com
+adobeku.com
+adobelogin.com
+adobelogin.com
+adobelogin.prod.ims.adobejanus.com
+adobeoobe.com
+adoberevel.com
+adoberevel.com
+adobesc.com
+adobesc.com
+adobesc.com
+adobesunbreak.com
+adobetag.com
+aedash.adobe.com
+ams.adobe.com
+ans.oobesas.adobe.com
+api-cna01.adobe-services.com
+api.adobe.io
+api.behance.net
+api.demandbase.com
+api.typekit.com
+api.typekit.com
+as.ftcdn.net
+as1.ftcdn.net
+assets.adobe.com
+assets.adobe.com
+assets.adobedtm.com
+assets.adobedtm.com
+bam.nr-data.net
+bam.nr-data.net
+behance.net
+behance.net
+build.phonegap.com
+businesscatalyst.com
+businesscatalyst.com
+cc-api-assets.adobe.io
+cc-api-cp.adobe.io
+cc-api-cp.adobe.io
+cc-api-sharedproductions-prerelease.adobe.io
+cc-api-storage.adobe.io
+cc-api-teamprojects-an1.adobe.io
+cc-api-teamprojects-ew1.adobe.io
+cc-api-teamprojects-ue1.adobe.io
+cc-api-teamprojects.adobe.io
+cc-collab.adobe.io
+cc-collab.adobe.io
+ccmdl.adobe.com
+ccmdls.adobe.com
+cdn-ffc.oobesaas.adobe.com/*
+cdn.tt.omtrdc.net
+color.adobe.com
+creative.adobe.com
+creativecloud.com
+cs.licenses.adobe.com
+data.typekit.net
+demandbase.com
+demdex.net
+digicert.com
+digitalpublishing.acrobat.com
+dnzuu5synxxfk.cloudfront.net
+dpm.demdex.net
+dpm.demdex.net
+echocdn.com
+echosign.adobe.com
+echosign.com
+edgefonts.net
+exception.licenses.adobe.com
+federatedid-na1.services.adobe.com
+ffc-icons.oobesaas.adobe.com
+ftcdn.net
+ftcdn.net
+hbrt.adobe.com
+helpx.adobe.com
+ims-na1.adobelogin.com
+ims-na1.adobelogin.com
+ims-prod06.adobelogin.com
+ims-prod07.adobelogin.com
+indd.adobe.com
+licenses.adobe.com
+licenses.com
+licensing.adobe.com
+lm.licenses.adobe.com
+macromedia.com
+na1e-acc.services.adobe.com
+na1r.services.adobe.com
+newrelic.com
 okta.com
 oktacdn.com
 oktapreview.com
-
-
-# Required for Business Catalyst/Adobe Muse
-businesscatalyst.com 
-worldsecuresystems.com 
-digicert.com
-
-
-# Required for access to services like Help pages, fonts, Admin Console, etc.
-adobe.com
-adobe.io
-adobecc.com
-typekit.net
-typekit.com
-omtrdc.net
-adobetag.com
-
-
-# Required by Adobe Acrobat services
-acrobat.com
-echosign.com
-echocdn.com
-bam.nr-data.net
-newrelic.com
-
-
-# Required by Adobe Lightroom services
-adbecrsl.com
-
-
-# Required for viewing Edge Web Fonts
-creativecloud.com
-
-
-# Required for Adobe Creative Cloud for Enterprise; images are shared in this URL pattern.
-adobe.ly
-
-
-# Website for Adobe Color CC 
-adobeku.com
-
-
-## BE CAREFUL !!! IF YOU WANT TO USE THEM JUST DELETE THE # SIGN
-## Required for looking up SSL certificates and DNS information. Logging into Creative Cloud requires a 
-## secure connection, however, to confirm the SSL certificates, the computer used to log in, needs to 
-## communicate with these servers.
-#
-# symantec.com
-# thawte.com
-# geotrust.com
-# omniroot.com
-# verisign.com
-# globalsign.com
-# godaddy.com
-# ctldl.windowsupdate.com
-# symcb.com 
-# symcd.com 
-
-
-# Required by Adobe Analytics
 omniture.com
-
-
-# Required for InDesign Publish Online
-cc-api-cp.adobe.io
-# s3*.amazonaws.com # BE CAREFUL
-indd.adobe.com
-
-
-## Non-browser-based services (Domain specific lists)
-##
-##
-# Service type: Core 
-# 
-# Service Category: Synch/Store/Share/Market
-# 
-# Services that provide functionality concerning syncing, storing, and sharing files in Creative Cloud storage and 
-# preferences settings for those functions
-# 
-# Applies to After Effects CC, Dreamweaver CC, Illustrator CC, InDesign CC, Muse CC, Photoshop CC, Premiere Pro CC 
-#
-scproxy-prod.adobecc.com
-adobesc.com 
-cc-collab.adobe.io
-cc-api-cp.adobe.io
-
-
-# Service type: Core 
-# 
-# Service Category: Library Services
-# 
-# Services that provide specific functionality for Creative Cloud Libraries
-# 
-# Applies to After Effects CC, Illustrator CC, InDesign CC, Photoshop CC, Premiere Pro CC 
-#
-# Note: Library Services have a dependency on "Stock Services" domains below.
-#
-cc-api-storage.adobe.io
-assets.adobe.com 
-helpx.adobe.com
-use.typekit.net
-www.adobeexchange.com
-adobesc.com
-scproxy-prod.adobecc.com
-cc-collab.adobe.io
-adbemdigitalmediarebootprod2.112.2o7.net
-polka.typekit.com
-wwwimages2.adobe.com
-sstats.adobe.com 
-assets.adobedtm.com 
-cdn.tt.omtrdc.net
-api.demandbase.com 
-ftcdn.net
-behance.net 
-dpm.demdex.net
-
-
-# Service type: Core 
-# 
-# Service Category: Stock Services
-# 
-# Adobe Stock allows you to access, manage, and buy royalty-free assets seamlessly within your Creative Cloud applications
-# 
-# Applies to After Effects CC, Illustrator CC, InDesign CC, Photoshop CC, Premiere Pro CC 
-#
-stock.adobe.com
-ims-na1.adobelogin.com
-adobeid-na1.services.adobe.com
-cc-api-assets.adobe.io
-a3.behance.net
-api.behance.net
-adobe.demdex.net
-sstats.adobe.com 
-dpm.demdex.net
-assets.adobedtm.com 
-adobe.tt.omtrdc.net
-as.ftcdn.net
-as1.ftcdn.net
-p.typekit.net
-use.typekit.net
-store1.adobe.com
-www.adobe.com
-bam.nr-data.net
-
-
-# Service type: Core 
-# 
-# Service Category: Font Services
-# 
-# Services for online fonts 
-# 
-# Applies to After Effects CC, Dreamweaver CC, Illustrator CC, InDesign CC, Muse CC, Photoshop CC, Premiere Pro CC 
-#
-api.typekit.com
-use.edgefonts.net
-#ocsp.verisign.com
-www.adobetag.com
-#ocsp.globalsign.com/rootr1
-adobe.demdex.net
-ans.oobesas.adobe.com
-
-
-# Service type: Core 
-#
-# Service Category: Creative SDK
-# 
-# Services used to extend Creative Cloud services
-#
-api.adobe.io
-
-
-# Service type: Core 
-# 
-# Service Category: Plug-in Merchant Service
-# 
-# Services used by the Adobe Exchange website and plug-ins sold from that site
-# 
-# Applies to Audition CC, Dreamweaver CC, Edge Animate CC, Flash Professional CC, Illustrator CC, InCopy CC, InDesign CC, 
-# Lightroom, Muse CC, Photoshop CC, Prelude CC, Premiere Pro CC 
-#
-www.adobeexchange.com/api
-
-
-# Service type: Licensing
-#
-# Service Category: Desktop Application Licensing Services
-# 
-# Licensing services for desktop applications that use activation services
-# 
-# Applies to ALL CC software
-#
-licenses.adobe.com
-
-
-# Service type: Licensing
-# 
-# Service Category: Desktop Application Licensing Services
-# 
-# Services used for registering Adobe IDs that are delegated product
-# 
-# Applies to ALL CC software
-#
-api-cna01.adobe-services.com
-supportanyware.adobe.io
-
-
-# Service type: Licensing
-# Service Category: Authentication and Authorization Services
-# 
-# Adobe-hosted authentication and authorization services
-# 
-# Applies to ALL CC software
-#
-adobelogin.com
-ims-na1.adobelogin.com 
-ims-prod06.adobelogin.com
-ims-prod07.adobelogin.com
-adobeid-na1.services.adobe.com
-na1e-acc.services.adobe.com
-na1r.services.adobe.com
-ams.adobe.com
-federatedid-na1.services.adobe.com
-adobelogin.prod.ims.adobejanus.com
-services.prod.ims.adobejanus.com
-www-prod.adobesunbreak.com
-
-
-# Service type: Licensing
-# 
-# Service Category: Deployment and Fulfillment
-# 
-# Adobe-hosted authentication and authorization services
-# 
-# Applies to ALL CC software
-#
-ccmdls.adobe.com
-ccmdl.adobe.com
-*.oobesaas.adobe.com
-swupmf.adobe.com
-swupdl.adobe.com
-prod.acp.adobeoobe.com
+omtrdc.net
 oobe.adobe.com
-lm.licenses.adobe.com 
-exception.licenses.adobe.com 
-cs.licenses.adobe.com
-s3.amazonaws.com
-ffc-icons.oobesaas.adobe.com
-cdn-ffc.oobesaas.adobe.com/*
-acc.adobeoobe.com
-
-
-# Service type: Licensing
-# 
-# Service Category: Team Projects Service
-# 
-# Service that provides collaborative video editing integrated with Creative Cloud applications for teams and enterprise customers.
-# 
-# Applies to After Effects CC, Premiere Pro CC, Prelude CC, Media Encoder CC
-#
-adobe.com
-# amazonaws.com # BE CAREFUL
-adobe.io
-cc-api-sharedproductions-prerelease.adobe.io 
-cc-api-teamprojects.adobe.io
-cc-api-teamprojects-ue1.adobe.io
-cc-api-teamprojects-ew1.adobe.io
-cc-api-teamprojects-an1.adobe.io
-# docs.aws.amazon.com/general/latest/gr/rande.html#s3_region # BE CAREFUL
-
-
-## BROWSER-BASED SERVICES
-##
-# Service type: Core
-# 
-# Service Category: Behance
-# 
-# Behance is an online platform that allows creative professionals around the world to showcase their creative work, as well as discover and 
-# follow the creative work of others. Creative professionals from a broad array of fields and disciplines share work in progress as well as finished
-# portfolios. Behance also powers portfolio display for many other websites around the web, including AdWeek and LinkedIn.
-#
-# NOTE: Behance users may upload and share user-generated content that is not suitable for audiences under the age of 18 and which may not be 
-# legal in all countries. You can learn more about Behance content policies and practices at behance.net.
-# 
-# Applies to Illustrator CC, InDesign CC, Photoshop CC 
-#
-prosite.com
-
-
-# Service type: Core
-# 
-# Service Category: Adobe Story CC Plus
-# 
-# Collaborative script development tool used to generate schedules, production reports and enable online collaboration.
-#
-# Applies to Premiere Pro CC, Prelude CC 
-#
-story.adobe.com
-
-
-# Service type: Core
-# 
-# Service Category: PhoneGap Build
-# 
-# Cloud-based service built on top of the PhoneGap framework that allows you to easily build mobile apps in the cloud..
-#
-# Applies to Dreamweaver CC 
-#
-build.phonegap.com
-
-
-# Service type: Core
-# 
-# Service Category: Typekit
-# 
-# Subscription-based library of hosted fonts for use on websites.
-#
-# Applies to Creative Cloud Desktop, After Effects CC, Dreamweaver CC, Illustrator CC, InDesign CC, Muse CC, Photoshop CC, Premiere Pro CC 
-#
-typekit.com
-use.typekit.net
-use.typekit.com
 p.typekit.net
-data.typekit.net
-state.typekit.net
-polka.typekit.net 
-polka.typekit.com
-api.typekit.com
-dnzuu5synxxfk.cloudfront.net
-
-
-# Service type: Core
-# 
-# Service Category: Business Catalyst
-# 
-# Business Catalyst Service is a unified hosting platform that enables you to work in your preferred editing environment to create sites without 
-# server-side coding.
-#
-# Applies to Dreamweaver CC, Muse CC 
-#
-businesscatalyst.com 
-
-
-# Service type: Core
-# 
-# Service Category: Digital Publishing Suite
-# 
-# Enables creation, development, and delivery of iPad apps like brochures, portfolios, yearbooks, and annual reports. With a Creative Cloud 
-# membership, you can build an unlimited number of iPad apps and submit to the Apple App Store.
-#
-# Applies to InDesign CC 
-#
-digitalpublishing.acrobat.com
-
-
-# Service type: Core
-# 
-# Service Category: Revel
-# 
-# Photo sharing app for your Mac, iPad, and iPhone enables online access and sharing of photo albums privately on AdobeRevel.com or 
-# posting to Facebook, Flickr, Twitter, or Tumblr.
-#
-# Applies to Lightroom 
-#
-adoberevel.com
-
-
-# Service type: Core
-# 
-# Service Category: Adobe Color CC
-# 
-# Allows users to generate, name, tag, and share color themes online. The integrating products allow users to access Adobe Color via built-in 
-# panels available inside the desktop, as well as to download any public color theme as an Adobe Swatch Exchange (ASE) file for import and 
-# use of the theme in artwork.
-#
-# Applies to Photoshop CC, Illustrator CC, InDesign CC, After Effects CC, Flash Pro
-#
-color.adobe.com
-
-
-# Service type: Core
-# 
-# Service Category: Acrobat.com
-# 
-# Allows you to create, combine, and export PDF files, create and distribute forms, and store and share files online.
-#
-# Applies to Acrobat
-#
-acrobat.com
-
-
-# Service type: Core
-# 
-# Service Category: EchoSign
-# 
-# Enables you to electronically sign software online. You can send, e-sign, track, and file documents and contracts securely.
-#
-# Applies to Acrobat
-#
-echosign.adobe.com
-
-
-
-# Service type: Licensing
-# 
-# Service Category: Admin Console
-# 
-# The site for IT Staff to administer Adobe Enterprise IDs and Creative Cloud for enterprise entitlements
-#
-aedash.adobe.com
-services.adobe.com 
-prod.acp.adobeoobe.com
-
-
-# Service type: Licensing
-# 
-# Service Category: Adobe Licensing Web Site
-# 
-# The Adobe Licensing Website (LWS) provides account information for volume licensing customers.
-#
-licensing.adobe.com
-
-
-# Service type: Auxiliary
-# 
-# Service Category: Adobe Public Website
-# 
-# The Adobe public website. The second URL is an image storage site referred by the Adobe public website..
-#
-adobe.com 
-wwwimages.adobe.com
-
-
-# Service type: Auxiliary
-# 
-# Service Category: Adobe Store
-# 
-# The online Adobe Store.
-#
-store.adobe.com 
-store1.adobe.com 
-store2.adobe.com 
-store3.adobe.com
-
-
-# Service type: Auxiliary
-# 
-# Service Category: Photoshop Website
-# 
-# Website for Photoshop imaging services.
-#
+p.typekit.net
 photoshop.com
+photoshop.com
+polka.typekit.com
+polka.typekit.com
+polka.typekit.net
+prod.acp.adobeoobe.com
+prod.acp.adobeoobe.com
+prosite.com
+s3.amazonaws.com
+scproxy-prod.adobecc.com
+scproxy-prod.adobecc.com
+services.adobe.com
+services.prod.ims.adobejanus.com
+sstats.adobe.com
+sstats.adobe.com
+state.typekit.net
+stock.adobe.com
+store.adobe.com
+store1.adobe.com
+store1.adobe.com
+store2.adobe.com
+store3.adobe.com
+story.adobe.com
+supportanyware.adobe.io
+swupdl.adobe.com
+swupmf.adobe.com
+typekit.com
+typekit.com
+typekit.net
+use.edgefonts.net
+use.typekit.com
+use.typekit.net
+use.typekit.net
+use.typekit.net
+worldsecuresystems.com
+www-prod.adobesunbreak.com
+www.adobe.com
+www.adobe.com
+www.adobeexchange.com
+www.adobeexchange.com/api
+www.adobetag.com
+wwwimages.adobe.com
+wwwimages2.adobe.com
