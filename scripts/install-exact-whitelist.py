@@ -174,7 +174,7 @@ if db_exists:
             # Uncomment to see list of sql varables being imported
             print(nW[nwl])
             # Uncomment to see list of domains being imported
-            Print(newWhiteList[nwl])
+            print(newWhiteList[nwl])
             nwl += 1 # count + 1
         # Check database for user added exact whitelisted domains
         print('[i] Checking Gravity for domains added by a user that are also in the script.')
