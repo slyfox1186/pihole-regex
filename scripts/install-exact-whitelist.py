@@ -2,6 +2,7 @@
 
 import os
 import argparse
+import re
 import sqlite3
 import subprocess, platform
 import time
@@ -166,14 +167,13 @@ if db_exists:
         newWL = [None]
         newWhiteList = [None] * newWhiteListlen
         for newWhiteDomain in newWhiteTUP: # For each line found domains.sql
-            nW[nwl] = newWhiteDomain # Add line to a controlled list
+            s = newWhiteDomain
+            nW[nwl] = print(re.sub('\/.*', '', s))
+            # nW[nwl] = newWhiteDomain # Add line to a controlled list
             removeBrace = nW[nwl].replace('(', '') # Remove (
             removeBraces10 = removeBrace.replace(')', '') # Remove )
             newWL = removeBraces10.split(', ') # Split at commas to create a list
             newWhiteList[nwl] = newWL[1].replace('\'', '') # Remove ' from domain and add to list
-            removeComments = nW[nwl].startswith('/')
-            if not removeComments:
-              continue
             # Uncomment to see list of sql varables being imported
             print(nW[nwl])
             # Uncomment to see list of domains being imported
