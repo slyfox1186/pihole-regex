@@ -22,9 +22,9 @@ fi
 shopt -s nocasematch
 
 # Get user input
-echo "Choose an action for whitelist.txt: [I]nstall or [U]ninstall: "
+echo "Please input an option: [A]dd or [R]emove the whitelist.txt domains: "
 read myChoice
-if [[ $myChoice == "I" ]]; then
+if [[ $myChoice == "A" ]]; then
     clear
     git clone 'https://github.com/slyfox1186/pihole.regex.git'
     python3 'pihole.regex/scripts/install-exact-whitelist.py'
