@@ -29,7 +29,6 @@
 # Google
 (\.|^)beacons[\d\.]*(gcp\.gvt\d*|gvt[\d]*)\.com$
 (\.|^)clients[\d]*\.google\.com\.domain\.name$
-(\.|^)[msw\.]+|youtube(\.com\.domain\.name)$
 
 # Oculus Rift
 (\.|^)graph\.oculus\.com$
