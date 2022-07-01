@@ -34,7 +34,7 @@ def fetch_blacklist_url(url):
 
     # If there is data
     if response:
-        # Strip leading and trailing whitespace
+        # Strip leading and trailing Blackspace
         response = '\n'.join(x.strip() for x in response.splitlines())
 
     # Return the hosts
@@ -69,13 +69,11 @@ if args.dir:
 else:
     pihole_location = r'/etc/pihole'
 
-
 blacklist_remote_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/blacklist/exact-blacklist.txt'
 remote_sql_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/blacklist/exact-blacklist.sql'
 gravity_blacklist_location = os.path.join(pihole_location, 'blacklist.txt')
 gravity_db_location = os.path.join(pihole_location, 'gravity.db')
-slyfox1186_blacklist_location = os.path.join(
-    pihole_location, 'slyfox1186-blacklist.txt')
+slyfox1186_blacklist_location = os.path.join(pihole_location, 'slyfox1186-blacklist.txt')
 
 db_exists = False
 sqliteConnection = None
