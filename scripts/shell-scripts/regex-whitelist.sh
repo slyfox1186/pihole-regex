@@ -2,6 +2,15 @@
 
 clear
 
+# Create myScripts directory if not exist.
+if [ ! -d "$HOME/myScripts" ]; then
+    mkdir -p "$HOME/myScripts"
+    clear
+fi
+
+# Change working directory to "$HOME/myScripts"
+pushd "$HOME/myScripts"
+
 # Make user input case insensitive
 shopt -s nocasematch
 
@@ -19,3 +28,17 @@ else
     sleep 3
     /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/uninstall-regex-whitelist.py' | sudo python3
 fi
+
+# PROMPT USER SCRIPT IS COMPLETE
+echo -e "Script Complete!\\n"
+read -p "Press Enter to continue."
+
+# CHANGE WORKING DIRECTORY TO THE USER'S "$HOME" AND DELETE THE TEMP DIRECTORY "$HOME/myScripts"
+pushd "$HOME"
+
+if [ -d "$HOME/myScripts" ]; then
+    rm -R "$HOME/myScripts"
+fi
+
+# PRINT DIRECTORY LIST
+ls -1A --color
