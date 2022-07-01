@@ -4,6 +4,7 @@
 # AdultTime
 m3u8.gammacdn.com
 seedbox-react-infra.s3.amazonaws.com
+transform.gammacdn.com
 
 # Adobe
 activate.adobe.com
