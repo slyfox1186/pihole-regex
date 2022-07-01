@@ -1,4 +1,4 @@
-## RegEx Filters for Pi-hole
+## RegEx and Exact Filters for Pi-hole
 Customized RegEx and exact filters for use with Pi-hole v5+ (FTLDNS).
 
 The purpose of this filter list is to compliment your existing blocklist's using powerful regular expressions that can cover a broad range of domains in one go.
