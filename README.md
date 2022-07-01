@@ -7,18 +7,18 @@ All commands need to be entered via a Terminal after logging in and you need to 
 
 ### Add or Remove [RegEx Blacklist] filters:
 ```
-curl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-scripts/regex-blacklist.sh' > 'regex-blacklist.sh'
+curl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-blacklist.sh' > 'regex-blacklist.sh'
 source 'regex-blacklist.sh'
 ```
 
 ### Add or Remove [RegEx Whitelist] filters:
 ```
-curl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-scripts/regex-whitelist.sh' > 'regex-whitelist.sh'
+curl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-whitelist.sh' > 'regex-whitelist.sh'
 source 'regex-whitelist.sh'
 ```
 
 ### Add or Remove [Exact Whitelist] filters:
 ```
-curl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-scripts/exact-whitelist.sh' > 'exact-whitelist.sh'
+curl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-whitelist.sh' > 'exact-whitelist.sh'
 source 'exact-whitelist.sh'
 ```
