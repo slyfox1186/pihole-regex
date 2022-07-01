@@ -2,6 +2,8 @@
 ## Github repository: https://github.com/slyfox1186/pihole.regex/
 
 # AdultTime
+kosmos-assets-prod.react.gammacdn.com
+kosmos-prod.react.gammacdn.com
 m3u8.gammacdn.com
 seedbox-react-infra.s3.amazonaws.com
 streaming-hls.gammacdn.com
