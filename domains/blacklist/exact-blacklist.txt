@@ -3,11 +3,16 @@
 
 # AdultTime
 2aed6ghjsb4436qtebuqk3gfzq0xeauy.lambda-url.us-east-1.on.aws
+a1961.g2.akamai.net
+api.statsig.com
 beam.com
 cdn-cm.tiypa.com
 cdn.contentful.com
 cdn.polyfill.io
+client-rapi.recombee.us
+d306ecvlh9tfv.cloudfront.net
 d3a3ewgd1iewwz.cloudfront.net
+d3cqix4sol87xw.cloudfront.net
 engine-cm.tiypa.com
 insights.algolia.io
 jlduihq7lrcdxgw4vrndhdfcsq.appsync-api.us-east-1.amazonaws.com
@@ -21,6 +26,8 @@ tsmkfa364q-3.algolianet.com
 tsmkfa364q-dsn.algolia.net
 usage.trackjs.com
 videothumb.gammacdn.com
+wd-prod-ss-us-west-2-fe.westus.cloudapp.azure.com
+wd-prod-ss.trafficmanager.net
 xtnzefcqrb.execute-api.us-east-1.amazonaws.com
 
 # Spotify
