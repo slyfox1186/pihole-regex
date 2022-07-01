@@ -19,3 +19,6 @@
 (\.|^)icloud\.apple\.com
 (\.|^)icloud-content\.com
 (\.|^)iwork\.apple\.com
+
+# Facebook
+^([\d]+-|^)edge-chat\.facebook\.com$
