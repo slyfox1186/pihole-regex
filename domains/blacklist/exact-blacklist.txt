@@ -7,7 +7,6 @@ beam.com
 cdn-cm.tiypa.com
 cdn.contentful.com
 cdn.polyfill.io
-cognito-identity.us-east-1.amazonaws.com
 d3a3ewgd1iewwz.cloudfront.net
 engine-cm.tiypa.com
 insights.algolia.io
