@@ -2,23 +2,22 @@
 ## Github repository: https://github.com/slyfox1186/pihole.regex
 
 # Apple
-(\.|^)push\.apple\.com
-(\.|^)business\.apple\.com
-(\.|^)school\.apple\.com
-(\.|^)itunes\.apple\.com
-(\.|^)apps\.apple\.com
-(\.|^)mzstatic\.com
-(\.|^)appattest\.apple\.com
-(\.|^)apple-cloudkit\.com
-(\.|^)apple-livephotoskit\.com
-(\.|^)apzones\.com
-(\.|^)cdn-apple\.com
-(\.|^)gc\.apple\.com
-(\.|^)icloud\.com
-(\.|^)icloud\.com\.cn
-(\.|^)icloud\.apple\.com
-(\.|^)icloud-content\.com
-(\.|^)iwork\.apple\.com
+(\.|^)appattest\.apple\.com$
+(\.|^)apple-cloudkit\.com$
+(\.|^)apple-livephotoskit\.com$
+(\.|^)apps\.apple\.com$
+(\.|^)apzones\.com$
+(\.|^)business\.apple\.com$
+(\.|^)cdn-apple\.com$
+(\.|^)gc\.apple\.com$
+(\.|^)icloud-content\.com$
+(\.|^)icloud\.(cn|com)$
+(\.|^)icloud\.apple\.com$
+(\.|^)itunes\.apple\.com$
+(\.|^)iwork\.apple\.com$
+(\.|^)mzstatic\.com$
+(\.|^)push\.apple\.com$
+(\.|^)school\.apple\.com$
 
 # Facebook
 ^([\d]+-|^)edge-chat\.facebook\.com$
