@@ -337,7 +337,7 @@ if db_exists:
 
     finally:
         print('\n')
-        print('The whitelist filters have been added successfully! Script complete!')
+        print('[i] The exact whitelist filters have been added successfully! Script complete!')
         print('\n')
         print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
         print('\n')
@@ -380,7 +380,7 @@ else:
     print('[i] Domains are not added to your Pi-hole whitelist.')
     print('[i] Restartting Pi-hole.. this could take a few seconds.')
     restart_pihole(args.docker)
-    print("[i] Pi-hole's whitelist is fully updated! Script completed successfully.")
+    print('[i] The exact whitelist filters have been added successfully! Script complete!')
     print('\n')
     print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
     print('\n')
