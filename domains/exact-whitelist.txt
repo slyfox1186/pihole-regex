@@ -640,24 +640,12 @@ yt3.ggpht.com
 
 ##################################
 # Smart TV whitelist for Pi-hole #
-##################################
 
 # Panasonic Viera & Panny TV
-mhc-ajax-eu-s2.myhomescreen.tv
-mhc-ajax-eu.myhomescreen.tv 
-mhc-ajax-us.myhomescreen.tv
-mhc-eu.myhomescreen.tv
-mhc-us.myhomescreen.tv
-mhc-xpana-eu-s2.myhomescreen.tv
-mhc-xpana-eu.myhomescreen.tv
-mhc-xpana-us.myhomescreen.tv
 vcs.vdspf.com
 
 # Sony Bravia
-applicast.ga.sony.net
 platform.cid.samba.tv
-portal.store.sonyentertainmentnetwork.com
-update.biv.sony.tv
 
 # LG
 ngfts.lge.com
@@ -667,29 +655,10 @@ deviceportal.nettvservices.com
 epg.corio.com
 www.ecdinterface.philips.com
 
-# Samsung
-auth.samsungosp.com
-cdn.samsungcloudsolution.com
 connecttv.pelmorex.com
-d1oxlq5h9kq8q5.cloudfront.net
 infolink.pavv.co.kr
-lcprd1.samsungcloudsolution.net
 ns11.whois.co.kr
-osb-ussvc.samsungqbe.com
-otn.samsungcloudcdn.com
-otnprd10.samsungcloudsolution.net
-otnprd11.samsungcloudsolution.net
-otnprd8.samsungcloudsolution.net
-otnprd9.samsungcloudsolution.net
-samsungosp.com
-samsungotn.net
-time.samsungcloudsolution.com
-www.samsungotn.net
 
-# Vizio
-announcements.vizio.com
-api.vizio.com
-images.vizio.com
 
 # HBBTV
 apicache.vudu.com
@@ -701,23 +670,15 @@ hbbtv.zdf.de
 itv.ard.de
 tv.deezer.com
 
-# Netflix
-api-global.netflix.com
-appboot.netflix.com
-nrdp.nccp.netflix.com
-secure.netflix.com
 
 # Sharp with Opera OS
-api.accuweather.com
 time-a.timefreq.bldrdoc.gov
 
 # HiSense - May be for software/firmware updates
-api.euro.hismarttv.com
-api.us.hismarttv.com
 
 # SiliconDust HDHomeRun - Both required for firmware update
 location-api.hdhomerun.com
-tuner-api.hdhomerun.com 
+tuner-api.hdhomerun.com
 
 # Yamaha AV receivers - Blocks system updates on rx-v685
 avpro.global.yamaha.com
@@ -727,12 +688,10 @@ ae01.alicdn.com
 alluremedia.com
 api.ipify.org
 api.rlje.net
-apicache.vudu.com
 app-api.ted.com
 app.emby
 appboy-images.com
 aspnetcdn.com
-avpro.global.yamaha.com
 best.aliexpress.com
 brightcove.net
 bufferapp.com
@@ -747,29 +706,21 @@ chevrolet.com
 clientconfig.passport.net
 cms.souqcdn.com
 code.bildstatic.de
-connecttv.pelmorex.com
 dataplicity.com
 de.ioam.de
 delivery.vidible.tv
 dev.virtualearth.net
-deviceportal.nettvservices.com
 directvnow.com
 display.ugc.bazaarvoice.com
 drift.com
 driftt.com
-drscdn.500px.org
 ec-ns.sascdn.com
 ecn.dev.virtualearth.net
-epg.corio.com
 filament.io
 fivethirtyeight.com
 gdlp01.c-wss.com
-geo.opera.com
 giphy-proxy-production.whispersystems.org
 h-sdk.online-metrix.net
-hbbtv.prosieben.de
-hbbtv.redbutton.de
-hbbtv.zdf.de
 heartbeat.dm.origin.com
 hls.ted.com
 hosts-file.net
@@ -780,23 +731,18 @@ imagesak.secureserver.net
 img.vidible.tv
 imgix.net
 imgs.xkcd.com
-infolink.pavv.co.kr
 intercom.io
-itv.ard.de
 j.mp
 jquery.com
 jsdelivr.net
 json.bild.de
 keystone.mwbsys.com
 linkedin.com
-location-api.hdhomerun.com
 login.aliexpress.com
 logs.juspay.in
 medium.com
 mobileandroidapi.punchh.com
-ngfts.lge.com
 npr-news.streaming.adswizz.com
-ns11.whois.co.kr
 ocsp.verisign.net
 om.cbsi.com
 p11.techlab-cdn.com
@@ -804,7 +750,6 @@ pgl.yoyo.org
 pinterest.com
 placehold.it
 placeholdit.imgix.net
-platform.cid.samba.tv
 players.brightcove.net
 refersion.com
 res.cloudinary.com
@@ -835,16 +780,12 @@ tawk.to
 tedcdn.com
 telemetry-console.api.playstation.com
 textsecure-service-whispersystems.org
-time-a.timefreq.bldrdoc.gov
 tracking.dpd.de
 traffic.libsyn.com
-tuner-api.hdhomerun.com
 turn1.whispersystems.org
-tv.deezer.com
 unsplash.com
 upgrade.scdn.com
 v.firebog.net
-vcs.vdspf.com
 videos.vidible.tv
 vidtech.cbsinteractive.com
 vimeo.com
@@ -855,7 +796,6 @@ winhelp2002.mvps.org
 ws.audioscrobbler.com
 www.asadcdn.com
 www.dataplicity.com
-www.ecdinterface.philips.com
 www.howtogeek.com
 www.propublica.org
 www.refersion.com
