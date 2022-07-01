@@ -38,8 +38,8 @@ def fetch_url(url):
     return response
 
 
-url_regstrings_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/regex-blacklist.txt'
-install_comment = 'slyRegEx'
+url_regstrings_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/regex-whitelist.txt'
+install_comment = 'slyWhiteRegEx'
 
 cmd_restart = ['pihole', 'restartdns', 'reload']
 
@@ -144,7 +144,7 @@ if db_exists:
     print('[i] Adding / updating regstrings in the DB')
 
     c.executemany('INSERT OR IGNORE INTO domainlist (type, domain, enabled, comment) '
-                  'VALUES (3, ?, 1, ?)',
+                  'VALUES (2, ?, 1, ?)',
                   [(x, install_comment) for x in sorted(regstrings_remote)])
     c.executemany('UPDATE domainlist '
                   'SET comment = ? WHERE domain in (?) AND comment != ?',
@@ -153,7 +153,7 @@ if db_exists:
     conn.commit()
 
     # Fetch all current slyfox1186 regstrings in the local db
-    c.execute('SELECT domain FROM domainlist WHERE type = 3 AND comment = ?', (install_comment,))
+    c.execute('SELECT domain FROM domainlist WHERE type = 2 AND comment = ?', (install_comment,))
     regstrings_slyfox1186_local_results = c.fetchall()
     regstrings_slyfox1186_local.update([x[0] for x in regstrings_slyfox1186_local_results])
 
@@ -164,7 +164,7 @@ if db_exists:
 
     if regstrings_remove:
         print('[i] Removing obsolete regstrings')
-        c.executemany('DELETE FROM domainlist WHERE type = 3 AND domain in (?)', [(x,) for x in regstrings_remove])
+        c.executemany('DELETE FROM domainlist WHERE type = 2 AND domain in (?)', [(x,) for x in regstrings_remove])
         conn.commit()
 
     # Delete slyfox1186-regex.list as if we've migrated to the db, it's no longer needed
@@ -177,7 +177,7 @@ if db_exists:
     # Prepare final result
     print('[i] Done - Please see your installed regstrings below\n')
 
-    c.execute('Select domain FROM domainlist WHERE type = 3')
+    c.execute('Select domain FROM domainlist WHERE type = 2')
     final_results = c.fetchall()
     regstrings_local.update(x[0] for x in final_results)
 
