@@ -21,12 +21,12 @@ if [[ $a == "A" ]]; then
     clear
     echo -e "Adding custom Exact whitelist filters to Pi-hole.\\n"
     sleep 3
-    curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/install-exact-whitelist.py' | sudo python3
+    /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/install-exact-whitelist.py' | sudo python3
 else
     clear
     echo -e "Removing custom Exact whitelist filters from Pi-hole.\\n"
     sleep 3
-    curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/uninstall-exact-whitelist.py' | sudo python3
+    /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/uninstall-exact-whitelist.py' | sudo python3
 fi
 
 # CHANGE WORKING DIRECTORY TO THE USER'S "$HOME"
