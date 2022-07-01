@@ -180,7 +180,7 @@ if db_exists:
             print('[i] Pi-hole is rebooting... it could take a few seconds.')
             restart_pihole(args.docker)
             print('\n')
-            print('[i] Pi-hole is back up and running! Script complete!\n')
+            print('The exact blacklist filters have been added successfully! Script complete!')
             print('\n')
             print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
             print('\n')
@@ -219,7 +219,7 @@ else:
 
     print('[i] Pi-hole must restart... please wait for it to boot.')
     restart_pihole(args.docker)
-    print('[i] The domains are now removed your Pi-hole blacklist.')
+    print('The exact blacklist filters have been added successfully! Script complete!')
     print('\n')
     print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex.')
     print('\n')
