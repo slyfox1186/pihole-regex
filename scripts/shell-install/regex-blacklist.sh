@@ -10,7 +10,6 @@ pushd "$HOME/tmp"
 
 # Make user input case insensitive
 shopt -s nocasematch
-clear
 
 # Get the user's input
 echo -e "Install script for SlyFox1186's RegEx blacklist filters\\n\\nPlease choose an option: [A]dd or [R]emove: "
@@ -28,4 +27,4 @@ else
     echo -e "Syntax failure!\\nYou must input either the letter 'A' or 'R'\\nTry running the commands again."
 fi
 
-echo -e "\\nScript completed!"
+echo -e "\\nScript completed!\\n"
