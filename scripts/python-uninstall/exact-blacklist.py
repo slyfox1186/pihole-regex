@@ -8,6 +8,7 @@ import time
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
+
 def fetch_blacklist_url(url):
 
     if not url:
@@ -58,15 +59,16 @@ def restart_pihole(docker):
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-d", "--dir", type=dir_path,
-                    help="Optional: Pi-hole /etc directory")
+                    help="optional: Pi-hole etc directory")
 parser.add_argument(
-    "-D", "--docker",  action='store_true', help="Optional: Set if you're using Pi-hole in a Docker environment")
+    "-D", "--docker",  action='store_true', help="optional: set if you're using Pi-hole in Docker environment")
 args = parser.parse_args()
 
 if args.dir:
     pihole_location = args.dir
 else:
     pihole_location = r'/etc/pihole'
+
 
 blacklist_remote_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/blacklist/exact-blacklist.txt'
 remote_sql_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/blacklist/exact-blacklist.sql'
@@ -87,13 +89,14 @@ blacklist_old_slyfox1186 = set()
 os.system('clear')
 print('\n')
 print('''
-If you are using Pi-hole 5.0 or later, this script will only remove domains that were added by itself.
-Any other domains added by the user will remain uneffected.
+If you are using Pi-hole 5.0 or later, then this script will remove the domains which are only added by my script. 
+Any other domains added by you will stay as it is. 
 ''')
+print('\n')
 
 # Check for pihole path exsists
 if os.path.exists(pihole_location):
-    print("[i] Pi-hole's path exists.")
+    print('[i] Pi-hole path exists')
 else:
     print("[X] {} was not found".format(pihole_location))
     print('\n')
@@ -102,12 +105,13 @@ else:
 
 # Check for write access to /etc/pihole
 if os.access(pihole_location, os.X_OK | os.W_OK):
-    print("[i] Write access to {} verified." .format(pihole_location))
+    print("[i] Write access to {} verified" .format(pihole_location))
     blacklist_str = fetch_blacklist_url(blacklist_remote_url)
     remote_blacklist_lines = blacklist_str.count('\n')
     remote_blacklist_lines += 1
 else:
-    print("[X] Write access is not available for {}. Please run the script as a privileged user." .format(pihole_location))
+    print("[X] Write access is not available for {}. Please run as root or other privileged user" .format(
+        pihole_location))
     print('\n')
     print('\n')
     exit(1)
@@ -115,57 +119,57 @@ else:
 # Determine whether we are using DB or not
 if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) > 0:
     db_exists = True
-    print('[i] Pi-hole Gravity database found.')
+    print('[i] Pi-Hole Gravity database found')
 
     remote_sql_str = fetch_blacklist_url(remote_sql_url)
     remote_sql_lines = remote_sql_str.count('\n')
     remote_sql_lines += 1
 
     if len(remote_sql_str) > 0:
-        print("[i] {} domains were discovered." .format(remote_blacklist_lines))
+        print("[i] {} domains discovered" .format(remote_blacklist_lines))
     else:
-        print('[X] No remote SQL queries were found.')
+        print('[X] No remote SQL queries found')
         print('\n')
         print('\n')
         exit(1)
 else:
-    print('[i] Legacy Pi-hole detected (Version older than 5.0).')
+    print('[i] Legacy Pi-hole detected (Version older than 5.0)')
 
 if blacklist_str:
     blacklist_remote.update(x for x in map(
         str.strip, blacklist_str.splitlines()) if x and x[:1] != '#')
 else:
-    print('[X] No remote domains found.')
+    print('[X] No remote domains were found.')
     print('\n')
     print('\n')
     exit(1)
 
 if db_exists:
     # Create a DB connection
-    print("[i] Connecting to Gravity's database.")
+    print('[i] Connecting to Gravity database')
 
     try:
         sqliteConnection = sqlite3.connect(gravity_db_location)
         cursor = sqliteConnection.cursor()
-        print("[i] Successfully connected to Gravity's database.")
+        print('[i] Successfully Connected to Gravity database')
         total_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 AND comment LIKE '%SlyEBL%' ")
-
+        
         totalDomains = len(total_domains.fetchall())
-        print("[i] There are a total of {} domains in your blacklist which were added by this script." .format(totalDomains))
-        print('[i] Removing domains in the Gravity database.')
+        print("[i] There are a total of {} domains in your blacklist which are added by my script" .format(totalDomains))
+        print('[i] Removing domains in the Gravity database')
         cursor.execute (" DELETE FROM domainlist WHERE type = 1 AND comment LIKE '%SlyEBL%' ")
 
         sqliteConnection.commit()
 
-        # We only removed domains we added so use total_domains
-        print("[i] {} domains were removed." .format(totalDomains))
+        # we only removed domains we added so use total_domains
+        print("[i] {} domains are removed" .format(totalDomains))
         remaining_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 OR type = 3 ")
-        print("[i] There are a total of {} domains remaining in your blacklist." .format(len(remaining_domains.fetchall())))
+        print("[i] There are a total of {} domains remaining in your blacklist" .format(len(remaining_domains.fetchall())))
 
         cursor.close()
 
     except sqlite3.Error as error:
-        print("[X] Failed to remove domains from Gravity's database.", error)
+        print('[X] Failed to remove domains from Gravity database', error)
         print('\n')
         print('\n')
         exit(1)
@@ -174,20 +178,17 @@ if db_exists:
         if (sqliteConnection):
             sqliteConnection.close()
 
-            print('[i] Connection to Gravity is closed.')
-            time.sleep(2)
+            print('[i] The database connection is closed')
 
-            print('[i] Pi-hole is rebooting... it could take a few seconds.')
+            print('[i] Restarting Pi-hole. This could take a few seconds')
             restart_pihole(args.docker)
-            print('\n')
-            print('The exact blacklist filters have been added successfully! Script complete!')
+            print('[i] Done - Domains are now removed from your Pi-Hole blacklist. Script complete!')
             print('\n')
             print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
             print('\n')
 
 else:
     if os.path.isfile(gravity_blacklist_location) and os.path.getsize(gravity_blacklist_location) > 0:
-        print('[i] Collecting existing entries from blacklist.txt')
         with open(gravity_blacklist_location, 'r') as fRead:
             blacklist_local.update(x for x in map(
                 str.strip, fRead) if x and x[:1] != '#')
@@ -197,7 +198,7 @@ else:
             len(blacklist_local)))
 
         if os.path.isfile(slyfox1186_blacklist_location) and os.path.getsize(slyfox1186_blacklist_location) > 0:
-            print('[i] Existing slyfox1186-blacklist installation located.')
+            print('[i] Existing slyfox1186-blacklist install identified')
             with open(slyfox1186_blacklist_location, 'r') as fOpen:
                 blacklist_old_slyfox1186.update(x for x in map(
                     str.strip, fOpen) if x and x[:1] != '#')
@@ -208,7 +209,7 @@ else:
             os.remove(slyfox1186_blacklist_location)
 
         else:
-            print('[i] Removing all domains that match the remote repo.')
+            print('[i] Removing domains that match the remote repo')
             blacklist_local.difference_update(blacklist_remote)
 
     print("[i] Adding exsisting {} domains to {}" .format(
@@ -217,9 +218,9 @@ else:
         for line in sorted(blacklist_local):
             fWrite.write("{}\n".format(line))
 
-    print('[i] Pi-hole must restart... please wait for it to boot.')
+    print('[i] Restarting Pi-hole. This could take a few seconds')
     restart_pihole(args.docker)
-    print('The exact blacklist filters have been added successfully! Script complete!')
+    print('[i] Done - Domains are now removed from your Pi-Hole blacklist. Script complete!')
     print('\n')
-    print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex.')
+    print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
     print('\n')
