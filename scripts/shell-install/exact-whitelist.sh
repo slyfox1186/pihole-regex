@@ -1,21 +1,19 @@
 #!/bin/bash
 
-clear
-
-# Create myScripts directory if not exist.
-if [ ! -d "$HOME/myScripts" ]; then
-    mkdir -p "$HOME/myScripts"
-    clear
+# Create "$HOME/tmp" directory if not exist.
+if [ ! -d "$HOME/tmp" ]; then
+    mkdir -p "$HOME/tmp"
 fi
 
-# Change working directory to "myScripts"
-pushd "$HOME/myScripts"
+# Change working directory to "$HOME/tmp"
+pushd "$HOME/tmp"
 
 # Make user input case insensitive
 shopt -s nocasematch
+clear
 
 # Get the user's input
-echo -e "Install script for SlyFox1186's Exact whitelist filters\\n\\nPlease choose an option: [A]dd or [R]emove: "
+echo -e "SlyFox1186's Exact whitelist filters\\n\\nPlease choose an option: [A]dd or [R]emove: "
 read a
 clear
 if [[ $a == "A" ]]; then
@@ -28,12 +26,4 @@ else
     /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-uninstall/exact-whitelist.py' | sudo python3
 fi
 
-# Change working directory to the user's "$HOME"
-pushd "$HOME"
-
-# Delete the temp directory "$HOME/myScripts"
-if [ -d "$HOME/myScripts" ]; then
-    rm -R "$HOME/myScripts"
-fi
-
-echo -e "\\nScript completed!"
+echo -e "\\nScript completed!\\n"
