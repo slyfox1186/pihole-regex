@@ -38,4 +38,4 @@ if [ -d "$HOME/myScripts" ]; then
 fi
 
 # PRINT DIRECTORY LIST
-clear; ls -1A --color
+ls -1A --color
