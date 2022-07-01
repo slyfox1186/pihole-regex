@@ -29,7 +29,7 @@ then
 	fi
 
 
-	curl -sS 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/referral-sites.txt' | sudo tee -a "${PIHOLE_LOCATION}"/whitelist.txt >/dev/null
+	curl -sS 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/whitelist/referral-sites.txt' | sudo tee -a "${PIHOLE_LOCATION}"/whitelist.txt >/dev/null
 	echo -e " ${TICK} \e[32m Adding domains to whitelist... \e[0m"
 	sleep 0.5
 	echo -e " ${TICK} \e[32m Removing duplicates... \e[0m"
