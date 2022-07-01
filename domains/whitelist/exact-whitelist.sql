@@ -1,5 +1,5 @@
-(0, 'm3u8.gammacdn.com', 1, 'SlyEWL - AdultTime - Required to STREAN VIDEOS')
-(0, 'seedbox-react-infra.s3.amazonaws.com', 1, 'SlyEWL - AdultTime - Required to display SIMILAR ACTORS')
+(0, 'm3u8.gammacdn.com', 1, 'SlyEWL - AdultTime - Required to STREAM VIDEOS')
+(0, 'seedbox-react-infra.s3.amazonaws.com', 1, 'SlyEWL - AdultTime - Required to DISPLAY SIMILAR ACTORS')
 (0, '0-edge-chat.facebook.com', 1, 'SlyEWL - Facebook')
 (0, '0.client-channel.google.com', 1, 'SlyEWL - Google')
 (0, '1-edge-chat.facebook.com', 1, 'SlyEWL - Facebook')
