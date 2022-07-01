@@ -1,23 +1,27 @@
 ## Exact Blacklist
 ## Github repository: https://github.com/slyfox1186/pihole.regex/
 
-# adulttime.com associated domain blacklist
-
-app.getbeamer.com
-backend.getbeamer.com
+# AdultTime
+2aed6ghjsb4436qtebuqk3gfzq0xeauy.lambda-url.us-east-1.on.aws
 beam.com
 cdn-cm.tiypa.com
 cdn.contentful.com
 cdn.polyfill.io
+cognito-identity.us-east-1.amazonaws.com
 d3a3ewgd1iewwz.cloudfront.net
 engine-cm.tiypa.com
 insights.algolia.io
 jlduihq7lrcdxgw4vrndhdfcsq.appsync-api.us-east-1.amazonaws.com
 kinesis.us-east-1.amazonaws.com
 kosmos-assets-prod.react.gammacdn.com
-realtime.getbeamer.com
+lzzos7clo5.execute-api.us-east-1.amazonaws.com
+static01-cms-fame.gammacdn.com
+static03-cms-fame.gammacdn.com
+streaming-fame.gammacdn.com
+tsmkfa364q-3.algolianet.com
 tsmkfa364q-dsn.algolia.net
 usage.trackjs.com
+videothumb.gammacdn.com
 xtnzefcqrb.execute-api.us-east-1.amazonaws.com
 
 # Spotify
