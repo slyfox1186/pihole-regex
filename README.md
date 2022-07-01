@@ -11,6 +11,12 @@ curl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/she
 source 'regex-blacklist.sh'
 ```
 
+### Add or Remove [Exact Blacklist] filters:
+```
+curl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-blacklist.sh' > 'exact-blacklist.sh'
+source 'exact-blacklist.sh'
+```
+
 ### Add or Remove [RegEx Whitelist] filters:
 ```
 curl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-whitelist.sh' > 'regex-whitelist.sh'
