@@ -1,5 +1,6 @@
 ###################################
 ##### RegEx Blacklist Section #####
+###################################
 
 # Github repository: https://github.com/slyfox1186/pihole.regex/
 
