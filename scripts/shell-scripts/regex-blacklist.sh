@@ -2,6 +2,15 @@
 
 clear
 
+# Create myScripts directory if not exist.
+if [ ! -d "$HOME/myScripts" ]; then
+    mkdir -p "$HOME/myScripts"
+    clear
+fi
+
+# Change working directory to "$HOME/myScripts"
+pushd "$HOME/myScripts"
+
 # Make user input case insensitive
 shopt -s nocasematch
 
