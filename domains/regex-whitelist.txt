@@ -2,6 +2,7 @@
 ## Github repository: https://github.com/slyfox1186/pihole.regex
 
 # AdultTime
+(\.|^)execute-api\.us-east-1\.amazonaws\.com$
 (\.|^)static[\d]+-cms-fame\.gammacdn\.com$
 
 # Apple
