@@ -2,41 +2,40 @@
 
 clear
 
-# Create $HOME/myScripts directory if it doesn't exist
-if [ ! -d $HOME/myScripts ]; then
-    mkdir -pv $HOME/myScripts
+# Create myScripts directory if not exist.
+if [ ! -d "$HOME/myScripts" ]; then
+    mkdir -p "$HOME/myScripts"
+    clear
 fi
 
-# Change the working directory to $HOME/myScripts
-cd $HOME/myScripts
-
-# Delete any leftover files from previous runs.
-if [ -d pihole.regex ]; then
-    rm -R pihole.regex
-fi
+# Change working directory to "$HOME/myScripts"
+pushd "$HOME/myScripts"
 
 # Make user input case insensitive
 shopt -s nocasematch
 
 # Get the user's input
-echo -e "SlyFox1186's shell script for adding or removing the exact whitelist repository domains for Pi-hole.\\n\\n"
-echo "Choose an option: [A]dd or [R]emove the repository whitelist.txt: "
+echo -e "Install script for SlyFox1186's Exact whitelist filters\\n\\nPlease choose an option: [A]dd or [R]emove: "
 read a
 if [[ $a == "A" ]]; then
     clear
-    echo -e "Adding exact whitelist domains to Pi-hole.\\n"
+    echo -e "Adding custom Exact whitelist filters to Pi-hole.\\n"
     sleep 3
-    git clone 'https://github.com/slyfox1186/pihole.regex.git'
-    python3 'pihole.regex/scripts/install-exact-whitelist.py'
-    echo -e "\\nScript complete!\\nReload your Pi-hole's web interface to see the changes."
-elif [[ $a == "R" ]]; then
-    clear
-    echo -e "Removing the exact whitelist domains from Pi-hole.\\n"
-    sleep 3
-    git clone 'https://github.com/slyfox1186/pihole.regex.git'
-    python3 'pihole.regex/scripts/uninstall-exact-whitelist.py'
-    echo -e "\\nScript complete!\\nReload your Pi-hole's web interface to see the changes."
+    curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/install-exact-whitelist.py' | sudo python3
 else
-    echo -e "Syntax failure!\\nYou must input either the letter 'A' or 'R'\\nTry running the commands again."
-    exit 1
+    clear
+    echo -e "Removing custom Exact whitelist filters from Pi-hole.\\n"
+    sleep 3
+    curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/uninstall-exact-whitelist.py' | sudo python3
 fi
+
+# CHANGE WORKING DIRECTORY TO THE USER'S "$HOME"
+pushd "$HOME"
+
+# DELETE THE TEMP DIRECTORY "$HOME/myScripts"
+if [ -d "$HOME/myScripts" ]; then
+    rm -R "$HOME/myScripts"
+fi
+
+# PRINT DIRECTORY LIST
+clear; ls -1A --color
