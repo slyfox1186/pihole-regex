@@ -114,7 +114,6 @@ xml.opera.com
 
 # [ Panasonic Viera & Panny TV ]
 0077777700140002.myhomescreen.tv
-cert-test.sandbox.google.com
 collect-eu-fy2014.myhomescreen.tv
 collect-eu-fy2015.myhomescreen.tv
 collect-eu-fy2016.myhomescreen.tv
@@ -167,7 +166,6 @@ scribe.logs.roku.com
 abtauthprd.samsungcloudsolution.com
 acr0.samsungcloudsolution.com
 ad.samsungadhub.com
-ad.samsungadhub.com
 ads.aimitv.com
 ads.samsungads.com
 amauthprd.samsungcloudsolution.com
@@ -182,10 +180,8 @@ configprd.samsungcloudsolution.net
 coordinator-production-28516768.us-east-1.elb.amazonaws.com
 cpu.samsungelectronics.com
 d179kwmlpc4o47.cloudfront.net
-d179kwmlpc4o47.cloudfront.net
 d1jwpcr0q4pcq0.cloudfront.net
 d2tnx644ijgq6i.cloudfront.net
-d37ju0xanoz6gh.cloudfront.net
 d37ju0xanoz6gh.cloudfront.net
 d3mjsomixevyw7.cloudfront.net
 data.arqiva.tv
@@ -203,7 +199,6 @@ kpu.samsungelectronics.com
 log-1.samsungacr.com
 log-2.samsungacr.com
 log-3.samsungacr.com
-log-ingestion-eu.samsungacr.com
 log-ingestion-eu.samsungacr.com
 log-ingestion.samsungacr.com
 log.internetat.tv
@@ -225,10 +220,8 @@ prderrordumphsm.samsungcloudsolution.com
 premium-videos.telly.com
 prov.samsungcloudsolution.com
 rd.samsungadhub.com
-rd.samsungadhub.com
 rwww.samsungotn.net
 samsungacr.com
-samsungadhub.com
 samsungadhub.com
 samsungads.com
 samsungcloudsolution.com
