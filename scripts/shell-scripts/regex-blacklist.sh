@@ -38,5 +38,4 @@ if [ -d "$HOME/myScripts" ]; then
     rm -R "$HOME/myScripts"
 fi
 
-# PRINT DIRECTORY LIST
-ls -1A --color
+echo -e "\\nScript completed!"
