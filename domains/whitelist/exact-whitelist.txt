@@ -2,12 +2,13 @@
 ## Github repository: https://github.com/slyfox1186/pihole.regex/
 
 # AdultTime
-kosmos-assets-prod.react.gammacdn.com
-kosmos-prod.react.gammacdn.com
-m3u8.gammacdn.com
-seedbox-react-infra.s3.amazonaws.com
-streaming-hls.gammacdn.com
-transform.gammacdn.com
+client-rapi.recombee.us # required for side panels to load
+kosmos-assets-prod.react.gammacdn.com # required react buttons to work
+kosmos-prod.react.gammacdn.com # required react buttons to work
+m3u8.gammacdn.com # required for streaming
+seedbox-react-infra.s3.amazonaws.com # required to display similar actors
+streaming-hls.gammacdn.com # required for streaming
+transform.gammacdn.com # required to display recommended videos
 
 # Adobe
 activate.adobe.com
