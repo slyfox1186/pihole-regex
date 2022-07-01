@@ -1,3 +1,5 @@
+(0, 'kosmos-assets-prod.react.gammacdn.com', 1, 'SlyEWL - AdultTime - Required to USE REACT BUTTONS')
+(0, 'kosmos-prod.react.gammacdn.com', 1, 'SlyEWL - AdultTime - Required to USE REACT BUTTONS')
 (0, 'm3u8.gammacdn.com', 1, 'SlyEWL - AdultTime - Required to STREAM VIDEOS')
 (0, 'seedbox-react-infra.s3.amazonaws.com', 1, 'SlyEWL - AdultTime - Required to DISPLAY SIMILAR ACTORS')
 (0, 'streaming-hls.gammacdn.com', 1, 'SlyEWL - AdultTime - Required to STREAM VIDEOS')
