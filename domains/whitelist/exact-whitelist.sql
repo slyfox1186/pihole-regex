@@ -1,3 +1,4 @@
+(0, 'transform.gammacdn.com', 1, 'SlyEWL - AdultTime - Required to DISPLAY RECOMMENDED VIDEOS')
 (0, 'm3u8.gammacdn.com', 1, 'SlyEWL - AdultTime - Required to STREAM VIDEOS')
 (0, 'seedbox-react-infra.s3.amazonaws.com', 1, 'SlyEWL - AdultTime - Required to DISPLAY SIMILAR ACTORS')
 (0, '0-edge-chat.facebook.com', 1, 'SlyEWL - Facebook')
