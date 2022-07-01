@@ -9,6 +9,7 @@
 (\.|^)cognito-identity\.us-east-1\.amazonaws\.com$
 (\.|^)dsn\.algolia\.net$
 (\.|^)getbeamer\.com$
+(\.|^)lambda-url\.us-east-1\.on\.aws$
 
 # Apple
 (\.|^)amazonaws\.com$
