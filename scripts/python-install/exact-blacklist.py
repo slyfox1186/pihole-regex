@@ -35,7 +35,7 @@ def fetch_blacklist_url(url):
 
     # If there is data
     if response:
-        # Strip leading and trailing whitespace
+        # Strip leading and trailing Blackspace
         response = '\n'.join(x.strip() for x in response.splitlines())
 
     # Return the hosts
@@ -157,17 +157,17 @@ if db_exists:
         print ("[i] {} Domains from script in blacklist already." .format(gravScriptBeforeTUPlen))
         #
         # make `remote_sql_str` a tuple so we can easily compare
-        newWhiteTUP = remote_sql_str.split('\n')
+        newBlackTUP = remote_sql_str.split('\n')
         # Number of domains that would be added by script
-        newblacklistlen = len(newWhiteTUP)
+        newblacklistlen = len(newBlackTUP)
         #
-        # get domains from newWhiteTUP and make an ordered list (a list we can use predictably)
+        # get domains from newBlackTUP and make an ordered list (a list we can use predictably)
         nW = [None] * newblacklistlen
         nwl = 0 # keep a count
         newWL = [None]
         newblacklist = [None] * newblacklistlen
-        for newWhiteDomain in newWhiteTUP: # for each line found domains.sql
-            nW[nwl] = newWhiteDomain # Add line to a controlled list
+        for newBlackDomain in newBlackTUP: # for each line found domains.sql
+            nW[nwl] = newBlackDomain # Add line to a controlled list
             removeBrace = nW[nwl].replace('(', '') # remove (
             removeBraces10 = removeBrace.replace(')', '') # remove )
             newWL = removeBraces10.split(', ') # split at commas to create a list
@@ -271,11 +271,11 @@ if db_exists:
             a = 0
             while w >= 0:
                 a += 1
-                for addNewWhiteDomain in newblacklist:
-                    if addNewWhiteDomain in INnewNOTgravityList:
-                        print ('    - Adding {}' .format(addNewWhiteDomain))
-                        # print (addNewWhiteDomain)
-                        sql_index = newblacklist.index(addNewWhiteDomain)
+                for addNewBlackDomain in newblacklist:
+                    if addNewBlackDomain in INnewNOTgravityList:
+                        print ('    - Adding {}' .format(addNewBlackDomain))
+                        # print (addNewBlackDomain)
+                        sql_index = newblacklist.index(addNewBlackDomain)
                         # print (sql_index)
                         # print (nW[sql_index])
                         # ability to add new
@@ -325,7 +325,7 @@ if db_exists:
         total_domains = tdr + tde
         print("[i] There are a total of {} domains in your blacklist (regex({}) & exact({}))" .format(total_domains, tdr, tde))
         sqliteConnection.close()
-        print('[i] The database connection is closed')
+        print('[i] The database connection is closed:')
         if ilng == True:
             print('[i] Restarting Pi-hole. This could take a few seconds')
             restart_pihole(args.docker)
