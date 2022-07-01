@@ -162,21 +162,21 @@ if db_exists:
         newblacklistlen = len(newBlackTUP)
         #
         # get domains from newBlackTUP and make an ordered list (a list we can use predictably)
-        nW = [None] * newblacklistlen
-        nwl = 0 # keep a count
-        newWL = [None]
+        nB = [None] * newblacklistlen
+        nbl = 0 # keep a count
+        newBL = [None]
         newblacklist = [None] * newblacklistlen
         for newBlackDomain in newBlackTUP: # for each line found domains.sql
-            nW[nwl] = newBlackDomain # Add line to a controlled list
-            removeBrace = nW[nwl].replace('(', '') # remove (
+            nB[nbl] = newBlackDomain # Add line to a controlled list
+            removeBrace = nB[nbl].replace('(', '') # remove (
             removeBraces10 = removeBrace.replace(')', '') # remove )
-            newWL = removeBraces10.split(', ') # split at commas to create a list
-            newblacklist[nwl] = newWL[1].replace('\'', '') # remove ' from domain and add to list
+            newBL = removeBraces10.split(', ') # split at commas to create a list
+            newblacklist[nbl] = newBL[1].replace('\'', '') # remove ' from domain and add to list
             # uncomment to see list of sql varables being imported
-            # print (nW[nwl])
+            # print (nB[nbl])
             # uncomment to see list of domains being imported
-            # print(newblacklist[nwl])
-            nwl += 1 # count + 1
+            # print(newblacklist[nbl])
+            nbl += 1 # count + 1
         # check database for user added exact blacklisted domains
         print('[i] Checking Gravity for domains added by user that are also in script.')
         # Check Gravity database for exact blacklisted domains added by user
@@ -277,9 +277,9 @@ if db_exists:
                         # print (addNewBlackDomain)
                         sql_index = newblacklist.index(addNewBlackDomain)
                         # print (sql_index)
-                        # print (nW[sql_index])
+                        # print (nB[sql_index])
                         # ability to add new
-                        sql_add = " INSERT OR IGNORE INTO domainlist (type, domain, enabled, comment) VALUES {} "  .format(nW[sql_index])
+                        sql_add = " INSERT OR IGNORE INTO domainlist (type, domain, enabled, comment) VALUES {} "  .format(nB[sql_index])
                         cursor.executescript(sql_add)
                         w -= 1
             # Re-Check Gravity database for domains added by script after we update it
