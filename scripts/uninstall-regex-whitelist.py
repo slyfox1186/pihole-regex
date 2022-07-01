@@ -38,7 +38,7 @@ def fetch_url(url):
     return response
 
 
-url_regstrings_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/regex-blacklist.txt'
+url_regstrings_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/regex-whitelist.txt'
 install_comment = 'slyWhiteRegEx'
 
 cmd_restart = ['pihole', 'restartdns', 'reload']
