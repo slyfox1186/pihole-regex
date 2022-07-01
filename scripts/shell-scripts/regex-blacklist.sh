@@ -1,18 +1,16 @@
 #!/bin/bash
 
-clear
-
-# Create myScripts directory if not exist.
-if [ ! -d "$HOME/myScripts" ]; then
-    mkdir -p "$HOME/myScripts"
-    clear
+# Create tmp directory if not exist.
+if [ ! -d "$HOME/tmp" ]; then
+    mkdir -p "$HOME/tmp"
 fi
 
-# Change working directory to "$HOME/myScripts"
-pushd "$HOME/myScripts"
+# Change working directory to "$HOME/tmp"
+pushd "$HOME/tmp"
 
 # Make user input case insensitive
 shopt -s nocasematch
+clear
 
 # Get the user's input
 echo -e "Install script for SlyFox1186's RegEx blacklist filters\\n\\nPlease choose an option: [A]dd or [R]emove: "
@@ -28,14 +26,6 @@ elif [[ $a == "R" ]]; then
     /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/uninstall-regex-blacklist.py' | sudo python3
 else
     echo -e "Syntax failure!\\nYou must input either the letter 'A' or 'R'\\nTry running the commands again."
-fi
-
-# CHANGE WORKING DIRECTORY TO THE USER'S "$HOME"
-pushd "$HOME"
-
-# DELETE THE TEMP DIRECTORY "$HOME/myScripts"
-if [ -d "$HOME/myScripts" ]; then
-    rm -R "$HOME/myScripts"
 fi
 
 echo -e "\\nScript completed!"
