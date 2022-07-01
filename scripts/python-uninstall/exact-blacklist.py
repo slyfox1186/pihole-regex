@@ -159,7 +159,7 @@ if db_exists:
 
         # We only removed domains we added so use total_domains
         print("[i] {} domains were removed." .format(totalDomains))
-        remaining_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 OR type = 2 ")
+        remaining_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 OR type = 3 ")
         print("[i] There are a total of {} domains remaining in your blacklist." .format(len(remaining_domains.fetchall())))
 
         cursor.close()
