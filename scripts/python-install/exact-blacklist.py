@@ -149,7 +149,7 @@ if db_exists:
         #
         print('[i] Checking Gravity for domains added by script.')
         # Check Gravity database for domains added by script
-        gravityScript_before = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 AND comment LIKE '%SlyEBL%' ")
+        gravityScript_before = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%SlyEBL%' ")
         # fetch all matching entries which will create a tuple for us
         gravScriptBeforeTUP = gravityScript_before.fetchall()
         # Number of domains in database from script
@@ -180,7 +180,7 @@ if db_exists:
         # check database for user added exact blacklisted domains
         print('[i] Checking Gravity for domains added by user that are also in script.')
         # Check Gravity database for exact blacklisted domains added by user
-        user_add = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 AND comment NOT LIKE '%SlyEBL%' ")
+        user_add = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment NOT LIKE '%SlyEBL%' ")
         userAddTUP = user_add.fetchall()
         userAddTUPlen = len(userAddTUP)
         #
@@ -240,7 +240,7 @@ if db_exists:
                 # print all data retrieved from database about domain to be removed
                 # print (INgravityNOTnewList[z])
                 # ability to remove old
-                sql_delete = " DELETE FROM domainlist WHERE type = 1 AND id = '{}' "  .format(INgravityNOTnewList[z][0])
+                sql_delete = " DELETE FROM domainlist WHERE type = 0 AND id = '{}' "  .format(INgravityNOTnewList[z][0])
                 cursor.executescript(sql_delete)
                 z -= 1
         # If not keep going
@@ -283,7 +283,7 @@ if db_exists:
                         cursor.executescript(sql_add)
                         w -= 1
             # Re-Check Gravity database for domains added by script after we update it
-            gravityScript_after = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 AND comment LIKE '%SlyEBL%' ")
+            gravityScript_after = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%SlyEBL%' ")
             # fetch all matching entries which will create a tuple for us
             gravScriptAfterTUP = gravityScript_after.fetchall()
             # Number of domains in database from script
@@ -317,10 +317,10 @@ if db_exists:
             # Do Nothing and exit. All domains are accounted for.
             print("[i] All {} domains to be added by script have been discovered in Gravity" .format(newblacklistlen)) 
         # Find total blacklisted domains (regex)
-        total_domains_R = cursor.execute(" SELECT * FROM domainlist WHERE type = 3 ")
+        total_domains_R = cursor.execute(" SELECT * FROM domainlist WHERE type = 2 ")
         tdr = len(total_domains_R.fetchall())
         # Find total blacklisted domains (exact)
-        total_domains_E = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 ")
+        total_domains_E = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 ")
         tde = len(total_domains_E.fetchall())
         total_domains = tdr + tde
         print("[i] There are a total of {} domains in your blacklist (regex({}) & exact({}))" .format(total_domains, tdr, tde))
