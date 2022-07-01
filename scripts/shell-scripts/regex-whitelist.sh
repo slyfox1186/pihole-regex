@@ -29,10 +29,6 @@ else
     /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/uninstall-regex-whitelist.py' | sudo python3
 fi
 
-# PROMPT USER SCRIPT IS COMPLETE
-echo -e "Script Complete!\\n"
-read -p "Press Enter to continue."
-
 # CHANGE WORKING DIRECTORY TO THE USER'S "$HOME"
 pushd "$HOME"
 
@@ -41,10 +37,5 @@ if [ -d "$HOME/myScripts" ]; then
     rm -R "$HOME/myScripts"
 fi
 
-# DELETE THE TEMP SCRIPT "$HOME/regex-whitelist.sh"
-if [ -f "$HOME/regex-whitelist.sh" ]; then
-    rm "$HOME/regex-whitelist.sh"
-fi
-
 # PRINT DIRECTORY LIST
-ls -1A --color
+clear; ls -1A --color
