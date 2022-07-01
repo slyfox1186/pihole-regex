@@ -30,7 +30,7 @@
 ^([\d]+-|^)edge-chat\.facebook\.com$
 
 # Google
-(\.|^)beacons[\d]*\.gvt[\d]+\.com$
+^beacons[\d]*\.gvt[\d]+\.com$
 
 # Microsoft
 (\.|^)1drv\.ms$
