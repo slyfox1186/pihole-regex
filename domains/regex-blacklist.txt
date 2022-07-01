@@ -5,18 +5,18 @@
 # Github repository: https://github.com/slyfox1186/pihole.regex/
 
 # Apple
-(\.|^)amazonaws\.com
-(\.|^)apps.apple\.com
-(\.|^)cdn-apple\.com
-(\.|^)deimos3.apple\.com
-(\.|^)digicert\.com
-(\.|^)gg.*apple\.com
-(\.|^)itunes.apple\.com
-(\.|^)mesu.apple\.com
-(\.|^)mzstatic\.com
-(\.|^)push.apple\.com
-(\.|^)symcd\.com
-(\.|^)[s1-5\.]*?symcb\.com
+(\.|^)amazonaws\.com$
+(\.|^)apps.apple\.com$
+(\.|^)cdn-apple\.com$
+(\.|^)deimos3.apple\.com$
+(\.|^)digicert\.com$
+(\.|^)gg.*apple\.com$
+(\.|^)itunes.apple\.com$
+(\.|^)mesu.apple\.com$
+(\.|^)mzstatic\.com$
+(\.|^)push.apple\.com$
+(\.|^)symcd\.com$
+(\.|^)[s1-5\.]*?symcb\.com$
 
 # Bittorrent
 (\.|^)xyz$
@@ -29,7 +29,7 @@
 
 # Google
 (\.|^)beacons[\d\.]*(gcp\.gvt\d*|gvt[\d]*)\.com$
-(\.|^)clients[\d]*\.google\.com\.domain\.name$
+(\.|^)clients[\d]*\.google\.com$\.domain\.name$
 
 # Oculus Rift
 (\.|^)graph\.oculus\.com$
