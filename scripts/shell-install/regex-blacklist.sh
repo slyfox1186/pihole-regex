@@ -19,7 +19,7 @@ clear
 if [[ $a == "A" ]]; then
     echo -e "Adding custom RegEx filters to Pi-hole.\\n"
     sleep 3
-    /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-uninstall/regex-blacklist.py' | sudo python3
+    /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-install/regex-blacklist.py' | sudo python3
 elif [[ $a == "R" ]]; then
     echo -e "Removing custom RegEx filters from Pi-hole.\\n"
     sleep 3
