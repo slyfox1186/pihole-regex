@@ -68,9 +68,8 @@ if args.dir:
 else:
     pihole_location = r'/etc/pihole'
 
-
-whitelist_remote_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/exact-whitelist.txt'
-remote_sql_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/exact-whitelist.sql'
+whitelist_remote_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/whitelist/exact-whitelist.txt'
+remote_sql_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/whitelist/exact-whitelist.sql'
 gravity_whitelist_location = os.path.join(pihole_location, 'whitelist.txt')
 gravity_db_location = os.path.join(pihole_location, 'gravity.db')
 slyfox1186_whitelist_location = os.path.join(
