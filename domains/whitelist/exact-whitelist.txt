@@ -2,6 +2,7 @@
 ## Github repository: https://github.com/slyfox1186/pihole.regex/
 
 # AdultTime
+m3u8.gammacdn.com
 seedbox-react-infra.s3.amazonaws.com
 
 # Adobe
