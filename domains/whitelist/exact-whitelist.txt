@@ -1,6 +1,9 @@
 ## Exact whitelist
 ## Github repository: https://github.com/slyfox1186/pihole.regex/
 
+# AdultTime
+seedbox-react-infra.s3.amazonaws.com
+
 # Adobe
 activate.adobe.com
 assets.adobedtm.com
