@@ -1,6 +1,9 @@
 ## RegEx Whitelist
 ## Github repository: https://github.com/slyfox1186/pihole.regex
 
+# AdultTime
+(\.|^)static[\d]+-cms-fame\.gammacdn\.com$
+
 # Apple
 (\.|^)appattest\.apple\.com$
 (\.|^)apple-cloudkit\.com$
@@ -19,5 +22,22 @@
 (\.|^)push\.apple\.com$
 (\.|^)school\.apple\.com$
 
+# Epic Games
+^catalog-public-service-prod[\d]*\.ol\.epicgames\.com$
+^entitlement-public-service-prod[\d]*\.ol\.epicgames\.com$
+
 # Facebook
 ^([\d]+-|^)edge-chat\.facebook\.com$
+
+# Google
+(\.|^)beacons[\d]*\.gvt[\d]+\.com$
+
+# Microsoft
+(\.|^)1drv\.ms$
+(\.|^)azure\.com$
+(\.|^)windows\.com$
+^v[0-2\.]+(?:events|(?:vortex)-win)\.data\.microsoft\.com$
+
+# Reddit
+(\.|^)i\.redd\.it$
+(\.|^)v\.redd\.it$
