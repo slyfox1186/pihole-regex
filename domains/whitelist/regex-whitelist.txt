@@ -3,7 +3,8 @@
 
 # AdultTime
 (\.|^)execute-api\.us-east-1\.amazonaws\.com$
-(\.|^)static[\d]+-cms-fame\.gammacdn\.com$
+(\.|^)images\d+-fame\.gammacdn\.com$ # required for images to load
+(\.|^)static[\d]+-cms-fame\.gammacdn\.com$ 
 
 # Apple
 (\.|^)appattest\.apple\.com$
