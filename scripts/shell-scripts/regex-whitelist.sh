@@ -33,11 +33,17 @@ fi
 echo -e "Script Complete!\\n"
 read -p "Press Enter to continue."
 
-# CHANGE WORKING DIRECTORY TO THE USER'S "$HOME" AND DELETE THE TEMP DIRECTORY "$HOME/myScripts"
+# CHANGE WORKING DIRECTORY TO THE USER'S "$HOME"
 pushd "$HOME"
 
+# DELETE THE TEMP DIRECTORY "$HOME/myScripts"
 if [ -d "$HOME/myScripts" ]; then
     rm -R "$HOME/myScripts"
+fi
+
+# DELETE THE TEMP SCRIPT "$HOME/regex-whitelist.sh"
+if [ -f "$HOME/regex-whitelist.sh" ]; then
+    rm "$HOME/regex-whitelist.sh"
 fi
 
 # PRINT DIRECTORY LIST
