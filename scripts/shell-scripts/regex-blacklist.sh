@@ -30,3 +30,14 @@ elif [[ $a == "R" ]]; then
 else
     echo -e "Syntax failure!\\nYou must input either the letter 'A' or 'R'\\nTry running the commands again."
 fi
+
+# CHANGE WORKING DIRECTORY TO THE USER'S "$HOME"
+pushd "$HOME"
+
+# DELETE THE TEMP DIRECTORY "$HOME/myScripts"
+if [ -d "$HOME/myScripts" ]; then
+    rm -R "$HOME/myScripts"
+fi
+
+# PRINT DIRECTORY LIST
+ls -1A --color
