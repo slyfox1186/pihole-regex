@@ -232,11 +232,8 @@ siloh.pluto.tv
 stitcher.pluto.tv
 
 # Xbox achievements and game stats sync
-v10.events.data.microsoft.com
-v20.events.data.microsoft.com
 global.asimov.events.data.trafficmanager.net
 onedscolprdcus00.centralus.cloudapp.azure.com
-global.asimov.events.data.trafficmanager.net
 onedscolprdeus02.eastus.cloudapp.azure.com
 
 # streamelements.com (Blocked by Pi-hole regex)
