@@ -34,6 +34,9 @@
 # Google
 ^beacons[\d]*\.gvt[\d]+\.com$
 
+# HP Smart App (Printer and desktop app for windows 10+11)
+^[a-z\d\-]+\.us-(east|west)-\d+\.elb\.amazonaws\.com$
+
 # Microsoft
 (\.|^)1drv\.ms$
 (\.|^)azure\.com$
