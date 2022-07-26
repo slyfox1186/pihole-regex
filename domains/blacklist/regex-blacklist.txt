@@ -17,7 +17,6 @@
 (\.|^)deimos3.apple\.com$
 (\.|^)digicert\.com$
 (\.|^)gg.*apple\.com$
-(\.|^)itunes.apple\.com$
 (\.|^)mesu.apple\.com$
 (\.|^)mzstatic\.com$
 (\.|^)push.apple\.com$
