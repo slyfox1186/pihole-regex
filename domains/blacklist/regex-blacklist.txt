@@ -28,7 +28,6 @@
 
 # Facebook
 (\.|^)accountkit\.com$
-(\.|^)facebook(|corewwwi)\.(com|onion|net)$
 (\.|^)fb(|cdn|sbx)\.(com|me|net|watch)$
 (\.|^)messenger\.com$
 
