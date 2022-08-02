@@ -38,7 +38,7 @@ def fetch_url(url):
     return response
 
 
-url_exactps_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/blacklist/exact-blacklist.txt'
+url_exactps_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-install/exact-blacklist.py'
 install_comment = 'SlyEBL'
 
 cmd_restart = ['pihole', 'restartdns', 'reload']
