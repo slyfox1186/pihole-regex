@@ -27,7 +27,7 @@ def fetch_url(url):
         return
 
     # Read and decode
-    response = response.read().decode("UTF-8").replace('\r\n', '\n')
+    response = response.read().decode('UTF-8').replace('\r\n', '\n')
 
     # If there is data
     if response:
@@ -38,14 +38,14 @@ def fetch_url(url):
     return response
 
 
-url_exactps_remote = "https://raw.githubusercontent.com/slyfox1186/pihole.exact/main/domains/blacklist/exact-blacklist.txt"
-install_comment = "SlyEBL"
+url_exactps_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole.exact/main/domains/blacklist/exact-blacklist.txt'
+install_comment = 'SlyEBL'
 
-cmd_restart = ["pihole", "restartdns", "reload"]
+cmd_restart = ['pihole', 'restartdns', 'reload']
 
-db_exists = "False"
-conn = "None"
-c = "None"
+db_exists = False
+conn = None
+c = None
 
 exactps_remote = set()
 exactps_local = set()
@@ -54,12 +54,12 @@ exactps_legacy_slyfox1186 = set()
 exactps_remove = set()
 
 # Start the docker directory override
-print("[i] Checking for "pihole" docker container.")
+print('[i] Checking for "pihole" docker container')
 
 # Initialise the docker variables
-docker_id = "None"
-docker_mnt = "None"
-docker_mnt_src = "None"
+docker_id = None
+docker_mnt = None
+docker_mnt_src = None
 
 # Check to see whether the default "pihole" docker container is active
 try:
