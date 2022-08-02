@@ -38,7 +38,7 @@ def fetch_url(url):
     return response
 
 
-url_exactps_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/blacklist/exact-blacklist.txt'
+url_exactps_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole.exact/main/domains/blacklist/exact-blacklist.txt'
 install_comment = 'SlyEBL'
 
 cmd_restart = ['pihole', 'restartdns', 'reload']
@@ -91,8 +91,8 @@ else:
 
 # Set paths
 path_pihole = docker_mnt_src if docker_mnt_src else r'/etc/pihole'
-path_legacy_regex = os.path.join(path_pihole, 'regex.list')
-path_legacy_slyfox1186_regex = os.path.join(path_pihole, 'slyfox1186-regex.list')
+path_legacy_exact = os.path.join(path_pihole, 'exact.list')
+path_legacy_slyfox1186_exact = os.path.join(path_pihole, 'slyfox1186-exact.list')
 path_pihole_db = os.path.join(path_pihole, 'gravity.db')
 
 # Check that pi-hole path exists
@@ -114,7 +114,7 @@ if os.path.isfile(path_pihole_db) and os.path.getsize(path_pihole_db) > 0:
     db_exists = True
     print('[i] DB detected')
 else:
-    print('[i] Legacy regex.list detected')
+    print('[i] Legacy exact.list detected')
 
 # Fetch the remote exactps
 str_exactps_remote = fetch_url(url_exactps_remote)
@@ -164,35 +164,35 @@ if db_exists:
     conn.close()
 
 else:
-    # If regex.list exists and is not empty
+    # If exact.list exists and is not empty
     # Read it and add to a set
-    if os.path.isfile(path_legacy_regex) and os.path.getsize(path_legacy_regex) > 0:
-        print('[i] Collecting existing entries from regex.list')
-        with open(path_legacy_regex, 'r') as fRead:
+    if os.path.isfile(path_legacy_exact) and os.path.getsize(path_legacy_exact) > 0:
+        print('[i] Collecting existing entries from exact.list')
+        with open(path_legacy_exact, 'r') as fRead:
             exactps_local.update(x for x in map(str.strip, fRead) if x and x[:1] != '#')
 
-    # If the local regexp set is not empty
+    # If the local exactp set is not empty
     if exactps_local:
         print(f'[i] {len(exactps_local)} existing exactps identified')
         # If we have a record of the previous legacy install
-        if os.path.isfile(path_legacy_slyfox1186_regex) and os.path.getsize(path_legacy_slyfox1186_regex) > 0:
-            print('[i] Existing slyfox1186-regex install identified')
-            with open(path_legacy_slyfox1186_regex, 'r') as fOpen:
+        if os.path.isfile(path_legacy_slyfox1186_exact) and os.path.getsize(path_legacy_slyfox1186_exact) > 0:
+            print('[i] Existing slyfox1186-exact install identified')
+            with open(path_legacy_slyfox1186_exact, 'r') as fOpen:
                 exactps_legacy_slyfox1186.update(x for x in map(str.strip, fOpen) if x and x[:1] != '#')
 
                 if exactps_legacy_slyfox1186:
-                    print(f'[i] Removing exactps found in {path_legacy_slyfox1186_regex}')
+                    print(f'[i] Removing exactps found in {path_legacy_slyfox1186_exact}')
                     exactps_local.difference_update(exactps_legacy_slyfox1186)
 
-            # Remove slyfox1186-regex.list as it will no longer be required
-            os.remove(path_legacy_slyfox1186_regex)
+            # Remove slyfox1186-exact.list as it will no longer be required
+            os.remove(path_legacy_slyfox1186_exact)
         else:
             print('[i] Removing exactps that match the remote repo')
             exactps_local.difference_update(exactps_remote)
 
-    # Output to regex.list
-    print(f'[i] Outputting {len(exactps_local)} exactps to {path_legacy_regex}')
-    with open(path_legacy_regex, 'w') as fWrite:
+    # Output to exact.list
+    print(f'[i] Outputting {len(exactps_local)} exactps to {path_legacy_exact}')
+    with open(path_legacy_exact, 'w') as fWrite:
         for line in sorted(exactps_local):
             fWrite.write(f'{line}\n')
 
@@ -201,6 +201,6 @@ else:
 
     # Prepare final result
     print('[i] Done - Please see your installed exactps below\n')
-    with open(path_legacy_regex, 'r') as fOpen:
+    with open(path_legacy_exact, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
