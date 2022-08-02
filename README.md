@@ -7,24 +7,24 @@ All commands need to be entered via a Terminal after logging in and you need to 
 
 ### Add or Remove [ RegEx Blacklist ] filters:
 ```
-sudo wget -c -O regex-blacklist.sh https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-blacklist.sh && ./regex-blacklist.sh
+sudo wget -c -O regex-blacklist.sh https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-blacklist.sh && source regex-blacklist.sh
 
 ```
 
 ### Add or Remove [ Exact Blacklist ] filters:
 ```
-sudo wget -c -O exact-blacklist.sh https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-blacklist.sh && ./exact-blacklist.sh
+sudo wget -c -O exact-blacklist.sh https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-blacklist.sh && source exact-blacklist.sh
 
 ```
 
 ### Add or Remove [ RegEx Whitelist ] filters:
 ```
-sudo wget -c -O regex-whitelist.sh https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-whitelist.sh && ./regex-whitelist.sh
+sudo wget -c -O regex-whitelist.sh https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-whitelist.sh && source regex-whitelist.sh
 
 ```
 
 ### Add or Remove [ Exact Whitelist ] filters:
 ```
-sudo wget -c -O exact-whitelist.sh https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-whitelist.sh && ./exact-whitelist.sh
+sudo wget -c -O exact-whitelist.sh https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-whitelist.sh && source exact-whitelist.sh
 
 ```
