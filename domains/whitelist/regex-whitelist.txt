@@ -39,6 +39,7 @@
 
 # Google
 ^beacons[\d]*\.gvt[\d]+\.com$ # resposible for all sorts of widgets and other vital functions within google
+^clients[24]\.google\.com$
 
 # HP Smart App (Printer and desktop app for windows 10+11)
 ^[a-z\d\-]+\.us-(east|west)-\d+\.elb\.amazonaws\.com$
