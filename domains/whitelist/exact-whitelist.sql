@@ -281,7 +281,6 @@
 (0, 'help.ui.xboxlive.com', 1, 'SlyEWL - Microsoft Xbox Live')
 (0, 'hls.ted.com', 1, 'SlyEWL - Miscellaneous')
 (0, 'hosts-file.net', 1, 'SlyEWL - Miscellaneous')
-(0, 'hostsfile.mine.', 1, 'SlyEWL - Miscellaneous')
 (0, 'hostsfile.mine.nu', 1, 'SlyEWL - Miscellaneous')
 (0, 'hostsfile.org', 1, 'SlyEWL - Miscellaneous')
 (0, 'humb.apple.com', 1, 'SlyEWL - Apple')
