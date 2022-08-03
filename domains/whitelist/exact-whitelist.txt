@@ -37,7 +37,7 @@ api.euro.hismarttv.com
 api.facebook.com
 api.flightproxy.teams.microsoft.com
 api.ipify.org
-api.pluto.tv', 1, 'SlyEWL - Pluto.tv
+api.pluto.tv
 api.rlje.net
 api.twitter.com
 api.us
@@ -49,7 +49,6 @@ app.emby
 app.plex.tv
 appboot.net
 appboy-images.com
-appldnld.apple.com
 appldnld.apple.com
 appleid.apple.com
 appleid.cdn-apple.com
@@ -68,7 +67,7 @@ audio4-fa.scdn.co
 audiocontentdownload.apple.com
 auth.samsungosp.com
 authsvc.teams.microsoft.com
-avpro.gl
+avpro.global.yamaha.com
 aws.amazon.com
 ax.phobos.apple.com
 axm-adm-enroll.apple.com
@@ -134,7 +133,7 @@ connectivitycheck.gstatic.com
 connecttv.pelmorex.com
 contentproxy.signal.org
 continuum.dds.microsoft.com
-cp801.prod.do.dsp.mp
+cp801.prod.do.dsp.mp.microsoft.com
 cpms.spop10.ams.plex.bz
 cpms35.spop10.ams.plex.bz
 creative.ak.fbcdn.net
@@ -173,7 +172,7 @@ diagnostics.redditmedia.com
 directvapplications.hb.omtrdc.net
 directvnow.com
 display.ugc.bazaarvoice.com
-displaycatalog.mp
+displaycatalog.mp.microsoft.com
 dl.de
 dl.dropbox.com
 dl.dropboxusercontent.com
@@ -241,10 +240,10 @@ fs.microsoft.com
 g.live.com
 gdlp01.c-wss.com
 gdmf.apple.com
-geo-prod.do.dsp.mp
+geo-prod.do.dsp.mp.microsoft.com
 geo.opera.com
 geo3.ggpht.com
-geover.prod.do.dsp.mp
+geover.prod.do.dsp.mp.microsoft.com
 gfwsl.geforce.com
 gg.apple.com
 giphy-proxy-production.whispersystems.org
@@ -261,7 +260,7 @@ googleapis.com
 googleapis.l.google.com
 googlehosted.l.googleusercontent.com
 graph.facebook.com
-graph.in
+graph.instagram.com
 graph.oculus.com
 graphql.epicgames.com
 gravatar.com
@@ -312,7 +311,6 @@ ipv6.msftncsi.com
 isu.apple.com
 itunes-apple.com
 itunes.apple.com
-itunes.apple.com
 itunes.com
 itv.ard.de
 j.mp
@@ -329,7 +327,7 @@ lastfm-img2.akamaized.net
 lcdn-locator.apple.com
 lcdn-registration.apple.com
 lcprd1.samsungcloudsolution.net
-licensing.mp
+licensing.mp.microsoft.com
 licensing.xboxlive.com
 lineup-images.scdn.co
 linkedin.com
@@ -586,12 +584,11 @@ tracking.epicgames.com
 traffic.libsyn.com
 transform.gammacdn.com
 translate.google.com
-tsfe.trafficshaping.dsp.mp
+tsfe.trafficshaping.dsp.mp.microsoft.com
 tuner-api.hdhomerun.com
 turn1.whispersystems.org
 tv.de
 tvdb2.plex.tv
-tvthemes.plexapp.com
 tvthemes.plexapp.com
 twimg.com
 twitter.com
@@ -630,7 +627,6 @@ watson.telemetry.microsoft.com
 web.facebook.com
 web.vortex.data.microsoft.com
 weblb-wg.dual-gslb.spotify.com
-weeklyad.target.com
 weeklyad.target.com
 whispersystems-textsecure-attachments.s3-accelerate.amazonaws.com
 whiteboard.microsoft.com
