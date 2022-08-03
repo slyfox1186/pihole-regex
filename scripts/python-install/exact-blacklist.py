@@ -321,7 +321,7 @@ if db_exists:
         total_domains = tdr + tde
         print("[i] There are a total of {} domains in your blacklist (regex({}) & exact({}))" .format(total_domains, tdr, tde))
         sqliteConnection.close()
-        print('[i] The connection to Gravity database has been closed.')
+        print("[i] The connection to Gravity's database has been closed.")
         if ilng == True:
             print('[i] Please wait for the Pi-hole server to restart.')
             restart_pihole(args.docker)
