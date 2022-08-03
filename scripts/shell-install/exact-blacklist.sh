@@ -18,11 +18,11 @@ clear
 if [[ $a == "A" ]]; then
     echo -e "Adding custom Exact blacklist filters to Pi-hole.\\n"
     sleep 3
-    curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-install/exact-blacklist.py' | sudo python3
+    /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-install/exact-blacklist.py' | sudo python3
 else
     echo -e "Removing custom Exact blacklist filters from Pi-hole.\\n"
     sleep 3
-    curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-uninstall/exact-blacklist.py' | sudo python3
+    /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-uninstall/exact-blacklist.py' | sudo python3
 fi
 
 echo -e "Script complete!\\n"
