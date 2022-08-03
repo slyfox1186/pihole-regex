@@ -337,7 +337,7 @@ if db_exists:
 
     finally:
         print('\n')
-        print('[i] The exact blacklist filters have been added successfully! Script complete!')
+        print('[i] The exact blacklist filters have been added successfully!')
         print('\n')
         print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
         print('\n')
@@ -377,10 +377,11 @@ else:
         for line in sorted(blacklist_remote):
             fWrite.write("{}\n".format(line))
 
-    print('[i] Domains are not added to your Pi-hole blacklist.')
-    print('[i] Restartting Pi-hole.. this could take a few seconds.')
+    print('[i] The Exact Blacklist Domains were not added to the Gravity database.')
+    print('[i] Please investigate the failure to add the domains while Pi-hole restarts.')
+    
     restart_pihole(args.docker)
-    print('[i] The exact blacklist filters have been added successfully! Script complete!')
+    print('[i] The Exact Blacklist Domains have been added successfully to Gravity!')
     print('\n')
-    print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
+    print('Make sure to show your support by staring this repository on GitHub!: https://github.com/slyfox1186/pihole.regex')
     print('\n')
