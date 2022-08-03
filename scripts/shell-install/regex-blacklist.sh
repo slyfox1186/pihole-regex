@@ -24,4 +24,5 @@ else
     sleep 3
     curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-uninstall/regex-blacklist.py' | sudo python3
 fi
+
 echo -e "\\nScript complete!"
