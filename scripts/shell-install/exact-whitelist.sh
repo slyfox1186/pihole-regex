@@ -25,4 +25,4 @@ else
     curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-uninstall/exact-whitelist.py' | sudo python3
 fi
 
-echo -e "\\nScript complete!"
+echo -e "Script complete!\\n"
