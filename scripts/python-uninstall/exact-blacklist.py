@@ -161,7 +161,7 @@ if db_exists:
         cursor.close()
 
     except sqlite3.Error as error:
-        print("[X] Failed to remove domains from Gravity's database.", error)
+        print("[X] The script failed to remove domains from Gravity's database.", error)
         print('\n')
         exit(1)
 
@@ -177,7 +177,8 @@ if db_exists:
             print('\n')
             print('[i] The Exact Blacklist Domains have been successfully removed from Gravity!')
             print('\n')
-            print('[i] Make sure to show your support by staring this repository on GitHub!: https://github.com/slyfox1186/pihole.regex')
+            print('Please make sure to star this repository to show support... it helps keep me motivated!')
+            print('https://github.com/slyfox1186/pihole.regex')
             print('\n')
 
 else:
