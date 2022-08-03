@@ -72,8 +72,7 @@ blacklist_remote_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.rege
 remote_sql_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/blacklist/exact-blacklist.sql'
 gravity_blacklist_location = os.path.join(pihole_location, 'blacklist.txt')
 gravity_db_location = os.path.join(pihole_location, 'gravity.db')
-slyfox1186_blacklist_location = os.path.join(
-    pihole_location, 'slyfox1186-blacklist.txt')
+slyfox1186_blacklist_location = os.path.join(pihole_location, 'slyfox1186-blacklist.txt')
 
 db_exists = False
 sqliteConnection = None
@@ -109,7 +108,6 @@ if os.access(pihole_location, os.X_OK | os.W_OK):
 else:
     print("[X] Write access is not available for {}. Please run the script as a privileged user." .format(pihole_location))
     print('\n')
-    print('\n')
     exit(1)
 
 # Determine whether we are using DB or not
@@ -126,7 +124,6 @@ if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) 
     else:
         print('[X] No remote SQL queries were found.')
         print('\n')
-        print('\n')
         exit(1)
 else:
     print('[i] Legacy Pi-hole detected (Version older than 5.0).')
@@ -137,12 +134,11 @@ if blacklist_str:
 else:
     print('[X] No remote domains found.')
     print('\n')
-    print('\n')
     exit(1)
 
 if db_exists:
     # Create a DB connection
-    print("[i] Connecting to Gravity's database.")
+    print("[i] Establishing a connection to Gravity's database.")
 
     try:
         sqliteConnection = sqlite3.connect(gravity_db_location)
@@ -167,22 +163,21 @@ if db_exists:
     except sqlite3.Error as error:
         print("[X] Failed to remove domains from Gravity's database.", error)
         print('\n')
-        print('\n')
         exit(1)
 
     finally:
         if (sqliteConnection):
             sqliteConnection.close()
 
-            print('[i] Connection to Gravity is closed.')
+            print("[i] The connection to Gravity's database has been closed.")
             time.sleep(2)
 
-            print('[i] Pi-hole is rebooting... it could take a few seconds.')
+            print('[i] Please wait for the Pi-hole server to restart.')
             restart_pihole(args.docker)
             print('\n')
-            print('The exact blacklist filters have been added successfully! Script complete!')
+            print('[i] The Exact Blacklist Domains have been successfully removed from Gravity!')
             print('\n')
-            print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
+            print('[i] Make sure to show your support by staring this repository on GitHub!: https://github.com/slyfox1186/pihole.regex')
             print('\n')
 
 else:
@@ -208,7 +203,7 @@ else:
             os.remove(slyfox1186_blacklist_location)
 
         else:
-            print('[i] Removing all domains that match the remote repo.')
+            print('[i] Removing all domains that are a match.')
             blacklist_local.difference_update(blacklist_remote)
 
     print("[i] Adding exsisting {} domains to {}" .format(
@@ -217,9 +212,9 @@ else:
         for line in sorted(blacklist_local):
             fWrite.write("{}\n".format(line))
 
-    print('[i] Pi-hole must restart... please wait for it to boot.')
+    print('[i] Please wait for the Pi-hole server to restart.')
     restart_pihole(args.docker)
-    print('The exact blacklist filters have been added successfully! Script complete!')
+    print('[i] The Exact Blacklist Domains have been successfully removed from Gravity!')
     print('\n')
-    print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex.')
+    print('[i] Make sure to show your support by staring this repository on GitHub!: https://github.com/slyfox1186/pihole.regex')
     print('\n')
