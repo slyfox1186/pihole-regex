@@ -316,7 +316,7 @@ if db_exists:
             # Do nothing and exit. All domains are accounted for.
             print("[i] All {} domains to be added by script have been discovered in Gravity." .format(newWhiteListlen))
         # Find total whitelisted domains (regex)
-        total_domains_R = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 ")
+        total_domains_R = cursor.execute(" SELECT * FROM domainlist WHERE type = 2 ")
         tdr = len(total_domains_R.fetchall())
         # Find total whitelisted domains (exact)
         total_domains_E = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 ")
