@@ -29,6 +29,7 @@ amzn.to
 android.clients.google.com
 android.googleapis.com
 announcements.vizio.com
+api-2-0.spot.im
 api-global.net
 api-tv.spotify.com
 api.accuweather.com
@@ -89,6 +90,7 @@ bugmenot.com
 c.s-microsoft.com
 captive.apple.com
 cdn-mobile.api.pluto.tv
+cdn.appdynamics.com
 cdn.cloudflare.net
 cdn.embedly.com
 cdn.fbsbx.com
@@ -111,6 +113,7 @@ chevrolet.com
 chtbl.com
 client-rapi.recombee.us
 client-s.gateway.me
+client.wns.windows.com
 clientconfig.passport.net
 clients.config.office.net
 clients1.google.com
@@ -193,6 +196,7 @@ ecs.office.com
 edge-chat.facebook.com
 edge-chat.me
 edge-mqtt.facebook.com
+edge.activity.windows.com
 edge.api.brightcove.com
 edge.microsoft.com
 eds.xboxlive.com
@@ -243,6 +247,7 @@ gdmf.apple.com
 geo-prod.do.dsp.mp.microsoft.com
 geo.opera.com
 geo3.ggpht.com
+geolocation.onetrust.com
 geover.prod.do.dsp.mp.microsoft.com
 gfwsl.geforce.com
 gg.apple.com
@@ -316,6 +321,7 @@ itv.ard.de
 j.mp
 jquery.com
 js.maxmind.com
+js.stripe.com
 jsdelivr.net
 json.bild.de
 keystone.mwbsys.com
@@ -451,6 +457,7 @@ portal.store.sonyentertainmentnetwork.com
 ppq.apple.com
 presence.teams.microsoft.com
 pricelist.skype.com
+privacyportal-de.onetrust.com
 prod.telemetry.ros.rockstargames.com
 products.office.com
 proxy.plex.bz
@@ -539,6 +546,7 @@ status.plex.tv
 stitcher.pluto.tv
 storage.live.com
 storage.signal.org
+storeedgefd.dsx.mp.microsoft.com
 streaming-hls.gammacdn.com
 styles.redditmedia.com
 substrate.office.com
@@ -577,6 +585,7 @@ tinyurl.com
 title.auth.xboxlive.com
 title.mgt.xboxlive.com
 tlu.dl.de
+tlu.dl.delivery.mp.microsoft.com
 todo-ta-g7g.amazon.com
 tracking-protection.cdn.mozilla.net
 tracking.dpd.de
@@ -636,6 +645,7 @@ win10.ipv6.microsoft.com
 win1710.ipv6.microsoft.com
 winatp-gw-neu.microsoft.com
 winhelp2002.mvps.org
+wl.spotify.com
 wordpress.com
 wp.com
 ws-ee-maidsvc.icloud.com
