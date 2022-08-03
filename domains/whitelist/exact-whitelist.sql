@@ -582,7 +582,6 @@
 (0, 'todo-ta-g7g.amazon.com', 1, 'Amazon - SlyEWL')
 (0, 'tracking-protection.cdn.mozilla.net', 1, 'Firefox - SlyEWL')
 (0, 'tracking.dpd.de', 1, 'Miscellaneous - SlyEWL')
-(0, 'tracking.epicgames.com', 1, 'Epic Games - SlyEWL')
 (0, 'tracking.epicgames.com', 1, 'Epic Games required to make a purchase on the website - SlyEWL')
 (0, 'traffic.libsyn.com', 1, 'Miscellaneous - SlyEWL')
 (0, 'transform.gammacdn.com', 1, 'AdultTime required to display recommended videos - SlyEWL')
