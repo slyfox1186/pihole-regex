@@ -47,3 +47,6 @@
 
 # Reddit
 (\.|^)[iv]+\.redd\.it$ # required to display images and video files
+
+# YouTube
+^(www|youtubei|oauthaccountmanager)\.googleapis\.com$ # YouTube App for iOS
