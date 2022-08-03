@@ -35,7 +35,7 @@ def fetch_blacklist_url(url):
 
     # If there is data
     if response:
-        # Strip leading and trailing whitespace
+        # Strip leading and trailing blackspace
         response = '\n'.join(x.strip() for x in response.splitlines())
 
     # Return the hosts
@@ -156,17 +156,17 @@ if db_exists:
         print('[i] {} domains from the script are already in the blacklist.' .format(gravScriptBeforeTUPlen))
         #
         # Make `remote_sql_str` a tuple so we can easily compare
-        newWhiteTUP = remote_sql_str.split('\n')
+        newblackTUP = remote_sql_str.split('\n')
         # Number of domains that would be added by script
-        newblacklistlen = len(newWhiteTUP)
+        newblacklistlen = len(newblackTUP)
         #
-        # Get domains from newWhiteTUP and make an ordered list (a list we can use predictably)
+        # Get domains from newblackTUP and make an ordered list (a list we can use predictably)
         nW = [None] * newblacklistlen
         nwl = 0 # keep a count
         newWL = [None]
         newblacklist = [None] * newblacklistlen
-        for newWhiteDomain in newWhiteTUP: # For each line found domains.sql
-            nW[nwl] = newWhiteDomain # Add line to a controlled list
+        for newblackDomain in newblackTUP: # For each line found domains.sql
+            nW[nwl] = newblackDomain # Add line to a controlled list
             removeBrace = nW[nwl].replace('(', '') # Remove (
             removeBraces10 = removeBrace.replace(')', '') # Remove )
             newWL = removeBraces10.split(', ') # Split at commas to create a list
@@ -270,11 +270,11 @@ if db_exists:
             a = 0
             while w >= 0:
                 a += 1
-                for addNewWhiteDomain in newblacklist:
-                    if addNewWhiteDomain in INnewNOTgravityList:
-                        print('    - Adding {}' .format(addNewWhiteDomain))
-                        # print(addNewWhiteDomain)
-                        sql_index = newblacklist.index(addNewWhiteDomain)
+                for addNewblackDomain in newblacklist:
+                    if addNewblackDomain in INnewNOTgravityList:
+                        print('    - Adding {}' .format(addNewblackDomain))
+                        # print(addNewblackDomain)
+                        sql_index = newblacklist.index(addNewblackDomain)
                         # print(sql_index)
                         # print(nW[sql_index])
                         # Ability to add new
