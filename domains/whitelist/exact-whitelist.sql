@@ -1,7 +1,6 @@
 (0, '0-edge-chat.facebook.com', 1, 'SlyEWL - Facebook')
 (0, '0.client-channel.google.com', 1, 'SlyEWL - Google')
 (0, '1-edge-chat.facebook.com', 1, 'SlyEWL - Facebook')
-                                                                                                           
 (0, '1drv.com', 1, 'SlyEWL - Microsoft')
 (0, '2-edge-chat.facebook.com', 1, 'SlyEWL - Facebook')
 (0, '2.android.pool.ntp.org', 1, 'SlyEWL - Google')
