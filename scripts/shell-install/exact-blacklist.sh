@@ -6,7 +6,7 @@ if [ ! -d "$HOME/tmp" ]; then
 fi
 
 # Change working directory to "$HOME/tmp"
-pushd "$HOME/tmp"
+cd "$HOME/tmp"
 
 # Make user input case insensitive
 shopt -s nocasematch; clear
