@@ -7,24 +7,24 @@ All commands need to be entered via a Terminal after logging in and you need to 
 
 ### Add/Remove `RegEx Blacklist`:
 ```
-curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-blacklist.sh > regex-blacklist.sh && source regex-blacklist.sh
+wget -c -O 'regex-blacklist.sh' 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-blacklist.sh' && source 'regex-blacklist.sh'
 
 ```
 
 ### Add/Remove `Exact Blacklist`:
 ```
-curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-blacklist.sh > exact-blacklist.sh && source exact-blacklist.sh
+wget -c -O 'exact-blacklist.sh' 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-blacklist.sh' && source 'exact-blacklist.sh'
 
 ```
 
 ### Add/Remove `RegEx Whitelist`:
 ```
-curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-whitelist.sh > regex-whitelist.sh && source regex-whitelist.sh
+wget -c -O 'regex-whitelist.sh' 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-whitelist.sh' && source 'regex-whitelist.sh'
 
 ```
 
 ### Add/Remove `Exact Whitelist`:
 ```
-curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-whitelist.sh > exact-whitelist.sh && source exact-whitelist.sh
+wget -c -O 'exact-whitelist.sh' 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-whitelist.sh' && source 'exact-whitelist.sh'
 
 ```
