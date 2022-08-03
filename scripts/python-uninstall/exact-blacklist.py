@@ -216,5 +216,6 @@ else:
     restart_pihole(args.docker)
     print('[i] The Exact Blacklist Domains have been successfully removed from Gravity!')
     print('\n')
-    print('[i] Make sure to show your support by staring this repository on GitHub!: https://github.com/slyfox1186/pihole.regex')
+    print('Please make sure to star this repository to show support... it helps keep me motivated!')
+    print('https://github.com/slyfox1186/pihole.regex')
     print('\n')
