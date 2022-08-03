@@ -9,7 +9,7 @@ fi
 pushd "$HOME/tmp"
 
 # Make user input case insensitive
-shopt -s nocasematch; clear
+shopt -s nocasematch
 
 # Get the user's input
 echo -e "SlyFox1186's RegEx blacklist filters\\n\\nPlease choose an option: [A]dd or [R]emove: "
