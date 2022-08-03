@@ -5,25 +5,25 @@ The purpose of this filter list is to compliment your existing blocklist's using
 
 All commands need to be entered via a Terminal after logging in and you need to have [**Python v3.6 or higher**] installed to execute the curl commands below. You can use PuTTY or your SSH client of choice if you're not on the pc running Pi-hole.
 
-### Add or Remove [ RegEx Blacklist ] filters:
+### Add/Remove `RegEx Blacklist`:
 ```
 /usr/bin/curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-blacklist.sh > regex-blacklist.sh && source regex-blacklist.sh
 
 ```
 
-### Add or Remove [ Exact Blacklist ] filters:
+### Add/Remove `Exact Blacklist`:
 ```
 /usr/bin/curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-blacklist.sh > exact-blacklist.sh && source exact-blacklist.sh
 
 ```
 
-### Add or Remove [ RegEx Whitelist ] filters:
+### Add/Remove `RegEx Whitelist`:
 ```
 /usr/bin/curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-whitelist.sh > regex-whitelist.sh && source regex-whitelist.sh
 
 ```
 
-### Add or Remove [ Exact Whitelist ] filters:
+### Add/Remove `Exact Whitelist`:
 ```
 /usr/bin/curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-whitelist.sh > exact-whitelist.sh && source exact-whitelist.sh
 
