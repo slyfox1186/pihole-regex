@@ -2,9 +2,14 @@
 ## Github repository: https://github.com/slyfox1186/pihole.regex
 
 # AdultTime
+(www\.|^)adulttime.com
+(\.|^)algolianet\.com$
+(\.|^)algolia\.net$
+(\.|^)appsync-api\.us-east-1\.amazonaws\.com$
 (\.|^)execute-api\.us-east-1\.amazonaws\.com$
 (\.|^)images\d+-fame\.gammacdn\.com$ # required for images to load
-(\.|^)static[\d]+-cms-fame\.gammacdn\.com$ 
+(\.|^)static[\d]+-cms-fame\.gammacdn\.com$
+^images\d+-fame\.gammacdn\.com$
 
 # Apple
 (\.|^)appattest\.apple\.com$
@@ -18,31 +23,32 @@
 (\.|^)icloud-content\.com$
 (\.|^)icloud\.(cn|com)$
 (\.|^)icloud\.apple\.com$
+(\.|^)icloud\.com$
 (\.|^)itunes\.apple\.com$
+(\.|^)itunes\.com$
 (\.|^)iwork\.apple\.com$
 (\.|^)mzstatic\.com$
 (\.|^)push\.apple\.com$
 (\.|^)school\.apple\.com$
 
 # Epic Games
-^catalog-public-service-prod[\d]*\.ol\.epicgames\.com$
-^entitlement-public-service-prod[\d]*\.ol\.epicgames\.com$
+^(catalog|entitlement)-public-service-prod[\d]*\.ol\.epicgames\.com$
 
 # Facebook
 ^([\d]+-|^)edge-chat\.facebook\.com$
 
 # Google
-^beacons[\d]*\.gvt[\d]+\.com$
+^beacons[\d]*\.gvt[\d]+\.com$ # resposible for all sorts of widgets and other vital functions within google
 
 # HP Smart App (Printer and desktop app for windows 10+11)
 ^[a-z\d\-]+\.us-(east|west)-\d+\.elb\.amazonaws\.com$
 
 # Microsoft
-(\.|^)1drv\.ms$
-(\.|^)azure\.com$
-(\.|^)windows\.com$
-^v[0-2\.]+(?:events|(?:vortex)-win)\.data\.microsoft\.com$
+(\.|^)1drv\.ms$ # Onedrive's short url
+(\.|^)azure\.com$ # Azure's main site
+(\.|^)windows\.com$ # Windows main site
+^v[0-2]+\.(events|vortex-win)\.data\.microsoft\.com$
+^title\.(auth|mgt)\.xboxlive\.com$
 
 # Reddit
-(\.|^)i\.redd\.it$
-(\.|^)v\.redd\.it$
+(\.|^)[iv]+\.redd\.it$ # required to display images and video files
