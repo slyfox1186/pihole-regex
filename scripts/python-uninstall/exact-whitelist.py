@@ -181,7 +181,6 @@ if db_exists:
             restart_pihole(args.docker)
             print('\n')
             print('The exact whitelist filters have been added successfully! Script complete!')
-            print('\n')
             print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
             print('\n')
 
@@ -220,6 +219,5 @@ else:
     print('[i] Pi-hole must restart... please wait for it to boot.')
     restart_pihole(args.docker)
     print('The exact whitelist filters have been added successfully! Script complete!')
-    print('\n')
     print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex.')
     print('\n')
