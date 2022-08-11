@@ -182,7 +182,6 @@ if db_exists:
             print('\n')
             print('The exact whitelist filters have been added successfully! Script complete!')
             print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
-            print('\n')
 
 else:
     if os.path.isfile(gravity_whitelist_location) and os.path.getsize(gravity_whitelist_location) > 0:
@@ -220,4 +219,3 @@ else:
     restart_pihole(args.docker)
     print('The exact whitelist filters have been added successfully! Script complete!')
     print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex.')
-    print('\n')
