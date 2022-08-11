@@ -45,6 +45,9 @@
 # HP Smart App (Printer and desktop app for windows 10+11)
 ^[a-z\d\-]+\.us-(east|west)-\d+\.elb\.amazonaws\.com$
 
+# LG-TV
+^aic\.(homeprv|service)\.lgtvcommon\.com$ # LG Smart TV updates
+
 # Microsoft
 (\.|^)1drv\.ms$ # Onedrive's short url
 (\.|^)azure\.com$ # Azure's main site
@@ -57,6 +60,3 @@
 
 # YouTube
 ^(www|youtubei|oauthaccountmanager)\.googleapis\.com$ # YouTube App for Apple iOS
-
-# LG-TV
-^aic\.(homeprv|service)\.lgtvcommon\.com$ # LG Smart TV updates
