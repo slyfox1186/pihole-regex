@@ -339,7 +339,6 @@ if db_exists:
         print('\n')
         print('[i] The exact whitelist filters have been added successfully!')
         print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
-        print('\n')
 
 else:
 
@@ -381,4 +380,3 @@ else:
     restart_pihole(args.docker)
     print('[i] The exact whitelist filters have been added successfully!')
     print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
-    print('\n')
