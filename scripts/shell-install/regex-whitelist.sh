@@ -19,11 +19,9 @@ echo -e "SlyFox1186's RegEx whitelist filters\\n\\nPlease choose an option: [A]d
 read a
 clear
 if [[ $a == "A" ]]; then
-    echo -e "Adding custom RegEx whitelist filters to Pi-hole.\\n"
-    sleep 3
     /usr/bin/curl -sSl "$URL/python-install/regex-whitelist.py" | sudo python3
+    echo -e "\\nScript complete: The RegEx whitelist filters have been added."
 else
-    echo -e "Removing custom RegEx whitelist filters from Pi-hole.\\n"
-    sleep 3
     /usr/bin/curl -sSl "$URL/python-uninstall/regex-whitelist.py" | sudo python3
+    echo -e "\\nScript complete: The RegEx whitelist filters have been removed."
 fi
