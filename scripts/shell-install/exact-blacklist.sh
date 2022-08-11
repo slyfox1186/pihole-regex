@@ -20,8 +20,8 @@ read a
 clear
 if [[ $a == "A" ]]; then
     /usr/bin/curl -sSl "$URL/python-install/exact-blacklist.py" | sudo python3
-    echo -e "\\nScript complete: The exact blacklist filters have been added."
+    echo 'Script complete: The exact blacklist filters have been added.'
 else
     /usr/bin/curl -sSl "$URL/python-uninstall/exact-blacklist.py" | sudo python3
-    echo -e "\\nScript complete: The exact blacklist filters have been removed."
+    echo 'Script complete: The exact blacklist filters have been removed.'
 fi
