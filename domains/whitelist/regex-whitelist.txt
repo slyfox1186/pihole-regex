@@ -23,11 +23,11 @@
 (\.|^)business\.apple\.com$
 (\.|^)cdn-apple\.com$
 (\.|^)gc\.apple\.com$
-^(icloud(|-content)|itunes)(\.com|\.apple\.com)$
 (\.|^)iwork\.apple\.com$
 (\.|^)mzstatic\.com$
 (\.|^)push\.apple\.com$
 (\.|^)school\.apple\.com$
+^(icloud(|-content)|itunes)(\.com|\.apple\.com)$
 
 # Epic Games
 ^(catalog|entitlement)-public-service-prod[\d]*\.ol\.epicgames\.com$
@@ -46,8 +46,8 @@
 (\.|^)1drv\.ms$ # Onedrive's short url
 (\.|^)azure\.com$ # Azure's main site
 (\.|^)windows\.com$ # Windows main site
-^v[0-2]+\.(events|vortex-win)\.data\.microsoft\.com$
-^title\.(auth|mgt)\.xboxlive\.com$
+^title\.(auth|mgt)\.xboxlive\.com$ # Microsoft Xbox Live
+^v[0-2]+\.(events|vortex-win)\.data\.microsoft\.com$ # Essential Microsoft updates
 
 # Reddit
 (\.|^)[iv]+\.redd\.it$ # required to display images and video files
