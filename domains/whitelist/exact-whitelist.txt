@@ -4,10 +4,10 @@
 1drv.com
 2-edge-chat.facebook.com
 2.android.pool.ntp.org
-2.tlu.dl.delivery.mp.microsoft.com
+2.tlu.dl.de
 3-edge-chat.facebook.com
 4-edge-chat.facebook.com
-4.tlu.dl.delivery.mp.microsoft.com
+4.tlu.dl.de
 5-edge-chat.facebook.com
 6-edge-chat.facebook.com
 79423.analytics.edgekey.net
@@ -30,7 +30,7 @@ android.clients.google.com
 android.googleapis.com
 announcements.vizio.com
 api-2-0.spot.im
-api-global.netflix.com
+api-global.net
 api-tv.spotify.com
 api.accuweather.com
 api.directory.signal.org
@@ -41,17 +41,16 @@ api.ipify.org
 api.pluto.tv
 api.rlje.net
 api.twitter.com
-api.us.hismarttv.com
+api.us
 api.vizio.com
 api2.branch.io
 apicache.vudu.com
 app-api.ted.com
 app.emby
 app.plex.tv
-appboot.netflix.com
+appboot.net
 appboy-images.com
 appldnld.apple.com
-appldnld.apple.com.edgesuite.net
 appleid.apple.com
 appleid.cdn-apple.com
 applicast.ga.sony.net
@@ -71,7 +70,7 @@ auth.samsungosp.com
 authsvc.teams.microsoft.com
 avpro.global.yamaha.com
 aws.amazon.com
-ax.phobos.apple.com.edgesuite.net
+ax.phobos.apple.com
 axm-adm-enroll.apple.com
 axm-adm-mdm.apple.com
 axm-adm-scep.apple.com
@@ -127,7 +126,7 @@ cloudsync-prod.s3.amazonaws.com
 cms.souqcdn.com
 code.bildstatic.de
 codepush.teams.microsoft.com
-cognito-identity.us-east-1.amazonaws.com
+cognito-identity.us
 config.fp.measure.office.com
 config.teams.microsoft.com
 configuration.apple.com
@@ -168,7 +167,7 @@ device-messaging-na.amazon.com
 device.auth.xboxlive.com
 deviceenrollment.apple.com
 devicelistenerprod.microsoft.com
-deviceportal.nettvservices.com
+deviceportal.net
 deviceservices-external.apple.com
 devimages-cdn.apple.com
 diagassets.apple.com
@@ -177,13 +176,13 @@ directvapplications.hb.omtrdc.net
 directvnow.com
 display.ugc.bazaarvoice.com
 displaycatalog.mp.microsoft.com
-dl.delivery.mp.microsoft.com
+dl.de
 dl.dropbox.com
 dl.dropboxusercontent.com
 dl.google.com
 dns.msftncsi.com
 doh.dns.apple.com
-download.developer.apple.com
+download.de
 download.scdn.co
 download.sonarr.tv
 drift.com
@@ -192,7 +191,7 @@ drscdn.500px.org
 dsms0mj1bbhn4.cloudfront.net
 dynupdate.no-ip.com
 ec-ns.sascdn.com
-ecn.dev.virtualearth.net
+ecn.de
 ecs.office.com
 edge-chat.facebook.com
 edge-chat.messenger.com
@@ -232,8 +231,8 @@ fb.me
 fba.apple.com
 fbcdn-creative-a.akamaihd.net
 fbcdn.net
-fe3.delivery.dsp.mp.microsoft.com.nsatc.net
-fe3cr.delivery.mp.microsoft.com
+fe3.de
+fe3cr.de
 filament.io
 firestore.googleapis.com
 fivethirtyeight.com
@@ -272,7 +271,7 @@ graphql.epicgames.com
 gravatar.com
 gs.apple.com
 gsa.apple.com
-gsp-ssl.ls-apple.com.akadns.net
+gsp-ssl.ls-apple.com
 gsp-ssl.ls.apple.com
 gsp1.apple.com
 gstatic.com
@@ -315,9 +314,8 @@ intercom.io
 iprofiles.apple.com
 ipv6.msftncsi.com
 isu.apple.com
-itunes-apple.com.akadns.net
+itunes-apple.com
 itunes.apple.com
-itunes.apple.com.edgesuite.net
 itunes.com
 itv.ard.de
 j.mp
@@ -349,6 +347,7 @@ login.live.com
 login.microsoftonline.com
 login5.spotify.com
 logs.juspay.in
+m.facebook.com
 m.hotmail.com
 m.weeklyad.target.com
 m.youtube.com
@@ -400,7 +399,7 @@ node.plexapp.com
 northeurope-prod-4.notifications.teams.microsoft.com
 notify.xboxlive.com
 npr-news.streaming.adswizz.com
-nrdp.nccp.netflix.com
+nrdp.nccp.net
 ns.itunes.apple.com
 ns1.dropbox.com
 ns11.whois.co.kr
@@ -509,7 +508,7 @@ scontent.xx.fbcdn.net
 script.ioam.de
 secure.avangate.com
 secure.brightcove.com
-secure.netflix.com
+secure.net
 secure.surveymonkey.com
 seedbox-react-infra.s3.amazonaws.com
 self.events.data.microsoft.com
@@ -526,7 +525,7 @@ siloh.pluto.tv
 skl.apple.com
 skyhook.sonarr.tv
 skype.com
-sls.update.microsoft.com.akadns.net
+sls.update.microsoft.com
 society6.com
 someonewhocares.org
 souqcdn.com
@@ -585,7 +584,7 @@ time.samsungcloudsolution.com
 tinyurl.com
 title.auth.xboxlive.com
 title.mgt.xboxlive.com
-tlu.dl.delivery.mp.microsoft.com
+tlu.dl.de
 todo-ta-g7g.amazon.com
 tracking-protection.cdn.mozilla.net
 tracking.dpd.de
@@ -596,10 +595,9 @@ translate.google.com
 tsfe.trafficshaping.dsp.mp.microsoft.com
 tuner-api.hdhomerun.com
 turn1.whispersystems.org
-tv.deezer.com
+tv.de
 tvdb2.plex.tv
 tvthemes.plexapp.com
-tvthemes.plexapp.com.cdn.cloudflare.net
 twimg.com
 twitter.com
 ud-chat.signal.org
@@ -634,7 +632,6 @@ web.facebook.com
 web.vortex.data.microsoft.com
 weblb-wg.dual-gslb.spotify.com
 weeklyad.target.com
-weeklyad.target.com.edgesuite.net
 whispersystems-textsecure-attachments.s3-accelerate.amazonaws.com
 whiteboard.microsoft.com
 widget-cdn.rpxnow.com
@@ -648,6 +645,7 @@ wordpress.com
 wp.com
 ws-ee-maidsvc.icloud.com
 ws.audioscrobbler.com
+ww.dataplicity.com
 www.adf.ly
 www.aliexpress.com
 www.apple.com
@@ -684,7 +682,6 @@ x-default-stgec.uplynk.com
 xbox.ipv6.microsoft.com
 xboxexperiencesprod.experimentation.xboxlive.com
 xflight.xboxlive.com
-xkms.xbolive.com
 xkms.xboxlive.com
 xp-cdn.apple.com
 xp.apple.com
