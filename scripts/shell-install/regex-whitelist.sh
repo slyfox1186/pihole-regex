@@ -15,11 +15,11 @@ cd "$HOME/tmp"
 shopt -s nocasematch; clear
 
 # Get the user's input
-echo -e "SlyFox1186's RegEx Whitelist filters\\n\\nPlease choose an option: [A]dd or [R]emove: "
+echo -e "SlyFox1186's RegEx whitelist filters\\n\\nPlease choose an option: [A]dd or [R]emove: "
 read a
 clear
 if [[ $a == "A" ]]; then
-    echo -e "Adding custom regex whitelist filters to Pi-hole.\\n"
+    echo -e "Adding custom RegEx whitelist filters to Pi-hole.\\n"
     sleep 3
     /usr/bin/curl -sSl "$URL/python-install/regex-whitelist.py" | sudo python3
 else
