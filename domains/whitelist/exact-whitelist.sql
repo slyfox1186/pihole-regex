@@ -690,7 +690,7 @@
 (0, 'xp.apple.com', 1, 'Apple - SlyEWL')
 (0, 'xsts.auth.xboxlive.com', 1, 'Microsoft Xbox Live - SlyEWL')
 (0, 'yahoo.com', 1, 'Yahoo - SlyEWL')
-(0, 'youtu.be', 1, 'YouTube - SlyEWL')
+(0, 'youtu.be', 1, 'YouTube - URL Shortener - SlyEWL')
 (0, 'youtube-nocookie.com', 1, 'YouTube - SlyEWL')
 (0, 'youtube.com', 1, 'YouTube - SlyEWL')
 (0, 'youtubei.googleapis.com', 1, 'YouTube - SlyEWL')
