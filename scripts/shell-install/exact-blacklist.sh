@@ -19,11 +19,9 @@ echo -e "SlyFox1186's exact blacklist filters\\n\\nPlease choose an option: [A]d
 read a
 clear
 if [[ $a == "A" ]]; then
-    echo -e "Adding exact blacklist filters to Pi-hole.\\n"
-    sleep 3
     /usr/bin/curl -sSl "$URL/python-install/exact-blacklist.py" | sudo python3
+    echo -e "\\nScript complete: The exact blacklist filters have been added."
 else
-    echo -e "Removing exact blacklist filters from Pi-hole.\\n"
-    sleep 3
     /usr/bin/curl -sSl "$URL/python-uninstall/exact-blacklist.py" | sudo python3
+    echo -e "\\nScript complete: The exact blacklist filters have been removed."
 fi
