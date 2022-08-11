@@ -9,36 +9,38 @@
 (\.|^)cognito-identity\.us-east-1\.amazonaws\.com$
 (\.|^)images\d+-fame\.gammacdn\.com$ # Required for images to load
 (\.|^)lambda-url\.us-east-1\.on\.aws$
-(\.|^)static[\d]+-cms-fame\.gammacdn\.com$
-(\.|^)static\d+-cms-fame\.gammacdn\.com$
+(\.|^)react\.gammacdn\.com$ # AdultTime - Required to use react buttons - SlyEWL
+(\.|^)static[\d]+-cms-fame\.gammacdn\.com$ # CDN Server
 ^(appsync|execute)-api\.us-east-1\.amazonaws\.com$
-^images\d+-fame\.gammacdn\.com$
-^streaming-(fame|hls)\.gammacdn\.com$
+^images\d+-fame\.gammacdn\.com$ # Loads images
+^streaming-(fame|hls)\.gammacdn\.com$ # Required to stream video
 
 # Apple
 (\.|^)appattest\.apple\.com$
-(\.|^)apple-cloudkit\.com$
+(\.|^)apple-cloudkit\.com$ # Required for Cloud Access
 (\.|^)apple-livephotoskit\.com$
 (\.|^)apps\.apple\.com$
 (\.|^)apzones\.com$
 (\.|^)business\.apple\.com$
-(\.|^)cdn-apple\.com$
+(\.|^)cdn-apple\.com$ # One of the main CDN networks for Apple
 (\.|^)gc\.apple\.com$
 (\.|^)iwork\.apple\.com$
 (\.|^)mzstatic\.com$
 (\.|^)push\.apple\.com$
-(\.|^)school\.apple\.com$
-^(icloud(|-content)|itunes)(\.com|\.apple\.com)$
+(\.|^)school\.apple\.com$ # Required to access all school related accountsc
+^(icloud(|-content)|itunes)(\.com|\.apple\.com)$ # Required to access and use iTunes
 
 # Epic Games
-^(catalog|entitlement)-public-service-prod[\d]*\.ol\.epicgames\.com$
+^(catalog|entitlement)-public-service-prod[\d]*\.ol\.epicgames\.com$ # Store purchases
+^(catalog|entitlement|priceengine)-public-service-prod\.ak\.epicgames\.com$ # Store purchases
+^lightswitch-public-service-prod[\d]*\.ol\.epicgames\.com$ # Store purchases
 
 # Facebook
-^([\d]+-|^)edge-chat\.facebook\.com$
+^([\d]+-|^)edge-chat\.facebook\.com$ # Messenger
 
 # Google
-^beacons[\d]*\.gvt[\d]+\.com$ # resposible for all sorts of widgets and other vital functions within google
-^clients[24]\.google\.com$
+^beacons[\d]*\.gvt[\d]+\.com$ # Resposible for all sorts of widgets and other vital functions within google
+^clients[24]\.google\.com$ # Breaks a lot of Google services if not whitelisted
 
 # HP Smart App (Printer and desktop app for windows 10+11)
 ^[a-z\d\-]+\.us-(east|west)-\d+\.elb\.amazonaws\.com$
@@ -47,11 +49,14 @@
 (\.|^)1drv\.ms$ # Onedrive's short url
 (\.|^)azure\.com$ # Azure's main site
 (\.|^)windows\.com$ # Windows main site
-^title\.(auth|mgt)\.xboxlive\.com$ # Microsoft Xbox Live
+^title\.(auth|mgt)\.xboxlive\.com$ # Microsoft Xbox
 ^v[0-2]+\.(events|vortex-win)\.data\.microsoft\.com$ # Essential Microsoft updates
 
 # Reddit
-(\.|^)[iv]+\.redd\.it$ # Required to display images and video files
+(\.|^)[iv]+\.redd\.it$ # Required to display image and video files
 
 # YouTube
-^(www|youtubei|oauthaccountmanager)\.googleapis\.com$ # YouTube App for iOS
+^(www|youtubei|oauthaccountmanager)\.googleapis\.com$ # YouTube App for Apple iOS
+
+# LG-TV
+^aic\.(homeprv|service)\.lgtvcommon\.com$ # LG Smart TV updates
