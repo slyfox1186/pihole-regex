@@ -12,10 +12,12 @@
 6-edge-chat.facebook.com
 79423.analytics.edgekey.net
 aad.cs.dds.microsoft.com
+accounts.epicgames.com
 accounts.spotify.com
 activate.adobe.com
 activity.windows.com
 adf.ly
+ads-fa.spotify.com
 ae01.alicdn.com
 akamaihd.net
 akamaitechnologies.com
@@ -64,6 +66,7 @@ arc.msn.com
 aspnetcdn.com
 assets.adobedtm.com
 attestation.xboxlive.com
+audio2.spotify.com
 audio4-fa.scdn.co
 audiocontentdownload.apple.com
 auth.samsungosp.com
@@ -89,9 +92,11 @@ bufferapp.com
 bugmenot.com
 c.s-microsoft.com
 captive.apple.com
+catalog-public-service-prod.ak.epicgames.com
 cdn-mobile.api.pluto.tv
 cdn.appdynamics.com
 cdn.cloudflare.net
+cdn.contentful.com
 cdn.embedly.com
 cdn.fbsbx.com
 cdn.optimizely.com
@@ -152,12 +157,13 @@ cws.conviva.com
 d1oxlq5h9kq8q5.cloudfront.net
 d2c8v52ll5s99u.cloudfront.net
 d2gatte9o95jao.cloudfront.net
+d3a3ewgd1iewwz.cloudfront.net
 d83eunklitikj.cloudfront.net
 daily-mix.scdn.co
 dailymix-images.scdn.co
 dashboard.plex.tv
 dataplicity.com
-de.ioam.de
+de.io
 dealer.spotify.com
 def-vef.xboxlive.com
 delivery.vidible.tv
@@ -200,8 +206,10 @@ edge.activity.windows.com
 edge.api.brightcove.com
 edge.microsoft.com
 eds.xboxlive.com
+embed.spotify.com
 emea.ng.msg.teams.microsoft.com
 emea.pptservicescast.officeapps.live.com
+entitlement-public-service-prod.ak.epicgames.com
 entitlement.auth.adobe.com
 epg.corio.com
 eu-v10.events.data.microsoft.com
@@ -276,6 +284,7 @@ gsp-ssl.ls.apple.com
 gsp1.apple.com
 gstatic.com
 gstaticadssl.l.google.com
+gucl-6.ap.spotify.com
 h-sdk.online-metrix.net
 has.spserv.microsoft.com
 hbbtv.prosieben.de
@@ -349,6 +358,7 @@ login5.spotify.com
 logs.juspay.in
 m.facebook.com
 m.hotmail.com
+m.reddit.com
 m.weeklyad.target.com
 m.youtube.com
 m3u8.gammacdn.com
@@ -444,8 +454,10 @@ pgl.yoyo.org
 pings.conviva.com
 pinterest.com
 placehold.it
-placeholdit.imgix.net
+placeholdit.im
 platform.cid.samba.tv
+play.spotify.com
+play.spotify.edgekey.net
 players.brightcove.net
 players.pluto.tv
 playgrounds-assets-cdn.apple.com
@@ -505,7 +517,7 @@ scontent-mia3-1.xx.fbcdn.net
 scontent-ort2-1.xx.fbcdn.net
 scontent.fgdl5-1.fna.fbcdn.net
 scontent.xx.fbcdn.net
-script.ioam.de
+script.io
 secure.avangate.com
 secure.brightcove.com
 secure.net
@@ -623,6 +635,7 @@ vcs.vdspf.com
 video-stats.l.google.com
 video.xx.fbcdn.net
 videos.vidible.tv
+videothumb.gammacdn.com
 vidtech.cbsinteractive.com
 vimeo.com
 vpp.itunes.apple.com
