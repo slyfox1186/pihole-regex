@@ -20,8 +20,8 @@ read a
 clear
 if [[ $a == "A" ]]; then
     /usr/bin/curl -sSl "$URL/python-install/regex-whitelist.py" | sudo python3
-    echo -e "\\nScript complete: The RegEx whitelist filters have been added."
+    echo 'Script complete: The RegEx whitelist filters have been added.'
 else
     /usr/bin/curl -sSl "$URL/python-uninstall/regex-whitelist.py" | sudo python3
-    echo -e "\\nScript complete: The RegEx whitelist filters have been removed."
+    echo 'Script complete: The RegEx whitelist filters have been removed.'
 fi
