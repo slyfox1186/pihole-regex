@@ -13,6 +13,7 @@
 (\.|^)static\d+-cms-fame\.gammacdn\.com$
 ^(appsync|execute)-api\.us-east-1\.amazonaws\.com$
 ^images\d+-fame\.gammacdn\.com$
+^streaming-(fame|hls)\.gammacdn\.com$
 
 # Apple
 (\.|^)appattest\.apple\.com$
