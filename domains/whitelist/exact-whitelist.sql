@@ -566,7 +566,6 @@
 (0, 't0.ssl.ak.dynamic.tiles.virtualearth.net', 1, 'Misc - SlyEWL')
 (0, 't0.ssl.ak.tiles.virtualearth.net', 1, 'Misc - SlyEWL')
 (0, 'tagger.opecloud.com', 1, 'Misc - SlyEWL')
-(0, 'tags.tiqcdn.com', 1, 'Misc - SlyEWL')
 (0, 'tags.tiqcdn.com', 1, 'TDAmeritrade - SlyEWL')
 (0, 'tawk.to', 1, 'Misc - SlyEWL')
 (0, 'tbsc.apple.com', 1, 'Apple - SlyEWL')
