@@ -5,8 +5,12 @@
 (www\.|^)adulttime.com
 (\.|^)algolianet\.com$
 (\.|^)algolia\.net$
+(\.|^)appsync-api\.us-east-1\.amazonaws\.com$
+(\.|^)cognito-identity\.us-east-1\.amazonaws\.com$
 (\.|^)images\d+-fame\.gammacdn\.com$ # required for images to load
+(\.|^)lambda-url\.us-east-1\.on\.aws$
 (\.|^)static[\d]+-cms-fame\.gammacdn\.com$
+(\.|^)static\d+-cms-fame\.gammacdn\.com$
 ^(appsync|execute)-api\.us-east-1\.amazonaws\.com$
 ^images\d+-fame\.gammacdn\.com$
 
