@@ -7,7 +7,7 @@
 (\.|^)algolia\.net$
 (\.|^)appsync-api\.us-east-1\.amazonaws\.com$
 (\.|^)cognito-identity\.us-east-1\.amazonaws\.com$
-(\.|^)images\d+-fame\.gammacdn\.com$ # required for images to load
+(\.|^)images\d+-fame\.gammacdn\.com$ # Required for images to load
 (\.|^)lambda-url\.us-east-1\.on\.aws$
 (\.|^)static[\d]+-cms-fame\.gammacdn\.com$
 (\.|^)static\d+-cms-fame\.gammacdn\.com$
@@ -50,7 +50,7 @@
 ^v[0-2]+\.(events|vortex-win)\.data\.microsoft\.com$ # Essential Microsoft updates
 
 # Reddit
-(\.|^)[iv]+\.redd\.it$ # required to display images and video files
+(\.|^)[iv]+\.redd\.it$ # Required to display images and video files
 
 # YouTube
 ^(www|youtubei|oauthaccountmanager)\.googleapis\.com$ # YouTube App for iOS
