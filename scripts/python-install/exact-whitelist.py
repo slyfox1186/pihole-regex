@@ -3,10 +3,10 @@
 import os
 import argparse
 import sqlite3
-import subprocess, platform
-import time
+import subprocess
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
+import time
 
 today = int(time.time())
 
@@ -89,7 +89,9 @@ print('\n')
 if os.path.exists(pihole_location):
     print("[i] Pi-hole's path was found.")
 else:
-    print("[X] {} was not found.".format(pihole_location))
+    # print(f'[X] {pihole_location} was not found')
+
+    print("[X] {} was not found".format(pihole_location))
     print('\n')
     print('\n')
     exit(1)
@@ -110,7 +112,7 @@ else:
 # Determine whether we are using DB or not
 if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) > 0:
     db_exists = True
-    print("[i] The Gravity database was found.")
+    print('[i] The Gravity database was found.')
 
     remote_sql_str = fetch_whitelist_url(remote_sql_url)
     remote_sql_lines = remote_sql_str.count('\n')
@@ -172,9 +174,9 @@ if db_exists:
             newWL = removeBraces10.split(', ') # Split at commas to create a list
             newWhiteList[nwl] = newWL[1].replace('\'', '') # Remove ' from domain and add to list
             # Uncomment to see list of sql varables being imported
-            # print(nW[nwl])
+            print(nW[nwl])
             # Uncomment to see list of domains being imported
-            # print(newWhiteList[nwl])
+            print(newWhiteList[nwl])
             nwl += 1 # count + 1
         # Check database for user added exact whitelisted domains
         print('[i] Checking Gravity for domains added by a user that are also in the script.')
@@ -198,7 +200,7 @@ if db_exists:
         INgravityUSERaddListCount = uA # Save our count here so we know how many we have later
         # Make us aware of User Added domains that are also in our script
         if uagl == True: # If we found user added domains from our list in gravity do:
-            print ('[i] {} domain(s) added by the user that would be added by script.\n' .format(INgravityUSERaddListCount+1)) # We have to add 1 for humans cause count starts @ 0
+            print('[i] {} domain(s) added by the user that would be added by script.\n' .format(INgravityUSERaddListCount+1)) # We have to add 1 for humans cause count starts @ 0
             a = 0
             while uA >= 0: # Remember that counter now we make it go backwards to 0
                 a += 1 # Counter for number output to screen
@@ -275,8 +277,8 @@ if db_exists:
                         print('    - Adding {}' .format(addNewWhiteDomain))
                         # print(addNewWhiteDomain)
                         sql_index = newWhiteList.index(addNewWhiteDomain)
-                        # print(sql_index)
-                        # print(nW[sql_index])
+                        print(sql_index)
+                        print(nW[sql_index])
                         # Ability to add new
                         sql_add = " INSERT OR IGNORE INTO domainlist (type, domain, enabled, comment) VALUES {} "  .format(nW[sql_index])
                         cursor.executescript(sql_add)
