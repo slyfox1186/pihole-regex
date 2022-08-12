@@ -12,7 +12,7 @@
 (0, '6-edge-chat.facebook.com', 1, 'Facebook - SlyEWL')
 (0, '79423.analytics.edgekey.net', 1, 'Microsoft - SlyEWL')
 (0, 'aad.cs.dds.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'accounts.epicgames.com', 1, 'Epic Games', 1, 'Required to login to your account - SlyEWL')
+(0, 'accounts.epicgames.com', 1, 'Epic Games Required to login to your account - SlyEWL')
 (0, 'accounts.spotify.com', 1, 'Spotify - SlyEWL')
 (0, 'activate.adobe.com', 1, 'Adobe - SlyEWL')
 (0, 'activity.windows.com', 1, 'Microsoft - SlyEWL')
