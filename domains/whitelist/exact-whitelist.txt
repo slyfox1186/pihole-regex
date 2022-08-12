@@ -410,6 +410,7 @@ northeurope-prod-4.notifications.teams.microsoft.com
 notify.xboxlive.com
 npr-news.streaming.adswizz.com
 nrdp.nccp.net
+nrdp.prod.cloud.netflix.com
 ns.itunes.apple.com
 ns1.dropbox.com
 ns11.whois.co.kr
