@@ -200,7 +200,7 @@
 (0, 'ecn.dev.virtualearth.net', 1, 'Microsoft - Used by Bing Maps to get information about various places - SlyEWL')
 (0, 'ecs.office.com', 1, 'Microsoft - SlyEWL')
 (0, 'edge-chat.facebook.com', 1, 'Facebook - SlyEWL')
-(0, 'edge-chat.messenger.com', 1, 'Facebook - Messenger - SlyEWL')
+(0, 'edge-chat.messenger.com', 1, 'Facebook Messenger - SlyEWL')
 (0, 'edge-mqtt.facebook.com', 1, 'Facebook - SlyEWL')
 (0, 'edge.activity.windows.com', 1, 'Sync Microsoft Edge with other devices - SlyEWL')
 (0, 'edge.api.brightcove.com', 1, 'Video delivery systems, popular in entertainment and news sites - SlyEWL')
