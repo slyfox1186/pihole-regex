@@ -410,6 +410,7 @@
 (0, 'notify.xboxlive.com', 1, 'Microsoft Xbox - Used for Xbox updates, game downloads, acheivements - SlyEWL')
 (0, 'npr-news.streaming.adswizz.com', 1, 'Used for NPR morning news and podcasts - SlyEWL')
 (0, 'nrdp.nccp.netflix.com', 1, 'Netflix - SlyEWL')
+(0, 'nrdp.prod.cloud.netflix.com', 1, 'Facebook - SlyEWL')
 (0, 'ns.itunes.apple.com', 1, 'Apple - SlyEWL')
 (0, 'ns1.dropbox.com', 1, 'Dropbox - Used to download files from Dropbox - SlyEWL')
 (0, 'ns11.whois.co.kr', 1, 'Philips TV - SlyEWL')
