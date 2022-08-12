@@ -1,710 +1,384 @@
-(0, '0-edge-chat.facebook.com', 1, 'Facebook - SlyEWL')
-(0, '0.client-channel.google.com', 1, 'Google - To access Google Drive and Google Docs editors this domain must be whitelisted - https\:\/\/support.google.com\/a\/answer\/2589954\?hl\=en - SlyEWL')
-(0, '1-edge-chat.facebook.com', 1, 'Facebook - SlyEWL')
-(0, '1drv.com', 1, 'Microsoft OneDrive - Used as a short link for OneDrive documents - SlyEWL')
-(0, '2-edge-chat.facebook.com', 1, 'Facebook - SlyEWL')
-(0, '2.android.pool.ntp.org', 1, 'Google Android - A big virtual cluster of timeservers providing reliable time; This domain is used in Android devices - SlyEWL')
-(0, '2.tlu.dl.delivery.mp.microsoft.com', 1, 'Microsoft Store - SlyEWL')
-(0, '3-edge-chat.facebook.com', 1, 'Facebook - SlyEWL')
-(0, '4-edge-chat.facebook.com', 1, 'Facebook - SlyEWL')
-(0, '4.tlu.dl.delivery.mp.microsoft.com', 1, 'Microsoft Store - SlyEWL')
-(0, '5-edge-chat.facebook.com', 1, 'Facebook - SlyEWL')
-(0, '6-edge-chat.facebook.com', 1, 'Facebook - SlyEWL')
-(0, '79423.analytics.edgekey.net', 1, 'Microsoft - SlyEWL')
-(0, 'aad.cs.dds.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'accounts.epicgames.com', 1, 'Epic Games Required to login to your account - SlyEWL')
-(0, 'accounts.spotify.com', 1, 'Spotify - SlyEWL')
-(0, 'activate.adobe.com', 1, 'Adobe - SlyEWL')
-(0, 'activity.windows.com', 1, 'Microsoft - SlyEWL')
-(0, 'adf.ly', 1, 'URL Shortener - SlyEWL')
-(0, 'ads-fa.spotify.com', 1, 'Spotify - SlyEWL')
-(0, 'ae01.alicdn.com', 1, 'Misc - SlyEWL')
-(0, 'akamaihd.net', 1, 'Akamai Technologies - A is a global content delivery network (CDN) - SlyEWL')
-(0, 'akamaitechnologies.com', 1, 'Akamai Technologies  - A global content delivery network (CDN) - SlyEWL')
-(0, 'akamaized.net', 1, 'Akamai Technologies - A global content delivery network (CDN) - SlyEWL')
-(0, 'albert.apple.com', 1, 'Apple - SlyEWL')
-(0, 'alluremedia.com', 1, 'Misc - SlyEWL')
-(0, 'amazonaws.com', 1, 'Amazon - Web Services (AWS) is a subsidiary of Amazon providing on-demand cloud computing platforms and APIs; Used to serve files and other static resources which are hosted on Amazon AWS - SlyEWL')
-(0, 'amd.cdn.turner.com', 1, 'Turner - SlyEWL')
-(0, 'amzn.com', 1, 'Amazon - SlyEWL')
-(0, 'amzn.to', 1, 'Amazon - SlyEWL')
-(0, 'android.clients.google.com', 1, 'Google Android -  Rquired to use the Google Play App - SlyEWL')
-(0, 'android.googleapis.com', 1, 'Google - SlyEWL')
-(0, 'announcements.vizio.com', 1, 'Vizio - SlyEWL')
-(0, 'api-2-0.spot.im', 1, 'Comments on ign.com - SlyEWL')
-(0, 'api-global.netflix.com', 1, 'Netflix - SlyEWL')
-(0, 'api-tv.spotify.com', 1, 'Spotify to work on the TV - SlyEWL')
-(0, 'api.accuweather.com', 1, 'Weather - SlyEWL')
-(0, 'api.directory.signal.org', 1, 'Signal - SlyEWL')
-(0, 'api.euro.hismarttv.com', 1, 'HiSmartTV - SlyEWL')
-(0, 'api.facebook.com', 1, 'Facebook - SlyEWL')
-(0, 'api.flightproxy.teams.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'api.ipify.org', 1, 'Used to get your public IP address programmatically. ipify is completely opensource - SlyEWL')
-(0, 'api.pluto.tv', 1, 'Pluto.tv - SlyEWL')
-(0, 'api.rlje.net', 1, 'Used to deliver contents on video straming apps on hulu etc - SlyEWL')
-(0, 'api.twitter.com', 1, 'Twitter - SlyEWL')
-(0, 'api.us.hismarttv.com', 1, 'HiSmartTV - SlyEWL')
-(0, 'api.vizio.com', 1, 'Vizio - SlyEWL')
-(0, 'api2.branch.io', 1, 'Reddit to open the official app on iPhone - SlyEWL')
-(0, 'apicache.vudu.com', 1, 'HBB TV - SlyEWL')
-(0, 'app-api.ted.com', 1, 'TED - Used by ted.com streams - SlyEWL')
-(0, 'app.emby', 1, 'Misc - SlyEWL')
-(0, 'app.plex.tv', 1, 'Plex Media Server - SlyEWL')
-(0, 'appboot.netflix.com', 1, 'Netflix - SlyEWL')
-(0, 'appboy-images.com', 1, 'Misc - SlyEWL')
-(0, 'appldnld.apple.com.edgesuite.net', 1, 'Apple - SlyEWL')
-(0, 'appleid.apple.com', 1, 'Apple - Used to sign in to your account - SlyEWL')
-(0, 'appleid.cdn-apple.com', 1, 'Apple - SlyEWL')
-(0, 'applicast.ga.sony.net', 1, 'Sony - SlyEWL')
-(0, 'apps.skype.com', 1, 'Microsoft Skype - Used to make group calls, group chats etc - SlyEWL')
-(0, 'appsbackup-pa.clients6.google.com', 1, 'Google - Used to backup device settings and app data - SlyEWL')
-(0, 'appsbackup-pa.googleapis.com', 1, 'Google - Used to backup device settings and app data - SlyEWL')
-(0, 'appspot-preview.l.google.com', 1, 'Google - Used to deliver system updates to Moto phones - SlyEWL')
-(0, 'apresolve.spotify.com', 1, 'Spotify - SlyEWL')
-(0, 'apt.sonarr.tv', 1, 'Plex Media Server - Sonarr is a PVR for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new episodes of your favorite shows and will grab, sort and rename them. - SlyEWL')
-(0, 'arc.msn.com', 1, 'Microsoft - SlyEWL')
-(0, 'aspnetcdn.com', 1, 'Microsoft - Used to deliver files such as Windows updates and other services - SlyEWL')
-(0, 'assets.adobedtm.com', 1, 'Adobe - SlyEWL')
-(0, 'attestation.xboxlive.com', 1, 'Microsoft Xbox - Used for Xbox updates, game downloads, acheivements - SlyEWL')
-(0, 'audio2.spotify.com', 1, 'Spotify - SlyEWL')
-(0, 'audio4-fa.scdn.co', 1, 'Spotify - SlyEWL')
-(0, 'audiocontentdownload.apple.com', 1, 'Apple - SlyEWL')
-(0, 'auth.samsungosp.com', 1, 'Samsung TV - SlyEWL')
-(0, 'authsvc.teams.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'avpro.global.yamaha.com', 1, 'Yamaha AV Receivers - Blocks system updates on rx-v685 so we whitelist - SlyEWL')
-(0, 'aws.amazon.com', 1, 'Amazon - SlyEWL')
-(0, 'ax.phobos.apple.com.edgesuite.net', 1, 'Apple - Used by Apple Photos - SlyEWL')
-(0, 'axm-adm-enroll.apple.com', 1, 'Apple - SlyEWL')
-(0, 'axm-adm-mdm.apple.com', 1, 'Apple - SlyEWL')
-(0, 'axm-adm-scep.apple.com', 1, 'Apple - SlyEWL')
-(0, 'axm-app.apple.com', 1, 'Apple - SlyEWL')
-(0, 'b-api.facebook.com', 1, 'Facebook - SlyEWL')
-(0, 'b-graph.facebook.com', 1, 'Facebook - SlyEWL')
-(0, 'best.aliexpress.com', 1, 'Misc - SlyEWL')
-(0, 'bigzipfiles.facebook.com', 1, 'Facebook - SlyEWL')
-(0, 'bing.com', 1, 'Microsoft - SlyEWL')
-(0, 'bit.ly', 1, 'URL Shortener - SlyEWL')
-(0, 'bpapi.apple.com', 1, 'Apple - SlyEWL')
-(0, 'brightcove.net', 1, 'Video delivery systems, popular in entertainment and news sites - SlyEWL')
-(0, 'browser.events.data.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'browser.pipe.aria.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'bufferapp.com', 1, 'Misc - SlyEWL')
-(0, 'bugmenot.com', 1, 'Misc - SlyEWL')
-(0, 'c.s-microsoft.com', 1, 'Microsoft - Used to deliver fonts - SlyEWL')
-(0, 'captive.apple.com', 1, 'Apple - SlyEWL')
-(0, 'catalog-public-service-prod.ak.epicgames.com', 1, 'Epic Games - SlyEWL')
-(0, 'cdn-mobile.api.pluto.tv', 1, 'Pluto.tv - SlyEWL')
-(0, 'cdn.appdynamics.com', 1, 'TDAmeritrade - SlyEWL')
-(0, 'cdn.cloudflare.net', 1, 'CloudFlare - Used to deliver static files - SlyEWL')
-(0, 'cdn.contentful.com', 1, 'AdultTime - A required CDN of the site to access image, videos, ect - SlyEWL')
-(0, 'cdn.embedly.com', 1, 'Embedly - Used to embed videos, images and rich media from 300+ providers with just the URL - SlyEWL')
-(0, 'cdn.fbsbx.com', 1, 'Misc - SlyEWL')
-(0, 'cdn.optimizely.com', 1, 'Optimizely - A progressive delivery and experimentation software for other companies - SlyEWL')
-(0, 'cdn.refersion.com', 1, 'Misc - SlyEWL')
-(0, 'cdn.samsungcloudsolution.com', 1, 'Samsung TV - SlyEWL')
-(0, 'cdn.signal.org', 1, 'Signal - SlyEWL')
-(0, 'cdn.vidible.tv', 1, 'Video delivery systems, popular in entertainment and news sites - SlyEWL')
-(0, 'cdn2.optimizely.com', 1, 'Optimizely - A progressive delivery and experimentation software for other companies - SlyEWL')
-(0, 'cdn3.optimizely.com', 1, 'Optimizely - A progressive delivery and experimentation software for other companies - SlyEWL')
-(0, 'cdnjs.cloudflare.com', 1, 'Cloudflare - Used to deliver static files over CloudFlare CDN - SlyEWL')
-(0, 'cds.s5x3j6q5.hwcdn.net', 1, 'Misc - SlyEWL')
-(0, 'cert.mgt.xboxlive.com', 1, 'Microsoft Xbox - Used for Xbox updates, game downloads, acheivements - SlyEWL')
-(0, 'certs.apple.com', 1, 'Apple - SlyEWL')
-(0, 'cf.iadsdk.apple.com', 1, 'Apple - SlyEWL')
-(0, 'chat.signal.org', 1, 'Signal - SlyEWL')
-(0, 'chatsvcagg.teams.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'check2.tsb.co.uk', 1, 'Misc - SlyEWL')
-(0, 'chevrolet.com', 1, 'Misc - SlyEWL')
-(0, 'chtbl.com', 1, 'Plex Media Server - SlyEWL')
-(0, 'client-rapi.recombee.us', 1, 'AdultTime - Required for side panels to load - SlyEWL')
-(0, 'client-s.gateway.messenger.live.com', 1, 'Microsoft - SlyEWL')
-(0, 'client.wns.windows.com', 1, 'Microsoft Store - SlyEWL')
-(0, 'clientconfig.passport.net', 1, 'Microsoft - Windows Store App - SlyEWL')
-(0, 'clients.config.office.net', 1, 'Microsoft - SlyEWL')
-(0, 'clients1.google.com', 1, 'Google - Required to use Google Maps - SlyEWL')
-(0, 'clients2.google.com', 1, 'Google - Required to use Google Maps - SlyEWL')
-(0, 'clients3.google.com', 1, 'Google - Required to use Google Maps - SlyEWL')
-(0, 'clients4.google.com', 1, 'Google - Required to use Google Maps - SlyEWL')
-(0, 'clients5.google.com', 1, 'Google - Required to use Google Maps - SlyEWL')
-(0, 'clients6.google.com', 1, 'Google - Required to use Google Maps - SlyEWL')
-(0, 'cloudsync-prod.s3.amazonaws.com', 1, 'Origin Games - Cloud Saves - SlyEWL')
-(0, 'cms.souqcdn.com', 1, 'Misc - SlyEWL')
-(0, 'code.bildstatic.de', 1, 'Misc - SlyEWL')
-(0, 'codepush.teams.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'cognito-identity.us-east-1.amazonaws.com', 1, 'Amazon - SlyEWL')
-(0, 'config.fp.measure.office.com', 1, 'Microsoft - SlyEWL')
-(0, 'config.teams.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'configuration.apple.com', 1, 'Apple - SlyEWL')
-(0, 'connect.facebook.com', 1, 'Facebook - SlyEWL')
-(0, 'connectivitycheck.android.com', 1, 'Google Android - Used by mobiles devices to check internet connectivity - SlyEWL')
-(0, 'connectivitycheck.gstatic.com', 1, 'Google - Used by mobiles devices to check internet connectivity - SlyEWL')
-(0, 'connecttv.pelmorex.com', 1, 'Philips TV - SlyEWL')
-(0, 'contentproxy.signal.org', 1, 'Signal - SlyEWL')
-(0, 'continuum.dds.microsoft.com', 1, 'Microsoft - Used by YourPhone app by Microsoft on Windows 10 for mirroring Android notifications - SlyEWL')
-(0, 'cp801.prod.do.dsp.mp.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'cpms.spop10.ams.plex.bz', 1, 'Plex Media Server - SlyEWL')
-(0, 'cpms35.spop10.ams.plex.bz', 1, 'Plex Media Server - SlyEWL')
-(0, 'creative.ak.fbcdn.net', 1, 'Facebook - SlyEWL')
-(0, 'crl.apple.com', 1, 'Apple - SlyEWL')
-(0, 'crl.entrust.net', 1, 'Apple - SlyEWL')
-(0, 'crl3.digicert.com', 1, 'Digicert - SlyEWL')
-(0, 'crl4.digicert.com', 1, 'Digicert - SlyEWL')
-(0, 'cse.google.com', 1, 'Google - Custom search. Often used as a search functionality inside a website. https://programmablesearchengine.google.com/about/ - SlyEWL')
-(0, 'csp.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'cssubmissions.apple.com', 1, 'Apple - SlyEWL')
-(0, 'ctldl.windowsupdate.com', 1, 'Microsoft - Used to deliver Windows updates - SlyEWL')
-(0, 'cws.conviva.com', 1, 'Conviva - Offers online video optimization and online video analytics. But it is neccessary to whitelist in order to watch many online contents - SlyEWL')
-(0, 'd1oxlq5h9kq8q5.cloudfront.net', 1, 'Cloudfront - SlyEWL')
-(0, 'd2c8v52ll5s99u.cloudfront.net', 1, 'Amazon - Used to deliver media such as videos in entertainment and news sites - SlyEWL')
-(0, 'd2gatte9o95jao.cloudfront.net', 1, 'Amazon - Used to deliver media such as videos in entertainment and news sites - SlyEWL')
-(0, 'd3a3ewgd1iewwz.cloudfront.net', 1, 'AdultTime - A required CDN of the site to access image, videos, ect - SlyEWL')
-(0, 'd83eunklitikj.cloudfront.net', 1, 'Cloudfront - SlyEWL')
-(0, 'daily-mix.scdn.co', 1, 'Spotify - SlyEWL')
-(0, 'dailymix-images.scdn.co', 1, 'Spotify - SlyEWL')
-(0, 'dashboard.plex.tv', 1, 'Plex Media Server - SlyEWL')
-(0, 'dataplicity.com', 1, 'Raspberry-Pi - Remotely control your pi - SlyEWL')
-(0, 'de.ioam.de', 1, 'Misc - SlyEWL')
-(0, 'dealer.spotify.com', 1, 'Spotify - SlyEWL')
-(0, 'def-vef.xboxlive.com', 1, 'Microsoft Xbox - Used for Xbox updates, game downloads, acheivements - SlyEWL')
-(0, 'delivery.vidible.tv', 1, 'Video delivery systems, popular in entertainment and news sites - SlyEWL')
-(0, 'det-ta-g7g.amazon.com', 1, 'Amazon - SlyEWL')
-(0, 'dev.virtualearth.net', 1, 'Microsoft - Used by Bing Maps to get information about various places - SlyEWL')
-(0, 'device-messaging-na.amazon.com', 1, 'Amazon - SlyEWL')
-(0, 'device.auth.xboxlive.com', 1, 'Microsoft Xbox - Used for Xbox updates, game downloads, acheivements - SlyEWL')
-(0, 'deviceenrollment.apple.com', 1, 'Apple - SlyEWL')
-(0, 'devicelistenerprod.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'deviceportal.nettvservices.com', 1, 'Philips TV - SlyEWL')
-(0, 'deviceservices-external.apple.com', 1, 'Apple - SlyEWL')
-(0, 'devimages-cdn.apple.com', 1, 'Apple - SlyEWL')
-(0, 'diagassets.apple.com', 1, 'Apple - SlyEWL')
-(0, 'diagnostics.redditmedia.com', 1, 'Reddit - SlyEWL')
-(0, 'directvapplications.hb.omtrdc.net', 1, 'Microsoft - SlyEWL')
-(0, 'directvnow.com', 1, 'Misc - SlyEWL')
-(0, 'display.ugc.bazaarvoice.com', 1, 'To display Ratings &amp; Reviews or Questions &amp; Answers in online stores - SlyEWL')
-(0, 'displaycatalog.mp.microsoft.com', 1, 'Microsoft - Used for Xbox updates, game downloads, acheivements - SlyEWL')
-(0, 'dl.delivery.mp.microsoft.com', 1, 'Used to deliver updates to Microsoft products - SlyEWL')
-(0, 'dl.dropbox.com', 1, 'Dropbox - Used to download files from Dropbox - SlyEWL')
-(0, 'dl.dropboxusercontent.com', 1, 'Dropbox - Used to download files from Dropbox - SlyEWL')
-(0, 'dl.google.com', 1, 'Google - SlyEWL')
-(0, 'dns.msftncsi.com', 1, 'Microsoft - Used to check whether the internet connection is up or not in Windows systems. - SlyEWL')
-(0, 'doh.dns.apple.com', 1, 'Apple - SlyEWL')
-(0, 'download.developer.apple.com', 1, 'Apple - SlyEWL')
-(0, 'download.scdn.co', 1, 'Spotify - SlyEWL')
-(0, 'download.sonarr.tv', 1, 'Plex Media Server - Sonarr is a PVR for Usenet and BitTorrent users. - SlyEWL')
-(0, 'drift.com', 1, 'Drift - Live chat platform for websites to chat with the website owner - SlyEWL')
-(0, 'driftt.com', 1, 'Drift - Live chat platform for websites to chat with the website owner - SlyEWL')
-(0, 'drscdn.500px.org', 1, 'HBB TV - SlyEWL')
-(0, 'dsms0mj1bbhn4.cloudfront.net', 1, 'Cloudfront - SlyEWL')
-(0, 'dynupdate.no-ip.com', 1, 'No-IP - Offers DNS services, email, network monitoring and SSL certificates - SlyEWL')
-(0, 'ec-ns.sascdn.com', 1, 'Misc - SlyEWL')
-(0, 'ecn.dev.virtualearth.net', 1, 'Microsoft - Used by Bing Maps to get information about various places - SlyEWL')
-(0, 'ecs.office.com', 1, 'Microsoft - SlyEWL')
-(0, 'edge-chat.facebook.com', 1, 'Facebook - SlyEWL')
-(0, 'edge-chat.messenger.com', 1, 'Facebook - Messenger - SlyEWL')
-(0, 'edge-mqtt.facebook.com', 1, 'Facebook - SlyEWL')
-(0, 'edge.activity.windows.com', 1, 'Sync Microsoft Edge with other devices - SlyEWL')
-(0, 'edge.api.brightcove.com', 1, 'Video delivery systems, popular in entertainment and news sites - SlyEWL')
-(0, 'edge.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'eds.xboxlive.com', 1, 'Microsoft Xbox - Used for Xbox updates, game downloads, acheivements - SlyEWL')
-(0, 'embed.spotify.com', 1, 'Spotify - SlyEWL')
-(0, 'emea.ng.msg.teams.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'emea.pptservicescast.officeapps.live.com', 1, 'Microsoft - SlyEWL')
-(0, 'entitlement-public-service-prod.ak.epicgames.com', 1, 'Epic Games - SlyEWL')
-(0, 'entitlement.auth.adobe.com', 1, 'Adobe - SlyEWL')
-(0, 'epg.corio.com', 1, 'Philips TV - SlyEWL')
-(0, 'eu-v10.events.data.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'eu-v20.events.data.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'europe.cp.wd.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'europe.smartscreen-prod.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'europe.smartscreen.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'events-test-v2.redditmedia.com', 1, 'Reddit - SlyEWL')
-(0, 'events-test.redditmedia.com', 1, 'Reddit - SlyEWL')
-(0, 'events.gfe.nvidia.com', 1, 'Nvidia - SlyEWL')
-(0, 'events.redditmedia.com', 1, 'Reddit - SlyEWL')
-(0, 'external-lhr0-1.xx.fbcdn.net', 1, 'Facebook - SlyEWL')
-(0, 'external-lhr1-1.xx.fbcdn.net', 1, 'Facebook - SlyEWL')
-(0, 'external-lhr10-1.xx.fbcdn.net', 1, 'Facebook - SlyEWL')
-(0, 'external-lhr2-1.xx.fbcdn.net', 1, 'Facebook - SlyEWL')
-(0, 'external-lhr3-1.xx.fbcdn.net', 1, 'Facebook - SlyEWL')
-(0, 'external-lhr4-1.xx.fbcdn.net', 1, 'Facebook - SlyEWL')
-(0, 'external-lhr5-1.xx.fbcdn.net', 1, 'Facebook - SlyEWL')
-(0, 'external-lhr6-1.xx.fbcdn.net', 1, 'Facebook - SlyEWL')
-(0, 'external-lhr7-1.xx.fbcdn.net', 1, 'Facebook - SlyEWL')
-(0, 'external-lhr8-1.xx.fbcdn.net', 1, 'Facebook - SlyEWL')
-(0, 'external-lhr9-1.xx.fbcdn.net', 1, 'Facebook - SlyEWL')
-(0, 'external-ort2-1.xx.fbcdn.net', 1, 'Facebook - SlyEWL')
-(0, 'facebook.com', 1, 'Facebook - SlyEWL')
-(0, 'facebook.net', 1, 'Facebook - SlyEWL')
-(0, 'fb.me', 1, 'Facebook - SlyEWL')
-(0, 'fba.apple.com', 1, 'Apple - SlyEWL')
-(0, 'fbcdn-creative-a.akamaihd.net', 1, 'Akami - SlyEWL')
-(0, 'fbcdn.net', 1, 'Facebook - SlyEWL')
-(0, 'fe3.delivery.dsp.mp.microsoft.com.nsatc.net', 1, 'Microsoft - SlyEWL')
-(0, 'fe3cr.delivery.mp.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'filament.io', 1, 'Misc - SlyEWL')
-(0, 'firestore.googleapis.com', 1, 'Google - SlyEWL')
-(0, 'fivethirtyeight.com', 1, 'Misc - SlyEWL')
-(0, 'fonts.gstatic.com', 1, 'Google - Used to deliver Google Fonts - SlyEWL')
-(0, 'forms.office.com', 1, 'Microsoft - SlyEWL')
-(0, 'forums.sonarr.tv', 1, 'Plex Media Server - Sonarr is a PVR for Usenet and BitTorrent users. - SlyEWL')
-(0, 'fpdownload.adobe.com', 1, 'Adobe - SlyEWL')
-(0, 'fs.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'g.live.com', 1, 'Microsoft - Outlook.com and OneDrive products. Backup bitlocker recovery key to Microsoft account - SlyEWL')
-(0, 'gdlp01.c-wss.com', 1, 'Misc - SlyEWL')
-(0, 'gdmf.apple.com', 1, 'Apple - SlyEWL')
-(0, 'geo-prod.do.dsp.mp.microsoft.com', 1, 'Microsoft - Enables connections to Windows Update - SlyEWL')
-(0, 'geo.opera.com', 1, 'HBB TV - SlyEWL')
-(0, 'geo3.ggpht.com', 1, 'Google - Used to deliver static files over the internet - SlyEWL')
-(0, 'geolocation.onetrust.com', 1, 'Nvidia Shield TV - SlyEWL')
-(0, 'geover.prod.do.dsp.mp.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'gfwsl.geforce.com', 1, 'Nvidia Geforce - Used for checking nVidia driver updates - SlyEWL')
-(0, 'gg.apple.com', 1, 'Apple - SlyEWL')
-(0, 'giphy-proxy-production.whispersystems.org', 1, 'Misc - SlyEWL')
-(0, 'giphy.com', 1, 'Giphy - Gifs hosting platform - SlyEWL')
-(0, 'github.com', 1, 'GitHub - provides hosting for software development and version control using Git - SlyEWL')
-(0, 'github.io', 1, 'GitHub - Used for GitHub pages - SlyEWL')
-(0, 'global-dealer-ssl.spotify.com', 1, 'Spotify - SlyEWL')
-(0, 'gnf-mdn.apple.com', 1, 'Apple - SlyEWL')
-(0, 'gnf-mr.apple.com', 1, 'Apple - SlyEWL')
-(0, 'go.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'go.trouter.teams.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'goo.gl', 1, 'Google - SlyEWL')
-(0, 'googleapis.com', 1, 'Google - An important domain used to provide APIs to various Google services - SlyEWL')
-(0, 'googleapis.l.google.com', 1, 'Google - SlyEWL')
-(0, 'googlehosted.l.googleusercontent.com', 1, 'Google - SlyEWL')
-(0, 'graph.facebook.com', 1, 'Facebook - SlyEWL')
-(0, 'graph.instagram.com', 1, 'Facebook - SlyEWL')
-(0, 'graph.oculus.com', 1, 'Facebook - SlyEWL')
-(0, 'graphql.epicgames.com', 1, 'Epic Games - Required for the store to work properly - SlyEWL')
-(0, 'gravatar.com', 1, 'Gravatar is a service for providing globally unique avatars - SlyEWL')
-(0, 'gs.apple.com', 1, 'Apple - SlyEWL')
-(0, 'gsa.apple.com', 1, 'Apple - SlyEWL')
-(0, 'gsp-ssl.ls-apple.com.akadns.net', 1, 'Apple - SlyEWL')
-(0, 'gsp-ssl.ls.apple.com', 1, 'Apple - SlyEWL')
-(0, 'gsp1.apple.com', 1, 'Apple - SlyEWL')
-(0, 'gstatic.com', 1, 'Google - gstatic.com is a cookieless domain to deliver static content for Google - SlyEWL')
-(0, 'gstaticadssl.l.google.com', 1, 'Google - SlyEWL')
-(0, 'gucl-6.ap.spotify.com', 1, 'Spotify - SlyEWL')
-(0, 'h-sdk.online-metrix.net', 1, 'Misc - SlyEWL')
-(0, 'has.spserv.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'hbbtv.prosieben.de', 1, 'HBB TV - SlyEWL')
-(0, 'hbbtv.redbutton.de', 1, 'HBB TV - SlyEWL')
-(0, 'hbbtv.zdf.de', 1, 'HBB TV - SlyEWL')
-(0, 'heartbeat.dm.origin.com', 1, 'Misc - SlyEWL')
-(0, 'help.ui.xboxlive.com', 1, 'Microsoft Xbox - Used for Xbox updates, game downloads, acheivements - SlyEWL')
-(0, 'hls.ted.com', 1, 'Used by ted.com streams - SlyEWL')
-(0, 'hosts-file.net', 1, 'Misc - SlyEWL')
-(0, 'hostsfile.mine.nu', 1, 'Misc - SlyEWL')
-(0, 'hostsfile.org', 1, 'Misc - SlyEWL')
-(0, 'humb.apple.com', 1, 'Apple - SlyEWL')
-(0, 'i.cdn.turner.com', 1, 'Turner - SlyEWL')
-(0, 'i.reddit.com', 1, 'Reddit - SlyEWL')
-(0, 'i.s-microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'i.scdn.co', 1, 'Spotify - SlyEWL')
-(0, 'i.ytimg.com', 1, 'Google - Used to deliver thumbails in YouTube - SlyEWL')
-(0, 'i1.ytimg.com', 1, 'Google - Used to deliver thumbails in YouTube - SlyEWL')
-(0, 'iadsdk.apple.com', 1, 'Apple - SlyEWL')
-(0, 'ic3.events.data.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'icloud.com', 1, 'Apple - SlyEWL')
-(0, 'identity.apple.com', 1, 'Apple - SlyEWL')
-(0, 'idmsa.apple.com', 1, 'Apple - SlyEWL')
-(0, 'ig.apple.com', 1, 'Apple - SlyEWL')
-(0, 'images.pluto.tv', 1, 'Pluto.tv - SlyEWL')
-(0, 'images.vizio.com', 1, 'Vizio - SlyEWL')
-(0, 'imagesak.secureserver.net', 1, 'GoDaddy - Webmail buttons - SlyEWL')
-(0, 'imasdk.googleapis.com', 1, 'Google - SlyEWL')
-(0, 'img.vidible.tv', 1, 'Video delivery systems, popular in entertainment and news sites - SlyEWL')
-(0, 'imgix.net', 1, 'Misc - SlyEWL')
-(0, 'imgs.xkcd.com', 1, 'XKCD - Used to deliver images - SlyEWL')
-(0, 'infolink.pavv.co.kr', 1, 'Philips TV - SlyEWL')
-(0, 'instagram.c10r.facebook.com', 1, 'Facebook - SlyEWL')
-(0, 'instantmessaging-pa.googleapis.com', 1, 'Google - An important domain used to provide APIs to various Google services - SlyEWL')
-(0, 'intercom.io', 1, 'Live chat platform for websites to chat with the website owner. Blocking this domain will block chat widget - SlyEWL')
-(0, 'iprofiles.apple.com', 1, 'Apple - SlyEWL')
-(0, 'ipv6.msftncsi.com', 1, 'Microsoft - SlyEWL')
-(0, 'isu.apple.com', 1, 'Apple - SlyEWL')
-(0, 'itunes-apple.com.akadns.net', 1, 'Apple - SlyEWL')
-(0, 'itunes.apple.com.edgesuite.net', 1, 'Apple - SlyEWL')
-(0, 'itunes.com', 1, 'Apple - SlyEWL')
-(0, 'itv.ard.de', 1, 'HBB TV - SlyEWL')
-(0, 'j.mp', 1, 'Misc - SlyEWL')
-(0, 'jquery.com', 1, 'jQuery is a JavaScript library. Also used to deliver the files over CDN - SlyEWL')
-(0, 'js.maxmind.com', 1, 'Microsoft - SlyEWL')
-(0, 'js.stripe.com', 1, 'Indiegogo - SlyEWL')
-(0, 'jsdelivr.net', 1, 'jsDelivr is a free public CDN for open-source projects. It can serve web files directly from the npm registry and GitHub repositories without any configuration - SlyEWL')
-(0, 'json.bild.de', 1, 'Misc - SlyEWL')
-(0, 'keystone.mwbsys.com', 1, 'Malwarebytes - Verifies Malwarebytes software license - SlyEWL')
-(0, 'kosmos-assets-prod.react.gammacdn.com', 1, 'AdultTime - Required react buttons to work - SlyEWL')
-(0, 'kosmos-prod.react.gammacdn.com', 1, 'AdultTime - Required react buttons to work - SlyEWL')
-(0, 'l.facebook.com', 1, 'Facebook - SlyEWL')
-(0, 'l.messenger.com', 1, 'Microsoft - SlyEWL')
-(0, 'lastfm-img2.akamaized.net', 1, 'Used by last.fm to deliver images - SlyEWL')
-(0, 'lcdn-locator.apple.com', 1, 'Apple - SlyEWL')
-(0, 'lcdn-registration.apple.com', 1, 'Apple - SlyEWL')
-(0, 'lcprd1.samsungcloudsolution.net', 1, 'Samsung TV - SlyEWL')
-(0, 'licensing.mp.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'licensing.xboxlive.com', 1, 'Microsoft Xbox - Used for Xbox updates, game downloads, acheivements - SlyEWL')
-(0, 'lineup-images.scdn.co', 1, 'Spotify - SlyEWL')
-(0, 'linkedin.com', 1, 'Misc - SlyEWL')
-(0, 'linuxtracker.org', 1, 'Linux - SlyEWL')
-(0, 'live.com', 1, 'Microsoft - It is a personal information manager web app from Microsoft consisting of webmail, calendaring, contacts, and tasks services - SlyEWL')
-(0, 'livepassdl.conviva.com', 1, 'Conviva - offers online video optimization and online video analytics. Neccessary to whitelist in order to watch many online contents - SlyEWL')
-(0, 'lm.licenses.adobe.com', 1, 'Adobe - SlyEWL')
-(0, 'location-api.hdhomerun.com', 1, 'SiliconDust HDHomeRun - Required for firmware updates - SlyEWL')
-(0, 'login.aliexpress.com', 1, 'Misc - SlyEWL')
-(0, 'login.live.com', 1, 'Microsoft - The following endpoint is used to authenticate a device. - SlyEWL')
-(0, 'login.microsoftonline.com', 1, 'Microsoft - Office apps - SlyEWL')
-(0, 'login5.spotify.com', 1, 'Spotify - SlyEWL')
-(0, 'logs.juspay.in', 1, 'Misc - SlyEWL')
-(0, 'm.facebook.com', 1, 'Facebook Mobile - SlyEWL')
-(0, 'm.hotmail.com', 1, 'Microsoft - SlyEWL')
-(0, 'm.reddit.com', 1, 'Reddit', 1, 'Required to access on mobile devices - SlyEWL')
-(0, 'm.weeklyad.target.com', 1, 'Target - SlyEWL')
-(0, 'm.youtube.com', 1, 'YouTube - SlyEWL')
-(0, 'm3u8.gammacdn.com', 1, 'AdultTime - Required for streaming - SlyEWL')
-(0, 'mamservice.manage.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'manifest.googlevideo.com', 1, 'Google - SlyEWL')
-(0, 'market.spotify.com', 1, 'Spotify - SlyEWL')
-(0, 'mask-api.icloud.com', 1, 'Apple - SlyEWL')
-(0, 'mask-h2.icloud.com', 1, 'Apple - SlyEWL')
-(0, 'mask.icloud.com', 1, 'Apple - SlyEWL')
-(0, 'mdmenrollment.apple.com', 1, 'Apple - SlyEWL')
-(0, 'medium.com', 1, 'Misc - SlyEWL')
-(0, 'mesu.apple.com', 1, 'Apple - SlyEWL')
-(0, 'meta-db-worker02.pop.ric.plex.bz', 1, 'Plex Media Server - SlyEWL')
-(0, 'meta.plex.bz', 1, 'Plex Media Server - SlyEWL')
-(0, 'meta.plex.tv', 1, 'Plex Media Server - SlyEWL')
-(0, 'metrics.icloud.com', 1, 'Apple - SlyEWL')
-(0, 'metrics.plex.tv', 1, 'Plex Media Server - SlyEWL')
-(0, 'mhc-ajax-eu-s2.myhomescreen.tv', 1, 'MyHomeScreenTV - SlyEWL')
-(0, 'mhc-ajax-eu.myhomescreen.tv', 1, 'MyHomeScreenTV - SlyEWL')
-(0, 'mhc-ajax-us.myhomescreen.tv', 1, 'MyHomeScreenTV - SlyEWL')
-(0, 'mhc-eu.myhomescreen.tv', 1, 'MyHomeScreenTV - SlyEWL')
-(0, 'mhc-us.myhomescreen.tv', 1, 'MyHomeScreenTV - SlyEWL')
-(0, 'mhc-xpana-eu-s2.myhomescreen.tv', 1, 'MyHomeScreenTV - SlyEWL')
-(0, 'mhc-xpana-eu.myhomescreen.tv', 1, 'MyHomeScreenTV - SlyEWL')
-(0, 'mhc-xpana-us.myhomescreen.tv', 1, 'MyHomeScreenTV - SlyEWL')
-(0, 'microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'microsoftonline.com', 1, 'Microsoft - Checked by the operating systems when connecting via wifi - SlyEWL')
-(0, 'mobile-ap.spotify.com', 1, 'Spotify - SlyEWL')
-(0, 'mobile.pipe.aria.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'mobile.twitter.com', 1, 'Twitter - SlyEWL')
-(0, 'mobileandroidapi.punchh.com', 1, 'Misc - SlyEWL')
-(0, 'mqtt-mini.facebook.com', 1, 'Facebook - SlyEWL')
-(0, 'mqtt.c10r.facebook.com', 1, 'Facebook - SlyEWL')
-(0, 'mrs-efz.ms-acdc.office.com', 1, 'Microsoft - SlyEWL')
-(0, 'msedge.api.cdp.microsoft.com', 1, 'Download Edge Browser Updates - SlyEWL')
-(0, 'msftncsi.com', 1, 'Microsoft - Checked by the operating systems when connecting via wifi - SlyEWL')
-(0, 'my.plexapp.com', 1, 'Plex Media Server - SlyEWL')
-(0, 'netflix.com', 1, 'Netflix - SlyEWL')
-(0, 'newjams-images.scdn.co', 1, 'Spotify - SlyEWL')
-(0, 'news.iadsdk.apple.com', 1, 'Apple - SlyEWL')
-(0, 'nexus.ensighten.com', 1, 'Microsoft - SlyEWL')
-(0, 'nexusrules.officeapps.live.com', 1, 'Microsoft - Office apps - SlyEWL')
-(0, 'ngfts.lge.com', 1, 'LG TV - SlyEWL')
-(0, 'nine.plugins.plexapp.com', 1, 'Plex Media Server - SlyEWL')
-(0, 'nleditor.osi.office.net', 1, 'Microsoft - SlyEWL')
-(0, 'no-ip.com', 1, 'No-IP offers DNS services, email, network monitoring and SSL certificates - SlyEWL')
-(0, 'node.plexapp.com', 1, 'Plex Media Server - SlyEWL')
-(0, 'northeurope-prod-4.notifications.teams.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'notify.xboxlive.com', 1, 'Microsoft Xbox - Used for Xbox updates, game downloads, acheivements - SlyEWL')
-(0, 'npr-news.streaming.adswizz.com', 1, 'Used for NPR morning news and podcasts - SlyEWL')
-(0, 'nrdp.nccp.netflix.com', 1, 'Netflix - SlyEWL')
-(0, 'ns.itunes.apple.com', 1, 'Apple - SlyEWL')
-(0, 'ns1.dropbox.com', 1, 'Dropbox - Used to download files from Dropbox - SlyEWL')
-(0, 'ns11.whois.co.kr', 1, 'Philips TV - SlyEWL')
-(0, 'ns2.dropbox.com', 1, 'Dropbox - Used to download files from Dropbox - SlyEWL')
-(0, 'o1.email.plex.tv', 1, 'Plex Media Server - SlyEWL')
-(0, 'o2.sg0.plex.tv', 1, 'Plex Media Server - SlyEWL')
-(0, 'oauthaccountmanager.googleapis.com', 1, 'Google - SlyEWL')
-(0, 'ocsp.apple.com', 1, 'Apple - iOS developers are able to distribute apps outside of the App Store using an Enterprise provisioning profile. Apple can revoke these kinds of apps by using this domain - SlyEWL')
-(0, 'ocsp.digicert.cn', 1, 'Digicert - SlyEWL')
-(0, 'ocsp.digicert.com', 1, 'Digicert - SlyEWL')
-(0, 'ocsp.entrust.net', 1, 'Apple - SlyEWL')
-(0, 'ocsp.rootg2.amazontrust.com', 1, 'Amazon - SlyEWL')
-(0, 'ocsp.verisign.net', 1, 'Misc - SlyEWL')
-(0, 'ocsp2.apple.com', 1, 'Apple - SlyEWL')
-(0, 'office.com', 1, 'Microsoft - Office apps - SlyEWL')
-(0, 'office.net', 1, 'Microsoft - Office apps - SlyEWL')
-(0, 'office365.com', 1, 'Microsoft - Office apps - SlyEWL')
-(0, 'officecdnmac.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'officeci-mauservice.azurewebsites.net', 1, 'Microsoft - SlyEWL')
-(0, 'officeclient.microsoft.com', 1, 'Microsoft - Office apps - SlyEWL')
-(0, 'om.cbsi.com', 1, 'CBS - All Access on streaming platforms - SlyEWL')
-(0, 'onedrive.live.com', 1, 'Microsoft - Used to sign in to One Drive - SlyEWL')
-(0, 'oops.redditmedia.com', 1, 'Reddit - SlyEWL')
-(0, 'open.spotify.com', 1, 'Spotify - SlyEWL')
-(0, 'osb-ussvc.samsungqbe.com', 1, 'Samsung TV - SlyEWL')
-(0, 'oscdn.apple.com', 1, 'Apple - SlyEWL')
-(0, 'oscp.apple.com', 1, 'Apple - SlyEWL')
-(0, 'osrecovery.apple.com', 1, 'Apple - SlyEWL')
-(0, 'ota-downloads.nvidia.com', 1, 'Nvidia - SlyEWL')
-(0, 'otn.samsungcloudcdn.com', 1, 'Samsung TV - SlyEWL')
-(0, 'otnprd10.samsungcloudsolution.net', 1, 'Samsung TV - SlyEWL')
-(0, 'otnprd11.samsungcloudsolution.net', 1, 'Samsung TV - SlyEWL')
-(0, 'otnprd8.samsungcloudsolution.net', 1, 'Samsung TV - SlyEWL')
-(0, 'otnprd9.samsungcloudsolution.net', 1, 'Samsung TV - SlyEWL')
-(0, 'outlook-1.cdn.office.net', 1, 'Microsoft - SlyEWL')
-(0, 'outlook.ha.office365.com', 1, 'Microsoft - SlyEWL')
-(0, 'outlook.live.com', 1, 'Microsoft - Used for Outlook email - SlyEWL')
-(0, 'outlook.office.com', 1, 'Microsoft - SlyEWL')
-(0, 'outlook.office365.com', 1, 'Microsoft - Used for Outlook email.ent - SlyEWL')
-(0, 'p11.techlab-cdn.com', 1, 'Misc - SlyEWL')
-(0, 'pgl.yoyo.org', 1, 'Misc - SlyEWL')
-(0, 'pings.conviva.com', 1, 'Conviva - offers online video optimization and online video analytics. But it is neccessary to whitelist in order to watch many online contents - SlyEWL')
-(0, 'pinterest.com', 1, 'Misc - SlyEWL')
-(0, 'placehold.it', 1, 'Placehold.it, Image placeholders often used during web page loading - SlyEWL')
-(0, 'placeholdit.imgix.net', 1, 'Placehold.it, Image placeholders often used during web page loading - SlyEWL')
-(0, 'platform.cid.samba.tv', 1, 'Sony Bravia TV - SlyEWL')
-(0, 'play.spotify.com', 1, 'Spotify - SlyEWL')
-(0, 'play.spotify.edgekey.net', 1, 'Spotify - SlyEWL')
-(0, 'players.brightcove.net', 1, 'Video delivery systems, popular in entertainment and news sites - SlyEWL')
-(0, 'players.pluto.tv', 1, 'Pluto.tv - SlyEWL')
-(0, 'playgrounds-assets-cdn.apple.com', 1, 'Apple - SlyEWL')
-(0, 'playgrounds-cdn.apple.com', 1, 'Apple - SlyEWL')
-(0, 'plex.tv', 1, 'Plex Media Server - SlyEWL')
-(0, 'pmd.cdn.turner.com', 1, 'Turner - SlyEWL')
-(0, 'portal.fb.com', 1, 'Facebook - SlyEWL')
-(0, 'portal.store.sonyentertainmentnetwork.com', 1, 'Sony - SlyEWL')
-(0, 'ppq.apple.com', 1, 'Apple - SlyEWL')
-(0, 'presence.teams.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'pricelist.skype.com', 1, 'Microsoft Skype - Used to make group calls, group chats etc. on Skype - SlyEWL')
-(0, 'privacyportal-de.onetrust.com', 1, 'Nvidia Shield TV - SlyEWL')
-(0, 'prod.telemetry.ros.rockstargames.com', 1, 'Rockstar Games - SlyEWL')
-(0, 'products.office.com', 1, 'Microsoft Office - Microsoft - Office apps - SlyEWL')
-(0, 'proxy.plex.bz', 1, 'Plex Media Server - SlyEWL')
-(0, 'proxy.plex.tv', 1, 'Plex Media Server - SlyEWL')
-(0, 'proxy02.pop.ord.plex.bz', 1, 'Plex Media Server - SlyEWL')
-(0, 'pubsub.plex.bz', 1, 'Plex Media Server - SlyEWL')
-(0, 'pubsub.plex.tv', 1, 'Plex Media Server - SlyEWL')
-(0, 'r.manage.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'radarsubmissions.apple.com', 1, 'Apple - SlyEWL')
-(0, 'raw.githubusercontent.com', 1, 'GitHub - It is used to serve unprocessed versions of files stored in GitHub repositories. - SlyEWL')
-(0, 'redd.it', 1, 'Reddit - SlyEWL')
-(0, 'reddit-uploaded-media.s3-accelerate.amazonaws.com', 1, 'Amazon - SlyEWL')
-(0, 'reddit.com', 1, 'Reddit - SlyEWL')
-(0, 'reddit.map.fastly.net', 1, 'Reddit - SlyEWL')
-(0, 'redditmedia.com', 1, 'Reddit - SlyEWL')
-(0, 'redirector.googlevideo.com', 1, 'Google - SlyEWL')
-(0, 'redirector.gvt1.com', 1, 'Android TV Updates - SlyEWL')
-(0, 'refersion.com', 1, 'Misc - SlyEWL')
-(0, 'reminders-pa.googleapis.com', 1, 'Google - SlyEWL')
-(0, 'res-1.cdn.office.net', 1, 'Microsoft - SlyEWL')
-(0, 'res.cloudinary.com', 1, 'Cloudinary - Provides a cloud-based image and video management services - SlyEWL')
-(0, 'rest.iad-03.braze.com', 1, 'Misc - SlyEWL')
-(0, 'rover.ebay.com', 1, 'Ebay - SlyEWL')
-(0, 'rupload.facebook.com', 1, 'Facebook - SlyEWL')
-(0, 's.cdn.turner.com', 1, 'Turner - SlyEWL')
-(0, 's.gateway.messenger.live.com', 1, 'Microsoft - Personal information manager web app from Microsoft consisting of webmail, calendaring, contacts, and tasks services - SlyEWL')
-(0, 's.marketwatch.com', 1, 'MarketWatch - Loadeds images on marketwatch.com - SlyEWL')
-(0, 's.mzstatic.com', 1, 'Misc - SlyEWL')
-(0, 's.shopify.com', 1, 'Blocked by a lot of lists - SlyEWL')
-(0, 's.yimg.com', 1, 'Yahoo - SlyEWL')
-(0, 's.youtube.com', 1, 'Google YouTube - Used to record YouTube watch history. Blocking this domain will pause your watch history on YouTube - SlyEWL')
-(0, 's.ytimg.com', 1, 'Google - Used to deliver thumbails in YouTube - SlyEWL')
-(0, 's.zkcdn.net', 1, 'Misc - SlyEWL')
-(0, 's1.wp.com', 1, 'WordPress - Used to feliver static files and media for websites which are hosted on wordpress.com platform - SlyEWL')
-(0, 's1.yimg.com', 1, 'Yahoo - SlyEWL')
-(0, 's2.youtube.com', 1, 'Google YouTube - Used to record YouTube watch history. Blocking this domain will pause your watch history on YouTube - SlyEWL')
-(0, 's3-eu-west-1.amazonaws.com', 1, 'Amazon - SlyEWL')
-(0, 's3.amazonaws.com', 1, 'Amazon - Used to deliver files that are stored in Amazon AWS S3 storage buckets - SlyEWL')
-(0, 'sa.symcb.com', 1, 'Symantec - Certificate Revocation List servers; Used by a number of companies including Microsoft - SlyEWL')
-(0, 'samsungosp.com', 1, 'Samsung TV - SlyEWL')
-(0, 'samsungotn.net', 1, 'Samsung TV - SlyEWL')
-(0, 'scontent-atl3-1.xx.fbcdn.net', 1, 'Facebook - Messenger - SlyEWL')
-(0, 'scontent-lhr3-1.xx.fbcdn.net', 1, 'Facebook - Messenger - SlyEWL')
-(0, 'scontent-mia3-1.xx.fbcdn.net', 1, 'Facebook - Messenger - SlyEWL')
-(0, 'scontent-ort2-1.xx.fbcdn.net', 1, 'Facebook - Messenger - SlyEWL')
-(0, 'scontent.fgdl5-1.fna.fbcdn.net', 1, 'Facebook - Messenger - SlyEWL')
-(0, 'scontent.xx.fbcdn.net', 1, 'Facebook - SlyEWL')
-(0, 'script.ioam.de', 1, 'Misc - SlyEWL')
-(0, 'secure.avangate.com', 1, 'Used to perform online payments - SlyEWL')
-(0, 'secure.brightcove.com', 1, 'Video delivery systems, popular in entertainment and news sites - SlyEWL')
-(0, 'secure.netflix.com', 1, 'Netflix - SlyEWL')
-(0, 'secure.surveymonkey.com', 1, 'Used by Survey Monkey to deliver surveys - SlyEWL')
-(0, 'seedbox-react-infra.s3.amazonaws.com', 1, 'AdultTime - Required to display similar actors - SlyEWL')
-(0, 'self.events.data.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'sendbirdproxyk8s.chat.redditmedia.com', 1, 'Reddit - SlyEWL')
-(0, 'serverstatus.apple.com', 1, 'Apple - SlyEWL')
-(0, 'services.sonarr.tv', 1, 'Plex Media Server - Sonarr is a PVR for Usenet and BitTorrent users. - SlyEWL')
-(0, 'settings-win.data.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'setup.icloud.com', 1, 'Apple - SlyEWL')
-(0, 'shareaholic.com', 1, 'Misc - SlyEWL')
-(0, 'sharepoint.com', 1, 'Misc - SlyEWL')
-(0, 'signal.org', 1, 'Signal - SlyEWL')
-(0, 'silo.pluto.tv', 1, 'Pluto.tv - SlyEWL')
-(0, 'siloh.pluto.tv', 1, 'Pluto.tv - SlyEWL')
-(0, 'skl.apple.com', 1, 'Apple - SlyEWL')
-(0, 'skyhook.sonarr.tv', 1, 'Plex Media Server - Sonarr is a PVR for Usenet and BitTorrent users. - SlyEWL')
-(0, 'skype.com', 1, 'Microsoft - SlyEWL')
-(0, 'sls.update.microsoft.com.akadns.net', 1, 'Microsoft - SlyEWL')
-(0, 'society6.com', 1, 'Misc - SlyEWL')
-(0, 'someonewhocares.org', 1, 'Misc - SlyEWL')
-(0, 'souqcdn.com', 1, 'Misc - SlyEWL')
-(0, 'spclient-wg.spotify.com', 1, 'Spotify - SlyEWL')
-(0, 'spclient.wg.spotify.com', 1, 'Spotify - SlyEWL')
-(0, 'sq-device.apple.com', 1, 'Apple - SlyEWL')
-(0, 'ssl.google-analytics.com', 1, 'Google - SlyEWL')
-(0, 'ssl.p.jwpcdn.com', 1, 'Video delivery systems, popular in entertainment and news sites - SlyEWL')
-(0, 'staging.plex.tv', 1, 'Plex Media Server - SlyEWL')
-(0, 'star-mini.c10r.facebook.com', 1, 'Facebook - SlyEWL')
-(0, 'star.c10r.facebook.com', 1, 'Facebook - SlyEWL')
-(0, 'static.ips.apple.com', 1, 'Apple - SlyEWL')
-(0, 'static.opensubtitles.org', 1, 'Misc - SlyEWL')
-(0, 'static.xx.fbcdn.net', 1, 'Facebook - Messenger - SlyEWL')
-(0, 'statics.teams.cdn.office.net', 1, 'Microsoft - SlyEWL')
-(0, 'stats.streamelements.com', 1, 'Misc - SlyEWL')
-(0, 'status.plex.tv', 1, 'Plex Media Server - SlyEWL')
-(0, 'stitcher.pluto.tv', 1, 'Pluto.tv - SlyEWL')
-(0, 'storage.live.com', 1, 'Microsoft - SlyEWL')
-(0, 'storage.signal.org', 1, 'Signal - SlyEWL')
-(0, 'storeedgefd.dsx.mp.microsoft.com', 1, 'Microsoft Store - SlyEWL')
-(0, 'streaming-hls.gammacdn.com', 1, 'AdultTime - Required for streaming - SlyEWL')
-(0, 'styles.redditmedia.com', 1, 'Reddit - SlyEWL')
-(0, 'substrate.office.com', 1, 'Microsoft - SlyEWL')
-(0, 'suconfig.apple.com', 1, 'Apple - SlyEWL')
-(0, 'support.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'surveymonkey.com', 1, 'Misc - SlyEWL')
-(0, 'swcdn.apple.com', 1, 'Apple - SlyEWL')
-(0, 'swdist.apple.com', 1, 'Apple - SlyEWL')
-(0, 'swdownload.apple.com', 1, 'Apple - SlyEWL')
-(0, 'swpost.apple.com', 1, 'Apple - SlyEWL')
-(0, 'swscan.apple.com', 1, 'Apple - SlyEWL')
-(0, 'sylvan.apple.com', 1, 'Apple - SlyEWL')
-(0, 'sysctl.org', 1, 'Misc - SlyEWL')
-(0, 't.co', 1, 'Twitter - URL shortner - SlyEWL')
-(0, 't.scdn.co', 1, 'Spotify - SlyEWL')
-(0, 't0.ssl.ak.dynamic.tiles.virtualearth.net', 1, 'Microsoft - Used by Bing Maps to get information about various places - SlyEWL')
-(0, 't0.ssl.ak.tiles.virtualearth.net', 1, 'Microsoft - Used by Bing Maps to get information about various places - SlyEWL')
-(0, 'tagger.opecloud.com', 1, 'Misc - SlyEWL')
-(0, 'tags.tiqcdn.com', 1, 'TDAmeritrade - SlyEWL')
-(0, 'tawk.to', 1, 'Live chat platform for websites to chat with the website owner. Blocking this domain will block chat widget - SlyEWL')
-(0, 'tbsc.apple.com', 1, 'Apple - SlyEWL')
-(0, 'teams.events.data.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'teams.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'teams.office.com', 1, 'Microsoft - SlyEWL')
-(0, 'tedcdn.com', 1, 'Used by ted.com streams - SlyEWL')
-(0, 'telemetry-console.api.playstation.com', 1, 'Misc - SlyEWL')
-(0, 'textsecure-service-whispersystems.org', 1, 'Misc - SlyEWL')
-(0, 'themoviedb.com', 1, 'Plex Media Server - Metadata for movies - SlyEWL')
-(0, 'thetvdb.com', 1, 'Plex Media Server - Metadata for TV series - SlyEWL')
-(0, 'time-a.timefreq.bldrdoc.gov', 1, 'Sharp TV - SlyEWL')
-(0, 'time-ios.apple.com', 1, 'Apple - SlyEWL')
-(0, 'time-macos.apple.com', 1, 'Apple - SlyEWL')
-(0, 'time.apple.com', 1, 'Apple - SlyEWL')
-(0, 'time.samsungcloudsolution.com', 1, 'Samsung TV - SlyEWL')
-(0, 'tinyurl.com', 1, 'URL Shortener - SlyEWL')
-(0, 'title.auth.xboxlive.com', 1, 'Microsoft Xbox - Used for Xbox updates, game downloads, acheivements - SlyEWL')
-(0, 'title.mgt.xboxlive.com', 1, 'Microsoft Xbox - Used for Xbox updates, game downloads, acheivements - SlyEWL')
-(0, 'tlu.dl.delivery.mp.microsoft.com', 1, 'Microsoft Store - SlyEWL')
-(0, 'todo-ta-g7g.amazon.com', 1, 'Amazon - SlyEWL')
-(0, 'tracking-protection.cdn.mozilla.net', 1, 'Firefox - SlyEWL')
-(0, 'tracking.dpd.de', 1, 'Misc - SlyEWL')
-(0, 'tracking.epicgames.com', 1, 'Epic Games - Required to make a purchase on the website - SlyEWL')
-(0, 'traffic.libsyn.com', 1, 'Used in Pocketcasts app to serve and download podcasts - SlyEWL')
-(0, 'transform.gammacdn.com', 1, 'AdultTime - Required to display recommended videos - SlyEWL')
-(0, 'translate.google.com', 1, 'Google - SlyEWL')
-(0, 'tsfe.trafficshaping.dsp.mp.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'tuner-api.hdhomerun.com', 1, 'SiliconDust HDHomeRun - Both required for firmware update - SlyEWL')
-(0, 'turn1.whispersystems.org', 1, 'Misc - SlyEWL')
-(0, 'tv.deezer.com', 1, 'HBB TV - SlyEWL')
-(0, 'tvdb2.plex.tv', 1, 'Plex Media Server - SlyEWL')
-(0, 'tvthemes.plexapp.com.cdn.cloudflare.net', 1, 'Plex Media Server - SlyEWL')
-(0, 'twimg.com', 1, 'Twitter - Used to deliver media on Twitter - SlyEWL')
-(0, 'twitter.com', 1, 'Twitter - SlyEWL')
-(0, 'ud-chat.signal.org', 1, 'Signal - SlyEWL')
-(0, 'ui.skype.com', 1, 'Microsoft Skype - Used to make group calls, group chats etc. on Skype - SlyEWL')
-(0, 'unagi-na.amazon.com', 1, 'Amazon - SlyEWL')
-(0, 'unsplash.com', 1, 'Misc - SlyEWL')
-(0, 'update.biv.sony.tv', 1, 'Sony - SlyEWL')
-(0, 'updates-http.cdn-apple.com', 1, 'Apple - SlyEWL')
-(0, 'updates.cdn-apple.com', 1, 'Apple - SlyEWL')
-(0, 'updates2.signal.org', 1, 'Signal - SlyEWL')
-(0, 'upgrade.scdn.com', 1, 'Misc - SlyEWL')
-(0, 'upload.appleschoolcontent.com', 1, 'Apple - SlyEWL')
-(0, 'upload.facebook.com', 1, 'Facebook - SlyEWL')
-(0, 'upload.fp.measure.office.com', 1, 'Microsoft - SlyEWL')
-(0, 'upload.twitter.com', 1, 'Twitter - SlyEWL')
-(0, 'us-east-1.amazonaws.com', 1, 'Amazon - SlyEWL')
-(0, 'v.firebog.net', 1, 'Misc - SlyEWL')
-(0, 'v.reddit.com', 1, 'Reddit - SlyEWL')
-(0, 'v.shopify.com', 1, 'Shopping - SlyEWL')
-(0, 'v.w-x.co', 1, 'Weather - SlyEWL')
-(0, 'valid.apple.com', 1, 'Apple - SlyEWL')
-(0, 'vcs.vdspf.com', 1, 'Panasonic Viera TV - SlyEWL')
-(0, 'video-stats.l.google.com', 1, 'Google - Used to record YouTube watch history. Blocking this domain will pause your watch history on YouTube - SlyEWL')
-(0, 'video.xx.fbcdn.net', 1, 'Facebook - Messenger - SlyEWL')
-(0, 'videos.vidible.tv', 1, 'Video delivery systems, popular in entertainment and news sites - SlyEWL')
-(0, 'videothumb.gammacdn.com', 1, 'AdultTime - Required to access video thumbnails - SlyEWL')
-(0, 'vidtech.cbsinteractive.com', 1, 'Used to deliver videos over the internet - SlyEWL')
-(0, 'vimeo.com', 1, 'Misc - SlyEWL')
-(0, 'vpp.itunes.apple.com', 1, 'Apple - SlyEWL')
-(0, 'wa.me', 1, 'Misc - SlyEWL')
-(0, 'watson.telemetry.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'web.facebook.com', 1, 'Facebook - SlyEWL')
-(0, 'web.vortex.data.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'weblb-wg.dual-gslb.spotify.com', 1, 'Spotify - SlyEWL')
-(0, 'weeklyad.target.com.edgesuite.net', 1, 'Target - SlyEWL')
-(0, 'whispersystems-textsecure-attachments.s3-accelerate.amazonaws.com', 1, 'Amazon - SlyEWL')
-(0, 'whiteboard.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'widget-cdn.rpxnow.com', 1, 'Akamai Technologies - Used as a sign in method in various apps and sites - SlyEWL')
-(0, 'wikipedia.org', 1, 'Misc - SlyEWL')
-(0, 'win10.ipv6.microsoft.com', 1, 'Gives full IPv6 connectivity for IPv6-capable hosts that are on the IPv4 Internet but have no native connection to an IPv6 network - SlyEWL')
-(0, 'win1710.ipv6.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'winatp-gw-neu.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'winhelp2002.mvps.org', 1, 'Misc - SlyEWL')
-(0, 'wl.spotify.com', 1, 'Spotify - SlyEWL')
-(0, 'wordpress.com', 1, 'Wordpress - SlyEWL')
-(0, 'wp.com', 1, 'WordPress - Site hosting service - SlyEWL')
-(0, 'ws-ee-maidsvc.icloud.com', 1, 'Apple - SlyEWL')
-(0, 'ws.audioscrobbler.com', 1, 'Plex Media Server - Last.fm; used to get track metadata using API - SlyEWL')
-(0, 'ww.dataplicity.com', 1, 'Used to remotely control your Raspberry-Pi - SlyEWL')
-(0, 'www.adf.ly', 1, 'URL Shortener - SlyEWL')
-(0, 'www.aliexpress.com', 1, 'Shopping - SlyEWL')
-(0, 'www.apple.com', 1, 'Apple - SlyEWL')
-(0, 'www.appleiphonecell.com', 1, 'Apple - SlyEWL')
-(0, 'www.asadcdn.com', 1, 'Misc - SlyEWL')
-(0, 'www.dataplicity.com', 1, 'Misc - SlyEWL')
-(0, 'www.ecdinterface.philips.com', 1, 'Philips TV - SlyEWL')
-(0, 'www.facebook.com', 1, 'Facebook - SlyEWL')
-(0, 'www.google-analytics.com', 1, 'Google - SlyEWL')
-(0, 'www.googleapis.com', 1, 'Google - An important domain used to provide APIs to various Google services. - SlyEWL')
-(0, 'www.howtogeek.com', 1, 'Misc - SlyEWL')
-(0, 'www.icloud.com', 1, 'Apple - SlyEWL')
-(0, 'www.itunes.com', 1, 'Apple - SlyEWL')
-(0, 'www.linuxtracker.org', 1, 'Linux - SlyEWL')
-(0, 'www.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'www.msftconnecttest.com', 1, 'Microsoft - Used by Windows systems to check internet connectivity - SlyEWL')
-(0, 'www.msftncsi.com', 1, 'Microsoft - This domain is checked by the operating systems when connecting via wifi, if no response, open wifi login page or similar - SlyEWL')
-(0, 'www.no-ip.com', 1, 'NO-IP - Offers DNS services, email, network monitoring and SSL certificates - SlyEWL')
-(0, 'www.opensubtitles.org', 1, 'Plex Media Server - SlyEWL')
-(0, 'www.plex.tv', 1, 'Plex Media Server - SlyEWL')
-(0, 'www.propublica.org', 1, 'Misc - SlyEWL')
-(0, 'www.redditmedia.com', 1, 'Reddit - SlyEWL')
-(0, 'www.redditstatic.com', 1, 'Reddit - SlyEWL')
-(0, 'www.refersion.com', 1, 'Misc - SlyEWL')
-(0, 'www.samsungotn.net', 1, 'Samsung TV - SlyEWL')
-(0, 'www.signal.org', 1, 'Signal - SlyEWL')
-(0, 'www.solaredge.com', 1, 'Misc - SlyEWL')
-(0, 'www.squaretrade.com', 1, 'Shopping - SlyEWL')
-(0, 'www.twitter.com', 1, 'Twitter - SlyEWL')
-(0, 'www.wa.me', 1, 'Misc - SlyEWL')
-(0, 'www.xboxlive.com', 1, 'Microsoft Xbox - SlyEWL')
-(0, 'www.youtube-nocookie.com', 1, 'Google YouTube - Privacy-Enhanced Mode. Used to embed the videos on third-party sites with less trackers - SlyEWL')
-(0, 'x-default-stgec.uplynk.com', 1, 'DiscoveryPlus App - Required on Nvidia Shield TV - SlyEWL')
-(0, 'xbox.ipv6.microsoft.com', 1, 'Microsoft Xbox - Used for Xbox updates, game downloads, acheivements - SlyEWL')
-(0, 'xboxexperiencesprod.experimentation.xboxlive.com', 1, 'Microsoft Xbox - Used for Xbox updates, game downloads, acheivements - SlyEWL')
-(0, 'xflight.xboxlive.com', 1, 'Microsoft Xbox - Used for Xbox updates, game downloads, acheivements - SlyEWL')
-(0, 'xkms.xboxlive.com', 1, 'Microsoft Xbox - Used for Xbox updates, game downloads, acheivements - SlyEWL')
-(0, 'xp-cdn.apple.com', 1, 'Apple - SlyEWL')
-(0, 'xp.apple.com', 1, 'Apple - SlyEWL')
-(0, 'xsts.auth.xboxlive.com', 1, 'Microsoft Xbox - Used for Xbox updates, game downloads, acheivements - SlyEWL')
-(0, 'yahoo.com', 1, 'Yahoo - SlyEWL')
-(0, 'youtu.be', 1, 'YouTube - URL Shortener - SlyEWL')
-(0, 'youtube-nocookie.com', 1, 'Google YouTube - Privacy-Enhanced Mode; Used to embed the videos on third-party sites with less trackers - SlyEWL')
-(0, 'youtube.com', 1, 'YouTube - SlyEWL')
-(0, 'youtubei.googleapis.com', 1, 'YouTube - SlyEWL')
-(0, 'yt3.ggpht.com', 1, 'Google YouTube - Used to deliver static files over the internet - SlyEWL')
-(0, 'z.cdn.turner.com', 1, 'Turner - SlyEWL')
-(0, 'zee.cws.conviva.com', 1, 'Conviva - Offers online video optimization and online video analytics. In order to watch many online contents you may need to whitelist. - SlyEWL')
-(0, 'zeustracker.abuse.com', 1, 'Misc - SlyEWL')
+#!/usr/bin/env python3
+
+import os
+import argparse
+import sqlite3
+import subprocess
+from urllib.request import Request, urlopen
+from urllib.error import HTTPError, URLError
+import time
+
+today = int(time.time())
+
+def fetch_whitelist_url(url):
+
+    if not url:
+        return
+
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36'}
+
+    try:
+        response = urlopen(Request(url, headers=headers))
+    except HTTPError as e:
+        print('[X] HTTP Error:', e.code, 'whilst fetching', url)
+        print('\n')
+        print('\n')
+        exit(1)
+    except URLError as e:
+        print('[X] URL Error:', e.reason, 'whilst fetching', url)
+        print('\n')
+        print('\n')
+        exit(1)
+
+    # Read and decode
+    response = response.read().decode('UTF-8').replace('\r\n', '\n')
+
+    # If there is data
+    if response:
+        # Strip leading and trailing whitespace
+        response = '\n'.join(x.strip() for x in response.splitlines())
+
+    # Return the hosts
+    return response
+
+def dir_path(string):
+    if os.path.isdir(string):
+        return string
+    else:
+        raise NotADirectoryError(string)
+
+def restart_pihole(docker):
+    if docker is True:
+        subprocess.call("docker exec -it pihole pihole restartdns reload",
+                        shell=True, stdout=subprocess.DEVNULL)
+    else:
+        subprocess.call(['pihole', '-g'], stdout=subprocess.DEVNULL)
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-d", "--dir", type=dir_path, help="Optional: Pi-hole /etc directory")
+parser.add_argument("-D", "--docker",  action='store_true', help="Optional: Set if you're using Pi-hole in a Docker environment.")
+args = parser.parse_args()
+
+if args.dir:
+    pihole_location = args.dir
+else:
+    pihole_location = r'/etc/pihole'
+
+whitelist_remote_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/whitelist/exact-whitelist.txt'
+remote_sql_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/whitelist/exact-whitelist.sql'
+gravity_whitelist_location = os.path.join(pihole_location, 'whitelist.txt')
+gravity_db_location = os.path.join(pihole_location, 'gravity.db')
+slyfox1186_whitelist_location = os.path.join(pihole_location, 'slyfox1186-whitelist.txt')
+
+db_exists = False
+sqliteConnection = None
+cursor = None
+
+whitelist_remote = set()
+whitelist_local = set()
+whitelist_slyfox1186_local = set()
+whitelist_old_slyfox1186 = set()
+
+os.system('clear')
+print('\n')
+print('This script will download and add domains from the repo to whitelist.')
+print('All the domains in this list are safe to add and does not contain any tracking or adserving domains.')
+print('\n')
+
+# Check if the pihole path exists
+if os.path.exists(pihole_location):
+    print("[i] Pi-hole's path was found.")
+else:
+    # print(f'[X] {pihole_location} was not found')
+
+    print("[X] {} was not found".format(pihole_location))
+    print('\n')
+    print('\n')
+    exit(1)
+
+# Check for write access to /etc/pihole
+if os.access(pihole_location, os.X_OK | os.W_OK):
+    print("[i] Write access to {} verified." .format(pihole_location))
+    whitelist_str = fetch_whitelist_url(whitelist_remote_url)
+    remote_whitelist_lines = whitelist_str.count('\n')
+    remote_whitelist_lines += 1
+else:
+    print("[X] Write access is not available for {}. Please run the script as a privileged user." .format(
+        pihole_location))
+    print('\n')
+    print('\n')
+    exit(1)
+
+# Determine whether we are using DB or not
+if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) > 0:
+    db_exists = True
+    print('[i] The Gravity database was found.')
+
+    remote_sql_str = fetch_whitelist_url(remote_sql_url)
+    remote_sql_lines = remote_sql_str.count('\n')
+    remote_sql_lines += 1
+
+    if len(remote_sql_str) > 0:
+        print("[i] {} domains and {} SQL queries discovered" .format(
+            remote_whitelist_lines, remote_sql_lines))
+    else:
+        print('[X] No remote SQL queries found.')
+        print('\n')
+        print('\n')
+        exit(1)
+else:
+    print('[i] Legacy Pi-hole detected (Version older than 5.0).')
+
+# If domains were fetched, remove any comments and add to set
+if whitelist_str:
+    whitelist_remote.update(x for x in map(
+        str.strip, whitelist_str.splitlines()) if x and x[:1] != '#')
+else:
+    print('[X] No remote domains were found.')
+    print('\n')
+    print('\n')
+    exit(1)
+
+if db_exists:
+    # Create a DB connection
+    print('[i] Connecting to Gravity.')
+
+    try: # Try to create a DB connection
+        sqliteConnection = sqlite3.connect(gravity_db_location)
+        cursor = sqliteConnection.cursor()
+        print('[i] Successfully Connected to Gravity.')
+        #
+        print('[i] Checking Gravity for domains added by script.')
+        # Check Gravity database for domains added by script
+        gravityScript_before = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%SlyEWL%' ")
+        # Fetch all matching entries which will create a tuple for us
+        gravScriptBeforeTUP = gravityScript_before.fetchall()
+        # Number of domains in database from script
+        gravScriptBeforeTUPlen = len(gravScriptBeforeTUP)
+        print('[i] {} domains from the script are already in the whitelist.' .format(gravScriptBeforeTUPlen))
+        #
+        # Make `remote_sql_str` a tuple so we can easily compare
+        newWhiteTUP = remote_sql_str.split('\n')
+        # Number of domains that would be added by script
+        newWhiteListlen = len(newWhiteTUP)
+        #
+        # Get domains from newWhiteTUP and make an ordered list (a list we can use predictably)
+        nW = [None] * newWhiteListlen
+        nwl = 0 # keep a count
+        newWL = [None]
+        newWhiteList = [None] * newWhiteListlen
+        for newWhiteDomain in newWhiteTUP: # For each line found domains.sql
+            nW[nwl] = newWhiteDomain # Add line to a controlled list
+            removeBrace = nW[nwl].replace('(', '') # Remove (
+            removeBraces10 = removeBrace.replace(')', '') # Remove )
+            newWL = removeBraces10.split(', ') # Split at commas to create a list
+            newWhiteList[nwl] = newWL[1].replace('\'', '') # Remove ' from domain and add to list
+            # Uncomment to see list of sql varables being imported
+            # print(nW[nwl])
+            # Uncomment to see list of domains being imported
+            # print(newWhiteList[nwl])
+            nwl += 1 # count + 1
+        # Check database for user added exact whitelisted domains
+        print('[i] Checking Gravity for domains added by a user that are also in the script.')
+        # Check Gravity database for exact whitelisted domains added by user
+        user_add = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment NOT LIKE '%SlyEWL%' ")
+        userAddTUP = user_add.fetchall()
+        userAddTUPlen = len(userAddTUP)
+        #
+        #
+        # Check if whitelisted domains added by user are in script
+        userAddList = [None] * userAddTUPlen # Create a list that has the same size as the tuple is it compared to
+        uA = 0 # Used to count User Added domains in our script
+        uagl = False
+        for userAddINgravity in userAddTUP: # For every whitelisted domain we found in the database do:
+           if userAddINgravity[2] in newWhiteList: # If the domain we found added by user IS IN our new list count it
+               userAddList[uA] = userAddINgravity[2] # Add the domain we found to the list we created
+               uagl = True
+               uA += 1 # Bump count if domain added (starts @ 0)
+        #
+        uA -= 1 # Subtract 1 so the count doesn't put us out of range
+        INgravityUSERaddListCount = uA # Save our count here so we know how many we have later
+        # Make us aware of User Added domains that are also in our script
+        if uagl == True: # If we found user added domains from our list in gravity do:
+            print('[i] {} domain(s) added by the user that would be added by script.\n' .format(INgravityUSERaddListCount+1)) # We have to add 1 for humans cause count starts @ 0
+            a = 0
+            while uA >= 0: # Remember that counter now we make it go backwards to 0
+                a += 1 # Counter for number output to screen
+                print('    {}. {}' .format(a, userAddList[uA])) # Show us what we found
+                uA -= 1 # Go backwards
+        else: # If we don't find any
+            INgravityUSERaddListCount = 0 # Make sure this is 0
+            print('[i] Found {} domains added by a user that will be added by the script.' .format(INgravityUSERaddListCount)) # Notify of negative result
+        #
+        #
+        # Check Gravity database for domains added by script that are not in new script
+        INgravityNOTnewList = [None] * gravScriptBeforeTUPlen # Create a list that has the same size as the tuple is it compared to
+        gravScriptBeforeList = [None] * gravScriptBeforeTUPlen
+        z = 0
+        if uagl == True:
+            print('\n')
+
+        print('[i] Checking Gravity for domains previously added by script that are NOT in new script.')
+        ignl = False
+        a = 0
+        for INgravityNOTnew in gravScriptBeforeTUP: # For every domain previously added by script
+            gravScriptBeforeList[a] = INgravityNOTnew[2] # Take domains from gravity and put them in a list for later
+            a += 1
+            if not INgravityNOTnew[2] in newWhiteList: # Make sure it is not in new script
+               INgravityNOTnewList[z] = INgravityNOTnew # Add not found to list for later
+               ignl = True
+               z += 1
+        #
+        z -= 1
+        INgravityNOTnewListCount = z
+        # If in Gravity because of script but NOT in the new list Prompt for removal
+        if ignl == True:
+            print('[i] {} domain(s) added previously by script that are not in new script.\n' .format(INgravityNOTnewListCount+1))
+            a = 0
+            while z >= 0:
+                a += 1
+                print('    deleting {}' .format(INgravityNOTnewList[z][2]))
+                # Print all data retrieved from database about domain to be removed
+                print(INgravityNOTnewList[z])
+                # Ability to remove old
+                sql_delete = " DELETE FROM domainlist WHERE type = 0 AND id = '{}' "  .format(INgravityNOTnewList[z][0])
+                cursor.executescript(sql_delete)
+                z -= 1
+        # If not keep going
+        else:
+            INgravityNOTnewListCount = 0
+            print('[i] Found {} domains added previously by the script that are not in the script.' .format(INgravityNOTnewListCount))
+        #
+        #
+        # Check Gravity database for new domains to be added by script
+        INnewNOTgravityList = [None] * newWhiteListlen
+        w = 0
+        if ignl == True:
+            print('\n')
+        #
+        print('[i] Checking script for domains not in Gravity.')
+        ilng = False
+        for INnewNOTgravity in newWhiteList: # For every domain in the new script
+            if not INnewNOTgravity in gravScriptBeforeList and not INnewNOTgravity in userAddList: # Make sure it is not in gravity or added by user
+                INnewNOTgravityList[w] = INnewNOTgravity # Add domain to list we created
+                ilng = True
+                w += 1
+        #
+        w -= 1
+        INnewNOTgravityListCount = w
+        # If there are domains in new list that are NOT in Gravity
+        if ilng == True: # Add domains that are missing from new script and not user additions
+            print("[i] {} domain's NOT in Gravity that are in the new scripts.\n" .format(INnewNOTgravityListCount+1))
+            a = 0
+            while w >= 0:
+                a += 1
+                for addNewWhiteDomain in newWhiteList:
+                    if addNewWhiteDomain in INnewNOTgravityList:
+                        print('    - Adding {}' .format(addNewWhiteDomain))
+                        # print(addNewWhiteDomain)
+                        sql_index = newWhiteList.index(addNewWhiteDomain)
+                        print(sql_index)
+                        print(nW[sql_index])
+                        # Ability to add new
+                        sql_add = " INSERT OR IGNORE INTO domainlist (type, domain, enabled, comment) VALUES {} "  .format(nW[sql_index])
+                        cursor.executescript(sql_add)
+                        w -= 1
+            # Re-Check Gravity database for domains added by script after we update it
+            gravityScript_after = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%SlyEWL%' ")
+            # Fetch all matching entries which will create a tuple for us
+            gravScriptAfterTUP = gravityScript_after.fetchall()
+            # Number of domains in database from script
+            gravScriptAfterTUPlen = len(gravScriptAfterTUP)
+
+            gsa = False
+            ASG = INnewNOTgravityListCount
+            ASGCOUNT = 0
+            gravScriptAfterList = [None] * gravScriptAfterTUPlen
+
+            print('\n[i] Checking Gravity for newly added domains.\n')
+
+            for gravScriptAfterDomain in gravScriptAfterTUP:
+                gravScriptAfterList[ASGCOUNT] = gravScriptAfterTUP[ASGCOUNT][2]
+                ASGCOUNT += 1
+
+            while ASG >= 0:
+                if INnewNOTgravityList[ASG] in gravScriptAfterList:
+                    print('    - Found  {} ' .format(INnewNOTgravityList[ASG]))
+                    gsa = True
+                ASG = ASG - 1
+
+            if gsa == True:
+                # All domains are accounted for.
+                print("\n[i] All {} missing domain's have been found in Gravity." .format(newWhiteListlen))
+
+            else:
+                print("\n[i] All {} new domain's have not been added to Gravity." .format(INnewNOTgravityListCount+1))
+
+        else: # We should be done now
+            # Do nothing and exit. All domains are accounted for.
+            print("[i] All {} domains to be added by script have been discovered in Gravity." .format(newWhiteListlen))
+        # Find total whitelisted domains (regex)
+        total_domains_R = cursor.execute(" SELECT * FROM domainlist WHERE type = 2 ")
+        tdr = len(total_domains_R.fetchall())
+        # Find total whitelisted domains (exact)
+        total_domains_E = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 ")
+        tde = len(total_domains_E.fetchall())
+        total_domains = tdr + tde
+        print("[i] There are a total of {} domains in your whitelist (regex({}) & exact({}))" .format(total_domains, tdr, tde))
+        sqliteConnection.close()
+        print('[i] The connection to Gravity has closed.')
+        if ilng == True:
+            print('[i] Please wait for Pi-hole to reboot.')
+            restart_pihole(args.docker)
+
+    except sqlite3.Error as error:
+        print("[X] Failed to insert domains into Gravity's database.", error)
+        print('\n')
+        print('\n')
+        exit(1)
+
+    finally:
+        print('\n')
+        print('[i] The exact whitelist filters have been added successfully!')
+        print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
+
+else:
+
+    if os.path.isfile(gravity_whitelist_location) and os.path.getsize(gravity_whitelist_location) > 0:
+        print('[i] Collecting existing entries from the file whitelist.txt.')
+        with open(gravity_whitelist_location, 'r') as fRead:
+            whitelist_local.update(x for x in map(
+                str.strip, fRead) if x and x[:1] != '#')
+
+    if whitelist_local:
+        print("[i] The script has located {} existing whitelisted domains." .format(
+            len(whitelist_local)))
+
+        if os.path.isfile(slyfox1186_whitelist_location) and os.path.getsize(slyfox1186_whitelist_location) > 0:
+            print('[i] Existing slyfox1186-whitelist installation found.')
+            with open(slyfox1186_whitelist_location, 'r') as fOpen:
+                whitelist_old_slyfox1186.update(x for x in map(
+                    str.strip, fOpen) if x and x[:1] != '#')
+
+                if whitelist_old_slyfox1186:
+                    print('[i] Removing previously installed whitelist.')
+                    whitelist_local.difference_update(whitelist_old_slyfox1186)
+
+    print("[i] Syncing with {}" .format(whitelist_remote_url))
+    whitelist_local.update(whitelist_remote)
+
+    print("[i] Outputting {} domains to {}" .format(
+        len(whitelist_local), gravity_whitelist_location))
+    with open(gravity_whitelist_location, 'w') as fWrite:
+        for line in sorted(whitelist_local):
+            fWrite.write("{}\n".format(line))
+
+    with open(slyfox1186_whitelist_location, 'w') as fWrite:
+        for line in sorted(whitelist_remote):
+            fWrite.write("{}\n".format(line))
+
+    print('[i] Domains are not added to your Pi-hole whitelist.')
+    print('[i] Restartting Pi-hole.. this could take a few seconds.')
+    restart_pihole(args.docker)
+    print('[i] The exact whitelist filters have been added successfully!')
+    print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
