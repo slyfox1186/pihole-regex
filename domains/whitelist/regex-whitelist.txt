@@ -57,6 +57,9 @@
 ^title\.(auth|mgt)\.xboxlive\.com$ # Microsoft Xbox
 ^v[0-2]+\.(events|vortex-win)\.data\.microsoft\.com$ # Essential Microsoft updates
 
+# QNAP Computers
+(\.|^)myqnapcloud\.com$
+
 # Reddit
 (\.|^)[iv]+\.redd\.it$ # Required to display image and video files
 
