@@ -9,7 +9,7 @@
 (\.|^)cognito-identity\.us-east-1\.amazonaws\.com$
 (\.|^)images\d+-fame\.gammacdn\.com$ # Required for images to load
 (\.|^)lambda-url\.us-east-1\.on\.aws$
-(\.|^)react\.gammacdn\.com$ # AdultTime - Required to use react buttons - SlyEWL
+(\.|^)react\.gammacdn\.com$ # AdultTime - Required to use react buttons
 (\.|^)static[\d]+-cms-fame\.gammacdn\.com$ # CDN Server
 ^(appsync|execute)-api\.us-east-1\.amazonaws\.com$
 ^images\d+-fame\.gammacdn\.com$ # Loads images
@@ -36,6 +36,8 @@
 ^lightswitch-public-service-prod[\d]*\.ol\.epicgames\.com$ # Store purchases
 
 # Facebook
+(\.|^)facebook\.com$ # Main website
+(\.|^)fbcdn\.net$ # CDN for facebook
 ^([\d]+-|^)edge-chat\.facebook\.com$ # Messenger
 
 # Google
