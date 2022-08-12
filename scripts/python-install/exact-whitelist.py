@@ -237,7 +237,7 @@ if db_exists:
                 a += 1
                 print('    deleting {}' .format(INgravityNOTnewList[z][2]))
                 # Print all data retrieved from database about domain to be removed
-                # print(INgravityNOTnewList[z])
+                print(INgravityNOTnewList[z])
                 # Ability to remove old
                 sql_delete = " DELETE FROM domainlist WHERE type = 0 AND id = '{}' "  .format(INgravityNOTnewList[z][0])
                 cursor.executescript(sql_delete)
