@@ -3,13 +3,13 @@
 # Create variable
 URL=https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts
 
-# Create "$HOME/tmp" directory if not exist.
-if [ ! -d "$HOME/tmp" ]; then
-    mkdir -p "$HOME/tmp"
+# Create "$HOME/pihole.regex" directory if not exist.
+if [ ! -d "$HOME/pihole.regex" ]; then
+    mkdir -p "$HOME/pihole.regex"
 fi
 
-# Change working directory to "$HOME/tmp"
-cd "$HOME/tmp"
+# Change working directory to "$HOME/pihole.regex"
+cd "$HOME/pihole.regex"
 
 # Make user input case insensitive
 shopt -s nocasematch; clear
