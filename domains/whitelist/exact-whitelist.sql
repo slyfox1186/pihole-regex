@@ -1,5 +1,5 @@
 (0, '0-edge-chat.facebook.com', 1, 'Facebook - SlyEWL')
-(0, '0.client-channel.google.com', 1, 'Google - To access Google Drive and Google Docs editors this domain must be whitelisted - https://support.google.com/a/answer/2589954?hl=en - SlyEWL')
+(0, '0.client-channel.google.com', 1, 'Google - To access Google Drive and Google Docs editors this domain must be whitelisted - https\:\/\/support.google.com\/a\/answer\/2589954\?hl\=en - SlyEWL')
 (0, '1-edge-chat.facebook.com', 1, 'Facebook - SlyEWL')
 (0, '1drv.com', 1, 'Microsoft OneDrive - Used as a short link for OneDrive documents - SlyEWL')
 (0, '2-edge-chat.facebook.com', 1, 'Facebook - SlyEWL')
