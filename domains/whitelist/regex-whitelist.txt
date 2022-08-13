@@ -5,7 +5,7 @@
 (\.|^)adulttime.com # Main website
 (\.|^)algolianet\.com$
 (\.|^)algolia\.net$
-(\.|^)cognito-identity\.us-east-1\.amazonaws\.com$
+(\.|^)cognito-identity\.us-east-1\.amazonaws\.com$ # Required to login
 (\.|^)lambda-url\.us-east-1\.on\.aws$
 (\.|^)react\.gammacdn\.com$ # AdultTime - Required to use react buttons
 (\.|^)static[\d]+-cms-fame\.gammacdn\.com$ # CDN Server
