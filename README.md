@@ -17,24 +17,28 @@ wget -c -q -i https://optimizethis.net
 
 #### Add/Remove `RegEx Blacklist`:
 ```
-curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-blacklist.sh > regex-blacklist.sh && \
+curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-blacklist.sh > regex-blacklist.sh
 . regex-blacklist.sh
+
 ```
 
 #### Add/Remove `Exact Blacklist`:
 ```
-curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-blacklist.sh > exact-blacklist.sh && \
+curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-blacklist.sh > exact-blacklist.sh
 . exact-blacklist.sh
+
 ```
 
 #### Add/Remove `RegEx Whitelist`:
 ```
-curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-whitelist.sh > regex-whitelist.sh && \
+curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-whitelist.sh > regex-whitelist.sh
 . regex-whitelist.sh
+
 ```
 
 #### Add/Remove `Exact Whitelist`:
 ```
-curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-whitelist.sh > exact-whitelist.sh && \
+curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-whitelist.sh > exact-whitelist.sh
 . exact-whitelist.sh
+
 ```
