@@ -274,11 +274,11 @@ if db_exists:
                 a += 1
                 for addNewWhiteDomain in newWhiteList:
                     if addNewWhiteDomain in INnewNOTgravityList:
-                        print('    - Adding {}' .format(addNewWhiteDomain))
+                        # print('    - Adding {}' .format(addNewWhiteDomain))
                         # print(addNewWhiteDomain)
                         sql_index = newWhiteList.index(addNewWhiteDomain)
-                        print(sql_index)
-                        print(nW[sql_index])
+                        # print(sql_index)
+                        # print(nW[sql_index])
                         # Ability to add new
                         sql_add = " INSERT OR IGNORE INTO domainlist (type, domain, enabled, comment) VALUES {} "  .format(nW[sql_index])
                         cursor.executescript(sql_add)
