@@ -22,11 +22,9 @@ def fetch_whitelist_url(url):
     except HTTPError as e:
         print('[X] HTTP Error:', e.code, 'whilst fetching', url)
         print('\n')
-        print('\n')
         exit(1)
     except URLError as e:
         print('[X] URL Error:', e.reason, 'whilst fetching', url)
-        print('\n')
         print('\n')
         exit(1)
 
@@ -93,7 +91,6 @@ else:
 
     print("[X] {} was not found".format(pihole_location))
     print('\n')
-    print('\n')
     exit(1)
 
 # Check for write access to /etc/pihole
@@ -135,7 +132,6 @@ if whitelist_str:
         str.strip, whitelist_str.splitlines()) if x and x[:1] != '#')
 else:
     print('[X] No remote domains were found.')
-    print('\n')
     print('\n')
     exit(1)
 
@@ -337,7 +333,6 @@ if db_exists:
         exit(1)
 
     finally:
-        print('\n')
         print('[i] The exact whitelist filters have been added successfully!')
         print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
         print('\n')
