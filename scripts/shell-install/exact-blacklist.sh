@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 # Create variable
 URL=https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts
 
@@ -12,7 +14,7 @@ fi
 cd "$HOME/pihole.regex"
 
 # Make user input case insensitive
-shopt -s nocasematch; clear
+shopt -s nocasematch
 
 # Get the user's input
 echo -e "Exact blacklist filters\\n\\nPlease choose an option: [A]dd or [R]emove: "
@@ -20,8 +22,10 @@ read a
 clear
 if [[ $a == "A" ]]; then
     /usr/bin/curl -sSl "$URL/python-install/exact-blacklist.py" | sudo python3
-    echo 'Script complete: The exact blacklist filters have been added.'
+    echo -e 'Script complete: The exact blacklist filters have been added.\\n'
 else
     /usr/bin/curl -sSl "$URL/python-uninstall/exact-blacklist.py" | sudo python3
-    echo 'Script complete: The exact blacklist filters have been removed.'
+    echo -e 'Script complete: The exact blacklist filters have been removed.\\n'
 fi
+
+read -p 'Press Enter to continue'
