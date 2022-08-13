@@ -5,26 +5,43 @@ The purpose of this filter list is to compliment your existing blocklist's using
 
 All commands need to be entered via a Terminal after logging in and you need to have [**Python v3.6 or higher**] installed to execute the curl commands below. You can use PuTTY or your SSH client of choice if you're not on the pc running Pi-hole.
 
-### Add/Remove `RegEx Blacklist`:
+### Add/Remove ALL lists
 ```
-curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-blacklist.sh > regex-blacklist.sh && source regex-blacklist.sh
+curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-blacklist.sh > regex-blacklist.sh && \
+. regex-blacklist.sh
+curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-blacklist.sh > exact-blacklist.sh && \
+. exact-blacklist.sh
+curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-whitelist.sh > regex-whitelist.sh && \
+. regex-whitelist.sh
+curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-whitelist.sh > exact-whitelist.sh && \
+. exact-whitelist.sh
 
 ```
 
-### Add/Remove `Exact Blacklist`:
+#### Add/Remove `RegEx Blacklist`:
 ```
-curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-blacklist.sh > exact-blacklist.sh && source exact-blacklist.sh
+curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-blacklist.sh > regex-blacklist.sh && \
+. regex-blacklist.sh
 
 ```
 
-### Add/Remove `RegEx Whitelist`:
+#### Add/Remove `Exact Blacklist`:
 ```
-curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-whitelist.sh > regex-whitelist.sh && source regex-whitelist.sh
+curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-blacklist.sh > exact-blacklist.sh && \
+. exact-blacklist.sh
 
 ```
 
-### Add/Remove `Exact Whitelist`:
+#### Add/Remove `RegEx Whitelist`:
 ```
-curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-whitelist.sh > exact-whitelist.sh && source exact-whitelist.sh
+curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-whitelist.sh > regex-whitelist.sh && \
+. regex-whitelist.sh
+
+```
+
+#### Add/Remove `Exact Whitelist`:
+```
+curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-whitelist.sh > exact-whitelist.sh && \
+. exact-whitelist.sh
 
 ```
