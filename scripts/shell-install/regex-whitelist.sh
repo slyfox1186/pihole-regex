@@ -27,3 +27,4 @@ fi
 
 echo -e "\\n\\n"
 read -p 'Press Enter to continue'
+clear
