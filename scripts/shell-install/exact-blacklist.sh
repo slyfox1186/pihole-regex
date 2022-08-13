@@ -14,8 +14,7 @@ cd "$HOME/pihole.regex"
 shopt -s nocasematch
 
 # Get the user's input
-# echo -e "Please choose an option: [A]dd or [R]emove [exact blacklist] filters\\n"
-echo -e "[i] Exact Blacklist Filters\\n\\nChoose an option: [A]dd , [R]emove or [E]xit"
+echo -e "[i] Exact Blacklist Filters\\n\\n[i] Choose an option: [A]dd , [R]emove or [E]xit"
 read a
 clear
 if [[ $a == "A" ]]; then
@@ -30,5 +29,5 @@ elif [[ $a == "E" ]]; then
 fi
 
 echo -e "\\n\\n"
-read -p 'Press Enter to continue.'
+read -p '[i] Press Enter to continue.'
 clear
