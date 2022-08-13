@@ -6,6 +6,7 @@ clear
 # Make user input case insensitive
 shopt -s nocasematch
 
+# Set directory variable
 FILE_DIR="$HOME/pihole.regex"
 
 # Delete: The useless index.html file
@@ -24,16 +25,21 @@ if [ ! -d $FILE_DIR ]; then
 fi
 
 # Verify: If files exist and move them to $HOME/pihole.regex
-
 FILES=(exact-blacklist.sh exact-whitelist.sh regex-blacklist.sh regex-whitelist.sh run.sh)
 
-echo ${FILES[*]}
-echo read -p 'Press enter to exit.'
-clear
-
 for i in ${FILES[@]}; do
-    echo File: $i.
+    echo File: "$i"
+  if [ -f $i ]; then
+      mv "$i" "$FILE_DIR/$i"
+  else
+      clear
+      echo -e "\\nFailed to download: $i\\n"
+      read -p 'Press enter to exit.'
+      exit 1
+  fi
+fi
 done
+
 echo
 read -p 'Press enter to exit.'
 exit 0
