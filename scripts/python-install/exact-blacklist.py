@@ -338,6 +338,7 @@ if db_exists:
         print('Please make sure to star this repository to show support... it helps keep me motivated!')
         print('https://github.com/slyfox1186/pihole.regex')
         print('\n')
+        print('\n')
 
 else:
 
