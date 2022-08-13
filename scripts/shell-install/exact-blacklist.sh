@@ -15,7 +15,7 @@ cd "$HOME/pihole.regex"
 shopt -s nocasematch; clear
 
 # Get the user's input
-echo -e "SlyFox1186's exact blacklist filters\\n\\nPlease choose an option: [A]dd or [R]emove: "
+echo -e "Exact blacklist filters\\n\\nPlease choose an option: [A]dd or [R]emove: "
 read a
 clear
 if [[ $a == "A" ]]; then
