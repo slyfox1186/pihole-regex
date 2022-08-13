@@ -27,6 +27,6 @@ elif [[ $a == "E" ]]; then
     exit 1
 fi
 
-echo -e "\\n\\n"
+echo -e "\\n"
 read -p '[i] Press Enter to continue.'
 clear
