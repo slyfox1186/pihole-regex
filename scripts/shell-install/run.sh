@@ -5,18 +5,19 @@ clear
 
 FILE_DIR="$HOME/pihole.regex"
 
-# Delete the useless index.html file that is downloaded
+# Delete: The useless index.html file
 if [ -f index.html ]; then
     rm index.html
     clear
 fi
 
-# Create $FILE_DIR directory if not exist
+# Create: $FILE_DIR directory if not exist
 if [ ! -d $FILE_DIR ]; then
     mkdir -p "$FILE_DIR"
 fi
 
-# Move scripts to to $FILE_DIR
+## Verify: Files exist and then move them to $HOME/pihole.regex
+# Verify: exact-blacklist.sh
 if [ -f exact-blacklist.sh ]; then
     mv 'exact-blacklist.sh' "$FILE_DIR/exact-blacklist.sh"
     clear
@@ -27,6 +28,7 @@ else
     exit 1
 fi
 
+# Verify: exact-whitelist.sh
 if [ -f exact-whitelist.sh ]; then
     mv 'exact-whitelist.sh' "$FILE_DIR/exact-whitelist.sh"
     clear
@@ -37,6 +39,7 @@ else
     exit 1
 fi
 
+# Verify: regex-blacklist.sh
 if [ -f regex-blacklist.sh ]; then
     mv 'regex-blacklist.sh' "$FILE_DIR/regex-blacklist.sh"
     clear
@@ -47,6 +50,7 @@ else
     exit 1
 fi
 
+# Verify: regex-whitelist.sh
 if [ -f regex-whitelist.sh ]; then
     mv 'regex-whitelist.sh' "$FILE_DIR/regex-whitelist.sh"
     clear
@@ -57,6 +61,7 @@ else
     exit 1
 fi
 
+# Verify: run.sh
 if [ -f run.sh ]; then
     mv 'run.sh' "$FILE_DIR/run.sh"
     clear
