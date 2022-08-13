@@ -24,7 +24,7 @@ FILES1=($SHELL_FILES run.sh)
 
 for i in ${FILES1[@]}; do
   if [ -f $i ]; then
-      mv "$i" "$FILE_DIR/$i"
+      mv -f "$i" "$FILE_DIR/$i"
   fi
 done
 
