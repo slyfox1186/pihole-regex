@@ -37,7 +37,6 @@ for i in ${FILES[@]}; do
       read -p 'Press enter to exit.'
       exit 1
   fi
-fi
 done
 
 echo
