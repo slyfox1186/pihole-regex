@@ -45,13 +45,6 @@ clear
 
 FILES2=(exact-blacklist.sh exact-whitelist.sh regex-blacklist.sh regex-whitelist.sh)
 
-for i in ${FILES2[@]}; do
-  if [ -f $FILE_DIR/$i ]; then
-      . "$FILE_DIR/$i" && \
-  else
-      clear
-      echo -e "\\nFailed to move $i to $FILE_DIR\\n"
-      read -p 'Press enter to exit.'
-      exit 1
-  fi
+for arg in ${FILES2[@]}; do
+    . "$FILE_DIR/$arg &&"
 done
