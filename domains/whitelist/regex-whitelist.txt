@@ -2,17 +2,16 @@
 ## Github repository: https://github.com/slyfox1186/pihole.regex
 
 # AdultTime
-(www\.|^)adulttime.com
+(\.|^)adulttime.com # Main website
 (\.|^)algolianet\.com$
 (\.|^)algolia\.net$
-(\.|^)appsync-api\.us-east-1\.amazonaws\.com$
 (\.|^)cognito-identity\.us-east-1\.amazonaws\.com$
-(\.|^)images\d+-fame\.gammacdn\.com$ # Required for images to load
 (\.|^)lambda-url\.us-east-1\.on\.aws$
 (\.|^)react\.gammacdn\.com$ # AdultTime - Required to use react buttons
 (\.|^)static[\d]+-cms-fame\.gammacdn\.com$ # CDN Server
 ^(appsync|execute)-api\.us-east-1\.amazonaws\.com$
-^images\d+-fame\.gammacdn\.com$ # Loads images
+^images[\d]+-fame\.gammacdn\.com$ # Required for images to load
+^kosmos(|-assets)-prod\.react\.gammacdn\.com$ # AdultTime - Required for react buttons to work
 ^streaming-(fame|hls)\.gammacdn\.com$ # Required to stream video
 
 # Apple
