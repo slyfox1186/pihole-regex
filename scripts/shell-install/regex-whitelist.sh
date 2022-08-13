@@ -24,7 +24,7 @@ elif [[ $a == "R" ]]; then
     /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-uninstall/regex-blacklist.py' | sudo python3
     echo '[i] The regex blacklist filters were removed.'
 elif [[ $a == "E" ]]; then
-    exit 1
+    exit 0
 fi
 
 echo -e "\\n"
