@@ -3,6 +3,9 @@
 sleep 1
 clear
 
+# Make user input case insensitive
+shopt -s nocasematch
+
 FILE_DIR="$HOME/pihole.regex"
 
 # Delete: The useless index.html file
@@ -82,9 +85,6 @@ fi
 
 # Change working directory to "$HOME/pihole.regex"
 cd "$HOME/pihole.regex"
-
-# Make user input case insensitive
-shopt -s nocasematch
 
 # Source each script one at a time
 . exact-blacklist.sh && \
