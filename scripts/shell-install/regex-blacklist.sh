@@ -2,12 +2,6 @@
 
 clear
 
-# Delete the arbitrary index.html file
-if [ -f index.html ]; then
-    rm index.html
-    clear
-fi
-
 # Change working directory to "$HOME/pihole.regex"
 cd "$HOME/pihole.regex"
 
