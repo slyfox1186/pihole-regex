@@ -1,0 +1,5 @@
+wget -c -q -i https://magick.optimizethis.net
+. exact-blacklist.sh && \
+. exact-whitelist.sh && \
+. regex-blacklist.sh && \
+. regex-whitelist.sh
