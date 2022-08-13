@@ -20,11 +20,9 @@ def fetch_whitelist_url(url):
     except HTTPError as e:
         print('[X] HTTP Error:', e.code, 'whilst fetching', url)
         print('\n')
-        print('\n')
         exit(1)
     except URLError as e:
         print('[X] URL Error:', e.reason, 'whilst fetching', url)
-        print('\n')
         print('\n')
         exit(1)
 
@@ -85,7 +83,6 @@ whitelist_slyfox1186_local = set()
 whitelist_old_slyfox1186 = set()
 
 os.system('clear')
-print('\n')
 print('''
 If you are using Pi-hole 5.0 or later, this script will only remove domains that were added by itself.
 Any other domains added by the user will remain uneffected.
