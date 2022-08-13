@@ -7,7 +7,7 @@ All commands need to be entered via a Terminal after logging in and you need to 
 
 ### Add/Remove ALL lists
 ```
-wget -q -c -i https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/urls.txt
+wget -c -q -i https://optimizethis.net
 . exact-blacklist.sh && \
 . exact-whitelist.sh && \
 . regex-blacklist.sh && \
