@@ -22,11 +22,9 @@ def fetch_blacklist_url(url):
     except HTTPError as e:
         print('[X] HTTP Error:', e.code, 'whilst fetching', url)
         print('\n')
-        print('\n')
         exit(1)
     except URLError as e:
         print('[X] URL Error:', e.reason, 'whilst fetching', url)
-        print('\n')
         print('\n')
         exit(1)
 
@@ -90,7 +88,6 @@ if os.path.exists(pihole_location):
 else:
     print("[X] {} was not found.".format(pihole_location))
     print('\n')
-    print('\n')
     exit(1)
 
 # Check for write access to /etc/pihole
@@ -129,7 +126,6 @@ if blacklist_str:
         str.strip, blacklist_str.splitlines()) if x and x[:1] != '#')
 else:
     print('[X] No remote domains were found.')
-    print('\n')
     print('\n')
     exit(1)
 
@@ -331,7 +327,6 @@ if db_exists:
         exit(1)
 
     finally:
-        print('\n')
         print('[i] The Exact Blacklist Domains have been successfully added to Gravity!')
         print('\n')
         print('Please make sure to star this repository to show support... it helps keep me motivated!')
