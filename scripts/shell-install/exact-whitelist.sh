@@ -19,14 +19,14 @@ echo -e "[i] Exact Whitelist filters\\n\\nChoose an option: [A]dd , [R]emove or 
 read a
 clear
 if [[ $a == "A" ]]; then
-  /usr/bin/curl -sSl "https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-install/exact-whitelist.py" | sudo python3
-  echo '[i] The Exact Whitelist filters have been added.'
-else if [[ $a == "R" ]]; then
-  /usr/bin/curl -sSl "https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-uninstall/exact-whitelist.py" | sudo python3
-  echo '[i] The Exact Whitelist filters have been removed.'
-else if [[ $a == "E" ]]; then
-  read -p "exit"
-  exit 1
+    /usr/bin/curl -sSl "https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-install/exact-whitelist.py" | sudo python3
+    echo '[i] The Exact Whitelist filters have been added.'
+elif [[ $a == "R" ]]; then
+    /usr/bin/curl -sSl "https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-uninstall/exact-whitelist.py" | sudo python3
+    echo '[i] The Exact Whitelist filters have been removed.'
+elif [[ $a == "E" ]]; then
+    read -p "exit"
+    exit 1
 fi
 
 echo -e "\\n\\n"
