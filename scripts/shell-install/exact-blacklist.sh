@@ -24,7 +24,7 @@ elif [[ $a == "R" ]]; then
     /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-uninstall/exact-blacklist.py' | sudo python3
     echo '[i] The Exact Blacklist Filters have been removed.'
 elif [[ $a == "E" ]]; then
-    exit 1
+    exit 0
 fi
 
 echo -e "\\n"
