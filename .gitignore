@@ -1,5 +1,6 @@
 __pycache__/
 .idea/
+urls-all.txt
 
 # Environments
 .env
