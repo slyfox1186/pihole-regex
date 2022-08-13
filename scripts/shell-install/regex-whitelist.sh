@@ -28,4 +28,5 @@ else
     echo 'Script complete: The RegEx whitelist filters have been removed.'
 fi
 
+echo -e "\\n\\n"
 read -p 'Press Enter to continue'
