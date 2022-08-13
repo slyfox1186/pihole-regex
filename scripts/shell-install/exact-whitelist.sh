@@ -15,7 +15,7 @@ shopt -s nocasematch
 
 # Get the user's input
 # echo -e "Please choose an option: [A]dd or [R]emove [exact whitelist] filters\\n"
-echo -e "[i] Exact Whitelist Filters\\n\\nChoose an option: [A]dd , [R]emove or [E]xit"
+echo -e "[i] Exact Whitelist Filters\\n\\n[i] Choose an option: [A]dd , [R]emove or [E]xit"
 read a
 clear
 if [[ $a == "A" ]]; then
@@ -25,10 +25,9 @@ elif [[ $a == "R" ]]; then
     /usr/bin/curl -sSl "https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-uninstall/exact-whitelist.py" | sudo python3
     echo '[i] The Exact Whitelist Filters have been removed.'
 elif [[ $a == "E" ]]; then
-    read -p "exit"
     exit 1
 fi
 
 echo -e "\\n\\n"
-read -p 'Press Enter to continue.'
+read -p '[i] Press Enter to continue.'
 clear
