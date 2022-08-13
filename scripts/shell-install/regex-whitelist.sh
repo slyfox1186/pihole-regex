@@ -2,29 +2,42 @@
 
 clear
 
-# Create "$HOME/pihole.regex" directory if not exist.
-if [ ! -d "$HOME/pihole.regex" ]; then
-    mkdir -p "$HOME/pihole.regex"
-fi
-
-# Change working directory to "$HOME/pihole.regex"
-cd "$HOME/pihole.regex"
+FILE_DIR="$HOME/pihole.RegEx"
 
 # Make user input case insensitive
 shopt -s nocasematch
 
+# Create "$FILE_DIR" directory if not exist.
+if [ ! -d $FILE_DIR ]; then
+    mkdir -p "$FILE_DIR"
+fi
+
+# Verify: run.sh exists / was downloaded
+if [ ! -f run.sh ]; then
+    echo -e "\\nFile missing: run.sh\\nIt might not have been downloaded so check."
+    read -p 'Press [Enter] to exit.'
+    exit 1
+else
+    mv 'run.sh' "$FILE_DIR/run.sh"
+    clear
+fi
+
+# Change working directory to "$FILE_DIR"
+cd "$FILE_DIR"
+
 # Get the user's input
-echo -e "\\n[RegEx Blacklist] filters: [A]dd [R]emove [E]xit"
+echo -e "\\nRegEx Whitelist Filters: [A]dd [R]emove [S]kip"
 read a
 clear
 if [[ $a == "A" ]]; then
-    /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-install/regex-blacklist.py' | sudo python3
-    echo '[i] The regex blacklist filters have been added.'
+    /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-install/regex-Whitelist.py' | sudo python3
+    echo '[i] The RegEx Whitelist Filters have been added.'
 elif [[ $a == "R" ]]; then
-    /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-uninstall/regex-blacklist.py' | sudo python3
-    echo '[i] The regex blacklist filters were removed.'
-elif [[ $a == "E" ]]; then
-    exit 0
+    /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-uninstall/regex-Whitelist.py' | sudo python3
+    echo '[i] The RegEx Whitelist Filters were removed.'
+elif [[ $a == "S" ]]; then
+    clear
+    echo 'Skipping ahead!'
 fi
 
 echo -e "\\n"
