@@ -20,24 +20,52 @@ fi
 if [ -f exact-blacklist.sh ]; then
     mv 'exact-blacklist.sh' "$FILE_DIR/exact-blacklist.sh"
     clear
+else
+    clear
+    echo -e "\\nDownload Failed: exact-blacklist.sh\\n"
+    read -p 'Press enter to exit.'
+    exit 1
 fi
 
 if [ -f exact-whitelist.sh ]; then
     mv 'exact-whitelist.sh' "$FILE_DIR/exact-whitelist.sh"
     clear
+else
+    clear
+    echo -e "\\nDownload Failed: exact-whitelist.sh\\n"
+    read -p 'Press enter to exit.'
+    exit 1
 fi
 
 if [ -f regex-blacklist.sh ]; then
     mv 'regex-blacklist.sh' "$FILE_DIR/regex-blacklist.sh"
     clear
+else
+    clear
+    echo -e "\\nDownload Failed: regex-blacklist.sh\\n"
+    read -p 'Press enter to exit.'
+    exit 1
 fi
 
 if [ -f regex-whitelist.sh ]; then
     mv 'regex-whitelist.sh' "$FILE_DIR/regex-whitelist.sh"
     clear
+else
+    clear
+    echo -e "\\nDownload Failed: regex-whitelist.sh\\n"
+    read -p 'Press enter to exit.'
+    exit 1
 fi
 
-if [ -f $FILE_DIR/exact-blacklist.sh ] 
+if [ -f run.sh ]; then
+    mv 'run.sh' "$FILE_DIR/run.sh"
+    clear
+else
+    clear
+    echo -e "\\nDownload Failed: run.sh\\n"
+    read -p 'Press enter to exit.'
+    exit 1
+fi
 
 # Change working directory to "$HOME/pihole.regex"
 cd "$HOME/pihole.regex"
