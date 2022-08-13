@@ -28,7 +28,6 @@ fi
 FILES1=(exact-blacklist.sh exact-whitelist.sh regex-blacklist.sh regex-whitelist.sh run.sh)
 
 for i in ${FILES1[@]}; do
-    echo File: "$i"
   if [ -f $i ]; then
       mv "$i" "$FILE_DIR/$i"
   else
@@ -46,5 +45,6 @@ clear
 FILES2=(exact-blacklist.sh exact-whitelist.sh regex-blacklist.sh regex-whitelist.sh)
 
 for arg in ${FILES2[@]}; do
-    . "$FILE_DIR/$arg &&"
+    echo File: "$FILE_DIR/$arg"
+    . "$FILE_DIR/$arg"
 done
