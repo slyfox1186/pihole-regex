@@ -2,20 +2,6 @@
 
 clear
 
-FILE_DIR="$HOME/pihole.RegEx"
-
-# Verify: run.sh exists / was downloaded
-if [ ! -f $FILE_DIR/run.sh ]; then
-  if [ ! -f run.sh ]; then
-    echo -e "\\nFile missing: run.sh\\nIt might not have been downloaded so check."
-    read -p 'Press [Enter] to exit.'
-    exit 1
-  else
-    mv 'run.sh' "$FILE_DIR/run.sh"
-    clear
-  fi
-fi
-
 # Change working directory to "$FILE_DIR"
 cd "$FILE_DIR"
 
