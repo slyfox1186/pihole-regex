@@ -37,7 +37,7 @@
 # Facebook
 (\.|^)facebook\.com$ # Main website
 (\.|^)fbcdn\.net$ # CDN for facebook
-^[0-6]+?-edge-chat\.facebook\.com$ # Messenger
+^[0-6]+?-edge-chat.facebook.com$ # Messenger
 
 # Google
 ^beacons[\d]*\.gvt[\d]+\.com$ # Resposible for all sorts of widgets and other vital functions within google
