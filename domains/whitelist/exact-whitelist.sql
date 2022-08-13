@@ -560,6 +560,7 @@
 (0, 'storage.live.com', 1, 'Microsoft - SlyEWL')
 (0, 'storage.signal.org', 1, 'Signal - SlyEWL')
 (0, 'storeedgefd.dsx.mp.microsoft.com', 1, 'Microsoft Store - SlyEWL')
+(0, 'streaming-fame.gammacdn.com', 1, 'AdultTime - Required to stream videos - SlyEWL')
 (0, 'streaming-hls.gammacdn.com', 1, 'AdultTime - Required for streaming - SlyEWL')
 (0, 'styles.redditmedia.com', 1, 'Reddit - SlyEWL')
 (0, 'substrate.office.com', 1, 'Microsoft - SlyEWL')
