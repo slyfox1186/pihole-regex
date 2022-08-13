@@ -22,7 +22,7 @@ if [ -f exact-blacklist.sh ]; then
     clear
 else
     clear
-    echo -e "\\nDownload Failed: exact-blacklist.sh\\n"
+    echo -e "\\nFailed to download: exact-blacklist.sh\\n"
     read -p 'Press enter to exit.'
     exit 1
 fi
@@ -32,7 +32,7 @@ if [ -f exact-whitelist.sh ]; then
     clear
 else
     clear
-    echo -e "\\nDownload Failed: exact-whitelist.sh\\n"
+    echo -e "\\nFailed to download: exact-whitelist.sh\\n"
     read -p 'Press enter to exit.'
     exit 1
 fi
@@ -42,7 +42,7 @@ if [ -f regex-blacklist.sh ]; then
     clear
 else
     clear
-    echo -e "\\nDownload Failed: regex-blacklist.sh\\n"
+    echo -e "\\nFailed to download: regex-blacklist.sh\\n"
     read -p 'Press enter to exit.'
     exit 1
 fi
@@ -52,7 +52,7 @@ if [ -f regex-whitelist.sh ]; then
     clear
 else
     clear
-    echo -e "\\nDownload Failed: regex-whitelist.sh\\n"
+    echo -e "\\nFailed to download: regex-whitelist.sh\\n"
     read -p 'Press enter to exit.'
     exit 1
 fi
@@ -62,7 +62,7 @@ if [ -f run.sh ]; then
     clear
 else
     clear
-    echo -e "\\nDownload Failed: run.sh\\n"
+    echo -e "\\nFailed to download: run.sh\\n"
     read -p 'Press enter to exit.'
     exit 1
 fi
