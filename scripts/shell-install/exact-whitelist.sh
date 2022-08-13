@@ -2,7 +2,7 @@
 
 clear
 
-# Get the user's input
+# Get user's input
 echo -e "Exact Whitelist Filters: [A]dd [R]emove [S]kip"
 read a
 clear
