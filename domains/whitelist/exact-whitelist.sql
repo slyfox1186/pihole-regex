@@ -334,8 +334,6 @@
 (0, 'jsdelivr.net', 1, 'jsDelivr is a free public CDN for open-source projects. It can serve web files directly from the npm registry and GitHub repositories without any configuration - SlyEWL')
 (0, 'json.bild.de', 1, 'Misc - SlyEWL')
 (0, 'keystone.mwbsys.com', 1, 'Malwarebytes - Verifies Malwarebytes software license - SlyEWL')
-(0, 'kosmos-assets-prod.react.gammacdn.com', 1, 'AdultTime - Required for react buttons to work - SlyEWL')
-(0, 'kosmos-prod.react.gammacdn.com', 1, 'AdultTime - Required for react buttons to work - SlyEWL')
 (0, 'l.facebook.com', 1, 'Facebook - SlyEWL')
 (0, 'l.messenger.com', 1, 'Microsoft - SlyEWL')
 (0, 'lastfm-img2.akamaized.net', 1, 'Used by last.fm to deliver images - SlyEWL')
