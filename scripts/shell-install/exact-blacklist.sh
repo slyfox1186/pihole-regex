@@ -15,7 +15,7 @@ shopt -s nocasematch
 
 # Get the user's input
 # echo -e "Please choose an option: [A]dd or [R]emove [exact blacklist] filters\\n"
-echo -e "[i] exact blacklist\\n\\nChoose an option: [A]dd , [R]emove or [E]xit"
+echo -e "[i] Exact Blacklist Filters\\n\\nChoose an option: [A]dd , [R]emove or [E]xit"
 read a
 clear
 if [[ $a == "A" ]]; then
