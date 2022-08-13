@@ -8,7 +8,11 @@ FILE_DIR="$HOME/pihole.regex"
 # Delete: The useless index.html file
 if [ -f index.html ]; then
     rm index.html
+else
     clear
+    echo 'index.html was not found'
+    read -p 'Press Enter to exit.'
+    exit 1
 fi
 
 # Create: $FILE_DIR directory if not exist
@@ -16,7 +20,7 @@ if [ ! -d $FILE_DIR ]; then
     mkdir -p "$FILE_DIR"
 fi
 
-## Verify: Files exist and then move them to $HOME/pihole.regex
+# Verify: If files exist and move them to $HOME/pihole.regex
 # Verify: exact-blacklist.sh
 if [ -f exact-blacklist.sh ]; then
     mv 'exact-blacklist.sh' "$FILE_DIR/exact-blacklist.sh"
@@ -28,48 +32,52 @@ else
     exit 1
 fi
 
-# Verify: exact-whitelist.sh
-if [ -f exact-whitelist.sh ]; then
+# Verify: exact-whitelist.sh exists / was downloaded
+if [ ! -f $FILE_DIR/exact-whitelist.sh ]; then
+  if [ ! -f exact-whitelist.sh ]; then
+    echo -e "\\nFile missing: exact-whitelist.sh\\nIt might not have been downloaded so check."
+    read -p 'Press [Enter] to exit.'
+    exit 1
+  else
     mv 'exact-whitelist.sh' "$FILE_DIR/exact-whitelist.sh"
     clear
-else
-    clear
-    echo -e "\\nFailed to download: exact-whitelist.sh\\n"
-    read -p 'Press enter to exit.'
-    exit 1
+  fi
 fi
 
-# Verify: regex-blacklist.sh
-if [ -f regex-blacklist.sh ]; then
+# Verify: regex-blacklist.sh exists / was downloaded
+if [ ! -f $FILE_DIR/regex-blacklist.sh ]; then
+  if [ ! -f regex-blacklist.sh ]; then
+    echo -e "\\nFile missing: regex-blacklist.sh\\nIt might not have been downloaded so check."
+    read -p 'Press [Enter] to exit.'
+    exit 1
+  else
     mv 'regex-blacklist.sh' "$FILE_DIR/regex-blacklist.sh"
     clear
-else
-    clear
-    echo -e "\\nFailed to download: regex-blacklist.sh\\n"
-    read -p 'Press enter to exit.'
-    exit 1
+  fi
 fi
 
-# Verify: regex-whitelist.sh
-if [ -f regex-whitelist.sh ]; then
+# Verify: regex-whitelist.sh exists / was downloaded
+if [ ! -f $FILE_DIR/regex-whitelist.sh ]; then
+  if [ ! -f regex-whitelist.sh ]; then
+    echo -e "\\nFile missing: regex-whitelist.sh\\nIt might not have been downloaded so check."
+    read -p 'Press [Enter] to exit.'
+    exit 1
+  else
     mv 'regex-whitelist.sh' "$FILE_DIR/regex-whitelist.sh"
     clear
-else
-    clear
-    echo -e "\\nFailed to download: regex-whitelist.sh\\n"
-    read -p 'Press enter to exit.'
-    exit 1
+  fi
 fi
 
-# Verify: run.sh
-if [ -f run.sh ]; then
+# Verify: run.sh exists / was downloaded
+if [ ! -f $FILE_DIR/run.sh ]; then
+  if [ ! -f run.sh ]; then
+    echo -e "\\nFile missing: run.sh\\nIt might not have been downloaded so check."
+    read -p 'Press [Enter] to exit.'
+    exit 1
+  else
     mv 'run.sh' "$FILE_DIR/run.sh"
     clear
-else
-    clear
-    echo -e "\\nFailed to move: $pwd/run.sh to $FILE_DIR/run.sh\\n"
-    read -p 'Press enter to exit.'
-    exit 1
+  fi
 fi
 
 # Change working directory to "$HOME/pihole.regex"
