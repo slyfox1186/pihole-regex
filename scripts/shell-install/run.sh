@@ -24,6 +24,20 @@ if [ ! -d $FILE_DIR ]; then
 fi
 
 # Verify: If files exist and move them to $HOME/pihole.regex
+
+FILES=(exact-blacklist.sh exact-whitelist.sh regex-blacklist.sh regex-whitelist.sh run.sh)
+
+echo ${FILES[*]}
+echo read -p 'Press enter to exit.'
+clear
+
+for i in ${FILES[@]}; do
+    echo File: $i.
+done
+echo
+read -p 'Press enter to exit.'
+exit 0
+
 # Verify: exact-blacklist.sh
 if [ -f exact-blacklist.sh ]; then
     mv 'exact-blacklist.sh' "$FILE_DIR/exact-blacklist.sh"
