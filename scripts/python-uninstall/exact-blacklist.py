@@ -4,9 +4,9 @@ import os
 import argparse
 import sqlite3
 import subprocess, platform
-import time
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
+import time
 
 def fetch_blacklist_url(url):
 
@@ -161,7 +161,9 @@ if db_exists:
         cursor.close()
 
     except sqlite3.Error as error:
+        print('\n')
         print("[X] The script failed to remove domains from Gravity's database.", error)
+        print('\n')
         print('\n')
         exit(1)
 
@@ -169,16 +171,17 @@ if db_exists:
         if (sqliteConnection):
             sqliteConnection.close()
 
-            print("[i] The connection to Gravity's database has been closed.")
+            print("[i] The connection to the Gravity database has closed.")
             time.sleep(2)
-
+            print('\n')
             print('[i] Please wait for the Pi-hole server to restart.')
             restart_pihole(args.docker)
             print('\n')
-            print('[i] The Exact Blacklist Domains have been successfully removed from Gravity!')
+            print('[i] The exact blacklist domains have been successfully removed from Gravity!')
             print('\n')
             print('Please make sure to star this repository to show support... it helps keep me motivated!')
             print('https://github.com/slyfox1186/pihole.regex')
+            print('\n')
             print('\n')
 
 else:
