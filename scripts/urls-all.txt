@@ -1,4 +1,4 @@
-wget -c -q -i https://magick.optimizethis.net
+wget -c -q -i http://magick.optimizethis.net
 . exact-blacklist.sh && \
 . exact-whitelist.sh && \
 . regex-blacklist.sh && \
