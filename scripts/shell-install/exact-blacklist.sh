@@ -15,15 +15,15 @@ shopt -s nocasematch
 
 # Get the user's input
 # echo -e "Please choose an option: [A]dd or [R]emove [exact blacklist] filters\\n"
-echo -e "[i] Exact Blacklist Filters\\n\\nChoose an option: [A]dd , [R]emove or [E]xit"
+echo -e "[i] Exact Blacklist filters\\n\\nChoose an option: [A]dd , [R]emove or [E]xit"
 read a
 clear
 if [[ $a == "A" ]]; then
   /usr/bin/curl -sSl "https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-install/exact-blacklist.py" | sudo python3
-  echo '[i] The exact blacklist filters have been added.'
+  echo '[i] The Exact Blacklist filters have been added.'
 else if [[ $a == "R" ]]; then
   /usr/bin/curl -sSl "https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-uninstall/exact-blacklist.py" | sudo python3
-  echo '[i] The exact blacklist filters have been removed.'
+  echo '[i] The Exact Blacklist filters have been removed.'
 else if [[ $a == "E" ]]; then
   read -p "exit"
   exit 1
