@@ -7,7 +7,7 @@ All commands need to be entered via a Terminal after logging in and you need to 
 
 ### Add/Remove ALL lists
 ```
-wget -c -q -O optimize.sh -i https://magick.optimizethis.net && . optimize.sh
+wget -c -q -O optimize.sh -i https://pihole.optimizethis.net && . optimize.sh
 
 ```
 
