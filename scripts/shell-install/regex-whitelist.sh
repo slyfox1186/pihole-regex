@@ -13,13 +13,15 @@ if [ ! -d $FILE_DIR ]; then
 fi
 
 # Verify: run.sh exists / was downloaded
-if [ ! -f run.sh ]; then
+if [ ! -f $FILE_DIR/run.sh ]; then
+  if [ ! -f run.sh ]; then
     echo -e "\\nFile missing: run.sh\\nIt might not have been downloaded so check."
     read -p 'Press [Enter] to exit.'
     exit 1
-else
+  else
     mv 'run.sh' "$FILE_DIR/run.sh"
     clear
+  fi
 fi
 
 # Change working directory to "$FILE_DIR"
