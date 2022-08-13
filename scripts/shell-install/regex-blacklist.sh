@@ -14,15 +14,15 @@ cd "$HOME/pihole.regex"
 shopt -s nocasematch
 
 # Get the user's input
-echo -e "\\n[RegEx Whitelist] filters: [A]dd [R]emove [E]xit"
+echo -e "\\n[RegEx Blacklist] filters: [A]dd [R]emove [E]xit"
 read a
 clear
 if [[ $a == "A" ]]; then
-    /usr/bin/curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-install/regex-whitelist.py | sudo python3
-    echo '[i] The regex whitelist filters have been added.'
+    /usr/bin/curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-install/regex-blacklist.py | sudo python3
+    echo '[i] The regex blacklist filters have been added.'
 elif [[ $a == "R" ]]; then
-    /usr/bin/curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-uninstall/regex-whitelist.py | sudo python3
-    echo '[i] The regex whitelist filters were removed.'
+    /usr/bin/curl -sSl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/python-uninstall/regex-blacklist.py | sudo python3
+    echo '[i] The regex blacklist filters were removed.'
 elif [[ $a == "E" ]]; then
     exit 1
 fi
