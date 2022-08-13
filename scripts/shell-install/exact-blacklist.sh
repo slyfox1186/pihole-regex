@@ -2,17 +2,6 @@
 
 clear
 
-# Create "$HOME/pihole.regex" directory if not exist.
-if [ ! -d "$HOME/pihole.regex" ]; then
-    mkdir -p "$HOME/pihole.regex"
-fi
-
-# Change working directory to "$HOME/pihole.regex"
-cd "$HOME/pihole.regex"
-
-# Make user input case insensitive
-shopt -s nocasematch
-
 # Get the user's input
 echo -e "\\nExact Blacklist Filters: [A]dd [R]emove [E]xit"
 read a
