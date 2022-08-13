@@ -67,7 +67,7 @@ if [ -f run.sh ]; then
     clear
 else
     clear
-    echo -e "\\nFailed to download: run.sh\\n"
+    echo -e "\\nFailed to move: $pwd/run.sh to $FILE_DIR/run.sh\\n"
     read -p 'Press enter to exit.'
     exit 1
 fi
