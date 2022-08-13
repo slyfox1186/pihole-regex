@@ -30,7 +30,6 @@ for i in ${FILES1[@]}; do
   else
       clear
       echo -e "\\nFailed to download: $i\\n"
-      read -p 'Press enter to exit.'
   fi
 done
 
