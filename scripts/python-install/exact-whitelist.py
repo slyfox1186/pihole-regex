@@ -334,13 +334,13 @@ if db_exists:
     except sqlite3.Error as error:
         print("[X] Failed to insert domains into Gravity's database.", error)
         print('\n')
-        print('\n')
         exit(1)
 
     finally:
         print('\n')
         print('[i] The exact whitelist filters have been added successfully!')
         print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
+        print('\n')
 
 else:
 
@@ -378,7 +378,9 @@ else:
             fWrite.write("{}\n".format(line))
 
     print('[i] Domains are not added to your Pi-hole whitelist.')
-    print('[i] Restartting Pi-hole.. this could take a few seconds.')
+    print('[i] Restarting Pi-hole.. this could take a few seconds.')
     restart_pihole(args.docker)
     print('[i] The exact whitelist filters have been added successfully!')
+    print('\n')
     print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
+    print('\n')
