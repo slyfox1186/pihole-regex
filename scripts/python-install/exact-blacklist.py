@@ -322,15 +322,19 @@ if db_exists:
             restart_pihole(args.docker)
 
     except sqlite3.Error as error:
+        print('\n')
         print("[X] Failed to insert domains into Gravity's database.", error)
+        print('\n')
         print('\n')
         exit(1)
 
     finally:
+        print('\n')
         print('[i] The Exact Blacklist Domains have been successfully added to Gravity!')
         print('\n')
         print('Please make sure to star this repository to show support... it helps keep me motivated!')
         print('https://github.com/slyfox1186/pihole.regex')
+        print('\n')
         print('\n')
 
 else:
@@ -370,10 +374,11 @@ else:
 
     print('[i] The Exact Blacklist Domains were not added to the Gravity database.')
     print('[i] Please investigate the failure to add the domains while Pi-hole restarts.')
-    
     restart_pihole(args.docker)
+    print('\n')
     print('[i] The Exact Blacklist Domains have been successfully added to Gravity!')
     print('\n')
-    print('Please make sure to Star this repository to show support... it helps keep me motivated!')
+    print('Please make sure to star this repository to show support... it helps keep me motivated!')
+    print('\n')
     print('https://github.com/slyfox1186/pihole.regex')
     print('\n')
