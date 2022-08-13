@@ -13,10 +13,7 @@ FILE_DIR="$HOME/pihole.regex"
 if [ -f index.html ]; then
     rm index.html
 else
-    clear
-    echo 'index.html was not found'
-    read -p 'Press Enter to exit.'
-    exit 1
+    echo -e "[i] index.html was not found\\n"
 fi
 
 # Create: $FILE_DIR directory if not exist
