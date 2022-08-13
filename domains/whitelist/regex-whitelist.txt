@@ -50,14 +50,14 @@
 ^aic\.(homeprv|service)\.lgtvcommon\.com$ # LG Smart TV updates
 
 # Microsoft
-(\.|^)1drv\.ms$ # Onedrive's short url
-(\.|^)azure\.com$ # Azure's main site
-(\.|^)windows\.com$ # Windows main site
-^title\.(auth|mgt)\.xboxlive\.com$ # Microsoft Xbox
-^v[0-2]+\.(events|vortex-win)\.data\.microsoft\.com$ # Essential Microsoft updates
+(\.|^)1drv\.ms$ # Microsoft - Onedrive's short url
+(\.|^)azure\.com$ # Microsoft - Azure's main site
+(\.|^)windows\.com$ # Microsoft - Windows main site
+^(device|title|user|xsts)\.auth\.xboxlive\.com$ # Microsoft Xbox - Used for updates, game downloads, acheivements unlocking etc
+^v[0-2]+\.(events|vortex-win)\.data\.microsoft\.com$ # Microsoft - Essential updates
 
 # QNAP Computers
-(\.|^)myqnapcloud\.com$
+(\.|^)myqnapcloud\.com$ # Required to use myqnapcloud features
 
 # Reddit
 (\.|^)[iv]+\.redd\.it$ # Required to display image and video files
