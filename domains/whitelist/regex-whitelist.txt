@@ -9,7 +9,7 @@
 (\.|^)lambda-url\.us-east-1\.on\.aws$
 (\.|^)react\.gammacdn\.com$ # AdultTime - Required to use react buttons
 (\.|^)static[\d]+-cms-fame\.gammacdn\.com$ # CDN Server
-^(appsync|execute)-api\.us-east-1\.amazonaws\.com$
+^([a-z\d]+|)(\.(appsync|execute)-api\.us-east-1\.amazonaws\.com)$ # One of the main CDN's for the site. Videos, Pictures, ect...
 ^images[\d]+-fame\.gammacdn\.com$ # Required for images to load
 ^kosmos(|-assets)-prod\.react\.gammacdn\.com$ # AdultTime - Required for react buttons to work
 ^streaming-(fame|hls)\.gammacdn\.com$ # Required to stream video
