@@ -3,7 +3,7 @@
 clear
 
 # Get the user's input
-echo -e "\\nExact Blacklist Filters: [A]dd [R]emove [E]xit"
+echo -e "Exact Blacklist Filters: [A]dd [R]emove [E]xit"
 read a
 clear
 if [[ $a == "A" ]]; then
