@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 # Create variable
 URL=https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts
 
@@ -25,3 +27,5 @@ else
     /usr/bin/curl -sSl "$URL/python-uninstall/regex-blacklist.py" | sudo python3
     echo 'Script complete: The RegEx blacklist filters have been removed.'
 fi
+
+read -p 'Press Enter to continue'
