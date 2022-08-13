@@ -40,7 +40,7 @@ def fetch_url(url):
 
 
 url_regstrings_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/whitelist/regex-whitelist.txt'
-install_comment = 'slyWhiteRegEx'
+install_comment = 'slyRWL'
 
 cmd_restart = ['pihole', 'restartdns', 'reload']
 
