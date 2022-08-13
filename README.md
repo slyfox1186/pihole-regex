@@ -15,6 +15,7 @@ curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shel
 . regex-whitelist.sh && \
 curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-whitelist.sh > exact-whitelist.sh && \
 . exact-whitelist.sh
+
 ```
 
 #### Add/Remove `RegEx Blacklist`:
