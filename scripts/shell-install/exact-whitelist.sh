@@ -2,12 +2,6 @@
 
 clear
 
-# Delete the arbitrary index.html file
-if [ -f index.html ]; then
-    rm index.html
-    clear
-fi
-
 # Create "$HOME/pihole.regex" directory if not exist.
 if [ ! -d "$HOME/pihole.regex" ]; then
     mkdir -p "$HOME/pihole.regex"
