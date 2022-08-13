@@ -119,7 +119,6 @@ if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) 
     else:
         print('[X] No remote SQL queries found.')
         print('\n')
-        print('\n')
         exit(1)
 else:
     print('[i] Legacy Pi-hole detected (Version older than 5.0).')
