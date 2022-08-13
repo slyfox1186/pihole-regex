@@ -42,3 +42,4 @@ curl https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shel
 . exact-whitelist.sh
 
 ```
+z
