@@ -25,13 +25,11 @@ FILES1=($SHELL_FILES run.sh)
 for i in ${FILES1[@]}; do
   if [ -f $i ]; then
       mv "$i" "$FILE_DIR/$i"
-  else
-      echo -e "Failed to download: $i\\n"
   fi
 done
 
 echo
-read -p 'Press enter to exit...'
+sleep 5
 clear
 
 FILES2=($SHELL_FILES)
