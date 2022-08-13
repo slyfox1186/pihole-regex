@@ -11,10 +11,11 @@ fi
 cd "$HOME/pihole.regex"
 
 # Make user input case insensitive
-shopt -s nocasematch; clear
+shopt -s nocasematch
 
 # Get the user's input
-echo -e "Exact whitelist filters\\n\\nPlease choose an option: [A]dd or [R]emove: "
+# echo -e "Exact whitelist filters\\n\\nPlease choose an option: [A]dd or [R]emove: "
+echo -e "[exact whitelist]\\n\\nPlease choose an option: [A]dd or [R]emove"
 read a
 clear
 if [[ $a == "A" ]]; then
