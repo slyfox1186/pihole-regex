@@ -14,7 +14,7 @@ cd "$HOME/pihole.regex"
 shopt -s nocasematch
 
 # Get the user's input
-echo -e "[i] Exact Whitelist Filters\\n\\n[i] Choose an option: [A]dd , [R]emove or [E]xit"
+echo -e "Exact Whitelist Filters: [A]dd [R]emove [E]xit"
 read a
 clear
 if [[ $a == "A" ]]; then
