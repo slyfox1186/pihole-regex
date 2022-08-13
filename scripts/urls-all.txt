@@ -1,4 +1,4 @@
-wget -c -q -i http://magick.optimizethis.net
+wget -c -q -i https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/urls-all.txt
 . exact-blacklist.sh && \
 . exact-whitelist.sh && \
 . regex-blacklist.sh && \
