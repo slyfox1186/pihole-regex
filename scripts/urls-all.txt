@@ -1,5 +1,4 @@
-wget -c -q -i https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/urls-all.txt
-. exact-blacklist.sh && \
-. exact-whitelist.sh && \
-. regex-blacklist.sh && \
-. regex-whitelist.sh
+https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-blacklist.sh
+https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-whitelist.sh
+https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-blacklist.sh
+https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-whitelist.sh
