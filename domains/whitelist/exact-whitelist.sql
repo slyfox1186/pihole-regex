@@ -319,6 +319,7 @@
 (0, 'itunes.com', 1, 'Apple - SlyEWL')
 (0, 'itv.ard.de', 1, 'HBB TV - SlyEWL')
 (0, 'j.mp', 1, 'Misc - SlyEWL')
+(0, 'jlduihq7lrcdxgw4vrndhdfcsq.appsync-api.us-east-1.amazonaws.com', 1, 'AdultTime - A required CDN of the site to access image, videos, ect - SlyEWL')
 (0, 'jquery.com', 1, 'jQuery is a JavaScript library. Also used to deliver the files over CDN - SlyEWL')
 (0, 'js.maxmind.com', 1, 'Microsoft - SlyEWL')
 (0, 'js.stripe.com', 1, 'Indiegogo - SlyEWL')
