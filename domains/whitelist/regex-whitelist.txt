@@ -2,7 +2,7 @@
 ## Github repository: https://github.com/slyfox1186/pihole.regex
 
 # AdultTime
-(\.|^)adulttime.com$
+(\.|^)adulttime\.com$
 (\.|^)algolianet\.com$
 (\.|^)algolia\.io$
 (\.|^)cognito-identity\.us-east-1\.amazonaws\.com$
