@@ -14,7 +14,7 @@ elif [[ $a == "R" ]]; then
     echo -e "[i] The Exact Whitelist Filters have been removed.\\n\\n"
 elif [[ $a == "S" ]]; then
     clear
-    echo -e "Skipping ahead!\\n\\n"
+    echo -e "Skipping ahead!\\n"
 fi
 
 sleep 1
