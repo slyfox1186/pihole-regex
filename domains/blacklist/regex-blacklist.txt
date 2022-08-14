@@ -54,12 +54,6 @@
 (\.|^)privatproxy.*$
 (\.|^)wmail.*$
 
-# Reddit
-(\.|^)reddit\.com$
-(\.|^)redditstatic\.com$
-(\.|^)redditmedia\.com$
-(\.|^)redd\.it$
-
 # Roblox
 (\.|^)(roblox|(rbx)(cdn|trk))\.(com|plus)$
 
