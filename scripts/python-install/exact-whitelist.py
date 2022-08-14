@@ -334,7 +334,6 @@ if db_exists:
         print('\n')
         print("[X] Failed to insert domains into Gravity's database.", error)
         print('\n')
-        print('\n')
         exit(1)
 
     finally:
@@ -343,7 +342,6 @@ if db_exists:
         print('\n')
         print('Make sure to star this repository to show your support! It helps keep me motivated!')
         print('https://github.com/slyfox1186/pihole.regex')
-        print('\n')
         print('\n')
 
 else:
@@ -389,5 +387,4 @@ else:
     print('\n')
     print('Make sure to star this repository to show your support! It helps keep me motivated!')
     print('https://github.com/slyfox1186/pihole.regex')
-    print('\n')
     print('\n')
