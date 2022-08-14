@@ -23,7 +23,7 @@ S for [S]kip
 
 ## Command Line
 
-* Click the copy button to the right and paste this into a terminal to execute!
+* Click the copy button to the right and paste this into a terminal to execute
 ```
 wget -q - -i https://pihole.optimizethis.net; . run.sh
 
