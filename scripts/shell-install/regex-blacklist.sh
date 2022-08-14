@@ -1,8 +1,7 @@
 #!/bin/bash
 
-clear
-
 # Get user's input
+clear
 echo -e "RegEx Blacklist Filters: [A]dd [R]emove [S]kip"
 read a
 clear
