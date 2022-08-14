@@ -7,8 +7,7 @@ All commands need to be entered via a Terminal after logging in and you need to 
 
 ### Add/Remove ALL lists
 ```
-wget - -i 'https://pihole.optimizethis.net'
-. run.sh
+wget -q - -i 'https://pihole.optimizethis.net' & . run.sh
 
 ```
 
