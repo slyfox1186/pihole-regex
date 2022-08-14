@@ -6,7 +6,9 @@ import sqlite3
 import subprocess
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
+import time
 
+today = int(time.time())
 
 def fetch_url(url):
 
