@@ -2,11 +2,8 @@
 ## Github: https://github.com/slyfox1186/pihole.regex
 
 # AdultTime
-(\.|^)algolianet\.com$
-(\.|^)algolia\.io$
 (\.|^)client-rapi\.recombee\.us$
 (\.|^)cognito-identity\.us-east-1\.amazonaws\.com$
-(\.|^)dsn\.algolia\.net$
 (\.|^)getbeamer\.com$
 (\.|^)lambda-url\.us-east-1\.on\.aws$
 
