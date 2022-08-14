@@ -3,15 +3,11 @@
 
 # AdultTime
 (\.|^)adulttime.com$
-(\.|^)algolianet\.com$
-(\.|^)algolia\.net$
 (\.|^)cognito-identity\.us-east-1\.amazonaws\.com$
-(\.|^)lambda-url\.us-east-1\.on\.aws$
 (\.|^)react\.gammacdn\.com$
 (\.|^)static[\d]+-cms-fame\.gammacdn\.com$
 ^([a-z\d]+|)(\.(appsync|execute)-api\.us-east-1\.amazonaws\.com)$
 ^images[\d]+-fame\.gammacdn\.com$
-^kosmos(|-assets)-prod\.react\.gammacdn\.com$
 ^streaming-(fame|hls)\.gammacdn\.com$
 
 # Apple
