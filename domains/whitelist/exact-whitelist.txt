@@ -357,6 +357,7 @@ login.live.com
 login.microsoftonline.com
 login5.spotify.com
 logs.juspay.in
+lzzos7clo5.execute-api.us-east-1.amazonaws.com
 m.facebook.com
 m.hotmail.com
 m.reddit.com
