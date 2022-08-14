@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 
 import os
@@ -11,7 +10,7 @@ import time
 
 today = int(time.time())
 
-def fetch_url(url):
+def fetch_whitelist_url(url):
 
     if not url:
         return
@@ -120,7 +119,7 @@ else:
     print('[i] Legacy regex.list detected')
 
 # Fetch the remote regstrings
-str_regstrings_remote = fetch_url(url_regstrings_remote)
+str_regstrings_remote = fetch_whitelist_url(url_regstrings_remote)
 
 # If regstrings were fetched, remove any comments and add to set
 if str_regstrings_remote:
