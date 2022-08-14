@@ -41,7 +41,7 @@ def fetch_blacklist_url(url):
 
 
 url_regexps_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/blacklist/regex-blacklist.txt'
-install_comment = 'slyRBL'
+install_comment = 'SlyRBL'
 
 cmd_restart = ['pihole', 'restartdns', 'reload']
 
