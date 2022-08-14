@@ -20,7 +20,6 @@ A for [A]dd
 R for [R]emove
 S for [S]kip
 ```
-
 ## Command Line
 
 * Click the copy button to the right and paste this into a terminal to execute
