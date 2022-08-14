@@ -18,4 +18,3 @@ elif [[ $a == "S" ]]; then
 fi
 
 sleep 1
-clear
