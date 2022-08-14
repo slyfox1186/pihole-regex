@@ -1,66 +1,66 @@
 ## RegEx Whitelist
-## Github: https://github.com/slyfox1186/pihole.regex
+## Github repository: https://github.com/slyfox1186/pihole.regex
 
 # AdultTime
-(\.|^)adulttime.com # Main website
+(\.|^)adulttime.com$
 (\.|^)algolianet\.com$
 (\.|^)algolia\.net$
-(\.|^)cognito-identity\.us-east-1\.amazonaws\.com$ # Required to login
+(\.|^)cognito-identity\.us-east-1\.amazonaws\.com$
 (\.|^)lambda-url\.us-east-1\.on\.aws$
-(\.|^)react\.gammacdn\.com$ # AdultTime - Required to use react buttons
-(\.|^)static[\d]+-cms-fame\.gammacdn\.com$ # CDN Server
-^([a-z\d]+|)(\.(appsync|execute)-api\.us-east-1\.amazonaws\.com)$ # One of the main CDN's for the site. Videos, Pictures, ect...
-^images[\d]+-fame\.gammacdn\.com$ # Required for images to load
-^kosmos(|-assets)-prod\.react\.gammacdn\.com$ # AdultTime - Required for react buttons to work
-^streaming-(fame|hls)\.gammacdn\.com$ # Required to stream video
+(\.|^)react\.gammacdn\.com$
+(\.|^)static[\d]+-cms-fame\.gammacdn\.com$
+^([a-z\d]+|)(\.(appsync|execute)-api\.us-east-1\.amazonaws\.com)$
+^images[\d]+-fame\.gammacdn\.com$
+^kosmos(|-assets)-prod\.react\.gammacdn\.com$
+^streaming-(fame|hls)\.gammacdn\.com$
 
 # Apple
 (\.|^)appattest\.apple\.com$
-(\.|^)apple-cloudkit\.com$ # Required for Cloud Access
+(\.|^)apple-cloudkit\.com$
 (\.|^)apple-livephotoskit\.com$
 (\.|^)apps\.apple\.com$
 (\.|^)apzones\.com$
 (\.|^)business\.apple\.com$
-(\.|^)cdn-apple\.com$ # One of the main CDN networks for Apple
+(\.|^)cdn-apple\.com$
 (\.|^)gc\.apple\.com$
 (\.|^)iwork\.apple\.com$
 (\.|^)mzstatic\.com$
 (\.|^)push\.apple\.com$
-(\.|^)school\.apple\.com$ # Required to access all school related accountsc
-^(icloud(|-content)|itunes)(\.com|\.apple\.com)$ # Required to access and use iTunes
+(\.|^)school\.apple\.com$
+^(icloud(|-content)|itunes)(\.com|\.apple\.com)$
 
 # Epic Games
-^(catalog|entitlement)-public-service-prod[\d]*\.ol\.epicgames\.com$ # Store purchases
-^(catalog|entitlement|priceengine)-public-service-prod\.ak\.epicgames\.com$ # Store purchases
-^lightswitch-public-service-prod[\d]*\.ol\.epicgames\.com$ # Store purchases
+^(catalog|entitlement)-public-service-prod[\d]*\.ol\.epicgames\.com$
+^(catalog|entitlement|priceengine)-public-service-prod\.ak\.epicgames\.com$
+^lightswitch-public-service-prod[\d]*\.ol\.epicgames\.com$
 
 # Facebook
-(\.|^)facebook\.com$ # Main website
-(\.|^)fbcdn\.net$ # CDN for facebook
-^[0-6]+?-edge-chat.facebook.com$ # Messenger
+(\.|^)facebook\.com$
+(\.|^)fbcdn\.net$
+^[0-6]+?-edge-chat.facebook.com$
 
 # Google
-^beacons[\d]*\.gvt[\d]+\.com$ # Resposible for all sorts of widgets and other vital functions within google
-^clients[24]\.google\.com$ # Breaks a lot of Google services if not whitelisted
+^beacons[\d]*\.gvt[\d]+\.com$
+^clients[24]\.google\.com$
 
 # HP Smart App (Printer and desktop app for windows 10+11)
 ^[a-z\d\-]+\.us-(east|west)-\d+\.elb\.amazonaws\.com$
 
 # LG-TV
-^aic\.(homeprv|service)\.lgtvcommon\.com$ # LG Smart TV updates
+^aic\.(homeprv|service)\.lgtvcommon\.com$
 
 # Microsoft
 (\.|^)1drv\.ms$ # Microsoft - Onedrive's short url
-(\.|^)azure\.com$ # Microsoft - Azure's main site
-(\.|^)windows\.com$ # Microsoft - Windows main site
-^(device|title|user|xsts)\.auth\.xboxlive\.com$ # Microsoft Xbox - Used for updates, game downloads, acheivements unlocking etc
-^v[0-2]+\.(events|vortex-win)\.data\.microsoft\.com$ # Microsoft - Essential updates
+(\.|^)azure\.com$
+(\.|^)windows\.com$
+^(device|title|user|xsts)\.auth\.xboxlive\.com$
+^v[0-2]+\.(events|vortex-win)\.data\.microsoft\.com$
 
 # QNAP Computers
-(\.|^)myqnapcloud\.com$ # Required to use myqnapcloud features
+(\.|^)myqnapcloud\.com$
 
 # Reddit
-(\.|^)[iv]+\.redd\.it$ # Required to display image and video files
+(\.|^)[iv]+\.redd\.it$
 
 # YouTube
-^(www|youtubei|oauthaccountmanager)\.googleapis\.com$ # YouTube App for Apple iOS
+^(www|youtubei|oauthaccountmanager)\.googleapis\.com$
