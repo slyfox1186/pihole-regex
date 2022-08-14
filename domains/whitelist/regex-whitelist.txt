@@ -3,7 +3,10 @@
 
 # AdultTime
 (\.|^)adulttime.com$
+(\.|^)algolianet\.com$
+(\.|^)algolia\.io$
 (\.|^)cognito-identity\.us-east-1\.amazonaws\.com$
+(\.|^)dsn\.algolia\.net$
 (\.|^)react\.gammacdn\.com$
 (\.|^)static[\d]+-cms-fame\.gammacdn\.com$
 ^([a-z\d]+|)(\.(appsync|execute)-api\.us-east-1\.amazonaws\.com)$
