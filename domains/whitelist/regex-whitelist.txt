@@ -56,6 +56,9 @@
 (\.|^)myqnapcloud\.com$
 
 # Reddit
+(\.|^)redditmedia\.com$
+(\.|^)redditstatic\.com$
+(\.|^)redd\.it$
 (\.|^)[iv]+\.redd\.it$
 
 # YouTube
