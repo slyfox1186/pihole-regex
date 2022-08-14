@@ -8,6 +8,8 @@ from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 import time
 
+today = int(time.time())
+
 def fetch_whitelist_url(url):
 
     if not url:
@@ -177,9 +179,9 @@ if db_exists:
             restart_pihole(args.docker)
             print('[i] The Exact Blacklist Filters have been successfully removed from Gravity!')
             print('\n')
-            print('\n')
             print('Please make sure to star this repository to show support... it helps keep me motivated!')
             print('https://github.com/slyfox1186/pihole.regex')
+            print('\n')
 
 else:
     if os.path.isfile(gravity_whitelist_location) and os.path.getsize(gravity_whitelist_location) > 0:
@@ -213,11 +215,10 @@ else:
         for line in sorted(whitelist_local):
             fWrite.write("{}\n".format(line))
 
-    print("[i] The connection to the Gravity database has closed.")
     print('[i] Please wait for the Pi-hole server to restart.')
     restart_pihole(args.docker)
     print('[i] The Exact Blacklist Filters have been successfully removed from Gravity!')
     print('\n')
-    print('\n')
     print('Please make sure to star this repository to show support... it helps keep me motivated!')
     print('https://github.com/slyfox1186/pihole.regex')
+    print('\n')
