@@ -8,8 +8,8 @@ All commands need to be entered via a Terminal after logging in and you need to 
 #### The filter lists
 * [Exact Blacklist](https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/blacklist/exact-blacklist.txt)
 * [Exact Whitelist](https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/whitelist/exact-whitelist.txt)
-* [Exact Blacklist](https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/blacklist/regex-blacklist.txt)
-* [Exact Whitelist](https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/whitelist/regex-whitelist.txt)
+* [RegEx Blacklist](https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/blacklist/regex-blacklist.txt)
+* [RegEx Whitelist](https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/whitelist/regex-whitelist.txt)
 
 ### Add/Remove/Skip All Lists
 ```
