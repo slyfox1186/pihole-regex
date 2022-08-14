@@ -17,5 +17,5 @@ elif [[ $a == "S" ]]; then
     echo -e "Skipping ahead!\\n\\n"
 fi
 
-sleep 2
+sleep 1
 clear
