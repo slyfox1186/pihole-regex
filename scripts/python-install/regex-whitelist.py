@@ -4,9 +4,9 @@ import json
 import os
 import sqlite3
 import subprocess
-import time
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
+import time
 
 
 def fetch_url(url):
