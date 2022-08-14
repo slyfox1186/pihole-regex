@@ -328,6 +328,7 @@ itunes.apple.com
 itunes.com
 itv.ard.de
 j.mp
+jlduihq7lrcdxgw4vrndhdfcsq.appsync-api.us-east-1.amazonaws.com
 jquery.com
 js.maxmind.com
 js.stripe.com
