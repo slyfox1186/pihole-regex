@@ -9,13 +9,16 @@ shopt -s nocasematch
 SHELL_FILES="exact-blacklist.sh exact-whitelist.sh regex-blacklist.sh regex-whitelist.sh"
 FILE_DIR="$HOME/pihole.regex"
 
+
 # Delete: The useless index.html file
 if [ -f index.html ]; then
     rm index.html
 fi
 
 # Create: $FILE_DIR directory if not exist
-if [ ! -d $FILE_DIR ]; then
+if [ -d $FILE_DIR ]; then
+    rm -R "$FILE_DIR"
+else
     mkdir -p "$FILE_DIR"
 fi
 
