@@ -331,15 +331,21 @@ if db_exists:
         print('\n')
         print("[X] Failed to insert domains into Gravity's database.", error)
         print('\n')
-        print('\n')
         exit(1)
 
     finally:
-        print('\n')
-        print('[i] The exact whitelist filters have been added successfully!')
-        print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
-        print('\n')
-        print('\n')
+            print("[i] The connection to the Gravity database has closed.")
+            time.sleep(2)
+            print('\n')
+            print('[i] Please wait for the Pi-hole server to restart.')
+            restart_pihole(args.docker)
+            print('\n')
+            print('[i] The Exact Whitelist Filters have been successfully removed from Gravity!')
+            print('\n')
+            print('Make sure to star this repository to show your support! It helps keep me motivated!')
+            print('https://github.com/slyfox1186/pihole.regex')
+            print('\n')
+            print('\n')
 
 else:
 
@@ -376,12 +382,13 @@ else:
         for line in sorted(whitelist_remote):
             fWrite.write("{}\n".format(line))
 
-    print('[i] Domains are not added to your Pi-hole whitelist.')
-    print('[i] Restarting Pi-hole.. this could take a few seconds.')
+    print('\n')
+    print('[i] Please wait for the Pi-hole server to restart.')
     restart_pihole(args.docker)
     print('\n')
-    print('[i] The exact whitelist filters have been added successfully!')
+    print('[i] The Exact Whitelist Filters have been successfully removed from Gravity!')
     print('\n')
-    print('Star me on GitHub: https://github.com/slyfox1186/pihole.regex')
+    print('Make sure to star this repository to show your support! It helps keep me motivated!')
+    print('https://github.com/slyfox1186/pihole.regex')
     print('\n')
     print('\n')
