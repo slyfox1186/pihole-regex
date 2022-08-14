@@ -1,4 +1,4 @@
-// This is a backup of all exact white and black lists that I have replaced with regex filters.
+// This is a backup of all exact whitelists that I have replaced with other filters (mainly using regex).
 
 (0, '0-edge-chat.facebook.com', 1, 'Facebook - SlyEWL')
 (0, '1-edge-chat.facebook.com', 1, 'Facebook - SlyEWL')
