@@ -7,7 +7,6 @@ All commands need to be entered via a Terminal after logging in and you need to 
 
 ### Add or Remove RegEx and Exact Pi-hole Filters
 ```
-wget -q - -i https://pihole.optimizethis.net
-. run.sh
+wget -q - -i https://pihole.optimizethis.net; . run.sh
 
 ```
