@@ -58,8 +58,10 @@
 # Reddit
 (\.|^)redditmedia\.com$
 (\.|^)redditstatic\.com$
+(\.|^)reddit\.com$
 (\.|^)redd\.it$
 (\.|^)[iv]+\.redd\.it$
+[a-z]\.thumbs\.redditmedia\.com
 
 # YouTube
 ^(www|youtubei|oauthaccountmanager)\.googleapis\.com$
