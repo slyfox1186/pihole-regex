@@ -120,6 +120,7 @@
 (1, 'ichnaea.netflix.com', 1, 'Netflix - SlyEBL')
 (1, 'insights.algolia.io', 1, 'AdultTime - SlyEBL')
 (1, 'jlduihq7lrcdxgw4vrndhdfcsq.appsync-api.us-east-1.amazonaws.com', 1, 'AdultTime - SlyEBL')
+(1, 'kinesis.us-east-1.amazonaws.com', 1, 'AdultTime - CDN - SlyEBL')
 (1, 'kinesis.us-east-1.amazonaws.com', 1, 'AdultTime - SlyEBL')
 (1, 'kosmos-assets-prod.react.gammacdn.com', 1, 'AdultTime - SlyEBL')
 (1, 'kpu.samsungelectronics.com', 1, 'Samsung - SlyEBL')
