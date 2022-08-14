@@ -22,9 +22,11 @@ def fetch_blacklist_url(url):
     except HTTPError as e:
         print('[X] HTTP Error:', e.code, 'whilst fetching', url)
         print('\n')
+        print('\n')
         exit(1)
     except URLError as e:
         print('[X] URL Error:', e.reason, 'whilst fetching', url)
+        print('\n')
         print('\n')
         exit(1)
 
