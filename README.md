@@ -16,9 +16,9 @@ All commands need to be entered via a Terminal after logging in and you need to 
 * The script will prompt the user to press one of three keys.
 
 ```
-A for [A]dd
-R for [R]emove
-S for [S]kip
+A to [A]dd the filters
+R to [R]emove the filters
+S to [S]kip to the next filter
 ```
 ## Command Line
 
