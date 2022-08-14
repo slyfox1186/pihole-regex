@@ -10,7 +10,7 @@ import time
 
 today = int(time.time())
 
-def fetch_blacklist_url(url):
+def fetch_whitelist_url(url):
 
     if not url:
         return
