@@ -6,9 +6,7 @@ clear
 shopt -s nocasematch
 
 # Set directory variable
-SHELL_FILES="exact-blacklist.sh exact-whitelist.sh regex-blacklist.sh regex-whitelist.sh"
 FILE_DIR="$HOME/pihole.regex"
-
 
 # Delete: The useless index.html file
 if [ -f index.html ]; then
@@ -22,21 +20,21 @@ else
     mkdir -p "$FILE_DIR"
 fi
 
-# Verify: If files exist and move them to $HOME/pihole.regex
-FILES1=($SHELL_FILES run.sh)
+# Verify: If files exist move them to $HOME/pihole.regex
+SHELL_FILES="exact-blacklist exact-whitelist regex-blacklist regex-whitelist"
+FILES=($SHELL_FILES.sh run.sh)
 
-for i in ${FILES1[@]}; do
+for i in ${FILES[@]}; do
   if [ -f $i ]; then
       mv -f "$i" "$FILE_DIR/$i"
   fi
 done
 
-echo
-sleep 5
+sleep 3
 clear
 
-FILES2=($SHELL_FILES)
+SUB_FILES=($SHELL_FILES)
 
-for i in ${FILES2[@]}; do
+for i in ${SUB_FILES[@]}; do
     . "$FILE_DIR/$i"
 done
