@@ -48,7 +48,6 @@ cmd_restart = ['pihole', 'restartdns', 'reload']
 db_exists = False
 conn = None
 c = None
-
 regexps_remote = set()
 regexps_local = set()
 regexps_slyfox1186_local = set()
