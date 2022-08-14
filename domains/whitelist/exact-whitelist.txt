@@ -555,7 +555,10 @@ star.c10r.facebook.com
 static.ips.apple.com
 static.opensubtitles.org
 static.xx.fbcdn.net
+static03-cms-fame.gammacdn.com
+static04-cms-fame.gammacdn.com
 statics.teams.cdn.office.net
+static[\d]+-cms-fame.gammacdn.com
 stats.streamelements.com
 status.plex.tv
 stitcher.pluto.tv
@@ -605,6 +608,7 @@ tracking-protection.cdn.mozilla.net
 tracking.dpd.de
 tracking.epicgames.com
 traffic.libsyn.com
+trailers-fame.gammacdn.com
 transform.gammacdn.com
 translate.google.com
 tsfe.trafficshaping.dsp.mp.microsoft.com
