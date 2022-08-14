@@ -346,6 +346,7 @@
 (0, 'login.microsoftonline.com', 1, 'Microsoft - Office apps - SlyEWL')
 (0, 'login5.spotify.com', 1, 'Spotify - SlyEWL')
 (0, 'logs.juspay.in', 1, 'Misc - SlyEWL')
+(0, 'lzzos7clo5.execute-api.us-east-1.amazonaws.com', 1, 'AdultTime - A required CDN of the site to access image, videos, ect - SlyEWL')
 (0, 'm.facebook.com', 1, 'Facebook Mobile - SlyEWL')
 (0, 'm.hotmail.com', 1, 'Microsoft - SlyEWL')
 (0, 'm.reddit.com', 1, 'Reddit - Required to access on mobile devices - SlyEWL')
