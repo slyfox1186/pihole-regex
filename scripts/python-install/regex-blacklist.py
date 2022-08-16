@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
+import json
 import os
-import argparse
 import sqlite3
 import subprocess
 from urllib.request import Request, urlopen
@@ -10,12 +10,12 @@ import time
 
 today = int(time.time())
 
-def fetch_blacklist_url(url):
+def fetch_url(url):
 
     if not url:
         return
 
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0'}
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0'}
 
     print('[i] Fetching:', url)
 
@@ -48,6 +48,7 @@ cmd_restart = ['pihole', 'restartdns', 'reload']
 db_exists = False
 conn = None
 c = None
+
 regexps_remote = set()
 regexps_local = set()
 regexps_slyfox1186_local = set()
@@ -118,7 +119,7 @@ else:
     print('[i] Legacy regex.list detected')
 
 # Fetch the remote regexps
-str_regexps_remote = fetch_blacklist_url(url_regexps_remote)
+str_regexps_remote = fetch_url(url_regexps_remote)
 
 # If regexps were fetched, remove any comments and add to set
 if str_regexps_remote:
@@ -141,36 +142,14 @@ if db_exists:
     # Create a cursor object
     c = conn.cursor()
 
-    # Add / update remote regexps
-    print('[i] Adding / Updating regexps in the DB')
-
-    c.executemany('INSERT OR IGNORE INTO domainlist (type, domain, enabled, comment) '
-                  'VALUES (3, ?, 1, ?)',
-                  [(x, install_comment) for x in sorted(regexps_remote)])
-    c.executemany('UPDATE domainlist '
-                  'SET comment = ? WHERE domain in (?) AND comment != ?',
-                  [(install_comment, x, install_comment) for x in sorted(regexps_remote)])
+    # Identifying slyfox1186 regexps
+    print("[i] Removing slyfox1186's regexps")
+    c.executemany('DELETE FROM domainlist '
+                  'WHERE type = 3 '
+                  'AND (domain in (?) OR comment = ?)',
+                  [(x, install_comment) for x in regexps_remote])
 
     conn.commit()
-
-    # Fetch all current slyfox1186 regexps in the local db
-    c.execute('SELECT domain FROM domainlist WHERE type = 3 AND comment = ?', (install_comment,))
-    regexps_slyfox1186_local_results = c.fetchall()
-    regexps_slyfox1186_local.update([x[0] for x in regexps_slyfox1186_local_results])
-
-    # Remove any local entries that do not exist in the remote list
-    # (will only work for previous installs where we've set the comment field)
-    print('[i] Identifying obsolete regexps')
-    regexps_remove = regexps_slyfox1186_local.difference(regexps_remote)
-
-    if regexps_remove:
-        print('[i] Removing obsolete regexps')
-        c.executemany('DELETE FROM domainlist WHERE type = 3 AND domain in (?)', [(x,) for x in regexps_remove])
-        conn.commit()
-
-    # Delete slyfox1186-regex.list as if we've migrated to the db, it's no longer needed
-    if os.path.exists(path_legacy_slyfox1186_regex):
-        os.remove(path_legacy_slyfox1186_regex)
 
     print('[i] Restarting Pi-hole')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
@@ -197,31 +176,26 @@ else:
     # If the local regexp set is not empty
     if regexps_local:
         print(f'[i] {len(regexps_local)} existing regexps identified')
-        # If we have a record of a previous legacy install
+        # If we have a record of the previous legacy install
         if os.path.isfile(path_legacy_slyfox1186_regex) and os.path.getsize(path_legacy_slyfox1186_regex) > 0:
             print('[i] Existing slyfox1186-regex install identified')
-            # Read the previously installed regexps to a set
             with open(path_legacy_slyfox1186_regex, 'r') as fOpen:
                 regexps_legacy_slyfox1186.update(x for x in map(str.strip, fOpen) if x and x[:1] != '#')
 
                 if regexps_legacy_slyfox1186:
-                    print('[i] Removing previously installed regexps')
+                    print(f'[i] Removing regexps found in {path_legacy_slyfox1186_regex}')
                     regexps_local.difference_update(regexps_legacy_slyfox1186)
 
-    # Add remote regexps to local regexps
-    print(f'[i] Syncing with {url_regexps_remote}')
-    regexps_local.update(regexps_remote)
+            # Remove slyfox1186-regex.list as it will no longer be required
+            os.remove(path_legacy_slyfox1186_regex)
+        else:
+            print('[i] Removing regexps that match the remote repo')
+            regexps_local.difference_update(regexps_remote)
 
     # Output to regex.list
     print(f'[i] Outputting {len(regexps_local)} regexps to {path_legacy_regex}')
     with open(path_legacy_regex, 'w') as fWrite:
         for line in sorted(regexps_local):
-            fWrite.write(f'{line}\n')
-
-    # Output slyfox1186 remote regexps to slyfox1186-regex.list
-    # for future install / uninstall
-    with open(path_legacy_slyfox1186_regex, 'w') as fWrite:
-        for line in sorted(regexps_remote):
             fWrite.write(f'{line}\n')
 
     print('[i] Restarting Pi-hole')
