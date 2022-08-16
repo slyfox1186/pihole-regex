@@ -16,4 +16,5 @@ elif [[ $answer == "S" ]]; then
     echo -e "[i] Finishing up!\\n"
 fi
 
-sleep 3
+echo -e "Press Enter to continue...\\n"
+sleep 30
