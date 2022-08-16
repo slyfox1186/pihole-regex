@@ -10,7 +10,7 @@ FILE_DIR="/root/pihole.regex"
 
 # Delete: The useless index.html file
 if [ -f index.html ]; then
-    rm index.html
+    rm index.html*
 fi
 
 # Create: $FILE_DIR directory if not exist
