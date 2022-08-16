@@ -241,29 +241,29 @@ if db_exists:
         #
         #
         # Check Gravity database for New domains to be added by script
-        InNewNotGravityList = [None] * NewWhiteListlen
+        InNew_NotGravityList = [None] * NewWhiteListlen
         w = 0
         if ignl == True:
             print('\n')
         #
         print('[i] Checking script for domains not in Gravity.')
         ilng = False
-        for InNewNotGravity in NewWhiteList: # for every domain in the New script
-            if not InNewNotGravity in GravScript_BeforeList and not InNewNotGravity in User_AddList: # make sure it is not in Gravity or added by user
-                InNewNotGravityList[w] = InNewNotGravity # add domain to list we created
+        for InNew_NotGravity in NewWhiteList: # for every domain in the New script
+            if not InNew_NotGravity in GravScript_BeforeList and not InNew_NotGravity in User_AddList: # make sure it is not in Gravity or added by user
+                InNew_NotGravityList[w] = InNew_NotGravity # add domain to list we created
                 ilng = True
                 w += 1
         #
         w -= 1
-        InNewNotGravityListCount = w
+        InNew_NotGravityListCount = w
         # If there are domains in New list that are NOT in Gravity
         if ilng == True: # add domains that are missing from New script and not user additions
-            print('[i] {} domain(s) NOT in Gravity that are in New script.\n' .format(InNewNotGravityListCount+1))
+            print('[i] {} domain(s) NOT in Gravity that are in New script.\n' .format(InNew_NotGravityListCount+1))
             a = 0
             while w >= 0:
                 a += 1
                 for addNewWhiteDomain in NewWhiteList:
-                    if addNewWhiteDomain in InNewNotGravityList:
+                    if addNewWhiteDomain in InNew_NotGravityList:
                         print('    - adding {}' .format(AddNewWhiteDomain))
                         # print(AddNewWhiteDomain)
                         sql_index = NewWhiteList.index(AddNewWhiteDomain)
@@ -281,7 +281,7 @@ if db_exists:
             GravScript_AfterTUPlen = len(GravScript_AfterTUP)
 
             gsa = False
-            ASG = InNewNotGravityListCount
+            ASG = InNew_NotGravityListCount
             ASGCOUNT = 0
             GravScript_AfterList = [None] * GravScript_AfterTUPlen
 
@@ -292,8 +292,8 @@ if db_exists:
                 ASGCOUNT += 1
 
             while ASG >= 0:
-                if InNewNotGravityList[ASG] in GravScript_AfterList:
-                    print('    - Found  {} ' .format(InNewNotGravityList[ASG]))
+                if InNew_NotGravityList[ASG] in GravScript_AfterList:
+                    print('    - Found  {} ' .format(InNew_NotGravityList[ASG]))
                     gsa = True
                 ASG = ASG - 1
 
@@ -302,7 +302,7 @@ if db_exists:
                 print('[i] All {} domains to be added by script have been discovered in Gravity.'.format(NewWhiteListlen))
 
             else:
-                print("\n[i] All {} New domain(s) have not been added to Gravity." .format(InNewNotGravityListCount+1))
+                print("\n[i] All {} New domain(s) have not been added to Gravity." .format(InNew_NotGravityListCount+1))
 
         else: # We should be done now
             # Do Nothing and exit. All domains are accounted for.
