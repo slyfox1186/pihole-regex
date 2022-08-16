@@ -111,10 +111,10 @@ else:
     print(f'[e] Write access is not available for {path_pihole}. Please run as root or other privileged user')
     exit(1)
 
-# Determine whether we are using DB or not
+# Determine whether we are using database or not
 if os.path.isfile(path_pihole_db) and os.path.getsize(path_pihole_db) > 0:
     db_exists = True
-    print('[i] DB detected.')
+    print('[i] database detected.')
 else:
     print('[i] Legacy regex.list detected.')
 
@@ -130,7 +130,7 @@ else:
     exit(1)
 
 if db_exists:
-    # Create a DB connection
+    # Create a database connection
     print(f'[i] Connecting to {path_pihole_db}')
 
     try:
