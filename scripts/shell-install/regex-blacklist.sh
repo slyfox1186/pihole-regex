@@ -13,7 +13,9 @@ elif [[ $answer == "R" ]]; then
     echo -e "[i] The RegEx Blacklist filters were removed from Pi-hole\\n"
 elif [[ $answer == "S" ]]; then
     clear
-    echo -e "[i] Finishing up!\\n"
+    echo -e "[i] Skipping ahead!\\n"
+    sleep 3
+    . '/root/pihole.regex/regex-whitelist.py' | sudo python3
 fi
 
 read -t 30 -p 'Press Enter to continue...'
