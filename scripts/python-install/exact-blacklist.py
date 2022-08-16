@@ -121,38 +121,40 @@ if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) 
     if len(remote_sql_str) > 0:
         print("[i] {} domains were discovered." .format(remote_whitelist_lines))
     else:
-        print('[X] No remote SQL queries were found.\n')
+        print('[X] No remote SQL queries were found.')
+        print('\n')
         exit(1)
 else:
-    print('[i] Legacy Pi-hole detected (Version older than 5.0).')
+    print('[i] Legacy Pi-hole detected ( v5.0 <= ).')
 
 if whitelist_str:
     whitelist_remote.update(x for x in map(
         str.strip, whitelist_str.splitlines()) if x and x[:1] != '#')
 else:
-    print('[X] No remote domains found.\n')
+    print('[X] No remote domains found.')
+    print('\n')
     exit(1)
 
 if db_exists:
     # Create a DB connection
-    print("[i] Connecting to Gravity's database...")
+    print("[i] Connecting to Gravity's database.")
 
     try:
         sqliteConnection = sqlite3.connect(gravity_db_location)
         cursor = sqliteConnection.cursor()
         print("[i] Successfully connected to Gravity's database.")
-        total_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%SlyEWL%' ")
+        total_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 AND comment LIKE '%SlyEBL%' ")
 
         totalDomains = len(total_domains.fetchall())
         print("[i] There are a total of {} domains in your whitelist which were added by this script." .format(totalDomains))
         print('[i] Removing domains in the Gravity database.')
-        cursor.execute (" DELETE FROM domainlist WHERE type = 0 AND comment LIKE '%SlyEWL%' ")
+        cursor.execute (" DELETE FROM domainlist WHERE type = 1 AND comment LIKE '%SlyEBL%' ")
 
         sqliteConnection.commit()
 
         # We only removed domains we added so use total_domains
         print("[i] {} domains were removed." .format(totalDomains))
-        remaining_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 OR type = 2 ")
+        remaining_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 OR type = 3 ")
         print("[i] There are a total of {} domains remaining in your whitelist." .format(len(remaining_domains.fetchall())))
 
         cursor.close()
@@ -166,13 +168,17 @@ if db_exists:
         if (sqliteConnection):
             sqliteConnection.close()
 
-            print("[i] The connection to the Gravity database has closed.\n")
+            print('\n')
+            print("[i] The connection to the Gravity database has closed.")
             time.sleep(2)
-            print('[i] Please wait for the Pi-hole server to restart...\n')
+            print('[i] Please wait for the Pi-hole server to restart...')
             restart_pihole(args.docker)
-            print('[i] The Exact Blacklist filters were added to Gravity!\n')
+            print('\n')
+            print('[i] The Exact Blacklist filters were removed from Gravity!')
+            print('\n')
             print('Please make sure to star this repository to show support... it helps keep me motivated!')
-            print('https://github.com/slyfox1186/pihole.regex\n')
+            print('https://github.com/slyfox1186/pihole.regex')
+            print('\n')
 
 else:
     if os.path.isfile(gravity_whitelist_location) and os.path.getsize(gravity_whitelist_location) > 0:
@@ -206,10 +212,14 @@ else:
         for line in sorted(whitelist_local):
             fWrite.write("{}\n".format(line))
 
-    print("[i] The connection to the Gravity database has closed.\n")
+    print('\n')
+    print("[i] The connection to the Gravity database has closed.")
     time.sleep(2)
-    print('[i] Please wait for the Pi-hole server to restart...\n')
+    print('[i] Please wait for the Pi-hole server to restart...')
     restart_pihole(args.docker)
-    print('[i] The Exact Blacklist filters were added to Gravity!\n')
+    print('\n')
+    print('[i] The Exact Blacklist filters were removed from Gravity!')
+    print('\n')
     print('Please make sure to star this repository to show support... it helps keep me motivated!')
-    print('https://github.com/slyfox1186/pihole.regex\n')
+    print('https://github.com/slyfox1186/pihole.regex')
+    print('\n')
