@@ -2,7 +2,7 @@
 
 # Get user's input
 clear
-echo -e "[i] Exact Blacklist: [A]dd [R]emove [S]kip"
+echo '[i] Exact Blacklist: [A]dd [R]emove [S]kip'
 read answer
 clear
 if [[ $answer == "A" ]]; then
@@ -15,7 +15,8 @@ elif [[ $answer == "S" ]]; then
     clear
     echo -e "[i] Skipping ahead!\\n"
     sleep 3
-    . '/root/pihole.regex/exact-blacklist.py' | sudo python3
+    . exact-whitelist.sh
+    exit 0
 fi
 
 read -t 30 -p 'Press Enter to continue...'
