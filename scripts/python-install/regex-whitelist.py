@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import json
 import os
 import argparse
 import sqlite3
@@ -228,12 +229,11 @@ else:
 
     print('[i] Please wait for the Pi-hole server to restart.')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
-    print('\n')
-    print('[i] The Pi-hole server is running.')
+    print('[i] The Pi-hole server is running.\n')
+    print("[i] Domains have been added to the Pi-Hole's Whitelist.")
     print('\n')
     print('[i] Make sure to star this repository to show your support! It helps keep me motivated!')
-    print('[i] https://github.com/slyfox1186/pihole.regex')
-    print('\n')
+    print('[i] https://github.com/slyfox1186/pihole.regex\n')
     print('[i] Please see the installed regex strings below.\n')
     
     with open(path_legacy_regex, 'r') as fOpen:
