@@ -13,7 +13,7 @@ elif [[ $answer == "R" ]]; then
     echo -e "[i] The Exact Whitelist filters were removed from Pi-hole\\n"
 elif [[ $answer == "S" ]]; then
     clear
-    echo -e "[i] Finishing up!\\n"
+    echo -e "[i] Skipping ahead!\\n"
     sleep 3
     exit 0
 fi
