@@ -331,9 +331,6 @@ if db_exists:
         exit(1)
 
     finally:
-        print('\n')
-        print('[i] The Exact Blacklist Filters have been successfully removed from Gravity!')
-        print('\n')
         print('Make sure to star this repository to show your support! It helps keep me motivated!')
         print('https://github.com/slyfox1186/pihole.regex')
         print('\n')
@@ -376,9 +373,6 @@ else:
     print('\n')
     print('[i] Please wait for the Pi-hole server to restart.')
     restart_pihole(args.docker)
-    print('\n')
-    print('[i] The Exact Blacklist Filters have been successfully removed from Gravity!')
-    print('\n')
     print('Make sure to star this repository to show your support! It helps keep me motivated!')
     print('https://github.com/slyfox1186/pihole.regex')
     print('\n')
