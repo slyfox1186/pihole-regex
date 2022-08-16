@@ -160,22 +160,19 @@ if db_exists:
     except sqlite3.Error as error:
         print("[X] Failed to remove domains from Gravity's database.", error)
         print('\n')
-        print('\n')
         exit(1)
 
     finally:
         if (sqliteConnection):
             sqliteConnection.close()
 
-            print("[i] The connection to the Gravity database has closed.")
+            print("[i] The connection to the Gravity database has closed.\n")
             time.sleep(2)
-            print('[i] Please wait for the Pi-hole server to restart.')
+            print('[i] Please wait for the Pi-hole server to restart...\n')
             restart_pihole(args.docker)
-            print('[i] The Exact Blacklist filters have been successfully added to Gravity!')
-            print('\n')
+            print('[i] The Exact Blacklist Filters have been successfully added to Gravity!\n')
             print('Please make sure to star this repository to show support... it helps keep me motivated!')
-            print('https://github.com/slyfox1186/pihole.regex')
-            print('\n')
+            print('https://github.com/slyfox1186/pihole.regex\n')
 
 else:
     if os.path.isfile(gravity_whitelist_location) and os.path.getsize(gravity_whitelist_location) > 0:
@@ -211,8 +208,6 @@ else:
 
     print('[i] Please wait for the Pi-hole server to restart.')
     restart_pihole(args.docker)
-    print('[i] The Exact Blacklist filters have been successfully added to Gravity!')
-    print('\n')
+    print('[i] The Exact Blacklist Filters have been successfully added to Gravity!\n')
     print('Please make sure to star this repository to show support... it helps keep me motivated!')
-    print('https://github.com/slyfox1186/pihole.regex')
-    print('\n')
+    print('https://github.com/slyfox1186/pihole.regex\n')
