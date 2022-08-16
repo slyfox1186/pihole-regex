@@ -22,11 +22,9 @@ def fetch_blacklist_url(url):
     except HTTPError as e:
         print('[X] HTTP Error:', e.code, 'whilst fetching', url)
         print('\n')
-        print('\n')
         exit(1)
     except URLError as e:
         print('[X] URL Error:', e.reason, 'whilst fetching', url)
-        print('\n')
         print('\n')
         exit(1)
 
@@ -147,7 +145,7 @@ if db_exists:
         gravScriptBeforeTUP = gravityScript_before.fetchall()
         # Number of domains in database from script
         gravScriptBeforeTUPlen = len(gravScriptBeforeTUP)
-        print('[i] There are {} domains from the script that are already in the blacklist.' .format(gravScriptBeforeTUPlen))
+        print("[i] There are {} domains from the script that are already in the blacklist." .format(gravScriptBeforeTUPlen))
         #
         # Make `remote_sql_str` a tuple so we can easily compare
         newblackTUP = remote_sql_str.split('\n')
@@ -192,15 +190,15 @@ if db_exists:
         INgravityUSERaddListCount = uA # Save our count here so we know how many we have later
         # Make us aware of User Added domains that are also in our script
         if uagl == True: # If we found user added domains from our list in gravity do:
-            print ('[i] There are {} domain(s) that were added by the user that would also be added by script.\n' .format(INgravityUSERaddListCount+1)) # We have to add 1 for humans cause count starts @ 0
+            print ("[i] There are {} domain(s) that were added by the user that would also be added by script.\n" .format(INgravityUSERaddListCount+1)) # We have to add 1 for humans cause count starts @ 0
             a = 0
             while uA >= 0: # Remember that counter now we make it go backwards to 0
                 a += 1 # Counter for number output to screen
-                print('    {}. {}' .format(a, userAddList[uA])) # Show us what we found
+                print("    {}. {}" .format(a, userAddList[uA])) # Show us what we found
                 uA -= 1 # Go backwards
         else: # If we don't find any
             INgravityUSERaddListCount = 0 # Make sure this is 0
-            print('[i] There are {} domains that will be added by the script.' .format(INgravityUSERaddListCount)) # Notify of negative result
+            print("[i] There are {} domains that will be added by the script." .format(INgravityUSERaddListCount)) # Notify of negative result
         #
         #
         # Check Gravity database for domains added by script that are not in new script
@@ -225,11 +223,11 @@ if db_exists:
         INgravityNOTnewListCount = z
         # If in Gravity because of script but NOT in the new list Prompt for removal
         if ignl == True:
-            print('[i] There are {} domain(s) added previously by the script and are no longer in the current script.\n' .format(INgravityNOTnewListCount+1))
+            print("[i] There are {} domain(s) added previously by the script and are no longer in the current script.\n" .format(INgravityNOTnewListCount+1))
             a = 0
             while z >= 0:
                 a += 1
-                print('    deleting {}' .format(INgravityNOTnewList[z][2]))
+                print("    deleting {}" .format(INgravityNOTnewList[z][2]))
                 # Print all data retrieved from database about domain to be removed
                 # print(INgravityNOTnewList[z])
                 # Ability to remove old
@@ -239,7 +237,7 @@ if db_exists:
         # If not keep going
         else:
             INgravityNOTnewListCount = 0
-            print('[i] There are {} domains added previously by the script that are no longer in the current version.' .format(INgravityNOTnewListCount))
+            print("[i] There are {} domains added previously by the script that are no longer in the current version." .format(INgravityNOTnewListCount))
         #
         #
         # Check Gravity database for new domains to be added by script
