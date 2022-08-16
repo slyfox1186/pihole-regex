@@ -302,7 +302,7 @@ if db_exists:
                 print("\n[i] All {} missing domain's have been accounted for in Gravity's database." .format(newblacklistlen))
 
             else:
-                print("\n[i] All {} new domain's have not been added to the Gravity database." .format(INnewNOTgravityListCount+1))
+                print("\n[i] All {} new domain's were not added to the database." .format(INnewNOTgravityListCount+1))
 
         else: # We should be done now
             # Do nothing and exit. All domains are accounted for.
@@ -330,7 +330,7 @@ if db_exists:
 
     finally:
         print('\n')
-        print('[i] The Exact Blacklist filters have been removed from Gravity!')
+        print('[i] The Exact Blacklist filters have been added to Gravity!')
         print('\n')
         print('[i] Make sure to star this repository to show your support! It helps keep me motivated!')
         print('[i] https://github.com/slyfox1186/pihole.regex')
