@@ -171,7 +171,7 @@ if db_exists:
             # print(newblacklist[nwl])
             nwl += 1 # count + 1
         # Check database for user added exact blacklisted domains
-        print('[i] Checking Gravity for domains added by other methods that are also found in the script.')
+        print('[i] Checking Gravity for domains added by other methods.')
         # Check Gravity database for exact blacklisted domains added by user
         user_add = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 AND comment NOT LIKE '%SlyEBL%' ")
         userAddTUP = user_add.fetchall()
@@ -192,7 +192,7 @@ if db_exists:
         INgravityUSERaddListCount = uA # Save our count here so we know how many we have later
         # Make us aware of User Added domains that are also in our script
         if uagl == True: # If we found user added domains from our list in gravity do:
-            print ('[i] There are {} domain(s) that were added by the user that would also be added by script.\n' .format(INgravityUSERaddListCount+1)) # We have to add 1 for humans cause count starts @ 0
+            print ('[i] There are {} domain(s) that were added by the user that would also be added by the script.\n' .format(INgravityUSERaddListCount+1)) # We have to add 1 for humans cause count starts @ 0
             a = 0
             while uA >= 0: # Remember that counter now we make it go backwards to 0
                 a += 1 # Counter for number output to screen
@@ -210,7 +210,7 @@ if db_exists:
         if uagl == True:
             print('\n')
 
-        print('[i] Checking Gravity for domains previously added by script that are NOT in new script.')
+        print('[i] Checking Gravity for domains previously added by the script that are NOT in the new script.')
         ignl = False
         a = 0
         for INgravityNOTnew in gravScriptBeforeTUP: # For every domain previously added by script
@@ -308,7 +308,7 @@ if db_exists:
 
         else: # We should be done now
             # Do nothing and exit. All domains are accounted for.
-            print("[i] All {} domains that were to be added by the script have been successfully found Gravity's database." .format(newblacklistlen))
+            print("[i] All {} domains that were to be added by the script have been successfully found in Gravity's database." .format(newblacklistlen))
         # Find total blacklisted domains (regex)
         total_domains_R = cursor.execute(" SELECT * FROM domainlist WHERE type = 3 ")
         tdr = len(total_domains_R.fetchall())
@@ -331,10 +331,11 @@ if db_exists:
         exit(1)
 
     finally:
-        print('\n')
-        print('Make sure to star this repository to show your support! It helps keep me motivated!')
-        print('https://github.com/slyfox1186/pihole.regex')
-        print('\n')
+    print('[i] Pi-hole is currently running.')
+    print('\n')
+    print('[i] Make sure to star this repository to show your support! It helps keep me motivated!')
+    print('[i] https://github.com/slyfox1186/pihole.regex')
+    print('\n')
 
 else:
 
@@ -371,10 +372,10 @@ else:
         for line in sorted(blacklist_remote):
             fWrite.write("{}\n".format(line))
 
-    print('\n')
     print('[i] Please wait for the Pi-hole server to restart.')
     restart_pihole(args.docker)
+    print('[i] Pi-hole is currently running.')
     print('\n')
-    print('Make sure to star this repository to show your support! It helps keep me motivated!')
-    print('https://github.com/slyfox1186/pihole.regex')
+    print('[i] Make sure to star this repository to show your support! It helps keep me motivated!')
+    print('[i] https://github.com/slyfox1186/pihole.regex')
     print('\n')
