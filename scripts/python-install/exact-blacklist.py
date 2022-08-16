@@ -10,7 +10,7 @@ import time
 
 today = int(time.time())
 
-def Fetch_blacklist_url(url):
+def fetch_blacklist_url(url):
 
     if not url:
         return
@@ -65,11 +65,11 @@ else:
 blacklist_remote_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/blacklist/exact-blacklist.txt'
 remote_sql_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/blacklist/exact-blacklist.sql'
 gravity_blacklist_location = os.path.join(pihole_location, 'blacklist.txt')
-gravity_db_location = os.path.join(pihole_location, 'Gravity.db')
+gravity_db_location = os.path.join(pihole_location, 'gravity.db')
 slyfox1186_blacklist_location = os.path.join(pihole_location, 'slyfox1186-blacklist.txt')
 
 db_exists = False
-sqlite_Connection = None
+sqlite_connection = None
 cursor = None
 
 blacklist_remote = set()
@@ -94,8 +94,8 @@ else:
 # Check for write access to /etc/pihole
 if os.access(pihole_location, os.X_OK | os.W_OK):
     print("[i] Write access to {} verified" .format(pihole_location))
-    Blacklist_str = Fetch_blacklist_url(blacklist_remote_url)
-    remote_blacklist_lines = Blacklist_str.count('\n')
+    blacklist_str = fetch_blacklist_url(blacklist_remote_url)
+    remote_blacklist_lines = blacklist_str.count('\n')
     remote_blacklist_lines += 1
 else:
     print("[X] Write access is not available for {}. Please run as root or other privileged user" .format(
@@ -108,7 +108,7 @@ if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) 
     db_exists = True
     print('[i] Pi-Hole Gravity database found')
 
-    remote_sql_str = Fetch_blacklist_url(remote_sql_url)
+    remote_sql_str = fetch_blacklist_url(remote_sql_url)
     remote_sql_lines = remote_sql_str.count('\n')
     remote_sql_lines += 1
 
@@ -123,9 +123,9 @@ else:
     print('[i] Legacy Pi-hole detected (Version older than 5.0)')
 
 # If domains were Fetched, remove any comments and add to set
-if Blacklist_str:
-    Blacklist_remote.update(x for x in map(
-        str.strip, Blacklist_str.splitlines()) if x and x[:1] != '#')
+if blacklist_str:
+    blacklist_remote.update(x for x in map(
+        str.strip, blacklist_str.splitlines()) if x and x[:1] != '#')
 else:
     print('[X] No remote domains were found.')
     print('\n')
@@ -134,13 +134,13 @@ else:
 if db_exists:
     print('[i] Connecting to Gravity.')
     try: # Try to create a database connection
-        sqlite_Connection = sqlite3.connect(gravity_db_location)
-        cursor = sqlite_Connection.cursor()
+        sqlite_connection = sqlite3.connect(gravity_db_location)
+        cursor = sqlite_connection.cursor()
         print('[i] Successfully Connected to Gravity.')
         #
         print('[i] Checking Gravity for domains added by script.')
         # Check Gravity database for domains added by script
-        GravityScript_before = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%SlyRWL%' ")
+        GravityScript_before = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 AND comment LIKE '%SlyEBL%' ")
         # Fetch all matching entries which will create a tuple for us
         GravScript_BeforeTUP = GravityScript_before.fetchall()
         # Number of domains in database from script
@@ -171,7 +171,7 @@ if db_exists:
         # check database for user added exact Blacklisted domains
         print('[i] Checking Gravity for domains added by user that are also in script.')
         # Check Gravity database for exact Blacklisted domains added by user
-        User_Add = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment NOT LIKE '%SlyRWL%' ")
+        User_add = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 AND comment NOT LIKE '%SlyEBL%' ")
         User_AddTUP = User_Add.fetchall()
         User_AddTUPlen = len(User_AddTUP)
         #
@@ -231,7 +231,7 @@ if db_exists:
                 # print all data retrieved from database about domain to be removed
                 # print(InGravityNotNewList[z])
                 # ability to remove old
-                sql_delete = " DELETE FROM domainlist WHERE type = 0 AND id = '{}' "  .format(INgravityNOTnewList[z][0])
+                sql_delete = " DELETE FROM domainlist WHERE type = 1 AND id = '{}' "  .format(INgravityNOTnewList[z][0])
                 cursor.executescript(sql_delete)
                 z -= 1
         # If not keep going
@@ -274,7 +274,7 @@ if db_exists:
                         cursor.executescript(sql_add)
                         w -= 1
             # Re-Check Gravity database for domains added by script after we update it
-            GravityScript_After = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%SlyRWL%' ")
+            GravityScript_After = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 AND comment LIKE '%SlyEBL%' ")
             # Fetch all matching entries which will create a tuple for us
             GravScript_AfterTUP = GravityScript_After.fetchall()
             # Number of domains in database from script
@@ -308,14 +308,14 @@ if db_exists:
             # Do Nothing and exit. All domains are accounted for.
             print("[i] All {} domains to be added by script have been discovered in Gravity" .format(NewblackListlen)) 
         # Find total Blacklisted domains (regex)
-        total_domains_R = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 ")
+        total_domains_R = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 ")
         tdr = len(total_domains_R.fetchall())
         # Find total Blacklisted domains (exact)
-        total_domains_E = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 ")
+        total_domains_E = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 ")
         tde = len(total_domains_E.fetchall())
         total_domains = tdr + tde
         print("[i] There are a total of {} domains in your Blacklist (regex({}) & exact({}))" .format(total_domains, tdr, tde))
-        sqlite_Connection.close()
+        sqlite_connection.close()
         print('[i] The connection to the Gravity database has closed.')
         if ilng == True:
             print('[i] Please wait for the Pi-hole server to restart.')
@@ -339,24 +339,24 @@ else:
     if os.path.isfile(gravity_blacklist_location) and os.path.getsize(gravity_blacklist_location) > 0:
         print('[i] Collecting existing entries from Blacklist.txt')
         with open(gravity_blacklist_location, 'r') as fRead:
-            Blacklist_local.update(x for x in map(
+            blacklist_local.update(x for x in map(
                 str.strip, fRead) if x and x[:1] != '#')
 
-    if Blacklist_local:
+    if blacklist_local:
         print("[i] {} existing Blacklists identified" .format(
             len(blacklist_local)))
         if os.path.isfile(slyfox1186_blacklist_location) and os.path.getsize(slyfox1186_blacklist_location) > 0:
-            print('[i] Existing slyfox1186-blacklist install identified')
+            print('[i] Existing slyfox1186-blacklist install identified.')
             with open(slyfox1186_blacklist_location, 'r') as fOpen:
-                Blacklist_old_slyfox1186.update(x for x in map(
+                blacklist_old_slyfox1186.update(x for x in map(
                     str.strip, fOpen) if x and x[:1] != '#')
 
-                if Blacklist_old_slyfox1186:
+                if blacklist_old_slyfox1186:
                     print('[i] Removing previously installed Blacklist')
-                    Blacklist_local.difference_update(blacklist_old_slyfox1186)
+                    blacklist_local.difference_update(blacklist_old_slyfox1186)
 
     print("[i] Syncing with {}" .format(blacklist_remote_url))
-    Blacklist_local.update(blacklist_remote)
+    blacklist_local.update(blacklist_remote)
 
     print("[i] Outputting {} domains to {}" .format(
         len(blacklist_local), gravity_blacklist_location))
