@@ -202,7 +202,6 @@ else:
     time.sleep(2)
     print('[i] Please wait for the Pi-hole server to restart...')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
-    print('\n')
     print('[i] The RegEx Blacklist filters added to from Gravity!')
     print('\n')
     print('Please make sure to star this repository to show support... it helps keep me motivated!')
