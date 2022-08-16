@@ -225,11 +225,19 @@ else:
         for line in sorted(regexps_remote):
             fWrite.write(f'{line}\n')
 
-    print('[i] Restarting Pi-hole')
+    print('\n')
+    print("[i] The connection to the Gravity database has closed.")
+    time.sleep(2)
+    print('[i] Please wait for the Pi-hole server to restart...')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
-
-    # Prepare final result
-    print('[i] Done - Please see your installed regexps below\n')
+    print('\n')
+    print('[i] The RegEx Blacklist filters added to from Gravity!')
+    print('\n')
+    print('Please make sure to star this repository to show support... it helps keep me motivated!')
+    print('https://github.com/slyfox1186/pihole.regex')
+    print('\n')
+    print('[i] Please see your installed regexps below')
+    print('\n')
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
