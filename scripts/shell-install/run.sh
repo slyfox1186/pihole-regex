@@ -7,6 +7,7 @@ shopt -s nocasematch
 
 # Set directory variable
 FILE_DIR="/root/pihole.regex"
+cd $FILE_DIR
 
 # Delete: The useless index.html file
 if [ -f index.html ]; then
