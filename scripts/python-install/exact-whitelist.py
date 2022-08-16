@@ -138,7 +138,7 @@ else:
 
 if db_exists:
     # Create a database connection
-    print('[i] Connecting to Gravity.')
+    print("[i] Establishing a connection to Gravity's database.")
 
     try: # Try to create a database connection
         sqliteConnection = sqlite3.connect(gravity_db_location)
@@ -306,10 +306,10 @@ if db_exists:
 
             if gsa == True:
                 # All domains are accounted for.
-                print("\n[i] All {} missing domain's have been found in Gravity." .format(newWhiteListlen))
+                print("\n[i] All {} missing domains were added to Gravity's database." .format(newWhiteListlen))
 
             else:
-                print("\n[i] All {} new domain's have not been added to Gravity." .format(INnewNOTgravityListCount+1))
+                print("\n[i] All {} new domains were removed from Gravity's database." .format(INnewNOTgravityListCount+1))
 
         else: # We should be done now
             # Do nothing and exit. All domains are accounted for.
@@ -363,10 +363,10 @@ else:
                     print('[i] Removing previously installed whitelist.')
                     whitelist_local.difference_update(whitelist_old_slyfox1186)
 
-    print("[i] Syncing with {}" .format(whitelist_remote_url))
+    print("[i] Syncing with {}." .format(whitelist_remote_url))
     whitelist_local.update(whitelist_remote)
 
-    print("[i] Outputting {} domains to {}" .format(
+    print("[i] Outputting {} domains to {}." .format(
         len(whitelist_local), gravity_whitelist_location))
     with open(gravity_whitelist_location, 'w') as fWrite:
         for line in sorted(whitelist_local):
