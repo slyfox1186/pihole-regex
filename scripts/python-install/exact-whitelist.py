@@ -107,7 +107,7 @@ else:
     print('\n')
     exit(1)
 
-# Determine whether we are using DB or not
+# Determine whether we are using database or not
 if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) > 0:
     db_exists = True
     print('[i] The Gravity database was found.')
@@ -137,10 +137,10 @@ else:
     exit(1)
 
 if db_exists:
-    # Create a DB connection
+    # Create a database connection
     print('[i] Connecting to Gravity.')
 
-    try: # Try to create a DB connection
+    try: # Try to create a database connection
         sqliteConnection = sqlite3.connect(gravity_db_location)
         cursor = sqliteConnection.cursor()
         print('[i] Successfully Connected to Gravity.')
