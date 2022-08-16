@@ -125,7 +125,7 @@ if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) 
         print('\n')
         exit(1)
 else:
-    print('[i] Legacy Pi-hole detected (Version older than 5.0).')
+    print('[i] Legacy Pi-hole detected (version older than 5.0).')
 
 # If domains were fetched, remove any comments and add to set
 if whitelist_str:
