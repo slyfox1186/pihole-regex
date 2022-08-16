@@ -164,8 +164,8 @@ if db_exists:
         cursor.close()
 
     except sqlite3.Error as error:
-        print("[X] Failed to remove domains from Gravity's database.", error)
         print('\n')
+        print("[X] Failed to remove domains from Gravity's database.", error)
         print('\n')
         exit(1)
 
@@ -177,7 +177,6 @@ if db_exists:
             time.sleep(2)
             print('[i] Please wait for the Pi-hole server to restart.')
             restart_pihole(args.docker)
-            print('[i] The Exact Blacklist Filters have been successfully removed from Gravity!')
             print('\n')
             print('Please make sure to star this repository to show support... it helps keep me motivated!')
             print('https://github.com/slyfox1186/pihole.regex')
@@ -217,7 +216,6 @@ else:
 
     print('[i] Please wait for the Pi-hole server to restart.')
     restart_pihole(args.docker)
-    print('[i] The Exact Blacklist Filters have been successfully removed from Gravity!')
     print('\n')
     print('Please make sure to star this repository to show support... it helps keep me motivated!')
     print('https://github.com/slyfox1186/pihole.regex')
