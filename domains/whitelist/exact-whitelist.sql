@@ -126,6 +126,7 @@
 (0, 'code.bildstatic.de', 1, 'Misc - SlyEWL')
 (0, 'codepush.teams.microsoft.com', 1, 'Microsoft - SlyEWL')
 (0, 'cognito-identity.us-east-1.amazonaws.com', 1, 'Amazon - SlyEWL')
+(0, 'color.adobe.com', 1, 'Adobe - SlyEWL')
 (0, 'config.fp.measure.office.com', 1, 'Microsoft - SlyEWL')
 (0, 'config.teams.microsoft.com', 1, 'Microsoft - SlyEWL')
 (0, 'configuration.apple.com', 1, 'Apple - SlyEWL')
