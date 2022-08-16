@@ -3,11 +3,10 @@
 import json
 import os
 import sqlite3
-import time
 import subprocess, platform
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
-
+import time
 
 def fetch_url(url):
 
