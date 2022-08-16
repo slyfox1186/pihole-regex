@@ -7,7 +7,7 @@ shopt -s nocasematch
 
 # Set directory variable
 FILE_DIR="/root/pihole.regex"
-cd $FILE_DIR
+pushd $FILE_DIR; clear
 
 # Delete: The useless index.html file
 if [ -f index.html ]; then
@@ -37,3 +37,5 @@ SUB_FILES=( $SHELL_FILES )
 for i in ${SUB_FILES[@]}; do
     . "$FILE_DIR/$i"
 done
+
+popd
