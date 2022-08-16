@@ -12,7 +12,7 @@ elif [[ $answer == "R" ]]; then
 elif [[ $answer == "S" ]]; then
     clear
     echo -e "[i] Finishing up!\\n"
-    sleep 3
+    sleep 2
     exit 0
 fi
 
