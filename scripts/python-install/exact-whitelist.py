@@ -322,7 +322,7 @@ if db_exists:
         total_domains_E = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 ")
         tde = len(total_domains_E.fetchall())
         total_domains = tdr + tde
-        print("[i] There are a total of {} domains in your whitelist (regex({}) & exact({}))" .format(total_domains, tdr, tde))
+        print("[i] There are a total of {} domains in your whitelist (regex({}) & exact({}))." .format(total_domains, tdr, tde))
         sqliteConnection.close()
         print("[i] The connection to the Gravity database has closed.")
         time.sleep(2)
@@ -331,17 +331,15 @@ if db_exists:
             restart_pihole(args.docker)
 
     except sqlite3.Error as error:
-        print('\n')
         print("[X] Failed to insert domains into Gravity's database.", error)
         print('\n')
         exit(1)
 
     finally:
+        print('[i] Pi-hole is currently running.')
         print('\n')
-        print('[i] The Exact Whitelist Filters have been successfully removed from Gravity!')
-        print('\n')
-        print('Make sure to star this repository to show your support! It helps keep me motivated!')
-        print('https://github.com/slyfox1186/pihole.regex')
+        print('[i] Make sure to star this repository to show your support! It helps keep me motivated!')
+        print('[i] https://github.com/slyfox1186/pihole.regex')
         print('\n')
 
 else:
@@ -379,12 +377,10 @@ else:
         for line in sorted(whitelist_remote):
             fWrite.write("{}\n".format(line))
 
-    print('\n')
     print('[i] Please wait for the Pi-hole server to restart.')
     restart_pihole(args.docker)
+    print('[i] Pi-hole is currently running.')
     print('\n')
-    print('[i] The Exact Whitelist Filters have been successfully removed from Gravity!')
-    print('\n')
-    print('Make sure to star this repository to show your support! It helps keep me motivated!')
-    print('https://github.com/slyfox1186/pihole.regex')
+    print('[i] Make sure to star this repository to show your support! It helps keep me motivated!')
+    print('[i] https://github.com/slyfox1186/pihole.regex')
     print('\n')
