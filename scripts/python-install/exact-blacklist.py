@@ -331,10 +331,11 @@ if db_exists:
         exit(1)
 
     finally:
-    print('\n')
-    print('[i] Make sure to star this repository to show your support! It helps keep me motivated!')
-    print('[i] https://github.com/slyfox1186/pihole.regex')
-    print('\n')
+        print('[i] Pi-hole is currently running.')
+        print('\n')
+        print('[i] Make sure to star this repository to show your support! It helps keep me motivated!')
+        print('[i] https://github.com/slyfox1186/pihole.regex')
+        print('\n')
 
 else:
 
