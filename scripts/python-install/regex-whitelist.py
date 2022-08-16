@@ -73,7 +73,7 @@ except FileNotFoundError:
 
 # If a pihole docker container was found, locate the first mount
 if docker_id:
-    docker_mnt = subprocess.run(['docker', 'inspect', '--format', '{{ (json .Mounts) }}', docker_id],
+    docker_mnt = subprocess.run(["docker", "inspect", "--format", "{{ (json .Mounts) }}", docker_id],
     stdout=subprocess.PIPE, universal_newlines=True).stdout.strip()
     # Convert output to JSON and iterate through each dict
     for json_dict in json.loads(docker_mnt):
@@ -173,14 +173,14 @@ if db_exists:
     if os.path.exists(path_legacy_slyfox1186_regex):
         os.remove(path_legacy_slyfox1186_regex)
 
+    print('[i] The RegEx Whitelist filters were added to Pi-Hole.\n')
     print('[i] Please wait for the Pi-hole server to restart.')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
-    print('\n')
-    print('[i] The Pi-hole server is running.')
+    print('[i] The Pi-hole server is running.\n')
+    print("[i] Domains have been added to the Pi-Hole's Whitelist.")
     print('\n')
     print('[i] Make sure to star this repository to show your support! It helps keep me motivated!')
-    print('[i] https://github.com/slyfox1186/pihole.regex')
-    print('\n')
+    print('[i] https://github.com/slyfox1186/pihole.regex\n')
     print('[i] Please see the installed regex strings below.\n')
 
     c.execute('Select domain FROM domainlist WHERE type = 2')
