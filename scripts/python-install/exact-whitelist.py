@@ -22,11 +22,9 @@ def fetch_whitelist_url(url):
     except HTTPError as e:
         print('[X] HTTP Error:', e.code, 'whilst fetching', url)
         print('\n')
-        print('\n')
         exit(1)
     except URLError as e:
         print('[X] URL Error:', e.reason, 'whilst fetching', url)
-        print('\n')
         print('\n')
         exit(1)
 
@@ -302,7 +300,6 @@ if db_exists:
             if gsa == True:
                 # All domains are accounted for.
                 print("\n[i] All {} missing domains were added to Gravity's database." .format(newWhiteListlen))
-
             else:
                 print("\n[i] All {} new domains were removed from Gravity's database." .format(INnewNOTgravityListCount+1))
 
