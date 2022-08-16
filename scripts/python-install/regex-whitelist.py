@@ -180,7 +180,7 @@ if db_exists:
     print('[i] Make sure to star this repository to show your support! It helps keep me motivated!')
     print('[i] https://github.com/slyfox1186/pihole.regex')
     print('\n')
-    print('[i] Please see your installed regex strings below.\n')
+    print('[i] Please see the installed regex strings below.\n')
 
     c.execute('Select domain FROM domainlist WHERE type = 2')
     final_results = c.fetchall()
@@ -232,10 +232,8 @@ else:
     print('[i] Make sure to star this repository to show your support! It helps keep me motivated!')
     print('[i] https://github.com/slyfox1186/pihole.regex')
     print('\n')
-    print('[i] Please see your installed regex strings below.\n')
-
-    # Prepare final result
     print('[i] Please see the installed regex strings below.\n')
+
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
