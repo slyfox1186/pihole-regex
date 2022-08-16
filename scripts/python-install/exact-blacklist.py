@@ -133,7 +133,7 @@ else:
 
 if db_exists:
     # Create a database connection
-    print("[i] Establishing a connection with Gravity's database.")
+    print("[i] Establishing a connection to Gravity's database.")
 
     try: # Try to create a database connection
         sqliteConnection = sqlite3.connect(gravity_db_location)
