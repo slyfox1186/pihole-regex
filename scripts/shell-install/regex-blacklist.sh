@@ -16,4 +16,4 @@ elif [[ $answer == "S" ]]; then
     echo -e "[i] Finishing up!\\n"
 fi
 
-sleep 2
+sleep 3
