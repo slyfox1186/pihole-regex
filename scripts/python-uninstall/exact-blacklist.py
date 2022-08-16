@@ -169,7 +169,7 @@ if db_exists:
         if (sqliteConnection):
             sqliteConnection.close()
 
-            print('[i] The connection to the Gravity database has closed.\n')
+            print('[i] The connection to the Gravity database has closed.')
             time.sleep(2)
             print('[i] Please wait for the Pi-hole server to restart.\n')
             restart_pihole(args.docker)
