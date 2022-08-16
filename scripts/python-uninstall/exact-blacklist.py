@@ -15,7 +15,7 @@ def fetch_whitelist_url(url):
     if not url:
         return
 
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0'}
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36'}
 
     try:
         response = urlopen(Request(url, headers=headers))
@@ -96,6 +96,7 @@ if os.path.exists(pihole_location):
 else:
     print("[X] {} was not found".format(pihole_location))
     print('\n')
+    print('\n')
     exit(1)
 
 # Check for write access to /etc/pihole
@@ -106,6 +107,7 @@ if os.access(pihole_location, os.X_OK | os.W_OK):
     remote_whitelist_lines += 1
 else:
     print("[X] Write access is not available for {}. Please run the script as a privileged user." .format(pihole_location))
+    print('\n')
     print('\n')
     exit(1)
 
@@ -122,6 +124,7 @@ if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) 
         print("[i] {} domains were discovered." .format(remote_whitelist_lines))
     else:
         print('[X] No remote SQL queries were found.')
+        print('\n')
         print('\n')
         exit(1)
 else:
@@ -144,18 +147,18 @@ if db_exists:
         sqliteConnection = sqlite3.connect(gravity_db_location)
         cursor = sqliteConnection.cursor()
         print("[i] Successfully connected to Gravity's database.")
-        total_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 AND comment LIKE '%SlyEBL%' ")
+        total_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%SlyEWL%' ")
 
         totalDomains = len(total_domains.fetchall())
         print("[i] There are a total of {} domains in your whitelist which were added by this script." .format(totalDomains))
         print('[i] Removing domains in the Gravity database.')
-        cursor.execute (" DELETE FROM domainlist WHERE type = 1 AND comment LIKE '%SlyEBL%' ")
+        cursor.execute (" DELETE FROM domainlist WHERE type = 0 AND comment LIKE '%SlyEWL%' ")
 
         sqliteConnection.commit()
 
         # We only removed domains we added so use total_domains
         print("[i] {} domains were removed." .format(totalDomains))
-        remaining_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 OR type = 3 ")
+        remaining_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 OR type = 2 ")
         print("[i] There are a total of {} domains remaining in your whitelist." .format(len(remaining_domains.fetchall())))
 
         cursor.close()
@@ -163,19 +166,18 @@ if db_exists:
     except sqlite3.Error as error:
         print("[X] Failed to remove domains from Gravity's database.", error)
         print('\n')
+        print('\n')
         exit(1)
 
     finally:
         if (sqliteConnection):
             sqliteConnection.close()
 
-            print('\n')
             print("[i] The connection to the Gravity database has closed.")
             time.sleep(2)
-            print('[i] Please wait for the Pi-hole server to restart...')
+            print('[i] Please wait for the Pi-hole server to restart.')
             restart_pihole(args.docker)
-            print('\n')
-            print('[i] The Exact Blacklist filters were removed from Gravity!')
+            print('[i] The Exact Blacklist Filters have been successfully removed from Gravity!')
             print('\n')
             print('Please make sure to star this repository to show support... it helps keep me motivated!')
             print('https://github.com/slyfox1186/pihole.regex')
@@ -213,13 +215,9 @@ else:
         for line in sorted(whitelist_local):
             fWrite.write("{}\n".format(line))
 
-    print('\n')
-    print("[i] The connection to the Gravity database has closed.")
-    time.sleep(2)
-    print('[i] Please wait for the Pi-hole server to restart...')
+    print('[i] Please wait for the Pi-hole server to restart.')
     restart_pihole(args.docker)
-    print('\n')
-    print('[i] The Exact Blacklist filters were removed from Gravity!')
+    print('[i] The Exact Blacklist Filters have been successfully removed from Gravity!')
     print('\n')
     print('Please make sure to star this repository to show support... it helps keep me motivated!')
     print('https://github.com/slyfox1186/pihole.regex')
