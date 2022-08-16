@@ -196,7 +196,7 @@ else:
 
     # If the local regexp set is not empty
     if regexps_local:
-        print(f'[i] {len(regexps_local)} existing regexps identified')
+        print(f'[i] {len(regexps_local)} existing regex strings found.')
         # If we have a record of a previous legacy install
         if os.path.isfile(path_legacy_slyfox1186_regex) and os.path.getsize(path_legacy_slyfox1186_regex) > 0:
             print('[i] Existing slyfox1186-regex install identified')
@@ -205,7 +205,7 @@ else:
                 regexps_legacy_slyfox1186.update(x for x in map(str.strip, fOpen) if x and x[:1] != '#')
 
                 if regexps_legacy_slyfox1186:
-                    print('[i] Removing previously installed regexps')
+                    print('[i] Removing previously installed regex strings.')
                     regexps_local.difference_update(regexps_legacy_slyfox1186)
 
     # Add remote regexps to local regexps
@@ -213,7 +213,7 @@ else:
     regexps_local.update(regexps_remote)
 
     # Output to regex.list
-    print(f'[i] Outputting {len(regexps_local)} regexps to {path_legacy_regex}')
+    print(f'[i] Outputting {len(regexps_local)} regex strings to {path_legacy_regex}')
     with open(path_legacy_regex, 'w') as fWrite:
         for line in sorted(regexps_local):
             fWrite.write(f'{line}\n')
@@ -224,11 +224,16 @@ else:
         for line in sorted(regexps_remote):
             fWrite.write(f'{line}\n')
 
-    print('[i] Restarting Pi-hole')
+    print('[i] Please wait for the Pi-hole server to restart.')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
+    print('[i] The Pi-hole server is running.')
+    print('\n')
+    print('[i] Make sure to star this repository to show your support! It helps keep me motivated!')
+    print('[i] https://github.com/slyfox1186/pihole.regex')
+    print('\n')
 
     # Prepare final result
-    print('[i] Done - Please see your installed regexps below\n')
+    print('[i] Done - Please see your installed RegExPS below\n')
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
