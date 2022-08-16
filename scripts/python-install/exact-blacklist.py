@@ -375,7 +375,7 @@ else:
     print('[i] Please wait for the Pi-hole server to restart.')
     restart_pihole(args.docker)
     print('\n')
-    print('[i] The Exact Blacklist filters have been removed from Gravity!')
+    print('[i] The Exact Blacklist filters have been added to Gravity!')
     print('\n')
     print('[i] Make sure to star this repository to show your support! It helps keep me motivated!')
     print('[i] https://github.com/slyfox1186/pihole.regex')
