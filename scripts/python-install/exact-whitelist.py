@@ -140,7 +140,7 @@ if db_exists:
         #
         print('[i] Checking Gravity for domains added by script.')
         # Check Gravity database for domains added by script
-        GravityScript_before = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 AND comment LIKE '%SlyRWL%' ")
+        GravityScript_before = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%SlyEWL%' ")
         # Fetch all matching entries which will create a tuple for us
         GravScript_BeforeTUP = GravityScript_before.fetchall()
         # Number of domains in database from script
@@ -171,7 +171,7 @@ if db_exists:
         # check database for user added exact whitelisted domains
         print('[i] Checking Gravity for domains added by user that are also in script.')
         # Check Gravity database for exact whitelisted domains added by user
-        User_add = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 AND comment NOT LIKE '%SlyRWL%' ")
+        User_add = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment NOT LIKE '%SlyEWL%' ")
         User_AddTUP = User_Add.fetchall()
         User_AddTUPlen = len(User_AddTUP)
         #
@@ -231,7 +231,7 @@ if db_exists:
                 # print all data retrieved from database about domain to be removed
                 # print(InGravityNotNewList[z])
                 # ability to remove old
-                sql_delete = " DELETE FROM domainlist WHERE type = 1 AND id = '{}' "  .format(INgravityNOTnewList[z][0])
+                sql_delete = " DELETE FROM domainlist WHERE type = 0 AND id = '{}' "  .format(INgravityNOTnewList[z][0])
                 cursor.executescript(sql_delete)
                 z -= 1
         # If not keep going
@@ -274,7 +274,7 @@ if db_exists:
                         cursor.executescript(sql_add)
                         w -= 1
             # Re-Check Gravity database for domains added by script after we update it
-            GravityScript_After = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 AND comment LIKE '%SlyRWL%' ")
+            GravityScript_After = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%SlyEWL%' ")
             # Fetch all matching entries which will create a tuple for us
             GravScript_AfterTUP = GravityScript_After.fetchall()
             # Number of domains in database from script
@@ -308,10 +308,10 @@ if db_exists:
             # Do Nothing and exit. All domains are accounted for.
             print("[i] All {} domains to be added by script have been discovered in Gravity" .format(NewWhiteListlen)) 
         # Find total whitelisted domains (regex)
-        total_domains_R = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 ")
+        total_domains_R = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 ")
         tdr = len(total_domains_R.fetchall())
         # Find total whitelisted domains (exact)
-        total_domains_E = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 ")
+        total_domains_E = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 ")
         tde = len(total_domains_E.fetchall())
         total_domains = tdr + tde
         print("[i] There are a total of {} domains in your whitelist (regex({}) & exact({}))" .format(total_domains, tdr, tde))
@@ -346,7 +346,7 @@ else:
         print("[i] {} existing whitelists identified" .format(
             len(whitelist_local)))
         if os.path.isfile(slyfox1186_whitelist_location) and os.path.getsize(slyfox1186_whitelist_location) > 0:
-            print('[i] Existing slyfox1186-whitelist install identified')
+            print('[i] Existing slyfox1186-whitelist install identified.')
             with open(slyfox1186_whitelist_location, 'r') as fOpen:
                 whitelist_old_slyfox1186.update(x for x in map(
                     str.strip, fOpen) if x and x[:1] != '#')
