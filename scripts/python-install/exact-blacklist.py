@@ -138,7 +138,7 @@ if db_exists:
         cursor = sqlite_connection.cursor()
         print('[i] Successfully Connected to Gravity.')
         #
-        print('[i] Checking Gravity for domains ' by script.')
+        print('[i] Checking Gravity for domains added by script.')
         # Check Gravity database for domains added by script
         GravityScript_before = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 AND comment LIKE '%SlyEBL%' ")
         # Fetch all matching entries which will create a tuple for us
@@ -299,7 +299,7 @@ if db_exists:
 
             if gsa == True:
                 # All domains are accounted for.
-                print('[i] All {} domains to be added by script have been discovered in Gravity.'.format(NewblackListlen))
+                print("[i] All {} domains to be added by script have been discovered in Gravity." .format(NewblackListlen))
 
             else:
                 print("\n[i] All {} New domain(s) have not been added to Gravity." .format(InNew_NotGravityListCount+1))
@@ -322,17 +322,13 @@ if db_exists:
             restart_pihole(args.docker)
 
     except sqlite3.Error as error:
-        print('[X] Failed to insert domains into Gravity database', error)
-        print('\n')
+        print('[X] Failed to insert domains into Gravity database\n\n', error)
         exit(1)
 
     finally:
-        print('\n')
-        print('[i] Pi-hole is currently running.')
-        print('\n')
+        print('\n[i] Pi-hole is currently running.\n')
         print('[i] Make sure to star this repository to show your support! It helps keep me motivated!')
-        print('[i] https://github.com/slyfox1186/pihole.regex')
-        print('\n')
+        print('[i] https://github.com/slyfox1186/pihole.regex\n')
 
 else:
 
@@ -369,11 +365,8 @@ else:
             fWrite.write("{}\n" .format(line))
 
     print('[i] The Exact Blacklist filters were added to Pi-Hole.\n')
-    print('[i] Please wait for the Pi-hole server to restart.')
+    print('[i] Please wait for the Pi-hole server to restart.\n')
     restart_pihole(args.docker)
-    print('\n')
-    print('[i] Pi-hole is currently running.')
-    print('\n')
+    print('[i] Pi-hole is currently running.\n')
     print('[i] Make sure to star this repository to show your support! It helps keep me motivated!')
-    print('[i] https://github.com/slyfox1186/pihole.regex')
-    print('\n')
+    print('[i] https://github.com/slyfox1186/pihole.regex\n')
