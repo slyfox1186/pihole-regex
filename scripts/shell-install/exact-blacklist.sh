@@ -16,4 +16,4 @@ elif [[ $answer == "S" ]]; then
     echo -e "[i] Skipping ahead!\\n"
 fi
 
-read -p 'Press Enter to continue...'
+sleep 2
