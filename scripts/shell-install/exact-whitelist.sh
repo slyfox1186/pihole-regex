@@ -2,7 +2,7 @@
 
 # Get user's input
 clear
-echo -e "[i] Exact Whitelist: [A]dd [R]emove [S]kip"
+echo '[i] Exact Whitelist: [A]dd [R]emove [S]kip'
 read answer
 clear
 if [[ $answer == "A" ]]; then
@@ -15,6 +15,7 @@ elif [[ $answer == "S" ]]; then
     clear
     echo -e "[i] Skipping ahead!\\n"
     sleep 3
+    . regex-blacklist.sh
     exit 0
 fi
 
