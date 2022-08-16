@@ -173,15 +173,11 @@ if db_exists:
     if os.path.exists(path_legacy_slyfox1186_regex):
         os.remove(path_legacy_slyfox1186_regex)
 
-    print('[i] The RegEx Whitelist filters were added to Pi-Hole.\n')
     print('[i] Please wait for the Pi-hole server to restart.')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
-    print('[i] The Pi-hole server is running.\n')
-    print("[i] Domains have been added to the Pi-Hole's Whitelist.")
-    print('\n')
-    print('[i] Make sure to star this repository to show your support! It helps keep me motivated!')
-    print('[i] https://github.com/slyfox1186/pihole.regex\n')
-    print('[i] Please see the installed regex strings below.\n')
+    print('[i] The RegEx Whitelist filters were added to Gravity.\n')
+    print('Please make sure to star this repository to show support... it helps keep me motivated!')
+    print('https://github.com/slyfox1186/pihole.regex\n')
 
     c.execute('Select domain FROM domainlist WHERE type = 2')
     final_results = c.fetchall()
@@ -228,13 +224,11 @@ else:
             fWrite.write(f'{line}\n')
 
     print('[i] Please wait for the Pi-hole server to restart.')
-    subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
+    restart_pihole(args.docker)
     print('[i] The Pi-hole server is running.\n')
-    print("[i] Domains have been added to the Pi-Hole's Whitelist.")
-    print('\n')
-    print('[i] Make sure to star this repository to show your support! It helps keep me motivated!')
-    print('[i] https://github.com/slyfox1186/pihole.regex\n')
-    print('[i] Please see the installed regex strings below.\n')
+    print('[i] The Exact Blacklist filters were added to Gravity!\n')
+    print('Please make sure to star this repository to show support... it helps keep me motivated!')
+    print('https://github.com/slyfox1186/pihole.regex\n')
     
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
