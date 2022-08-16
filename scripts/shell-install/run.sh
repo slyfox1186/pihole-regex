@@ -14,19 +14,19 @@ if [ -f index.html ]; then
 fi
 
 # Create: $FILE_DIR directory if not exist
-if [ -d pihole.regex ]; then
-    rm -R 'pihole.regex'
+if [ -d $FILE_DIR ]; then
+    rm -R "$FILE_DIR"
 else
-    mkdir -p 'pihole.regex'
+    mkdir -p "$FILE_DIR"
 fi
 
 # Verify: If files exist move them to $HOME/pihole.regex
-SHELL_FILES='exact-blacklist exact-whitelist regex-blacklist regex-whitelist'
-FILES=($SHELL_FILES.sh run.sh)
+SHELL_FILES='exact-blacklist.sh exact-whitelist.sh regex-blacklist.sh regex-whitelist.sh'
+FILES=($SHELL_FILES run.sh)
 
 for i in ${FILES[@]}; do
-  if [ -f $i ]; then
-      mv -f "$i" "$FILE_DIR/$i" &>/dev/null
+  if [ -f $HOME/$i ]; then
+      mv -f "$HOME/$i" "$FILE_DIR/$i"
   fi
 done
 
