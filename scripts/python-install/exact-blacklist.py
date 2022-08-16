@@ -170,7 +170,7 @@ if db_exists:
             time.sleep(2)
             print('[i] Please wait for the Pi-hole server to restart...\n')
             restart_pihole(args.docker)
-            print('[i] The Exact Blacklist Filters have been successfully added to Gravity!\n')
+            print('[i] The Exact Blacklist filters have been successfully added to Gravity!\n')
             print('Please make sure to star this repository to show support... it helps keep me motivated!')
             print('https://github.com/slyfox1186/pihole.regex\n')
 
@@ -206,8 +206,10 @@ else:
         for line in sorted(whitelist_local):
             fWrite.write("{}\n".format(line))
 
-    print('[i] Please wait for the Pi-hole server to restart.')
+    print("[i] The connection to the Gravity database has closed.\n")
+    time.sleep(2)
+    print('[i] Please wait for the Pi-hole server to restart...\n')
     restart_pihole(args.docker)
-    print('[i] The Exact Blacklist Filters have been successfully added to Gravity!\n')
+    print('[i] The Exact Blacklist filters have been successfully added to Gravity!\n')
     print('Please make sure to star this repository to show support... it helps keep me motivated!')
     print('https://github.com/slyfox1186/pihole.regex\n')
