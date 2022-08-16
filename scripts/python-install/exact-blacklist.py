@@ -84,7 +84,7 @@ print('\n')
 
 # Check for pihole path exsists
 if os.path.exists(pihole_location):
-    print('[i] Pi-hole path exists')
+    print('[i] Pi-hole path exists...')
 else:
     # print(f'[X] {pihole_location} was not found')
     print("[X] {} was not found" .format(pihole_location))
@@ -98,7 +98,7 @@ if os.access(pihole_location, os.X_OK | os.W_OK):
     remote_blacklist_lines = blacklist_str.count('\n')
     remote_blacklist_lines += 1
 else:
-    print("[X] Write access is not available for {}. Please run as root or other privileged user" .format(
+    print("[X] Write access is not available for {}. Please run as root or other privileged user." .format(
         pihole_location))
     print('\n')
     exit(1)
@@ -116,8 +116,7 @@ if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) 
         print("[i] {} domains and {} SQL queries discovered." .format(
             remote_blacklist_lines, remote_sql_lines))
     else:
-        print('[X] No remote SQL queries found.')
-        print('\n')
+        print('[X] No remote SQL queries found.\n')
         exit(1)
 else:
     print('[i] Legacy Pi-hole detected (Version older than 5.0)')
@@ -127,8 +126,7 @@ if blacklist_str:
     blacklist_remote.update(x for x in map(
         str.strip, blacklist_str.splitlines()) if x and x[:1] != '#')
 else:
-    print('[X] No remote domains were found.')
-    print('\n')
+    print('[X] No remote domains were found.\n')
     exit(1)
 
 if db_exists:
@@ -142,10 +140,10 @@ if db_exists:
         # Check Gravity database for domains added by script
         GravityScript_before = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 AND comment LIKE '%SlyEBL%' ")
         # Fetch all matching entries which will create a tuple for us
-        GravScript_BeforeTUP = GravityScript_before.fetchall()
+        gravscript_BeforeTUP = GravityScript_before.fetchall()
         # Number of domains in database from script
-        GravScript_BeforeTUPlen = len(GravScript_BeforeTUP)
-        print("[i] {} Domains from script in Blacklist already." .format(GravScript_BeforeTUPlen))
+        gravscript_BeforeTUPlen = len(gravscript_BeforeTUP)
+        print("[i] {} Domains from script in Blacklist already." .format(gravscript_BeforeTUPlen))
         #
         # make `remote_sql_str` a tuple so we can easily compare
         NewblackTUP = remote_sql_str.split('\n')
@@ -181,7 +179,7 @@ if db_exists:
         uA = 0 # used to count User added domains in our script
         uagl = False
         for User_AddInGravity in User_AddTUP: # for every Blacklisted domain we found in the database do:
-           if User_AddInGravity[2] in NewblackList: # if the domain we found added by user IS IN our New list count it
+           if User_AddInGravity[2] in NewblackList: # if the domain we found added by user IS IN our new list count it
                User_AddList[uA] = User_AddInGravity[2] # add the domain we found to the list we created
                uagl = True
                uA += 1 # bump count if domain added (starts @ 0)
@@ -190,40 +188,41 @@ if db_exists:
         InGravityUser_AddListCount = uA # save our count here so we know how many we have later
         # Make us aware of User added domains that are also in our script
         if uagl == True: # if we found user added domains from our list in Gravity do:
-            print('[i] {} domain(s) added by the user that would be added by script.\n' .format(InGravityUser_AddListCount+1)) # we have to add 1 for humans cause count starts @ 0
+            print("[i] {} domain(s) added by the user that would be added by script." .format(InGravityUser_AddListCount+1)) # we have to add 1 for humans cause count starts @ 0
             a = 0
             while uA >= 0: # remember that counter now we make it go backwards to 0
                 a += 1 # counter for number output to screen
-                print('    {}. {}' .format(a, User_AddList[uA])) # Show us what we found
+                print("    {}. {}" .format(a, User_AddList[uA])) # Show us what we found
                 uA -= 1 # go backwards
         else: # If we don't find any
             InGravityUser_AddListCount = 0 # make sure this is 0
-            print('[i] Found {} domains added by the user that would be added by script.' .format(InGravityUser_AddListCount)) # notify of negative result
+            print("[i] Found {} domains added by the user that would be added by script." .format(InGravityUser_AddListCount)) # notify of negative result
         #
         #
-        # Check Gravity database for domains added by script that are not in New script
-        InGravityNotNewList = [None] * GravScript_BeforeTUPlen # create a list that has the same size as the tuple is it compared to
-        GravScript_BeforeList = [None] * GravScript_BeforeTUPlen
+        # Check Gravity database for domains added by script that are not in new script
+        InGravityNotNewList = [None] * gravscript_BeforeTUPlen # create a list that has the same size as the tuple is it compared to
+        gravscript_BeforeList = [None] * gravscript_BeforeTUPlen
         z = 0
         if uagl == True:
             print('\n')
         
-        print('[i] Checking Gravity for domains previously added by script that are NOT in New script.')
+        print('[i] Checking Gravity for domains previously added by script that are NOT in new script.')
         ignl = False
         a = 0
-        for InGravityNotNew in GravScript_BeforeTUP: # for every domain previously added by script
-            GravScript_BeforeList[a] = InGravityNotNew[2] # take domains from Gravity and put them in a list for later
+        for InGravityNotNew in gravscript_BeforeTUP: # for every domain previously added by script
+            gravscript_BeforeList[a] = InGravityNotNew[2] # take domains from Gravity and put them in a list for later
             a += 1
-            if not InGravityNotNew[2] in NewblackList: # make sure it is not in New script
+            if not InGravityNotNew[2] in NewblackList: # make sure it is not in new script
                InGravityNotNewList[z] = InGravityNotNew # add not found to list for later
                ignl = True
                z += 1
         #
         z -= 1
         InGravityNotNewListCount = z
-        # If In Gravity because of script but NOT in the New list Prompt for removal
+        # If In Gravity because of script but NOT in the new list Prompt for removal
         if ignl == True:
-            print('[i] {} domain(s) added previously by script that are not in New script.\n' .format(InGravityNotNewListCount+1))
+            print("[i] {} domain(s) added previously by script that are not in new script." .format(InGravityNotNewListCount+1))
+            print('\n')
             a = 0
             while z >= 0:
                 a += 1
@@ -240,7 +239,7 @@ if db_exists:
             print('[i] Found {} domain(s) added previously by script that are not in script.' .format(InGravityNotNewListCount))
         #
         #
-        # Check Gravity database for New domains to be added by script
+        # Check Gravity database for new domains to be added by script
         InNew_NotGravityList = [None] * NewblackListlen
         w = 0
         if ignl == True:
@@ -248,23 +247,24 @@ if db_exists:
         #
         print('[i] Checking script for domains not in Gravity.')
         ilng = False
-        for InNew_NotGravity in NewblackList: # for every domain in the New script
-            if not InNew_NotGravity in GravScript_BeforeList and not InNew_NotGravity in User_AddList: # make sure it is not in Gravity or added by user
+        for InNew_NotGravity in NewblackList: # for every domain in the new script
+            if not InNew_NotGravity in gravscript_BeforeList and not InNew_NotGravity in User_AddList: # make sure it is not in Gravity or added by user
                 InNew_NotGravityList[w] = InNew_NotGravity # add domain to list we created
                 ilng = True
                 w += 1
         #
         w -= 1
         InNew_NotGravityListCount = w
-        # If there are domains in New list that are NOT in Gravity
-        if ilng == True: # add domains that are missing from New script and not user additions
-            print('[i] {} domain(s) NOT in Gravity that are in New script.\n' .format(InNew_NotGravityListCount+1))
+        # If there are domains in new list that are NOT in Gravity
+        if ilng == True: # add domains that are missing from new script and not user additions
+            print("[i] {} domain(s) NOT in Gravity that are in new script." .format(InNew_NotGravityListCount+1))
+            print('\n')
             a = 0
             while w >= 0:
                 a += 1
                 for addNewblackDomain in NewblackList:
                     if addNewblackDomain in InNew_NotGravityList:
-                        print('    - adding {}' .format(AddNewblackDomain))
+                        print("    - adding {}" .format(AddNewblackDomain))
                         # print(AddNewblackDomain)
                         sql_index = NewblackList.index(AddNewblackDomain)
                         # print(sql_index)
@@ -274,35 +274,35 @@ if db_exists:
                         cursor.executescript(sql_add)
                         w -= 1
             # Re-Check Gravity database for domains added by script after we update it
-            GravityScript_After = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 AND comment LIKE '%SlyEBL%' ")
+            GravityScript_after = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 AND comment LIKE '%SlyEBL%' ")
             # Fetch all matching entries which will create a tuple for us
-            GravScript_AfterTUP = GravityScript_After.fetchall()
+            gravscript_afterTUP = GravityScript_after.fetchall()
             # Number of domains in database from script
-            GravScript_AfterTUPlen = len(GravScript_AfterTUP)
+            gravscript_afterTUPlen = len(gravscript_afterTUP)
 
             gsa = False
-            ASG = InNew_NotGravityListCount
-            ASGCOUNT = 0
-            GravScript_AfterList = [None] * GravScript_AfterTUPlen
+            asg = InNew_NotGravityListCount
+            asgCOUNT = 0
+            gravscript_afterList = [None] * gravscript_afterTUPlen
 
             print('[i] Checking Gravity for domains added by other methods.')
 
-            for GravScript_AfterDomain in GravScript_AfterTUP:
-                GravScript_AfterList[ASGCOUNT] = GravScript_AfterTUP[ASGCOUNT][2]
-                ASGCOUNT += 1
+            for gravscript_afterdomain in gravscript_afterTUP:
+                gravscript_afterList[asgCOUNT] = gravscript_afterTUP[asgCOUNT][2]
+                asgCOUNT += 1
 
-            while ASG >= 0:
-                if InNew_NotGravityList[ASG] in GravScript_AfterList:
-                    print('    - Found  {} ' .format(InNew_NotGravityList[ASG]))
+            while asg >= 0:
+                if InNew_NotGravityList[asg] in gravscript_afterList:
+                    print("    - Found  {} " .format(InNew_NotGravityList[asg]))
                     gsa = True
-                ASG = ASG - 1
+                    asg = asg - 1
 
             if gsa == True:
                 # All domains are accounted for.
                 print("[i] All {} domains to be added by script have been discovered in Gravity." .format(NewblackListlen))
 
             else:
-                print("\n[i] All {} New domain(s) have not been added to Gravity." .format(InNew_NotGravityListCount+1))
+                print("\n[i] All {} new domain(s) have not been added to Gravity." .format(InNew_NotGravityListCount+1))
 
         else: # We should be done now
             # Do Nothing and exit. All domains are accounted for.
