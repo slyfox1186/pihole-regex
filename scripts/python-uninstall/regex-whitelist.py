@@ -1,32 +1,31 @@
 #!/usr/bin/env python3
 
+import json
 import os
-import argparse
 import sqlite3
-import subprocess
+import time
+import subprocess, platform
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
-import time
 
-today = int(time.time())
 
-def fetch_whitelist_url(url):
+def fetch_url(url):
 
     if not url:
         return
 
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0'}
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36'}
+
+    print('[i] Fetching:', url)
 
     try:
         response = urlopen(Request(url, headers=headers))
     except HTTPError as e:
-        print('[X] HTTP Error:', e.code, 'whilst fetching', url)
-        print('\n')
-        exit(1)
+        print('[E] HTTP Error:', e.code, 'whilst fetching', url)
+        return
     except URLError as e:
-        print('[X] URL Error:', e.reason, 'whilst fetching', url)
-        print('\n')
-        exit(1)
+        print('[E] URL Error:', e.reason, 'whilst fetching', url)
+        return
 
     # Read and decode
     response = response.read().decode('UTF-8').replace('\r\n', '\n')
@@ -34,194 +33,175 @@ def fetch_whitelist_url(url):
     # If there is data
     if response:
         # Strip leading and trailing whitespace
-        response = '\n'.join(x.strip() for x in response.splitlines())
+        response = '\n'.join(x for x in map(str.strip, response.splitlines()))
 
     # Return the hosts
     return response
 
 
-def dir_path(string):
-    if os.path.isdir(string):
-        return string
-    else:
-        raise NotADirectoryError(string)
+url_regstrings_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/whitelist/regex-whitelist.txt'
+install_comment = 'SlyRWL'
 
-
-def restart_pihole(docker):
-    if docker is True:
-        subprocess.call("docker exec -it pihole pihole restartdns reload",
-                        shell=True, stdout=subprocess.DEVNULL)
-    else:
-        subprocess.call(['pihole', 'restartdns', 'reload'],
-                        stdout=subprocess.DEVNULL)
-
-
-parser = argparse.ArgumentParser()
-parser.add_argument("-d", "--dir", type=dir_path,
-                    help="optional: Pi-hole etc directory")
-parser.add_argument(
-    "-D", "--docker",  action='store_true', help="optional: set if you're using Pi-hole in Docker environment")
-args = parser.parse_args()
-
-if args.dir:
-    pihole_location = args.dir
-else:
-    pihole_location = r'/etc/pihole'
-
-
-whitelist_remote_url = 'https://raw.githubusercontent.com/slyfox1186ND/whitelist/master/domains/whitelist.txt'
-remote_sql_url = 'https://raw.githubusercontent.com/slyfox1186ND/whitelist/master/scripts/domains.sql'
-gravity_whitelist_location = os.path.join(pihole_location, 'whitelist.txt')
-gravity_db_location = os.path.join(pihole_location, 'gravity.db')
-slyfox1186_whitelist_location = os.path.join(
-    pihole_location, 'slyfox1186-whitelist.txt')
+cmd_restart = ['pihole', 'restartdns', 'reload']
 
 db_exists = False
-sqliteConnection = None
-cursor = None
+conn = None
+c = None
 
-whitelist_remote = set()
-whitelist_local = set()
-whitelist_slyfox1186_local = set()
-whitelist_old_slyfox1186 = set()
+regstrings_remote = set()
+regstrings_local = set()
+regstrings_slyfox1186_local = set()
+regstrings_legacy_slyfox1186 = set()
+regstrings_remove = set()
 
-os.system('clear')
-print('\n')
-print('''
-If you are using Pi-hole 5.0 or later, then this script will remove the domains which are only added by my script. 
-Any other domains added by you will stay as it is. 
-''')
-print('\n')
+# Start the docker directory override
+print('[i] Checking if Pi-hole is running inside a docker container.')
 
-# Check for pihole path exsists
-if os.path.exists(pihole_location):
-    print('[i] Pi-hole path exists')
+# Initialise the docker variables
+docker_id = None
+docker_mnt = None
+docker_mnt_src = None
+
+# Check to see whether the default "pihole" docker container is active
+try:
+    docker_id = subprocess.run(['docker', 'ps', '--filter', 'name=pihole', '-q'],
+                               stdout=subprocess.PIPE, universal_newlines=True).stdout.strip()
+# Exception for if docker is not installed
+except FileNotFoundError:
+    pass
+
+# If a pihole docker container was found, locate the first mount
+if docker_id:
+    docker_mnt = subprocess.run(['docker', 'inspect', '--format', '{{ (json .Mounts) }}', docker_id],
+                                stdout=subprocess.PIPE, universal_newlines=True).stdout.strip()
+    # Convert output to JSON and iterate through each dict
+    for json_dict in json.loads(docker_mnt):
+        # If this mount's destination is /etc/pihole
+        if json_dict['Destination'] == r'/etc/pihole':
+            # Use the source path as our target
+            docker_mnt_src = json_dict['Source']
+            break
+
+    # If we successfully found the mount
+    if docker_mnt_src:
+        print('[i] Pi-hole is running through docker.')
+        # Prepend restart commands
+        cmd_restart[0:0] = ['docker', 'exec', '-i', 'pihole']
 else:
-    print("[X] {} was not found".format(pihole_location))
-    print('\n')
+    print('[i] Running in physical installation mode.')
+
+# Set paths
+path_pihole = docker_mnt_src if docker_mnt_src else r'/etc/pihole'
+path_legacy_regex = os.path.join(path_pihole, 'regex.list')
+path_legacy_slyfox1186_regex = os.path.join(path_pihole, 'slyfox1186-regex.list')
+path_pihole_db = os.path.join(path_pihole, 'gravity.db')
+
+# Check that Pi-hole path exists
+if os.path.exists(path_pihole):
+    print("[i] Pi-hole's file path has been found!")
+else:
+    print(f'[e] {path_pihole} was not found.')
     exit(1)
 
 # Check for write access to /etc/pihole
-if os.access(pihole_location, os.X_OK | os.W_OK):
-    print("[i] Write access to {} verified" .format(pihole_location))
-    whitelist_str = fetch_whitelist_url(whitelist_remote_url)
-    remote_whitelist_lines = whitelist_str.count('\n')
-    remote_whitelist_lines += 1
+if os.access(path_pihole, os.X_OK | os.W_OK):
+    print(f'[i] Write access enabled for: {path_pihole}.')
 else:
-    print("[X] Write access is not available for {}. Please run as root or other privileged user" .format(
-        pihole_location))
-    print('\n')
+    print(f'[e] Write access disabled for {path_pihole}. Re-run the script as a privileged user.')
     exit(1)
 
 # Determine whether we are using DB or not
-if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) > 0:
+if os.path.isfile(path_pihole_db) and os.path.getsize(path_pihole_db) > 0:
     db_exists = True
-    print('[i] Pi-Hole Gravity database found')
-
-    remote_sql_str = fetch_whitelist_url(remote_sql_url)
-    remote_sql_lines = remote_sql_str.count('\n')
-    remote_sql_lines += 1
-
-    if len(remote_sql_str) > 0:
-        print("[i] {} domains discovered" .format(remote_whitelist_lines))
-    else:
-        print('[X] No remote SQL queries found')
-        print('\n')
-        exit(1)
+    print('[i] Gravity database detected.')
 else:
-    print('[i] Legacy Pi-hole detected (Version older than 5.0)')
+    print('[i] Legacy regex.list detected.')
 
-if whitelist_str:
-    whitelist_remote.update(x for x in map(
-        str.strip, whitelist_str.splitlines()) if x and x[:1] != '#')
+# Fetch the remote regstrings
+str_regstrings_remote = fetch_url(url_regstrings_remote)
+
+# If regstrings were fetched, remove any comments and add to set
+if str_regstrings_remote:
+    regstrings_remote.update(x for x in map(str.strip, str_regstrings_remote.splitlines()) if x and x[:1] != '#')
+    print(f'[i] {len(regstrings_remote)} regstrings collected from {url_regstrings_remote}')
 else:
-    print('[X] No remote domains were found.')
-    print('\n')
+    print('[i] No remote regstrings were found.')
     exit(1)
 
 if db_exists:
     # Create a DB connection
-    print('[i] Connecting to Gravity database')
+    print(f'[i] Connecting to {path_pihole_db}')
 
     try:
-        sqliteConnection = sqlite3.connect(gravity_db_location)
-        cursor = sqliteConnection.cursor()
-        print('[i] Successfully Connected to Gravity database')
-        total_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 2 AND comment LIKE '%qjz9zk%' ")
-        
-        totalDomains = len(total_domains.fetchall())
-        print("[i] There are a total of {} domains in your whitelist which are added by my script" .format(totalDomains))
-        print('[i] Removing domains in the Gravity database')
-        cursor.execute (" DELETE FROM domainlist WHERE type = 2 AND comment LIKE '%qjz9zk%' ")
-
-        sqliteConnection.commit()
-
-        # we only removed domains we added so use total_domains
-        print("[i] {} domains are removed" .format(totalDomains))
-        remaining_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 2 OR type = 2 ")
-        print("[i] There are a total of {} domains remaining in your whitelist" .format(len(remaining_domains.fetchall())))
-
-        cursor.close()
-
-    except sqlite3.Error as error:
-        print('[X] Failed to remove domains from Gravity database', error)
-        print('\n')
-        print('\n')
+        conn = sqlite3.connect(path_pihole_db)
+    except sqlite3.Error as e:
+        print(e)
         exit(1)
 
-    finally:
-        if (sqliteConnection):
-            sqliteConnection.close()
+    # Create a cursor object
+    c = conn.cursor()
 
-            print('[i] The database connection is closed...')
-            print('[i] Please wait for the Pi-hole server to restart.\n')
-            restart_pihole(args.docker)
-            print('[i] The Pi-hole server is running.\n')
-            print("[i] Domains have been removed from the Pi-Hole's Whitelist.")
-            print('\n')
-            print('[i] Make sure to star this repository to show your support! It helps keep me motivated!')
-            print('[i] https://github.com/slyfox1186/pihole.regex\n')
-            print('[i] Please see the installed regex strings below.\n')
+    # Identify and remove regstrings
+    print("[i] Removing slyfox1186's regstrings")
+
+    c.executemany('DELETE FROM domainlist '
+                  'WHERE type = 2 '
+                  'AND (domain in (?) OR comment = ?)',
+                  [(x, install_comment) for x in regstrings_remote])
+
+    conn.commit()
+
+    print('[i] Pi-hole is restarting... wait for it to reboot before exiting.')
+    subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
+
+    # Prepare final result
+    print("[i] Pi-hole is running. Continue executing the script.\n")
+    c.execute('Select domain FROM domainlist WHERE type = 2')
+    final_results = c.fetchall()
+    regstrings_local.update(x[0] for x in final_results)
+
+    print(*sorted(regstrings_local), sep='\n')
+
+    conn.close()
 
 else:
-    if os.path.isfile(gravity_whitelist_location) and os.path.getsize(gravity_whitelist_location) > 0:
-        with open(gravity_whitelist_location, 'r') as fRead:
-            whitelist_local.update(x for x in map(
-                str.strip, fRead) if x and x[:1] != '#')
+    # If regex.list exists and is not empty, read it and add to a set.
+    if os.path.isfile(path_legacy_regex) and os.path.getsize(path_legacy_regex) > 0:
+        print('[i] Analyzing the current regex.list')
+        with open(path_legacy_regex, 'r') as fRead:
+            regstrings_local.update(x for x in map(str.strip, fRead) if x and x[:1] != '#')
 
-    if whitelist_local:
-        print("[i] {} existing whitelisted domains identified" .format(
-            len(whitelist_local)))
+    # If the local regexp set is not empty
+    if regstrings_local:
+        print(f'[i] {len(regstrings_local)} existing regstrings identified')
+        # If we have a record of a previous legacy install
+        if os.path.isfile(path_legacy_slyfox1186_regex) and os.path.getsize(path_legacy_slyfox1186_regex) > 0:
+            print('[i] An existing slyfox1186-regex installation was found.')
+            # Read the previously installed regstrings to a set
+            with open(path_legacy_slyfox1186_regex, 'r') as fOpen:
+                regstrings_legacy_slyfox1186.update(x for x in map(str.strip, fOpen) if x and x[:1] != '#')
 
-        if os.path.isfile(slyfox1186_whitelist_location) and os.path.getsize(slyfox1186_whitelist_location) > 0:
-            print('[i] Existing slyfox1186-whitelist install identified')
-            with open(slyfox1186_whitelist_location, 'r') as fOpen:
-                whitelist_old_slyfox1186.update(x for x in map(
-                    str.strip, fOpen) if x and x[:1] != '#')
+                if regstrings_legacy_slyfox1186:
+                    print(f'[i] The script is removing regstrings found in {path_legacy_slyfox1186_regex}')
+                    regstrings_local.difference_update(regstrings_legacy_slyfox1186)
 
-                if whitelist_old_slyfox1186:
-                    whitelist_local.difference_update(whitelist_old_slyfox1186)
-
-            os.remove(slyfox1186_whitelist_location)
-
+            # Remove slyfox1186-regex.list as it will no longer be required
+            os.remove(path_legacy_slyfox1186_regex)
         else:
-            print('[i] Removing domains that match the remote repo')
-            whitelist_local.difference_update(whitelist_remote)
+            print('[i] Removing the regstrings that have a match in the remote repository')
+            regstrings_local.difference_update(regstrings_remote)
 
-    print("[i] Adding exsisting {} domains to {}" .format(
-        len(whitelist_local), gravity_whitelist_location))
-    with open(gravity_whitelist_location, 'w') as fWrite:
-        for line in sorted(whitelist_local):
-            fWrite.write("{}\n".format(line))
+    # Output to regex.list
+    print(f'[i] Outputting {len(regstrings_local)} regstrings to {path_legacy_regex}')
+    with open(path_legacy_regex, 'w') as fWrite:
+        for line in sorted(regstrings_local):
+            fWrite.write(f'{line}\n')
 
-    print('[i] The RegEx Whitelist filters were removed from Pi-Hole.\n')
-    print('[i] Please wait for the Pi-hole server to restart.')
-    restart_pihole(args.docker)
-    print('[i] The Pi-hole server is running.')
-    print('\n')
-    print("[i] Domains have been removed from the Pi-Hole's Whitelist.")
-    print('\n')
-    print('[i] Make sure to star this repository to show your support! It helps keep me motivated!')
-    print('[i] https://github.com/slyfox1186/pihole.regex')
-    print('\n')
-    print('[i] Please see the installed regex strings below.\n')
+    print('[i] Pi-hole must restart... please wait for it to boot.')
+    subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
+
+    # Prepare final result
+    print("[i] Pi-hole is now running! Script complete!\n")
+    with open(path_legacy_regex, 'r') as fOpen:
+        for line in fOpen:
+            print(line, end='')
