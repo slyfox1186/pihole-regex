@@ -214,6 +214,7 @@ else:
         for line in sorted(whitelist_local):
             fWrite.write("{}\n".format(line))
 
+    print('[i] The RegEx Whitelist filters were removed from Pi-Hole.\n')
     print('[i] Please wait for the Pi-hole server to restart.')
     restart_pihole(args.docker)
     print('[i] The Pi-hole server is running.')
