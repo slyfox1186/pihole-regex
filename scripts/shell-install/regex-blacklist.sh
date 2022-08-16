@@ -16,4 +16,4 @@ elif [[ $answer == "S" ]]; then
     echo -e "[i] Finishing up!\\n"
 fi
 
-read -t 3 -p "Press Enter to exit..."
+sleep 2
