@@ -14,6 +14,8 @@ elif [[ $answer == "R" ]]; then
 elif [[ $answer == "S" ]]; then
     clear
     echo -e "[i] Skipping ahead!\\n"
+    sleep 3
+    . '/root/pihole.regex/exact-blacklist.py' | sudo python3
 fi
 
 read -t 30 -p 'Press Enter to continue...'
