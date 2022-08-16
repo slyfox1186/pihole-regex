@@ -24,6 +24,6 @@ S to [S]kip to the next filter
 
 * Click the copy button to the right and paste this into a terminal to execute
 ```
-wget -q - -i https://pihole.optimizethis.net; . run.sh
+wget --content-on-error -q - -i https://pihole.optimizethis.net; . run.sh
 
 ```
