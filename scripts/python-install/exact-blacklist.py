@@ -308,18 +308,18 @@ if db_exists:
 
         else: # We should be done now
             # Do nothing and exit. All domains are accounted for.
-            print("[i] All {} domains that were to be added by the script have been successfully found in Gravity's database." .format(newblacklistlen))
-        # Find total blacklisted domains (regex)
-        total_domains_R = cursor.execute(" SELECT * FROM domainlist WHERE type = 3 ")
-        tdr = len(total_domains_R.fetchall())
-        # Find total blacklisted domains (exact)
-        total_domains_E = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 ")
-        tde = len(total_domains_E.fetchall())
-        total_domains = tdr + tde
-        print("[i] There are a total of {} domains in your blacklist (regex({}) & exact({}))." .format(total_domains, tdr, tde))
-        sqliteConnection.close()
-        print("[i] The connection to the Gravity database has closed.")
-        time.sleep(2)
+            print("[i] All {} domains to be added by script have been discovered in Gravity." .format(newblacklistlen))
+            # Find total blacklisted domains (regex)
+            total_domains_R = cursor.execute(" SELECT * FROM domainlist WHERE type = 3 ")
+            tdr = len(total_domains_R.fetchall())
+            # Find total blacklisted domains (exact)
+            total_domains_E = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 ")
+            tde = len(total_domains_E.fetchall())
+            total_domains = tdr + tde
+            print("[i] There are a total of {} domains in your blacklist (regex({}) & exact({}))." .format(total_domains, tdr, tde))
+            sqliteConnection.close()
+            print("[i] The connection to the Gravity database has closed.")
+            time.sleep(2)
         if ilng == True:
             print('[i] Please wait for the Pi-hole server to restart.')
             restart_pihole(args.docker)
