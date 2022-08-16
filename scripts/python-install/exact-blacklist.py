@@ -81,7 +81,7 @@ blacklist_old_slyfox1186 = set()
 
 os.system('clear')
 print('\n')
-print("This script will attempt to add the Exact Blacklist Domains to Gravity's database.")
+print("Add the Exact Blacklist filters to Gravity's database.")
 print('\n')
 
 # Check if the pihole path exists
@@ -113,14 +113,14 @@ if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) 
     remote_sql_lines += 1
 
     if len(remote_sql_str) > 0:
-        print("[i] {} domains and {} SQL queries discovered" .format(
+        print("[i] {} domains and {} SQL queries discovered." .format(
             remote_blacklist_lines, remote_sql_lines))
     else:
         print('[X] No remote SQL queries found.')
         print('\n')
         exit(1)
 else:
-    print('[i] Legacy Pi-hole detected (Version older than 5.0).')
+    print('[i] Legacy Pi-hole version detected (version older than 5.0).')
 
 # If domains were fetched, remove any comments and add to set
 if blacklist_str:
@@ -138,7 +138,7 @@ if db_exists:
     try: # Try to create a DB connection
         sqliteConnection = sqlite3.connect(gravity_db_location)
         cursor = sqliteConnection.cursor()
-        print('[i] Successfully connected to Gravity.')
+        print('[i] Successfully connected to the Gravity database.')
         #
         print('[i] Checking Gravity for domains added by script.')
         # Check Gravity database for domains added by script
@@ -260,7 +260,7 @@ if db_exists:
         INnewNOTgravityListCount = w
         # If there are domains in new list that are NOT in Gravity
         if ilng == True: # Add domains that are missing from new script and not user additions
-            print("[i] There are {} domain's NOT in Gravity that are in the new scripts.\n" .format(INnewNOTgravityListCount+1))
+            print("[i] There are {} domain's NOT in Gravity that are in the new script.\n" .format(INnewNOTgravityListCount+1))
             a = 0
             while w >= 0:
                 a += 1
