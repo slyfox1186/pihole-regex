@@ -85,11 +85,11 @@ if docker_id:
 
     # If we successfully found the mount
     if docker_mnt_src:
-        print('[i] Running in docker installation mode')
+        print('[i] Running in docker installation mode.')
         # Prepend restart commands
         cmd_restart[0:0] = ['docker', 'exec', '-i', 'pihole']
 else:
-    print('[i] Running in physical installation mode ')
+    print('[i] Running in physical installation mode.')
 
 # Set paths
 path_pihole = docker_mnt_src if docker_mnt_src else r'/etc/pihole'
@@ -114,7 +114,7 @@ else:
 # Determine whether we are using database or not
 if os.path.isfile(path_pihole_db) and os.path.getsize(path_pihole_db) > 0:
     db_exists = True
-    print('[i] database detected.')
+    print("[i] Gravity's database was detected.")
 else:
     print('[i] Legacy regex.list detected.')
 
