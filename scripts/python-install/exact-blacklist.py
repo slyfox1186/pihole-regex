@@ -301,10 +301,10 @@ if db_exists:
 
             if gsa == True:
                 # All domains are accounted for.
-                print("\n[i] All {} missing domains have been accounted for in Gravity's database." .format(newblacklistlen))
+                print("\n[i] All {} missing domains were added to Gravity's database." .format(newWhiteListlen))
 
             else:
-                print("\n[i] All {} new domains have not been added to the Gravity database." .format(INnewNOTgravityListCount+1))
+                print("\n[i] All {} new domains were removed from Gravity's database." .format(INnewNOTgravityListCount+1))
 
         else: # We should be done now
             # Do nothing and exit. All domains are accounted for.
@@ -316,7 +316,7 @@ if db_exists:
         total_domains_E = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 ")
         tde = len(total_domains_E.fetchall())
         total_domains = tdr + tde
-        print("[i] There are a total of {} domains in your blacklist (regex({}) & exact({}))" .format(total_domains, tdr, tde))
+        print("[i] There are a total of {} domains in your blacklist (regex({}) & exact({}))." .format(total_domains, tdr, tde))
         sqliteConnection.close()
         print("[i] The connection to the Gravity database has closed.")
         time.sleep(2)
@@ -359,10 +359,10 @@ else:
                     print('[i] Removing previously installed blacklist.')
                     blacklist_local.difference_update(blacklist_old_slyfox1186)
 
-    print("[i] Syncing with {}" .format(blacklist_remote_url))
+    print("[i] Syncing with {}." .format(blacklist_remote_url))
     blacklist_local.update(blacklist_remote)
 
-    print("[i] Outputting {} domains to {}" .format(
+    print("[i] Outputting {} domains to {}." .format(
         len(blacklist_local), gravity_blacklist_location))
     with open(gravity_blacklist_location, 'w') as fWrite:
         for line in sorted(blacklist_local):
