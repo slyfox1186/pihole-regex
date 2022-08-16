@@ -299,10 +299,12 @@ if db_exists:
 
             if gsa == True:
                 # All domains are accounted for.
-                print("\n[i] All {} missing domains were added to Gravity's database." .format(newWhiteListlen))
+                print('\n')
+                print("[i] All {} missing domains were added to Gravity's database." .format(newWhiteListlen))
 
             else:
-                print("\n[i] All {} new domains were removed from Gravity's database." .format(INnewNOTgravityListCount+1))
+                print('\n')
+                print("[i] All {} new domains were removed from Gravity's database." .format(INnewNOTgravityListCount+1))
 
         else: # We should be done now
             # Do nothing and exit. All domains are accounted for.
