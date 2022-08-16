@@ -138,7 +138,7 @@ if db_exists:
         cursor = sqlite_connection.cursor()
         print('[i] Successfully Connected to Gravity.')
         #
-        print('[i] Checking Gravity for domains added by script.')
+        print('[i] Checking Gravity for domains ' by script.')
         # Check Gravity database for domains added by script
         GravityScript_before = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 AND comment LIKE '%SlyEBL%' ")
         # Fetch all matching entries which will create a tuple for us
