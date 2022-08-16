@@ -117,7 +117,7 @@ if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) 
     remote_sql_lines += 1
 
     if len(remote_sql_str) > 0:
-        print("[i] {} domains and {} SQL queries discovered" .format(
+        print("[i] {} domains and {} SQL queries discovered." .format(
             remote_whitelist_lines, remote_sql_lines))
     else:
         print('[X] No remote SQL queries found.')
@@ -176,7 +176,7 @@ if db_exists:
             print(newWhiteList[nwl])
             nwl += 1 # count + 1
         # Check database for user added exact whitelisted domains
-        print('[i] Checking Gravity for domains added by a user that are also in the script.')
+        print('[i] Checking Gravity for domains added by a user earlier that are also in the script.')
         # Check Gravity database for exact whitelisted domains added by user
         user_add = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment NOT LIKE '%SlyEWL%' ")
         userAddTUP = user_add.fetchall()
