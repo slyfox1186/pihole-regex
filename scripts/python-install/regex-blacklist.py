@@ -99,16 +99,16 @@ path_pihole_db = os.path.join(path_pihole, 'gravity.db')
 
 # Check that pi-hole path exists
 if os.path.exists(path_pihole):
-    print('[i] Pi-hole path exists.')
+    print('[i] Pi-hole path exists...')
 else:
-    print(f'[e] {path_pihole} was not found')
+    print(f'[e] {path_pihole} was not found.')
     exit(1)
 
 # Check for write access to /etc/pihole
 if os.access(path_pihole, os.X_OK | os.W_OK):
-    print(f'[i] Write access to {path_pihole} verified')
+    print(f'[i] Write access to {path_pihole} verified.')
 else:
-    print(f'[e] Write access is not available for {path_pihole}. Please run as root or other privileged user')
+    print(f'[e] Write access is not available for {path_pihole}. Please run as root or other privileged user.')
     exit(1)
 
 # Determine whether we are using database or not
@@ -131,7 +131,7 @@ else:
 
 if db_exists:
     # Create a database connection
-    print(f'[i] Connecting to {path_pihole_db}')
+    print(f'[i] Connecting to {path_pihole_db}.')
 
     try:
         conn = sqlite3.connect(path_pihole_db)
@@ -180,8 +180,6 @@ if db_exists:
     print('[i] Make sure to star this repository to show your support! It helps keep me motivated!')
     print('[i] https://github.com/slyfox1186/pihole.regex')
     print('\n')
-
-    # Prepare final result
     print('[i] Done - Please see your installed regex strings below.\n')
 
     c.execute('Select domain FROM domainlist WHERE type = 2')
