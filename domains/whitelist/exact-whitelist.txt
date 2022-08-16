@@ -132,6 +132,7 @@ cms.souqcdn.com
 code.bildstatic.de
 codepush.teams.microsoft.com
 cognito-identity.us
+color.adobe.com
 config.fp.measure.office.com
 config.teams.microsoft.com
 configuration.apple.com
