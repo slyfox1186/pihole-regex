@@ -2,7 +2,7 @@
 
 # Get user's input
 clear
-echo -e "Exact Blacklist Filters: [A]dd [R]emove [S]kip"
+echo -e "[i] Exact Blacklist Filters: [A]dd [R]emove [S]kip"
 read a
 clear
 if [[ $a == "A" ]]; then
@@ -13,7 +13,7 @@ elif [[ $a == "R" ]]; then
     echo -e "[i] The Exact Blacklist Filters have been removed.\\n\\n"
 elif [[ $a == "S" ]]; then
     clear
-    echo -e "Skipping ahead!\\n"
+    echo -e "[i] Skipping ahead!\\n"
 fi
 
-sleep 1
+sleep 2
