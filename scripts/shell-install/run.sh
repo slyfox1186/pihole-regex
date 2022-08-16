@@ -7,7 +7,6 @@ shopt -s nocasematch
 
 # Set directory variable
 FILE_DIR="/root/pihole.regex"
-pushd $FILE_DIR; clear
 
 # Delete: The useless index.html file
 if [ -f index.html ]; then
@@ -17,8 +16,8 @@ fi
 # Create: $FILE_DIR directory if not exist
 if [ -d $FILE_DIR ]; then
     rm -R "$FILE_DIR"
-else
     mkdir -p "$FILE_DIR"
+    clear
 fi
 
 # If files exist move them to /root/pihole.regex
@@ -33,9 +32,10 @@ for i in ${FILES[@]}; do
 done
 
 # execute all scripts in array
+pushd $FILE_DIR
 SUB_FILES=( $SHELL_FILES )
 for i in ${SUB_FILES[@]}; do
-    . "$FILE_DIR/$i"
+    . "$i"
 done
 
 popd
