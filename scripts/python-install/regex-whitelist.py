@@ -41,7 +41,7 @@ def fetch_whitelist_url(url):
 
 
 url_regexps_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/whitelist/regex-whitelist.txt'
-install_comment = 'SlyRWL'
+install_comment = 'SlyRBL'
 
 cmd_restart = ['pihole', 'restartdns', 'reload']
 
@@ -99,7 +99,7 @@ path_pihole_db = os.path.join(path_pihole, 'gravity.db')
 
 # Check that pi-hole path exists
 if os.path.exists(path_pihole):
-    print('[i] Pi-hole path exists.')
+    print('[i] Pi-hole path exists...')
 else:
     print(f'[e] {path_pihole} was not found.')
     exit(1)
@@ -175,6 +175,7 @@ if db_exists:
 
     print('[i] Please wait for the Pi-hole server to restart.')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
+    print('\n')
     print('[i] The Pi-hole server is running.')
     print('\n')
     print('[i] Make sure to star this repository to show your support! It helps keep me motivated!')
@@ -185,12 +186,13 @@ if db_exists:
     c.execute('Select domain FROM domainlist WHERE type = 2')
     final_results = c.fetchall()
     regexps_local.update(x[0] for x in final_results)
+
     print(*sorted(regexps_local), sep='\n')
+
     conn.close()
 
 else:
-    # If regex.list exists and is not empty
-    # Read it and add to a set
+    # If regex.list exists and is not empty read it and add to the set
     if os.path.isfile(path_legacy_regex) and os.path.getsize(path_legacy_regex) > 0:
         print('[i] Collecting existing entries from regex.list.')
         with open(path_legacy_regex, 'r') as fRead:
@@ -227,13 +229,14 @@ else:
 
     print('[i] Please wait for the Pi-hole server to restart.')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
+    print('\n')
     print('[i] The Pi-hole server is running.')
     print('\n')
     print('[i] Make sure to star this repository to show your support! It helps keep me motivated!')
     print('[i] https://github.com/slyfox1186/pihole.regex')
     print('\n')
     print('[i] Please see the installed regex strings below.\n')
-
+    
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
