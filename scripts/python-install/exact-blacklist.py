@@ -284,9 +284,9 @@ if db_exists:
             ASG = INnewNOTgravityListCount
             ASGCOUNT = 0
             gravScriptAfterList = [None] * gravScriptAfterTUPlen
-
-            print('\n[i] Checking Gravity for newly added domains.\n')
-
+            print('\n')
+            print('[i] Checking Gravity for newly added domains.')
+            print('\n')
             for gravScriptAfterDomain in gravScriptAfterTUP:
                 gravScriptAfterList[ASGCOUNT] = gravScriptAfterTUP[ASGCOUNT][2]
                 ASGCOUNT += 1
@@ -301,10 +301,11 @@ if db_exists:
                 # All domains are accounted for.
                 print('\n')
                 print("[i] All {} missing domains were added to Gravity's database." .format(newWhiteListlen))
-
+                print('\n')
             else:
                 print('\n')
                 print("[i] All {} new domains were removed from Gravity's database." .format(INnewNOTgravityListCount+1))
+                print('\n')
 
         else: # We should be done now
             # Do nothing and exit. All domains are accounted for.
