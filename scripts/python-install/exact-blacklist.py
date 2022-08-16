@@ -301,10 +301,10 @@ if db_exists:
 
             if gsa == True:
                 # All domains are accounted for.
-                print("\n[i] All {} missing domain's have been accounted for in Gravity's database." .format(newblacklistlen))
+                print("\n[i] All {} missing domains have been accounted for in Gravity's database." .format(newblacklistlen))
 
             else:
-                print("\n[i] All {} new domain's have not been added to the Gravity database." .format(INnewNOTgravityListCount+1))
+                print("\n[i] All {} new domains have not been added to the Gravity database." .format(INnewNOTgravityListCount+1))
 
         else: # We should be done now
             # Do nothing and exit. All domains are accounted for.
@@ -331,6 +331,7 @@ if db_exists:
         exit(1)
 
     finally:
+        print('\n')
         print('Make sure to star this repository to show your support! It helps keep me motivated!')
         print('https://github.com/slyfox1186/pihole.regex')
         print('\n')
@@ -373,6 +374,7 @@ else:
     print('\n')
     print('[i] Please wait for the Pi-hole server to restart.')
     restart_pihole(args.docker)
+    print('\n')
     print('Make sure to star this repository to show your support! It helps keep me motivated!')
     print('https://github.com/slyfox1186/pihole.regex')
     print('\n')
