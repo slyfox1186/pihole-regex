@@ -143,7 +143,7 @@ if db_exists:
     c = conn.cursor()
 
     # Update remote regex strings
-    print('[i] Updating regex strings in the DB.')
+    print('[i] Updating regex strings in the database.')
 
     c.executemany('INSERT OR IGNORE INTO domainlist (type, domain, enabled, comment) '
                   'VALUES (2, ?, 1, ?)',
@@ -196,7 +196,7 @@ else:
     # If regex.list exists and is not empty
     # Read it and add to a set
     if os.path.isfile(path_legacy_regex) and os.path.getsize(path_legacy_regex) > 0:
-        print('[i] Collecting existing entries from regex.list')
+        print('[i] Collecting existing entries from regex.list.')
         with open(path_legacy_regex, 'r') as fRead:
             regexps_local.update(x for x in map(str.strip, fRead) if x and x[:1] != '#')
 
@@ -215,11 +215,11 @@ else:
                     regexps_local.difference_update(regexps_legacy_slyfox1186)
 
     # Add remote regex strings to local regex strings
-    print(f'[i] Syncing with {url_regexps_remote}')
+    print(f'[i] Syncing with {url_regexps_remote}.')
     regexps_local.update(regexps_remote)
 
     # Output to regex.list
-    print(f'[i] Outputting {len(regexps_local)} regex strings to {path_legacy_regex}')
+    print(f'[i] Outputting {len(regexps_local)} regex strings to {path_legacy_regex}.')
     with open(path_legacy_regex, 'w') as fWrite:
         for line in sorted(regexps_local):
             fWrite.write(f'{line}\n')
@@ -238,7 +238,7 @@ else:
     print('\n')
 
     # Prepare final result
-    print('[i] Done - Please see your installed regexps below\n')
+    print('[i] Please see the installed regex strings below.\n')
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
