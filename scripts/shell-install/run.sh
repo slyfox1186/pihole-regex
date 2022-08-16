@@ -30,7 +30,7 @@ for i in ${FILES[@]}; do
   fi
 done
 
-sleep 3
+sleep 1
 clear
 
 SUB_FILES=($SHELL_FILES)
