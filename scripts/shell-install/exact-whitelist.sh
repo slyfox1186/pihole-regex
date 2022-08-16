@@ -13,9 +13,9 @@ elif [[ $answer == "R" ]]; then
     echo -e "[i] The Exact Whitelist filters were removed from Pi-hole\\n"
 elif [[ $answer == "S" ]]; then
     clear
-    echo -e "[i] Skipping ahead!\\n"
+    echo -e "[i] Finishing up!\\n"
     sleep 3
-    . '/root/pihole.regex/exact-whitelist.py' | sudo python3
+    exit 0
 fi
 
 read -t 30 -p 'Press Enter to continue...'
