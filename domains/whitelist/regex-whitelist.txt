@@ -49,7 +49,7 @@
 ^aic\.(homeprv|service)\.lgtvcommon\.com$
 
 # Microsoft
-(\.|^)1drv\.ms$ # Microsoft - Onedrive's short url
+(\.|^)1drv\.ms$
 (\.|^)azure\.com$
 (\.|^)windows\.com$
 ^(device|title|user|xsts)\.auth\.xboxlive\.com$
