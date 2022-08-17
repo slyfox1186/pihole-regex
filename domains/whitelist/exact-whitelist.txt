@@ -620,6 +620,7 @@ tvdb2.plex.tv
 tvthemes.plexapp.com
 twimg.com
 twitter.com
+ubisoft-uplay-savegames.s3.amazonaws.com
 ud-chat.signal.org
 ui.skype.com
 unagi-na.amazon.com
