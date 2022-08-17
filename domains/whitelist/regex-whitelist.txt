@@ -66,8 +66,5 @@
 (\.|^)[iv]+\.redd\.it$
 [a-z]\.thumbs\.redditmedia\.com
 
-# Ubisoft
-^[\w\-]*savegames\.s3\.amazonaws\.com$
-
 # YouTube
 ^(www|youtubei|oauthaccountmanager)\.googleapis\.com$
