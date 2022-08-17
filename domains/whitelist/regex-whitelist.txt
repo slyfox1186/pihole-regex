@@ -5,7 +5,6 @@
 (\.|^)adulttime\.com$
 (\.|^)algolianet\.com$
 (\.|^)algolia\.(io|net)$
-(\.|^)appsync-api\.us-east-1\.amazonaws\.com$
 (\.|^)cognito-identity\.us-east-1\.amazonaws\.com$
 (\.|^)dsn\.algolia\.net$
 (\.|^)execute-api\.us-east-1\.amazonaws\.com$
