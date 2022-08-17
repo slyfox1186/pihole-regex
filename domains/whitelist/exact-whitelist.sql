@@ -610,6 +610,7 @@
 (0, 'tvthemes.plexapp.com.cdn.cloudflare.net', 1, 'Plex Media Server - SlyEWL')
 (0, 'twimg.com', 1, 'Twitter - Used to deliver media on Twitter - SlyEWL')
 (0, 'twitter.com', 1, 'Twitter - SlyEWL')
+(0, 'ubisoft-uplay-savegames.s3.amazonaws.com', 1, 'Ubisoft Launcher - Required for cloud saves - SlyEWL')
 (0, 'ud-chat.signal.org', 1, 'Signal - SlyEWL')
 (0, 'ui.skype.com', 1, 'Microsoft Skype - Used to make group calls, group chats etc. on Skype - SlyEWL')
 (0, 'unagi-na.amazon.com', 1, 'Amazon - SlyEWL')
