@@ -44,9 +44,6 @@
 ^beacons[\d]*\.gvt[\d]+\.com$
 ^clients[24]\.google\.com$
 
-# HP Smart App (Printer and desktop app for windows 10+11)
-^[a-z\d\-]+\.us-(east|west)-\d+\.elb\.amazonaws\.com$
-
 # LG-TV
 ^aic\.(homeprv|service)\.lgtvcommon\.com$
 
