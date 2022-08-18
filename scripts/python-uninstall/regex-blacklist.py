@@ -202,7 +202,8 @@ else:
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
-    print('[i] Done - Please see your installed regexps below\n')
+    print('[i] Done - Please see your installed regexps below')
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
+            print('\n')
