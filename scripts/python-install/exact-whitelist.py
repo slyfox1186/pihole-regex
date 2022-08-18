@@ -170,9 +170,9 @@ if db_exists:
             newWL = removeBraces10.split(', ') # Split at commas to create a list
             newWhiteList[nwl] = newWL[1].replace('\'', '') # Remove ' from domain and add to list
             # Uncomment to see list of sql varables being imported
-            print(nW[nwl])
+            # print(nW[nwl])
             # Uncomment to see list of domains being imported
-            print(newWhiteList[nwl])
+            # print(newWhiteList[nwl])
             nwl += 1 # count + 1
         # Check database for user added exact whitelisted domains
         print('[i] Checking Gravity for domains added by a user that are also in the script.')
