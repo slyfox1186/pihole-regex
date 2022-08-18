@@ -176,7 +176,7 @@ if db_exists:
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
-    print('[i] Done - Please see your installed regex strings below\n')
+    print('[i] Please see your installed regex strings below\n')
 
     c.execute('Select domain FROM domainlist WHERE type = 2')
     final_results = c.fetchall()
