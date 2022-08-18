@@ -71,7 +71,7 @@ except FileNotFoundError:
 
 # If a pihole docker container was found, locate the first mount
 if docker_id:
-    docker_mnt = subprocess.run(['docker', 'inspect', '--format', '{{ (json .Mounts) }}', docker_id],
+    docker_mnt = subprocess.run(['docker', 'inspect', '--format', "{{ (json .Mounts) }}", docker_id],
                                 stdout=subprocess.PIPE, universal_newlines=True).stdout.strip()
     # Convert output to JSON and iterate through each dict
     for json_dict in json.loads(docker_mnt):
@@ -99,20 +99,20 @@ path_pihole_db = os.path.join(path_pihole, 'gravity.db')
 if os.path.exists(path_pihole):
     print('[i] Pi-hole path exists')
 else:
-    print(f'[e] {path_pihole} was not found')
+    print(f"[e] {path_pihole} was not found")
     exit(1)
 
 # Check for write access to /etc/pihole
 if os.access(path_pihole, os.X_OK | os.W_OK):
-    print(f'[i] Write access to {path_pihole} verified')
+    print(f"[i] Write access to {path_pihole} verified")
 else:
-    print(f'[e] Write access is not available for {path_pihole}. Please run as root or other privileged user')
+    print(f"[e] Write access is not available for {path_pihole}. Please run as root or other privileged user")
     exit(1)
 
-# Determine whether we are using DB or not
+# Determine whether we are using database or not
 if os.path.isfile(path_pihole_db) and os.path.getsize(path_pihole_db) > 0:
     db_exists = True
-    print('[i] DB detected')
+    print('[i] Database detected')
 else:
     print('[i] Legacy regex.list detected')
 
@@ -122,14 +122,14 @@ str_regexps_remote = fetch_blacklist_url(url_regexps_remote)
 # If regexps were fetched, remove any comments and add to set
 if str_regexps_remote:
     regexps_remote.update(x for x in map(str.strip, str_regexps_remote.splitlines()) if x and x[:1] != '#')
-    print(f'[i] {len(regexps_remote)} regexps collected from {url_regexps_remote}')
+    print(f"[i] {len(regexps_remote)} regexps collected from {url_regexps_remote}")
 else:
     print('[i] No remote regexps were found.')
     exit(1)
 
 if db_exists:
-    # Create a DB connection
-    print(f'[i] Connecting to {path_pihole_db}')
+    # Create a database connection
+    print(f"[i] Connecting to {path_pihole_db}")
 
     try:
         conn = sqlite3.connect(path_pihole_db)
@@ -141,7 +141,7 @@ if db_exists:
     c = conn.cursor()
 
     # Add / update remote regexps
-    print('[i] Adding / updating regexps in the DB')
+    print('[i] Adding / updating regexps in the database')
 
     c.executemany('INSERT OR IGNORE INTO domainlist (type, domain, enabled, comment) '
                   'VALUES (3, ?, 1, ?)',
@@ -195,7 +195,7 @@ else:
 
     # If the local regexp set is not empty
     if regexps_local:
-        print(f'[i] {len(regexps_local)} existing regexps identified')
+        print(f"[i] {len(regexps_local)} existing regexps identified")
         # If we have a record of a previous legacy install
         if os.path.isfile(path_legacy_slyfox1186_regex) and os.path.getsize(path_legacy_slyfox1186_regex) > 0:
             print('[i] Existing slyfox1186-regex install identified')
@@ -208,17 +208,16 @@ else:
                     regexps_local.difference_update(regexps_legacy_slyfox1186)
 
     # Add remote regexps to local regexps
-    print(f'[i] Syncing with {url_regexps_remote}')
+    print(f"[i] Syncing with {url_regexps_remote}")
     regexps_local.update(regexps_remote)
 
     # Output to regex.list
-    print(f'[i] Outputting {len(regexps_local)} regexps to {path_legacy_regex}')
+    print(f"[i] Outputting {len(regexps_local)} regexps to {path_legacy_regex}")
     with open(path_legacy_regex, 'w') as fWrite:
         for line in sorted(regexps_local):
             fWrite.write(f'{line}\n')
 
-    # Output slyfox1186 remote regexps to slyfox1186-regex.list
-    # for future install / uninstall
+    # Output slyfox1186 remote regexps to slyfox1186-regex.list for future install / uninstall
     with open(path_legacy_slyfox1186_regex, 'w') as fWrite:
         for line in sorted(regexps_remote):
             fWrite.write(f'{line}\n')
@@ -227,7 +226,7 @@ else:
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
-    print('[i] Done - Please see your installed regexps below\n')
+    print('[i] Please see your installed regexps below\n')
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
