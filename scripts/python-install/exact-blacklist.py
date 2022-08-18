@@ -17,16 +17,16 @@ def fetch_blacklist_url(url):
 
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0'}
 
+    print('[i] Fetching:', url)
+
     try:
         response = urlopen(Request(url, headers=headers))
     except HTTPError as e:
         print('[X] HTTP Error:', e.code, 'whilst fetching', url)
         print('\n')
-        print('\n')
         exit(1)
     except URLError as e:
         print('[X] URL Error:', e.reason, 'whilst fetching', url)
-        print('\n')
         print('\n')
         exit(1)
 
@@ -331,8 +331,7 @@ if db_exists:
         exit(1)
 
     finally:
-        print('\n')
-        print('[i] The Exact Blacklist Filters have been successfully removed from Gravity!')
+        print('[i] The Exact Blacklist Filters have been successfully added to Gravity!')
         print('\n')
         print('Make sure to star this repository to show your support! It helps keep me motivated!')
         print('https://github.com/slyfox1186/pihole-regex')
@@ -373,11 +372,10 @@ else:
         for line in sorted(blacklist_remote):
             fWrite.write("{}\n".format(line))
 
-    print('\n')
     print('[i] Please wait for the Pi-hole server to restart.')
     restart_pihole(args.docker)
     print('\n')
-    print('[i] The Exact Blacklist Filters have been successfully removed from Gravity!')
+    print('[i] The Exact Blacklist Filters have been successfully added to Gravity!')
     print('\n')
     print('Make sure to star this repository to show your support! It helps keep me motivated!')
     print('https://github.com/slyfox1186/pihole-regex')
