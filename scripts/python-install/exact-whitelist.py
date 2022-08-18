@@ -80,7 +80,6 @@ whitelist_slyfox1186_local = set()
 whitelist_old_slyfox1186 = set()
 
 os.system('clear')
-print('\n')
 print("This script will download and add domains from the repo to your Pihole server's whitelist.")
 print('All the domains in this list are beleived to serve undersiderable ads and other unwanted content.')
 print('\n')
