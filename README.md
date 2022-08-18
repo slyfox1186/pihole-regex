@@ -6,10 +6,10 @@ All commands need to be entered via a Terminal after logging in and you need to 
 
 * Filters for use with Pi-hole v5+ (FTLDNS)
 * The Filter Lists
-  - [Exact Blacklist](https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/blacklist/exact-blacklist.txt)
-  - [Exact Whitelist](https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/whitelist/exact-whitelist.txt)
-  - [RegEx Blacklist](https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/blacklist/regex-blacklist.txt)
-  - [RegEx Whitelist](https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/whitelist/regex-whitelist.txt)
+  - [Exact Blacklist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/exact-blacklist.txt)
+  - [Exact Whitelist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/whitelist/exact-whitelist.txt)
+  - [RegEx Blacklist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/regex-blacklist.txt)
+  - [RegEx Whitelist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/whitelist/regex-whitelist.txt)
 
 ## User options: [ Add | Remove | Skip ]
 
