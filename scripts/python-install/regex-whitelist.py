@@ -39,7 +39,6 @@ def fetch_whitelist_url(url):
     # Return the hosts
     return response
 
-
 url_regexps_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/whitelist/regex-whitelist.txt'
 install_comment = 'SlyRWL'
 
@@ -188,8 +187,7 @@ if db_exists:
     conn.close()
 
 else:
-    # If regex.list exists and is not empty
-    # Read it and add to a set
+    # If regex.list exists and is not empty, read it and add to a set
     if os.path.isfile(path_legacy_regex) and os.path.getsize(path_legacy_regex) > 0:
         print('[i] Collecting existing entries from regex.list')
         with open(path_legacy_regex, 'r') as fRead:
@@ -219,8 +217,7 @@ else:
         for line in sorted(regexps_local):
             fWrite.write(f'{line}\n')
 
-    # Output slyfox1186 remote regex strings to slyfox1186-regex.list
-    # for future install / uninstall
+    # Output slyfox1186 remote regex strings to slyfox1186-regex.list for future install / uninstall
     with open(path_legacy_slyfox1186_regex, 'w') as fWrite:
         for line in sorted(regexps_remote):
             fWrite.write(f'{line}\n')
