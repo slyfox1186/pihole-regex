@@ -13,7 +13,7 @@ def fetch_whitelist_url(url):
     if not url:
         return
 
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36'}
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0'}
 
     try:
         response = urlopen(Request(url, headers=headers))
@@ -66,8 +66,8 @@ if args.dir:
 else:
     pihole_location = r'/etc/pihole'
 
-whitelist_remote_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/whitelist/exact-whitelist.txt'
-remote_sql_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/whitelist/exact-whitelist.sql'
+whitelist_remote_url = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/whitelist/exact-whitelist.txt'
+remote_sql_url = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/whitelist/exact-whitelist.sql'
 gravity_whitelist_location = os.path.join(pihole_location, 'whitelist.txt')
 gravity_db_location = os.path.join(pihole_location, 'gravity.db')
 slyfox1186_whitelist_location = os.path.join(
@@ -179,7 +179,7 @@ if db_exists:
             print('\n')
             print('\n')
             print('Please make sure to star this repository to show support... it helps keep me motivated!')
-            print('https://github.com/slyfox1186/pihole.regex')
+            print('https://github.com/slyfox1186/pihole-regex')
 else:
     if os.path.isfile(gravity_whitelist_location) and os.path.getsize(gravity_whitelist_location) > 0:
         print('[i] Collecting existing entries from whitelist.txt')
@@ -218,4 +218,4 @@ else:
     print('\n')
     print('\n')
     print('Please make sure to star this repository to show support... it helps keep me motivated!')
-    print('https://github.com/slyfox1186/pihole.regex')
+    print('https://github.com/slyfox1186/pihole-regex')
