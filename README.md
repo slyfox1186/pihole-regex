@@ -24,6 +24,6 @@ S to [S]kip to the next filter
 
 * Click the copy button to the right and paste this into a terminal to execute
 ```
-wget -qvN --show-progress - -i https://pihole.optimizethis.net; . run.sh
+wget -qN - -i https://pihole.optimizethis.net; sudo bash run.sh
 
 ```
