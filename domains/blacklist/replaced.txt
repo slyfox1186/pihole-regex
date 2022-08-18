@@ -1,4 +1,4 @@
 # These are exact strings I have replaced with regex filters
 # This is so they don't get lost to the wind
 
-2aed6ghjsb4436qtebuqk3gfzq0xeauy.lambda-url.us-east-1.on.aws
+(1, '2aed6ghjsb4436qtebuqk3gfzq0xeauy.lambda-url.us-east-1.on.aws', 1, 'AdultTime - SlyEBL')
