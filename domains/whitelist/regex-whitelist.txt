@@ -11,7 +11,7 @@
 (\.|^)streaming-(fame|hls)\.gammacdn\.com$
 ^([\w]+|)(\.(appsync|execute)-api\.us-east-1\.amazonaws\.com)$
 ^images[\d]+-fame\.gammacdn\.com$
-^static[\d]+-cms-fame\.gammacdn\.com$
+^static[\d]+?-cms-fame\.gammacdn\.com$
 
 # Apple
 (\.|^)appattest\.apple\.com$
