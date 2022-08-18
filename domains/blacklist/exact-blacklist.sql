@@ -1,5 +1,4 @@
 (1, '0077777700140002.myhomescreen.tv', 1, 'Panasonic - SlyEBL')
-(1, '2aed6ghjsb4436qtebuqk3gfzq0xeauy.lambda-url.us-east-1.on.aws', 1, 'AdultTime - SlyEBL')
 (1, '2mdn.net', 1, 'Other - SlyEBL')
 (1, '7345023508.fxm9485766783.com', 1, 'Toshiba - SlyEBL')
 (1, '7345023508.fxmconnect.com', 1, 'Toshiba - SlyEBL')
