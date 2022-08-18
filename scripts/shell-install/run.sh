@@ -33,7 +33,7 @@ pushd pihole-regex
 # execute all scripts
 SUB_FILES=( $SHELL_FILES )
 for i in ${SUB_FILES[@]}; do
-    . "$i"
+    . $i
 done
 
 # return user to starting directory
