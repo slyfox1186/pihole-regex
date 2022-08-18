@@ -8,7 +8,6 @@ import subprocess, platform
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
-
 def fetch_url(url):
 
     if not url:
@@ -72,7 +71,7 @@ except FileNotFoundError:
 
 # If a pihole docker container was found, locate the first mount
 if docker_id:
-    docker_mnt = subprocess.run(['docker', 'inspect', '--format', '{{ (json .Mounts) }}', docker_id],
+    docker_mnt = subprocess.run(['docker', 'inspect', '--format', "{{ (json .Mounts) }}", docker_id],
                                 stdout=subprocess.PIPE, universal_newlines=True).stdout.strip()
     # Convert output to JSON and iterate through each dict
     for json_dict in json.loads(docker_mnt):
@@ -110,7 +109,7 @@ else:
     print(f'[e] Write access disabled for {path_pihole}. Re-run the script as a privileged user.')
     exit(1)
 
-# Determine whether we are using DB or not
+# Determine whether we are using database or not
 if os.path.isfile(path_pihole_db) and os.path.getsize(path_pihole_db) > 0:
     db_exists = True
     print('[i] Gravity database detected.')
@@ -129,8 +128,8 @@ else:
     exit(1)
 
 if db_exists:
-    # Create a DB connection
-    print(f'[i] Connecting to {path_pihole_db}')
+    # Create a database connection
+    print(f"[i] Connecting to {path_pihole_db}")
 
     try:
         conn = sqlite3.connect(path_pihole_db)
@@ -151,7 +150,7 @@ if db_exists:
 
     conn.commit()
 
-    print('[i] Pi-hole is restarting... wait for it to reboot before exiting.')
+    print('[i] Please wait while Pi-hole restarts...')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
@@ -192,16 +191,16 @@ else:
             regstrings_local.difference_update(regstrings_remote)
 
     # Output to regex.list
-    print(f'[i] Outputting {len(regstrings_local)} regstrings to {path_legacy_regex}')
+    print(f"[i] Outputting {len(regstrings_local)} regstrings to {path_legacy_regex}")
     with open(path_legacy_regex, 'w') as fWrite:
         for line in sorted(regstrings_local):
             fWrite.write(f'{line}\n')
 
-    print('[i] Pi-hole must restart... please wait for it to boot.')
+    print('[i] Please wait while Pi-hole restarts...')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
-    print("[i] Pi-hole is now running! Script complete!\n")
+    print("[i] Pi-hole has been re-connected.\n")
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
