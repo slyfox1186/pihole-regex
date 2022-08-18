@@ -2,7 +2,7 @@
 
 # Get user's input
 clear
-echo '[i] RegEx Whitelist: [A]dd [R]emove [S]kip'
+echo 'RegEx Whitelist: [A]dd [R]emove [S]kip'
 read answer
 clear
 if [[ $answer == "A" ]]; then
