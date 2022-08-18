@@ -96,7 +96,6 @@ if os.path.exists(pihole_location):
 else:
     print("[X] {} was not found".format(pihole_location))
     print('\n')
-    print('\n')
     exit(1)
 
 # Check for write access to /etc/pihole
@@ -107,7 +106,6 @@ if os.access(pihole_location, os.X_OK | os.W_OK):
     remote_blacklist_lines += 1
 else:
     print("[X] Write access is not available for {}. Please run the script as a privileged user." .format(pihole_location))
-    print('\n')
     print('\n')
     exit(1)
 
@@ -125,7 +123,6 @@ if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) 
     else:
         print('[X] No remote SQL queries were found.')
         print('\n')
-        print('\n')
         exit(1)
 else:
     print('[i] Legacy Pi-hole detected (Version older than 5.0).')
@@ -135,7 +132,6 @@ if blacklist_str:
         str.strip, blacklist_str.splitlines()) if x and x[:1] != '#')
 else:
     print('[X] No remote domains found.')
-    print('\n')
     print('\n')
     exit(1)
 
@@ -165,7 +161,6 @@ if db_exists:
 
     except sqlite3.Error as error:
         print("[X] Failed to remove domains from Gravity's database.", error)
-        print('\n')
         print('\n')
         exit(1)
 
