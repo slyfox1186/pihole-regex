@@ -154,7 +154,7 @@ if db_exists:
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
-    print('[i] Done - Please see your installed regex strings below\n')
+    print('[i] Please see your installed regex strings below\n')
 
     c.execute('Select domain FROM domainlist WHERE type = 3')
     final_results = c.fetchall()
@@ -200,7 +200,7 @@ else:
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
-    print('[i] Done - Please see your installed regex strings below')
+    print('[i] Please see your installed regex strings below')
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
