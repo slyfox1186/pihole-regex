@@ -1,41 +1,34 @@
 #!/bin/bash
 
-clear
-
 # Make user input case insensitive
-shopt -s nocasematch
-
-# Set directory variable
-FILE_DIR="/root/pihole.regex"
+clear; shopt -s nocasematch
 
 # Delete: The useless index.html file
 if [ -f index.html ]; then
-    rm index.html*
+    rm index.html
 fi
 
-# Create: $FILE_DIR directory if not exist
-if [ -d $FILE_DIR ]; then
-    rm -R "$FILE_DIR"
-    mkdir -p "$FILE_DIR"
+# Create: pihole-regex directory if not exist
+if [ -d pihole-regex ]; then
+    rm -R pihole-regex
+    mkdir -p pihole-regex
     clear
 fi
 
-# If files exist move them to /root/pihole.regex
+# If files exist move them to the pihole-regex directory
 SHELL_FILES='exact-blacklist.sh exact-whitelist.sh regex-blacklist.sh regex-whitelist.sh'
 FILES=( $SHELL_FILES run.sh )
-# move all the scripts in the array FILES to /root/pihole.regex
+# move all the scripts in the array FILES to the pihole-regex directory
 for i in ${FILES[@]}; do
-  if [ -f $i ]; then
-      mv -f "$i" "$FILE_DIR/$i"
-      clear
-  fi
+    if [ -f $i ]; then
+        mv -f "$i" "pihole-regex/$i"
+        clear
+    fi
 done
 
-# execute all scripts in array
-pushd $FILE_DIR
+# execute all scripts
+pushd pihole-regex
 SUB_FILES=( $SHELL_FILES )
 for i in ${SUB_FILES[@]}; do
     . "$i"
 done
-
-popd
