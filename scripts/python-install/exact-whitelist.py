@@ -22,11 +22,9 @@ def fetch_whitelist_url(url):
     except HTTPError as e:
         print('[X] HTTP Error:', e.code, 'whilst fetching', url)
         print('\n')
-        print('\n')
         exit(1)
     except URLError as e:
         print('[X] URL Error:', e.reason, 'whilst fetching', url)
-        print('\n')
         print('\n')
         exit(1)
 
@@ -105,7 +103,6 @@ else:
     print("[X] Write access is not available for {}. Please run the script as a privileged user." .format(
         pihole_location))
     print('\n')
-    print('\n')
     exit(1)
 
 # Determine whether we are using DB or not
@@ -122,7 +119,6 @@ if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) 
             remote_whitelist_lines, remote_sql_lines))
     else:
         print('[X] No remote SQL queries found.')
-        print('\n')
         print('\n')
         exit(1)
 else:
@@ -338,7 +334,7 @@ if db_exists:
 
     finally:
         print('\n')
-        print('[i] The Exact Whitelist Filters have been successfully removed from Gravity!')
+        print('[i] The Exact Whitelist Filters have been successfully added to Gravity!')
         print('\n')
         print('Make sure to star this repository to show your support! It helps keep me motivated!')
         print('https://github.com/slyfox1186/pihole-regex')
@@ -379,11 +375,10 @@ else:
         for line in sorted(whitelist_remote):
             fWrite.write("{}\n".format(line))
 
-    print('\n')
     print('[i] Please wait for the Pi-hole server to restart.')
     restart_pihole(args.docker)
     print('\n')
-    print('[i] The Exact Whitelist Filters have been successfully removed from Gravity!')
+    print('[i] The Exact Whitelist Filters have been successfully added to Gravity!')
     print('\n')
     print('Make sure to star this repository to show your support! It helps keep me motivated!')
     print('https://github.com/slyfox1186/pihole-regex')
