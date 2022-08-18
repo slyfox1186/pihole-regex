@@ -64,8 +64,8 @@ if args.dir:
 else:
     pihole_location = r'/etc/pihole'
 
-blacklist_remote_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/blacklist/exact-blacklist.txt'
-remote_sql_url = 'https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/domains/blacklist/exact-blacklist.sql'
+blacklist_remote_url = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/exact-blacklist.txt'
+remote_sql_url = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/exact-blacklist.sql'
 gravity_blacklist_location = os.path.join(pihole_location, 'blacklist.txt')
 gravity_db_location = os.path.join(pihole_location, 'gravity.db')
 slyfox1186_blacklist_location = os.path.join(pihole_location, 'slyfox1186-blacklist.txt')
@@ -335,7 +335,7 @@ if db_exists:
         print('[i] The Exact Blacklist Filters have been successfully removed from Gravity!')
         print('\n')
         print('Make sure to star this repository to show your support! It helps keep me motivated!')
-        print('https://github.com/slyfox1186/pihole.regex')
+        print('https://github.com/slyfox1186/pihole-regex')
         print('\n')
 
 else:
@@ -380,5 +380,5 @@ else:
     print('[i] The Exact Blacklist Filters have been successfully removed from Gravity!')
     print('\n')
     print('Make sure to star this repository to show your support! It helps keep me motivated!')
-    print('https://github.com/slyfox1186/pihole.regex')
+    print('https://github.com/slyfox1186/pihole-regex')
     print('\n')
