@@ -2,3 +2,17 @@
 # This is so they don't get lost to the wind
 
 (1, '2aed6ghjsb4436qtebuqk3gfzq0xeauy.lambda-url.us-east-1.on.aws', 1, 'AdultTime - SlyEBL')
+(1, 'usage-eu-fy2014.myhomescreen.tv', 1, 'Panasonic - SlyEBL')
+(1, 'usage-eu-fy2015.myhomescreen.tv', 1, 'Panasonic - SlyEBL')
+(1, 'usage-eu-fy2016.myhomescreen.tv', 1, 'Panasonic - SlyEBL')
+(1, 'usage-eu-fy2017.myhomescreen.tv', 1, 'Panasonic - SlyEBL')
+(1, 'usage-eu-fy2018.myhomescreen.tv', 1, 'Panasonic - SlyEBL')
+(1, 'usage-eu-fy2019.myhomescreen.tv', 1, 'Panasonic - SlyEBL')
+(1, 'usage-eu-fy2020.myhomescreen.tv', 1, 'Panasonic - SlyEBL')
+(1, 'usage-us-fy2014.myhomescreen.tv', 1, 'Panasonic - SlyEBL')
+(1, 'usage-us-fy2015.myhomescreen.tv', 1, 'Panasonic - SlyEBL')
+(1, 'usage-us-fy2016.myhomescreen.tv', 1, 'Panasonic - SlyEBL')
+(1, 'usage-us-fy2017.myhomescreen.tv', 1, 'Panasonic - SlyEBL')
+(1, 'usage-us-fy2018.myhomescreen.tv', 1, 'Panasonic - SlyEBL')
+(1, 'usage-us-fy2019.myhomescreen.tv', 1, 'Panasonic - SlyEBL')
+(1, 'usage-us-fy2020.myhomescreen.tv', 1, 'Panasonic - SlyEBL')
