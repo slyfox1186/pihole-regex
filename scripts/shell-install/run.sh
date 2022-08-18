@@ -28,7 +28,7 @@ for i in ${FILES[@]}; do
 done
 
 # change working directory to pihole-regex
-pushd pihole-regex
+cd pihole-regex
 
 # execute all scripts
 SUB_FILES=( $SHELL_FILES )
@@ -37,4 +37,4 @@ for i in ${SUB_FILES[@]}; do
 done
 
 # return user to starting directory
-popd
+cd ..
