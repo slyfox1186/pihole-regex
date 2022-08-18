@@ -44,9 +44,6 @@
 # OK.ru
 (\.|^)ok\.ru$
 
-# Panasonic
-^usage-(eu|us)-fy20[\d]+?\.myhomescreen\.tv$
-
 # Suspected Virus Harboring websites
 (\.|^)ahoravideo.*$
 (\.|^)bideo.*$
