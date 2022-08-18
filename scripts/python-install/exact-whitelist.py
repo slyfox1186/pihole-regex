@@ -17,6 +17,8 @@ def fetch_whitelist_url(url):
 
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0'}
 
+    print('[i] Fetching:', url)
+
     try:
         response = urlopen(Request(url, headers=headers))
     except HTTPError as e:
