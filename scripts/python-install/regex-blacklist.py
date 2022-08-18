@@ -186,8 +186,7 @@ if db_exists:
     conn.close()
 
 else:
-    # If regex.list exists and is not empty
-    # Read it and add to a set
+    # If regex.list exists and is not empty, read it and add to a set
     if os.path.isfile(path_legacy_regex) and os.path.getsize(path_legacy_regex) > 0:
         print('[i] Collecting existing entries from regex.list')
         with open(path_legacy_regex, 'r') as fRead:
