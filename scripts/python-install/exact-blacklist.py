@@ -80,7 +80,6 @@ blacklist_slyfox1186_local = set()
 blacklist_old_slyfox1186 = set()
 
 os.system('clear')
-print('\n')
 print("This script will attempt to add the Exact Blacklist Domains to Gravity's database.")
 print('\n')
 
