@@ -178,8 +178,6 @@ ssm1.internet.sony.tv
 ssm2.internet.sony.tv
 ssm3.internet.sony.tv
 start.digitaltext.rtl.de
-static01-cms-fame.gammacdn.com
-static03-cms-fame.gammacdn.com
 stats-irl.sxp.smartclip.net
 stats.hbbtv.smartclip.net
 streaming-fame.gammacdn.com
