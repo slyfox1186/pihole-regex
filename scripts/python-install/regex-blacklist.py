@@ -55,7 +55,7 @@ regexps_remove = set()
 
 # Inform user of script's intent
 os.system('clear')
-print("This script will import the RegEx Blacklist filters from the repo to your Pihole server's blacklist.")
+print("This script will import the RegEx Blacklist filters from the repo to your Pihole server's Blacklist.")
 print('All the domains in this list are beleived to serve undersiderable ads and other unwanted content.')
 print('\n')
 
