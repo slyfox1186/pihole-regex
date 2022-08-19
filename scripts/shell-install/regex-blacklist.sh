@@ -17,4 +17,4 @@ elif [[ $i == "S" ]]; then
     exit 0
 fi
 
-read -t 30 -p 'Press Enter to continue...'
+read -t 30 -p 'Press [Enter] to continue...'
