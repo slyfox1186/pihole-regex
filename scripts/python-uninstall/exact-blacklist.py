@@ -172,10 +172,8 @@ if db_exists:
             time.sleep(2)
             print('[i] Please wait for the Pi-hole server to restart.')
             restart_pihole(args.docker)
-            print('[i] The Exact Blacklist filters have been removed from Gravity!')
             print('\n')
-            print('Make sure to star this repository and show your support!')
-            print('GitHub Profile: https://github.com/slyfox1186/pihole-regex')
+            print('[i] The Exact Blacklist filters have been removed from Gravity!')
             print('\n')
 
 else:
@@ -210,8 +208,6 @@ else:
         for line in sorted(blacklist_local):
             fWrite.write("{}\n".format(line))
 
-    print('[i] The Exact Blacklist filters have been removed from Gravity!')
     print('\n')
-    print('Make sure to star this repository and show your support!')
-    print('GitHub Profile: https://github.com/slyfox1186/pihole-regex')
+    print('[i] The Exact Blacklist filters have been removed from Gravity!')
     print('\n')
