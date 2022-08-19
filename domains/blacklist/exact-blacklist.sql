@@ -191,8 +191,6 @@
 (1, 'ssm2.internet.sony.tv', 1, 'Sony - SlyEBL')
 (1, 'ssm3.internet.sony.tv', 1, 'Sony - SlyEBL')
 (1, 'start.digitaltext.rtl.de', 1, 'Other - SlyEBL')
-(1, 'static01-cms-fame.gammacdn.com', 1, 'AdultTime - SlyEBL')
-(1, 'static03-cms-fame.gammacdn.com', 1, 'AdultTime - SlyEBL')
 (1, 'stats-irl.sxp.smartclip.net', 1, 'Other - SlyEBL')
 (1, 'stats.hbbtv.smartclip.net', 1, 'HBBTV - SlyEBL')
 (1, 'streaming-fame.gammacdn.com', 1, 'AdultTime - SlyEBL')
