@@ -141,7 +141,7 @@ if db_exists:
         sqliteConnection = sqlite3.connect(gravity_db_location)
         cursor = sqliteConnection.cursor()
         print("[i] Successfully connected to Gravity's database!")
-        total_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE 'SlyEBL%' ")
+        total_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%SlyEBL%' ")
 
         totalDomains = len(total_domains.fetchall())
         print("[i] There are a total of {} domains in your blacklist which were added by this script." .format(totalDomains))
