@@ -114,17 +114,16 @@ else:
 # Determine whether we are using database or not
 if os.path.isfile(path_pihole_db) and os.path.getsize(path_pihole_db) > 0:
     db_exists = True
-    print('[i] Database detected')
+    print('[i] Database detected...')
 else:
-    print('[i] Legacy regex.list detected')
+    print('[i] Legacy regex.list detected...')
 
 # Fetch the remote regex strings
 str_regexps_remote = fetch_blacklist_url(url_regexps_remote)
 
-# If regex strings were fetched, remove any comments and add to set
 if str_regexps_remote:
     regexps_remote.update(x for x in map(str.strip, str_regexps_remote.splitlines()) if x and x[:1] != '#')
-    print(f'[i] {len(regexps_remote)} regex strings collected from {url_regexps_remote}')
+    print(f'[i] {len(regexps_remote)} regex strings collected from {url_regexps_remote}!')
 else:
     print('[i] No remote regex strings were found!')
     exit(1)
@@ -190,7 +189,7 @@ else:
             # Remove slyfox1186-regex.list as it will no longer be required
             os.remove(path_legacy_slyfox1186_regex)
         else:
-            print('[i] Removing regex strings that match the remote repo')
+            print('[i] Removing regex strings that match the remote repo!')
             regexps_local.difference_update(regexps_remote)
 
     # Output to regex.list
