@@ -154,7 +154,7 @@ if db_exists:
     conn.commit()
 
     # Fetch all current slyfox1186 regex strings in the local db
-    c.execute('SELECT domain FROM domainlist WHERE type = 2 AND comment = ?', (install_comment,))
+    c.execute('SELECT domain FROM domainlist WHERE type = 3 AND comment = ?', (install_comment,))
     regexps_slyfox1186_local_results = c.fetchall()
     regexps_slyfox1186_local.update([x[0] for x in regexps_slyfox1186_local_results])
 
@@ -165,7 +165,7 @@ if db_exists:
 
     if regexps_remove:
         print('[i] Removing obsolete RegEx Blacklist strings...')
-        c.executemany('DELETE FROM domainlist WHERE type = 2 AND domain in (?)', [(x,) for x in regexps_remove])
+        c.executemany('DELETE FROM domainlist WHERE type = 3 AND domain in (?)', [(x,) for x in regexps_remove])
         conn.commit()
 
     # Delete slyfox1186-regex.list as if we've migrated to the db, it's no longer needed
@@ -178,7 +178,7 @@ if db_exists:
     # Prepare final result
     print('[i] Please see your installed RegEx Blacklist strings below!')
 
-    c.execute('Select domain FROM domainlist WHERE type = 2')
+    c.execute('Select domain FROM domainlist WHERE type = 3')
     final_results = c.fetchall()
     regexps_local.update(x[0] for x in final_results)
 
