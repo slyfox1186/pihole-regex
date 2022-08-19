@@ -6,9 +6,12 @@ import sqlite3
 import subprocess
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
+import time
 
 
-def fetch_blacklist_url(url):
+today = int(time.time())
+
+def fetch_whitelist_url(url):
 
     if not url:
         return
