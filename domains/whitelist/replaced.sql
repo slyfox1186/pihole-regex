@@ -16,3 +16,4 @@
 
 // RegEx Strings replaced
 ^kosmos(|-assets)-prod\.react\.gammacdn\.com$
+^static[\d]+?-cms-fame\.gammacdn\.com$
