@@ -3,13 +3,10 @@
 import json
 import os
 import sqlite3
-import subprocess
+import subprocess, platform
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
-import time
 
-
-today = int(time.time())
 
 def fetch_blacklist_url(url):
 
@@ -34,14 +31,15 @@ def fetch_blacklist_url(url):
 
     # If there is data
     if response:
-        # Strip leading and trailing whitespace
+        # Strip leading and trailing blackspace
         response = '\n'.join(x for x in map(str.strip, response.splitlines()))
 
     # Return the hosts
     return response
 
-url_regexps_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/regex-blacklist.txt'
-install_comment = 'SlyRBL - github.com/slyfox1186/pihole-regex'
+
+url_regstrings_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/regex-blacklist.txt'
+install_comment = 'SlyRWL - github.com/slyfox1186/pihole-regex'
 
 cmd_restart = ['pihole', 'restartdns', 'reload']
 
@@ -49,11 +47,11 @@ db_exists = False
 conn = None
 c = None
 
-regexps_remote = set()
-regexps_local = set()
-regexps_slyfox1186_local = set()
-regexps_legacy_slyfox1186 = set()
-regexps_remove = set()
+regstrings_remote = set()
+regstrings_local = set()
+regstrings_slyfox1186_local = set()
+regstrings_legacy_slyfox1186 = set()
+regstrings_remove = set()
 
 # Inform user of script's intent
 os.system('clear')
@@ -62,7 +60,7 @@ print('Any other domains added personally by the user will remain uneffected.')
 print('\n')
 
 # Start the docker directory override
-print('[i] Checking for "pihole" docker container')
+print('[i] Checking if Pi-hole is running inside a docker container...')
 
 # Initialise the docker variables
 docker_id = None
@@ -91,11 +89,11 @@ if docker_id:
 
     # If we successfully found the mount
     if docker_mnt_src:
-        print('[i] Running in docker installation mode')
+        print('[i] Pi-hole is running through docker!')
         # Prepend restart commands
         cmd_restart[0:0] = ['docker', 'exec', '-i', 'pihole']
 else:
-    print('[i] Running in physical installation mode ')
+    print('[i] Running in physical installation mode!')
 
 # Set paths
 path_pihole = docker_mnt_src if docker_mnt_src else r'/etc/pihole'
@@ -103,40 +101,41 @@ path_legacy_regex = os.path.join(path_pihole, 'regex.list')
 path_legacy_slyfox1186_regex = os.path.join(path_pihole, 'slyfox1186-regex.list')
 path_pihole_db = os.path.join(path_pihole, 'gravity.db')
 
-# Check that pi-hole path exists
+# Check that Pi-hole path exists
 if os.path.exists(path_pihole):
-    print('[i] Pi-hole path exists!')
+    print("[i] Pi-hole's file path has been found!")
 else:
     print(f'[e] {path_pihole} was not found!')
     exit(1)
 
 # Check for write access to /etc/pihole
 if os.access(path_pihole, os.X_OK | os.W_OK):
-    print(f'[i] Write access to {path_pihole} verified!')
+    print(f'[i] Write access enabled for: {path_pihole}!')
 else:
-    print(f'[e] Write access is not available for {path_pihole}. Please run as root or other privileged user...')
+    print(f'[e] Write access disabled for {path_pihole}. Re-run the script as a privileged user...')
     exit(1)
 
 # Determine whether we are using database or not
 if os.path.isfile(path_pihole_db) and os.path.getsize(path_pihole_db) > 0:
     db_exists = True
-    print('[i] Database detected...')
+    print('[i] Gravity database detected!')
 else:
-    print('[i] Legacy regex.list detected...')
+    print('[i] Legacy regex.list detected!')
 
-# Fetch the remote regex strings
-str_regexps_remote = fetch_blacklist_url(url_regexps_remote)
+# Fetch the remote regstrings
+str_regstrings_remote = fetch_blacklist_url(url_regstrings_remote)
 
-if str_regexps_remote:
-    regexps_remote.update(x for x in map(str.strip, str_regexps_remote.splitlines()) if x and x[:1] != '#')
-    print(f'[i] {len(regexps_remote)} regex strings collected from {url_regexps_remote}!')
+# If regstrings were fetched, remove any comments and add to set
+if str_regstrings_remote:
+    regstrings_remote.update(x for x in map(str.strip, str_regstrings_remote.splitlines()) if x and x[:1] != '#')
+    print(f'[i] {len(regstrings_remote)} regstrings collected from {url_regstrings_remote}')
 else:
     print('[i] No remote regex strings were found!')
     exit(1)
 
 if db_exists:
     # Create a database connection
-    print(f'[i] Connecting to {path_pihole_db}')
+    print(f"[i] Connecting to {path_pihole_db}!")
 
     try:
         conn = sqlite3.connect(path_pihole_db)
@@ -147,68 +146,70 @@ if db_exists:
     # Create a cursor object
     c = conn.cursor()
 
-    # Identifying slyfox1186 regex strings
+    # Identify and remove regstrings
     print("[i] Removing slyfox1186's regex strings!")
+
     c.executemany('DELETE FROM domainlist '
-                  'WHERE type = 3 '
+                  'WHERE type = 2 '
                   'AND (domain in (?) OR comment = ?)',
-                  [(x, install_comment) for x in regexps_remote])
+                  [(x, install_comment) for x in regstrings_remote])
 
     conn.commit()
 
-    print('[i] Restarting Pi-hole...')
+    print('[i] Please wait while Pi-hole restarts...')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
     print('\n')
-    print('[i] Please see the updated RegEx Blacklist below!')
+    print('[i] Please see the updated RegEx Blacklist filters below!')
 
-    c.execute('Select domain FROM domainlist WHERE type = 3')
+    c.execute('Select domain FROM domainlist WHERE type = 2')
     final_results = c.fetchall()
-    regexps_local.update(x[0] for x in final_results)
+    regstrings_local.update(x[0] for x in final_results)
 
-    print(*sorted(regexps_local), sep='\n')
+    print(*sorted(regstrings_local), sep='\n')
 
     conn.close()
 
 else:
-    # If regex.list exists and is not empty read it and add to a set
+    # If regex.list exists and is not empty, read it and add to a set.
     if os.path.isfile(path_legacy_regex) and os.path.getsize(path_legacy_regex) > 0:
-        print('[i] Collecting existing entries from regex.list')
+        print('[i] Analyzing the current regex.list')
         with open(path_legacy_regex, 'r') as fRead:
-            regexps_local.update(x for x in map(str.strip, fRead) if x and x[:1] != '#')
+            regstrings_local.update(x for x in map(str.strip, fRead) if x and x[:1] != '#')
 
     # If the local regexp set is not empty
-    if regexps_local:
-        print(f'[i] {len(regexps_local)} existing regex strings identified')
-        # If we have a record of the previous legacy install
+    if regstrings_local:
+        print(f'[i] {len(regstrings_local)} existing regstrings identified!')
+        # If we have a record of a previous legacy install
         if os.path.isfile(path_legacy_slyfox1186_regex) and os.path.getsize(path_legacy_slyfox1186_regex) > 0:
-            print('[i] Existing slyfox1186-regex install identified')
+            print('[i] An existing slyfox1186-regex installation was found!')
+            # Read the previously installed regstrings to a set
             with open(path_legacy_slyfox1186_regex, 'r') as fOpen:
-                regexps_legacy_slyfox1186.update(x for x in map(str.strip, fOpen) if x and x[:1] != '#')
+                regstrings_legacy_slyfox1186.update(x for x in map(str.strip, fOpen) if x and x[:1] != '#')
 
-                if regexps_legacy_slyfox1186:
-                    print(f'[i] Removing regex strings found in {path_legacy_slyfox1186_regex}')
-                    regexps_local.difference_update(regexps_legacy_slyfox1186)
+                if regstrings_legacy_slyfox1186:
+                    print(f'[i] The script is removing regstrings found in {path_legacy_slyfox1186_regex}!')
+                    regstrings_local.difference_update(regstrings_legacy_slyfox1186)
 
             # Remove slyfox1186-regex.list as it will no longer be required
             os.remove(path_legacy_slyfox1186_regex)
         else:
-            print('[i] Removing regex strings that match the remote repo!')
-            regexps_local.difference_update(regexps_remote)
+            print('[i] Removing the regstrings that have a match in the remote repository')
+            regstrings_local.difference_update(regstrings_remote)
 
     # Output to regex.list
-    print(f'[i] Outputting {len(regexps_local)} regex strings to {path_legacy_regex}')
+    print(f"[i] Outputting {len(regstrings_local)} regstrings to {path_legacy_regex}")
     with open(path_legacy_regex, 'w') as fWrite:
-        for line in sorted(regexps_local):
+        for line in sorted(regstrings_local):
             fWrite.write(f'{line}\n')
 
-    print('[i] Restarting Pi-hole...')
+    print('[i] Please wait while Pi-hole restarts...')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
     print('\n')
-    print('[i] Please see the updated RegEx Blacklist below!')
+    print('[i] Please see the updated RegEx Blacklist filters below!')
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
