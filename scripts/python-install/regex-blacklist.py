@@ -8,6 +8,8 @@ from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 import time
 
+today = int(time.time())
+
 def fetch_blacklist_url(url):
 
     if not url:
@@ -143,7 +145,7 @@ if db_exists:
     print('[i] Adding / Updating RegEx Blacklist strings in the database!')
 
     c.executemany('INSERT OR IGNORE INTO domainlist (type, domain, enabled, comment) '
-                  'VALUES (2, ?, 1, ?)',
+                  'VALUES (3, ?, 1, ?)',
                   [(x, install_comment) for x in sorted(regexps_remote)])
     c.executemany('UPDATE domainlist '
                   'SET comment = ? WHERE domain in (?) AND comment != ?',
