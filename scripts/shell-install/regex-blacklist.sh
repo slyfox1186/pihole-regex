@@ -13,7 +13,7 @@ elif [[ $i == "S" ]]; then
     clear
     echo '[i] Loading: RegEx Whitelist'
     sleep 1
-    . regex-whitelist.sh
+    . pihole-regex/regex-whitelist.sh
 fi
 
 read -t 30 -p 'Press Enter to continue...'
