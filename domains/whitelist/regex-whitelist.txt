@@ -11,7 +11,6 @@
 (\.|^)react\.gammacdn\.com$
 (\.|^)streaming-(fame|hls)\.gammacdn\.com$
 ^images[\d]+-fame\.gammacdn\.com$
-^static[\d]+?-cms-fame\.gammacdn\.com$
 
 # Apple
 (\.|^)appattest\.apple\.com$
