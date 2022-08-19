@@ -11,7 +11,7 @@ elif [[ $i == "R" ]]; then
     /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-uninstall/regex-whitelist.py' | sudo python3
 elif [[ $i == "S" ]]; then
     clear
-    echo '[i] Skipping to end!'
+    echo '[i] Finishing...'
     sleep 1
 fi
 
