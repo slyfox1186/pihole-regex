@@ -90,9 +90,9 @@ print('Any other domains added personally by the user will remain uneffected.')
 
 # Check for pihole path exsists
 if os.path.exists(pihole_location):
-    print("[i] Pi-hole's path exists!")
+    print("[i] Pi-hole's path exists")
 else:
-    print("[X] {} was not found!".format(pihole_location))
+    print("[X] {} was not found".format(pihole_location))
     print('\n')
     exit(1)
 
@@ -110,26 +110,26 @@ else:
 # Determine whether we are using DB or not
 if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) > 0:
     db_exists = True
-    print("[i] Succesfully located the Gravity database!")
+    print("[i] Succesfully located the Gravity database")
 
     remote_sql_str = fetch_whitelist_url(remote_sql_url)
     remote_sql_lines = remote_sql_str.count('\n')
     remote_sql_lines += 1
 
     if len(remote_sql_str) > 0:
-        print("[i] {} domains were discovered!" .format(remote_whitelist_lines))
+        print("[i] {} domains were discovered" .format(remote_whitelist_lines))
     else:
-        print('[X] No remote SQL queries were found!')
+        print('[X] No remote SQL queries were found')
         print('\n')
         exit(1)
 else:
-    print('[i] Legacy Pi-hole detected ( older than v5.0)!')
+    print('[i] Legacy Pi-hole detected ( older than v5.0)')
 
 if whitelist_str:
     whitelist_remote.update(x for x in map(
         str.strip, whitelist_str.splitlines()) if x and x[:1] != '#')
 else:
-    print('[X] No remote domains found!')
+    print('[X] No remote domains found')
     print('\n')
     exit(1)
 
@@ -172,7 +172,6 @@ if db_exists:
             restart_pihole(args.docker)
             print('\n')
             print('[i] The Exact Whitelist filters have been removed from Gravity!')
-            print('\n')
 
 else:
     if os.path.isfile(gravity_whitelist_location) and os.path.getsize(gravity_whitelist_location) > 0:
@@ -210,4 +209,3 @@ else:
     restart_pihole(args.docker)
     print('\n')
     print('[i] The Exact Whitelist filters have been removed from Gravity!')
-    print('\n')
