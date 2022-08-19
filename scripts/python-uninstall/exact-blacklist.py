@@ -209,6 +209,8 @@ else:
         for line in sorted(blacklist_local):
             fWrite.write("{}\n".format(line))
 
+    print('[i] Please wait for the Pi-hole server to restart.')
+    restart_pihole(args.docker)
     print('\n')
     print('[i] The Exact Blacklist filters have been removed from Gravity!')
     print('\n')
