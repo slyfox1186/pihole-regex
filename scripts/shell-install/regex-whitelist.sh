@@ -17,7 +17,6 @@ elif [[ $i == "S" ]]; then
 fi
 
 echo
-echo
 echo 'Done!'
 echo
 echo 'Make sure to star this repository and show your support!'
