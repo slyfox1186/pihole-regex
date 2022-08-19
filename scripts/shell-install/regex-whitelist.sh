@@ -13,8 +13,6 @@ if [[ $i == "A" ]]; then
 elif [[ $i == "R" ]]; then
     /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-uninstall/regex-whitelist.py' | sudo python3
 elif [[ $i == "S" ]]; then
-    clear
-    echo '[i] Finishing...'
     sleep 1
 fi
 
@@ -24,5 +22,6 @@ echo
 echo 'Make sure to star this repository and show your support!'
 echo 'Github Profile: https://github.com/slyfox1186/pihole-regex'
 echo
-read -t 30 -p 'Press [Enter] to exit the shell.'
+echo
+read -t 30 -p 'Press [Enter] to exit'
 exit 0
