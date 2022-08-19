@@ -16,7 +16,9 @@
 (0, 'kosmos-assets-prod.react.gammacdn.com', 1, 'AdultTime - Required for react buttons to work - SlyEWL')
 (0, 'kosmos-prod.react.gammacdn.com', 1, 'AdultTime - Required for react buttons to work - SlyEWL')
 (0, 'static01-cms-fame.gammacdn.com', 1, 'AdultTime - A required domain of the site to access image, videos, etc - SlyEWL')
+(0, 'static02-cms-fame.gammacdn.com', 1, 'AdultTime - A required domain of the site to access image, videos, etc - SlyEWL')
 (0, 'static03-cms-fame.gammacdn.com', 1, 'AdultTime - A required domain of the site to access image, videos, etc - SlyEWL')
+(0, 'static04-cms-fame.gammacdn.com', 1, 'AdultTime - A required domain of the site to access image, videos, etc - SlyEWL')
 
 // RegEx Strings replaced
 ^kosmos(|-assets)-prod\.react\.gammacdn\.com$
