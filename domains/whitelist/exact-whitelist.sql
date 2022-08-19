@@ -500,6 +500,7 @@
 (0, 's1.wp.com', 1, 'WordPress - Used to feliver static files and media for websites which are hosted on wordpress.com platform - SlyEWL')
 (0, 's1.yimg.com', 1, 'Yahoo - SlyEWL')
 (0, 's2.youtube.com', 1, 'Google YouTube - Used to record YouTube watch history. Blocking this domain will pause your watch history on YouTube - SlyEWL')
+(0, 's3-eu-central-1.amazonaws.com', 1, 'Discord - MEE6 Bot - SlyEWL')
 (0, 's3-eu-west-1.amazonaws.com', 1, 'Amazon - SlyEWL')
 (0, 's3.amazonaws.com', 1, 'Amazon - Used to deliver files that are stored in Amazon AWS S3 storage buckets - SlyEWL')
 (0, 'sa.symcb.com', 1, 'Symantec - Certificate Revocation List servers; Used by a number of companies including Microsoft - SlyEWL')
