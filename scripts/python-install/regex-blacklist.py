@@ -141,7 +141,7 @@ if db_exists:
     # Create a cursor object
     c = conn.cursor()
 
-    # Add / update remote regex strings
+    # Add / Update remote regex strings
     print('[i] Adding / Updating RegEx Blacklist strings in the database')
 
     c.executemany('INSERT OR IGNORE INTO domainlist (type, domain, enabled, comment) '
