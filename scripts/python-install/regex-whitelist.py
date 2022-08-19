@@ -145,7 +145,7 @@ if db_exists:
     print('[i] Adding / Updating RegEx Whitelist strings in the database')
 
     c.executemany('INSERT OR IGNORE INTO domainlist (type, domain, enabled, comment) '
-                  'VALUES (2, ?, 0, ?)',
+                  'VALUES (2, ?, 1, ?)',
                   [(x, install_comment) for x in sorted(regexps_remote)])
     c.executemany('UPDATE domainlist '
                   'SET comment = ? WHERE domain in (?) AND comment != ?',
