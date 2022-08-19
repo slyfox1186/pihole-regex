@@ -8,7 +8,7 @@ from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
 
-def fetch_url(url):
+def fetch_blacklist_url(url):
 
     if not url:
         return
@@ -96,16 +96,16 @@ path_pihole_db = os.path.join(path_pihole, 'gravity.db')
 
 # Check that pi-hole path exists
 if os.path.exists(path_pihole):
-    print('[i] Pi-hole path exists')
+    print('[i] Pi-hole path exists!')
 else:
-    print(f'[e] {path_pihole} was not found')
+    print(f'[e] {path_pihole} was not found!')
     exit(1)
 
 # Check for write access to /etc/pihole
 if os.access(path_pihole, os.X_OK | os.W_OK):
-    print(f'[i] Write access to {path_pihole} verified')
+    print(f'[i] Write access to {path_pihole} verified!')
 else:
-    print(f'[e] Write access is not available for {path_pihole}. Please run as root or other privileged user')
+    print(f'[e] Write access is not available for {path_pihole}. Please run as root or other privileged user...')
     exit(1)
 
 # Determine whether we are using database or not
@@ -116,14 +116,14 @@ else:
     print('[i] Legacy regex.list detected')
 
 # Fetch the remote regex strings
-str_regexps_remote = fetch_url(url_regexps_remote)
+str_regexps_remote = fetch_blacklist_url(url_regexps_remote)
 
 # If regex strings were fetched, remove any comments and add to set
 if str_regexps_remote:
     regexps_remote.update(x for x in map(str.strip, str_regexps_remote.splitlines()) if x and x[:1] != '#')
     print(f'[i] {len(regexps_remote)} regex strings collected from {url_regexps_remote}')
 else:
-    print('[i] No remote regex strings were found.')
+    print('[i] No remote regex strings were found!')
     exit(1)
 
 if db_exists:
@@ -140,7 +140,7 @@ if db_exists:
     c = conn.cursor()
 
     # Identifying slyfox1186 regex strings
-    print("[i] Removing slyfox1186's regex strings")
+    print("[i] Removing slyfox1186's regex strings!")
     c.executemany('DELETE FROM domainlist '
                   'WHERE type = 3 '
                   'AND (domain in (?) OR comment = ?)',
@@ -202,4 +202,3 @@ else:
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
-            print('\n')
