@@ -8,7 +8,7 @@ from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
 
-def fetch_whitelist_url(url):
+def fetch_blacklist_url(url):
 
     if not url:
         return
@@ -31,14 +31,14 @@ def fetch_whitelist_url(url):
 
     # If there is data
     if response:
-        # Strip leading and trailing whitespace
+        # Strip leading and trailing blackspace
         response = '\n'.join(x for x in map(str.strip, response.splitlines()))
 
     # Return the hosts
     return response
 
 
-url_regstrings_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/whitelist/regex-whitelist.txt'
+url_regstrings_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/regex-blacklist.txt'
 install_comment = 'SlyRWL - github.com/slyfox1186/pihole-regex'
 
 cmd_restart = ['pihole', 'restartdns', 'reload']
@@ -123,7 +123,7 @@ else:
     print('[i] Legacy regex.list detected!')
 
 # Fetch the remote regstrings
-str_regstrings_remote = fetch_whitelist_url(url_regstrings_remote)
+str_regstrings_remote = fetch_blacklist_url(url_regstrings_remote)
 
 # If regstrings were fetched, remove any comments and add to set
 if str_regstrings_remote:
@@ -161,7 +161,7 @@ if db_exists:
 
     # Prepare final result
     print('\n')
-    print('[i] Please see the updated RegEx Whitelist filters below!')
+    print('[i] Please see the updated RegEx Blacklist filters below!')
 
     c.execute('Select domain FROM domainlist WHERE type = 2')
     final_results = c.fetchall()
@@ -209,7 +209,7 @@ else:
 
     # Prepare final result
     print('\n')
-    print('[i] Please see the updated RegEx Whitelist filters below!')
+    print('[i] Please see the updated RegEx Blacklist filters below!')
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
