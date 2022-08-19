@@ -6,9 +6,7 @@ import sqlite3
 import subprocess
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
-import time
 
-today = int(time.time())
 
 def fetch_blacklist_url(url):
 
@@ -40,7 +38,7 @@ def fetch_blacklist_url(url):
     return response
 
 url_regexps_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/regex-blacklist.txt'
-install_comment = 'SlyRBL'
+install_comment = 'github.com/slyfox1186/pihole-regex - SlyRBL'
 
 cmd_restart = ['pihole', 'restartdns', 'reload']
 
