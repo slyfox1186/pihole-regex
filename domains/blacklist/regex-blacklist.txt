@@ -6,7 +6,6 @@
 (\.|^)cognito-identity\.us-east-1\.amazonaws\.com$
 (\.|^)getbeamer\.com$
 (\.|^)lambda-url\.us-east-1\.on\.aws$
-^static[\d]+?-cms-fame\.gammacdn\.com$
 
 # Apple
 (\.|^)amazonaws\.com$
