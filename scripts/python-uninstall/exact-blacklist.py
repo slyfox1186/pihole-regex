@@ -172,11 +172,8 @@ if db_exists:
             time.sleep(2)
             print('[i] Please wait for the Pi-hole server to restart...')
             restart_pihole(args.docker)
-                                                                                                 
             print('\n')
             print('[i] The Exact Blacklist filters have been removed from Gravity!')
-                                                               
-            print('\n')
 
 else:
     if os.path.isfile(gravity_blacklist_location) and os.path.getsize(gravity_blacklist_location) > 0:
@@ -211,9 +208,6 @@ else:
             fWrite.write("{}\n".format(line))
 
     print('[i] Please wait for the Pi-hole server to restart...')
-    restart_pihole(args.docker)
-                                                                                         
+    restart_pihole(args.docker)                                                    
     print('\n')
     print('[i] The Exact Blacklist filters have been removed from Gravity!')
-                                                       
-    print('\n')
