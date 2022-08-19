@@ -93,75 +93,75 @@ Any other domains added by the user will remain uneffected.
 
 # Check for pihole path exsists
 if os.path.exists(pihole_location):
-    print("[i] Pi-hole's path exists.")
+    print("[i] Pi-hole's path exists!")
 else:
-    print("[X] {} was not found".format(pihole_location))
+    print("[X] {} was not found!".format(pihole_location))
     print('\n')
     exit(1)
 
 # Check for write access to /etc/pihole
 if os.access(pihole_location, os.X_OK | os.W_OK):
-    print("[i] Write access to {} verified." .format(pihole_location))
+    print("[i] Write access to {} verified!" .format(pihole_location))
     blacklist_str = fetch_blacklist_url(blacklist_remote_url)
     remote_blacklist_lines = blacklist_str.count('\n')
     remote_blacklist_lines += 1
 else:
-    print("[X] Write access is not available for {}. Please run the script as a privileged user." .format(pihole_location))
+    print("[X] Write access is not available for {}. Please run the script as a privileged user..." .format(pihole_location))
     print('\n')
     exit(1)
 
 # Determine whether we are using DB or not
 if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) > 0:
     db_exists = True
-    print('[i] Pi-hole Gravity database found.')
+    print("[i] Succesfully located the Gravity database!")
 
     remote_sql_str = fetch_blacklist_url(remote_sql_url)
     remote_sql_lines = remote_sql_str.count('\n')
     remote_sql_lines += 1
 
     if len(remote_sql_str) > 0:
-        print("[i] {} domains were discovered." .format(remote_blacklist_lines))
+        print("[i] {} domains were discovered!" .format(remote_blacklist_lines))
     else:
-        print('[X] No remote SQL queries were found.')
+        print('[X] No remote SQL queries were found!')
         print('\n')
         exit(1)
 else:
-    print('[i] Legacy Pi-hole detected (Version older than 5.0).')
+    print('[i] Legacy Pi-hole detected ( older than v5.0)!')
 
 if blacklist_str:
     blacklist_remote.update(x for x in map(
         str.strip, blacklist_str.splitlines()) if x and x[:1] != '#')
 else:
-    print('[X] No remote domains found.')
+    print('[X] No remote domains found!')
     print('\n')
     exit(1)
 
 if db_exists:
     # Create a DB connection
-    print("[i] Connecting to Gravity's database.")
+    print("[i] Connecting to Gravity's database...")
 
     try:
         sqliteConnection = sqlite3.connect(gravity_db_location)
         cursor = sqliteConnection.cursor()
-        print("[i] Successfully connected to Gravity's database.")
+        print("[i] Successfully connected to Gravity's database!")
         total_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%SlyEBL - github.com/slyfox1186/pihole-regex%' ")
 
         totalDomains = len(total_domains.fetchall())
         print("[i] There are a total of {} domains in your blacklist which were added by this script." .format(totalDomains))
-        print('[i] Removing domains in the Gravity database.')
+        print('[i] Removing domains in the Gravity database...')
         cursor.execute (" DELETE FROM domainlist WHERE type = 0 AND comment LIKE '%SlyEBL - github.com/slyfox1186/pihole-regex%' ")
 
         sqliteConnection.commit()
 
         # We only removed domains we added so use total_domains
-        print("[i] {} domains were removed." .format(totalDomains))
+        print("[i] {} domains were removed!" .format(totalDomains))
         remaining_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 OR type = 2 ")
         print("[i] There are a total of {} domains remaining in your blacklist." .format(len(remaining_domains.fetchall())))
 
         cursor.close()
 
     except sqlite3.Error as error:
-        print("[X] Failed to remove domains from Gravity's database.", error)
+        print("[X] Failed to remove domains from Gravity's database!", error)
         print('\n')
         exit(1)
 
@@ -169,9 +169,9 @@ if db_exists:
         if (sqliteConnection):
             sqliteConnection.close()
 
-            print("[i] The connection to the Gravity database has closed.")
+            print("[i] The connection to the Gravity database has closed!")
             time.sleep(2)
-            print('[i] Please wait for the Pi-hole server to restart.')
+            print('[i] Please wait for the Pi-hole server to restart...')
             restart_pihole(args.docker)
             print('\n')
             print('[i] The Exact Blacklist filters have been removed from Gravity!')
@@ -209,7 +209,7 @@ else:
         for line in sorted(blacklist_local):
             fWrite.write("{}\n".format(line))
 
-    print('[i] Please wait for the Pi-hole server to restart.')
+    print('[i] Please wait for the Pi-hole server to restart...')
     restart_pihole(args.docker)
     print('\n')
     print('[i] The Exact Blacklist filters have been removed from Gravity!')
