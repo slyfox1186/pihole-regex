@@ -333,9 +333,6 @@ if db_exists:
         print('\n')
         print('[i] The Exact Blacklist filters have been added to Gravity!')
         print('\n')
-        print('Make sure to star this repository and show your support!')
-        print('GitHub Profile: https://github.com/slyfox1186/pihole-regex')
-        print('\n')
 
 else:
 
@@ -376,7 +373,4 @@ else:
     restart_pihole(args.docker)
     print('\n')
     print('[i] The Exact Blacklist filters have been added to Gravity!')
-    print('\n')
-    print('Make sure to star this repository and show your support!')
-    print('GitHub Profile: https://github.com/slyfox1186/pihole-regex')
     print('\n')
