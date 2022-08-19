@@ -25,6 +25,10 @@ for i in ${FILES[@]}; do
         mv -f $i pihole-regex/$i
         clear
     fi
+    if [ -f pihole-regex/run.sh ]; then
+        rm pihole-regex/run.sh
+        clear
+    fi
 done
 
 # change working directory to pihole-regex
