@@ -8,7 +8,6 @@ from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 import time
 
-
 today = int(time.time())
 
 def fetch_blacklist_url(url):
@@ -17,8 +16,6 @@ def fetch_blacklist_url(url):
         return
 
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0'}
-
-    print('[i] Fetching:', url)
 
     try:
         response = urlopen(Request(url, headers=headers))
@@ -133,9 +130,7 @@ else:
     exit(1)
 
 if db_exists:
-    # Create a DB connection
-    print("[i] Establishing a connection with Gravity's database.")
-
+    print("[i] Connecting to Gravity.")
     try: # Try to create a DB connection
         sqliteConnection = sqlite3.connect(gravity_db_location)
         cursor = sqliteConnection.cursor()
@@ -148,7 +143,7 @@ if db_exists:
         gravScriptBeforeTUP = gravityScript_before.fetchall()
         # Number of domains in database from script
         gravScriptBeforeTUPlen = len(gravScriptBeforeTUP)
-        print('[i] There are {} domains from the script that are already in the blacklist.' .format(gravScriptBeforeTUPlen))
+        print("[i] There are {} domains from the script that are already in the blacklist." .format(gravScriptBeforeTUPlen))
         #
         # Make `remote_sql_str` a tuple so we can easily compare
         newblackTUP = remote_sql_str.split('\n')
@@ -320,7 +315,6 @@ if db_exists:
         print("[i] There are a total of {} domains in your blacklist (regex({}) & exact({}))" .format(total_domains, tdr, tde))
         sqliteConnection.close()
         print("[i] The connection to the Gravity database has closed.")
-        time.sleep(2)
         if ilng == True:
             print('[i] Please wait for the Pi-hole server to restart.')
             restart_pihole(args.docker)
@@ -344,9 +338,7 @@ else:
                 str.strip, fRead) if x and x[:1] != '#')
 
     if blacklist_local:
-        print("[i] The script has located {} existing blacklisted domains." .format(
-            len(blacklist_local)))
-
+        print("[i] The script has located {} existing blacklisted domains." .format(len(blacklist_local)))
         if os.path.isfile(slyfox1186_blacklist_location) and os.path.getsize(slyfox1186_blacklist_location) > 0:
             print('[i] Existing slyfox1186-blacklist installation found.')
             with open(slyfox1186_blacklist_location, 'r') as fOpen:
