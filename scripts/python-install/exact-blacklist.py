@@ -334,7 +334,6 @@ if db_exists:
     finally:
         print('\n')
         print('[i] The Exact Blacklist filters have been added to Gravity!')
-        print('\n')
 
 else:
 
@@ -375,4 +374,3 @@ else:
     restart_pihole(args.docker)
     print('\n')
     print('[i] The Exact Blacklist filters have been added to Gravity!')
-    print('\n')
