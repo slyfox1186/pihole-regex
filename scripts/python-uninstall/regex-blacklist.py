@@ -89,11 +89,11 @@ if docker_id:
 
     # If we successfully found the mount
     if docker_mnt_src:
-        print('[i] Pi-hole is running through docker!')
+        print('[i] Pi-hole is running through docker')
         # Prepend restart commands
         cmd_restart[0:0] = ['docker', 'exec', '-i', 'pihole']
 else:
-    print('[i] Running in physical installation mode!')
+    print('[i] Running in physical installation mode')
 
 # Set paths
 path_pihole = docker_mnt_src if docker_mnt_src else r'/etc/pihole'
@@ -103,9 +103,9 @@ path_pihole_db = os.path.join(path_pihole, 'gravity.db')
 
 # Check that Pi-hole path exists
 if os.path.exists(path_pihole):
-    print("[i] Pi-hole's file path has been found!")
+    print("[i] Pi-hole's file path has been found")
 else:
-    print(f'[e] {path_pihole} was not found!')
+    print(f'[e] {path_pihole} was not found')
     exit(1)
 
 # Check for write access to /etc/pihole
@@ -118,9 +118,9 @@ else:
 # Determine whether we are using database or not
 if os.path.isfile(path_pihole_db) and os.path.getsize(path_pihole_db) > 0:
     db_exists = True
-    print('[i] Gravity database detected!')
+    print('[i] Gravity database detected...')
 else:
-    print('[i] Legacy regex.list detected!')
+    print('[i] Legacy regex.list detected...')
 
 # Fetch the remote regstrings
 str_regstrings_remote = fetch_blacklist_url(url_regstrings_remote)
@@ -130,7 +130,7 @@ if str_regstrings_remote:
     regstrings_remote.update(x for x in map(str.strip, str_regstrings_remote.splitlines()) if x and x[:1] != '#')
     print(f'[i] {len(regstrings_remote)} regstrings collected from {url_regstrings_remote}')
 else:
-    print('[i] No remote regex strings were found!')
+    print('[i] No remote regex strings were found')
     exit(1)
 
 if db_exists:
@@ -147,7 +147,7 @@ if db_exists:
     c = conn.cursor()
 
     # Identify and remove regstrings
-    print("[i] Removing slyfox1186's regex strings!")
+    print("[i] Removing slyfox1186's regex strings")
 
     c.executemany('DELETE FROM domainlist '
                   'WHERE type = 3 '
@@ -162,7 +162,6 @@ if db_exists:
     # Prepare final result
     print('\n')
     print('[i] Please see the updated RegEx Blacklist filters below!')
-    print('\n')
     print('\n')
 
     c.execute('Select domain FROM domainlist WHERE type = 3')
@@ -212,7 +211,6 @@ else:
     # Prepare final result
     print('\n')
     print('[i] Please see the updated RegEx Blacklist filters below!')
-    print('\n')
     print('\n')
 
     with open(path_legacy_regex, 'r') as fOpen:
