@@ -87,7 +87,7 @@ whitelist_old_slyfox1186 = set()
 
 os.system('clear')
 print('If you are using Pi-hole v5.0 or later, this script will only remove domains that were added by itself.')
-print('Any other domains added personally by the user will remain uneffected.'
+print('Any other domains added personally by the user will remain uneffected.')
 
 # Check for pihole path exsists
 if os.path.exists(pihole_location):
