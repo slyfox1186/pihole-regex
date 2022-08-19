@@ -162,7 +162,6 @@ if db_exists:
     # Prepare final result
     print('\n')
     print('[i] Please see the updated RegEx Blacklist filters below!')
-    print('\n')
 
     c.execute('Select domain FROM domainlist WHERE type = 3')
     final_results = c.fetchall()
@@ -211,7 +210,6 @@ else:
     # Prepare final result
     print('\n')
     print('[i] Please see the updated RegEx Blacklist filters below!')
-    print('\n')
 
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
