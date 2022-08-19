@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# make user input case insensitive
-shopt -s nocasematch
-
 # delete the useless index.html file that is downloaded
 if [ -f index.html ]; then rm index.html; fi
 
