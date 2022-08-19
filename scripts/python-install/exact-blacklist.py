@@ -81,7 +81,7 @@ blacklist_slyfox1186_local = set()
 blacklist_old_slyfox1186 = set()
 
 os.system('clear')
-print("This script will import the Exact Blacklist filters from the repo to your Pihole server's whitelist.")
+print("This script will import the Exact Blacklist filters from the repo to your Pihole server's Blacklist.")
 print('All the domains in this list are beleived to serve undersiderable ads and other unwanted content.')
 print('\n')
 
