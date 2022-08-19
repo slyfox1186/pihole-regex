@@ -11,9 +11,9 @@ elif [[ $answer == "R" ]]; then
     /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-uninstall/exact-blacklist.py' | sudo python3
 elif [[ $answer == "S" ]]; then
     clear
-    echo -e "[i] Skipping ahead!\\n"
+    echo '[i] Skipping ahead!'
     sleep 1
     . exact-whitelist.sh
 fi
 
-read -t 30 -p 'Press Enter to continue...'
+read -t 30 -p 'Press [Enter] to continue...'
