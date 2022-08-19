@@ -20,13 +20,10 @@ for i in ${FILES[@]}; do
     if [ -f $i ]; then
         mv -f $i pihole-regex/$i
     fi
-    if [ -f pihole-regex/run.sh ]; then
-        rm pihole-regex/run.sh
-    fi
 done
 
 # execute all scripts in pihole-regex
 SUB_FILES=( $SHELL_FILES )
 for i in ${SUB_FILES[@]}; do
-    . pihole-regex/$i
+    /bin/bash pihole-regex/$i
 done
