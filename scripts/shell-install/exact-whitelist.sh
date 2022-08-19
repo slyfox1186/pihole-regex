@@ -14,6 +14,7 @@ elif [[ $i == "S" ]]; then
     echo '[i] Loading: RegEx Blacklist'
     sleep 1
     . pihole-regex/regex-blacklist.sh
+    exit 0
 fi
 
 read -t 30 -p 'Press Enter to continue...'
