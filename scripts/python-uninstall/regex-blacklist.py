@@ -3,12 +3,10 @@
 import json
 import os
 import sqlite3
-import subprocess
+import subprocess, platform
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
-import time
 
-today = int(time.time())
 
 def fetch_blacklist_url(url):
 
@@ -39,8 +37,9 @@ def fetch_blacklist_url(url):
     # Return the hosts
     return response
 
+
 url_regstrings_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/regex-blacklist.txt'
-install_comment = 'SlyRBL - github.com/slyfox1186/pihole-regex'
+install_comment = 'SlyRWL - github.com/slyfox1186/pihole-regex'
 
 cmd_restart = ['pihole', 'restartdns', 'reload']
 
@@ -151,7 +150,7 @@ if db_exists:
     print("[i] Removing slyfox1186's regex strings!")
 
     c.executemany('DELETE FROM domainlist '
-                  'WHERE type = 3'
+                  'WHERE type = 3 '
                   'AND (domain in (?) OR comment = ?)',
                   [(x, install_comment) for x in regstrings_remote])
 
@@ -164,7 +163,7 @@ if db_exists:
     print('\n')
     print('[i] Please see the updated RegEx Blacklist filters below!')
 
-    c.execute('Select domain FROM domainlist WHERE type = 2')
+    c.execute('Select domain FROM domainlist WHERE type = 3')
     final_results = c.fetchall()
     regstrings_local.update(x[0] for x in final_results)
 
