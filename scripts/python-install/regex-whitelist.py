@@ -8,6 +8,8 @@ from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 import time
 
+today = int(time.time())
+
 def fetch_whitelist_url(url):
 
     if not url:
@@ -38,7 +40,7 @@ def fetch_whitelist_url(url):
     return response
 
 url_regexps_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/whitelist/regex-whitelist.txt'
-install_comment = 'SlyRWL - github.com/slyfox1186/pihole-regex'
+install_comment = 'SlyRBL - github.com/slyfox1186/pihole-regex'
 
 cmd_restart = ['pihole', 'restartdns', 'reload']
 
@@ -86,7 +88,7 @@ if docker_id:
         # Prepend restart commands
         cmd_restart[0:0] = ['docker', 'exec', '-i', 'pihole']
 else:
-    print('[i] Running in physical installation mode!')
+    print('[i] Running in physical installation mode')
 
 # Set paths
 path_pihole = docker_mnt_src if docker_mnt_src else r'/etc/pihole'
@@ -96,14 +98,14 @@ path_pihole_db = os.path.join(path_pihole, 'gravity.db')
 
 # Check that pi-hole path exists
 if os.path.exists(path_pihole):
-    print('[i] Pi-hole path exists!')
+    print('[i] Pi-hole path exists')
 else:
-    print(f"[e] {path_pihole} was not found!")
+    print(f"[e] {path_pihole} was not found")
     exit(1)
 
 # Check for write access to /etc/pihole
 if os.access(path_pihole, os.X_OK | os.W_OK):
-    print(f"[i] Write access to {path_pihole} verified!")
+    print(f"[i] Write access to {path_pihole} verified")
 else:
     print(f"[e] Write access is not available for {path_pihole}. Please run as root or other privileged user...")
     exit(1)
@@ -111,9 +113,9 @@ else:
 # Determine whether we are using database or not
 if os.path.isfile(path_pihole_db) and os.path.getsize(path_pihole_db) > 0:
     db_exists = True
-    print('[i] Database detected!')
+    print('[i] Database detected')
 else:
-    print('[i] Legacy regex.list detected!')
+    print('[i] Legacy regex.list detected')
 
 # Fetch the remote regex strings
 str_regexps_remote = fetch_whitelist_url(url_regexps_remote)
@@ -140,10 +142,10 @@ if db_exists:
     c = conn.cursor()
 
     # Add / update remote regex strings
-    print('[i] Adding / Updating RegEx Whitelist strings in the database!')
+    print('[i] Adding / Updating RegEx Whitelist strings in the database')
 
     c.executemany('INSERT OR IGNORE INTO domainlist (type, domain, enabled, comment) '
-                  'VALUES (2, ?, 1, ?)',
+                  'VALUES (3, ?, 1, ?)',
                   [(x, install_comment) for x in sorted(regexps_remote)])
     c.executemany('UPDATE domainlist '
                   'SET comment = ? WHERE domain in (?) AND comment != ?',
@@ -170,11 +172,12 @@ if db_exists:
     if os.path.exists(path_legacy_slyfox1186_regex):
         os.remove(path_legacy_slyfox1186_regex)
 
-    print('[i] Restarting Pi-hole!')
+    print('[i] Restarting the Pi-hole server')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
-    print('[i] Please see your installed RegEx Whitelist strings below!\n')
+    print('[i] Please see your installed RegEx Whitelist strings below!')
+    print('\n')
 
     c.execute('Select domain FROM domainlist WHERE type = 2')
     final_results = c.fetchall()
@@ -222,11 +225,13 @@ else:
         for line in sorted(regexps_remote):
             fWrite.write(f'{line}\n')
 
-    print('[i] Restarting Pi-hole!')
+    print('[i] Restarting the Pi-hole server')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
-    print('[i] Please see your installed RegEx Whitelist strings below!\n')
+    print('[i] Please see your installed RegEx Whitelist strings below!')
+    print('\n')
+
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
