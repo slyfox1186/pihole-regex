@@ -153,7 +153,6 @@ if db_exists:
 
     # Prepare final result
     print('\n')
-    print("[i] Pi-hole has restarted!\n")
     print('[i] Please see the updated RegEx Blacklist filters below!')
     print('\n')
 
@@ -202,7 +201,6 @@ else:
 
     # Prepare final result
     print('\n')
-    print("[i] Pi-hole has restarted!\n")
     print('[i] Please see the updated RegEx Blacklist filters below!')
     print('\n')
     with open(path_legacy_regex, 'r') as fOpen:
