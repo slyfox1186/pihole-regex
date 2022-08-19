@@ -8,9 +8,10 @@ from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 import time
 
+
 today = int(time.time())
 
-def fetch_whitelist_url(url):
+def fetch_blacklist_url(url):
 
     if not url:
         return
@@ -80,28 +81,28 @@ whitelist_slyfox1186_local = set()
 whitelist_old_slyfox1186 = set()
 
 os.system('clear')
-print("This script will download and add domains from the repo to your Pihole server's whitelist.")
+print("This script will import the Exact Whitelist filters from the repo to your Pihole server's Whitelist.")
 print('All the domains in this list are beleived to serve undersiderable ads and other unwanted content.')
 print('\n')
 
 # Check if the pihole path exists
 if os.path.exists(pihole_location):
-    print("[i] Pi-hole's path was found.")
+    print("[i] Pi-hole's path was found!")
 else:
     # print(f'[X] {pihole_location} was not found')
 
-    print("[X] {} was not found".format(pihole_location))
+    print("[X] {} was not found!".format(pihole_location))
     print('\n')
     exit(1)
 
 # Check for write access to /etc/pihole
 if os.access(pihole_location, os.X_OK | os.W_OK):
-    print("[i] Write access to {} verified." .format(pihole_location))
+    print("[i] Write access to {} verified!" .format(pihole_location))
     whitelist_str = fetch_whitelist_url(whitelist_remote_url)
     remote_whitelist_lines = whitelist_str.count('\n')
     remote_whitelist_lines += 1
 else:
-    print("[X] Write access is not available for {}. Please run the script as a privileged user." .format(
+    print("[X] Write access is not available for {}. Please run the script as a privileged user..." .format(
         pihole_location))
     print('\n')
     exit(1)
@@ -109,39 +110,39 @@ else:
 # Determine whether we are using DB or not
 if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) > 0:
     db_exists = True
-    print('[i] The Gravity database was found.')
+    print('[i] The Gravity database was found!')
 
     remote_sql_str = fetch_whitelist_url(remote_sql_url)
     remote_sql_lines = remote_sql_str.count('\n')
     remote_sql_lines += 1
 
     if len(remote_sql_str) > 0:
-        print("[i] {} domains and {} SQL queries discovered" .format(
+        print("[i] {} domains and {} SQL queries discovered!" .format(
             remote_whitelist_lines, remote_sql_lines))
     else:
         print('[X] No remote SQL queries found.')
         print('\n')
         exit(1)
 else:
-    print('[i] Legacy Pi-hole detected (Version older than 5.0).')
+    print('[i] Legacy Pi-hole detected (older than v5.0)!')
 
 # If domains were fetched, remove any comments and add to set
 if whitelist_str:
     whitelist_remote.update(x for x in map(
         str.strip, whitelist_str.splitlines()) if x and x[:1] != '#')
 else:
-    print('[X] No remote domains were found.')
+    print('[X] No remote domains were found!')
     print('\n')
     exit(1)
 
 if db_exists:
     # Create a DB connection
-    print('[i] Connecting to Gravity.')
+    print('[i] Connecting to Gravity...')
 
     try: # Try to create a DB connection
         sqliteConnection = sqlite3.connect(gravity_db_location)
         cursor = sqliteConnection.cursor()
-        print('[i] Successfully Connected to Gravity.')
+        print('[i] Successfully Connected to Gravity!')
         #
         print('[i] Checking Gravity for domains added by script.')
         # Check Gravity database for domains added by script
