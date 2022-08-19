@@ -12,9 +12,8 @@ elif [[ $answer == "R" ]]; then
 elif [[ $answer == "S" ]]; then
     clear
     echo -e "[i] Skipping ahead!\\n"
-    sleep 2
+    sleep 1
     . exact-whitelist.sh
-    exit 0
 fi
 
 read -t 30 -p 'Press Enter to continue...'
