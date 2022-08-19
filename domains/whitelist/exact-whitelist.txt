@@ -510,6 +510,7 @@ s.zkcdn.net
 s1.wp.com
 s1.yimg.com
 s2.youtube.com
+s3-eu-central-1.amazonaws.com
 s3-eu-west-1.amazonaws.com
 s3.amazonaws.com
 sa.symcb.com
