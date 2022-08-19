@@ -6,9 +6,7 @@ import sqlite3
 import subprocess
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
-import time
 
-today = int(time.time())
 
 def fetch_url(url):
 
@@ -40,7 +38,7 @@ def fetch_url(url):
     return response
 
 url_regexps_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/regex-blacklist.txt'
-install_comment = 'SlyRBL'
+install_comment = 'github.com/slyfox1186/pihole-regex - SlyRBL'
 
 cmd_restart = ['pihole', 'restartdns', 'reload']
 
@@ -150,11 +148,11 @@ if db_exists:
 
     conn.commit()
 
-    print('[i] Restarting Pi-hole')
+    print('[i] Restarting Pi-hole...')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
-    print('[i] Please see your installed regex strings below\n')
+    print('[i] Please see your installed RegEx filters below\n')
 
     c.execute('Select domain FROM domainlist WHERE type = 3')
     final_results = c.fetchall()
@@ -196,11 +194,11 @@ else:
         for line in sorted(regexps_local):
             fWrite.write(f'{line}\n')
 
-    print('[i] Restarting Pi-hole')
+    print('[i] Restarting Pi-hole...')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
-    print('[i] Please see your installed regex strings below')
+    print('[i] Please see your installed RegEx filters below')
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
