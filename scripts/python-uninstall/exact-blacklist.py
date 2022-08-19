@@ -84,6 +84,8 @@ blacklist_local = set()
 blacklist_slyfox1186_local = set()
 blacklist_old_slyfox1186 = set()
 
+
+
 os.system('clear')
 print('If you are using Pi-hole v5.0 or later, this script will only remove domains that were added by itself.')
 print('Any other domains added personally by the user will remain uneffected.')
@@ -141,18 +143,18 @@ if db_exists:
         sqliteConnection = sqlite3.connect(gravity_db_location)
         cursor = sqliteConnection.cursor()
         print("[i] Successfully connected to Gravity's database!")
-        total_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%SlyEBL%' ")
+        total_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 AND comment LIKE '%SlyEBL%' ")
 
         totalDomains = len(total_domains.fetchall())
         print("[i] There are a total of {} domains in your blacklist which were added by this script." .format(totalDomains))
         print('[i] Removing domains in the Gravity database...')
-        cursor.execute (" DELETE FROM domainlist WHERE type = 0 AND comment LIKE '%SlyEBL%' ")
+        cursor.execute (" DELETE FROM domainlist WHERE type = 1 AND comment LIKE '%SlyEBL%' ")
 
         sqliteConnection.commit()
 
         # We only removed domains we added so use total_domains
         print("[i] {} domains were removed!" .format(totalDomains))
-        remaining_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 OR type = 2 ")
+        remaining_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 OR type = 3 ")
         print("[i] There are a total of {} domains remaining in your blacklist." .format(len(remaining_domains.fetchall())))
 
         cursor.close()
@@ -170,8 +172,10 @@ if db_exists:
             time.sleep(2)
             print('[i] Please wait for the Pi-hole server to restart...')
             restart_pihole(args.docker)
+                                                                                                 
             print('\n')
             print('[i] The Exact Blacklist filters have been removed from Gravity!')
+                                                               
             print('\n')
 
 else:
@@ -208,6 +212,8 @@ else:
 
     print('[i] Please wait for the Pi-hole server to restart...')
     restart_pihole(args.docker)
+                                                                                         
     print('\n')
     print('[i] The Exact Blacklist filters have been removed from Gravity!')
+                                                       
     print('\n')
