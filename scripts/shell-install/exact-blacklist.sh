@@ -13,7 +13,7 @@ elif [[ $i == "S" ]]; then
     clear
     echo '[i] Loading: Exact Whitelist'
     sleep 1
-    . exact-whitelist.sh
+    . pihole-regex/exact-whitelist.sh
 fi
 
 read -t 30 -p 'Press [Enter] to continue...'
