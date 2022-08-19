@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# make user input case insensitive
+shopt -s nocasematch
+
 # Get user's input
 clear
 echo 'RegEx Whitelist: [A]dd [R]emove [S]kip'
