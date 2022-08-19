@@ -103,16 +103,16 @@ path_pihole_db = os.path.join(path_pihole, 'gravity.db')
 
 # Check that pi-hole path exists
 if os.path.exists(path_pihole):
-    print('[i] Pi-hole path exists')
+    print('[i] Pi-hole path exists!')
 else:
-    print(f"[e] {path_pihole} was not found")
+    print(f"[e] {path_pihole} was not found!")
     exit(1)
 
 # Check for write access to /etc/pihole
 if os.access(path_pihole, os.X_OK | os.W_OK):
-    print(f"[i] Write access to {path_pihole} verified")
+    print(f"[i] Write access to {path_pihole} verified!")
 else:
-    print(f"[e] Write access is not available for {path_pihole}. Please run as root or other privileged user")
+    print(f"[e] Write access is not available for {path_pihole}. Please run as root or other privileged user...")
     exit(1)
 
 # Determine whether we are using database or not
@@ -130,12 +130,12 @@ if str_regexps_remote:
     regexps_remote.update(x for x in map(str.strip, str_regexps_remote.splitlines()) if x and x[:1] != '#')
     print(f"[i] {len(regexps_remote)} regex strings collected from {url_regexps_remote}")
 else:
-    print('[i] No remote regex strings were found.')
+    print('[i] No remote RegEx Whitelist strings were found.')
     exit(1)
 
 if db_exists:
     # Create a database connection
-    print(f"[i] Connecting to {path_pihole_db}")
+    print(f"[i] Connecting to {path_pihole_db}...")
 
     try:
         conn = sqlite3.connect(path_pihole_db)
@@ -147,7 +147,7 @@ if db_exists:
     c = conn.cursor()
 
     # Add / update remote regex strings
-    print('[i] Adding / Updating regex strings in the database')
+    print('[i] Adding / Updating RegEx Whitelist strings in the database')
 
     c.executemany('INSERT OR IGNORE INTO domainlist (type, domain, enabled, comment) '
                   'VALUES (2, ?, 1, ?)',
@@ -165,11 +165,11 @@ if db_exists:
 
     # Remove any local entries that do not exist in the remote list
     # (will only work for previous installs where we've set the comment field)
-    print('[i] Identifying obsolete regex strings')
+    print('[i] Identifying obsolete RegEx Whitelist strings')
     regexps_remove = regexps_slyfox1186_local.difference(regexps_remote)
 
     if regexps_remove:
-        print('[i] Removing obsolete regex strings')
+        print('[i] Removing obsolete RegEx Whitelist strings')
         c.executemany('DELETE FROM domainlist WHERE type = 2 AND domain in (?)', [(x,) for x in regexps_remove])
         conn.commit()
 
@@ -181,7 +181,7 @@ if db_exists:
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
-    print('[i] Please see your installed regex strings below\n')
+    print('[i] Please see your installed RegEx Whitelist strings below\n')
 
     c.execute('Select domain FROM domainlist WHERE type = 2')
     final_results = c.fetchall()
@@ -201,7 +201,7 @@ else:
 
     # If the local regexp set is not empty
     if regexps_local:
-        print(f"[i] {len(regexps_local)} existing regex strings identified")
+        print(f"[i] {len(regexps_local)} existing RegEx Whitelist strings identified")
         # If we have a record of a previous legacy install
         if os.path.isfile(path_legacy_slyfox1186_regex) and os.path.getsize(path_legacy_slyfox1186_regex) > 0:
             print('[i] Existing slyfox1186-regex install identified')
