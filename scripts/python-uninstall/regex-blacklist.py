@@ -152,7 +152,10 @@ if db_exists:
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
-    print('[i] Please see your installed RegEx filters below\n')
+    print('\n')
+    print("[i] Pi-hole has restarted!\n")
+    print('[i] Please see the updated RegEx Blacklist filters below!')
+    print('\n')
 
     c.execute('Select domain FROM domainlist WHERE type = 3')
     final_results = c.fetchall()
@@ -198,7 +201,10 @@ else:
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
-    print('[i] Please see your installed RegEx filters below')
+    print('\n')
+    print("[i] Pi-hole has restarted!\n")
+    print('[i] Please see the updated RegEx Blacklist filters below!')
+    print('\n')
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
