@@ -11,7 +11,7 @@ import time
 
 today = int(time.time())
 
-def fetch_blacklist_url(url):
+def fetch_whitelist_url(url):
 
     if not url:
         return
@@ -337,7 +337,6 @@ if db_exists:
     finally:
         print('\n')
         print('[i] The Exact Whitelist filters have been added to Gravity!')
-        print('\n')
 
 else:
 
@@ -378,4 +377,3 @@ else:
     restart_pihole(args.docker)
     print('\n')
     print('[i] The Exact Whitelist filters have been added to Gravity!')
-    print('\n')
