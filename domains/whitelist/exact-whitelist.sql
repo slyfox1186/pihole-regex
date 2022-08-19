@@ -547,8 +547,6 @@
 (0, 'static.ips.apple.com', 1, 'Apple - SlyEWL')
 (0, 'static.opensubtitles.org', 1, 'Misc - SlyEWL')
 (0, 'static.xx.fbcdn.net', 1, 'Facebook - Messenger - SlyEWL')
-(0, 'static01-cms-fame.gammacdn.com', 1, 'AdultTime - A required domain of the site to access image, videos, etc - SlyEWL')
-(0, 'static03-cms-fame.gammacdn.com', 1, 'AdultTime - A required domain of the site to access image, videos, etc - SlyEWL')
 (0, 'static04-cms-fame.gammacdn.com', 1, 'AdultTime - A required domain of the site to access image, videos, etc - SlyEWL')
 (0, 'statics.teams.cdn.office.net', 1, 'Microsoft - SlyEWL')
 (0, 'stats.streamelements.com', 1, 'Misc - SlyEWL')
