@@ -8,7 +8,6 @@ from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 import time
 
-
 def fetch_blacklist_url(url):
 
     if not url:
@@ -52,12 +51,6 @@ regexps_local = set()
 regexps_slyfox1186_local = set()
 regexps_legacy_slyfox1186 = set()
 regexps_remove = set()
-
-# Inform user of script's intent
-os.system('clear')
-print("This script will import the RegEx Blacklist filters from the repo to your Pihole server's Blacklist.")
-print('All the domains in this list are beleived to serve undersiderable ads and other unwanted content.')
-print('\n')
 
 # Start the docker directory override
 print('[i] Checking for "pihole" docker container')
