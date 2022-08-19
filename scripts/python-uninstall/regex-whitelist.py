@@ -53,6 +53,11 @@ regstrings_slyfox1186_local = set()
 regstrings_legacy_slyfox1186 = set()
 regstrings_remove = set()
 
+os.system('clear')
+print('If you are using Pi-hole v5.0 or later, this script will only remove domains that were added by itself.')
+print('Any other domains added personally by the user will remain uneffected.')
+print('\n')
+
 # Start the docker directory override
 print('[i] Checking if Pi-hole is running inside a docker container...')
 
