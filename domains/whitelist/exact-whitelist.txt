@@ -557,8 +557,6 @@ star.c10r.facebook.com
 static.ips.apple.com
 static.opensubtitles.org
 static.xx.fbcdn.net
-static03-cms-fame.gammacdn.com
-static04-cms-fame.gammacdn.com
 statics.teams.cdn.office.net
 stats.streamelements.com
 status.plex.tv
