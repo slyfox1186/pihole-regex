@@ -335,10 +335,10 @@ if db_exists:
 
     finally:
         print('\n')
-        print('[i] The Exact Whitelist Filters have been successfully added to Gravity!')
+        print('[i] The Exact Whitelist filters have been added to Gravity!')
         print('\n')
-        print('Make sure to star this repository to show your support! It helps keep me motivated!')
-        print('https://github.com/slyfox1186/pihole-regex')
+        print('Make sure to star this repository and show your support!')
+        print('GitHub Profile: https://github.com/slyfox1186/pihole-regex')
         print('\n')
 
 else:
@@ -379,8 +379,8 @@ else:
     print('[i] Please wait for the Pi-hole server to restart.')
     restart_pihole(args.docker)
     print('\n')
-    print('[i] The Exact Whitelist Filters have been successfully added to Gravity!')
+    print('[i] The Exact Whitelist filters have been added to Gravity!')
     print('\n')
-    print('Make sure to star this repository to show your support! It helps keep me motivated!')
-    print('https://github.com/slyfox1186/pihole-regex')
+    print('Make sure to star this repository and show your support!')
+    print('GitHub Profile: https://github.com/slyfox1186/pihole-regex')
     print('\n')
