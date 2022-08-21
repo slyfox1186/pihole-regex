@@ -205,7 +205,7 @@
 (0, 'emea.pptservicescast.officeapps.live.com', 1, 'Microsoft - SlyEWL')
 (0, 'entitlement-public-service-prod.ak.epicgames.com', 1, 'Epic Games - SlyEWL')
 (0, 'entitlement.auth.adobe.com', 1, 'Adobe - SlyEWL')
-(0, 'eos-gateway-ingressv2-prod-c2-w4.befa.live.use1a.on.epicgames.com', 1, 'Microsoft - SlyEWL')
+(0, 'eos-gateway-ingressv2-prod-c2-w4.befa.live.use1a.on.epicgames.com', 1, 'Epic Games - Loads essential game traffic for online play - SlyEWL')
 (0, 'epg.corio.com', 1, 'Philips TV - SlyEWL')
 (0, 'eu-v10.events.data.microsoft.com', 1, 'Microsoft - SlyEWL')
 (0, 'eu-v20.events.data.microsoft.com', 1, 'Microsoft - SlyEWL')
