@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
 
+import json
 import os
-import argparse
 import sqlite3
 import subprocess
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
-import time
 
-today = int(time.time())
 
 def fetch_myblacklist_url(url):
 
@@ -224,12 +222,11 @@ else:
         for line in sorted(regexps_remote):
             fWrite.write(f'{line}\n')
 
-    print('[i] Restarting the Pi-hole server')
+    print('[i] Restarting Pi-hole')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
     print('[i] See below for the installed RegEx Blacklist filters')
-
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
