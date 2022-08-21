@@ -1,7 +1,7 @@
-# slyfox1186 adlists
+## slyfox1186 adlists
 https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/exact-blacklist.txt
 
-# Firebog adlists - Safe Lists - https://firebog.net/
+## Firebog adlists - Safe Lists - https://firebog.net/
 # Suspicious Lists
 https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
 https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Spam/hosts
