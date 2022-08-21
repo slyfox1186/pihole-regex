@@ -10,7 +10,7 @@ import time
 
 today = int(time.time())
 
-def fetch_blacklist_url(url):
+def fetch_myblacklist_url(url):
 
     if not url:
         return
@@ -39,8 +39,8 @@ def fetch_blacklist_url(url):
     # Return the hosts
     return response
 
-url_regexps_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/regex-blacklist.txt'
-install_comment = 'SlyRBL - github.com/slyfox1186/pihole-regex'
+url_regexps_remote = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/personal/regex-blacklist.txt'
+install_comment = 'SlyPRBL - github.com/slyfox1186/pihole-regex'
 
 cmd_restart = ['pihole', 'restartdns', 'reload']
 
@@ -118,7 +118,7 @@ else:
     print('[i] Legacy regex.list detected')
 
 # Fetch the remote regex strings
-str_regexps_remote = fetch_blacklist_url(url_regexps_remote)
+str_regexps_remote = fetch_myblacklist_url(url_regexps_remote)
 
 # If regex strings were fetched, remove any comments and add to set
 if str_regexps_remote:
