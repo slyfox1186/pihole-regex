@@ -1,4 +1,3 @@
-eos-gateway-ingressv2-prod-c2-w4.befa.live.use1a.on.epicgames.com
 0-edge-chat.facebook.com
 0.client-channel.google.com
 1-edge-chat.facebook.com
@@ -214,6 +213,7 @@ emea.ng.msg.teams.microsoft.com
 emea.pptservicescast.officeapps.live.com
 entitlement-public-service-prod.ak.epicgames.com
 entitlement.auth.adobe.com
+eos-gateway-ingressv2-prod-c2-w4.befa.live.use1a.on.epicgames.com
 epg.corio.com
 eu-v10.events.data.microsoft.com
 eu-v20.events.data.microsoft.com
