@@ -31,7 +31,7 @@ def fetch_blacklist_url(url):
 
     # If there is data
     if response:
-        # Strip leading and trailing blackspace
+        # Strip leading and trailing whitespace
         response = '\n'.join(x for x in map(str.strip, response.splitlines()))
 
     # Return the hosts
