@@ -22,5 +22,5 @@ done
 # execute all scripts in pihole-regex
 SUB_FILES=( $SHELL_FILES )
 for i in ${SUB_FILES[@]}; do
-    /bin/bash pihole-regex/$i
+    bash pihole-regex/$i
 done
