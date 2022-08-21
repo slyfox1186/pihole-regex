@@ -164,6 +164,7 @@ daily-mix.scdn.co
 dailymix-images.scdn.co
 dashboard.plex.tv
 dataplicity.com
+datarouter.ol.epicgames.com
 de.io
 dealer.spotify.com
 def-vef.xboxlive.com
