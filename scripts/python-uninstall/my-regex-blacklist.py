@@ -53,12 +53,6 @@ regstrings_slyfox1186_local = set()
 regstrings_legacy_slyfox1186 = set()
 regstrings_remove = set()
 
-# Inform user of script's intent
-os.system('clear')
-print('If you are using Pi-hole v5.0 or later, this script will only remove domains that were added by itself.')
-print('Any other domains added personally by the user will remain uneffected.')
-print('\n')
-
 # Start the docker directory override
 print('[i] Checking if Pi-hole is running inside a docker container')
 
@@ -103,7 +97,7 @@ path_pihole_db = os.path.join(path_pihole, 'gravity.db')
 
 # Check that Pi-hole path exists
 if os.path.exists(path_pihole):
-    print("[i] Pi-hole's file path has been found")
+    print("[i] Pi-hole's path has been found")
 else:
     print(f'[e] {path_pihole} was not found')
     exit(1)
@@ -156,7 +150,7 @@ if db_exists:
 
     conn.commit()
 
-    print('[i] Please wait while Pi-hole restarts')
+    print('[i] Restarting Pi-hole')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
@@ -204,13 +198,12 @@ else:
         for line in sorted(regstrings_local):
             fWrite.write(f'{line}\n')
 
-    print('[i] Please wait while Pi-hole restarts')
+   print('[i] Restarting Pi-hole')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
     print('\n')
     print('[i] Please see the updated RegEx Blacklist filters below')
-
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
