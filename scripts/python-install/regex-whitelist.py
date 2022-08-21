@@ -31,7 +31,7 @@ def fetch_whitelist_url(url):
 
     # If there is data
     if response:
-        # Strip leading and trailing backspace
+        # Strip leading and trailing whitespace
         response = '\n'.join(x for x in map(str.strip, response.splitlines()))
 
     # Return the hosts
