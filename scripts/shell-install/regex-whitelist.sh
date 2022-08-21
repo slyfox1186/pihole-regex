@@ -9,9 +9,9 @@ echo 'RegEx Whitelist: [A]dd [R]emove [S]kip'
 read i
 clear
 if [[ $i == "A" ]]; then
-    /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-install/regex-whitelist.py' | sudo python3
+    curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-install/regex-whitelist.py' | sudo python3
 elif [[ $i == "R" ]]; then
-    /usr/bin/curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-uninstall/regex-whitelist.py' | sudo python3
+    curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-uninstall/regex-whitelist.py' | sudo python3
 elif [[ $i == "S" ]]; then
     sleep 1
 fi
