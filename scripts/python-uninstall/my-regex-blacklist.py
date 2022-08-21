@@ -198,7 +198,7 @@ else:
         for line in sorted(regstrings_local):
             fWrite.write(f'{line}\n')
 
-   print('[i] Restarting Pi-hole')
+    print('[i] Restarting Pi-hole')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
