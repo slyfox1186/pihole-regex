@@ -60,7 +60,7 @@ print('Any other domains added personally by the user will remain uneffected.')
 print('\n')
 
 # Start the docker directory override
-print('[i] Checking if Pi-hole is running inside a docker container...')
+print('[i] Checking if Pi-hole is running inside a docker container')
 
 # Initialise the docker variables
 docker_id = None
@@ -89,11 +89,11 @@ if docker_id:
 
     # If we successfully found the mount
     if docker_mnt_src:
-        print('[i] Pi-hole is running through docker!')
+        print('[i] Pi-hole is running through docker')
         # Prepend restart commands
         cmd_restart[0:0] = ['docker', 'exec', '-i', 'pihole']
 else:
-    print('[i] Running in physical installation mode!')
+    print('[i] Running in physical installation mode')
 
 # Set paths
 path_pihole = docker_mnt_src if docker_mnt_src else r'/etc/pihole'
@@ -105,22 +105,22 @@ path_pihole_db = os.path.join(path_pihole, 'gravity.db')
 if os.path.exists(path_pihole):
     print("[i] Pi-hole's file path has been found!")
 else:
-    print(f'[e] {path_pihole} was not found!')
+    print(f'[e] {path_pihole} was not found')
     exit(1)
 
 # Check for write access to /etc/pihole
 if os.access(path_pihole, os.X_OK | os.W_OK):
-    print(f'[i] Write access enabled for: {path_pihole}!')
+    print(f'[i] Write access enabled for: {path_pihole}')
 else:
-    print(f'[e] Write access disabled for {path_pihole}. Re-run the script as a privileged user...')
+    print(f'[e] Write access disabled for {path_pihole}. Re-run the script as a privileged user')
     exit(1)
 
 # Determine whether we are using database or not
 if os.path.isfile(path_pihole_db) and os.path.getsize(path_pihole_db) > 0:
     db_exists = True
-    print('[i] Gravity database detected!')
+    print('[i] Gravity database detected')
 else:
-    print('[i] Legacy regex.list detected!')
+    print('[i] Legacy regex.list detected')
 
 # Fetch the remote regstrings
 str_regstrings_remote = fetch_whitelist_url(url_regstrings_remote)
@@ -130,7 +130,7 @@ if str_regstrings_remote:
     regstrings_remote.update(x for x in map(str.strip, str_regstrings_remote.splitlines()) if x and x[:1] != '#')
     print(f'[i] {len(regstrings_remote)} regstrings collected from {url_regstrings_remote}')
 else:
-    print('[i] No remote regex strings were found!')
+    print('[i] No remote regex strings were found')
     exit(1)
 
 if db_exists:
@@ -156,12 +156,12 @@ if db_exists:
 
     conn.commit()
 
-    print('[i] Please wait while Pi-hole restarts...')
+    print('[i] Please wait while Pi-hole restarts')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
     print('\n')
-    print('[i] Please see the updated RegEx Whitelist filters below!')
+    print('[i] Please see the updated RegEx Whitelist filters below')
 
     c.execute('Select domain FROM domainlist WHERE type = 2')
     final_results = c.fetchall()
@@ -180,16 +180,16 @@ else:
 
     # If the local regexp set is not empty
     if regstrings_local:
-        print(f'[i] {len(regstrings_local)} existing regstrings identified!')
+        print(f'[i] {len(regstrings_local)} existing regstrings identified')
         # If we have a record of a previous legacy install
         if os.path.isfile(path_legacy_slyfox1186_regex) and os.path.getsize(path_legacy_slyfox1186_regex) > 0:
-            print('[i] An existing slyfox1186-regex installation was found!')
+            print('[i] An existing slyfox1186-regex installation was found')
             # Read the previously installed regstrings to a set
             with open(path_legacy_slyfox1186_regex, 'r') as fOpen:
                 regstrings_legacy_slyfox1186.update(x for x in map(str.strip, fOpen) if x and x[:1] != '#')
 
                 if regstrings_legacy_slyfox1186:
-                    print(f'[i] The script is removing regstrings found in {path_legacy_slyfox1186_regex}!')
+                    print(f'[i] The script is removing regstrings found in {path_legacy_slyfox1186_regex}')
                     regstrings_local.difference_update(regstrings_legacy_slyfox1186)
 
             # Remove slyfox1186-regex.list as it will no longer be required
@@ -204,12 +204,12 @@ else:
         for line in sorted(regstrings_local):
             fWrite.write(f'{line}\n')
 
-    print('[i] Please wait while Pi-hole restarts...')
+    print('[i] Please wait while Pi-hole restarts')
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
     print('\n')
-    print('[i] Please see the updated RegEx Whitelist filters below!')
+    print('[i] Please see the updated RegEx Whitelist filters below')
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
