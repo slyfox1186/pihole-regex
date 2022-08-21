@@ -176,7 +176,7 @@ if db_exists:
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
-    print('[i] Please see your installed RegEx Blacklist strings below!')
+    print('[i] See below for the installed RegEx Blacklist filters')
 
     c.execute('Select domain FROM domainlist WHERE type = 3')
     final_results = c.fetchall()
@@ -228,7 +228,7 @@ else:
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
-    print('[i] Please see your installed RegEx Blacklist strings below!')
+    print('[i] See below for the installed RegEx Blacklist filters')
 
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
