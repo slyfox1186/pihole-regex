@@ -8,7 +8,6 @@
 (\.|^)lambda-url\.us-east-1\.on\.aws$
 
 # Apple
-(\.|^)amazonaws\.com$
 (\.|^)apps.apple\.com$
 (\.|^)cdn-apple\.com$
 (\.|^)deimos3.apple\.com$
