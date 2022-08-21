@@ -651,6 +651,7 @@
 (0, 'widget-cdn.rpxnow.com', 1, 'Akamai Technologies - Used as a sign in method in various apps and sites - SlyEWL')
 (0, 'wikipedia.org', 1, 'Misc - SlyEWL')
 (0, 'win10.ipv6.microsoft.com', 1, 'Gives full IPv6 connectivity for IPv6-capable hosts that are on the IPv4 Internet but have no native connection to an IPv6 network - SlyEWL')
+(0, 'win10.prod.http1.netflix.com', 1, 'Netflix - Requried for signing in - SlyEWL')
 (0, 'win1710.ipv6.microsoft.com', 1, 'Microsoft - SlyEWL')
 (0, 'winatp-gw-neu.microsoft.com', 1, 'Microsoft - SlyEWL')
 (0, 'winhelp2002.mvps.org', 1, 'Misc - SlyEWL')
