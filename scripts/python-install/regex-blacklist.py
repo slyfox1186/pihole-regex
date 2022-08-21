@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
 
+import json
 import os
-import argparse
 import sqlite3
 import subprocess
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
-import time
 
-today = int(time.time())
 
 def fetch_blacklist_url(url):
 
