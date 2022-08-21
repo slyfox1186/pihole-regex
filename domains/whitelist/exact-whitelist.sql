@@ -158,6 +158,7 @@
 (0, 'dailymix-images.scdn.co', 1, 'Spotify - SlyEWL')
 (0, 'dashboard.plex.tv', 1, 'Plex Media Server - SlyEWL')
 (0, 'dataplicity.com', 1, 'Raspberry-Pi - Remotely control your pi - SlyEWL')
+(0, 'datarouter.ol.epicgames.com', 1, 'Epic Games - essential service to play online - SlyEWL')
 (0, 'de.ioam.de', 1, 'Misc - SlyEWL')
 (0, 'dealer.spotify.com', 1, 'Spotify - SlyEWL')
 (0, 'def-vef.xboxlive.com', 1, 'Microsoft Xbox - Used for Xbox updates, game downloads, acheivements - SlyEWL')
