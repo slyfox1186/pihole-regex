@@ -103,7 +103,6 @@ hbbtvapp.sonnenklar.tv
 i-stream.pl
 ibis.lgappstv.com
 ichnaea.net
-insights.algolia.io
 jlduihq7lrcdxgw4vrndhdfcsq.appsync-api.us
 kinesis.us
 kinesis.us-east-1.amazonaws.com
@@ -185,8 +184,6 @@ syncplusconfig.s3.amazonaws.com
 targeted-config-test.samsungacr.com
 test.samsungrm.net
 trvdp.com
-tsmkfa364q-3.algolianet.com
-tsmkfa364q-dsn.algolia.net
 tv-static.scdn.co
 tvsideviewandroidv2-cfgdst-ore-pro.bda.ndmdhs.com
 unified-ter-na.hismarttv.com
