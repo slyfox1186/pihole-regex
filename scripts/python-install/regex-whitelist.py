@@ -21,9 +21,11 @@ def fetch_whitelist_url(url):
         response = urlopen(Request(url, headers=headers))
     except HTTPError as e:
         print('[E] HTTP Error:', e.code, 'whilst fetching', url)
+        print('\n')
         return
     except URLError as e:
         print('[E] URL Error:', e.reason, 'whilst fetching', url)
+        print('\n')
         return
 
     # Read and decode
