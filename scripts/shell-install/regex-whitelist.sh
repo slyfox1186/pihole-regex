@@ -21,4 +21,4 @@ echo 'Done!'
 echo
 echo 'Make sure to star this repository and show your support!'
 echo 'Github Profile: https://github.com/slyfox1186/pihole-regex'
-exit 0
+exit
