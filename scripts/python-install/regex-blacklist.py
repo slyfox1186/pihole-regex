@@ -84,7 +84,7 @@ if docker_id:
 
     # If we successfully found the mount
     if docker_mnt_src:
-        print('[i] Running in docker installation mode!')
+        print('[i] Running in docker installation mode')
         # Prepend restart commands
         cmd_restart[0:0] = ['docker', 'exec', '-i', 'pihole']
 else:
@@ -160,11 +160,11 @@ if db_exists:
 
     # Remove any local entries that do not exist in the remote list
     # (will only work for previous installs where we've set the comment field)
-    print('[i] Identifying obsolete RegEx Blacklist strings...')
+    print('[i] Identifying obsolete RegEx Blacklist strings')
     regexps_remove = regexps_slyfox1186_local.difference(regexps_remote)
 
     if regexps_remove:
-        print('[i] Removing obsolete RegEx Blacklist strings...')
+        print('[i] Removing obsolete RegEx Blacklist strings')
         c.executemany('DELETE FROM domainlist WHERE type = 3 AND domain in (?)', [(x,) for x in regexps_remove])
         conn.commit()
 
@@ -190,7 +190,7 @@ else:
     # If regex.list exists and is not empty
     # Read it and add to a set
     if os.path.isfile(path_legacy_regex) and os.path.getsize(path_legacy_regex) > 0:
-        print('[i] Collecting existing entries from regex.list...')
+        print('[i] Collecting existing entries from regex.list')
         with open(path_legacy_regex, 'r') as fRead:
             regexps_local.update(x for x in map(str.strip, fRead) if x and x[:1] != '#')
 
@@ -199,13 +199,13 @@ else:
         print(f"[i] {len(regexps_local)} existing RegEx Blacklist strings identified")
         # If we have a record of a previous legacy install
         if os.path.isfile(path_legacy_slyfox1186_regex) and os.path.getsize(path_legacy_slyfox1186_regex) > 0:
-            print('[i] Existing slyfox1186-regex install identified!')
+            print('[i] Existing slyfox1186-regex install identified')
             # Read the previously installed regex strings to a set
             with open(path_legacy_slyfox1186_regex, 'r') as fOpen:
                 regexps_legacy_slyfox1186.update(x for x in map(str.strip, fOpen) if x and x[:1] != '#')
 
                 if regexps_legacy_slyfox1186:
-                    print('[i] Removing previously installed RegEx Blacklist strings...')
+                    print('[i] Removing previously installed RegEx Blacklist strings')
                     regexps_local.difference_update(regexps_legacy_slyfox1186)
 
     # Add remote regex strings to local regex strings
