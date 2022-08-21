@@ -1,3 +1,5 @@
+## My Ad Lists filter list. Mix of my own and other popular lists.
+
 # slyfox1186 adlists
 https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/exact-blacklist.txt
 
