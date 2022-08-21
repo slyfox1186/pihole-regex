@@ -84,7 +84,7 @@ if docker_id:
 
     # If we successfully found the mount
     if docker_mnt_src:
-        print('[i] Running in docker installation mode!')
+        print('[i] Running in docker installation mode')
         # Prepend restart commands
         cmd_restart[0:0] = ['docker', 'exec', '-i', 'pihole']
 else:
@@ -176,7 +176,7 @@ if db_exists:
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
-    print('[i] Please see your installed RegEx Whitelist strings below!')
+    print('[i] See below for the installed RegEx Blacklist filters')
 
     c.execute('Select domain FROM domainlist WHERE type = 2')
     final_results = c.fetchall()
@@ -199,7 +199,7 @@ else:
         print(f"[i] {len(regexps_local)} existing RegEx Whitelist strings identified")
         # If we have a record of a previous legacy install
         if os.path.isfile(path_legacy_slyfox1186_regex) and os.path.getsize(path_legacy_slyfox1186_regex) > 0:
-            print('[i] Existing slyfox1186-regex install identified!')
+            print('[i] Existing slyfox1186-regex install identified')
             # Read the previously installed regex strings to a set
             with open(path_legacy_slyfox1186_regex, 'r') as fOpen:
                 regexps_legacy_slyfox1186.update(x for x in map(str.strip, fOpen) if x and x[:1] != '#')
@@ -228,7 +228,7 @@ else:
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
-    print('[i] Please see your installed RegEx Whitelist strings below!')
+    print('[i] See below for the installed RegEx Blacklist filters')
 
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
