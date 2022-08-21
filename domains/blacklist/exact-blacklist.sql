@@ -78,7 +78,6 @@
 (1, 'd2tnx644ijgq6i.cloudfront.net', 1, 'Samsung - SlyEBL')
 (1, 'd306ecvlh9tfv.cloudfront.net', 1, 'AdultTime - SlyEBL')
 (1, 'd37ju0xanoz6gh.cloudfront.net', 1, 'Samsung - SlyEBL')
-(1, 'd3a3ewgd1iewwz.cloudfront.net', 1, 'AdultTime - SlyEBL')
 (1, 'd3cqix4sol87xw.cloudfront.net', 1, 'AdultTime - SlyEBL')
 (1, 'd3mjsomixevyw7.cloudfront.net', 1, 'Samsung - SlyEBL')
 (1, 'data.arqiva.tv', 1, 'Samsung - SlyEBL')
