@@ -46,6 +46,7 @@
 (0, 'appboot.netflix.com', 1, 'Netflix - SlyEWL')
 (0, 'appboy-images.com', 1, 'Misc - SlyEWL')
 (0, 'appldnld.apple.com.edgesuite.net', 1, 'Apple - SlyEWL')
+(0, 'appleglobal.102.112.2o7.net', 1, 'Apple iOS - Requried to add someone to your account recovery list')
 (0, 'appleid.apple.com', 1, 'Apple - Used to sign in to your account - SlyEWL')
 (0, 'appleid.cdn-apple.com', 1, 'Apple - SlyEWL')
 (0, 'applicast.ga.sony.net', 1, 'Sony - SlyEWL')
