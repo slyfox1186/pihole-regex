@@ -145,8 +145,6 @@ msg-na.hismarttv.com
 multiscreen.samsung.com
 musicid.samsungcloudsolution.com
 nbc-jite.nbcuni.com
-ncsi-midgress.qnap.com
-ncsi.qnap.com
 nettv.corio.com
 notice.samsungcloudsolution.com
 noticecdn.samsungcloudsolution.com
