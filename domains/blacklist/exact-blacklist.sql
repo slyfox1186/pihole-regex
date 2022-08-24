@@ -158,8 +158,6 @@
 (1, 'multiscreen.samsung.com', 1, 'Samsung - SlyEBL')
 (1, 'musicid.samsungcloudsolution.com', 1, 'Samsung - SlyEBL')
 (1, 'nbc-jite.nbcuni.com', 1, 'Other - SlyEBL')
-(1, 'ncsi-midgress.qnap.com', 1, 'QNAP NAS Computers - SlyEBL')
-(1, 'ncsi.qnap.com', 1, 'QNAP NAS Computers - SlyEBL')
 (1, 'nettv.corio.com', 1, 'Philips - SlyEBL')
 (1, 'notice.samsungcloudsolution.com', 1, 'Samsung - SlyEBL')
 (1, 'noticecdn.samsungcloudsolution.com', 1, 'Samsung - SlyEBL')
