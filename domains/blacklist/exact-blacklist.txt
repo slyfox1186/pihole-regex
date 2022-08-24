@@ -48,6 +48,7 @@ beam.com
 bpu.samsungelectronics.com
 bravia.dl.pl
 call.me.sel.sony.com
+cc-api-data.adobe.io
 cdn-cm.tiypa.com
 cdn.contentful.com
 cdn.hbbtv.smartclip.net
@@ -115,6 +116,7 @@ hbbtv01p.anixe.net
 hbbtvapp.sonnenklar.tv
 i-stream.pl
 ibis.lgappstv.com
+ic.adobe.io
 ichnaea.net
 inds2t.qnap.com
 iot.qnap.com
