@@ -1,34 +1,29 @@
-## RegEx with Exact Filters for Pi-hole's (FTLDNS) Ad Blocker
+## RegEx + Exact filters for blocking advertisements with Pi-hole's (FTLDNS)
 
-The *purpose* of this repository is to compliment your existing **Pi-hole** ***(FTLDNS)*** filters using ***powerful regular expressions*** **AKA** ***[RegEx]*** that cover a **broad range of domains** ***in one go*** while also including a **customized list** of **Exact filters**.
+The ***purpose*** of this repository is to compliment your existing **Pi-hole filters** using ***powerful regular expressions*** *AKA* ***[RegEx]*** that covers a **broad range** of domains ***in one go*** that also includes a ***customized list*** of **Exact filters**.
 
-* Made for: **Pi-hole (FTLDNS) v5+**
-* Required: **Python3 v3.6+**
-
-* To enter commands use: **Terminal**
-* If you're not using the **PC** that's running **Pi-hole** you can use
-    - **PuTTY:** *Windows*
-    - **SSH Client:** *Linux*
-
-## The Filter Lists
+## *The Filter Lists*
   - ***[Exact Blacklist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/exact-blacklist.txt)***
   - ***[Exact Whitelist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/whitelist/exact-whitelist.txt)***
   - ***[RegEx Blacklist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/regex-blacklist.txt)***
   - ***[RegEx Whitelist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/whitelist/regex-whitelist.txt)***
 
-## User options: [ Add | Remove | Skip ]
+## *Requirements and other important information*
+* **Made for:** Pi-hole (FTLDNS) v5+
+* **Required Packages:** Python3 v3.6+
+* **Command input:** Terminal
 
-* The script will prompt the user to press one of three keys.
+#### *If you're not using the **PC** that's running **Pi-hole** you can use*
+* ***PuTTY:*** Windows
+* ***SSH Client:*** Linux
 
-```
-A to [A]dd the filters
-R to [R]emove the filters
-S to [S]kip to the next filter
-```
-## Command Line
+#### *To interact with each filter list the script will *prompt* the user to press one of three keys*
+  - **[A]** to ***Add***
+  - **[R]** to ***Remove***
+  - **[S]** to ***Skip***
 
-* Click the copy button to the right and paste this into a terminal to execute
+## *To execute, paste the below command in your terminal client*
 ```
-wget -qN - -i https://pihole.optimizethis.net; sudo bash run.sh
+wget -qN - -i https://optimizethis.net; sudo bash run.sh
 
 ```
