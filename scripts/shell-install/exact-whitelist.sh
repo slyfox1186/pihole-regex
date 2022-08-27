@@ -14,12 +14,8 @@ if [[ $i == "A" ]]; then
 elif [[ $i == "R" ]]; then
     curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-uninstall/exact-whitelist.py' | sudo python3
 elif [[ $i == "S" ]]; then
-    clear
-    echo '[i] Loading: RegEx Blacklist'
-    sleep 1
-    exit 0
+    . regex-blacklist.sh
 fi
 
 echo -e "\\n"
-read -t 30 -p 'Press Enter to continue...'
-exit 0
+read -t 30 -p 'Press Enter to continue.'
