@@ -24,5 +24,6 @@ echo
 read -p "Press Enter to restart Pi-hole's DNS and Update Gravity"
 clear
 pihole restartdns
-echo -e "\\n"
+echo
+echo
 pihole -g
