@@ -56,7 +56,6 @@ appboy-images.com
 appcenter.qnap.com
 appldnld.apple.com
 appleglobal.102.112.2o7.net
-appleglobal.102.112.2o7.net
 appleid.apple.com
 appleid.cdn-apple.com
 applicast.ga.sony.net
