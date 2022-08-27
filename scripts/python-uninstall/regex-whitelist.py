@@ -157,7 +157,7 @@ if db_exists:
 
     # Prepare final result
     print('\n')
-   print('[i] If any RegEx filter are left they will show below.')
+    print('[i] If any RegEx filter are left they will show below.')
 
     c.execute('Select domain FROM domainlist WHERE type = 2')
     final_results = c.fetchall()
