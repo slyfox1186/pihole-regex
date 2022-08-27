@@ -205,7 +205,7 @@ else:
 
     # Prepare final result
     print('[i] Please see the updated RegEx Whitelist filters below')
-     print('\n')
+    print('\n')
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
