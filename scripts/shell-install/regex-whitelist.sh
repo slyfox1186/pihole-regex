@@ -21,7 +21,7 @@ echo
 echo 'Make sure to star this repository and show your support!'
 echo 'Github Profile: https://github.com/slyfox1186/pihole-regex'
 echo
-read -p "Press Enter to restart Pi-hole's FTLDNS"
+read -p "Press Enter to restart Pi-hole's DNS and Update Gravity"
 
 pihole restartdns
 clear
