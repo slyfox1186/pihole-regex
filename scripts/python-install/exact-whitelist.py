@@ -318,7 +318,6 @@ if db_exists:
         print("[i] The connection to the Gravity database has closed.")
         if ilng == True:
             print('[i] Please wait for the Pi-hole server to restart.')
-            restart_pihole(args.docker)
 
     except sqlite3.Error as error:
         print('\n')
@@ -364,6 +363,5 @@ else:
             fWrite.write("{}\n".format(line))
 
     print('[i] Please wait for the Pi-hole server to restart.')
-    restart_pihole(args.docker)
     print('\n')
     print('[i] The Exact Whitelist filters have been added to Gravity!')
