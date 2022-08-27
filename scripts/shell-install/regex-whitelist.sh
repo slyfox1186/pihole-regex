@@ -23,6 +23,6 @@ echo 'Github Profile: https://github.com/slyfox1186/pihole-regex'
 echo
 read -p "Press Enter to restart Pi-hole's FTLDNS"
 
-pihole -r
+pihole restartdns
 clear
 pihole-g
