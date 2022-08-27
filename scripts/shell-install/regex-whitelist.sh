@@ -25,4 +25,4 @@ read -p "Press Enter to restart Pi-hole's DNS and Update Gravity"
 clear
 pihole restartdns
 clear
-pihole-g
+pihole -g
