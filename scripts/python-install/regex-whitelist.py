@@ -229,7 +229,7 @@ else:
 
     # Prepare final result
     print('[i] See below for the installed RegEx Blacklist filters')
-
+    print('\n')
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
