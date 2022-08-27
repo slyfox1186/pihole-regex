@@ -16,7 +16,7 @@ elif [[ $i == "S" ]]; then
     clear
     echo '[i] Loading: RegEx Whitelist'
     sleep 1
-    exit 0
+    . regex-whitelist.sh
 fi
 
 echo -e "\\n"
