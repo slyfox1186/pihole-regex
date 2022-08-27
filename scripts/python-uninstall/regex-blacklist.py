@@ -157,7 +157,7 @@ if db_exists:
 
     # Prepare final result
     print('\n')
-    print('[i] Please see the updated RegEx Blacklist filters below')
+    print('[i] If any RegEx filter are left they will show below.')
 
     c.execute('Select domain FROM domainlist WHERE type = 3')
     final_results = c.fetchall()
@@ -205,7 +205,7 @@ else:
 
     # Prepare final result
     print('\n')
-    print('[i] Please see the updated RegEx Blacklist filters below')
+    print('[i] If any RegEx filter are left they will show below.')
 
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
