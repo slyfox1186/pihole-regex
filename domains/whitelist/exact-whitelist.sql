@@ -1,4 +1,4 @@
-(0, '0.client-channel.google.com', 1, 'Google - To access Google Drive and Google Docs editors this domain must be whitelisted - https://support.google.com/a/answer/2589954?hl=en - SlyEWL')
+(0, '0.client-channel.google.com', 1, 'Google - To access Google Drive and Google Docs editors this domain must be whitelisted - https://support.google.com/a/answer/2589954?hl=en - SlyEWL'Apple iOS - Requried to add someone to your account recovery list)
 (0, '1drv.com', 1, 'Microsoft OneDrive - Used as a short link for OneDrive documents - SlyEWL')
 (0, '2.android.pool.ntp.org', 1, 'Google Android - A big virtual cluster of timeservers providing reliable time; This domain is used in Android devices - SlyEWL')
 (0, '2.tlu.dl.delivery.mp.microsoft.com', 1, 'Microsoft Store - SlyEWL')
@@ -48,6 +48,7 @@
 (0, 'appboy-images.com', 1, 'Misc - SlyEWL')
 (0, 'appcenter.qnap.com', 1, 'QNAP - NAS Storage Computers - SlyEWL')
 (0, 'appldnld.apple.com.edgesuite.net', 1, 'Apple - SlyEWL')
+(0, 'appleglobal.102.112.2o7.net', 1, 'Apple iOS - Required to add someone to your account recovery list - SlyEWL')
 (0, 'appleglobal.102.112.2o7.net', 1, 'Apple iOS - Requried to add someone to your account recovery list')
 (0, 'appleid.apple.com', 1, 'Apple - Used to sign in to your account - SlyEWL')
 (0, 'appleid.cdn-apple.com', 1, 'Apple - SlyEWL')
