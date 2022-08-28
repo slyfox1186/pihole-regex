@@ -14,16 +14,16 @@ else
     curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-uninstall/regex-whitelist.py' | sudo python3
 fi
 
-echo
-echo 'Done!'
-echo
+echo -e "\\nRestart Pihole's DNS?\\n"
+echo '[1] Yes'
+echo '[2] No'
+read a
+clear
+if [ "$a" == "1" ]; then
+    pihole restartdns
+fi
+
+echo -e "\\nDone!\\n"
 echo
 echo 'Make sure to star this repository and show your support!'
-echo 'Github Profile: https://github.com/slyfox1186/pihole-regex'
-echo
-read -p "Press Enter to restart Pi-hole's DNS and Update Gravity"
-clear
-pihole restartdns
-echo
-echo
-pihole -g
+echo -e "Github Profile: https://github.com/slyfox1186/pihole-regex\\n"
