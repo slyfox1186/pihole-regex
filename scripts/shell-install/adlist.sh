@@ -1,16 +1,14 @@
 #!/bin/bash
 
-# This script will prompt the user to add or remove the listed domains to your Pi-hole's adlists
+# This script will prompt the user to add or remove the domains in your Pi-hole's Adlists
+# Comments are optional, you can remove them from being added to Pi-hole by placing a #
+# in front of each variable. Example: COMMENT1 >> #COMMENT1
 
 # Make user input case insensitive
 shopt -s nocasematch
 
 # Change this to the full path of gravity's database if the one below is wrong
 GRAVITY='/etc/pihole/gravity.db'
-
-# Add or remove Pi-hole's adlists
-# Replace the variables below with the URL(s) of the adlists you wish to add
-# Comments are optional, you can remove them from the script or place a # in front of the line
 
 # Display the script's purpose in terminal
 clear
