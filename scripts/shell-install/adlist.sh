@@ -2,21 +2,21 @@
 
 # This script will prompt the user to add or remove the listed domains to your Pi-hole's adlists
 
-# make user input case insensitive
+# Make user input case insensitive
 shopt -s nocasematch
 
-# change this to the full path of gravity's database if the one below is wrong
+# Change this to the full path of gravity's database if the one below is wrong
 GRAVITY='/etc/pihole/gravity.db'
 
 # Add or remove Pi-hole's adlists
 # Replace the variables below with the URL(s) of the adlists you wish to add
 # Comments are optional, you can remove them from the script or place a # in front of the line
 
-# prompt the user with the script's purpose
+# Display the script's purpose in terminal
 clear
-echo -e "This script modify your Pi-hole's adlists\\n"
+echo -e "This script will modify your Pi-hole's Adlists\\n"
 
-# prompt user with adlist option 1
+# Prompt the user with Adlist option 1
 echo -e "What do you want to do?\\n"
 echo '[1] Add domains'
 echo '[2] Remove all domains'
@@ -41,7 +41,7 @@ else
     exit 1
 fi
 
-# prompt user with adlist option 2
+# Prompt the user with Adlist option 2
 echo -e "Choose which adlist to import into Pi-hole\\n"
 echo '[1] Firebog: Ticked'
 echo '[2] Firebog: Ticked + Non-Crossed'
@@ -91,6 +91,7 @@ else
     exit 1
 fi
 
+# Prompt the user to update Gravity's database
 clear
 echo -e "Update Gravity?\\n"
 echo '[1] Yes'
