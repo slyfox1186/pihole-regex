@@ -16,7 +16,8 @@ elif [[ "$i" == "S" ]]; then
      clear
 fi
 
-echo -e "\\nRestart Pihole's DNS?\\n"
+clear
+echo -e "Restart Pihole's DNS?\\n"
 echo '[1] Yes'
 echo '[2] No'
 read a
@@ -26,6 +27,5 @@ if [ "$a" == "1" ]; then
 fi
 
 echo -e "\\nDone!\\n"
-echo
 echo 'Make sure to star this repository and show your support!'
 echo -e "Github Profile: https://github.com/slyfox1186/pihole-regex\\n"
