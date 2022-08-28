@@ -7,6 +7,7 @@ The ***purpose*** of this repository is to compliment your existing **Pi-hole's 
   - **[Exact Whitelist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/whitelist/exact-whitelist.txt)**
   - **[RegEx Blacklist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/regex-blacklist.txt)**
   - **[RegEx Whitelist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/whitelist/regex-whitelist.txt)**
+  - **[Adlists](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt)**
 
 ## Requirements and other important information
 * **Made for:** Pi-hole (FTLDNS) v5+
@@ -17,13 +18,20 @@ The ***purpose*** of this repository is to compliment your existing **Pi-hole's 
 * **PuTTY:** Windows
 * **SSH Client:** Linux
 
-### **To interact with each filter list the script will *prompt* the user to press one of three keys**
+### **To steer the outcome of each script the user will be prompted to press a key to advance their choices**
+* **Input examples**
   - **[A]** to ***Add***
   - **[R]** to ***Remove***
   - **[S]** to ***Skip***
+  - ***or any set of numbers***
 
-## To execute, paste the below command in your terminal client
+## To execute the RegEx and Exact filter script run the below command in terminal
 ```
 wget -qN - -i https://optimizethis.net; sudo bash run.sh
+
+```
+## To execute the Adlist script run the below command in terminal
+```
+wget -qN https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/shell-install/adlist.sh; sudo bash adlist.sh
 
 ```
