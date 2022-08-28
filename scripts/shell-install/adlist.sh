@@ -45,16 +45,16 @@ echo '[1] Firebog: Ticked'
 echo '[2] Firebog: Ticked + Non-Crossed'
 echo '[3] Firebog: All'
 echo '[4] SlyFox1186'
-read i
+read b
 clear
-if [[ "$i" == "1" ]]; then
+if [[ "$b" == "1" ]]; then
     URL1='https://v.firebog.net/hosts/lists.php?type=tick'
     COMMENT1='Firebog - Ticked'
     wget --user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0' -qNO - "$URL1" |
     sed '/^#/ d' | sed '/^$/ d' > '/tmp/adlist.txt'
     cat '/tmp/adlist.txt' |
     xargs -n1 -I {} sqlite3 "$GRAVITY" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT1')"
-elif [[ "$i" == "2" ]]; then
+elif [[ "$b" == "2" ]]; then
     URL1='https://v.firebog.net/hosts/lists.php?type=tick'
     COMMENT1='Firebog - Ticked'
     URL2='https://v.firebog.net/hosts/lists.php?type=nocross'
@@ -67,14 +67,14 @@ elif [[ "$i" == "2" ]]; then
     sed '/^#/ d' | sed '/^$/ d' > '/tmp/adlist.txt'
     cat '/tmp/adlist.txt' |
     xargs -n1 -I {} sqlite3 "$GRAVITY" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT2')"
-elif [[ "$i" == "3" ]]; then
+elif [[ "$b" == "3" ]]; then
     URL3='https://v.firebog.net/hosts/lists.php?type=all'
     COMMENT3='Firebog - All'
     wget --user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0' -qNO - "$URL3" |
     sed '/^#/ d' | sed '/^$/ d' > '/tmp/adlist.txt'
     cat '/tmp/adlist.txt' |
     xargs -n1 -I {} sqlite3 "$GRAVITY" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT3')"
-elif [[ "$i" == "4" ]]; then
+elif [[ "$b" == "4" ]]; then
     URL4='https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt'
     COMMENT4='SlyFox1186 - Firebog + Other'
     wget --user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0' -qNO - "$URL4" |
@@ -89,9 +89,11 @@ fi
 
 clear
 echo -e "Update Gravity?\\n"
-read -p '[Y]es or [N]o: ' up
+echo '[1] Yes'
+echo '[2] No'
+read c
 clear
-if [[ "$up" == "Y" ]]; then
+if [[ "$c" == "1" ]]; then
     pihole -g
 else
     echo -e "\\n\\nDone!"
