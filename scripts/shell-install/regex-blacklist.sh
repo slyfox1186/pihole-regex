@@ -13,7 +13,7 @@ if [[ $i == "A" ]]; then
 elif [[ $i == "R" ]]; then
     curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-uninstall/regex-blacklist.py' | sudo python3
 elif [[ $i == "S" ]]; then
-    bash regex-whitelist.sh
+    bash pihole-regex/regex-whitelist.sh
     exit
 fi
 
