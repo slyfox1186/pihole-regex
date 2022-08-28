@@ -95,6 +95,7 @@ read c
 clear
 if [[ "$c" == "1" ]]; then
     pihole -g
+    echo -e "\\nDone!\\n"
 else
-    echo -e "\\n\\nDone!"
+    exit
 fi
