@@ -26,6 +26,6 @@ if [ "$a" == "1" ]; then
     pihole restartdns
 fi
 
-echo -e "\\nDone!\\n"
+echo -e "Done!\\n"
 echo 'Make sure to star this repository and show your support!'
 echo -e "Github Profile: https://github.com/slyfox1186/pihole-regex\\n"
