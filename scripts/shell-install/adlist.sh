@@ -2,8 +2,6 @@
 
 # This script will prompt the user to add or remove the listed domains to your Pi-hole's adlists
 
-clear
-
 # make user input case insensitive
 shopt -s nocasematch
 
@@ -15,28 +13,32 @@ GRAVITY='/etc/pihole/gravity.db'
 # Comments are optional, you can remove them from the script or place a # in front of the line
 
 # prompt the user with the script's purpose
+clear
 echo -e "This script modify your Pi-hole's adlists\\n"
 
 # prompt user with adlist option 1
 echo -e "What do you want to do?\\n"
 echo '[1] Add domains'
 echo '[2] Remove all domains'
+echo '[3] Exit'
 read a
-if [[ "$a" == "1" ]] || [[ "$a" == "2" ]]; then
+if [[ "$a" == "1" ]]; then
     echo 'Continuing'
     clear
-else
-    echo 'Warning: Bad user input'
-    echo
-    read -p 'Press Enter to start over.'
-    . "$0"
-fi
-
-# if remove was chosen then do so and exit script
-if [[ "$a" == "2" ]]; then
+elif [[ "$a" == "2" ]]; then
     sqlite3 "$GRAVITY" "DELETE FROM adlist"
+    clear
     echo -e "All domains have been removed from Pi-hole's adlists\\n"
     exit
+elif [[ "$a" == "3" ]]; then
+    clear
+    exit
+else
+    echo -e "Warning: Bad user input\\n"
+    read -p 'Press Enter to start over.'
+    clear
+    bash "$0"
+    exit 1
 fi
 
 # prompt user with adlist option 2
@@ -84,7 +86,9 @@ elif [[ "$b" == "4" ]]; then
 else
     echo -e "Warning: Bad user input...\\n"
     read -p 'Press Enter to start over.'
-    . "$0"
+    clear
+    bash "$0"
+    exit 1
 fi
 
 clear
