@@ -5,7 +5,7 @@
 # make user input case insensitive
 shopt -s nocasematch
 
-# only change these if they are wrong
+# change this to the full path of gravity's database if the one below is wrong
 GRAVITY='/etc/pihole/gravity.db'
 
 # Add or remove Pi-hole's adlists
