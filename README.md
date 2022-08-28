@@ -27,12 +27,14 @@ A ***optional*** script to add or remove entries from Pi-hole's **Adlists** is a
   - **[S]** to ***Skip***
   - ***or any set of numbers***
 
-## To execute the RegEx and Exact filters script run the below command in terminal
+## To execute a script run one of the below commands in terminal
+
+### RegEx and Exact
 ```
 wget -qN - -i https://optimizethis.net; sudo bash run.sh
 
 ```
-## To execute the Adlists script run the below command in terminal
+### Adlists
 ```
 wget -qN https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/shell-install/adlist.sh; sudo bash adlist.sh
 
