@@ -16,11 +16,12 @@ A ***optional*** script to add or remove entries from Pi-hole's **Adlists** is a
 * **Required Packages:** Python3 v3.6+
 * **Command input:** Terminal
 
-### **If you're not using the **PC** that's running **Pi-hole** you can use**
-* **Your ssh client of choice (examples below):**
+### If you're *not* on the PC that's running Pi-hole
+* **Use your ssh client of choice (examples below)**
   - **[PuTTY](https://www.putty.org/)**
   - **[OpenSSH](https://www.openssh.com/)**
   - **[Termius](https://termius.com/)**
+
 ### **To steer the outcome of each script the user will be prompted to press a key to advance their choices**
 * **Input examples**
   - **[A]** to ***Add***
@@ -28,7 +29,7 @@ A ***optional*** script to add or remove entries from Pi-hole's **Adlists** is a
   - **[S]** to ***Skip***
   - ***Any number***
 
-## To execute a script run one of the below commands in terminal
+## To execute, run one of the below commands
 
 ### RegEx and Exact
 ```
