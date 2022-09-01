@@ -1,4 +1,4 @@
-## RegEx and Exact filters for network wide ad blocking using Pi-hole's (FTLDNS)
+## Pi-hole (FTLDNS): RegEx and Exact filters for networkwide ad blocking
 
 The ***purpose*** of this repository is to compliment your existing **Pi-hole's** filters using ***powerful*** **regular expressions** (**AKA RegEx**) that covers a **broad range of domains** in one go. Included with the RegEx filters are a *customized list* of **Exact filters**.
 
