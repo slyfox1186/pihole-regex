@@ -31,7 +31,7 @@ A ***optional*** script to add or remove entries from Pi-hole's **Adlists** is a
 
 ### RegEx and Exact
 ```
-wget -qN - -i https://optimizethis.net; sudo bash run.sh
+wget -qN - -i https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/urls.txt; sudo bash run.sh
 
 ```
 ### Adlists
