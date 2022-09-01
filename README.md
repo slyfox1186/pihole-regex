@@ -2,7 +2,7 @@
 
 The ***purpose*** of this repository is to compliment your existing **Pi-hole's** filters using ***powerful*** **regular expressions** (**AKA RegEx**) that covers a **broad range of domains** in one go. Included with the RegEx filters are a *customized list* of **Exact filters**.
 
-A ***optional*** script to add or remove entries from Pi-hole's **Adlists** is also included.
+An ***optional*** script to add or remove entries from Pi-hole's **Adlists** is also included.
 
 ## The Filter Lists
   - **[Exact Blacklist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/exact-blacklist.txt)**
