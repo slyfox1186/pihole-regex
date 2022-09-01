@@ -15,13 +15,13 @@ The *purpose* of this repository is to compliment your existing **Pi-Hole** filt
 * **Command input:** Terminal
 * **Adlist info:** If you choose to remove the adlist it will remove ***ALL*** of the entries (not just mine).
 
-### If you're *not* on the PC that's running Pi-Hole
+## If you're *not* on the PC that's running Pi-Hole
 * **Use your ssh client of choice (examples below)**
   - **[PuTTY](https://www.putty.org/)**
   - **[OpenSSH](https://www.openssh.com/)**
   - **[Termius](https://termius.com/)**
 
-### **To steer the outcome of each script the user will be prompted to press a key to advance their choices**
+## **To steer the outcome of each script the user will be prompted to press a key to advance their choices**
 * **Input examples**
   - **[A]** to ***Add***
   - **[R]** to ***Remove***
