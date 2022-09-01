@@ -27,10 +27,6 @@
 (\.|^)fb(|cdn|sbx)\.(com|me|net|watch)$
 (\.|^)messenger\.com$
 
-# Google
-(\.|^)beacons[\d\.]*(gcp\.gvt\d*|gvt[\d]*)\.com$
-(\.|^)clients[\d]*\.google\.com$\.domain\.name$
-
 # Oculus Rift
 (\.|^)graph\.oculus\.com$
 (\.|^)oculuscdn\.com$
