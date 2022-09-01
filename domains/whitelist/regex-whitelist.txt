@@ -1,5 +1,5 @@
 ## RegEx Whitelist
-## Github repository: https://github.com/slyfox1186/pihole.regex
+## Github repository: https://github.com/slyfox1186/pihole-regex
 
 # AdultTime
 (\.|^)(appsync|execute)-api.us-east-1.amazonaws.com$
