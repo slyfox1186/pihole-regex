@@ -25,7 +25,7 @@ A ***optional*** script to add or remove entries from Pi-hole's **Adlists** is a
   - **[A]** to ***Add***
   - **[R]** to ***Remove***
   - **[S]** to ***Skip***
-  - ***Any set of numbers***
+  - ***Any number***
 
 ## To execute a script run one of the below commands in terminal
 
