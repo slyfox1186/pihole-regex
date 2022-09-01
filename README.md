@@ -17,7 +17,7 @@ A ***optional*** script to add or remove entries from Pi-hole's **Adlists** is a
 * **Command input:** Terminal
 
 ### **If you're not using the **PC** that's running **Pi-hole** you can use**
-* **Your SSH Client of choice (examples below):**
+* **Your ssh client of choice (examples below):**
   - **[PuTTY](https://www.putty.org/)**
   - **[OpenSSH](https://www.openssh.com/)**
   - **[Termius](https://termius.com/)**
