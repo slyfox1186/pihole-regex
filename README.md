@@ -2,7 +2,7 @@
 
 The *purpose* of this repository is to compliment your existing **Pi-Hole** filters using ***powerful*** regular expressions (**RegEx**) that cover a broad range of domains ***in one go***. Included are an optional customized list of **Exact** filters and the ability to add or remove entries from the **Adlist Group**.
 
-## The Filter Lists
+## The filter lists
   - **[Exact Blacklist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/exact-blacklist.txt)**
   - **[Exact Whitelist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/whitelist/exact-whitelist.txt)**
   - **[RegEx Blacklist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/regex-blacklist.txt)**
@@ -11,8 +11,14 @@ The *purpose* of this repository is to compliment your existing **Pi-Hole** filt
 
 ## Requirements and other important information
 * **Made for:** Pi-Hole (FTLDNS) v5+
-* **Required Packages:** Python3 v3.6+
-* **Command input:** Terminal
+  - Website: [https://pi-hole.net/](https://pi-hole.net/)
+
+* **Required Packages:**
+  - **Python3**
+    - sudo apt install python3
+  - **SQLite3**
+    - sudo apt install sqlite3
+
 * **Adlist info:** If you choose to remove the adlist it will remove ***ALL*** of the entries (not just mine).
 
 ## If you're *not* on the PC that's running Pi-Hole
