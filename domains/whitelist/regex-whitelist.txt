@@ -38,7 +38,7 @@
 
 # Google
 ^beacons[\d]*\.gvt[\d]+\.com$
-^clients[24]\.google\.com$
+(\.|^)clients[\d]*\.google\.com$
 
 # LG-TV
 ^aic\.(homeprv|service)\.lgtvcommon\.com$
