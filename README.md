@@ -1,8 +1,8 @@
 ## A collection of *RegEx* and *Exact* filters for use with Pi-Hole® *FTLDNS*
 
-The ***purpose*** of this repository is to compliment your existing **Pi-hole's** filters using ***powerful*** **regular expressions** (**AKA RegEx**) that covers a **broad range of domains** in one go. Included with the RegEx filters are a *customized list* of **Exact filters**.
+The ***purpose*** of this repository is to compliment your existing **Pi-Hole's** filters using ***powerful*** **regular expressions** (**AKA RegEx**) that covers a **broad range of domains** in one go. Included with the RegEx filters are a *customized list* of **Exact filters**.
 
-An ***optional*** script to add or remove entries from Pi-hole's **Adlists** is also included.
+An ***optional*** script to add or remove entries from Pi-Hole's **Adlists** is also included.
 
 ## The Filter Lists
   - **[Exact Blacklist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/exact-blacklist.txt)**
@@ -12,11 +12,11 @@ An ***optional*** script to add or remove entries from Pi-hole's **Adlists** is 
   - **[Adlists](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt)**
 
 ## Requirements and other important information
-* **Made for:** Pi-hole (FTLDNS) v5+
+* **Made for:** Pi-Hole (FTLDNS) v5+
 * **Required Packages:** Python3 v3.6+
 * **Command input:** Terminal
 
-### If you're *not* on the PC that's running Pi-hole
+### If you're *not* on the PC that's running Pi-Hole
 * **Use your ssh client of choice (examples below)**
   - **[PuTTY](https://www.putty.org/)**
   - **[OpenSSH](https://www.openssh.com/)**
