@@ -11,7 +11,6 @@
 (0, 'activate.adobe.com', 1, 'Adobe - SlyEWL')
 (0, 'activity.windows.com', 1, 'Microsoft - SlyEWL')
 (0, 'adf.ly', 1, 'URL Shortener - SlyEWL')
-(0, 'ads-fa.spotify.com', 1, 'Spotify - SlyEWL')
 (0, 'ae01.alicdn.com', 1, 'Misc - SlyEWL')
 (0, 'akamaihd.net', 1, 'Akamai Technologies - A is a global content delivery network (CDN) - SlyEWL')
 (0, 'akamaitechnologies.com', 1, 'Akamai Technologies  - A global content delivery network (CDN) - SlyEWL')
