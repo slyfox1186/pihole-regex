@@ -18,7 +18,6 @@ accounts.spotify.com
 activate.adobe.com
 activity.windows.com
 adf.ly
-ads-fa.spotify.com
 ae01.alicdn.com
 akamaihd.net
 akamaitechnologies.com
