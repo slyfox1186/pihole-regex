@@ -31,7 +31,7 @@ def fetch_blacklist_url(url):
 
     # If there is data
     if response:
-        # Strip leading and trailing whitespace
+        # Strip leading and trailing blackspace
         response = '\n'.join(x.strip() for x in response.splitlines())
 
     # Return the hosts
@@ -144,21 +144,22 @@ if db_exists:
         total_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 AND comment LIKE '%SlyEBL%' ")
 
         totalDomains = len(total_domains.fetchall())
-        print("[i] There are a total of {} domains in your blacklist which were added by this script." .format(totalDomains))
-        print('[i] Removing domains in the Gravity database...')
+        print("[i] {} domains in the updated blacklist were added by this script." .format(totalDomains))
+        print('[i] Removing domains from Gravity...')
         cursor.execute (" DELETE FROM domainlist WHERE type = 1 AND comment LIKE '%SlyEBL%' ")
 
         sqliteConnection.commit()
 
         # We only removed domains we added so use total_domains
-        print("[i] {} domains were removed!" .format(totalDomains))
+        print('\n')
+        print("[i] There were {} domains removed from Gravity." .format(totalDomains))
         remaining_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 OR type = 3 ")
-        print("[i] There are a total of {} domains remaining in your blacklist." .format(len(remaining_domains.fetchall())))
-
+        print("[i] {} domains remain in Gravity's blacklist." .format(len(remaining_domains.fetchall())))
+        print('\n')
         cursor.close()
 
     except sqlite3.Error as error:
-        print("[X] Failed to remove domains from Gravity's database!", error)
+        print("[X] Failed to remove domains from Gravity!", error)
         print('\n')
         exit(1)
 
@@ -167,9 +168,10 @@ if db_exists:
             sqliteConnection.close()
 
             print("[i] The connection to the Gravity database has closed!")
-            print('[i] Please wait for the Pi-hole server to restart...')
-            restart_pihole(args.docker)
             print('\n')
+            print('[i] Wait for Pi-hole to reboot...')
+            print('\n')
+            restart_pihole(args.docker)
             print('[i] The Exact Blacklist filters have been removed from Gravity!')
 
 else:
@@ -180,11 +182,11 @@ else:
                 str.strip, fRead) if x and x[:1] != '#')
 
     if blacklist_local:
-        print("[i] {} existing blacklisted domains identified" .format(
-            len(blacklist_local)))
-
+        print("[i] {} existing blacklists identified." .format(len(blacklist_local)))
+        print('\n')
         if os.path.isfile(slyfox1186_blacklist_location) and os.path.getsize(slyfox1186_blacklist_location) > 0:
             print('[i] Existing slyfox1186-blacklist installation located.')
+            print('\n')
             with open(slyfox1186_blacklist_location, 'r') as fOpen:
                 blacklist_old_slyfox1186.update(x for x in map(
                     str.strip, fOpen) if x and x[:1] != '#')
@@ -195,7 +197,8 @@ else:
             os.remove(slyfox1186_blacklist_location)
 
         else:
-            print('[i] Removing all domains that match the remote repo.')
+            print('[i] Removing the blacklists now...')
+            print('\n')
             blacklist_local.difference_update(blacklist_remote)
 
     print("[i] Adding exsisting {} domains to {}" .format(
@@ -204,7 +207,8 @@ else:
         for line in sorted(blacklist_local):
             fWrite.write("{}\n".format(line))
 
-    print('[i] Please wait for the Pi-hole server to restart...')
+    print('\n')
+    print('[i] Wait for Pi-hole to reboot...')
     restart_pihole(args.docker)                                                    
     print('\n')
     print('[i] The Exact Blacklist filters have been removed from Gravity!')
