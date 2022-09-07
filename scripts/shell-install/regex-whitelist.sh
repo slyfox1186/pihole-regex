@@ -18,9 +18,9 @@ fi
 
 clear
 echo -e "Restart Pihole's DNS?\\n"
-read -p '[Y]es or [N]o' a
+read -p '[Y]es or [N]o: ' uChoice
 clear
-if [[ "$a" == "Y" ]]; then
+if [[ "$uChoice" == "Y" ]]; then
     pihole restartdns
 fi
 
