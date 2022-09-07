@@ -18,14 +18,11 @@ fi
 
 clear
 echo -e "Restart Pihole's DNS?\\n"
-echo '[1] Yes'
-echo '[2] No'
-read a
+read -p '[Y]es or [N]o' i
 clear
-if [ "$a" == "1" ]; then
+if [ "$i" == "Y" ]; then
     pihole restartdns
 fi
 
-echo -e "Done!\\n"
-echo 'Make sure to star this repository and show your support!'
+echo -e "\\nMake sure to star this repository and show your support!"
 echo -e "Github Profile: https://github.com/slyfox1186/pihole-regex\\n"
