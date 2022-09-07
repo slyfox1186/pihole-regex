@@ -298,14 +298,18 @@ if db_exists:
 
             if gsa == True:
                 # All domains are accounted for.
-                print("\n[i] All {} missing domain's have been accounted for in Gravity's database." .format(newwhitelistlen))
-
+                print('\n')
+                print("\n[i] {} missing domain's found in Graviy." .format(newwhitelistlen))
+                
             else:
-                print("\n[i] All {} new domain's have not been added to the Gravity database." .format(INnewNOTgravityListCount+1))
+                print('\n')
+                print("\n[i] {} new domain's weren't added to Gravity." .format(INnewNOTgravityListCount+1))
 
         else: # We should be done now
             # Do nothing and exit. All domains are accounted for.
-            print("[i] All {} domains that were to be added by the script have been successfully found Gravity's database." .format(newwhitelistlen))
+            print('\n')
+            print("[i] {} domain to be added are already in Gravity." .format(newwhitelistlen))
+            print('\n')
         # Find total whitelisted domains (regex)
         total_domains_R = cursor.execute(" SELECT * FROM domainlist WHERE type = 2 ")
         tdr = len(total_domains_R.fetchall())
@@ -313,9 +317,11 @@ if db_exists:
         total_domains_E = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 ")
         tde = len(total_domains_E.fetchall())
         total_domains = tdr + tde
-        print("[i] There are a total of {} domains in your whitelist (regex({}) & exact({}))" .format(total_domains, tdr, tde))
+        print("[i] {} domains are in your whitelist (regex({}) & exact({}))" .format(total_domains, tdr, tde))
+        print('\n')
         sqliteConnection.close()
         print("[i] The connection to the Gravity database has closed.")
+        print('\n')
         if ilng == True:
             print('[i] Please wait for the Pi-hole server to restart.')
 
