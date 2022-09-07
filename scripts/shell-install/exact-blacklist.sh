@@ -5,14 +5,13 @@ shopt -s nocasematch
 
 # Get user's input
 clear
-echo 'Exact Blacklist: [A]dd [R]emove [S]kip'
-read i
+read -p 'Exact Blacklist >> [A]dd [R]emove [S]kip: ' iChoice
 clear
-if [[ "$i" == "A" ]]; then
+if [[ "$iChoice" == "A" ]]; then
     curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-install/exact-blacklist.py' | sudo python3
-elif [[ "$i" == "R" ]]; then
+elif [[ "$iChoice" == "R" ]]; then
     curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-uninstall/exact-blacklist.py' | sudo python3
-elif [[ "$i" == "S" ]]; then
+elif [[ "$iChoice" == "S" ]]; then
     bash pihole-regex/exact-whitelist.sh
     exit
 fi
