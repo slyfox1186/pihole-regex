@@ -10,14 +10,16 @@ read i
 clear
 if [[ "$i" == "A" ]]; then
     curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-install/regex-whitelist.py' | sudo python3
+    echo
 elif [[ "$i" == "R" ]]; then
     curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-uninstall/regex-whitelist.py' | sudo python3
+    echo
 elif [[ "$i" == "S" ]]; then
-     clear
+     echo
 fi
 
-clear
-echo -e "Restart Pihole's DNS?\\n"
+echo "Restart Pihole's DNS?"
+echo
 read -p '[Y]es or [N]o: ' uChoice
 clear
 if [[ "$uChoice" == "Y" ]]; then
