@@ -16,5 +16,12 @@
 (0, 'kosmos-assets-prod.react.gammacdn.com', 1, 'AdultTime - Required for react buttons to work - SlyEWL')
 (0, 'kosmos-prod.react.gammacdn.com', 1, 'AdultTime - Required for react buttons to work - SlyEWL')
 
+(0, 'clients1.google.com', 1, 'Google - Required to use Google Maps - SlyEWL')
+(0, 'clients2.google.com', 1, 'Google - Required to use Google Maps - SlyEWL') REPLACED
+(0, 'clients3.google.com', 1, 'Google - Required to use Google Maps - SlyEWL')    BY
+(0, 'clients4.google.com', 1, 'Google - Required to use Google Maps - SlyEWL')   REGEX: ^clients[1-6]*\.google\.com$ 
+(0, 'clients5.google.com', 1, 'Google - Required to use Google Maps - SlyEWL')
+(0, 'clients6.google.com', 1, 'Google - Required to use Google Maps - SlyEWL')
+
 // RegEx Strings replaced
 ^kosmos(|-assets)-prod\.react\.gammacdn\.com$
