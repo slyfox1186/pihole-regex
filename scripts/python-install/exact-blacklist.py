@@ -79,13 +79,14 @@ blacklist_slyfox1186_local = set()
 blacklist_old_slyfox1186 = set()
 
 os.system('clear')
-print("This script will import the Exact Blacklist filters from the repo to your Pihole server's Blacklist.")
-print('All the domains in this list are beleived to serve undersiderable ads and other unwanted content.')
+print('\n')
+print("This script will import the Exact Blacklist Filters to Gravity's Blacklist.")
 print('\n')
 
 # Check if the pihole path exists
 if os.path.exists(pihole_location):
     print("[i] Pi-hole's path was found.")
+    print('\n')
 else:
     print("[X] {} was not found.".format(pihole_location))
     print('\n')
@@ -106,7 +107,7 @@ else:
 if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) > 0:
     db_exists = True
     print("[i] The Gravity database was found.")
-
+    print('\n')
     remote_sql_str = fetch_blacklist_url(remote_sql_url)
     remote_sql_lines = remote_sql_str.count('\n')
     remote_sql_lines += 1
@@ -168,7 +169,8 @@ if db_exists:
             # print(newblacklist[nwl])
             nwl += 1 # count + 1
         # Check database for user added exact blacklisted domains
-        print('[i] Checking Gravity for domains added by other methods that are also found in the script.')
+        print("[i] Checking for matching domains already found in Gravity's database.")
+        print('\n')
         # Check Gravity database for exact blacklisted domains added by user
         user_add = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 AND comment NOT LIKE '%SlyEBL - github.com/slyfox1186/pihole-regex%' ")
         userAddTUP = user_add.fetchall()
@@ -189,7 +191,8 @@ if db_exists:
         INgravityUSERaddListCount = uA # Save our count here so we know how many we have later
         # Make us aware of User Added domains that are also in our script
         if uagl == True: # If we found user added domains from our list in gravity do:
-            print ('[i] There are {} domain(s) that were added by the user that would also be added by script.\n' .format(INgravityUSERaddListCount+1)) # We have to add 1 for humans cause count starts @ 0
+            print('[i] There are {} domain(s) already in Gravity.' .format(INgravityUSERaddListCount+1)) # We have to add 1 for humans cause count starts @ 0
+            print('\n')
             a = 0
             while uA >= 0: # Remember that counter now we make it go backwards to 0
                 a += 1 # Counter for number output to screen
@@ -207,7 +210,7 @@ if db_exists:
         if uagl == True:
             print('\n')
 
-        print('[i] Checking Gravity for domains previously added by script that are NOT in new script.')
+        print('[i] Checking Gravity for domains previously added by script that are no longer used.')
         ignl = False
         a = 0
         for INgravityNOTnew in gravScriptBeforeTUP: # For every domain previously added by script
@@ -222,7 +225,8 @@ if db_exists:
         INgravityNOTnewListCount = z
         # If in Gravity because of script but NOT in the new list Prompt for removal
         if ignl == True:
-            print('[i] There are {} domain(s) added previously by the script and are no longer in the current script.\n' .format(INgravityNOTnewListCount+1))
+            print('[i] {} domain(s) previously added by the script are no longer in Gravity.' .format(INgravityNOTnewListCount+1))
+            print('\n')
             a = 0
             while z >= 0:
                 a += 1
@@ -236,7 +240,8 @@ if db_exists:
         # If not keep going
         else:
             INgravityNOTnewListCount = 0
-            print('[i] There are {} domains added previously by the script that are no longer in the current version.' .format(INgravityNOTnewListCount))
+            print('[i] There are a total of {} domains added previously by the script that are no longer used.' .format(INgravityNOTnewListCount))
+            print('\n')
         #
         #
         # Check Gravity database for new domains to be added by script
@@ -257,7 +262,8 @@ if db_exists:
         INnewNOTgravityListCount = w
         # If there are domains in new list that are NOT in Gravity
         if ilng == True: # Add domains that are missing from new script and not user additions
-            print("[i] There are {} domain's NOT in Gravity that are in the new scripts.\n" .format(INnewNOTgravityListCount+1))
+            print("[i] {} domain's not in Gravity are in the new script." .format(INnewNOTgravityListCount+1))
+            print('\n')
             a = 0
             while w >= 0:
                 a += 1
@@ -283,9 +289,9 @@ if db_exists:
             ASG = INnewNOTgravityListCount
             ASGCOUNT = 0
             gravScriptAfterList = [None] * gravScriptAfterTUPlen
-
-            print('\n[i] Checking Gravity for newly added domains.\n')
-
+            print('\n')
+            print('[i] Checking Gravity for newly added domains.')
+            print('\n')
             for gravScriptAfterDomain in gravScriptAfterTUP:
                 gravScriptAfterList[ASGCOUNT] = gravScriptAfterTUP[ASGCOUNT][2]
                 ASGCOUNT += 1
@@ -298,14 +304,16 @@ if db_exists:
 
             if gsa == True:
                 # All domains are accounted for.
-                print("\n[i] All {} missing domain's have been accounted for in Gravity's database." .format(newblacklistlen))
-
+                print('\n')
+                print("[i] All {} missing domain's have been added to Gravity." .format(newblacklistlen))
             else:
-                print("\n[i] All {} new domain's have not been added to the Gravity database." .format(INnewNOTgravityListCount+1))
+                print('\n')
+                print("[i] All {} new domain's have not been added to the Gravity database." .format(INnewNOTgravityListCount+1))
 
         else: # We should be done now
             # Do nothing and exit. All domains are accounted for.
-            print("[i] All {} domains that were to be added by the script have been successfully found Gravity's database." .format(newblacklistlen))
+            print('\n')
+            print("[i] All {} domains were successfully added to Gravity." .format(newblacklistlen))
         # Find total blacklisted domains (regex)
         total_domains_R = cursor.execute(" SELECT * FROM domainlist WHERE type = 3 ")
         tdr = len(total_domains_R.fetchall())
@@ -314,10 +322,13 @@ if db_exists:
         tde = len(total_domains_E.fetchall())
         total_domains = tdr + tde
         print("[i] There are a total of {} domains in your blacklist (regex({}) & exact({}))" .format(total_domains, tdr, tde))
+        print('\n')
         sqliteConnection.close()
         print("[i] The connection to the Gravity database has closed.")
+        print('\n')
         if ilng == True:
             print('[i] Please wait for the Pi-hole server to restart.')
+            print('\n')
             restart_pihole(args.docker)
 
     except sqlite3.Error as error:
@@ -329,7 +340,7 @@ if db_exists:
     finally:
         print('\n')
         print('[i] The Exact Blacklist filters have been added to Gravity!')
-
+        print('\n')
 else:
 
     if os.path.isfile(gravity_blacklist_location) and os.path.getsize(gravity_blacklist_location) > 0:
@@ -350,11 +361,10 @@ else:
                     print('[i] Removing previously installed blacklist.')
                     blacklist_local.difference_update(blacklist_old_slyfox1186)
 
-    print("[i] Syncing with {}" .format(blacklist_remote_url))
-    blacklist_local.update(blacklist_remote)
-
-    print("[i] Outputting {} domains to {}" .format(
-        len(blacklist_local), gravity_blacklist_location))
+    print("[i] Syncing with {}" .format(blacklist_remote_url))blacklist_local.update(blacklist_remote)
+    print('\n')
+    print("[i] Outputting {} domains to {}" .format(len(blacklist_local), gravity_blacklist_location))
+    print('\n')
     with open(gravity_blacklist_location, 'w') as fWrite:
         for line in sorted(blacklist_local):
             fWrite.write("{}\n".format(line))
@@ -367,3 +377,4 @@ else:
     restart_pihole(args.docker)
     print('\n')
     print('[i] The Exact Blacklist filters have been added to Gravity!')
+    print('\n')
