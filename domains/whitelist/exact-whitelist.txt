@@ -310,6 +310,7 @@ js.maxmind.com
 js.stripe.com
 jsdelivr.net
 json.bild.de
+keyserver.ubuntu.com
 keystone.mwbsys.com
 l.facebook.com
 l.messenger.com
@@ -341,6 +342,7 @@ m3u8.gammacdn.com
 mamservice.manage.microsoft.com
 manifest.googlevideo.com
 market.spotify.com
+martellmalone.com
 mask-api.icloud.com
 mask-h2.icloud.com
 mask.icloud.com
@@ -390,6 +392,7 @@ ns2.dropbox.com
 o1.email.plex.tv
 o2.sg0.plex.tv
 oauthaccountmanager.googleapis.com
+objects.githubusercontent.com
 ocsp.apple.com
 ocsp.digicert.com
 ocsp.entrust.net
@@ -406,6 +409,8 @@ om.cbsi.com
 onedrive.live.com
 oops.redditmedia.com
 open.spotify.com
+openpgpkey.gmail.com
+openpgpkey.martellmalone.com
 osb-ussvc.samsungqbe.com
 oscdn.apple.com
 oscp.apple.com
