@@ -48,6 +48,7 @@
 (\.|^)azure\.com$
 (\.|^)windows\.com$
 ^(device|title|user|xsts)\.auth\.xboxlive\.com$
+^clients[1-6]*\.google\.com$
 
 # QNAP Computers
 (\.|^)myqnapcloud\.com$
