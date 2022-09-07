@@ -13,9 +13,12 @@ elif [[ "$iChoice" == "R" ]]; then
     curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-uninstall/regex-whitelist.py' | sudo python3
 fi
 
+echo -e "\\n"
 echo "Restart Pihole's DNS?"
 echo
-read -p '[Y]es or [N]o: ' uChoice
+echo '[Y]es'
+echo '[N]o'
+read uChoice
 clear
 if [[ "$uChoice" == "Y" ]]; then
     sudo pihole restartdns
