@@ -2,44 +2,37 @@
 ## Github repository: https://github.com/slyfox1186/pihole-regex
 
 # adulttime.com - Necessary for the site to deliver non ad content
-(\.|^)(appsync|execute)-api\.us-east-1\.amazonaws\.com$
+(\.|^)(appsync|execute)-api.us-east-1.amazonaws.com$
 (\.|^)adulttime\.com$
 (\.|^)algolianet\.com$
 (\.|^)algolia\.(io|net)$
 (\.|^)dsn\.algolia\.net$
+(\.|^)execute-api\.us-east-1\.amazonaws\.com$
 (\.|^)react\.gammacdn\.com$
 (\.|^)streaming-(fame|hls)\.gammacdn\.com$
-^images[\d]*-fame\.gammacdn\.com$
+^images[\d]+-fame\.gammacdn\.com$
+^static[0-4]+-cms-fame\.gammacdn\.com$
 
 # Apple - Main domains for a good chunk of legitimate iOS services
-(\.|^)appattest\.apple\.com$
-(\.|^)apple-cloudkit\.com$
-(\.|^)apple-livephotoskit\.com$
-(\.|^)apps\.apple\.com$
-(\.|^)apzones\.com$
-(\.|^)business\.apple\.com$
-(\.|^)cdn-apple\.com$
-(\.|^)gc\.apple\.com$
-(\.|^)iwork\.apple\.com$
-(\.|^)mzstatic\.com$
-(\.|^)push\.apple\.com$
-(\.|^)school\.apple\.com$
+(\.|^)(appattest|apps|business|gc|iwork|push|school)\.apple\.com$
+(\.|^)(apzones|mzstatic)\.com$
+(\.|^)apple-(cloudkit|livephotoskit)\.com$
 
 # Epic Games - Essential Domains for authentication during user login and other services such as purchasing/unlocking games to your user library
 ^(catalog|entitlement)-public-service-prod[\d]*\.ol\.epicgames\.com$
 ^(catalog|entitlement|priceengine)-public-service-prod\.ak\.epicgames\.com$
 ^lightswitch-public-service-prod[\d]*\.ol\.epicgames\.com$
 
-# Facebook ad servers
+# Facebook - Essentail CND servers
 (\.|^)facebook\.com$
 (\.|^)fbcdn\.net$
 ^[0-6]+?-edge-chat\.facebook\.com$
 
-# Google Allow known essential widget service
+# Google - Allow known essential widget service
 ^beacons[\d]*\.gvt[\d]+\.com$
 ^clients[1-6]*\.google\.com$
 
-# LG-TV This is needed for essential services such as possible firmware update checks for LG Smart TV's
+# LG-TV - This is needed for essential services such as possible firmware update checks for LG Smart TV's
 ^aic\.(homeprv|service)\.lgtvcommon\.com$
 
 # Microsoft OneDrive, Azure, Windows Esentials updates, other, xboxlive required for saves to the cloud
@@ -50,13 +43,14 @@
 
 # QNAP NAS - Reguired for the myqnapclub feature to work in it's entirety 
 (\.|^)myqnapcloud\.com$
+(\.|^)qnap\.com$
 
 # Reddit - Main CND's and other legit content delivery comains for Reddit. Some of these cary ads and will cripple the site as a whole if not whitelisted.
 (\.|^)redditmedia\.com$
 (\.|^)redditstatic\.com$
 (\.|^)reddit\.com$
 (\.|^)redd\.it$
-(\.|^)[a-z]\.thumbs\.redditmedia\.com
+(\.|^)thumbs\.redditmedia\.com
 (\.|^)[iv]?\.redd\.it$
 
 # YouTube
