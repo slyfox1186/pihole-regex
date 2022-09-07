@@ -91,6 +91,7 @@ print('Any other domains added personally by the user will remain uneffected.')
 # Check for pihole path exsists
 if os.path.exists(pihole_location):
     print("[i] Pi-hole's path exists!")
+    print('\n')
 else:
     print("[X] {} was not found!".format(pihole_location))
     print('\n')
@@ -110,14 +111,15 @@ else:
 # Determine whether we are using DB or not
 if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) > 0:
     db_exists = True
-    print("[i] Succesfully located the Gravity database!")
-
+    print("[i] Succesfully located the Gravity database.")
+    print('\n')
     remote_sql_str = fetch_blacklist_url(remote_sql_url)
     remote_sql_lines = remote_sql_str.count('\n')
     remote_sql_lines += 1
 
     if len(remote_sql_str) > 0:
         print("[i] {} domains were discovered!" .format(remote_blacklist_lines))
+        print('\n')
     else:
         print('[X] No remote SQL queries were found!')
         print('\n')
@@ -136,16 +138,20 @@ else:
 if db_exists:
     # Create a DB connection
     print("[i] Connecting to Gravity's database...")
+    print('\n')
 
     try:
         sqliteConnection = sqlite3.connect(gravity_db_location)
         cursor = sqliteConnection.cursor()
         print("[i] Successfully connected to Gravity's database!")
+        print('\n')
         total_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 AND comment LIKE '%SlyEBL%' ")
 
         totalDomains = len(total_domains.fetchall())
         print("[i] {} domains in the updated blacklist were added by this script." .format(totalDomains))
+        print('\n')
         print('[i] Removing domains from Gravity...')
+        print('\n')
         cursor.execute (" DELETE FROM domainlist WHERE type = 1 AND comment LIKE '%SlyEBL%' ")
 
         sqliteConnection.commit()
