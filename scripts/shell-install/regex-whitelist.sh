@@ -5,12 +5,11 @@ shopt -s nocasematch
 
 # Get user's input
 clear
-echo 'RegEx Whitelist: [A]dd [R]emove [S]kip'
-read i
+read -p 'RegEx Whitelist >> [A]dd [R]emove [S]kip: ' iChoice
 clear
-if [[ "$i" == "A" ]]; then
+if [[ "$iChoice" == "A" ]]; then
     curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-install/regex-whitelist.py' | sudo python3
-elif [[ "$i" == "R" ]]; then
+elif [[ "$iChoice" == "R" ]]; then
     curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-uninstall/regex-whitelist.py' | sudo python3
 fi
 
