@@ -177,6 +177,7 @@ if db_exists:
 
     # Prepare final result
     print('[i] See below for the installed RegEx Blacklist filters')
+    print('\n')
 
     c.execute('Select domain FROM domainlist WHERE type = 3')
     final_results = c.fetchall()
