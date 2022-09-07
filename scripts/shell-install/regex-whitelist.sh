@@ -18,7 +18,7 @@ echo
 read -p '[Y]es or [N]o: ' uChoice
 clear
 if [[ "$uChoice" == "Y" ]]; then
-    pihole restartdns
+    sudo pihole restartdns
 fi
 
 echo -e "\\nMake sure to star this repository and show your support!"
