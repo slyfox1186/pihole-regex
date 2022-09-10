@@ -44,6 +44,12 @@ else
     exit 1
 fi
 
+# SET OUTPUT FILE LOCATION
+AD_TMP='/tmp/adlist.txt'
+# SET USER AGENT VAR
+USER_AGENT="--user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0'"
+
+# SET URL AND COMMENT VARS
 URL1='https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt'
 COMMENT1='SlyFox1186 - Firebog + Other'
 URL2='https://v.firebog.net/hosts/lists.php?type=tick'
@@ -52,8 +58,6 @@ URL3='https://v.firebog.net/hosts/lists.php?type=nocross'
 COMMENT3='Firebog - Non-crossed'
 URL4='https://v.firebog.net/hosts/lists.php?type=all'
 COMMENT4='Firebog - All'
-# SET OUTPUT FILE LOCATION
-AD_TMP='/tmp/adlist.txt'
 
 # Prompt the user with Adlist option 2
 echo -e "Choose which adlist to import into Pi-hole\\n"
@@ -64,22 +68,22 @@ echo '[4] Firebog: All (Not recommended. False positives abound!)'
 read b
 clear
 if [[ "$b" == "1" ]]; then
-    wget --user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0' -qO - "$URL1" |
+    wget "$USER_AGENT" -qO - "$URL1" |
     sed '/^#/ d' | sed '/^$/ d' > "$AD_TMP"
     cat "$AD_TMP" |
     xargs -n1 -I {} sqlite3 "$DB_FILE" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT1')"
 elif [[ "$b" == "2" ]]; then
-    wget --user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0' -qO - "$URL2" |
+    wget "$USER_AGENT" -qO - "$URL2" |
     sed '/^#/ d' | sed '/^$/ d' > "$AD_TMP"
     cat "$AD_TMP" |
     xargs -n1 -I {} sqlite3 "$DB_FILE" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT2')"
 elif [[ "$b" == "3" ]]; then
-    wget --user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0' -qO - "$URL3" |
+    wget "$USER_AGENT" -qO - "$URL3" |
     sed '/^#/ d' | sed '/^$/ d' > "$AD_TMP"
     cat "$AD_TMP" |
     xargs -n1 -I {} sqlite3 "$DB_FILE" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT3')"
 elif [[ "$b" == "4" ]]; then
-    wget --user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0' -qO - "$URL4" |
+    wget "$USER_AGENT" -qO - "$URL4" |
     sed '/^#/ d' | sed '/^$/ d' > "$AD_TMP"
     cat "$AD_TMP" |
     xargs -n1 -I {} sqlite3 "$DB_FILE" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT4')"
@@ -105,6 +109,8 @@ else
     exit
 fi
 
+# Remove temporary adlist file
 if [ -f "$AD_TMP" ]; then rm "$AD_TMP"; fi
 
+# Unset all variables used
 unset AD_TMP COMMENT1 COMMENT2 COMMENT3 COMMENT4 DB_FILE URL1 URL2 URL3 URL4
