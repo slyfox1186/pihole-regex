@@ -1,8 +1,13 @@
 #!/bin/bash
 
 # This script will prompt the user to add or remove the domains in your Pi-hole's Adlists
-# Comments are optional, you can remove them from being added to Pi-hole by placing a #
-# in front of each variable. Example: COMMENT1 >> #COMMENT1
+
+# Comments are optional, you can remove them from being added to Pi-hole
+# by placing a '#' in front of each variable.
+# Example: COMMENT1 >> #COMMENT1
+
+# Delete the annoying HTML header file 'index.html' that sometimes can get downloaded with 'adlist.sh' as well.
+if [ -f index.html ]; then rm index.html; fi
 
 # Make user input case insensitive
 shopt -s nocasematch
