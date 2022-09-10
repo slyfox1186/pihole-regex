@@ -45,7 +45,7 @@ else
 fi
 
 # SET OUTPUT FILE LOCATION
-AD_TMP='/tmp/adlist.txt'
+adTMP='/tmp/adlist.txt'
 # SET USER AGENT VAR
 USER_AGENT="--user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0'"
 
@@ -70,23 +70,23 @@ read b
 clear
 if [[ "$b" == "1" ]]; then
     wget "$USER_AGENT" -qO - "$URL1" |
-    sed '/^#/ d' | sed '/^$/ d' > "$AD_TMP"
-    cat "$AD_TMP" |
+    sed '/^#/ d' | sed '/^$/ d' > "$adTMP"
+    cat "$adTMP" |
     xargs -n1 -I {} sqlite3 "$DB_FILE" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT1')"
 elif [[ "$b" == "2" ]]; then
     wget "$USER_AGENT" -qO - "$URL2" |
-    sed '/^#/ d' | sed '/^$/ d' > "$AD_TMP"
-    cat "$AD_TMP" |
+    sed '/^#/ d' | sed '/^$/ d' > "$adTMP"
+    cat "$adTMP" |
     xargs -n1 -I {} sqlite3 "$DB_FILE" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT2')"
 elif [[ "$b" == "3" ]]; then
     wget "$USER_AGENT" -qO - "$URL3" |
-    sed '/^#/ d' | sed '/^$/ d' > "$AD_TMP"
-    cat "$AD_TMP" |
+    sed '/^#/ d' | sed '/^$/ d' > "$adTMP"
+    cat "$adTMP" |
     xargs -n1 -I {} sqlite3 "$DB_FILE" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT3')"
 elif [[ "$b" == "4" ]]; then
     wget "$USER_AGENT" -qO - "$URL4" |
-    sed '/^#/ d' | sed '/^$/ d' > "$AD_TMP"
-    cat "$AD_TMP" |
+    sed '/^#/ d' | sed '/^$/ d' > "$adTMP"
+    cat "$adTMP" |
     xargs -n1 -I {} sqlite3 "$DB_FILE" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT4')"
 else
     echo -e "Warning: Bad user input...\\n"
@@ -111,7 +111,7 @@ else
 fi
 
 # Remove temporary adlist file
-if [ -f "$AD_TMP" ]; then rm "$AD_TMP"; fi
+if [ -f "$adTMP" ]; then rm "$adTMP"; fi
 
 # Unset all variables used
-unset AD_TMP COMMENT1 COMMENT2 COMMENT3 COMMENT4 DB_FILE URL1 URL2 URL3 URL4
+unset a b c adTMP COMMENT1 COMMENT2 COMMENT3 COMMENT4 DB_FILE URL1 URL2 URL3 URL4 USER_AGENT
