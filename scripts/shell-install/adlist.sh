@@ -61,10 +61,11 @@ COMMENT4='Firebog - All'
 
 # Prompt the user with Adlist option 2
 echo -e "Choose which adlist to import into Pi-hole\\n"
-echo "[1] SlyFox1186 (Recommended. Sly's personal lists with \"Firebog's - Ticked + Non-Crossed\")"
-echo '[2] Firebog: Ticked (Recommended for builds with little oversight.)'
-echo '[3] Firebog: Ticked + Non-Crossed (Similar to the "Ticked List" but may need more attention.)'
-echo '[4] Firebog: All (Not recommended. False positives abound!)'
+echo "[1] SlyFox1186's personal adlist: Includes the Firebog: Ticked + Non-Crossed (Recommended list)"
+echo
+echo '[2] Firebog: Ticked (For builds with little oversight)'
+echo '[3] Firebog: Ticked + Non-Crossed (Similar to the "Ticked List" but may need more attention)'
+echo '[4] Firebog: All (False positives likely)'
 read b
 clear
 if [[ "$b" == "1" ]]; then
