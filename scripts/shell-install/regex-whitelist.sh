@@ -13,6 +13,9 @@ elif [[ "$iChoice" == "R" ]]; then
     curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-uninstall/regex-whitelist.py' | sudo python3
 fi
 
+# remove all remaining files that were downloaded by wget
+if [ -d pihole-regex ]; then rm -R pihole-regex; fi
+
 echo -e "\\n"
 echo "Restart Pihole's DNS?"
 echo
