@@ -51,7 +51,7 @@ USER_AGENT="--user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Ge
 
 # SET URL AND COMMENT VARS
 URL1='https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt'
-COMMENT1='SlyFox1186 - Firebog + Other'
+COMMENT1='SlyADL - Firebog + Other'
 URL2='https://v.firebog.net/hosts/lists.php?type=tick'
 COMMENT2='Firebog - Ticked'
 URL3='https://v.firebog.net/hosts/lists.php?type=nocross'
