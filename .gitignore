@@ -2,7 +2,7 @@ __pycache__/
 .idea/
 urls.txt
 index.html
-.html
+*.html
 
 # Environments
 .env
