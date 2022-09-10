@@ -17,7 +17,7 @@ echo -e "This script will modify your Pi-hole's Adlists\\n"
 # Prompt the user with Adlist option 1
 echo -e "What do you want to do?\\n"
 echo '[1] Add domains'
-echo '[2] Remove all domains'
+echo '[2] Remove all domains (Beware! This literally means ALL found lists.)'
 echo '[3] Exit'
 read a
 if [[ "$a" == "1" ]]; then
