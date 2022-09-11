@@ -1,3 +1,4 @@
+(0, 'www.signal.org', 1, 'Signal - SlyEWL')
 0.client-channel.google.com
 1drv.com
 2.android.pool.ntp.org
@@ -11,6 +12,15 @@ activate.adobe.com
 activity.windows.com
 adf.ly
 ae01.alicdn.com
+ajax.aspnetcdn.com
+ajax.cloudflare.com
+ajax.googleapis.com
+ajax.loli.net
+ajax.loli.net.cdn.cloudflare.net
+ajax.microsoft.com
+ajax.proxy.ustclug.org
+akamai-webcdn.kgstatic.net
+akamai-webcdn.kgstatic.net.edgesuite.net
 akamaihd.net
 akamaitechnologies.com
 akamaized.net
@@ -49,6 +59,8 @@ appldnld.apple.com.edgesuite.net
 appleglobal.102.112.2o7.net
 appleid.apple.com
 applicast.ga.sony.net
+apps.bdimg.com
+apps.bdimg.jomodns.com
 apps.skype.com
 appsbackup-pa.clients6.google.com
 appsbackup-pa.googleapis.com
@@ -88,18 +100,34 @@ captive.apple.com
 catalog-public-service-prod.ak.epicgames.com
 cdn-mobile.api.pluto.tv
 cdn.appdynamics.com
+cdn.bootcdn.net
+cdn.bootcdn.net.maoyundns.com
+cdn.bootcss.com
+cdn.bootcss.com.maoyundns.com
 cdn.cloudflare.net
 cdn.contentful.com
+cdn.datatables.net
+cdn.embed.ly
+cdn.embed.ly.cdn.cloudflare.net
 cdn.embedly.com
 cdn.fbsbx.com
+cdn.jsdelivr.net
+cdn.jsdelivr.net.cdn.cloudflare.net
+cdn.materialdesignicons.com
+cdn.mathjax.org
 cdn.optimizely.com
+cdn.plyr.io
+cdn.ravenjs.com
 cdn.refersion.com
 cdn.samsungcloudsolution.com
 cdn.signal.org
+cdn.staticfile.org
 cdn.vidible.tv
 cdn2.optimizely.com
 cdn3.optimizely.com
 cdnjs.cloudflare.com
+cdnjs.loli.net
+cdnjs.loli.net.cdn.cloudflare.net
 cds.d3x4y6v5.hwcdn.net
 cds.s5x3j6q5.hwcdn.net
 cert.mgt.xboxlive.com
@@ -118,6 +146,8 @@ clients.config.office.net
 cloudsync-prod.s3.amazonaws.com
 cms.souqcdn.com
 code.bildstatic.de
+code.createjs.com
+code.jquery.com
 codepush.teams.microsoft.com
 cognito-identity.us-east-1.amazonaws.com
 color.adobe.com
@@ -159,6 +189,7 @@ def-vef.xboxlive.com
 delivery.vidible.tv
 det-ta-g7g.amazon.com
 dev.virtualearth.net
+developer.n.shifen.com
 device-messaging-na.amazon.com
 deviceenrollment.apple.com
 devicelistenerprod.microsoft.com
@@ -185,6 +216,7 @@ drift.com
 driftt.com
 drscdn.500px.org
 dsms0mj1bbhn4.cloudfront.net
+dualstack.osff.map.fastly.net
 dynupdate.no-ip.com
 ec-ns.sascdn.com
 ecn.dev.virtualearth.net
@@ -221,11 +253,14 @@ filament.io
 firestore.googleapis.com
 fivethirtyeight.com
 fonts.gstatic.com
+fonts.loli.net
+fonts.loli.net.cdn.cloudflare.net
 forms.office.com
 forums.sonarr.tv
 fpdownload.adobe.com
 fs.microsoft.com
 g.live.com', 1, 'Microsoft - Outlook.com
+gateway.cname.ustclug.org
 gdlp01.c-wss.com
 gdmf.apple.com
 geo-prod.do.dsp.mp.microsoft.com
@@ -237,6 +272,7 @@ gfwsl.geforce.com
 gg.apple.com
 giphy-proxy-production.whispersystems.org
 giphy.com
+gitcdn.github.io
 github.com
 github.io
 global-dealer-ssl.spotify.com
@@ -284,6 +320,7 @@ ic3.events.data.microsoft.com
 icloud.com
 identity.apple.com
 idmsa.apple.com
+iduwdjf.qiniudns.com
 ig.apple.com
 images.pluto.tv
 images.vizio.com
@@ -306,6 +343,7 @@ itv.ard.de
 j.mp
 jlduihq7lrcdxgw4vrndhdfcsq.appsync-api.us-east-1.amazonaws.com
 jquery.com
+js.appboycdn.com
 js.maxmind.com
 js.stripe.com
 jsdelivr.net
@@ -315,9 +353,14 @@ keystone.mwbsys.com
 l.facebook.com
 l.messenger.com
 lastfm-img2.akamaized.net
+lb.sae.sina.com.cn
 lcdn-locator.apple.com
 lcdn-registration.apple.com
 lcprd1.samsungcloudsolution.net
+lib.baomitu.com
+lib.baomitu.com.qh-cdn.com
+lib.sinaapp.com
+libs.baidu.com
 licensing.mp.microsoft.com
 licensing.xboxlive.com
 lineup-images.scdn.co
@@ -346,6 +389,11 @@ martellmalone.com
 mask-api.icloud.com
 mask-h2.icloud.com
 mask.icloud.com
+mat1.gtimg.com
+mat1.gtimg.com.tegsea.tc.qq.com
+materialdesignicons.b-cdn.net
+mathjax.rstudio.com
+maxcdn.bootstrapcdn.com
 mdmenrollment.apple.com
 medium.com
 mesu.apple.com
@@ -367,9 +415,11 @@ mobileandroidapi.punchh.com
 mqtt-mini.facebook.com
 mqtt.c10r.facebook.com
 mrs-efz.ms-acdc.office.com
+mscomajax.vo.msecnd.net
 msedge.api.cdp.microsoft.com
 msftncsi.com
 my.plexapp.com
+netdna.bootstrapcdn.com
 netflix.com
 newjams-images.scdn.co
 news.iadsdk.apple.com
@@ -427,6 +477,7 @@ outlook.live.com
 outlook.office.com
 outlook.office365.com
 p11.techlab-cdn.com
+pagecdn.io
 pgl.yoyo.org
 pings.conviva.com
 pinterest.com
@@ -496,6 +547,8 @@ scontent-ort2-1.xx.fbcdn.net
 scontent.fgdl5-1.fna.fbcdn.net
 scontent.xx.fbcdn.net
 script.ioam.de
+sdn.geekzu.org
+sdn.inbond.gslb.geekzu.org
 secure.avangate.com
 secure.brightcove.com
 secure.netflix.com
@@ -524,6 +577,7 @@ spclient.wg.spotify.com
 sq-device.apple.com
 ssl.google-analytics.com
 ssl.p.jwpcdn.com
+stackpath.bootstrapcdn.com
 staging.plex.tv
 star-mini.c10r.facebook.com
 star.c10r.facebook.com
@@ -595,7 +649,9 @@ ubisoft-uplay-savegames.s3.amazonaws.com
 ud-chat.signal.org
 ui.skype.com
 unagi-na.amazon.com
+unpkg.com
 unsplash.com
+upcdn.b0.upaiyun.com
 update.biv.sony.tv
 updates2.signal.org
 upgrade.scdn.com
@@ -604,6 +660,8 @@ upload.facebook.com
 upload.fp.measure.office.com
 upload.twitter.com
 us-east-1.amazonaws.com
+use.fontawesome.com
+use.fontawesome.com.cdn.cloudflare.net
 v.firebog.net
 v.reddit.com
 v.shopify.com
@@ -616,6 +674,8 @@ videos.vidible.tv
 videothumb.gammacdn.com
 vidtech.cbsinteractive.com
 vimeo.com
+vjs.zencdn.net
+vo.aicdn.com
 vpp.itunes.apple.com
 wa.me
 watson.telemetry.microsoft.com
@@ -678,6 +738,8 @@ xkms.xboxlive.com
 xp-cdn.apple.com
 xp.apple.com
 yahoo.com
+yandex.st
+yastatic.net
 youtu.be
 youtube-nocookie.com
 youtube.com
