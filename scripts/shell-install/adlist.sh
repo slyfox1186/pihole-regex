@@ -34,8 +34,8 @@ if [ -f 'index.html' ] || [ -f 'urls.txt' ]; then
     rm 'index.html' 'urls.txt'
 fi
 
-# SET ADLIST URL
-AL='https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt'
+# SET AD_URL URL
+AD_URL='https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt'
 # SET THE COMMENTS
 C1="SlyADL - SlyFox1186 + Firebog's Ticked + Non-Crossed"
 C2='SlyADL - Firebog - Ticked'
@@ -90,14 +90,14 @@ fi
 # Prompt the user with Adlist option 2
 echo "Choose from the Adlists below to insert their content into Gravity's database"
 echo
-echo '[1] SlyFox1186: [Personal Adlist] - Part of which is self made and includes the good work of others from across the internet. (This Adlist includes the Firebog: Ticked + Non-Crossed lists).'
+echo '[1] SlyFox1186: [Personal Adlist] - Self made with lists from the good work of others. (Includes Firebog: Ticked + Non-Crossed).'
 echo '[2] Firebog:    [Ticked] - Perfect for system admins with little time available to fix database issues.'
 echo '[3] Firebog:    [Non-Crossed] - These domains are generally less safe than the "Tick" list and most likely have an increased risk of false positives.'
 echo '[4] Firebog:    [All] - False positives are very likely and will required much more effort than the average system admin would wish to spend fixing a database.'
 read CHOICE
 clear
 if [[ "$CHOICE" == "1" ]]; then
-    wget "$UA" -qO - "$AL" |
+    wget "$UA" -qO - "$AD_URL" |
     sed '/^#/ d' | sed '/^$/ d' > "$LIST"
     cat "$LIST" |
     xargs -n1 -I {} sqlite3 "$GRAVITY" \
@@ -130,19 +130,15 @@ fi
 clear
 echo 'Would you like to update Gravity? (Highly recommended)'
 echo
-read -p '[Y]es or [N]o' USER_CHOICE_GRAVITY
+echo '[1] Yes'
+echo '[2] No'
+read CHOICE
 clear
-if [[ "$USER_CHOICE_GRAVITY" == "Y" ]]; then
-    clear; pihole -g
-    echo
-    echo 'Done!'
-    echo
-elif [[ "$USER_CHOICE_GRAVITY" == "N" ]]; then
-    clear
-    echo 'The script has completed.'
-    echo
-    echo ''
-fi
+if [[ "$CHOICE" != "2" ]]; then pihole -g; fi
 
+echo
+echo 'The script has completed.'
+echo
+    
 # Unset all variables used
-unset ADLIST C1 C2 C3 C4 URL_BASE GRAVITY CHOICE LIST UA
+unset AD_URL C1 C2 C3 C4 URL_BASE GRAVITY CHOICE LIST UA
