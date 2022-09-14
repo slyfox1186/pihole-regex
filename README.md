@@ -19,7 +19,7 @@ The *purpose* of this repository is to compliment your existing **Pi-Hole** filt
   - **SQLite3**
     - sudo apt install sqlite3
 
-* **Adlist info:** If you choose to remove the adlist it will remove ***ALL*** of the entries (not just mine).
+* **Adlist info:** If you choose the "remove adlists" option it should only affect the lists added by this script.
 
 ## If you're *not* on the PC that's running Pi-Hole
 * **Use your ssh client of choice (examples below)**
