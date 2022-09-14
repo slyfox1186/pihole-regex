@@ -13,7 +13,7 @@ if [ -f index.html ]; then rm index.html; fi
 shopt -s nocasematch
 
 # Change this to the full path of gravity's database if the one below is wrong
-DB_FILE='/etc/pihole/gravity.db'
+GRAVITY='sudo sqlite3 /etc/pihole/gravity.db'
 
 # Display the script's purpose in terminal
 clear
@@ -28,9 +28,8 @@ read a
 if [[ "$a" == "1" ]]; then
     clear
 elif [[ "$a" == "2" ]]; then
-    sudo sqlite3 "$DB_FILE" "DELETE FROM adlist WHERE comment LIKE '%SlyADL%'"
-    clear
-    echo -e "All domains have been removed from Pi-hole's adlists\\nPlease whait while Pi-hole updates Gravity."
+    "$GRAVITY" "DELETE FROM adlist WHERE comment LIKE '%SlyADL%'"
+    clear; echo -e "All domains have been removed from Pi-hole's adlists\\nPlease whait while Pi-hole updates Gravity."
     sudo pihole -g
     exit
 elif [[ "$a" == "3" ]]; then
@@ -38,8 +37,7 @@ elif [[ "$a" == "3" ]]; then
 else
     echo -e "Warning: Bad user input\\n"
     read -p 'Press Enter to start over.'
-    clear
-    bash "$0"
+    clear; bash "$0"
     exit 1
 fi
 
@@ -48,10 +46,11 @@ TEXT_FILE='/tmp/adlist.txt'
 USER_AGENT="--user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0'"
 
 # SET URL AND COMMENT VARS
-URL1='https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt'
-URL2='https://v.firebog.net/hosts/lists.php?type=tick'
-URL3='https://v.firebog.net/hosts/lists.php?type=nocross'
-URL4='https://v.firebog.net/hosts/lists.php?type=all'
+_URL='https://v.firebog.net/hosts/lists.php?type'
+SLY_URL='https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt'
+TICK="$_URL=tick"
+NCROSS="$_URL=nocross"
+ALL="$_URL=all"
 COMMENT1='SlyADL - Firebog + Other'
 COMMENT2='Firebog - Ticked'
 COMMENT3='Firebog - Non-crossed'
@@ -59,32 +58,32 @@ COMMENT4='Firebog - All'
 
 # Prompt the user with Adlist option 2
 echo -e "Choose an adlist to import into Pi-hole\\n"
-echo "[1] SlyFox1186: Custom lists that includes Firebog's \"Ticked + Non-Crossed\""
-echo '[2] Firebog: Ticked (For builds with little oversight)'
-echo '[3] Firebog: Ticked + Non-Crossed (Similar to the "Ticked List" but may need more attention)'
-echo '[4] Firebog: All (False positives likely)'
+echo '[1] SlyFox1186: Custom adlist that includes both the Firebog Ticked and Non-Crossed List'
+echo '[2] Firebog: Ticked (For installs with little planned oversight)'
+echo '[3] Firebog: Non-Crossed (Similar to the "Ticked List" but may have more false positives)'
+echo '[4] Firebog: All (False positives are likely)'
 read b
 clear
 if [[ "$b" == "1" ]]; then
-    wget "$USER_AGENT" -qO - "$URL1" |
+    wget "$USER_AGENT" -qO - "$$SLY_URL" |
     sed '/^#/ d' | sed '/^$/ d' > "$TEXT_FILE"
     cat "$TEXT_FILE" |
-    sudo xargs -n1 -I {} sudo sqlite3 "$DB_FILE" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT1')"
+    sudo xargs -n1 -I {} sudo sqlite3 "$GRAVITY" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT1')"
 elif [[ "$b" == "2" ]]; then
-    wget "$USER_AGENT" -qO - "$URL2" |
+    wget "$USER_AGENT" -qO - "$$TICK" |
     sed '/^#/ d' | sed '/^$/ d' > "$TEXT_FILE"
     cat "$TEXT_FILE" |
-    sudo xargs -n1 -I {} sudo sqlite3 "$DB_FILE" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT2')"
+    sudo xargs -n1 -I {} sudo sqlite3 "$GRAVITY" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT2')"
 elif [[ "$b" == "3" ]]; then
-    wget "$USER_AGENT" -qO - "$URL3" |
+    wget "$USER_AGENT" -qO - "$$NCROSS" |
     sed '/^#/ d' | sed '/^$/ d' > "$TEXT_FILE"
     cat "$TEXT_FILE" |
-    sudo xargs -n1 -I {} sudo sqlite3 "$DB_FILE" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT3')"
+    sudo xargs -n1 -I {} sudo sqlite3 "$GRAVITY" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT3')"
 elif [[ "$b" == "4" ]]; then
-    wget "$USER_AGENT" -qO - "$URL4" |
+    wget "$USER_AGENT" -qO - "$$ALL" |
     sed '/^#/ d' | sed '/^$/ d' > "$TEXT_FILE"
     cat "$TEXT_FILE" |
-    sudo xargs -n1 -I {} sudo sqlite3 "$DB_FILE" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT4')"
+    sudo xargs -n1 -I {} sudo sqlite3 "$GRAVITY" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT4')"
 else
     clear; read -t 5 -p 'Warning: Bad user input...starting over.'
     clear; bash "$0"
@@ -109,4 +108,4 @@ fi
 if [ -f "$TEXT_FILE" ]; then rm "$TEXT_FILE"; fi
 
 # Unset all variables used
-unset a b c TEXT_FILE COMMENT1 COMMENT2 COMMENT3 COMMENT4 DB_FILE URL1 URL2 URL3 URL4 USER_AGENT
+unset a b c TEXT_FILE COMMENT1 COMMENT2 COMMENT3 COMMENT4 GRAVITY $SLY_URL $TICK $NCROSS $ALL USER_AGENT
