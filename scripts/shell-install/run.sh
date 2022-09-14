@@ -1,25 +1,25 @@
 #!/bin/bash
+clear
 
-# delete the useless index.html file that is downloaded
-if [ -f index.html ]; then rm index.html; fi
+# Delete any useless files that get downloaded.
+if [ -f index.html ] || [ -f urls.txt ]; then rm index.html urls.txt; fi
 
-# Delete & create pihole-regex directory if not exist
+# Delete the pihole-regex folder if it already exists.
 if [ -d pihole-regex ]; then rm -R pihole-regex; fi
 
-# make pihole-regex directory
+# Create the pihole-regex folder to store the downloaded files in.
 mkdir -p pihole-regex
 
-SHELL_FILES='exact-blacklist.sh exact-whitelist.sh regex-blacklist.sh regex-whitelist.sh'
-FILES=( $SHELL_FILES run.sh )
-# if the shell scripts exist, move them to the pihole-regex dir
-for i in ${FILES[@]}; do
-    if [ -f $i ]; then
-        mv -f $i pihole-regex/$i
+FILES='exact-blacklist.sh exact-whitelist.sh regex-blacklist.sh regex-whitelist.sh'
+ADD_FILE=( $FILES run.sh )
+# If the shell scripts exist, move them to the pihole-regex dir
+for i in ${ADD_FILE[@]}; do
+    if [ -f "$i" ]; then
+        mv -f "$i" "pihole-regex"
     fi
 done
 
 # execute all scripts in pihole-regex
-SUB_FILES=( $SHELL_FILES )
-for i in ${SUB_FILES[@]}; do
-    . pihole-regex/$i
+for i in ${FILES[@]}; do
+    source "pihole-regex/$i"
 done
