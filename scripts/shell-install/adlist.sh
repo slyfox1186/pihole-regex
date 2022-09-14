@@ -1,38 +1,84 @@
 #!/bin/bash
+clear
 
-# This script will prompt the user to add or remove the domains in your Pi-hole's Adlists
+## Script purpose: Add or remove Adlists from Pi-hole's database.
 
-# Comments are optional, you can remove them from being added to Pi-hole
-# by placing a '#' in front of each variable.
-# Example: COMMENT1 >> #COMMENT1
+## About Section ##
+# Comments are optional and can be removed by adding a (hashtag '#') before each variable below.
+# Example: C1='SOMETHING' >> #C1='SOMETHING'
+# Important: Whatever you do make SURE to keep the text 'SlyADL - ' in the front of any comment you customize.
+#   - The reason for this is because when you tell the script to remove domains it looks for that exact string
+#   - in each domain's comment section as a way to identify what domains need removing and what needs to be ignored.
 
-# Delete the annoying HTML header file 'index.html' that sometimes can get downloaded with 'adlist.sh' as well.
-if [ -f index.html ]; then rm index.html; fi
+#Detects if script are not running as root...
+if [[ $EUID > 0 ]]; then
+    if which sudo &>/dev/null; then
+        echo "If prompted, please enter the password for \"$USER\" to re-run this script with root privileges."
+        read -p 'Press Enter to continue.'
+        clear; sudo $0 $*
+        exit
+    else
+        echo 'Warning: The sudo command was not found.'
+        echo 'Info: You will need to re-run this script with root privileges to continue its execution.'
+        echo
+        read -p 'Press Enter to exit the script.'
+        exit 1
+    fi 
+fi
 
 # Make user input case insensitive
 shopt -s nocasematch
 
-# Change this to the full path of gravity's database if the one below is wrong
-GRAVITY='sudo sqlite3 /etc/pihole/gravity.db'
+# Delete any extra files that were downloaded with the other scripts that have no uses.
+if [ -f 'index.html' ] || [ -f 'urls.txt' ]; then
+    rm 'index.html' 'urls.txt'
+fi
+
+# SET ADLIST URL
+AL='https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt'
+# SET THE COMMENTS
+C1="SlyADL - SlyFox1186 + Firebog's Ticked + Non-Crossed"
+C2='SlyADL - Firebog - Ticked'
+C3='SlyADL - Firebog - Non-Crossed'
+C4='SlyADL - Firebog - All'
+URL_BASE='https://v.firebog.net/hosts/lists.php?type'
+GRAVITY='/etc/pihole/gravity.db'
+# If necessary change the value of the GRAVITY variable to the full path of the 'gravity.db' file
+if [ ! -f "$GRAVITY" ]; then
+    clear
+    echo 'The variable "$GRAVITY" is not pointing to the full path of the "gravity.db" file.'
+    echo 'Please makes appropriate changes to the script and try again.'
+    echo
+    read -p 'Press Enter to exit.'
+    exit 1
+fi
+    
+# Store the online adlist file that contains all of the urls of interest in the system's tmp
+# folder to keep things tidy while the script parses each line of text looking for valid urls
+# while discarding any lines that begin with a hashtag '#' or are blank
+LIST='/tmp/adlist.txt'
+UA="--user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.33'"
 
 # Display the script's purpose in terminal
 clear
-echo -e "Modify your Pi-hole's Adlists\\n"
+echo 'Modify the Pi-hole Adlist Group'
+echo
 
-# Prompt the user with Adlist option 1
-echo -e "Enter one of the selections?\\n"
+# PROMPT THE USER WITH THE FIRST CHOICE
+echo 'Enter one of the selections?'
+echo
 echo '[1] Add domains'
 echo '[2] Remove all domains (This should only delete lists added by this script.)'
 echo '[3] Exit'
-read a
-if [[ "$a" == "1" ]]; then
+read CHOICE
+if [[ "$CHOICE" == "1" ]]; then
     clear
-elif [[ "$a" == "2" ]]; then
-    "$GRAVITY" "DELETE FROM adlist WHERE comment LIKE '%SlyADL%'"
-    clear; echo -e "All domains have been removed from Pi-hole's adlists\\nPlease whait while Pi-hole updates Gravity."
-    sudo pihole -g
+elif [[ "$CHOICE" == "2" ]]; then
+    sqlite3 '/etc/pihole/gravity.db' "DELETE FROM adlist WHERE comment LIKE '%SlyADL%'"
+    clear; echo 'All Adlists have been removed from Pi-hole. Please wait while Pi-hole updates Gravity.'
+    pihole -g
     exit
-elif [[ "$a" == "3" ]]; then
+elif [[ "$CHOICE" == "3" ]]; then
     clear; exit
 else
     echo -e "Warning: Bad user input\\n"
@@ -41,71 +87,62 @@ else
     exit 1
 fi
 
-# SET OUTPUT FILE LOCATION
-TEXT_FILE='/tmp/adlist.txt'
-USER_AGENT="--user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0'"
-
-# SET URL AND COMMENT VARS
-_URL='https://v.firebog.net/hosts/lists.php?type'
-SLY_URL='https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt'
-TICK="$_URL=tick"
-NCROSS="$_URL=nocross"
-ALL="$_URL=all"
-COMMENT1='SlyADL - Firebog + Other'
-COMMENT2='Firebog - Ticked'
-COMMENT3='Firebog - Non-crossed'
-COMMENT4='Firebog - All'
-
 # Prompt the user with Adlist option 2
-echo -e "Choose an adlist to import into Pi-hole\\n"
-echo '[1] SlyFox1186: Custom adlist that includes both the Firebog Ticked and Non-Crossed List'
-echo '[2] Firebog: Ticked (For installs with little planned oversight)'
-echo '[3] Firebog: Non-Crossed (Similar to the "Ticked List" but may have more false positives)'
-echo '[4] Firebog: All (False positives are likely)'
-read b
+echo "Choose from the Adlists below to insert their content into Gravity's database"
+echo
+echo '[1] SlyFox1186: [Personal Adlist] - Part of which is self made and includes the good work of others from across the internet. (This Adlist includes the Firebog: Ticked + Non-Crossed lists).'
+echo '[2] Firebog:    [Ticked] - Perfect for system admins with little time available to fix database issues.'
+echo '[3] Firebog:    [Non-Crossed] - These domains are generally less safe than the "Tick" list and most likely have an increased risk of false positives.'
+echo '[4] Firebog:    [All] - False positives are very likely and will required much more effort than the average system admin would wish to spend fixing a database.'
+read CHOICE
 clear
-if [[ "$b" == "1" ]]; then
-    wget "$USER_AGENT" -qO - "$$SLY_URL" |
-    sed '/^#/ d' | sed '/^$/ d' > "$TEXT_FILE"
-    cat "$TEXT_FILE" |
-    sudo xargs -n1 -I {} sudo sqlite3 "$GRAVITY" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT1')"
-elif [[ "$b" == "2" ]]; then
-    wget "$USER_AGENT" -qO - "$$TICK" |
-    sed '/^#/ d' | sed '/^$/ d' > "$TEXT_FILE"
-    cat "$TEXT_FILE" |
-    sudo xargs -n1 -I {} sudo sqlite3 "$GRAVITY" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT2')"
-elif [[ "$b" == "3" ]]; then
-    wget "$USER_AGENT" -qO - "$$NCROSS" |
-    sed '/^#/ d' | sed '/^$/ d' > "$TEXT_FILE"
-    cat "$TEXT_FILE" |
-    sudo xargs -n1 -I {} sudo sqlite3 "$GRAVITY" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT3')"
-elif [[ "$b" == "4" ]]; then
-    wget "$USER_AGENT" -qO - "$$ALL" |
-    sed '/^#/ d' | sed '/^$/ d' > "$TEXT_FILE"
-    cat "$TEXT_FILE" |
-    sudo xargs -n1 -I {} sudo sqlite3 "$GRAVITY" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT4')"
+if [[ "$CHOICE" == "1" ]]; then
+    wget "$UA" -qO - "$AL" |
+    sed '/^#/ d' | sed '/^$/ d' > "$LIST"
+    cat "$LIST" |
+    xargs -n1 -I {} sqlite3 "$GRAVITY" \
+    "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"$C1\")"
+elif [[ "$CHOICE" == "2" ]]; then
+    wget "$UA" -qO - "$URL_BASE"=tick |
+    sed '/^#/ d' | sed '/^$/ d' > "$LIST"
+    cat "$LIST" |
+    xargs -n1 -I {} sqlite3 "$GRAVITY" \
+    "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$C2')"
+elif [[ "$CHOICE" == "3" ]]; then
+    wget "$UA" -qO - "$URL_BASE"=nocross |
+    sed '/^#/ d' | sed '/^$/ d' > "$LIST"
+    cat "$LIST" |
+    xargs -n1 -I {} sqlite3 "$GRAVITY" \
+    "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$C3')"
+elif [[ "$CHOICE" == "4" ]]; then
+    wget "$UA" -qO - "$URL_BASE"=all |
+    sed '/^#/ d' | sed '/^$/ d' > "$LIST"
+    cat "$LIST" |
+    xargs -n1 -I {} sqlite3 "$GRAVITY" \
+    "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$C4')"
 else
-    clear; read -t 5 -p 'Warning: Bad user input...starting over.'
+    clear; read -t 4 -p 'Warning: Bad user input...starting over...'
     clear; bash "$0"
     exit 1
 fi
 
 # Prompt the user to update Gravity's database
 clear
-echo -e "Update Gravity?\\n"
-echo '[1] Yes'
-echo '[2] No'
-read c
+echo 'Would you like to update Gravity? (Highly recommended)'
+echo
+read -p '[Y]es or [N]o' USER_CHOICE_GRAVITY
 clear
-if [[ "$c" == "1" ]]; then
-    pihole -g
-    echo -e "\\nDone!\\n"
-else
-    exit
+if [[ "$USER_CHOICE_GRAVITY" == "Y" ]]; then
+    clear; pihole -g
+    echo
+    echo 'Done!'
+    echo
+elif [[ "$USER_CHOICE_GRAVITY" == "N" ]]; then
+    clear
+    echo 'The script has completed.'
+    echo
+    echo ''
 fi
 
-# Remove temporary adlist file
-if [ -f "$TEXT_FILE" ]; then rm "$TEXT_FILE"; fi
-
 # Unset all variables used
-unset a b c TEXT_FILE COMMENT1 COMMENT2 COMMENT3 COMMENT4 GRAVITY $SLY_URL $TICK $NCROSS $ALL USER_AGENT
+unset ADLIST C1 C2 C3 C4 URL_BASE GRAVITY CHOICE LIST UA
