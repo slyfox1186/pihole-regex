@@ -17,25 +17,24 @@ DB_FILE='/etc/pihole/gravity.db'
 
 # Display the script's purpose in terminal
 clear
-echo -e "This script will modify your Pi-hole's Adlists\\n"
+echo -e "Modify your Pi-hole's Adlists\\n"
 
 # Prompt the user with Adlist option 1
-echo -e "What do you want to do?\\n"
+echo -e "Enter one of the selections?\\n"
 echo '[1] Add domains'
-echo '[2] Remove all domains (Beware! This literally means ALL found lists.)'
+echo '[2] Remove all domains (This should only delete lists added by this script.)'
 echo '[3] Exit'
 read a
 if [[ "$a" == "1" ]]; then
-    echo 'Continuing'
     clear
 elif [[ "$a" == "2" ]]; then
-    sqlite3 "$DB_FILE" "DELETE FROM adlist"
+    sudo sqlite3 "$DB_FILE" "DELETE FROM adlist WHERE comment LIKE '%SlyADL%'"
     clear
-    echo -e "All domains have been removed from Pi-hole's adlists\\n"
+    echo -e "All domains have been removed from Pi-hole's adlists\\nPlease whait while Pi-hole updates Gravity."
+    sudo pihole -g
     exit
 elif [[ "$a" == "3" ]]; then
-    clear
-    exit
+    clear; exit
 else
     echo -e "Warning: Bad user input\\n"
     read -p 'Press Enter to start over.'
@@ -45,8 +44,7 @@ else
 fi
 
 # SET OUTPUT FILE LOCATION
-ADTMP='/tmp/adlist.txt'
-# SET USER AGENT VAR
+TEXT_FILE='/tmp/adlist.txt'
 USER_AGENT="--user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0'"
 
 # SET URL AND COMMENT VARS
@@ -60,9 +58,8 @@ COMMENT3='Firebog - Non-crossed'
 COMMENT4='Firebog - All'
 
 # Prompt the user with Adlist option 2
-echo -e "Choose which adlist to import into Pi-hole\\n"
-echo "[1] SlyFox1186's personal adlist: Includes the Firebog: Ticked + Non-Crossed (Recommended list)"
-echo
+echo -e "Choose an adlist to import into Pi-hole\\n"
+echo "[1] SlyFox1186: Custom lists that includes Firebog's \"Ticked + Non-Crossed\""
 echo '[2] Firebog: Ticked (For builds with little oversight)'
 echo '[3] Firebog: Ticked + Non-Crossed (Similar to the "Ticked List" but may need more attention)'
 echo '[4] Firebog: All (False positives likely)'
@@ -70,29 +67,27 @@ read b
 clear
 if [[ "$b" == "1" ]]; then
     wget "$USER_AGENT" -qO - "$URL1" |
-    sed '/^#/ d' | sed '/^$/ d' > "$ADTMP"
-    cat "$ADTMP" |
-    xargs -n1 -I {} sqlite3 "$DB_FILE" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT1')"
+    sed '/^#/ d' | sed '/^$/ d' > "$TEXT_FILE"
+    cat "$TEXT_FILE" |
+    sudo xargs -n1 -I {} sudo sqlite3 "$DB_FILE" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT1')"
 elif [[ "$b" == "2" ]]; then
     wget "$USER_AGENT" -qO - "$URL2" |
-    sed '/^#/ d' | sed '/^$/ d' > "$ADTMP"
-    cat "$ADTMP" |
-    xargs -n1 -I {} sqlite3 "$DB_FILE" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT2')"
+    sed '/^#/ d' | sed '/^$/ d' > "$TEXT_FILE"
+    cat "$TEXT_FILE" |
+    sudo xargs -n1 -I {} sudo sqlite3 "$DB_FILE" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT2')"
 elif [[ "$b" == "3" ]]; then
     wget "$USER_AGENT" -qO - "$URL3" |
-    sed '/^#/ d' | sed '/^$/ d' > "$ADTMP"
-    cat "$ADTMP" |
-    xargs -n1 -I {} sqlite3 "$DB_FILE" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT3')"
+    sed '/^#/ d' | sed '/^$/ d' > "$TEXT_FILE"
+    cat "$TEXT_FILE" |
+    sudo xargs -n1 -I {} sudo sqlite3 "$DB_FILE" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT3')"
 elif [[ "$b" == "4" ]]; then
     wget "$USER_AGENT" -qO - "$URL4" |
-    sed '/^#/ d' | sed '/^$/ d' > "$ADTMP"
-    cat "$ADTMP" |
-    xargs -n1 -I {} sqlite3 "$DB_FILE" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT4')"
+    sed '/^#/ d' | sed '/^$/ d' > "$TEXT_FILE"
+    cat "$TEXT_FILE" |
+    sudo xargs -n1 -I {} sudo sqlite3 "$DB_FILE" "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}','$COMMENT4')"
 else
-    echo -e "Warning: Bad user input...\\n"
-    read -p 'Press Enter to start over.'
-    clear
-    bash "$0"
+    clear; read -t 5 -p 'Warning: Bad user input...starting over.'
+    clear; bash "$0"
     exit 1
 fi
 
@@ -111,7 +106,7 @@ else
 fi
 
 # Remove temporary adlist file
-if [ -f "$ADTMP" ]; then rm "$ADTMP"; fi
+if [ -f "$TEXT_FILE" ]; then rm "$TEXT_FILE"; fi
 
 # Unset all variables used
-unset a b c ADTMP COMMENT1 COMMENT2 COMMENT3 COMMENT4 DB_FILE URL1 URL2 URL3 URL4 USER_AGENT
+unset a b c TEXT_FILE COMMENT1 COMMENT2 COMMENT3 COMMENT4 DB_FILE URL1 URL2 URL3 URL4 USER_AGENT
