@@ -19,20 +19,18 @@ if [[ $EUID > 0 ]]; then
         exit
     else
         echo 'Warning: The sudo command was not found.'
-        echo 'Info: You will need to re-run this script with root privileges to continue its execution.'
+        echo 'Info: You will need to re-run the script with root privileges.'
         echo
-        read -p 'Press Enter to exit the script.'
+        read -p 'Press Enter to exit.'
         exit 1
-    fi 
+    fi
 fi
 
 # Make user input case insensitive
 shopt -s nocasematch
 
 # Delete any extra files that were downloaded with the other scripts that have no uses.
-if [ -f 'index.html' ] || [ -f 'urls.txt' ]; then
-    rm 'index.html' 'urls.txt'
-fi
+if [ -f 'index.html' ] || [ -f 'urls.txt' ]; then rm 'index.html' 'urls.txt'; fi
 
 # SET AD_URL URL
 AD_URL='https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt'
@@ -46,13 +44,13 @@ GRAVITY='/etc/pihole/gravity.db'
 # If necessary change the value of the GRAVITY variable to the full path of the 'gravity.db' file
 if [ ! -f "$GRAVITY" ]; then
     clear
-    echo 'The variable "$GRAVITY" is not pointing to the full path of the "gravity.db" file.'
-    echo 'Please makes appropriate changes to the script and try again.'
+    echo "Warning: The '$GRAVITY' variable is not pointing to the full path of 'gravity.db' file."
+    echo 'Info: Please makes appropriate changes to the script and try again.'
     echo
     read -p 'Press Enter to exit.'
     exit 1
 fi
-    
+
 # Store the online adlist file that contains all of the urls of interest in the system's tmp
 # folder to keep things tidy while the script parses each line of text looking for valid urls
 # while discarding any lines that begin with a hashtag '#' or are blank
@@ -139,6 +137,6 @@ if [[ "$CHOICE" != "2" ]]; then pihole -g; fi
 echo
 echo 'The script has completed.'
 echo
-    
+
 # Unset all variables used
 unset AD_URL C1 C2 C3 C4 URL_BASE GRAVITY CHOICE LIST UA
