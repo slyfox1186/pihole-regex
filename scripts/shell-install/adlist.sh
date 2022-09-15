@@ -45,7 +45,7 @@ GRAVITY='/etc/pihole/gravity.db'
 if [ ! -f "$GRAVITY" ]; then
     clear
     echo "Warning: The '$GRAVITY' variable is not pointing to the full path of 'gravity.db' file."
-    echo 'Info: Please makes appropriate changes to the script and try again.'
+    echo 'Info: Please make appropriate changes to the script and try again.'
     echo
     read -p 'Press Enter to exit.'
     exit 1
