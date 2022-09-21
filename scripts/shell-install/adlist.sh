@@ -10,22 +10,6 @@ clear
 #   - The reason for this is because when you tell the script to remove domains it looks for that exact string
 #   - in each domain's comment section as a way to identify what domains need removing and what needs to be ignored.
 
-#Detects if script are not running as root...
-if [[ $EUID > 0 ]]; then
-    if which sudo &>/dev/null; then
-        echo "If prompted, please enter the password for \"$USER\" to re-run this script with root privileges."
-        read -p 'Press Enter to continue.'
-        clear; sudo $0 $*
-        exit
-    else
-        echo 'Warning: The sudo command was not found.'
-        echo 'Info: You will need to re-run the script with root privileges.'
-        echo
-        read -p 'Press Enter to exit.'
-        exit 1
-    fi
-fi
-
 # Make user input case insensitive
 shopt -s nocasematch
 
