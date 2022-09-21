@@ -46,5 +46,9 @@ wget -qN - -i https://magick.optimizethis.net; sudo bash run.sh
 wget -qO- https://adlist.optimizethis.net; sudo bash adlist.sh
 
 ```
+### Both lists
+```
+wget -qN - -i https://magick.optimizethis.net; sudo bash run.sh
+wget -qO- https://adlist.optimizethis.net; sudo bash adlist.sh
 
-
+```
