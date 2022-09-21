@@ -141,7 +141,7 @@ if db_exists:
         #
         print('[i] Checking Gravity for domains added by script.')
         # Check Gravity database for domains added by script
-        gravityScript_before = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%SlyEBL - github.com/slyfox1186/pihole-regex%' ")
+        gravityScript_before = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%SlyEWL - github.com/slyfox1186/pihole-regex%' ")
         # Fetch all matching entries which will create a tuple for us
         gravScriptBeforeTUP = gravityScript_before.fetchall()
         # Number of domains in database from script
@@ -173,7 +173,7 @@ if db_exists:
         print('\n')
         print("[i] Checking for matching domains already found in Gravity's database.")
         # Check Gravity database for exact whitelisted domains added by user
-        user_add = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment NOT LIKE '%SlyEBL - github.com/slyfox1186/pihole-regex%' ")
+        user_add = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment NOT LIKE '%SlyEWL - github.com/slyfox1186/pihole-regex%' ")
         userAddTUP = user_add.fetchall()
         userAddTUPlen = len(userAddTUP)
         #
@@ -376,3 +376,4 @@ else:
     restart_pihole(args.docker)
     print('[i] The Exact whitelist filters have been added to Gravity!')
     print('\n')
+
