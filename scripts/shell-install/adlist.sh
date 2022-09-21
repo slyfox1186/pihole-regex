@@ -30,8 +30,9 @@ fi
 shopt -s nocasematch
 
 # Delete any extra files that were downloaded with the other scripts that have no uses.
-if [ -f 'index.html' ] || [ -f 'urls.txt' ]; then rm 'index.html' 'urls.txt'; fi
-
+if [ -f 'index.html' ]; then rm 'index.html'; fi
+if [ -f 'urls.txt' ]; then rm 'urls.txt'; fi
+ 
 # SET AD_URL URL
 AD_URL='https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt'
 # SET THE COMMENTS
