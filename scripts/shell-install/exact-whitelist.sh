@@ -12,7 +12,7 @@ if [[ "$iChoice" == "A" ]]; then
 elif [[ "$iChoice" == "R" ]]; then
     curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-uninstall/exact-whitelist.py' | sudo python3
 elif [[ "$iChoice" == "S" ]]; then
-    bash pihole-regex/regex-blacklist.sh
+    source 'pihole-regex/regex-blacklist.sh'
     exit
 fi
 
