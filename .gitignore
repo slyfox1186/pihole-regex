@@ -2,8 +2,9 @@ __pycache__/
 .idea/
 urls.txt
 index.html
-*.html
-*.MD
+.git
+.gitignore
+README.md
 
 # Environments
 .env
