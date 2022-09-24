@@ -3,6 +3,7 @@ __pycache__/
 urls.txt
 index.html
 *.html
+*.MD
 
 # Environments
 .env
