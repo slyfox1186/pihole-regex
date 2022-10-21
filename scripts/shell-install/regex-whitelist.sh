@@ -18,6 +18,7 @@ fi
 # remove all remaining files that were downloaded by wget
 if [ -d pihole-regex ]; then rm -R pihole-regex; fi
 
+echo -e "\\n"
 read -p 'Press Enter to Continue'
 clear
 echo -e "\\n"
