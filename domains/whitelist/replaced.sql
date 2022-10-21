@@ -18,6 +18,7 @@
 # ADULTTIME
 (0, 'kosmos-assets-prod.react.gammacdn.com', 1, 'AdultTime - Required for react buttons to work - SlyEWL')
 (0, 'kosmos-prod.react.gammacdn.com', 1, 'AdultTime - Required for react buttons to work - SlyEWL')
+(0, 'cdn.contentful.com', 1, 'AdultTime - A required CDN of the site to access image, videos, etc - SlyEWL')
 
 # GOOGLE
 (0, 'clients1.google.com', 1, 'Google - Required to use Google Maps - SlyEWL')
