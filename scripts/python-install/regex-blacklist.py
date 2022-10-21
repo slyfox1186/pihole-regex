@@ -92,8 +92,8 @@ else:
 
 # Set paths
 path_pihole = docker_mnt_src if docker_mnt_src else r'/etc/pihole'
-path_legacy_regex = os.path.join(path_pihole, 'regex.list')
-path_legacy_slyfox1186_regex = os.path.join(path_pihole, 'slyfox1186-regex.list')
+path_legacy_regex = os.path.join(path_pihole, 'regex-blacklist.txt')
+path_legacy_slyfox1186_regex = os.path.join(path_pihole, 'slyfox1186-regex-blacklist.txt')
 path_pihole_db = os.path.join(path_pihole, 'gravity.db')
 
 # Check that pi-hole path exists
@@ -115,7 +115,7 @@ if os.path.isfile(path_pihole_db) and os.path.getsize(path_pihole_db) > 0:
     db_exists = True
     print('[i] Database detected')
 else:
-    print('[i] Legacy regex.list detected')
+    print('[i] Legacy regex-blacklist.txt detected')
 
 # Fetch the remote regex strings
 str_regexps_remote = fetch_blacklist_url(url_regexps_remote)
@@ -168,7 +168,7 @@ if db_exists:
         c.executemany('DELETE FROM domainlist WHERE type = 3 AND domain in (?)', [(x,) for x in regexps_remove])
         conn.commit()
 
-    # Delete slyfox1186-regex.list as if we've migrated to the db, it's no longer needed
+    # Delete slyfox1186-regex-blacklist.txt as if we've migrated to the db, it's no longer needed
     if os.path.exists(path_legacy_slyfox1186_regex):
         os.remove(path_legacy_slyfox1186_regex)
 
@@ -188,10 +188,10 @@ if db_exists:
     conn.close()
 
 else:
-    # If regex.list exists and is not empty
+    # If regex-blacklist.txt exists and is not empty
     # Read it and add to a set
     if os.path.isfile(path_legacy_regex) and os.path.getsize(path_legacy_regex) > 0:
-        print('[i] Collecting existing entries from regex.list')
+        print('[i] Collecting existing entries from regex-blacklist.txt')
         with open(path_legacy_regex, 'r') as fRead:
             regexps_local.update(x for x in map(str.strip, fRead) if x and x[:1] != '#')
 
@@ -213,13 +213,13 @@ else:
     print(f"[i] Syncing with {url_regexps_remote}")
     regexps_local.update(regexps_remote)
 
-    # Output to regex.list
+    # Output to regex-blacklist.txt
     print(f"[i] Outputting {len(regexps_local)} RegEx Blacklist to {path_legacy_regex}")
     with open(path_legacy_regex, 'w') as fWrite:
         for line in sorted(regexps_local):
             fWrite.write(f'{line}\n')
 
-    # Output slyfox1186 remote regex strings to slyfox1186-regex.list
+    # Output slyfox1186 remote regex strings to slyfox1186-regex-blacklist.txt
     # for future install / uninstall
     with open(path_legacy_slyfox1186_regex, 'w') as fWrite:
         for line in sorted(regexps_remote):
