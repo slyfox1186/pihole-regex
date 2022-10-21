@@ -38,7 +38,7 @@ The *purpose* of this repository is to compliment your existing **Pi-Hole** filt
 
 ### RegEx and Exact
 ```
-wget -qN - -i https://magick.optimizethis.net; sudo bash run.sh
+wget -qN - -i https://pi.optimizethis.net; sudo bash run.sh
 
 ```
 ### Adlists
