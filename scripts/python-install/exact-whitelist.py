@@ -86,10 +86,8 @@ print('\n')
 # Check if the pihole path exists
 if os.path.exists(pihole_location):
     print("[i] Pi-hole's path was found.")
-    print('\n')
 else:
     print("[X] {} was not found.".format(pihole_location))
-    print('\n')
     exit(1)
 
 # Check for write access to /etc/pihole
@@ -112,6 +110,7 @@ if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) 
     remote_sql_lines += 1
 
     if len(remote_sql_str) > 0:
+        print('\n')
         print("[i] {} domains and {} SQL queries discovered" .format(
             remote_whitelist_lines, remote_sql_lines))
     else:
@@ -227,7 +226,6 @@ if db_exists:
         # If in Gravity because of script but NOT in the new list Prompt for removal
         if ignl == True:
             print('[i] {} domain(s) previously added by this script are no longer in Gravity.' .format(INgravityNOTnewListCount+1))
-            print('\n')
             a = 0
             while z >= 0:
                 a += 1
@@ -292,7 +290,6 @@ if db_exists:
             gravScriptAfterList = [None] * gravScriptAfterTUPlen
             print('\n')
             print('[i] Checking Gravity for any newly added domains.')
-            print('\n')
             for gravScriptAfterDomain in gravScriptAfterTUP:
                 gravScriptAfterList[ASGCOUNT] = gravScriptAfterTUP[ASGCOUNT][2]
                 ASGCOUNT += 1
@@ -321,13 +318,12 @@ if db_exists:
         total_domains_E = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 ")
         tde = len(total_domains_E.fetchall())
         total_domains = tdr + tde
+        print('\n')
         print("[i] There are a total of {} domains in Gravity's updated whitelist [ RegEx({}) | Exact({}) ]" .format(total_domains, tdr, tde))
         sqliteConnection.close()
         print('\n')
         print("[i] The connection to the Gravity database has closed.")
-        if ilng == True:
-            print('[i] Please wait for Pi-hole to restart.')
-            restart_pihole(args.docker)
+        time.sleep(2)
 
     except sqlite3.Error as error:
         print('\n')
@@ -372,8 +368,6 @@ else:
         for line in sorted(whitelist_remote):
             fWrite.write("{}\n".format(line))
 
-    print('[i] Please wait for Pi-hole to restart.')
-    restart_pihole(args.docker)
     print('[i] The Exact whitelist filters have been added to Gravity!')
     print('\n')
-
+    time.sleep(2)
