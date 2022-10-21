@@ -21,7 +21,6 @@ if [ -d pihole-regex ]; then rm -R pihole-regex; fi
 echo -e "\\n"
 read -p 'Press Enter to Continue'
 clear
-echo -e "\\n"
 echo "Restart Pihole's DNS?"
 echo
 echo '[Y]es'
