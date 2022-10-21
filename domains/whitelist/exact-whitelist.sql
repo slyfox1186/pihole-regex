@@ -104,7 +104,6 @@
 (0, 'cdn.bootcss.com', 1, 'Crucial CDN server - SlyEWL')
 (0, 'cdn.bootcss.com.maoyundns.com', 1, 'Crucial CDN server - SlyEWL')
 (0, 'cdn.cloudflare.net', 1, 'CloudFlare - Used to deliver static files - SlyEWL')
-(0, 'cdn.contentful.com', 1, 'AdultTime - A required CDN of the site to access image, videos, etc - SlyEWL')
 (0, 'cdn.datatables.net', 1, 'Crucial CDN server - SlyEWL')
 (0, 'cdn.embed.ly', 1, 'Crucial CDN server - SlyEWL')
 (0, 'cdn.embed.ly.cdn.cloudflare.net', 1, 'Crucial CDN server - SlyEWL')
