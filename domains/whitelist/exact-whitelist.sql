@@ -138,7 +138,6 @@
 (0, 'check2.tsb.co.uk', 1, 'Misc - SlyEWL')
 (0, 'chevrolet.com', 1, 'Misc - SlyEWL')
 (0, 'chtbl.com', 1, 'Plex Media Server - SlyEWL')
-(0, 'client-rapi.recombee.us', 1, 'AdultTime - Required for side panels to load - SlyEWL')
 (0, 'client-s.gateway.messenger.live.com', 1, 'Microsoft - SlyEWL')
 (0, 'client.wns.windows.com', 1, 'Microsoft Store - SlyEWL')
 (0, 'clientconfig.passport.net', 1, 'Microsoft - Windows Store App - SlyEWL')
