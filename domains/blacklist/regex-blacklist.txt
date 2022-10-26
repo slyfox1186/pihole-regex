@@ -39,6 +39,9 @@
 # OK.ru
 (\.|^)ok\.ru$
 
+# Overwolf Desktop App (PC Games)
+(\.|^)fake\.video\.url\.webm$
+
 # Suspected Virus Harboring websites
 (\.|^)ahoravideo.*$
 (\.|^)bideo.*$
