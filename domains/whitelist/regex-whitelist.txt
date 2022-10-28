@@ -41,6 +41,9 @@
 (\.|^)windows\.com$
 ^(device|title|user|xsts)\.auth\.xboxlive\.com$
 
+# Other Smart TV's
+(^|\.)myhomescreen\.tv$
+
 # QNAP NAS - Reguired for the myqnapclub feature to work in it's entirety 
 (\.|^)myqnapcloud\.com$
 (\.|^)qnap\.com$
@@ -52,6 +55,11 @@
 (\.|^)redd\.it$
 (\.|^)thumbs\.redditmedia\.com
 (\.|^)[iv]?\.redd\.it$
+
+# Samsung
+(^|\.)samsungcloudcdn\.com$
+(^|\.)samsungcloudsolution\.com$
+(^|\.)samsungotn\.net$
 
 # YouTube
 ^(www|youtubei|oauthaccountmanager)\.googleapis\.com$
