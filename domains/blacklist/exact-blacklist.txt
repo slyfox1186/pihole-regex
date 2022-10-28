@@ -34,6 +34,7 @@ api.cid.samba.tv
 api.distribution.hulu.com
 api.nfl.com
 api.statsig.com
+api.termius.com
 apu.samsungelectronics.com
 audio-sp-sea.spotifycdn.net
 austin.logs.roku.com
