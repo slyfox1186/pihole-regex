@@ -27,6 +27,13 @@
 (\.|^)fb(|cdn|sbx)\.(com|me|net|watch)$
 (\.|^)messenger\.com$
 
+# LG Smart TV's
+(^|\.)ibs\.lgappstv\.com
+(^|\.)lgsmartad\.com
+(^|\.)rdx2\.lgtvsdp\.com
+(^|\.)smartshare\.lgtvsdp\.com
+^[a-z]{11,15}$
+
 # Oculus Rift
 (\.|^)graph\.oculus\.com$
 (\.|^)oculuscdn\.com$
@@ -39,9 +46,20 @@
 # OK.ru
 (\.|^)ok\.ru$
 
+# Other Smart TV's
+^api\..*\.hismarttv\.com$
+
 # Overwolf Desktop App (PC Games)
 (\.|^)ad-score\.com$
 (\.|^)fake\.video\.url\.webm$
+
+# Samsung Smart TV's
+(^|\.)giraffic\.com$
+(^|\.)internetat\.tv$
+(^|\.)pavv\.co\.kr$
+(^|\.)samsungcloudsolution\.net$
+(^|\.)samsungelectronics\.com$
+(^|\.)samsungrm\.net$
 
 # Suspected Virus Harboring websites
 (\.|^)ahoravideo.*$
@@ -80,8 +98,8 @@
 # Tinder
 (\.|^)[go]*tinder[sparks]*\.com$
 
-# Twitter
-(\.|^)twimg\.com$
+# Vizio Smart TV's
+(\.|^)tvinteractive\.tv$
 
 # WhatsApp
 (\.|^)((www|(w[0-9]\.)?web|media((-[a-z]{3}|\.[a-z]{4})[0-9]{1,2}-[0-9](\.|-)(cdn|fna))?)\.)?whatsapp\.(com|net)$
