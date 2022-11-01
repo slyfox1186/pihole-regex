@@ -18,6 +18,9 @@
 (\.|^)(apzones|mzstatic)\.com$
 (\.|^)apple-(cloudkit|livephotoskit)\.com$
 
+# Chrome Browser Discord App MEE6 Support Website
+(\.|^)mee6\.xyz$
+
 # Epic Games - Essential Domains for authentication during user login and other services such as purchasing/unlocking games to your user library
 ^(catalog|entitlement)-public-service-prod[\d]*\.ol\.epicgames\.com$
 ^(catalog|entitlement|priceengine)-public-service-prod\.ak\.epicgames\.com$
