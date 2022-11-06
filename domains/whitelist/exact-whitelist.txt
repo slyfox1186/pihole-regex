@@ -136,6 +136,7 @@ chatsvcagg.teams.microsoft.com
 check2.tsb.co.uk
 chevrolet.com
 chtbl.com
+click.redditmail.com
 client-rapi.recombee.us
 client-s.gateway.messenger.live.com
 client.wns.windows.com
