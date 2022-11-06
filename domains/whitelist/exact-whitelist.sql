@@ -138,6 +138,7 @@
 (0, 'check2.tsb.co.uk', 1, 'Misc - SlyEWL')
 (0, 'chevrolet.com', 1, 'Misc - SlyEWL')
 (0, 'chtbl.com', 1, 'Plex Media Server - SlyEWL')
+(0, 'click.redditmail.com', 1, 'Reddit - Required to open links sent via e-mail - SlyEWL')
 (0, 'client-rapi.recombee.us', 1, 'AdultTime - SlyEBL')
 (0, 'client-s.gateway.messenger.live.com', 1, 'Microsoft - SlyEWL')
 (0, 'client.wns.windows.com', 1, 'Microsoft Store - SlyEWL')
