@@ -44,9 +44,6 @@
 (\.|^)windows\.com$
 ^(device|title|user|xsts)\.auth\.xboxlive\.com$
 
-# Other Smart TV's
-(^|\.)myhomescreen\.tv$
-
 # QNAP NAS - Reguired for the myqnapclub feature to work in it's entirety 
 (\.|^)myqnapcloud\.com$
 (\.|^)qnap\.com$
