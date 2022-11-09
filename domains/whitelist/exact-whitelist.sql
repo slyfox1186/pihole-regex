@@ -486,6 +486,7 @@
 (0, 'placehold.it', 1, 'Placehold.it, Image placeholders often used during web page loading - SlyEWL')
 (0, 'placeholdit.imgix.net', 1, 'Placehold.it, Image placeholders often used during web page loading - SlyEWL')
 (0, 'platform.cid.samba.tv', 1, 'Sony Bravia TV - SlyEWL')
+(0, 'slyfox1186 Update exact-whitelist.sql', 1, 'Kayo is an Australian sports streaming service created for sports-loving Aussies - SlyEWL')
 (0, 'play.spotify.com', 1, 'Spotify - SlyEWL')
 (0, 'play.spotify.edgekey.net', 1, 'Spotify - SlyEWL')
 (0, 'players.brightcove.net', 1, 'Video delivery systems, popular in entertainment and news sites - SlyEWL')
