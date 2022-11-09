@@ -49,6 +49,7 @@
 
 # Other Smart TV's
 ^api\..*\.hismarttv\.com$
+^(collect|usage)-(eu|us)-fy[0-9]+\.myhomescreen\.(tv|tvcollect)$
 
 # Overwolf Desktop App (PC Games)
 (\.|^)ad-score\.com$
