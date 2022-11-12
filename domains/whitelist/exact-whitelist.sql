@@ -44,7 +44,7 @@
 (0, 'api.ipify.org', 1, 'Used to get your public IP address programmatically. ipify is completely opensource - SlyEWL')
 (0, 'api.pluto.tv', 1, 'Pluto.tv - SlyEWL')
 (0, 'api.rlje.net', 1, 'Used to deliver contents on video straming apps on hulu etc - SlyEWL')
-(0, 'api.termius.com', 1, 'Termius - Required to login to your account using the desktop app - SlyEBL')
+(0, 'api.termius.com', 1, 'Termius - Required to login to your account using the desktop app - SlyEWL')
 (0, 'api.twitter.com', 1, 'Twitter - SlyEWL')
 (0, 'api.us.hismarttv.com', 1, 'HiSmartTV - SlyEWL')
 (0, 'api.vizio.com', 1, 'Vizio - SlyEWL')
