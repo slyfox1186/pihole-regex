@@ -44,6 +44,7 @@ api.github.com
 api.ipify.org
 api.pluto.tv
 api.rlje.net
+api.termius.com
 api.twitter.com
 api.us.hismarttv.com
 api.vizio.com
