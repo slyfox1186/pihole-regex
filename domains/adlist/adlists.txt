@@ -73,3 +73,14 @@ https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/ur
 ## Default and very important adlist ##
 #######################################
 https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+
+############################
+## DoH AKA DNS over HTTPS ##
+############################
+http://public-dns.info/nameservers-all.txt
+https://raw.githubusercontent.com/bambenek/block-doh/master/doh-ipv4.txt
+https://raw.githubusercontent.com/flo-wer/doh-list/master/ipv4.txt
+https://raw.githubusercontent.com/oneoffdallas/dohservers/master/iplist.txt
+https://raw.githubusercontent.com/Sekhan/TheGreatWall/master/TheGreatWall_ipv4
+https://raw.githubusercontent.com/dibdot/DoH-IP-blocklists/master/doh-ipv4.txt
+https://raw.githubusercontent.com/Sekhan/TheGreatWall/master/TheGreatWall.txt
