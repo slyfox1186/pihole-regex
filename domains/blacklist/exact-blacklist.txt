@@ -34,6 +34,7 @@ api.cid.samba.tv
 api.distribution.hulu.com
 api.nfl.com
 api.statsig.com
+applytics.nordvpn.com
 apu.samsungelectronics.com
 audio-sp-sea.spotifycdn.net
 austin.logs.roku.com
@@ -47,6 +48,7 @@ bdcore-apr-lb.bda.ndmdhs.com
 beam.com
 bpu.samsungelectronics.com
 bravia.dl.pl
+bugs-notify.nordvpn.com
 call.me.sel.sony.com
 cc-api-data.adobe.io
 cdn-cm.tiypa.com
@@ -58,6 +60,7 @@ cdn.samsungcloudsolution.net
 cdn.smartclip.net
 cdns-content.dzcdn.net
 cert-test.sandbox.google.com
+client-api.nordvpn.com
 client-rapi.recombee.us
 cloud.arqiva.tv
 collect.myhomescreen.tv
