@@ -1,3 +1,6 @@
+(0, 'applytics.nordvpn.com', 1, 'NordVPN - Telemetry - SlyEBL')
+(0, 'bugs-notify.nordvpn.com', 1, 'NordVPN - Telemetry SlyEBL')
+(0, 'client-api.nordvpn.com', 1, 'NordVPN - Telemetry SlyEBL')
 (1, '0077777700140002.myhomescreen.tv', 1, 'Panasonic - SlyEBL')
 (1, '2mdn.net', 1, 'Other - SlyEBL')
 (1, '7345023508.fxm9485766783.com', 1, 'Toshiba - SlyEBL')
