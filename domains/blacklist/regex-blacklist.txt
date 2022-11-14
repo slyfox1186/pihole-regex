@@ -63,6 +63,9 @@
 (^|\.)samsungelectronics\.com$
 (^|\.)samsungrm\.net$
 
+# Steam Desktop App (Gaming)
+^ext\d?-iad\d?\.steamserver\.net?
+
 # Suspected Virus Harboring websites
 (\.|^)ahoravideo.*$
 (\.|^)bideo.*$
