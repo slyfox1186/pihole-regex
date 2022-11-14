@@ -64,7 +64,7 @@
 (^|\.)samsungrm\.net$
 
 # Steam Desktop App (Gaming)
-^ext\d?-iad\d?\.steamserver\.net?
+^ext[0-9]?-iad[0-9]?\.steamserver\.net$
 
 # Suspected Virus Harboring websites
 (\.|^)ahoravideo.*$
@@ -82,7 +82,7 @@
 (\.|^)snap(-dev|ads|chat|kit)\.(c|com|net)$
 
 # Spotify
-(\.|^)log[\d]*\.spotify\.com$
+(\.|^)log[0-9]*\.spotify\.com$
 (\.|^)pixel(|-static)\.spotify\.com$
 
 # TikTok
