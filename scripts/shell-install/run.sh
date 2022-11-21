@@ -15,9 +15,13 @@ mkdir -p pihole-regex
 FILES='exact-blacklist.sh exact-whitelist.sh regex-blacklist.sh regex-whitelist.sh'
 ADD_FILE=( $FILES run.sh )
 # If the shell scripts exist, move them to the pihole-regex dir
-for i in ${ADD_FILE[@]}; do
+for i in ${ADD_FILE[@]}
+do
     if [ -f "$i" ]; then mv -f $i pihole-regex; fi
 done
 
 # execute all scripts in pihole-regex
-for i in ${FILES[@]}; do source pihole-regex/$i; done
+for i in ${FILES[@]}
+do
+    source pihole-regex/$i
+done
