@@ -449,7 +449,6 @@
 (0, 'ocsp.apple.com', 1, 'Apple - iOS developers are able to distribute apps outside of the App Store using an Enterprise provisioning profile. Apple can revoke these kinds of apps by using this domain - SlyEWL')
 (0, 'ocsp.digicert.com', 1, 'Digicert - SSL Verification - SlyEWL')
 (0, 'ocsp.entrust.net', 1, 'Apple - SlyEWL')
-(0, 'ocsp.rootg2.amazontrust.com', 1, 'Amazon - SlyEWL')
 (0, 'ocsp.verisign.net', 1, 'Misc - SlyEWL')
 (0, 'ocsp2.apple.com', 1, 'Apple - SlyEWL')
 (0, 'office.com', 1, 'Microsoft - Office apps - SlyEWL')
