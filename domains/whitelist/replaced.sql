@@ -5,6 +5,8 @@
 (0, 'kosmos-assets-prod.react.gammacdn.com', 1, 'AdultTime - Required for react buttons to work - SlyEWL')
 (0, 'kosmos-prod.react.gammacdn.com', 1, 'AdultTime - Required for react buttons to work - SlyEWL')
 
+# AMAZON
+(0, 'ocsp.rootg2.amazontrust.com', 1, 'Amazon Trust Services - Cert auth created by Amazon Web Services. Works with AWS Certificate Manager to ensure a secure connection between a client and server. - SlyEWL')
 # FACEBOOK
 (0, '0-edge-chat.facebook.com', 1, 'Facebook - SlyEWL')
 (0, '1-edge-chat.facebook.com', 1, 'Facebook - SlyEWL')
