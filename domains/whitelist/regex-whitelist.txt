@@ -13,6 +13,9 @@
 ^images[\d]+-fame\.gammacdn\.com$
 ^static[0-4]+-cms-fame\.gammacdn\.com$
 
+# Amazon Trust Certificate Authority responsible for secure connections between client and server
+(\.|^)amazontrust\.com$
+
 # Apple - Main domains for a good chunk of legitimate iOS services
 (\.|^)(appattest|apps|business|gc|iwork|push|school)\.apple\.com$
 (\.|^)(apzones|mzstatic)\.com$
@@ -44,7 +47,7 @@
 (\.|^)windows\.com$
 ^(device|title|user|xsts)\.auth\.xboxlive\.com$
 
-# QNAP NAS - Reguired for the myqnapclub feature to work in it's entirety 
+# QNAP NAS - Reguired for the myqnapclub feature to work in it's entirety
 (\.|^)myqnapcloud\.com$
 (\.|^)qnap\.com$
 
