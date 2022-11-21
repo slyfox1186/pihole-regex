@@ -446,7 +446,6 @@ objects.githubusercontent.com
 ocsp.apple.com
 ocsp.digicert.com
 ocsp.entrust.net
-ocsp.rootg2.amazontrust.com
 ocsp.verisign.net
 ocsp2.apple.com
 office.com
