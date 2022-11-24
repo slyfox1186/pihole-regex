@@ -43,6 +43,6 @@ wget -qN - -i https://pi.optimizethis.net; sudo run.sh
 ```
 ### Adlists
 ```
-wget -qO- https://adlist.optimizethis.net; sudo adlist.sh
+wget -qO adlist.sh https://adlist.optimizethis.net; bash adlist.sh
 
 ```
