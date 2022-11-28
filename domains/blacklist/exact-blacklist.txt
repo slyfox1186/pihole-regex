@@ -22,11 +22,7 @@ aid.qnap.com
 alpha-qsapi.qnap.com
 amauthprd.samsungcloudsolution.com
 android.qnap.com
-api-gps-em.hismarttv.com
-api-gps-na.hismarttv.com
 api-hub.samsungyosemite.com
-api-launcher-em.hismarttv.com
-api-launcher-na.hismarttv.com
 api-mf1.meta.ndmdhs.com
 api-software.qnap.com
 api-support.qnap.com
@@ -38,10 +34,6 @@ applytics.nordvpn.com
 apu.samsungelectronics.com
 audio-sp-sea.spotifycdn.net
 austin.logs.roku.com
-auth-em.hismarttv.com
-auth-launcher-em.hismarttv.com
-auth-launcher-na.hismarttv.com
-auth-na.hismarttv.com
 az43064.vo.msecnd.net
 b02.black.ndmdhs.com
 bdcore-apr-lb.bda.ndmdhs.com
@@ -143,8 +135,6 @@ marketing.qnap.com
 mhc-sec-eu.myhomescreen.tv
 mhc-sec-us.myhomescreen.tv
 midland.logs.roku.com
-msg-em.hismarttv.com
-msg-na.hismarttv.com
 multiscreen.samsung.com
 musicid.samsungcloudsolution.com
 nbc-jite.nbcuni.com
@@ -219,7 +209,6 @@ test.samsungrm.net
 trvdp.com
 tv-static.scdn.co
 tvsideviewandroidv2-cfgdst-ore-pro.bda.ndmdhs.com
-unified-ter-na.hismarttv.com
 upu.samsungelectronics.com
 us-api.samsungyosemite.com
 us.ibs.lgappstv.com
