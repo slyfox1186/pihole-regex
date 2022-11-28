@@ -17,3 +17,5 @@
 (1, 'usage-us-fy2019.myhomescreen.tv', 1, 'Panasonic - SlyEBL')
 (1, 'usage-us-fy2020.myhomescreen.tv', 1, 'Panasonic - SlyEBL')
 (1, 'usage.myhomescreen.tv', 1, 'Panasonic - SlyEBL')
+(1, 'us.ad.lgsmartad.com', 1, 'LG-TV - SlyEBL')
+(1, 'us.info.lgsmartad.com', 1, 'LG-TV - SlyEBL')
