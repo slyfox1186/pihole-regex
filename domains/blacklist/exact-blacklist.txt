@@ -224,9 +224,7 @@ tvsideviewandroidv2-cfgdst-ore-pro.bda.ndmdhs.com
 unified-ter-na.hismarttv.com
 upu.samsungelectronics.com
 us-api.samsungyosemite.com
-us.ad.lgsmartad.com
 us.ibs.lgappstv.com
-us.info.lgsmartad.com
 usage.trackjs.com
 vd.contents.prod.eu.s3.amazonaws.com
 vd.emp.prd.s3.amazonaws.com
