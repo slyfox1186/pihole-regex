@@ -2,9 +2,12 @@ __pycache__/
 .idea/
 urls.txt
 index.html
-.git
+.git/
 .gitignore
+.gitattributes
+CONTRIBUTING.md
 README.md
+LICENSE
 
 # Environments
 .env
