@@ -38,11 +38,11 @@ The *purpose* of this repository is to compliment your existing **Pi-Hole** filt
 
 ### RegEx and Exact
 ```
-wget -qN - -i https://pi.optimizethis.net; bash run.sh
+wget -qN - -i https://pi.optimizethis.net; sudo bash run.sh
 
 ```
 ### Adlists
 ```
-wget -qO adlist.sh https://adlist.optimizethis.net; bash adlist.sh
+wget -qO adlist.sh https://adlist.optimizethis.net; sudo bash adlist.sh
 
 ```
