@@ -5,7 +5,7 @@ shopt -s nocasematch
 
 # Get user's input
 clear
-read -pr 'RegEx Whitelist >> [A]dd [R]emove [S]kip: ' iChoice
+read -p 'RegEx Whitelist >> [A]dd [R]emove [S]kip: ' iChoice
 clear
 if [[ "$iChoice" == "A" ]]; then
     curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-install/regex-whitelist.py' | sudo python3
@@ -19,10 +19,10 @@ fi
 if [ -d pihole-regex ]; then rm -R pihole-regex; fi
 
 echo -e "\\n"
-read -pr 'Press enter to continue.'
+read -p 'Press enter to continue.'
 clear
 echo -e "Restart Pihole's DNS?\\n"
-read -pr '[Y]es or [N]o' uChoice
+read -p '[Y]es or [N]o' uChoice
 clear
 if [[ "$uChoice" == "Y" ]]; then sudo pihole restartdns; fi
 
