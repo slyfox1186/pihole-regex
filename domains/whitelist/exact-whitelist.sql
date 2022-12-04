@@ -1,7 +1,7 @@
 (0, '0.client-channel.google.com', 1, 'Google - To access Google Drive and Google Docs editors this domain must be whitelisted - https://support.google.com/a/answer/2589954?hl=en - SlyEWL')
 (0, '1drv.com', 1, 'Microsoft OneDrive - Used as a short link for OneDrive documents - SlyEWL')
 (0, '2.android.pool.ntp.org', 1, 'Google Android - A big virtual cluster of timeservers providing reliable time; This domain is used in Android devices - SlyEWL')
-(0, '2.tlu.dl.delivery.mp.microsoft.com', 1, 'Microsoft Store api.termius.com	- SlyEWL')
+(0, '2.tlu.dl.delivery.mp.microsoft.com', 1, 'Microsoft Store - SlyEWL')
 (0, '4.tlu.dl.delivery.mp.microsoft.com', 1, 'Microsoft Store - SlyEWL')
 (0, '79423.analytics.edgekey.net', 1, 'Microsoft - SlyEWL')
 (0, 'aad.cs.dds.microsoft.com', 1, 'Microsoft - SlyEWL')
