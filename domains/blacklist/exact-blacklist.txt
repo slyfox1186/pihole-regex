@@ -34,6 +34,7 @@ applytics.nordvpn.com
 apu.samsungelectronics.com
 audio-sp-sea.spotifycdn.net
 austin.logs.roku.com
+auth.split.io
 az43064.vo.msecnd.net
 b02.black.ndmdhs.com
 bdcore-apr-lb.bda.ndmdhs.com
