@@ -74,6 +74,7 @@ attestation.xboxlive.com
 audio2.spotify.com
 audio4-fa.scdn.co
 audiocontentdownload.apple.com
+auth.split.io
 auth.samsungosp.com
 authsvc.teams.microsoft.com
 avpro.global.yamaha.com
