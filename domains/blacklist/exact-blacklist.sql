@@ -34,6 +34,7 @@
 (1, 'apu.samsungelectronics.com', 1, 'Samsung - SlyEBL')
 (1, 'audio-sp-sea.spotifycdn.net', 1, 'Spotify - SlyEBL')
 (1, 'austin.logs.roku.com', 1, 'Roku - SlyEBL')
+(1, 'auth.split.io', 1, 'Termius - Not required to log in and use your account with the app - SLYEBL')
 (1, 'az43064.vo.msecnd.net', 1, 'Samsung - SlyEBL')
 (1, 'b02.black.ndmdhs.com', 1, 'Sony - SlyEBL')
 (1, 'bdcore-apr-lb.bda.ndmdhs.com', 1, 'Sony - SlyEBL')
