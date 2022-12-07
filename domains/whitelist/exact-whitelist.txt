@@ -3,6 +3,7 @@
 2.android.pool.ntp.org
 2.tlu.dl.delivery.mp.microsoft.com
 4.tlu.dl.delivery.mp.microsoft.com
+4unal8ngvngjm07lj2q2umlc4.litix.io
 79423.analytics.edgekey.net
 aad.cs.dds.microsoft.com
 accounts.epicgames.com
