@@ -103,6 +103,7 @@ elif [[ "${CHOICE}" == "2" ]]; then
     sqlite3 '/etc/pihole/gravity.db' "DELETE FROM adlist WHERE comment LIKE '%SlyADL%'"
     clear
     echo 'All adlists have been removed from Pi-hole.'
+    sleep 2
     fn_gravity
     fn_dns
     fn_done
