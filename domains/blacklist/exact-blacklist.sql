@@ -53,6 +53,7 @@
 (1, 'cdn.smartclip.net', 1, 'Other - SlyEBL')
 (1, 'cdns-content.dzcdn.net', 1, 'Other - SlyEBL')
 (1, 'cert-test.sandbox.google.com', 1, 'Other - SlyEBL')
+(1, 'cesareurope.com', 1, 'Malicious site with mal intent - SlyEBL')
 (1, 'client-api.nordvpn.com', 1, 'NordVPN - Telemetry SlyEBL')
 (1, 'cloud.arqiva.tv', 1, 'Samsung - SlyEBL')
 (1, 'collect.myhomescreen.tv', 1, 'Panasonic - SlyEBL')
