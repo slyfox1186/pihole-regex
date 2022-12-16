@@ -16,4 +16,5 @@ elif [[ "${iChoice}" == "S" ]]; then
     exit
 fi
 
+echo
 read -t 30 -p 'Press Enter to continue: '
