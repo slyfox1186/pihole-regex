@@ -7,13 +7,14 @@ if [ -f 'index.html' ]; then rm 'index.html'; fi
 if [ -f 'urls.txt' ]; then rm 'urls.txt'; fi
 
 # Delete the pihole-regex folder if it already exists.
-if [ -d pihole-regex ]; then rm -R pihole-regex; fi
+if [ -d 'pihole-regex' ]; then rm -r 'pihole-regex'; fi
 
 # If needed (re)create the pihole-regex folder to store the downloaded files in.
 mkdir -p 'pihole-regex'
 
 # define variables
-ADD_FILE=( exact-blacklist.sh exact-whitelist.sh regex-blacklist.sh regex-whitelist.sh run.sh )
+FILES='exact-blacklist.sh exact-whitelist.sh regex-blacklist.sh regex-whitelist.sh'
+ADD_FILE=( "${FILES}" run.sh )
 # If the shell scripts exist, move them to the pihole-regex dir.
 for i in "${ADD_FILE[@]}"; do
     if [ -f "${i}" ]; then
