@@ -338,6 +338,7 @@ infolink.pavv.co
 instagram.c10r.facebook.com
 instantmessaging-pa.googleapis.com
 intercom.io
+ip-api.com
 iprofiles.apple.com
 ipv6.msftncsi.com
 isu.apple.com
@@ -646,6 +647,7 @@ tsfe.trafficshaping.dsp.mp.microsoft.com
 tuner-api.hdhomerun.com
 turn1.whispersystems.org
 tv.deezer.com
+tv.scdn.com
 tvdb2.plex.tv
 tvthemes.plexapp.com.cdn.cloudflare.net
 twimg.com
