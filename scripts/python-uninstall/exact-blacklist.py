@@ -90,6 +90,7 @@ print('Any other domains added personally by the user will remain uneffected.')
 
 # Check for pihole path exsists
 if os.path.exists(pihole_location):
+    print('\n')
     print("[i] Pi-hole's path exists!")
     print('\n')
 else:
