@@ -64,13 +64,14 @@
 (\.|^)fake\.video\.url\.webm$
 
 # Samsung Smart TV's
-^log-[0-3]+\.samsungacr\.com$
 (^|\.)giraffic\.com$
 (^|\.)internetat\.tv$
 (^|\.)pavv\.co\.kr$
 (^|\.)samsungcloudsolution\.net$
 (^|\.)samsungelectronics\.com$
 (^|\.)samsungrm\.net$
+^log-[0-3]+\.samsungacr\.com$
+^samsungcloudsolution\.(com|net)$
 
 # Steam Desktop App (Gaming)
 ^ext[0-9]?-iad[0-9]?\.steamserver\.net$
