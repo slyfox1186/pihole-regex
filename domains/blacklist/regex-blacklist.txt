@@ -33,6 +33,9 @@
 (\.|^)fb(|cdn|sbx)\.(com|me|net|watch)$
 (\.|^)messenger\.com$
 
+# HBBTV
+^hbbtv\.(qvc|rtl2|sat1|sixx)\.de$
+
 # LG Smart TV's
 (^|\.)ibs\.lgappstv\.com
 (^|\.)lgsmartad\.com
