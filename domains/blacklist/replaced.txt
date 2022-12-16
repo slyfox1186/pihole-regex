@@ -47,3 +47,8 @@
 (1, 'msg-em.hismarttv.com', 1, 'HiSense Smart TV - SlyEBL')
 (1, 'msg-na.hismarttv.com', 1, 'HiSense Smart TV - SlyEBL')
 (1, 'unified-ter-na.hismarttv.com', 1, 'HiSense Smart TV - SlyEBL')
+
+(1, 'hbbtv.qvc.de', 1, 'HBBTV - SlyEBL')
+(1, 'hbbtv.rtl2.de', 1, 'HBBTV - SlyEBL')
+(1, 'hbbtv.sat1.de', 1, 'HBBTV - SlyEBL')
+(1, 'hbbtv.sixx.de', 1, 'HBBTV - SlyEBL')
