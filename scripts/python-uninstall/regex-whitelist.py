@@ -7,7 +7,6 @@ import subprocess
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
-
 def fetch_whitelist_url(url):
 
     if not url:
