@@ -1,5 +1,0 @@
-#  Personal RegEx Blacklist filters.
-# These serve a purpose for me... no idea if they are useful for you.
-
-# Block ads
-(\.|^)topazlabs\.com$
