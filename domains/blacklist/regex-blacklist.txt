@@ -64,6 +64,7 @@
 (\.|^)fake\.video\.url\.webm$
 
 # Samsung Smart TV's
+^log-[0-3]\.samsungacr\.com$
 (^|\.)giraffic\.com$
 (^|\.)internetat\.tv$
 (^|\.)pavv\.co\.kr$
