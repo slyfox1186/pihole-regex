@@ -81,8 +81,6 @@ blacklist_local = set()
 blacklist_slyfox1186_local = set()
 blacklist_old_slyfox1186 = set()
 
-
-
 os.system('clear')
 print('If you are using Pi-hole v5.0 or later, this script will only remove domains that were added by itself.')
 print('Any other domains added personally by the user will remain uneffected.')
@@ -111,7 +109,8 @@ else:
 # Determine whether we are using DB or not
 if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) > 0:
     db_exists = True
-    print("[i] Succesfully located the Gravity database.\n\n")
+    print('[i] Succesfully located the Gravity database.')
+
     remote_sql_str = fetch_blacklist_url(remote_sql_url)
     remote_sql_lines = remote_sql_str.count('\n')
     remote_sql_lines += 1
@@ -119,6 +118,7 @@ if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) 
     if len(remote_sql_str) > 0:
         print("[i] {} domains were discovered!" .format(remote_blacklist_lines))
         print('\n')
+                   
     else:
         print('[X] No remote SQL queries were found!')
         print('\n')
@@ -149,7 +149,7 @@ if db_exists:
         totalDomains = len(total_domains.fetchall())
         print("[i] {} domains in the updated blacklist were added by this script." .format(totalDomains))
         print('\n')
-        print('[i] Removing domains from Gravity...')
+        print("[i] Removing domains from Gravity's database...")
         print('\n')
         cursor.execute (" DELETE FROM domainlist WHERE type = 1 AND comment LIKE '%SlyEBL%' ")
 
@@ -164,7 +164,7 @@ if db_exists:
         cursor.close()
 
     except sqlite3.Error as error:
-        print("[X] Failed to remove domains from Gravity!", error)
+        print("[X] Failed to remove domains from Gravity's database!", error)
         print('\n')
         exit(1)
 
@@ -177,6 +177,8 @@ if db_exists:
             print('[i] Wait for Pi-hole to reboot...')
             print('\n')
             restart_pihole(args.docker)
+            print('\n')
+            
             print('[i] The Exact Blacklist filters have been removed from Gravity!')
 
 else:
@@ -187,8 +189,9 @@ else:
                 str.strip, fRead) if x and x[:1] != '#')
 
     if blacklist_local:
-        print("[i] {} existing blacklists identified." .format(len(blacklist_local)))
+        print("[i] {} existing blacklisted identified." .format(len(blacklist_local)))
         print('\n')
+
         if os.path.isfile(slyfox1186_blacklist_location) and os.path.getsize(slyfox1186_blacklist_location) > 0:
             print('[i] Existing slyfox1186-blacklist installation located.')
             print('\n')
