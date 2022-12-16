@@ -130,25 +130,25 @@ clear
 if [[ "${CHOICE}" == "1" ]]; then
     wget "${UA}" -qO - "${AD_URL}" |
     sed '/^#/ d' | sed '/^$/ d' > "${LIST}"
-    cat "${LIST}" |
+    cat < "${LIST}" |
     xargs -n1 -I {} sqlite3 "${GRAVITY}" \
     "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"${C1}\")"
 elif [[ "${CHOICE}" == "2" ]]; then
     wget "${UA}" -qO - "${URL_BASE}"=tick |
     sed '/^#/ d' | sed '/^$/ d' > "${LIST}"
-    cat "${LIST}" |
+    cat < "${LIST}" |
     xargs -n1 -I {} sqlite3 "${GRAVITY}" \
     "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"${C2}\")"
 elif [[ "${CHOICE}" == "3" ]]; then
     wget "${UA}" -qO - "${URL_BASE}"=nocross |
     sed '/^#/ d' | sed '/^$/ d' > "${LIST}"
-    cat "${LIST}" |
+    cat < "${LIST}" |
     xargs -n1 -I {} sqlite3 "${GRAVITY}" \
     "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"${C3}\")"
 elif [[ "${CHOICE}" == "4" ]]; then
     wget "${UA}" -qO - "${URL_BASE}"=all |
     sed '/^#/ d' | sed '/^$/ d' > "${LIST}"
-    cat "${LIST}" |
+    cat < "${LIST}" |
     xargs -n1 -I {} sqlite3 "${GRAVITY}" \
     "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"${C4}\")"
 else
