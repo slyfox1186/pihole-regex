@@ -101,13 +101,6 @@ gpm.samsungqbe.com
 hbbtv-1.eurosport.com
 hbbtv-extern-fe01.sim-technik.de
 hbbtv-track.redbutton.de
-hbbtv.3sat.de
-hbbtv.kabeleins.de
-hbbtv.qvc.de
-hbbtv.rtl2.de
-hbbtv.sat1.de
-hbbtv.sixx.de
-hbbtv.superrtl.de
 hbbtv01p.anixe.net
 hbbtvapp.sonnenklar.tv
 i-stream.pl
