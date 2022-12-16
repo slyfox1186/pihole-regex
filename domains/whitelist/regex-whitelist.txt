@@ -61,7 +61,6 @@
 
 # Samsung
 (^|\.)samsungcloudcdn\.com$
-(^|\.)samsungcloudsolution\.com$
 (^|\.)samsungotn\.net$
 
 # YouTube
