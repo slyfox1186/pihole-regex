@@ -19,7 +19,7 @@ fi
 if [ -d 'pihole-regex' ]; then rm -R 'pihole-regex'; fi
 
 echo -e "\\n"
-read -p 'Press enter to continue.'
+read -p 'Press enter to continue: '
 clear
 
 echo -e "Restart Pihole's DNS?\\n"
