@@ -34,7 +34,7 @@
 (\.|^)messenger\.com$
 
 # HBBTV
-^hbbtv\.(qvc|rtl2|sat1|sixx)\.de$
+^hbbtv\.(3sat|kabeleins|qvc|rtl2|sat1|sixx|superrtl)\.de$
 
 # LG Smart TV's
 (^|\.)ibs\.lgappstv\.com
