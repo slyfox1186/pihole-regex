@@ -26,7 +26,7 @@ fn_done()
     clear
     echo 'The script has completed.'
     echo
-    echo 'Please make sure you report any issues on my Github page!'
+    echo 'Please make sure you report any issues on my GitHub page!'
     echo 'https://github.com/slyfox1186/pihole-regex/issues'
     echo
     exit
