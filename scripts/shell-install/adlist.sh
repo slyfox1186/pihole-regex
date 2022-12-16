@@ -90,7 +90,7 @@ clear
 echo 'Modify the Pi-hole Adlist Group'
 echo
 
-# Prompt the user with the first choice
+# Prompt the user with choice 1
 echo 'Enter one of the selections.'
 echo
 echo '[1] Add domains'
@@ -118,7 +118,7 @@ else
     exit 1
 fi
 
-# Prompt the user with Adlist option 2
+# Prompt the user with choice 2
 echo 'Choose from the adlists below to insert their content into Gravity'\''s database'
 echo
 echo '[1] SlyFox1186: [Personal Adlist] - Self made with lists from the good work of others. (Includes Firebog: Ticked + Non-Crossed).'
