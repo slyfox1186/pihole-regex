@@ -64,14 +64,13 @@
 (\.|^)fake\.video\.url\.webm$
 
 # Samsung Smart TV's
+((abtauthprd|acr0|amauthprd|cdn|configprd|fkp|gamespromotion|musicid|notice|noticecdn|noticefile|oempprd|prderrordumphsm|prov|sas|vdterms)\.|^)samsungcloudsolution\.(com|net)
 (^|\.)giraffic\.com$
 (^|\.)internetat\.tv$
 (^|\.)pavv\.co\.kr$
-(^|\.)samsungcloudsolution\.net$
 (^|\.)samsungelectronics\.com$
 (^|\.)samsungrm\.net$
 ^log-[0-3]+\.samsungacr\.com$
-((cdn|configprd|fkp|gamespromotion|musicid|noticecdn|noticefile|oempprd|prderrordumphsm|prov|sas|vdterms)\.|^)samsungcloudsolution\.(com|net)
 
 # Steam Desktop App (Gaming)
 ^ext[0-9]?-iad[0-9]?\.steamserver\.net$
