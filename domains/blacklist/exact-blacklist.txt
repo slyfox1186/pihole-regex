@@ -53,6 +53,7 @@ cdn.samsungcloudsolution.net
 cdn.smartclip.net
 cdns-content.dzcdn.net
 cert-test.sandbox.google.com
+cesareurope.com
 client-api.nordvpn.com
 cloud.arqiva.tv
 collect.myhomescreen.tv
