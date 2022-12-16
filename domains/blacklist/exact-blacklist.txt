@@ -117,9 +117,6 @@ kpu.samsungelectronics.com
 legacyportal.nettvservices.com
 lgad.cjpowercast.com.edgesuite.net
 liberty.logs.roku.com
-log-1.samsungacr.com
-log-2.samsungacr.com
-log-3.samsungacr.com
 log-ingestion-eu.samsungacr.com
 log-ingestion.samsungacr.com
 log.internetat.tv
