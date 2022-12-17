@@ -20,7 +20,7 @@ def fetch_blacklist_url(url):
         response = urlopen(Request(url, headers=headers))
     except HTTPError as e:
         print('[E] HTTP Error:', e.code, 'whilst fetching', url)
-        print('\n') 
+        print('\n')
         return
     except URLError as e:
         print('[E] URL Error:', e.reason, 'whilst fetching', url)
@@ -98,7 +98,7 @@ path_pihole_db = os.path.join(path_pihole, 'gravity.db')
 
 # Check that Pi-hole path exists
 if os.path.exists(path_pihole):
-    print("[i] Pi-hole's file path has been found")
+    print("[i] Pi-hole's file path has been found!")
 else:
     print(f'[e] {path_pihole} was not found')
     exit(1)
@@ -142,7 +142,7 @@ if db_exists:
     c = conn.cursor()
 
     # Identify and remove regstrings
-    print("[i] Removing slyfox1186's regex strings")
+    print("[i] Removing slyfox1186's regex strings!")
 
     c.executemany('DELETE FROM domainlist '
                   'WHERE type = 3 '
@@ -205,7 +205,7 @@ else:
     # Prepare final result
     print('\n')
     print('[i] If any RegEx filter are left they will show below.')
-
+    print('\n')
     with open(path_legacy_regex, 'r') as fOpen:
         for line in fOpen:
             print(line, end='')
