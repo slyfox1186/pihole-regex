@@ -2,7 +2,7 @@
 ## Github: https://github.com/slyfox1186/pihole-regex
 
 # 1337x.to - Sneaky redirect domains that probably log your IP and any other information it gets from your browser sending a GET or POST request.
-(\.|^)antivirushub\.co$
+(\.|^)antivirushub\.com$
 (\.|^)shadowadcity\.com$
 (\.|^)trafyield\.com$
 
