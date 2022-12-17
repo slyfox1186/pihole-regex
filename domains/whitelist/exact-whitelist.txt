@@ -304,9 +304,6 @@ gstaticadssl.l.google.com
 gucl-6.ap.spotify.com
 h-sdk.online-metrix.net
 has.spserv.microsoft.com
-hbbtv.prosieben.de
-hbbtv.redbutton.de
-hbbtv.zdf.de
 heartbeat.dm.origin.com
 help.ui.xboxlive.com
 hls.ted.com', 1, 'Used by ted.com
