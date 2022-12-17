@@ -309,10 +309,10 @@ if db_exists:
         else: # We should be done now
             # Do nothing and exit. All domains are accounted for.
             print("[i] All {} new domains were successfully added to Gravity." .format(newblacklistlen))
-        # Find total blacklisted domains (regex)
+        # Find total blacklisted domains (RegEx)
         total_domains_R = cursor.execute(" SELECT * FROM domainlist WHERE type = 3 ")
         tdr = len(total_domains_R.fetchall())
-        # Find total blacklisted domains (exact)
+        # Find total blacklisted domains (Exact)
         total_domains_E = cursor.execute(" SELECT * FROM domainlist WHERE type = 1 ")
         tde = len(total_domains_E.fetchall())
         total_domains = tdr + tde
