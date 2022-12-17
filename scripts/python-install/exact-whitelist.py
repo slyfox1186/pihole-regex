@@ -77,7 +77,6 @@ whitelist_slyfox1186_local = set()
 whitelist_old_slyfox1186 = set()
 
 os.system('clear')
-print('\n')
 print("This script will import the Exact whitelist Filters to Gravity's whitelist.")
 print('\n')
 
@@ -96,7 +95,6 @@ if os.access(pihole_location, os.X_OK | os.W_OK):
     remote_whitelist_lines += 1
 else:
     print("[X] Write access is not available for {}. Please run the script as an administrator." .format(pihole_location))
-    print('\n')
     exit(1)
 
 # Determine whether we are using DB or not
@@ -108,7 +106,6 @@ if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) 
     remote_sql_lines += 1
 
     if len(remote_sql_str) > 0:
-        print('\n')
         print("[i] {} domains and {} SQL queries discovered" .format(
             remote_whitelist_lines, remote_sql_lines))
     else:
@@ -128,13 +125,11 @@ else:
     exit(1)
 
 if db_exists:
-    print('\n')
     print("[i] Connecting to Gravity.")
     try: # Try to create a DB connection
         sqliteConnection = sqlite3.connect(gravity_db_location)
         cursor = sqliteConnection.cursor()
         print('[i] Successfully connected to Gravity.')
-        print('\n')
         #
         print('[i] Checking Gravity for domains added by script.')
         # Check Gravity database for domains added by script
@@ -166,8 +161,6 @@ if db_exists:
             # Uncomment to see list of domains being imported
             # print(newwhitelist[nwl])
             nwl += 1 # count + 1
-        # Check database for user added exact whitelisted domains
-        print('\n')
         print("[i] Checking for matching domains already found in Gravity's database.")
         # Check Gravity database for exact whitelisted domains added by user
         user_add = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment NOT LIKE '%SlyEWL - github.com/slyfox1186/pihole-regex%' ")
@@ -246,7 +239,6 @@ if db_exists:
         if ignl == True:
             print('\n')
         #
-        print('\n')
         print('[i] Preparing to add missing domains to Gravity.')
         ilng = False
         for INnewNOTgravity in newwhitelist: # For every domain in the new script
@@ -260,7 +252,6 @@ if db_exists:
         # If there are domains in new list that are NOT in Gravity
         if ilng == True: # Add domains that are missing from new script and not user additions
             print("[i] {} domain's are not currently in Gravity and will be added." .format(INnewNOTgravityListCount+1))
-            print('\n')
             a = 0
             while w >= 0:
                 a += 1
@@ -300,10 +291,8 @@ if db_exists:
 
             if gsa == True:
                 # All domains are accounted for.
-                print('\n')
                 print("[i] All {} new domain's were added to Gravity." .format(newwhitelistlen))
             else:
-                print('\n')
                 print("[i] {} missing domain's have not been added to Gravity." .format(INnewNOTgravityListCount+1))
 
         else: # We should be done now
@@ -316,22 +305,19 @@ if db_exists:
         total_domains_E = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 ")
         tde = len(total_domains_E.fetchall())
         total_domains = tdr + tde
-        print('\n')
         print("[i] There are a total of {} domains in Gravity's updated whitelist [ RegEx({}) | Exact({}) ]" .format(total_domains, tdr, tde))
         sqliteConnection.close()
-        print('\n')
         print("[i] The connection to the Gravity database has closed.")
         time.sleep(2)
 
     except sqlite3.Error as error:
-        print('\n')
         print("[X] Failed to insert domains into Gravity's database.", error)
         print('\n')
         exit(1)
 
     finally:
-        print('\n')
         print('[i] The Exact whitelist filters have been added to Gravity!')
+        print('\n')
 else:
 
     if os.path.isfile(gravity_whitelist_location) and os.path.getsize(gravity_whitelist_location) > 0:
@@ -367,3 +353,4 @@ else:
 
     print('[i] The Exact whitelist filters have been added to Gravity!')
     time.sleep(2)
+    print('\n')
