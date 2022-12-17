@@ -13,10 +13,10 @@ if [ -d 'pihole-regex' ]; then rm -r 'pihole-regex'; fi
 mkdir -p 'pihole-regex'
 
 # define variables
-FILES='exact-blacklist.sh exact-whitelist.sh regex-blacklist.sh regex-whitelist.sh'
-ADD_FILE=( $FILES run.sh )
+SCRIPTS='exact-blacklist.sh exact-whitelist.sh regex-blacklist.sh regex-whitelist.sh'
+MOVE_FILES=( ${SCRIPTS} run.sh )
 # If the shell scripts exist, move them to the pihole-regex dir
-for i in "${ADD_FILE[@]}"; do
+for i in "${MOVE_FILES[@]}"; do
     if [ -f "${i}" ]; then
         mv -f "${i}" 'pihole-regex'
     else
@@ -32,23 +32,22 @@ done
 unset i
 
 # execute all scripts in the pihole-regex folder
-for i in ${FILES[@]}; do
-    source 'pihole-regex'/"${i}"
-done
+for i in ${SCRIPTS[@]}; do source 'pihole-regex'/"${i}"; done
 
-# remove all remaining files that were downloaded by wget
+# remove all files that were downloaded
 if [ -d 'pihole-regex' ]; then rm -R 'pihole-regex'; fi
 
-echo -e "\\n"
+echo
 read -p 'Press enter to continue: '
 clear
 
-echo -e "Restart Pihole's DNS?\\n"
+echo 'Restart Pihole'\''s DNS?'
+echo
 read -p '[Y]es or [N]o: ' uChoice
 clear
 if [[ "${uChoice}" == "Y" ]]; then pihole restartdns; fi
 
 echo
 echo 'Make sure to star this repository to show your support!'
-echo 'GitHub Repo:  https://github.com/slyfox1186/pihole-regex'
+echo 'GitHub Repository:  https://github.com/slyfox1186/pihole-regex'
 echo
