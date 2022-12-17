@@ -19,7 +19,6 @@ else
     read -p 'Press enter to start over.'
     unset iChoice
     bash 'pihole-regex/regex-whitelist.sh'
-    exit 1
 fi
 
 # remove all remaining files that were downloaded by wget
