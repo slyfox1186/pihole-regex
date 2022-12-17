@@ -13,6 +13,13 @@ elif [[ "${iChoice}" == "R" ]]; then
     curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-uninstall/regex-whitelist.py' | sudo python3
 elif [[ "${iChoice}" == "S" ]]; then
     clear
+else
+    echo 'Input error: Please try again.'
+    echo
+    read -p 'Press enter to start over.'
+    unset iChoice
+    bash "${0}"
+    exit 1
 fi
 
 # remove all remaining files that were downloaded by wget
