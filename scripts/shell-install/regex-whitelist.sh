@@ -3,7 +3,7 @@
 # make user input case insensitive
 shopt -s nocasematch
 
-fn_exit_white_regex
+fn_exit_white_regex()
 {
     clear
     echo 'Restart Pihole'\''s DNS?'
