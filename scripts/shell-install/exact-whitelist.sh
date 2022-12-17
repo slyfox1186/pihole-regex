@@ -19,7 +19,7 @@ else
     echo
     read -p 'Press enter to start over.'
     unset iChoice
-    bash "${0}"
+    bash 'pihole-regex/exact-whitelist.sh'
     exit 1
 fi
 
