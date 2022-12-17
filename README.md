@@ -1,6 +1,6 @@
-## A collection of *RegEx* and *Exact* filters for use with Pi-Hole® v5+ *FTLDNS*
+## A collection of *RegEx* and *Exact* filters for use with Pi-hole® v5+ *FTLDNS*
 
-The *purpose* of this repository is to compliment your existing **Pi-Hole** filters using ***powerful*** regular expressions (**RegEx**) that cover a broad range of domains ***in one go***. Included are an optional customized list of **Exact** filters and the ability to add or remove entries from the **Adlist Group**.
+The *purpose* of this repository is to compliment your existing **Pi-hole** filters using ***powerful*** regular expressions (**RegEx**) that cover a broad range of domains ***in one go***. Included are an optional customized list of **Exact** filters and the ability to add or remove entries from the **Adlist Group**.
 
 ## The filter lists
   - **[Adlist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt)**
@@ -10,7 +10,7 @@ The *purpose* of this repository is to compliment your existing **Pi-Hole** filt
   - **[RegEx Whitelist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/whitelist/regex-whitelist.txt)**
   
 ## Requirements and other important information
-* **Made for:** Pi-Hole (FTLDNS) v5+
+* **Made for:** Pi-hole (FTLDNS) v5+
   - Website: [https://pi-hole.net/](https://pi-hole.net/)
 
 * **Required Packages:**
@@ -21,7 +21,7 @@ The *purpose* of this repository is to compliment your existing **Pi-Hole** filt
 
 * **Adlist info:** If you choose the "remove adlists" option it should only affect the lists added by this script.
 
-## If you're *not* on the PC that's running Pi-Hole
+## If you're *not* on the PC that's running Pi-hole
 * **Use your ssh client of choice (examples below)**
   - **[PuTTY](https://www.putty.org/)**
   - **[OpenSSH](https://www.openssh.com/)**
