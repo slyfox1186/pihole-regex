@@ -38,6 +38,9 @@
 ^beacons[\d]*\.gvt[\d]+\.com$
 ^clients[1-6]*\.google\.com$
 
+# HBBTV
+^hbbtv\.(prosieben|redbutton|zdf|ard)\.de$
+
 # LG-TV - This is needed for essential services such as possible firmware update checks for LG Smart TV's
 ^aic\.(homeprv|service)\.lgtvcommon\.com$
 
