@@ -334,7 +334,6 @@ if db_exists:
     finally:
         print('\n')
         print('[i] The Exact whitelist filters have been added to Gravity!')
-        print('\n')
 else:
 
     if os.path.isfile(gravity_whitelist_location) and os.path.getsize(gravity_whitelist_location) > 0:
@@ -369,5 +368,4 @@ else:
             fWrite.write("{}\n".format(line))
 
     print('[i] The Exact whitelist filters have been added to Gravity!')
-    print('\n')
     time.sleep(2)
