@@ -18,7 +18,7 @@ else
     echo
     read -p 'Press enter to start over.'
     unset iChoice
-    bash "${0}"
+    bash 'pihole-regex/regex-whitelist.sh'
     exit 1
 fi
 
