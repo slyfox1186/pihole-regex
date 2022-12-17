@@ -7,13 +7,11 @@ import subprocess
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
-
 def fetch_blacklist_url(url):
-
     if not url:
         return
 
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0'}
+    headers = {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:108.0) Gecko/20100101 Firefox/108.0'}
 
     print('[i] Fetching:', url)
 
