@@ -64,5 +64,9 @@
 (0, 'us1.qnap.com', 1, 'QNAP - NAS Storage Computers - SlyEWL')
 (0, 'www.qnap.com', 1, 'QNAP - NAS Storage Computers - SlyEWL')
 
+(0, 'hbbtv.prosieben.de', 1, 'HBB TV - SlyEWL')
+(0, 'hbbtv.redbutton.de', 1, 'HBB TV - SlyEWL')
+(0, 'hbbtv.zdf.de', 1, 'HBB TV - SlyEWL')
+
 # RegEx Strings
 ^kosmos(|-assets)-prod\.react\.gammacdn\.com$
