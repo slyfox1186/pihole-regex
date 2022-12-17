@@ -10,7 +10,6 @@ import time
 
 today = int(time.time())
 
-
 def fetch_whitelist_url(url):
 
     if not url:
@@ -278,7 +277,7 @@ if db_exists:
                         cursor.executescript(sql_add)
                         w -= 1
             # Re-Check Gravity database for domains added by script after we update it
-            gravityScript_after = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%SlyEBL%' ")
+            gravityScript_after = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%SlyEWL%' ")
             # Fetch all matching entries which will create a tuple for us
             gravScriptAfterTUP = gravityScript_after.fetchall()
             # Number of domains in database from script
