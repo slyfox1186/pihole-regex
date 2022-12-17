@@ -95,6 +95,7 @@ if os.access(pihole_location, os.X_OK | os.W_OK):
     remote_whitelist_lines += 1
 else:
     print("[X] Write access is not available for {}. Please run the script as an administrator." .format(pihole_location))
+    print('\n')
     exit(1)
 
 # Determine whether we are using DB or not
@@ -114,6 +115,7 @@ if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) 
         exit(1)
 else:
     print('[i] Legacy Pi-hole detected (Version older than 5.0).')
+    print('\n')
 
 # If domains were fetched, remove any comments and add to set
 if whitelist_str:
@@ -161,6 +163,8 @@ if db_exists:
             # Uncomment to see list of domains being imported
             # print(newwhitelist[nwl])
             nwl += 1 # count + 1
+
+        # Check database for user added exact whitelisted domains
         print("[i] Checking for matching domains already found in Gravity's database.")
         # Check Gravity database for exact whitelisted domains added by user
         user_add = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment NOT LIKE '%SlyEWL - github.com/slyfox1186/pihole-regex%' ")
@@ -252,6 +256,7 @@ if db_exists:
         # If there are domains in new list that are NOT in Gravity
         if ilng == True: # Add domains that are missing from new script and not user additions
             print("[i] {} domain's are not currently in Gravity and will be added." .format(INnewNOTgravityListCount+1))
+            print('\n')
             a = 0
             while w >= 0:
                 a += 1
