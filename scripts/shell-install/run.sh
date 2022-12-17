@@ -16,7 +16,8 @@ mkdir -p 'pihole-regex'
 SCRIPTS='exact-blacklist.sh exact-whitelist.sh regex-blacklist.sh regex-whitelist.sh'
 MOVE_FILES=( ${SCRIPTS} run.sh )
 # If the shell scripts exist, move them to the pihole-regex dir
-for i in "${MOVE_FILES[@]}"; do
+for i in "${MOVE_FILES[@]}"
+do
     if [ -f "${i}" ]; then
         mv -f "${i}" 'pihole-regex'
     else
@@ -29,6 +30,8 @@ for i in "${MOVE_FILES[@]}"; do
         exit 1
     fi
 done
+
+# remove variable i since it is reused in the next step
 unset i
 
 # execute all scripts in the pihole-regex folder
