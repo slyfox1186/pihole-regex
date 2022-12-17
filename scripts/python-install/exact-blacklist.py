@@ -334,7 +334,6 @@ if db_exists:
     finally:
         print('\n')
         print('[i] The Exact blacklist filters have been added to Gravity!')
-        print('\n')
 else:
 
     if os.path.isfile(gravity_blacklist_location) and os.path.getsize(gravity_blacklist_location) > 0:
