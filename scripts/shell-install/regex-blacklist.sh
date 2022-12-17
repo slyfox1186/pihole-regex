@@ -8,9 +8,9 @@ clear
 read -p 'RegEx Blacklist >> [A]dd [R]emove [S]kip: ' iChoice
 clear
 if [[ "${iChoice}" == "A" ]]; then
-    curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-install/regex-blacklist.py' | sudo python3
+    curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-install/regex-blacklist.py' | python3
 elif [[ "${iChoice}" == "R" ]]; then
-    curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-uninstall/regex-blacklist.py' | sudo python3
+    curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-uninstall/regex-blacklist.py' | python3
 elif [[ "${iChoice}" == "S" ]]; then
     source 'pihole-regex/regex-whitelist.sh'
     exit
