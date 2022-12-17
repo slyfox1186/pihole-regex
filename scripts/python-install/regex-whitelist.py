@@ -241,14 +241,12 @@ if db_exists:
             INgravityNOTnewListCount = 0
             print('[i] The search returned {} domains.' .format(INgravityNOTnewListCount))
         #
-        #
         # Check Gravity database for new domains to be added by script
         INnewNOTgravityList = [None] * newwhitelistlen
         w = 0
         if ignl == True:
             print('\n')
         #
-        print('\n')
         print('[i] Preparing to add missing domains to Gravity.')
         ilng = False
         for INnewNOTgravity in newwhitelist: # For every domain in the new script
@@ -318,17 +316,14 @@ if db_exists:
         total_domains_E = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 ")
         tde = len(total_domains_E.fetchall())
         total_domains = tdr + tde
-        print('\n')
         print("[i] There are a total of {} domains in Gravity's updated whitelist [ RegEx({}) | Exact({}) ]" .format(total_domains, tdr, tde))
         sqliteConnection.close()
-        print('\n')
         print("[i] The connection to the Gravity database has closed.")
         time.sleep(2)
 
     except sqlite3.Error as error:
         print('\n')
         print("[X] Failed to insert domains into Gravity's database.", error)
-        print('\n')
         exit(1)
 
     finally:
