@@ -5,19 +5,19 @@ shopt -s nocasematch
 
 fn_exit_white_regex
 {
-clear
-echo 'Restart Pihole'\''s DNS?'
-echo
-read -p '[Y]es or [N]o: ' uChoice
-clear
-if [[ "${uChoice}" == "Y" ]]; then pihole restartdns; fi
-# remove all files that were downloaded
-if [ -d 'pihole-regex' ]; then rm -R 'pihole-regex'; fi
-echo
-echo 'Make sure to star this repository to show your support!'
-echo 'GitHub Repository:  https://github.com/slyfox1186/pihole-regex'
-echo
-exit
+    clear
+    echo 'Restart Pihole'\''s DNS?'
+    echo
+    read -p '[Y]es or [N]o: ' uChoice
+    clear
+    if [[ "${uChoice}" == "Y" ]]; then pihole restartdns; fi
+    # remove all files that were downloaded
+    if [ -d 'pihole-regex' ]; then rm -R 'pihole-regex'; fi
+    echo
+    echo 'Make sure to star this repository to show your support!'
+    echo 'GitHub Repository:  https://github.com/slyfox1186/pihole-regex'
+    echo
+    exit
 }
 
 # Get user's input
