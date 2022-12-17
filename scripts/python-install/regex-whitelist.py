@@ -29,7 +29,7 @@ def fetch_whitelist_url(url):
 
     # Read and decode
     response = response.read().decode('UTF-8').replace('\r\n', '\n')
-
+    
     # If there is data
     if response:
         # Strip leading and trailing whitespace
