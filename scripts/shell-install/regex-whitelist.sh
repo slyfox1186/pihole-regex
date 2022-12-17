@@ -20,18 +20,3 @@ else
     unset iChoice
     bash 'pihole-regex/regex-whitelist.sh'
 fi
-
-# remove all remaining files that were downloaded by wget
-if [ -d 'pihole-regex' ]; then rm -R 'pihole-regex'; fi
-
-echo -e "\\n"
-read -p 'Press enter to continue: '
-clear
-
-echo -e "Restart Pihole's DNS?\\n"
-read -p '[Y]es or [N]o: ' uChoice
-clear
-if [[ "${uChoice}" == "Y" ]]; then pihole restartdns; fi
-
-echo -e "\\nMake sure to star this repository to show your support!"
-echo -e "GitHub Repo:  https://github.com/slyfox1186/pihole-regex\\n"
