@@ -294,6 +294,7 @@ if db_exists:
                 print('\n')
                 print("[i] All {} new domain's were added to Gravity." .format(newblacklistlen))
             else:
+                print('\n')
                 print("[i] {} missing domain's have not been added to Gravity." .format(INnewNOTgravityListCount+1))
 
         else: # We should be done now
