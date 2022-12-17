@@ -82,14 +82,13 @@ whitelist_slyfox1186_local = set()
 whitelist_old_slyfox1186 = set()
 
 os.system('clear')
-print('If you are using Pi-hole v5.0 or later, this script will only remove domains that were added by itself.')
+print('This script should only remove domains that were added by itself.')
 print('Any other domains added personally by the user will remain uneffected.')
 
 # Check for pihole path exsists
 if os.path.exists(pihole_location):
     print('\n')
     print("[i] Pi-hole's path exists!")
-    print('\n')
 else:
     print("[X] {} was not found!".format(pihole_location))
     print('\n')
@@ -116,9 +115,8 @@ if os.path.isfile(gravity_db_location) and os.path.getsize(gravity_db_location) 
     remote_sql_lines += 1
 
     if len(remote_sql_str) > 0:
-        print("[i] {} domains were discovered" .format(remote_whitelist_lines))
-        print('\n')
-                   
+        print("[i] {} domains were discovered!" .format(remote_whitelist_lines))
+
     else:
         print('[X] No remote SQL queries were found!')
         print('\n')
@@ -137,30 +135,24 @@ else:
 if db_exists:
     # Create a DB connection
     print("[i] Connecting to Gravity's database...")
-               
 
     try:
         sqliteConnection = sqlite3.connect(gravity_db_location)
         cursor = sqliteConnection.cursor()
-        print("[i] Successfully connected to Gravity's database
-        print('\n')
-        total_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%SlyEWL%' ")
+        print("[i] Successfully connected to Gravity's database!")
+        total_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 AND comment LIKE '%SlyEBL%' ")
 
         totalDomains = len(total_domains.fetchall())
         print("[i] {} domains in the updated whitelist were added by this script." .format(totalDomains))
-        print('\n')
         print("[i] Removing domains from Gravity's database...")
-        print('\n')
-        cursor.execute (" DELETE FROM domainlist WHERE type = 0 AND comment LIKE '%SlyEWL%' ")
+        cursor.execute (" DELETE FROM domainlist WHERE type = 0 AND comment LIKE '%SlyEBL%' ")
 
         sqliteConnection.commit()
 
         # We only removed domains we added so use total_domains
-                   
-        print("[i] {} domains were removed!" .format(totalDomains))
+        print("[i] There were {} domains removed from Gravity." .format(totalDomains))
         remaining_domains = cursor.execute(" SELECT * FROM domainlist WHERE type = 0 OR type = 2 ")
-        print("[i] There are a total of {} domains remaining in your whitelist." .format(len(remaining_domains.fetchall())))
-
+        print("[i] {} domains remain in Gravity's whitelist." .format(len(remaining_domains.fetchall())))
         cursor.close()
 
     except sqlite3.Error as error:
@@ -173,12 +165,9 @@ if db_exists:
             sqliteConnection.close()
 
             print("[i] The connection to the Gravity database has closed!")
-            print('\n')
             print('[i] Wait for Pi-hole to reboot...')
-            print('\n')
             restart_pihole(args.docker)
-            print('\n')        
-
+            print('\n')
             print('[i] The Exact Whitelist filters have been removed from Gravity!')
 
 else:
@@ -189,12 +178,10 @@ else:
                 str.strip, fRead) if x and x[:1] != '#')
 
     if whitelist_local:
-        print("[i] {} existing whitelisted domains identified" .format(len(whitelist_local)))
-        print('\n')
+        print("[i] {} existing whitelisted identified." .format(len(whitelist_local)))
 
         if os.path.isfile(slyfox1186_whitelist_location) and os.path.getsize(slyfox1186_whitelist_location) > 0:
             print('[i] Existing slyfox1186-whitelist installation located.')
-                       
             with open(slyfox1186_whitelist_location, 'r') as fOpen:
                 whitelist_old_slyfox1186.update(x for x in map(
                     str.strip, fOpen) if x and x[:1] != '#')
@@ -206,7 +193,6 @@ else:
 
         else:
             print('[i] Removing the whitelists now...')
-            print('\n')
             whitelist_local.difference_update(whitelist_remote)
 
     print("[i] Adding exsisting {} domains to {}" .format(
@@ -215,8 +201,6 @@ else:
         for line in sorted(whitelist_local):
             fWrite.write("{}\n".format(line))
 
-    print('\n')
     print('[i] Wait for Pi-hole to reboot...')
     restart_pihole(args.docker)                                                    
-    print('\n')
     print('[i] The Exact Whitelist filters have been removed from Gravity!')
