@@ -13,6 +13,7 @@ elif [[ "${iChoice}" == "R" ]]; then
     curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-uninstall/exact-whitelist.py' | python3
 elif [[ "${iChoice}" == "S" ]]; then
     clear
+    return
 else
     echo 'Input error: Please try again.'
     echo
