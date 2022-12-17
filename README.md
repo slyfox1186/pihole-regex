@@ -23,8 +23,8 @@ The *purpose* of this repository is to compliment your existing **Pi-hole** filt
 
 ## If you're *not* on the PC that's running Pi-hole
 * **Use your ssh client of choice (examples below)**
-  - **[PuTTY](https://www.putty.org/)**
   - **[OpenSSH](https://www.openssh.com/)**
+  - **[PuTTY](https://www.putty.org/)**
   - **[Termius](https://termius.com/)**
 
 ## **The user will be prompted to press a key to advance their choices**
