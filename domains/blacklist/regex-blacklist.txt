@@ -41,7 +41,6 @@
 (^|\.)lgsmartad\.com
 (^|\.)rdx2\.lgtvsdp\.com
 (^|\.)smartshare\.lgtvsdp\.com
-^[a-z]{11,15}$
 
 # Oculus Rift
 (\.|^)graph\.oculus\.com$
