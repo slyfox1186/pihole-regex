@@ -36,17 +36,3 @@ unset i
 
 # execute all scripts in the pihole-regex folder
 for i in ${SCRIPTS[@]}; do source 'pihole-regex'/"${i}"; done
-
-# remove all files that were downloaded
-if [ -d 'pihole-regex' ]; then rm -R 'pihole-regex'; fi
-
-echo 'Restart Pihole'\''s DNS?'
-echo
-read -p '[Y]es or [N]o: ' uChoice
-clear
-if [[ "${uChoice}" == "Y" ]]; then pihole restartdns; fi
-
-echo
-echo 'Make sure to star this repository to show your support!'
-echo 'GitHub Repository:  https://github.com/slyfox1186/pihole-regex'
-echo
