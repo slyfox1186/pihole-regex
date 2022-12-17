@@ -20,7 +20,6 @@ else
     read -p 'Press enter to start over.'
     unset iChoice
     bash 'pihole-regex/regex-blacklist.sh'
-    exit 1
 fi
 
 echo
