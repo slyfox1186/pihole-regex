@@ -20,3 +20,6 @@ else
     unset iChoice
     bash 'pihole-regex/regex-whitelist.sh'
 fi
+
+echo
+read -p 'Press Enter to continue: '
