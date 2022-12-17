@@ -31,7 +31,7 @@ do
     fi
 done
 
-# remove variable i since it is reused in the next step
+# remove variable 'i' since it is reused in the next step
 unset i
 
 # execute all scripts in the pihole-regex folder
