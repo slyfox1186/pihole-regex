@@ -14,6 +14,13 @@ elif [[ "${iChoice}" == "R" ]]; then
 elif [[ "${iChoice}" == "S" ]]; then
     source 'pihole-regex/exact-whitelist.sh'
     exit
+else
+    echo 'Input error: Please try again.'
+    echo
+    read -p 'Press enter to start over.'
+    unset iChoice
+    bash "${0}"
+    exit 1
 fi
 
 echo
