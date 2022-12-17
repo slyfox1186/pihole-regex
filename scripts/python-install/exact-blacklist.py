@@ -10,7 +10,6 @@ import time
 
 today = int(time.time())
 
-
 def fetch_blacklist_url(url):
 
     if not url:
@@ -368,5 +367,4 @@ else:
             fWrite.write("{}\n".format(line))
 
     print('[i] The Exact blacklist filters have been added to Gravity!')
-    print('\n')
     time.sleep(2)
