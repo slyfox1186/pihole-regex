@@ -203,6 +203,7 @@ else:
     subprocess.run(cmd_restart, stdout=subprocess.DEVNULL)
 
     # Prepare final result
+    print('\n')
     print('[i] If any RegEx filter are left they will show below.')
     print('\n')
     with open(path_legacy_regex, 'r') as fOpen:
