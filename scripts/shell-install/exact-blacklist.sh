@@ -12,7 +12,7 @@ if [[ "${iChoice}" == "A" ]]; then
 elif [[ "${iChoice}" == "R" ]]; then
     curl -sSl 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-uninstall/exact-blacklist.py' | python3
 elif [[ "${iChoice}" == "S" ]]; then
-    source 'pihole-regex/exact-whitelist.sh'
+    clear
 else
     echo 'Input error: Please try again.'
     echo
