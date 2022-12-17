@@ -1,4 +1,4 @@
-## A collection of *RegEx* and *Exact* filters for use with Pi-Hole® *FTLDNS*
+## A collection of *RegEx* and *Exact* filters for use with Pi-Hole® v5+ *FTLDNS*
 
 The *purpose* of this repository is to compliment your existing **Pi-Hole** filters using ***powerful*** regular expressions (**RegEx**) that cover a broad range of domains ***in one go***. Included are an optional customized list of **Exact** filters and the ability to add or remove entries from the **Adlist Group**.
 
