@@ -40,10 +40,6 @@ for i in ${SCRIPTS[@]}; do source 'pihole-regex'/"${i}"; done
 # remove all files that were downloaded
 if [ -d 'pihole-regex' ]; then rm -R 'pihole-regex'; fi
 
-echo
-read -p 'Press enter to continue: '
-clear
-
 echo 'Restart Pihole'\''s DNS?'
 echo
 read -p '[Y]es or [N]o: ' uChoice
