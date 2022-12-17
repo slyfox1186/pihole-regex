@@ -31,7 +31,24 @@ for i in "${ADD_FILE[@]}"; do
 done
 unset i
 
-# execute all scripts in pihole-regex
+# execute all scripts in the pihole-regex folder
 for i in ${FILES[@]}; do
     source 'pihole-regex'/"${i}"
 done
+
+# remove all remaining files that were downloaded by wget
+if [ -d 'pihole-regex' ]; then rm -R 'pihole-regex'; fi
+
+echo -e "\\n"
+read -p 'Press enter to continue: '
+clear
+
+echo -e "Restart Pihole's DNS?\\n"
+read -p '[Y]es or [N]o: ' uChoice
+clear
+if [[ "${uChoice}" == "Y" ]]; then pihole restartdns; fi
+
+echo
+echo 'Make sure to star this repository to show your support!'
+echo 'GitHub Repo:  https://github.com/slyfox1186/pihole-regex'
+echo
