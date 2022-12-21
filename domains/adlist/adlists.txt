@@ -19,7 +19,7 @@ https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist
 ## below may not exist anymore. They duplicate this list to the max.
 https://dbl.oisd.nl/
 
-## I used Spotify a lot and this list has lit up pi-hole's blocking like a Christmas tree.
+## I use Spotify a lot and this list has lit up pi-hole's blocking like a Christmas tree.
 https://raw.githubusercontent.com/dfederlein/dnsbl-dfed/master/spotifyads.txt
 
 ## Firebog "Safe Lists" (Reduced due to my tests mentioned above.) https://firebog.net/
