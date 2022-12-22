@@ -43,15 +43,6 @@
 (^|\.)rdx2\.lgtvsdp\.com
 (^|\.)smartshare\.lgtvsdp\.com
 
-# Oculus Rift
-(\.|^)graph\.oculus\.com$
-(\.|^)oculuscdn\.com$
-(\.|^)oculusrift\.com$
-(\.|^)oculusvr\.com$
-(\.|^)oculus\.c10r\.facebook\.com$
-(\.|^)oculus\.com$
-(\.|^)powersunitedvr\.com$
-
 # OK.ru
 (\.|^)ok\.ru$
 
@@ -93,21 +84,6 @@
 # Spotify
 (\.|^)log[0-9]*\.spotify\.com$
 (\.|^)pixel(|-static)\.spotify\.com$
-
-# TikTok
-(\.|^)amemv\.com$
-(\.|^)bdurl\.com$
-(\.|^)bytecdn\.cn$
-(\.|^)bytedance\.map\.fastly\.net$
-(\.|^)byteimg\.com$
-(\.|^)douyin\.com$
-(\.|^)ixigua(|video)\.com$
-(\.|^)muscdn\.com$
-(\.|^)musical\.ly$
-(\.|^)pstatp\.com$
-(\.|^)snssdk\.com$
-(\.|^)tiktok[cdnv]*\.com$
-(\.|^)toutiao[cloud]*\.(com|net)$
 
 # Tinder
 (\.|^)[go]*tinder[sparks]*\.com$
