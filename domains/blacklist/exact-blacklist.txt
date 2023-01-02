@@ -185,6 +185,7 @@ tvsideviewandroidv2-cfgdst-ore-pro.bda.ndmdhs.com
 tv-static.scdn.co
 upu.samsungelectronics.com
 usage.trackjs.com
+user3p.veloxzone.com.br
 us-api.samsungyosemite.com
 us.ibs.lgappstv.com
 vd.contents.prod.eu.s3.amazonaws.com
