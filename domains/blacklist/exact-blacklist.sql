@@ -185,6 +185,7 @@
 (1, 'tv-static.scdn.co', 1, 'Other - SlyEBL')
 (1, 'upu.samsungelectronics.com', 1, 'Samsung - SlyEBL')
 (1, 'usage.trackjs.com', 1, 'AdultTime - SlyEBL')
+(1, 'user3p.veloxzone.com.br', 1, 'Suspected Malware pushing spam email attacks - SlyEBL')
 (1, 'us-api.samsungyosemite.com', 1, 'Samsung - SlyEBL')
 (1, 'us.ibs.lgappstv.com', 1, 'LG-TV - SlyEBL')
 (1, 'vd.contents.prod.eu.s3.amazonaws.com', 1, 'Samsung - SlyEBL')
