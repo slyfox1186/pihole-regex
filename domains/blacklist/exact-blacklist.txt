@@ -78,12 +78,14 @@ dr-eshop-us.qnap.com
 dr-software.qnap.com
 e2.resources.foxtel.com.au
 engine-cm.tiypa.com
+estore.iobit.com
 events.cid.samba.tv
 facemap.foldlife.net
 file2fxm.azureedge.net
 flingo.tv
 foxtel-prod-events.digitalsmiths.net
 game.internetat.tv
+giveaway.iobit.com
 gld.samsungosp.com
 googleads.g.doubleclick.net
 go.qnap.com
@@ -175,8 +177,10 @@ ssm2.internet.sony.tv
 ssm3.internet.sony.tv
 start.digitaltext.rtl.de
 stats.hbbtv.smartclip.net
+stats.iobit.com
 stats-irl.sxp.smartclip.net
 streaming-fame.gammacdn.com
+survey.iobit.com
 syncplusconfig.s3.amazonaws.com
 targeted-config-test.samsungacr.com
 test.samsungrm.net
@@ -185,8 +189,8 @@ tvsideviewandroidv2-cfgdst-ore-pro.bda.ndmdhs.com
 tv-static.scdn.co
 upu.samsungelectronics.com
 usage.trackjs.com
-user3p.veloxzone.com.br
 us-api.samsungyosemite.com
+user3p.veloxzone.com.br
 us.ibs.lgappstv.com
 vd.contents.prod.eu.s3.amazonaws.com
 vd.emp.prd.s3.amazonaws.com
