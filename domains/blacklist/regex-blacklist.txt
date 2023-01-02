@@ -109,7 +109,7 @@
 ^dns-[a-z0-9]+\.sombrero\.yahoo\.net$
 ^ds-beap[0-9]\.[a-z]{2}\.[a-z0-9]+\.yahoodns\.net$
 ^ds-global[0-9]\.l[0-9].search\.[a-z0-9]+\.yahoo\.com$
-^nado-ecs-lb-[a-z]{2}-[a-z]+-[0-9]-[0-9]+\.
+^nado-ecs-lb-[a-z]+-[a-z]+-[0-9]-[0-9]+\.[a-z]+-[a-z]+-[0-9]\.elb\.amazonaws\.com$
 ^prod-elb-ats-[0-9]+\.[a-z]{2}-[a-z]+-[0-9]\.elb\.amazonaws\.com$
 ^ssp-ats-prod-[a-z\-]+-[0-9]\.one-mobile-prod\.aws\.oath\.cloud$
 ^uplynk-beacon-newvpc-[0-9]+\.[a-z]{2}-[a-z]+-[0-9]\.elb\.amazonaws\.com$
