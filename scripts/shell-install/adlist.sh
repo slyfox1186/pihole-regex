@@ -13,6 +13,19 @@ clear
 ##  - in each domain's comment section as a way to identify what domains need removing and what needs to be ignored.
 ##
 
+# VERIFY THE SCRIPT HAS ROOT ACCESS BEFORE CONTINUING
+if [[ "${EUID}" -gt '0' ]]; then
+    echo 'You must run this script as root/sudo'
+    echo
+    exit 1
+fi
+
+if ! which sqlite3; then
+    echo 'sqlite3 must be installed to run this script.'
+    echo
+    exit 1
+fi
+
 # Delete any extra files that were downloaded alongside the other scripts that have no uses.
 if [[ -f 'index.html' ]]; then rm 'index.html'; fi
 if [[ -f 'urls.txt' ]]; then rm 'urls.txt'; fi
