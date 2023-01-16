@@ -242,7 +242,6 @@
 (0, 'entitlement.auth.adobe.com', 1, 'Adobe - SlyEWL')
 (0, 'eos-gateway-ingressv2-prod-c2-w4.befa.live.use1a.on.epicgames.com', 1, 'Epic Games - Loads essential game traffic for online play - SlyEWL')
 (0, 'epg.corio.com', 1, 'Philips TV - SlyEWL')
-(0, 'eulatracking-public-service-prod06.ol.epicgames.com', 1, 'Epic Games - Required to install games - SlyEWL')
 (0, 'europe.cp.wd.microsoft.com', 1, 'Microsoft - SlyEWL')
 (0, 'europe.smartscreen-prod.microsoft.com', 1, 'Microsoft - SlyEWL')
 (0, 'europe.smartscreen.microsoft.com', 1, 'Microsoft - SlyEWL')
