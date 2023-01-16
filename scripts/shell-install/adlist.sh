@@ -175,5 +175,6 @@ fi
 fn_gravity
 # Prompt the user to restart Pi-hole's DNS
 fn_dns
+rm -f "${0}"
 # Show exit message
 fn_done
