@@ -303,6 +303,7 @@ gsp1.apple.com
 gstatic.com', 1, 'Google - gstatic.com
 gstaticadssl.l.google.com
 gucl-6.ap.spotify.com
+h-microsoft.online-metrix.net
 h-sdk.online-metrix.net
 has.spserv.microsoft.com
 heartbeat.dm.origin.com
@@ -681,6 +682,7 @@ videothumb.gammacdn.com
 vidtech.cbsinteractive.com
 vimeo.com
 vjs.zencdn.net
+vlscppe.microsoft.com
 vo.aicdn.com
 vpp.itunes.apple.com
 wa.me
