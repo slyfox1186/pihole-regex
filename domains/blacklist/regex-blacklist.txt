@@ -26,6 +26,9 @@
 (\.|^)symcd\.com$
 (\.|^)[s1-5\.]*?symcb\.com$
 
+# Amazon
+^(\.|^)iad\.amazon\.com$
+
 # Bittorrent
 (\.|^)xyz$
 
