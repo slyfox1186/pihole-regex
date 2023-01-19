@@ -58,11 +58,14 @@ cpu.samsungelectronics.com
 customerevents.netflix.com
 d-20p1an5qn.qnap.com
 d179kwmlpc4o47.cloudfront.net
+d186rixkn5ruba.cloudfront.net
 d1jwpcr0q4pcq0.cloudfront.net
+d1ut6fykkt3imt.cloudfront.net
 d27xxe7juh1us6.cloudfront.net
 d2tnx644ijgq6i.cloudfront.net
 d306ecvlh9tfv.cloudfront.net
 d37ju0xanoz6gh.cloudfront.net
+d3aqoihi2n8ty8.cloudfront.net
 d3cqix4sol87xw.cloudfront.net
 d3mjsomixevyw7.cloudfront.net
 data.arqiva.tv
