@@ -183,6 +183,7 @@
 (0, 'd2c8v52ll5s99u.cloudfront.net', 1, 'Amazon - Used to deliver media such as videos in entertainment and news sites - SlyEWL')
 (0, 'd2gatte9o95jao.cloudfront.net', 1, 'Amazon - Used to deliver media such as videos in entertainment and news sites - SlyEWL')
 (0, 'd3a3ewgd1iewwz.cloudfront.net', 1, 'AdultTime - A required CDN of the site to access image, videos, etc - SlyEWL')
+(0, 'd3aqoihi2n8ty8.cloudfront.net', 1, 'Twitch.tv - Required to load the live streams you want to see - SlyEWL')
 (0, 'd83eunklitikj.cloudfront.net', 1, 'Cloudfront - SlyEWL')
 (0, 'daily-mix.scdn.co', 1, 'Spotify - SlyEWL')
 (0, 'dailymix-images.scdn.co', 1, 'Spotify - SlyEWL')
