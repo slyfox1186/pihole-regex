@@ -1,3 +1,4 @@
+(1, 'd27xxe7juh1us6.cloudfront.net', 1, 'Yahoo.com + Twitch.tv - Video Ads - SlyEBL')
 (1, '0077777700140002.myhomescreen.tv', 1, 'Panasonic - SlyEBL')
 (1, '2mdn.net', 1, 'Other - SlyEBL')
 (1, '7345023508.fxm9485766783.com', 1, 'Toshiba - SlyEBL')
