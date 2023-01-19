@@ -181,6 +181,7 @@ d1oxlq5h9kq8q5.cloudfront.net
 d2c8v52ll5s99u.cloudfront.net
 d2gatte9o95jao.cloudfront.net
 d3a3ewgd1iewwz.cloudfront.net
+d3aqoihi2n8ty8.cloudfront.net
 d83eunklitikj.cloudfront.net
 daily-mix.scdn.co
 dailymix-images.scdn.co
