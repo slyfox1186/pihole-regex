@@ -381,6 +381,7 @@ login.aliexpress.com
 login.live.com
 login.microsoftonline.com
 login5.spotify.com
+logincdn.msauth.net
 logs.juspay.in
 lzzos7clo5.execute-api.us-east-1.amazonaws.com
 m.facebook.com
@@ -700,6 +701,7 @@ win10.ipv6.microsoft.com
 win10.prod.http1.netflix.com
 win1710.ipv6.microsoft.com
 winatp-gw-neu.microsoft.com
+windows.msn.com
 winhelp2002.mvps.org
 wl.spotify.com
 wordpress.com
