@@ -1,3 +1,4 @@
+
 0.client-channel.google.com
 1drv.com
 2.android.pool.ntp.org
@@ -47,6 +48,7 @@ api.ipify.org
 api.pluto.tv
 api.rlje.net
 api.termius.com
+api.topaz-labs.net
 api.twitter.com
 api.us.hismarttv.com
 api.vizio.com
@@ -241,7 +243,6 @@ entitlement-public-service-prod.ak.epicgames.com
 entitlement.auth.adobe.com
 eos-gateway-ingressv2-prod-c2-w4.befa.live.use1a.on.epicgames.com
 epg.corio.com
-et.topazlabs.com
 europe.cp.wd.microsoft.com
 europe.smartscreen-prod.microsoft.com
 europe.smartscreen.microsoft.com
@@ -421,7 +422,6 @@ mobile-ap.spotify.com
 mobile.pipe.aria.microsoft.com
 mobile.twitter.com
 mobileandroidapi.punchh.com
-models.topazlabs.com
 mqtt-mini.facebook.com
 mqtt.c10r.facebook.com
 mrs-efz.ms-acdc.office.com
