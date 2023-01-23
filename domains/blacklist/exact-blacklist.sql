@@ -25,6 +25,7 @@
 (1, 'api.distribution.hulu.com', 1, 'Hulu - SlyEBL')
 (1, 'api.nfl.com', 1, 'Other - SlyEBL')
 (1, 'api.statsig.com', 1, 'AdultTime - SlyEBL')
+(1, 'api.topaz-labs.net', 1, 'Topaz Labs - Blocks Telemetry - SlyEBL')
 (1, 'applytics.nordvpn.com', 1, 'NordVPN - Telemetry - SlyEBL')
 (1, 'apu.samsungelectronics.com', 1, 'Samsung - SlyEBL')
 (1, 'audio-sp-sea.spotifycdn.net', 1, 'Spotify - SlyEBL')
