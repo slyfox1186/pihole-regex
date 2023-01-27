@@ -86,6 +86,7 @@
 (0, 'axm-adm-scep.apple.com', 1, 'Apple - SlyEWL')
 (0, 'axm-app.apple.com', 1, 'Apple - SlyEWL')
 (0, 'ax.phobos.apple.com.edgesuite.net', 1, 'Apple - Used by Apple Photos - SlyEWL')
+(0, 'azure.com', 1, 'Microsoft - Azure is a major part of their cloud network - SlyEWL')
 (0, 'b-api.facebook.com', 1, 'Facebook - SlyEWL')
 (0, 'best.aliexpress.com', 1, 'Misc - SlyEWL')
 (0, 'b-graph.facebook.com', 1, 'Facebook - SlyEWL')
