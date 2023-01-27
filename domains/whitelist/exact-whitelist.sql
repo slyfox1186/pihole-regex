@@ -340,6 +340,7 @@
 (0, 'imgix.net', 1, 'Misc - SlyEWL')
 (0, 'imgs.xkcd.com', 1, 'XKCD - Used to deliver images - SlyEWL')
 (0, 'img.vidible.tv', 1, 'Video delivery systems, popular in entertainment and news sites - SlyEWL')
+(0, 'incoming.telemetry.mozilla.org', 1, 'FireFox - Required to sync your account with the desktop browser - SlyEWL')
 (0, 'infolink.pavv.co.kr', 1, 'Philips TV - SlyEWL')
 (0, 'instagram.c10r.facebook.com', 1, 'Facebook - SlyEWL')
 (0, 'instantmessaging-pa.googleapis.com', 1, 'Google - An important domain used to provide APIs to various Google services - SlyEWL')
