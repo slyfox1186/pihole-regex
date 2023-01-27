@@ -20,9 +20,12 @@
 (\.|^)amd\.com$
 
 # Apple - Main domains for a good chunk of legitimate iOS services
-(\.|^)(appattest|apps|business|gc|iwork|push|school)\.apple\.com$
-(\.|^)(apzones|mzstatic)\.com$
+(\.|^)amazonaws\.com$
+(\.|^)(appattest|apps|business|cdn-apple|gc|itunes|iwork|push|school)\.apple\.com$
 (\.|^)apple-(cloudkit|livephotoskit)\.com$
+(\.|^)(apzones|digicert|mzstatic)\.com$
+(\.|^)symc[bd]?+\.com$
+^gg.*\.apple\.com$
 ^(ocsp[0-9]*?\.(apple|digicert|entrust|verisign)\.(com|net))$
 
 # Chrome Browser Discord App MEE6 Support Website
