@@ -336,6 +336,7 @@ imasdk.googleapis.com
 imgix.net
 imgs.xkcd.com
 img.vidible.tv
+incoming.telemetry.mozilla.org
 infolink.pavv.co
 instagram.c10r.facebook.com
 instantmessaging-pa.googleapis.com
