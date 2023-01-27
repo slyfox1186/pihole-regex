@@ -184,6 +184,7 @@
 (0, 'ctldl.windowsupdate.com', 1, 'Microsoft - Required for getting the lastest Windows Updates - SlyEWL')
 (0, 'cws.conviva.com', 1, 'Conviva - Offers online video optimization and online video analytics. But it is neccessary to whitelist in order to watch many online contents - SlyEWL')
 (0, 'd1oxlq5h9kq8q5.cloudfront.net', 1, 'Cloudfront - SlyEWL')
+(0, 'd27xxe7juh1us6.cloudfront.net', 1, 'HBO Now App on Android TV / Nvidia Shield TV - SlyEBL')
 (0, 'd2c8v52ll5s99u.cloudfront.net', 1, 'Amazon - Used to deliver media such as videos in entertainment and news sites - SlyEWL')
 (0, 'd2gatte9o95jao.cloudfront.net', 1, 'Amazon - Used to deliver media such as videos in entertainment and news sites - SlyEWL')
 (0, 'd3a3ewgd1iewwz.cloudfront.net', 1, 'AdultTime - A required CDN of the site to access image, videos, etc - SlyEWL')
