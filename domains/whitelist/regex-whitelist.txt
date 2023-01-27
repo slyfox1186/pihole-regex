@@ -69,7 +69,7 @@
 (\.|^)thumbs\.redditmedia\.com
 (\.|^)[iv]?\.redd\.it$
 
-# Rob VanderWoude
+# Rob VanderWoude Learn how to code multiple languages
 (\.|^)robvanderwoude\.com$
 
 # Samsung
