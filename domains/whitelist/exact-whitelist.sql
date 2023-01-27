@@ -287,7 +287,7 @@
 (0, 'giphy.com', 1, 'Giphy - Gifs hosting platform - SlyEWL')
 (0, 'giphy-proxy-production.whispersystems.org', 1, 'Misc - SlyEWL')
 (0, 'gitcdn.github.io', 1, 'Crucial CDN server - SlyEWL')
-(0, 'github.com', 1, 'GitHub - provides hosting for software development and version control using Git - SlyEWL')
+(0, 'github.com', 1, 'GitHub - Provides hosting for software development and version control using Git - SlyEWL')
 (0, 'github.io', 1, 'GitHub - Used for GitHub pages - SlyEWL')
 (0, 'g.live.com', 1, 'Microsoft - Outlook.com and OneDrive products. Backup bitlocker recovery key to Microsoft account - SlyEWL')
 (0, 'global-dealer-ssl.spotify.com', 1, 'Spotify - SlyEWL')
