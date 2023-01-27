@@ -38,7 +38,6 @@
 ^lightswitch-public-service-prod[0-9]*\.ol\.epicgames\.com$
 
 # Facebook - Essentail CND servers
-(\.|^)facebook\.com$
 (\.|^)fbcdn\.net$
 ^[0-6]+?-edge-chat\.facebook\.com$
 
