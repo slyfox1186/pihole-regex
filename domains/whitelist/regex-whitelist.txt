@@ -23,6 +23,7 @@
 (\.|^)(appattest|apps|business|gc|iwork|push|school)\.apple\.com$
 (\.|^)(apzones|mzstatic)\.com$
 (\.|^)apple-(cloudkit|livephotoskit)\.com$
+^(ocsp[0-9]*?\.(apple|digicert|entrust|verisign)\.(com|net))$
 
 # Chrome Browser Discord App MEE6 Support Website
 (\.|^)mee6\.xyz$
