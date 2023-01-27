@@ -24,7 +24,7 @@
 (\.|^)(appattest|apps|business|cdn-apple|gc|itunes|iwork|push|school)\.apple\.com$
 (\.|^)apple-(cloudkit|livephotoskit)\.com$
 (\.|^)(apzones|digicert|mzstatic)\.com$
-(\.|^)symc[bd]?+\.com$
+(\.|^)symc[bd]+?\.com$
 ^gg.*\.apple\.com$
 ^(ocsp[0-9]*?\.(apple|digicert|entrust|verisign)\.(com|net))$
 
