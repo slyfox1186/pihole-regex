@@ -692,7 +692,6 @@
 (0, 'vlscppe.microsoft.com', 1, 'Microsoft - Required to download Windows 11 ISO file from the official MS website - SlyEWL')
 (0, 'vo.aicdn.com', 1, 'Crucial CDN server - SlyEWL')
 (0, 'vpp.itunes.apple.com', 1, 'Apple - SlyEWL')
-(0, 'v.reddit.com', 1, 'Reddit - SlyEWL')
 (0, 'v.shopify.com', 1, 'Shopping - SlyEWL')
 (0, 'v.w-x.co', 1, 'Weather - SlyEWL')
 (0, 'wa.me', 1, 'Misc - SlyEWL')
