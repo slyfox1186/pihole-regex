@@ -148,6 +148,7 @@ client.wns.windows.com
 clientconfig.passport.net
 clients.config.office.net
 cloudsync-prod.s3.amazonaws.com
+cluster95-elbwpeel-12if8kvnohvm9-1396764601.us-east-1.elb.amazonaws.com
 cms.souqcdn.com
 code.bildstatic.de
 code.createjs.com
@@ -159,6 +160,8 @@ config.fp.measure.office.com
 config.teams.microsoft.com
 configuration.apple.com
 connect.facebook.com
+connect.facebook.net
+connect.ubisoft.com
 connectivitycheck.android.com
 connectivitycheck.gstatic.com
 connecttv.pelmorex.com
@@ -328,6 +331,7 @@ identity.apple.com
 idmsa.apple.com
 iduwdjf.qiniudns.com
 ig.apple.com
+images.ctfassets.net
 images.pluto.tv
 images.vizio.com
 imagesak.secureserver.net
@@ -411,6 +415,7 @@ meta.plex.bz
 meta.plex.tv
 metrics.icloud.com
 metrics.plex.tv
+metrics.ubuntu.com
 microsoft.com
 microsoftonline.com
 mirror.clarkson.edu
@@ -740,6 +745,7 @@ www.signal.org
 www.solaredge.com
 www.squaretrade.com
 www.twitter.com
+www.vbsedit.com
 www.wa.me
 www.xboxlive.com
 www.youtube-nocookie.com
