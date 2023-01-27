@@ -8,7 +8,6 @@
 (1, 'd186rixkn5ruba.cloudfront.net', 1, 'adulttime.com ads - SlyEBL')
 (1, 'd1ut6fykkt3imt.cloudfront.net', 1, 'adulttime.com ads - SlyEBL')
 (1, 'd-20p1an5qn.qnap.com', 1, 'QNAP Computers Telemetry - SlyEBL')
-(1, 'd27xxe7juh1us6.cloudfront.net', 1, 'adulttime.com ads - SlyEBL')
 (1, 'd306ecvlh9tfv.cloudfront.net', 1, 'adulttime.com ads - SlyEBL')
 (1, 'd3aqoihi2n8ty8.cloudfront.net', 1, 'adulttime.com ads - SlyEBL')
 (1, 'd3cqix4sol87xw.cloudfront.net', 1, 'adulttime.com ads - SlyEBL')
