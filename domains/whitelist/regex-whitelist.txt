@@ -16,6 +16,9 @@
 # Amazon Trust Certificate Authority responsible for secure connections between client and server
 (\.|^)amazontrust\.com$
 
+# AMD Microchip Maker
+(\.|^)amd\.com$
+
 # Apple - Main domains for a good chunk of legitimate iOS services
 (\.|^)(appattest|apps|business|gc|iwork|push|school)\.apple\.com$
 (\.|^)(apzones|mzstatic)\.com$
@@ -62,6 +65,9 @@
 (\.|^)redd\.it$
 (\.|^)thumbs\.redditmedia\.com
 (\.|^)[iv]?\.redd\.it$
+
+# Rob VanderWoude
+(\.|^)robvanderwoude\.com$
 
 # Samsung
 (^|\.)samsungcloudcdn\.com$
