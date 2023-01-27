@@ -1,227 +1,40 @@
-  0077777700140002.myhomescreen.tv
-  2mdn.net
-  7345023508.fxm9485766783.com
-  7345023508.fxmconnect.com
-  a1961.g2.akamai.net
-  a1.resources.foxtel.com.au
-  ad.71i.de
-  ad.lgappstv.com
-  ad.nettvservices.com
-  ads.aimitv.com
-  ad.samsungadhub.com
-  ads.samsungads.com
-  advertising.com
-  adv.ettoday.net
-  afobot.qnap.com
-  aic-ngfts.lge.com
-  aid.qnap.com
-  alpha-qsapi.qnap.com
-  android.qnap.com
-  api.cid.samba.tv
-  api.distribution.hulu.com
-  api-hub.samsungyosemite.com
-  api-mf1.meta.ndmdhs.com
-  api.nfl.com
-  api-software.qnap.com
-  api.statsig.com
-  api-support.qnap.com
-  api.topaz-labs.net
-  api.topaz-labs.net
-  applytics.nordvpn.com
-  apu.samsungelectronics.com
-  audio-sp-sea.spotifycdn.net
-  austin.logs.roku.com
-  auth.split.io
-  az43064.vo.msecnd.net
-  b02.black.ndmdhs.com
-  bdcore-apr-lb.bda.ndmdhs.com
-  beam.com
-  bpu.samsungelectronics.com
-  bravia.dl.playstation.net
-  bugs-notify.nordvpn.com
-  call.me.sel.sony.com
-  cc-api-data.adobe.io
-  cdn-cm.tiypa.com
-  cdn.contentful.com
-  cdn.hbbtv.smartclip.net
-  cdn.polyfill.io
-  cdns-content.dzcdn.net
-  cdn.smartclip.net
-  cdn.syndication.twimg.com
-  cert-test.sandbox.google.com
-  cesareurope.com
-  client-api.nordvpn.com
-  cloud.arqiva.tv
-  collect.myhomescreen.tv
-  college.qnap.com
-  cooper.logs.roku.com
-  coordinator-production-28516768.us-east-1.elb.amazonaws.com
-  cpu.samsungelectronics.com
-  customerevents.netflix.com
-  d179kwmlpc4o47.cloudfront.net
-  d186rixkn5ruba.cloudfront.net
-  d1jwpcr0q4pcq0.cloudfront.net
-  d1ut6fykkt3imt.cloudfront.net
-  d-20p1an5qn.qnap.com
-  d27xxe7juh1us6.cloudfront.net
-  d2tnx644ijgq6i.cloudfront.net
-  d306ecvlh9tfv.cloudfront.net
-  d37ju0xanoz6gh.cloudfront.net
-  d3aqoihi2n8ty8.cloudfront.net
-  d3cqix4sol87xw.cloudfront.net
-  d3mjsomixevyw7.cloudfront.net
-  data.arqiva.tv
-  database01p.anixe.net
-  de.ioam.de
-  demo.qnap.com
-  device-metrics-us.amazon.com
-  dev-multiscreen.samsung.com
-  dev.qnap.com
-  display.ravm.tv
-  doh.dns.apple.com
-  dpu.samsungelectronics.com
-  dr-eshop-tw.qnap.com
-  dr-eshop-us.qnap.com
-  dr-software.qnap.com
-  e2.resources.foxtel.com.au
-  engine-cm.tiypa.com
-  estore.iobit.com IObit.com
-  events.cid.samba.tv
-  facemap.foldlife.net
-  file2fxm.azureedge.net
-  flingo.tv
-  foxtel-prod-events.digitalsmiths.net
-  ftuapps.dev
-  game.internetat.tv
-  giveaway.iobit.com
-  gld.samsungosp.com
-  global.poe.live-video.net
-  googleads.g.doubleclick.net
-  go.qnap.com
-  gpm.samsungqbe.com
-  hbbtv01p.anixe.net
-  hbbtv-1.eurosport.com
-  hbbtvapp.sonnenklar.tv
-  hbbtv-extern-fe01.sim-technik.de
-  hbbtv-track.redbutton.de
-  ibis.lgappstv.com
-  ic.adobe.io
-  ichnaea.netflix.com
-  inds2t.qnap.com
-  iot.qnap.com
-  i-stream.pl
-  ixq.qnap.com
-  jlduihq7lrcdxgw4vrndhdfcsq.appsync-api.us-east-1.amazonaws.com
-  jtvnw.twitchcdn.net
-  kinesis.us-east-1.amazonaws.com
-  kosmos-assets-prod.react.gammacdn.com
-  kpu.samsungelectronics.com
-  legacyportal.nettvservices.com
-  lgad.cjpowercast.com.edgesuite.net
-  liberty.logs.roku.com
-  log-ingestion-eu.samsungacr.com
-  log-ingestion.samsungacr.com
-  log.internetat.tv
-  lzzos7clo5.execute-api.us-east-1.amazonaws.com
-  managed.xmpp.foxtel.com.au
-  marketing-materials.qnap.com
-  marketing.qnap.com
-  mhc-sec-eu.myhomescreen.tv
-  mhc-sec-us.myhomescreen.tv
-  midland.logs.roku.com
-  multiscreen.samsung.com
-  nbc-jite.nbcuni.com
-  ncp-gw-sports.media.yahoo.com
-  nettv.corio.com
-  nrdp.prod.ftl.netflix.com
-  ns-1260.awsdns-29.org.
-  ns-1649.awsdns-14.co.uk.
-  ns-387.awsdns-48.com.
-  ns-836.awsdns-40.net.
-  oao-js-tag.one-mobile-prod.aws.oath.cloud
-  ocsp.sca1b.amazontrust.com
-  onedscolprdeus10.eastus.cloudapp.azure.com
-  openapi.samsung.com
-  origin-marketing.qnap.com
-  origin-www.qnap.com
-  osb-apps.samsungqbe.com
-  osb-eusvc.samsungqbe.com
-  osb-krsvc.samsungqbe.com
-  osb.samsungqbe.com
-  partner.qnap.com
-  pavv.co.kr
-  p-hbbtv.superrtl.de
-  pipeaota.com
-  platform.cid.samba.tv
-  pl-portal.qnap.com
-  preferences.cid.samba.tv
-  premium-videos.telly.com
-  preview.qnap.com
-  qiot.qnap.com
-  quwan.qnap.com
-  ravm.tv
-  rd.samsungadhub.com
-  redbutton-adproxy-lb-prod.redbutton.de
-  redbutton-lb-prod.redbutton.de
-  redbutton.sim-technik.de
-  reg.biv.sony.tv
-  reseller-test.qnap.com
-  rwww.samsungotn.net
-  samsungacr.com
-  samsungadhub.com
-  samsungads.com
-  samsungelectronics.com
-  samsungqbe.com
-  samsungrm.net
-  sca.samsung.com
-  scdnco.spotify.map.fastly.net
-  scheduler.hbbtv.smartclip.net
-  scribe.logs.roku.com
-  script.ioam.de
-  service.biv.sony.tv
-  smartclip.com
-  smartclip.net
-  smartshare.lgtvsdp.com
-  sonybivstatic-a.akamaihd.net
-  ssm1.internet.sony.tv
-  ssm2.internet.sony.tv
-  ssm3.internet.sony.tv
-  start.digitaltext.rtl.de
-  stats.hbbtv.smartclip.net
-  stats.iobit.com IObit.com
-  stats-irl.sxp.smartclip.net
-  streaming-fame.gammacdn.com
-  survey.iobit.com
-  syncplusconfig.s3.amazonaws.com
-  targeted-config-test.samsungacr.com
-  test.samsungrm.net
-  trvdp.com
-  tvsideviewandroidv2-cfgdst-ore-pro.bda.ndmdhs.com
-  tv-static.scdn.co
-  upu.samsungelectronics.com
-  usage.trackjs.com
-  us-api.samsungyosemite.com
-  user3p.veloxzone.com.br
-  us.ibs.lgappstv.com
-  vd.contents.prod.eu.s3.amazonaws.com
-  vd.emp.prd.s3.amazonaws.com
-  video-edge-046b4c.atl01.abs.hls.ttvnw.net
-  video-edge-078ff6.atl01.abs.hls.ttvnw.net
-  video-edge-82d760.atl01.abs.hls.ttvnw.net
-  video-edge-833564.atl01.abs.hls.ttvnw.net
-  video-edge-918014.atl01.abs.hls.ttvnw.net
-  video-edge-9183d4.atl01.abs.hls.ttvnw.net
-  video-edge-9183f0.atl01.abs.hls.ttvnw.net
-  videothumb.gammacdn.com
-  wd-prod-ss.trafficmanager.net
-  wd-prod-ss-us-west-2-fe.westus.cloudapp.azure.com
-  www.samsungrm.net
-  www.sslshopper.com
-  x2.vindicosuite.com
-  xml.opera.com
-  _xmpp-client._tcp.managed.xmpp.foxtel.com.au
-  xpu.samsungelectronics.com
-  xtnzefcqrb.execute-api.us-east-1.amazonaws.com
-  ypu.samsungelectronics.com
-  yumenetworks.com
-  zpu.samsungelectronics.com
+api.nfl.com
+api-software.qnap.com
+api.topaz-labs.net
+applytics.nordvpn.com
+cc-api-data.adobe.io
+client-api.nordvpn.com
+d186rixkn5ruba.cloudfront.net
+d1ut6fykkt3imt.cloudfront.net
+d-20p1an5qn.qnap.com
+d27xxe7juh1us6.cloudfront.net
+d306ecvlh9tfv.cloudfront.net
+d3aqoihi2n8ty8.cloudfront.net
+d3cqix4sol87xw.cloudfront.net
+doh.dns.apple.com
+estore.iobit.comiobit.com
+giveaway.iobit.comiobit.com
+global.poe.live-video.net
+iot.qnap.com
+ixq.qnap.com
+jlduihq7lrcdxgw4vrndhdfcsq.appsync-api.us-east-1.amazonaws.com
+kinesis.us-east-1.amazonaws.com
+kosmos-assets-prod.react.gammacdn.com
+lzzos7clo5.execute-api.us-east-1.amazonaws.com
+marketing-materials.qnap.com
+marketing.qnap.com
+ncp-gw-sports.media.yahoo.com
+ocsp.sca1b.amazontrust.com
+origin-marketing.qnap.com
+origin-www.qnap.com
+partner.qnap.com
+streaming-fame.gammacdn.com
+survey.iobit.comiobit.com
+video-edge-046b4c.atl01.abs.hls.ttvnw.net
+video-edge-078ff6.atl01.abs.hls.ttvnw.net
+video-edge-82d760.atl01.abs.hls.ttvnw.net
+video-edge-833564.atl01.abs.hls.ttvnw.net
+video-edge-918014.atl01.abs.hls.ttvnw.net
+video-edge-9183d4.atl01.abs.hls.ttvnw.net
+video-edge-9183f0.atl01.abs.hls.ttvnw.net
+videothumb.gammacdn.com
