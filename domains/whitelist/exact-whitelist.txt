@@ -458,11 +458,6 @@ o1.email.plex.tv
 o2.sg0.plex.tv
 oauthaccountmanager.googleapis.com
 objects.githubusercontent.com
-ocsp.apple.com
-ocsp.digicert.com
-ocsp.entrust.net
-ocsp.verisign.net
-ocsp2.apple.com
 office.com
 office.net
 office365.com
