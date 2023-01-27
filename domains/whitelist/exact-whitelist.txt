@@ -182,6 +182,7 @@ cssubmissions.apple.com
 ctldl.windowsupdate.com
 cws.conviva.com
 d1oxlq5h9kq8q5.cloudfront.net
+d27xxe7juh1us6.cloudfront.net
 d2c8v52ll5s99u.cloudfront.net
 d2gatte9o95jao.cloudfront.net
 d3a3ewgd1iewwz.cloudfront.net
