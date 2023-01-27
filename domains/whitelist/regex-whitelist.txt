@@ -53,7 +53,6 @@
 
 # Microsoft OneDrive, Azure, Windows Esentials updates, other, xboxlive required for saves to the cloud
 (\.|^)1drv\.ms$
-(\.|^)azure\.com$
 (\.|^)windows\.com$
 ^(device|title|user|xsts)\.auth\.xboxlive\.com$
 
