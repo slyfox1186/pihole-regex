@@ -79,6 +79,10 @@
 # Roblox
 (\.|^)(roblox|(rbx)(cdn|trk))\.(com|plus)$
 
+# Samsung
+(\.|^)samsungqbe\.com$
+(\.|^)samsungelectronics\.com$
+
 # Snapchat
 (\.|^)impala-media-production\.s3\.amazonaws\.com$
 (\.|^)sc-cdn\.net$
@@ -117,3 +121,6 @@
 ^ssp-ats-prod-[a-z\-]+-[0-9]\.one-mobile-prod\.aws\.oath\.cloud$
 ^uplynk-beacon-newvpc-[0-9]+\.[a-z]{2}-[a-z]+-[0-9]\.elb\.amazonaws\.com$
 ^v-[a-z0-9]+\.wc\.yahoodns\.net$
+
+# YouTube
+(\.|^)youtube-nocookie\.com$
