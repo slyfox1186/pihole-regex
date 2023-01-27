@@ -347,7 +347,6 @@
 (0, 'ip-api.com', 1, 'Microsoft - Updates virus definitions if unknown suspicious files are detected. This will reach out to the server for more information. - SlyEWL')
 (0, 'iprofiles.apple.com', 1, 'Apple - SlyEWL')
 (0, 'ipv6.msftncsi.com', 1, 'Microsoft - SlyEWL')
-(0, 'i.reddit.com', 1, 'Reddit - SlyEWL')
 (0, 'i.scdn.co', 1, 'Spotify - SlyEWL')
 (0, 'i.s-microsoft.com', 1, 'Microsoft - SlyEWL')
 (0, 'isu.apple.com', 1, 'Apple - SlyEWL')
