@@ -86,6 +86,7 @@ axm-adm-mdm.apple.com
 axm-adm-scep.apple.com
 axm-app.apple.com
 ax.phobos.apple.com.edgesuite.net
+azure.com
 b-api.facebook.com
 best.aliexpress.com
 b-graph.facebook.com
