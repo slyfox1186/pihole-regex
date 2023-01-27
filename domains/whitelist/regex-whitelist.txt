@@ -20,7 +20,6 @@
 (\.|^)amd\.com$
 
 # Apple - Main domains for a good chunk of legitimate iOS services
-(\.|^)amazonaws\.com$
 (\.|^)(appattest|apps|business|cdn-apple|gc|itunes|iwork|push|school)\.apple\.com$
 (\.|^)apple-(cloudkit|livephotoskit)\.com$
 (\.|^)(apzones|digicert|mzstatic)\.com$
