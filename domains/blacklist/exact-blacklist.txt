@@ -8,7 +8,6 @@ client-api.nordvpn.com
 d186rixkn5ruba.cloudfront.net
 d1ut6fykkt3imt.cloudfront.net
 d-20p1an5qn.qnap.com
-d27xxe7juh1us6.cloudfront.net
 d306ecvlh9tfv.cloudfront.net
 d3aqoihi2n8ty8.cloudfront.net
 d3cqix4sol87xw.cloudfront.net
