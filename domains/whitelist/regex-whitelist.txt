@@ -25,7 +25,6 @@
 # Apple - Main domains for a good chunk of legitimate iOS services
 (\.|^)(appattest|apps|business|cdn-apple|gc|itunes|iwork|push|school)\.apple\.com$
 (\.|^)(apzones|digicert|mzstatic)\.com$
-(\.|^)\.com$
 ^(appattest|appleid|apps|audiocontentdownload|bpapi|business|captive|cdn-apple|certs|configuration|crl|cssubmissions|deviceenrollment|diagassets|fba|gc|gdmf|gg.*|gsa|gsp1|gs|humb|identity|idmsa|ig|iprofiles|isu|itunes|iwork|mdmenrollment|mesu|oscdn|oscp|osrecovery|ppq|push|radarsubmissions|school|serverstatus|skl|suconfig|swcdn|swdist|swdownload|swpost|swscan|sylvan|sym[b-d]+?|tbsc|time|valid|www|xp)\.apple\.com$
 ^(ocsp[0-9]*?\.(apple|digicert|entrust|verisign)\.(com|net))$
 (\.|^)apple-(cloudkit|livephotoskit)\.com$
