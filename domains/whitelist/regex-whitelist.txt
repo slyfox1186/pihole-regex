@@ -63,6 +63,7 @@
 (\.|^)1drv\.ms$
 (\.|^)windows\.com$
 ^(device|title|user|xsts)\.auth\.xboxlive\.com$
+^outlook\.(live|office(|365))\.com$
 
 ## Mobile and Tablets
 ^m\.(hotmail|reddit|weeklyad.target|youtube)\.com$
