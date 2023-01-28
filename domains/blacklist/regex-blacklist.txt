@@ -32,11 +32,6 @@
 # Bittorrent
 (\.|^)xyz$
 
-# Facebook
-(\.|^)accountkit\.com$
-(\.|^)fb(|cdn|sbx)\.(com|me|net|watch)$
-(\.|^)messenger\.com$
-
 # HBBTV
 ^hbbtv\.(3sat|kabeleins|qvc|rtl2|sat1|sixx|superrtl)\.de$
 
