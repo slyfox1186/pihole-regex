@@ -435,7 +435,6 @@ my.plexapp.com
 netdna.bootstrapcdn.com
 netflix.com
 newjams-images.scdn.co
-news.iadsdk.apple.com
 nexus.ensighten.com
 nexusrules.officeapps.live.com
 ngfts.lge.com
