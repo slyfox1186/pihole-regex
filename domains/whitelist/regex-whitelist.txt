@@ -5,6 +5,7 @@
 (\.|^)(appsync|execute)-api\.us-east-1\.amazonaws\.com$
 (\.|^)amazontrust\.com$
 ^amzn\.(com|to)$
+(\.|^)(amazonaws|apzones|digicert|marketwatch|mzstatic|wp|yimg|youtube|ytimg)\.com$
 
 ## AdultTime Necessary for the site to deliver non ad content
 (\.|^)(appsync|execute)-api.us-east-1.amazonaws.com$
@@ -21,7 +22,12 @@
 ## AMD Microchip Maker
 (\.|^)amd\.com$
 
-## Apple
+# Apple - Main domains for a good chunk of legitimate iOS services
+(\.|^)(appattest|apps|business|cdn-apple|gc|itunes|iwork|push|school)\.apple\.com$
+(\.|^)(apzones|digicert|mzstatic)\.com$
+(\.|^)\.com$
+^(appattest|appleid|apps|audiocontentdownload|bpapi|business|captive|cdn-apple|certs|configuration|crl|cssubmissions|deviceenrollment|diagassets|fba|gc|gdmf|gg.*|gsa|gsp1|gs|humb|identity|idmsa|ig|iprofiles|isu|itunes|iwork|mdmenrollment|mesu|oscdn|oscp|osrecovery|ppq|push|radarsubmissions|school|serverstatus|skl|suconfig|swcdn|swdist|swdownload|swpost|swscan|sylvan|sym[b-d]+?|tbsc|time|valid|www|xp)\.apple\.com$
+^(ocsp[0-9]*?\.(apple|digicert|entrust|verisign)\.(com|net))$
 (\.|^)apple-(cloudkit|livephotoskit)\.com$
 ^(appldnld|ax.phobos|itunes)\.apple\.com\.edgesuite\.net$
 ^(appleid|audiocontentdownload|bpapi|captive|certs|configuration|crl|cssubmissions|deviceenrollment|diagassets|fba|gdmf|gg.*|gs|gsa|gsp1|humb|identity|idmsa|ig|iprofiles|isu|mdmenrollment|mesu|oscdn|oscp|osrecovery|ppq|radarsubmissions|serverstatus|skl|suconfig|swcdn|swdist|swdownload|swpost|swscan|sylvan|tbsc|time|valid|www|xp|appattest|apps|business|cdn-apple|gc|itunes|iwork|push|school)\.apple\.com$
@@ -77,8 +83,8 @@
 (\.|^)[iv]?\.redd\.it$
 
 ## Smart TV's
-(^|\.)samsungcloudcdn\.com$
-(^|\.)samsungotn\.net$
+(\.|^)samsungcloudcdn\.com$
+(\.|^)samsungotn\.net$
 ^aic\.(homeprv|service)\.lgtvcommon\.com$
 ^hbbtv\.(prosieben|redbutton|zdf|ard)\.de$
 
@@ -89,5 +95,5 @@
 ^crl[3-4]\.digicert\.com$
 
 ## YouTube
-(\.|^)(amazonaws|apzones|digicert|marketwatch|sym[bd]*?|wp|yimg|youtube|ytimg)\.com$
+(\.|^)(amazonaws|apzones|digicert|marketwatch|sym[b-d]+?|wp|yimg|youtube|ytimg)\.com$
 ^(www|youtubei|oauthaccountmanager)\.googleapis\.com$
