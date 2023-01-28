@@ -89,5 +89,5 @@
 ^crl[3-4]\.digicert\.com$
 
 ## YouTube
-(\.|^)(amazonaws|apzones|digicert|marketwatch|mzstatic|sym[bd]*?|wp|yimg|youtube|ytimg)\.com$
+(\.|^)(amazonaws|apzones|digicert|marketwatch|sym[bd]*?|wp|yimg|youtube|ytimg)\.com$
 ^(www|youtubei|oauthaccountmanager)\.googleapis\.com$
