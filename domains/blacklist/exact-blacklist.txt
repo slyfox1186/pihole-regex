@@ -15,6 +15,7 @@ doh.dns.apple.com
 estore.iobit.comiobit.com
 giveaway.iobit.comiobit.com
 global.poe.live-video.net
+gsn-rinkeby.redditspace.com
 iot.qnap.com
 ixq.qnap.com
 kinesis.us-east-1.amazonaws.com
