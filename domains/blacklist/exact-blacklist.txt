@@ -17,7 +17,6 @@ giveaway.iobit.comiobit.com
 global.poe.live-video.net
 iot.qnap.com
 ixq.qnap.com
-jlduihq7lrcdxgw4vrndhdfcsq.appsync-api.us-east-1.amazonaws.com
 kinesis.us-east-1.amazonaws.com
 kosmos-assets-prod.react.gammacdn.com
 lzzos7clo5.execute-api.us-east-1.amazonaws.com
