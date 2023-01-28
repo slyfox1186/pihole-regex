@@ -45,6 +45,7 @@ api.flightproxy.teams.microsoft.com
 api.github.com
 api-global.netflix.com
 api.ipify.org
+api.onedrive.com
 api.pluto.tv
 api.rlje.net
 api.termius.com
