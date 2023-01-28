@@ -600,8 +600,6 @@ stitcher.pluto.tv
 storage.live.com
 storage.signal.org
 storeedgefd.dsx.mp.microsoft.com
-streaming-fame.gammacdn.com
-streaming-hls.gammacdn.com
 styles.redditmedia.com
 substrate.office.com
 suconfig.apple.com
