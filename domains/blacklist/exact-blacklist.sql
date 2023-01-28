@@ -15,6 +15,7 @@
 (1, 'estore.iobit.com', 1, 'iobit.com ads - SlyEBL')
 (1, 'giveaway.iobit.com', 1, 'iobit.com ads - SlyEBL')
 (1, 'global.poe.live-video.net', 1, 'twitch.tv Video ads - SlyEBL')
+(1, 'gsn-rinkeby.redditspace.com', 1, 'Reddit suspected ads - SlyEBL')
 (1, 'iot.qnap.com', 1, 'QNAP Computers Telemetry - SlyEBL')
 (1, 'ixq.qnap.com', 1, 'QNAP Computers Telemetry - SlyEBL')
 (1, 'kinesis.us-east-1.amazonaws.com', 1, 'adulttime.com ads - SlyEBL')
