@@ -354,7 +354,6 @@ itunes.apple.com.edgesuite.net
 itunes.com
 itv.ard.de
 i.ytimg.com
-jlduihq7lrcdxgw4vrndhdfcsq.appsync-api.us-east-1.amazonaws.com
 j.mp
 jquery.com
 js.appboycdn.com
