@@ -37,7 +37,9 @@
 ^lightswitch-public-service-prod[0-9]*\.ol\.epicgames\.com$
 
 # Facebook - Essentail CND servers
+(\.|^)accountkit\.com$
 (\.|^)fbcdn\.net$
+(\.|^)messenger\.com$
 ^[0-6]+?-edge-chat\.facebook\.com$
 
 # Google - Allow known essential widget service
