@@ -28,7 +28,6 @@
 (1, 'origin-marketing.qnap.com', 1, 'QNAP Computers ads - SlyEBL')
 (1, 'origin-www.qnap.com', 1, 'QNAP Computers ads - SlyEBL')
 (1, 'partner.qnap.com', 1, 'QNAP Computers ads - SlyEBL')
-(1, 'streaming-fame.gammacdn.com', 1, 'adulttime.com ads - SlyEBL')
 (1, 'survey.iobit.com', 1, 'iobit.com ads - SlyEBL')
 (1, 'video-edge-046b4c.atl01.abs.hls.ttvnw.net', 1, 'twitch.tv Video ads - SlyEBL')
 (1, 'video-edge-078ff6.atl01.abs.hls.ttvnw.net', 1, 'twitch.tv Video ads - SlyEBL')
