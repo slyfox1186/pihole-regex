@@ -51,6 +51,7 @@
 (\.|^)fbcdn\.net$
 (\.|^)messenger\.com$
 ^[0-6]+?-edge-chat\.facebook\.com$
+^scontent-(atl3|lhr3|mia3|ort2)-1\.xx\.fbcdn\.net$
 
 ## Chrome Browser Discord App MEE6 Support Website
 (\.|^)mee6\.xyz$
