@@ -28,7 +28,6 @@ ocsp.sca1b.amazontrust.com
 origin-marketing.qnap.com
 origin-www.qnap.com
 partner.qnap.com
-streaming-fame.gammacdn.com
 survey.iobit.comiobit.com
 video-edge-046b4c.atl01.abs.hls.ttvnw.net
 video-edge-078ff6.atl01.abs.hls.ttvnw.net
