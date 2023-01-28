@@ -20,7 +20,6 @@
 (1, 'jlduihq7lrcdxgw4vrndhdfcsq.appsync-api.us-east-1.amazonaws.com', 1, 'adulttime.com ads - SlyEBL')
 (1, 'kinesis.us-east-1.amazonaws.com', 1, 'adulttime.com ads - SlyEBL')
 (1, 'kosmos-assets-prod.react.gammacdn.com', 1, 'adulttime.com ads - SlyEBL')
-(1, 'lzzos7clo5.execute-api.us-east-1.amazonaws.com', 1, 'adulttime.com ads - SlyEBL')
 (1, 'marketing-materials.qnap.com', 1, 'QNAP Computers ads - SlyEBL')
 (1, 'marketing.qnap.com', 1, 'QNAP Computers ads - SlyEBL')
 (1, 'ncp-gw-sports.media.yahoo.com', 1, 'yahoo.com - sports video ads - SlyEBL')
