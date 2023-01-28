@@ -38,7 +38,6 @@ cdn.discordapp.com
 cdn.embed.ly
 cdn.embed.ly.cdn.cloudflare.net
 cdn.embedly.com
-cdn.jsdelivr.net
 cdn.jsdelivr.net.cdn.cloudflare.net
 cdn.materialdesignicons.com
 cdn.mathjax.org
@@ -79,7 +78,6 @@ contentproxy.signal.org
 continuum.dds.microsoft.com
 cp801.prod.do.dsp.mp.microsoft.com
 cpms.spop10.ams.plex.bz
-cpms35.spop10.ams.plex.bz
 creative.ak.fbcdn.net
 crl.entrust.net
 cse.google.com
@@ -135,7 +133,6 @@ europe.smartscreen-prod.microsoft.com
 europe.smartscreen.microsoft.com
 events-test-v2.redditmedia.com
 events-test.redditmedia.com
-Exact match found in regex whitelist
 facebook.net
 fbcdn-creative-a.akamaihd.net
 fe3.delivery.dsp.mp.microsoft.com.nsatc.net
@@ -243,6 +240,7 @@ mat1.gtimg.com.tegsea.tc.qq.com
 materialdesignicons.b-cdn.net
 mathjax.rstudio.com
 maxcdn.bootstrapcdn.com
+mdmenrollment.apple.com
 medium.com
 meta-db-worker02.pop.ric.plex.bz
 meta.plex.bz
@@ -291,16 +289,7 @@ openpgpkey.gmail.com
 openpgpkey.martellmalone.com
 ota-downloads.nvidia.com
 otn.samsungcloudcdn.com
-otnprd10.samsungcloudsolution.net
-otnprd11.samsungcloudsolution.net
-otnprd8.samsungcloudsolution.net
-otnprd9.samsungcloudsolution.net
 outlook-1.cdn.office.net
-outlook.com
-outlook.ha.office365.com
-outlook.live.com
-outlook.office.com
-outlook.office365.com
 pagecdn.io
 pgl.yoyo.org
 pinterest.com
@@ -332,11 +321,6 @@ res-1.cdn.office.net
 res.cloudinary.com
 rover.ebay.com
 samsungosp.com
-samsungotn.net
-scontent-atl3-1.xx.fbcdn.net
-scontent-lhr3-1.xx.fbcdn.net
-scontent-mia3-1.xx.fbcdn.net
-scontent-ort2-1.xx.fbcdn.net
 scontent.fgdl5-1.fna.fbcdn.net
 sdn.geekzu.org
 sdn.inbond.gslb.geekzu.org
@@ -442,7 +426,6 @@ wordpress.com
 wp.com
 ws-ee-maidsvc.icloud.com
 ws.audioscrobbler.com
-ww.dataplicity.com
 www.aliexpress.com
 www.appleiphonecell.com
 www.dataplicity.com
