@@ -1,12 +1,6 @@
 #### RegEx Whitelist
 #### Github repository: https://github.com/slyfox1186/pihole-regex
 
-## Amazon
-(\.|^)(appsync|execute)-api\.us-east-1\.amazonaws\.com$
-(\.|^)amazontrust\.com$
-^amzn\.(com|to)$
-(\.|^)(amazonaws|apzones|digicert|marketwatch|mzstatic|wp|yimg|youtube|ytimg)\.com$
-
 ## AdultTime Necessary for the site to deliver non ad content
 (\.|^)(appsync|execute)-api.us-east-1.amazonaws.com$
 (\.|^)adulttime\.com$
@@ -16,33 +10,34 @@
 (\.|^)execute-api\.us-east-1\.amazonaws\.com$
 (\.|^)react\.gammacdn\.com$
 (\.|^)streaming-(fame|hls)\.gammacdn\.com$
-^images[0-9]+-fame\.gammacdn\.com$
-^static[0-4]+-cms-fame\.gammacdn\.com$
+^(catalog|entitlement|lightswitch|eulatracking)-public-service-prod[0-9]*?\.ol\.epicgames\.com$
+^(catalog|entitlement|priceengine)-public-service-prod\.ak\.epicgames\.com$
+
+## Amazon
+(\.|^)(appsync|execute)-api\.us-east-1\.amazonaws\.com$
+(\.|^)amazontrust\.com$
+^amzn\.(com|to)$
+(\.|^)(amazonaws|apzones|digicert|marketwatch|mzstatic|wp|yimg|youtube|ytimg)\.com$
 
 ## AMD Microchip Maker
 (\.|^)amd\.com$
 
-# Apple - Main domains for a good chunk of legitimate iOS services
-(\.|^)(appattest|apps|business|cdn-apple|gc|itunes|iwork|push|school)\.apple\.com$
-(\.|^)(apzones|digicert|mzstatic)\.com$
-^(appattest|appleid|apps|audiocontentdownload|bpapi|business|captive|cdn-apple|certs|configuration|crl|cssubmissions|deviceenrollment|diagassets|fba|gc|gdmf|gg.*|gsa|gsp1|gs|humb|identity|idmsa|ig|iprofiles|isu|itunes|iwork|mdmenrollment|mesu|oscdn|oscp|osrecovery|ppq|push|radarsubmissions|school|serverstatus|skl|suconfig|swcdn|swdist|swdownload|swpost|swscan|sylvan|sym[b-d]+?|tbsc|time|valid|www|xp)\.apple\.com$
+## Apple - Main domains for a good chunk of legitimate iOS services
+^(appattest|appleid|apps|audiocontentdownload|bpapi|business|captive|cdn-apple|certs|configuration|crl|cssubmissions|deviceenrollment|diagassets|fba|gc|gdmf|gg.*|gs(|[ap1]*?)|humb|identity|idmsa|i(|g|profiles|su|tunes|work)|mdmenrollment|mesu|oscdn|oscp|osrecovery|ppq|push|radarsubmissions|school|serverstatus|skl|suconfig|sw(|cdn|dist|download|post|scan)|sylvan|sym[b-d]+?|tbsc|valid|www|axm-app|deviceservices-external|gnf-mdn|gnf-mr|lcdn-(locator|registration)|sq-device|time(|-ios|-macos)|xp(|-cdn))\.apple\.com$
 (\.|^)apple-(cloudkit|livephotoskit)\.com$
-^(appldnld|ax.phobos|itunes)\.apple\.com\.edgesuite\.net$
-^(appleid|audiocontentdownload|bpapi|captive|certs|configuration|crl|cssubmissions|deviceenrollment|diagassets|fba|gdmf|gg.*|gs|gsa|gsp1|humb|identity|idmsa|ig|iprofiles|isu|mdmenrollment|mesu|oscdn|oscp|osrecovery|ppq|radarsubmissions|serverstatus|skl|suconfig|swcdn|swdist|swdownload|swpost|swscan|sylvan|tbsc|time|valid|www|xp|appattest|apps|business|cdn-apple|gc|itunes|iwork|push|school)\.apple\.com$
-^(axm-app|deviceservices-external|gnf-mdn|gnf-mr|lcdn-locator|lcdn-registration|sq-device|time-ios|time-macos|xp-cdn)\.apple\.com$
+^axm-adm-|(adm|mdm|enroll|scep)\.apple\.com$
 ^(devimages|xp-cdn|playgrounds(|-assets))-cdn\.apple\.com$
 ^(download.developer|ns.itunes|static.ips|vpp.itunes)\.apple\.com$
 ^(ocsp[0-9]*?\.(apple|apzones|digicert|entrust|verisign)\.(com|net))$
-^axm-adm-|(adm|mdm|enroll|scep)\.apple\.com$
 
 ## A progressive delivery and experimentation software for other companies
 ^cdn[0-3]*?\.optimizely\.com$
 
+## Chrome Browser Discord App MEE6 Support Website
+(\.|^)mee6\.xyz$
+
 ## Epic Games - Essential Domains for authentication during user login and other services such as purchasing/unlocking games to your user library
-^(catalog|entitlement)-public-service-prod[0-9]*\.ol\.epicgames\.com$
-^(catalog|entitlement|priceengine)-public-service-prod\.ak\.epicgames\.com$
-^eulatracking-public-service-prod[0-9]+\.ol\.epicgames\.com$
-^lightswitch-public-service-prod[0-9]*\.ol\.epicgames\.com$
+^(catalog|entitlement|lightswitch|eulatracking|priceengine)-public-service-prod[0-9]*?\.(ak|ol)\.epicgames\.com$
 
 ## Facebook - Essentail CND servers
 (\.|^)accountkit\.com$
@@ -50,9 +45,6 @@
 (\.|^)messenger\.com$
 ^[0-6]+?-edge-chat\.facebook\.com$
 ^scontent-(atl3|lhr3|mia3|ort2)-1\.xx\.fbcdn\.net$
-
-## Chrome Browser Discord App MEE6 Support Website
-(\.|^)mee6\.xyz$
 
 ## Google - Allow known essential widget service
 ^beacons[0-9]*\.gvt[0-9]+\.com$
@@ -74,10 +66,8 @@
 ## Rob VanderWoude Learn how to code multiple languages
 (\.|^)robvanderwoude\.com$
 
-## Reddit - Main CND's and other legit content delivery comains for Reddit. Some of these cary ads and will cripple the site as a whole if not whitelisted.
-(\.|^)redditmedia\.com$
-(\.|^)redditstatic\.com$
-(\.|^)reddit\.com$
+## Reddit - Main CND's and other legit content delivery comains for Reddit. Some of these carry ads and will cripple the site as a whole if not whitelisted.
+^reddit(|media|static)\.com$
 (\.|^)redd\.it$
 (\.|^)thumbs\.redditmedia\.com
 (\.|^)[iv]?\.redd\.it$
