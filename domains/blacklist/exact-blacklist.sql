@@ -17,7 +17,6 @@
 (1, 'global.poe.live-video.net', 1, 'twitch.tv Video ads - SlyEBL')
 (1, 'iot.qnap.com', 1, 'QNAP Computers Telemetry - SlyEBL')
 (1, 'ixq.qnap.com', 1, 'QNAP Computers Telemetry - SlyEBL')
-(1, 'jlduihq7lrcdxgw4vrndhdfcsq.appsync-api.us-east-1.amazonaws.com', 1, 'adulttime.com ads - SlyEBL')
 (1, 'kinesis.us-east-1.amazonaws.com', 1, 'adulttime.com ads - SlyEBL')
 (1, 'kosmos-assets-prod.react.gammacdn.com', 1, 'adulttime.com ads - SlyEBL')
 (1, 'marketing-materials.qnap.com', 1, 'QNAP Computers ads - SlyEBL')
