@@ -136,7 +136,6 @@ cds.d3x4y6v5.hwcdn.net
 cds.s5x3j6q5.hwcdn.net
 cert.mgt.xboxlive.com
 certs.apple.com
-cf.iadsdk.apple.com
 chat.signal.org
 chatsvcagg.teams.microsoft.com
 check2.tsb.co.uk
@@ -187,7 +186,6 @@ d27xxe7juh1us6.cloudfront.net
 d2c8v52ll5s99u.cloudfront.net
 d2gatte9o95jao.cloudfront.net
 d3a3ewgd1iewwz.cloudfront.net
-d3aqoihi2n8ty8.cloudfront.net
 d83eunklitikj.cloudfront.net
 dailymix-images.scdn.co
 daily-mix.scdn.co
@@ -218,7 +216,6 @@ dl.dropbox.com
 dl.dropboxusercontent.com
 dl.google.com
 dns.msftncsi.com
-doh.dns.apple.com
 download.developer.apple.com
 downloads.boi9osyg1uwtyafn.com
 download.scdn.co
@@ -322,7 +319,6 @@ hostsfile.org
 h-sdk.online-metrix.net
 humb.apple.com
 i1.ytimg.com
-iadsdk.apple.com
 ic3.events.data.microsoft.com
 i.cdn.turner.com
 icloud.com
@@ -524,7 +520,6 @@ reddit.com
 reddit.map.fastly.net
 redditmedia.com
 reddit-uploaded-media.s3-accelerate.amazonaws.com
-redirector.googlevideo.com
 redirector.gvt1.com
 refersion.com
 reminders-pa.googleapis.com
