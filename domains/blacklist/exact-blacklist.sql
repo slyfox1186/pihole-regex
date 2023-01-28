@@ -41,4 +41,3 @@
 (1, 'video-edge-918388.atl01.abs.hls.ttvnw.net', 1, 'twitch.tv - Video ads - SlyEWL')
 (1, 'video-edge-9183d4.atl01.abs.hls.ttvnw.net', 1, 'twitch.tv Video ads - SlyEBL')
 (1, 'video-edge-9183f0.atl01.abs.hls.ttvnw.net', 1, 'twitch.tv Video ads - SlyEBL')
-(1, 'videothumb.gammacdn.com', 1, 'adulttime.com ads - SlyEBL')
