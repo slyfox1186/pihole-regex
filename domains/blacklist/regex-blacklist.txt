@@ -43,6 +43,10 @@
 (\.|^)ad-score\.com$
 (\.|^)fake\.video\.url\.webm$
 
+# Reddit.com
+^(advertising|www)\.reddithelp\.com$
+^(ssl|static|www)\.redditgifts\.com$
+
 # Samsung Smart TVs
 ((abtauthprd|acr0|amauthprd|cdn|configprd|fkp|gamespromotion|musicid|notice|noticecdn|noticefile|oempprd|prderrordumphsm|prov|sas|vdterms)\.|^)samsungcloudsolution\.(com|net)
 (\.|^)giraffic\.com$
