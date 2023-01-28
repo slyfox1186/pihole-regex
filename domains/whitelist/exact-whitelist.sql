@@ -44,6 +44,7 @@
 (0, 'api.flightproxy.teams.microsoft.com', 1, 'Microsoft - SlyEWL')
 (0, 'api.github.com', 1, 'GitHub - Links essential data - SlyEWL')
 (0, 'api-global.netflix.com', 1, 'Netflix - SlyEWL')
+(0, 'api.onedrive.com', 1, 'Microsoft OneDrive - Required to connect your account - SlyEWL')
 (0, 'api.ipify.org', 1, 'Used to get your public IP address programmatically. ipify is completely opensource - SlyEWL')
 (0, 'api.pluto.tv', 1, 'Pluto.tv - SlyEWL')
 (0, 'api.rlje.net', 1, 'Used to deliver contents on video straming apps on hulu etc - SlyEWL')
