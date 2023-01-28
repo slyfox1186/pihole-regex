@@ -87,6 +87,7 @@
 (\.|^)samsungotn\.net$
 ^aic\.(homeprv|service)\.lgtvcommon\.com$
 ^hbbtv\.(prosieben|redbutton|zdf|ard)\.de$
+^otnprd[0-9]+?\.samsungcloudsolution\.net$
 
 ## Spotify
 ^(apresolve|audio2|embed|dealer|login5|market|play)\.spotify\.com$
