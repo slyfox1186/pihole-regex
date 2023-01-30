@@ -52,7 +52,7 @@
 ^outlook\.(live|office(|365))\.com$
 
 ## Mobile and Tablets
-^m\.(hotmail|reddit|weeklyad.target|youtube)\.com$
+^m\.(hotmail|reddit|weeklyad.target|yahoo|youtube)\.com$
 
 ## QNAP NAS - Reguired for the myqnapclub feature to work in it's entirety
 (\.|^)myqnapcloud\.com$
