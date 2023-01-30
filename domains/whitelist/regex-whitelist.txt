@@ -3,21 +3,16 @@
 
 ## AdultTime Necessary for the site to deliver non ad content
 (\.|^)(appsync|execute)-api.us-east-1.amazonaws.com$
-(\.|^)adulttime\.com$
-(\.|^)algolianet\.com$
+(\.|^)(adulttime|algolianet|react.gammacdn)\.com$
 (\.|^)algolia\.(io|net)$
 (\.|^)dsn\.algolia\.net$
 (\.|^)execute-api\.us-east-1\.amazonaws\.com$
-(\.|^)react\.gammacdn\.com$
 (\.|^)streaming-(fame|hls)\.gammacdn\.com$
-^(catalog|entitlement|lightswitch|eulatracking)-public-service-prod[0-9]*?\.ol\.epicgames\.com$
-^(catalog|entitlement|priceengine)-public-service-prod\.ak\.epicgames\.com$
 
 ## Amazon
 (\.|^)(appsync|execute)-api\.us-east-1\.amazonaws\.com$
-(\.|^)amazontrust\.com$
+(\.|^)(amazonaws|amazontrust|apzones|digicert|marketwatch|mzstatic|sym[b-d]+?|wp|yimg|youtube|ytimg)\.com$
 ^amzn\.(com|to)$
-(\.|^)(amazonaws|apzones|digicert|marketwatch|mzstatic|wp|yimg|youtube|ytimg)\.com$
 
 ## AMD Microchip Maker
 (\.|^)amd\.com$
@@ -37,7 +32,7 @@
 (\.|^)mee6\.xyz$
 
 ## Epic Games - Essential Domains for authentication during user login and other services such as purchasing/unlocking games to your user library
-^(catalog|entitlement|lightswitch|eulatracking|priceengine)-public-service-prod[0-9]*?\.(ak|ol)\.epicgames\.com$
+^(catalog|entitlement|lightswitch|eulatracking|metric|priceengine)-public-service-prod[0-9]*?\.(ak|ol)\.epicgames\.com$
 
 ## Facebook - Essentail CND servers
 (\.|^)accountkit\.com$
@@ -86,5 +81,4 @@
 ^crl[3-4]\.digicert\.com$
 
 ## YouTube
-(\.|^)(amazonaws|apzones|digicert|marketwatch|sym[b-d]+?|wp|yimg|youtube|ytimg)\.com$
 ^(www|youtubei|oauthaccountmanager)\.googleapis\.com$
