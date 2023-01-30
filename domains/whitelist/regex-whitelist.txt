@@ -32,7 +32,7 @@
 (\.|^)mee6\.xyz$
 
 ## Epic Games - Essential Domains for authentication during user login and other services such as purchasing/unlocking games to your user library
-^(catalog|entitlement|lightswitch|eulatracking|metric|priceengine)-public-service-prod[0-9]*?\.(ak|ol)\.epicgames\.com$
+^(catalog|entitlement|eulatracking|lightswitch|metric|priceengine)-public-service-prod[0-9]*?\.(ak|ol)\.epicgames\.com$
 
 ## Facebook - Essentail CND servers
 (\.|^)accountkit\.com$
