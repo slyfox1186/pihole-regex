@@ -4,8 +4,8 @@
 ## AdultTime Necessary for the site to deliver non ad content
 (\.|^)(appsync|execute)-api.us-east-1.amazonaws.com$
 (\.|^)(adulttime|algolianet|react.gammacdn)\.com$
-(\.|^)algolia\.(io|net)$
-(\.|^)dsn\.algolia\.net$
+(\.|^)kosmos-((|assets-)prod)\.react\.gammacdn\.com$
+(\.|^)(dns|)algolia(|net)\.(com|io|net)$
 (\.|^)execute-api\.us-east-1\.amazonaws\.com$
 (\.|^)streaming-(fame|hls)\.gammacdn\.com$
 ^static[\d]+?-cms-fame\.gammacdn\.com$
