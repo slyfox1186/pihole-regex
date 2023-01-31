@@ -320,6 +320,7 @@
 (0, 'res-1.cdn.office.net', 1, 'Microsoft - SlyEWL')
 (0, 'res.cloudinary.com', 1, 'Cloudinary - Provides a cloud-based image and video management services - SlyEWL')
 (0, 'rover.ebay.com', 1, 'Ebay - SlyEWL')
+(0, 's-bid.rmp.rakuten.com', 1, 'Rakuten viber image to send - SlyEWL')
 (0, 'samsungosp.com', 1, 'Samsung TV - SlyEWL')
 (0, 'scontent.fgdl5-1.fna.fbcdn.net', 1, 'Facebook - Messenger - SlyEWL')
 (0, 'sdn.geekzu.org', 1, 'Crucial CDN server - SlyEWL')
