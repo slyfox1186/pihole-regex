@@ -197,7 +197,6 @@ imgs.xkcd.com
 instagram.c10r.facebook.com
 instantmessaging-pa.googleapis.com
 intercom.io
-ipv6.msftncsi.com
 itunes-apple.com.akadns.net
 itunes.com
 itv.ard.de
@@ -257,7 +256,6 @@ models.topazlabs.com
 mrs-efz.ms-acdc.office.com
 mscomajax.vo.msecnd.net
 msedge.api.cdp.microsoft.com
-msftncsi.com
 my.plexapp.com
 netdna.bootstrapcdn.com
 netflix.com
@@ -440,7 +438,6 @@ www.itunes.com
 www.linuxtracker.org
 www.microsoft.com
 www.msftconnecttest.com
-www.msftncsi.com
 www.no-ip.com
 www.opensubtitles.org
 www.plex.tv
