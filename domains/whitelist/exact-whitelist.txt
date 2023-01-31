@@ -1,3 +1,4 @@
+79423.analytics.edgekey.net
 android.clients.google.com
 api.flightproxy.teams.microsoft.com
 appboot.netflix.com
