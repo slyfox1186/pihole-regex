@@ -253,6 +253,7 @@
 (0, 'mirror.umd.edu', 1, 'Github - Required CDN for downloading packages - SlyEWL')
 (0, 'mobileandroidapi.punchh.com', 1, 'Misc - SlyEWL')
 (0, 'mobile-ap.spotify.com', 1, 'Spotify - SlyEWL')
+(0, 'mobile.pipe.aria.microsoft.com', 1, 'Microsoft - Required for "Your Phone Companion" app that connects mobiles to windows 10/11 to work - SlyEWL')
 (0, 'mobile.twitter.com', 1, 'Twitter - SlyEWL')
 (0, 'models.topazlabs.com', 1, 'Topaz Labs - Required to download algorithms - SlyEWL')
 (0, 'mrs-efz.ms-acdc.office.com', 1, 'Microsoft - SlyEWL')
