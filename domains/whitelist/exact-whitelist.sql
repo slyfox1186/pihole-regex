@@ -314,6 +314,7 @@
 (0, 'r.manage.microsoft.com', 1, 'Microsoft - SlyEWL')
 (0, 'raw.githubusercontent.com', 1, 'GitHub - It is used to serve unprocessed versions of files stored in GitHub repositories. - SlyEWL')
 (0, 'reddit-uploaded-media.s3-accelerate.amazonaws.com', 1, 'Amazon - SlyEWL')
+(0, 'redirector.gvt1.com', 1, 'Android TV - SlyEWL')
 (0, 'reddit.map.fastly.net', 1, 'Reddit - SlyEWL')
 (0, 'reminders-pa.googleapis.com', 1, 'Google Widgets - SlyEWL')
 (0, 'res-1.cdn.office.net', 1, 'Microsoft - SlyEWL')
