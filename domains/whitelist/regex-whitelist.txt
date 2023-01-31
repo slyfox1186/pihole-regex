@@ -8,6 +8,7 @@
 (\.|^)dsn\.algolia\.net$
 (\.|^)execute-api\.us-east-1\.amazonaws\.com$
 (\.|^)streaming-(fame|hls)\.gammacdn\.com$
+^static[\d]+?-cms-fame\.gammacdn\.com$
 
 ## Amazon
 (\.|^)(appsync|execute)-api\.us-east-1\.amazonaws\.com$
