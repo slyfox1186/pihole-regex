@@ -50,6 +50,7 @@
 (\.|^)windows\.com$
 ^(device|title|user|xsts)\.auth\.xboxlive\.com$
 ^outlook\.(live|office(|365))\.com$
+^v[0-2]+?\.events\.data\.microsoft\.com$
 
 ## Mobile and Tablets
 ^m\.(hotmail|reddit|weeklyad.target|yahoo|youtube)\.com$
