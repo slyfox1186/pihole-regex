@@ -275,7 +275,6 @@
 (0, 'ns2.dropbox.com', 1, 'Dropbox - Used to download files from Dropbox - SlyEWL')
 (0, 'o1.email.plex.tv', 1, 'Plex Media Server - SlyEWL')
 (0, 'o2.sg0.plex.tv', 1, 'Plex Media Server - SlyEWL')
-(0, 'oauthaccountmanager.googleapis.com', 1, 'Google - SlyEWL')
 (0, 'objects.githubusercontent.com', 1, 'Github - Required CDN for downloading packages - SlyEWL')
 (0, 'office.com', 1, 'Microsoft - Office apps - SlyEWL')
 (0, 'office.net', 1, 'Microsoft - Office apps - SlyEWL')
