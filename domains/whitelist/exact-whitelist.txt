@@ -321,6 +321,7 @@ reminders-pa.googleapis.com
 res-1.cdn.office.net
 res.cloudinary.com
 rover.ebay.com
+s-bid.rmp.rakuten.com
 samsungosp.com
 scontent.fgdl5-1.fna.fbcdn.net
 sdn.geekzu.org
