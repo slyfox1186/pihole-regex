@@ -407,6 +407,7 @@ v.firebog.net
 v.shopify.com
 v.w-x.co
 vcs.vdspf.com
+viewer.content.glympse.com
 video-stats.l.google.com
 videos.vidible.tv
 vidtech.cbsinteractive.com
