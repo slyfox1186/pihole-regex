@@ -73,8 +73,6 @@
 (0, 'color.adobe.com', 1, 'Adobe - SlyEWL')
 (0, 'config.teams.microsoft.com', 1, 'Microsoft - SlyEWL')
 (0, 'connect.ubisoft.com', 1, 'Required to buy items from the Ubisoft Desktop App - SlyEWL')
-(0, 'connectivitycheck.android.com', 1, 'Google Android - Used by mobiles devices to check internet connectivity - SlyEWL')
-(0, 'connectivitycheck.gstatic.com', 1, 'Google - Used by mobiles devices to check internet connectivity - SlyEWL')
 (0, 'contentproxy.signal.org', 1, 'Proxy Service - SlyEWL')
 (0, 'continuum.dds.microsoft.com', 1, 'Microsoft - Used by YourPhone app by Microsoft on Windows 10 for mirroring Android notifications - SlyEWL')
 (0, 'cp801.prod.do.dsp.mp.microsoft.com', 1, 'Microsoft - SlyEWL')
