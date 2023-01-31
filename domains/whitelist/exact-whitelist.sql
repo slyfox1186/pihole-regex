@@ -409,6 +409,7 @@
 (0, 'vcs.vdspf.com', 1, 'Panasonic Viera TV - SlyEWL')
 (0, 'viewer.content.glympse.com', 1, 'Papa Johns Pizza - Required to PapaTrack to work (where is my pizza) - SlyEWL')
 (0, 'video-stats.l.google.com', 1, 'Google - Used to record YouTube watch history. Blocking this domain will pause your watch history on YouTube - SlyEWL')
+(0, 'video-stats.video.google.com', 1, 'Required for the YouTube Android app to work - SlyEWL')
 (0, 'videos.vidible.tv', 1, 'Video delivery systems, popular in entertainment and news sites - SlyEWL')
 (0, 'vidtech.cbsinteractive.com', 1, 'Used to deliver videos over the internet - SlyEWL')
 (0, 'vimeo.com', 1, 'Misc - SlyEWL')
