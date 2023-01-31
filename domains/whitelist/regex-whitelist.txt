@@ -49,7 +49,7 @@
 (\.|^)1drv\.ms$
 (www\.|^)microsoft\.com$
 (www\.|^)windows\.com$
-^(device|title|user|xsts)\.auth\.xboxlive\.com$
+^(attestation|cert\.mgt|def-vef|(device(|\.auth))|eds|help\.ui|licensing|notify|title(|\.(auth|mgt))|user|xflight|www|xboxexperiencesprod\.experimentation|xkms|xsts\.auth)\.xboxlive\.com$
 ^outlook\.(live|office(|365))\.com$
 ^v[0-2]+?\.events\.data\.microsoft\.com$
 
