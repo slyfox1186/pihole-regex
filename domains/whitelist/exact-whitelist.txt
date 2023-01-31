@@ -73,8 +73,6 @@ cognito-identity.us-east-1.amazonaws.com
 color.adobe.com
 config.teams.microsoft.com
 connect.ubisoft.com
-connectivitycheck.android.com
-connectivitycheck.gstatic.com
 contentproxy.signal.org
 continuum.dds.microsoft.com
 cp801.prod.do.dsp.mp.microsoft.com
