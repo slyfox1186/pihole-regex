@@ -7,12 +7,11 @@
 (\.|^)trafyield\.com$
 
 # AdultTime
-(\.|^)client-rapi\.recombee\.us$
 (\.|^)cognito-identity\.us-east-1\.amazonaws\.com$
-(\.|^)ctfassets\.net$
 (\.|^)gammaentertainment\.com$
 (\.|^)getbeamer\.com$
 (\.|^)lambda-url\.us-east-1\.on\.aws$
+(\.|^)usage\.trackjs\.com$
 
 # Apple
 (\.|^)deimos3.apple\.com$
