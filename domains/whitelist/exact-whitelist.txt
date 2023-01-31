@@ -253,6 +253,7 @@ mirror.msys2.org
 mirror.umd.edu
 mobileandroidapi.punchh.com
 mobile-ap.spotify.com
+mobile.pipe.aria.microsoft.com
 mobile.twitter.com
 models.topazlabs.com
 mrs-efz.ms-acdc.office.com
