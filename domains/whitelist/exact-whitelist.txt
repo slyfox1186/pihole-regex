@@ -420,6 +420,7 @@ weblb-wg.dual-gslb.spotify.com
 weeklyad.target.com.edgesuite.net
 whispersystems-textsecure-attachments.s3-accelerate.amazonaws.com
 whiteboard.microsoft.com
+widget-cdn.rpxnow.com
 wikipedia.org
 win10.prod.http1.netflix.com
 winatp-gw-neu.microsoft.com
