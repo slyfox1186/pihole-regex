@@ -316,6 +316,7 @@ r.manage.microsoft.com
 raw.githubusercontent.com
 reddit-uploaded-media.s3-accelerate.amazonaws.com
 reddit.map.fastly.net
+redirector.gvt1.com
 reminders-pa.googleapis.com
 res-1.cdn.office.net
 res.cloudinary.com
