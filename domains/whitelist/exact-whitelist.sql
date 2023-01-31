@@ -420,6 +420,7 @@
 (0, 'weeklyad.target.com.edgesuite.net', 1, 'Target - SlyEWL')
 (0, 'whispersystems-textsecure-attachments.s3-accelerate.amazonaws.com', 1, 'Amazon - SlyEWL')
 (0, 'whiteboard.microsoft.com', 1, 'Microsoft - SlyEWL')
+(0, 'widget-cdn.rpxnow.com', 1, 'Required to log into teambeachbody.com - SlyEWL')
 (0, 'wikipedia.org', 1, 'Misc - SlyEWL')
 (0, 'win10.prod.http1.netflix.com', 1, 'Netflix - Requried for signing in - SlyEWL')
 (0, 'winatp-gw-neu.microsoft.com', 1, 'Microsoft - SlyEWL')
