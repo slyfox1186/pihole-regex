@@ -1,3 +1,4 @@
+(0, 'android.clients.google.com', 1, 'Google Play - SlyEWL')
 (0, 'api.flightproxy.teams.microsoft.com', 1, 'Microsoft - SlyEWL')
 (0, 'appboot.netflix.com', 1, 'Netflix - SlyEWL')
 (0, 'appleglobal.102.112.2o7.net', 1, 'Apple iOS - Required to add someone to your account recovery list - SlyEWL')
