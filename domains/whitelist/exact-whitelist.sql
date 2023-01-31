@@ -407,6 +407,7 @@
 (0, 'v.shopify.com', 1, 'Shopping - SlyEWL')
 (0, 'v.w-x.co', 1, 'Weather - SlyEWL')
 (0, 'vcs.vdspf.com', 1, 'Panasonic Viera TV - SlyEWL')
+(0, 'viewer.content.glympse.com', 1, 'Papa Johns Pizza - Required to PapaTrack to work (where is my pizza) - SlyEWL')
 (0, 'video-stats.l.google.com', 1, 'Google - Used to record YouTube watch history. Blocking this domain will pause your watch history on YouTube - SlyEWL')
 (0, 'videos.vidible.tv', 1, 'Video delivery systems, popular in entertainment and news sites - SlyEWL')
 (0, 'vidtech.cbsinteractive.com', 1, 'Used to deliver videos over the internet - SlyEWL')
