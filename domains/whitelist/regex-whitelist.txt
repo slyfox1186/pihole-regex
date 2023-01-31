@@ -56,7 +56,6 @@
 ^v[0-2]+?\.events\.data\.microsoft\.com$
 (www\.|^)microsoft\.com$
 (www\.|^)windows\.com$
-^(www|ipv6)\.|msftncsi\.com$
 
 ## Mobile and Tablets
 ^m\.(hotmail|reddit|weeklyad.target|yahoo|youtube)\.com$
