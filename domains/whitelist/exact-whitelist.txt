@@ -219,8 +219,6 @@ no-ip.com
 node.plexapp.com
 northeurope-prod-4.notifications.teams.microsoft.com
 nrdp.prod.cloud.netflix.com
-ns1.dropbox.com
-ns2.dropbox.com
 o1.email.plex.tv
 o2.sg0.plex.tv
 objects.githubusercontent.com
