@@ -33,8 +33,6 @@
 (0, 'cdnjs.loli.net', 1, 'Crucial CDN server - SlyEWL')
 (0, 'cdnjs.loli.net.cdn.cloudflare.net', 1, 'Crucial CDN server - SlyEWL')
 (0, 'cdn-mobile.api.pluto.tv', 1, 'Pluto.tv - SlyEWL')
-(0, 'cds.d3x4y6v5.hwcdn.net', 1, 'Github - Required CDN for downloading packages - SlyEWL')
-(0, 'cds.s5x3j6q5.hwcdn.net', 1, 'Github - Required CDN for downloading packages - SlyEWL')
 (0, 'chat.signal.org', 1, 'Chat service - SlyEWL')
 (0, 'chatsvcagg.teams.microsoft.com', 1, 'Microsoft - SlyEWL')
 (0, 'check2.tsb.co.uk', 1, 'Misc - SlyEWL')
