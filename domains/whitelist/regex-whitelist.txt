@@ -37,6 +37,9 @@
 ## Chrome Browser Discord App MEE6 Support Website
 (\.|^)mee6\.xyz$
 
+## DropBox
+^ns[12]?\.dropbox\.com$
+
 ## Epic Games - Essential Domains for authentication during user login and other services such as purchasing/unlocking games to your user library
 ^(catalog|entitlement|eulatracking|lightswitch|metric|priceengine)-public-service-prod[0-9]*?\.(ak|ol)\.epicgames\.com$
 
