@@ -221,8 +221,6 @@
 (0, 'node.plexapp.com', 1, 'Plex Media Server - SlyEWL')
 (0, 'northeurope-prod-4.notifications.teams.microsoft.com', 1, 'Microsoft - SlyEWL')
 (0, 'nrdp.prod.cloud.netflix.com', 1, 'Netflix - Needed to login on Nvidia Shield TV - SlyEWL')
-(0, 'ns1.dropbox.com', 1, 'Dropbox - Used to download files from Dropbox - SlyEWL')
-(0, 'ns2.dropbox.com', 1, 'Dropbox - Used to download files from Dropbox - SlyEWL')
 (0, 'o1.email.plex.tv', 1, 'Plex Media Server - SlyEWL')
 (0, 'o2.sg0.plex.tv', 1, 'Plex Media Server - SlyEWL')
 (0, 'objects.githubusercontent.com', 1, 'Github - Required CDN for downloading packages - SlyEWL')
