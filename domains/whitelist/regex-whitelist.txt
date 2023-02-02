@@ -10,7 +10,6 @@
 ^([a-z0-9]+\.|)(appsync|execute)-api\.us-east-1\.amazonaws\.com$
 
 ## Amazon
-(\.|^)(appsync|execute)-api\.us-east-1\.amazonaws\.com$
 (\.|^)(amazonaws|amazontrust|apzones|digicert|marketwatch|mzstatic|sym[b-d]+?|wp|yimg|youtube|ytimg)\.com$
 ^amzn\.(com|to)$
 
