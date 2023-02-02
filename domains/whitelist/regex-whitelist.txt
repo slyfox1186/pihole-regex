@@ -48,29 +48,25 @@
 ^clients[1-6]*\.google\.com$
 
 ## Microsoft OneDrive, Azure, Windows Esentials updates, other, xboxlive required for saves to the cloud
+(www\.|^)(microsoft|windows)\.com$
 (\.|^)1drv\.ms$
 ^(attestation|cert\.mgt|def-vef|(device(|\.auth))|eds|help\.ui|licensing|notify|title(|\.(auth|mgt))|user|xflight|www|xboxexperiencesprod\.experimentation|xkms|xsts\.auth)\.xboxlive\.com$
-^outlook\.(live|office(|365))\.com$
 ^(settings|v10\.vortex)-win\.data\.microsoft\.com$
+^outlook\.(live|office(|365))\.com$
 ^v[0-2]+?\.events\.data\.microsoft\.com$
-(www\.|^)microsoft\.com$
-(www\.|^)windows\.com$
 
 ## Mobile and Tablets
 ^m\.(hotmail|reddit|weeklyad.target|yahoo|youtube)\.com$
 
 ## QNAP NAS - Reguired for the myqnapclub feature to work in it's entirety
-(\.|^)myqnapcloud\.com$
-(\.|^)qnap\.com$
+(\.|^)(myqnapcloud|qnap)\.com$
 
 ## Rob VanderWoude Learn how to code multiple languages
 (\.|^)robvanderwoude\.com$
 
 ## Reddit - Main CND's and other legit content delivery comains for Reddit. Some of these carry ads and will cripple the site as a whole if not whitelisted.
-^reddit(|media|static)\.com$
-(\.|^)redd\.it$
-(\.|^)thumbs\.redditmedia\.com
-(\.|^)[iv]?\.redd\.it$
+(thumbs\.|^)(reddit(media|static))\.com
+(\.|^)([iv]?\.|)redd\.it$
 
 ## Smart TV's
 (\.|^)samsungcloudcdn\.com$
