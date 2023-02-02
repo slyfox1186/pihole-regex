@@ -14,7 +14,6 @@ apt.sonarr.tv
 arc.msn.com
 aspnetcdn.com
 assets.adobedtm.com
-attestation.xboxlive.com
 audio4-fa.scdn.co
 auth.samsungosp.com
 auth.split.io
@@ -28,9 +27,6 @@ bing.com
 bit.ly
 bufferapp.com
 bugmenot.com
-catalog-public-service-prod.ak.epicgames.com
-cdn.bootcdn.net.maoyundns.com
-cdn.bootcss.com.maoyundns.com
 cdn.embed.ly.cdn.cloudflare.net
 cdnjs.cloudflare.com
 cdn.jsdelivr.net.cdn.cloudflare.net
@@ -39,7 +35,6 @@ cdnjs.loli.net.cdn.cloudflare.net
 cdn-mobile.api.pluto.tv
 cds.d3x4y6v5.hwcdn.net
 cds.s5x3j6q5.hwcdn.net
-cert.mgt.xboxlive.com
 chat.signal.org
 chatsvcagg.teams.microsoft.com
 check2.tsb.co.uk
@@ -53,9 +48,6 @@ client.wns.windows.com
 cloudsync-prod.s3.amazonaws.com
 cluster95-elbwpeel-12if8kvnohvm9-1396764601.us-east-1.elb.amazonaws.com
 cms.souqcdn.com
-code.bildstatic.de
-code.createjs.com
-code.jquery.com
 codepush.teams.microsoft.com
 cognito-identity.us-east-1.amazonaws.com
 color.adobe.com
@@ -80,7 +72,6 @@ daily-mix.scdn.co
 dashboard.plex.tv
 dataplicity.com
 datarouter.ol.epicgames.com
-def-vef.xboxlive.com
 delivery.vidible.tv
 det-ta-g7g.amazon.com
 developer.n.shifen.com
@@ -107,7 +98,6 @@ edge.activity.windows.com
 edge-chat.messenger.com
 edge.gycpi.b.yahoodns.net
 edge.microsoft.com
-eds.xboxlive.com
 emea.ng.msg.teams.microsoft.com
 emea.pptservicescast.officeapps.live.com
 encore.scdn.co
@@ -119,8 +109,6 @@ et.topazlabs.com
 europe.cp.wd.microsoft.com
 europe.smartscreen.microsoft.com
 europe.smartscreen-prod.microsoft.com
-events-test.redditmedia.com
-events-test-v2.redditmedia.com
 fbcdn-creative-a.akamaihd.net
 fe3cr.delivery.mp.microsoft.com
 fe3.delivery.dsp.mp.microsoft.com.nsatc.net
@@ -163,7 +151,6 @@ gsp-ssl.ls-apple.com.akadns.net
 gstatic.com
 gucl-6.ap.spotify.com
 has.spserv.microsoft.com
-help.ui.xboxlive.com
 hls.ted.com
 hostsfile.mine.nu
 hosts-file.net
@@ -203,7 +190,6 @@ lib.baomitu.com.qh-cdn.com
 libs.baidu.com
 lib.sinaapp.com
 licensing.mp.microsoft.com
-licensing.xboxlive.com
 lineup-images.scdn.co
 linkedin.com
 linuxtracker.org
@@ -257,7 +243,6 @@ nleditor.osi.office.net
 node.plexapp.com
 no-ip.com
 northeurope-prod-4.notifications.teams.microsoft.com
-notify.xboxlive.com
 nrdp.prod.cloud.netflix.com
 ns1.dropbox.com
 ns2.dropbox.com
@@ -360,7 +345,6 @@ thetvdb.com
 time-a.timefreq.bldrdoc.gov
 time.samsungcloudsolution.com
 tinyurl.com
-title.mgt.xboxlive.com
 tlu.dl.delivery.mp.microsoft.com
 todo-ta-g7g.amazon.com
 tracking.dpd.de
@@ -444,12 +428,8 @@ www.squaretrade.com
 www.twitter.com
 www.vbsedit.com
 www.wa.me
-www.xboxlive.com
-xboxexperiencesprod.experimentation.xboxlive.com
 xbox.ipv6.microsoft.com
 x-default-stgec.uplynk.com
-xflight.xboxlive.com
-xkms.xboxlive.com
 xp.apple.com
 yahoo.com
 yastatic.net
