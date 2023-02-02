@@ -133,7 +133,6 @@
 (0, 'europe.smartscreen-prod.microsoft.com', 1, 'Microsoft - SlyEWL')
 (0, 'events-test.redditmedia.com', 1, 'Reddit - SlyEWL')
 (0, 'events-test-v2.redditmedia.com', 1, 'Reddit - SlyEWL')
-(0, 'facebook.net', 1, 'Facebook - SlyEWL')
 (0, 'fbcdn-creative-a.akamaihd.net', 1, 'Akami Facebook CDN - SlyEWL')
 (0, 'fe3cr.delivery.mp.microsoft.com', 1, 'Microsoft - SlyEWL')
 (0, 'fe3.delivery.dsp.mp.microsoft.com.nsatc.net', 1, 'Microsoft - SlyEWL')
