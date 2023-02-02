@@ -10,8 +10,7 @@
 ^(streaming|images[0-9]+)-(fame|hls)\.gammacdn\.com$
 
 ## Amazon
-(\.|^)(amazonaws|amazontrust|apzones|digicert|marketwatch|mzstatic|sym[b-d]+?|wp|yimg|youtube|ytimg)\.com$
-^amzn\.(com|to)$
+(\.|^)(amzn|amazonaws|amazontrust|apzones|digicert|marketwatch|mzstatic|sym[b-d]+?|wp|yimg|youtube|ytimg)\.(com|to)$
 
 ## AMD Microchip Maker
 (\.|^)amd\.com$
