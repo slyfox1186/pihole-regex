@@ -29,6 +29,7 @@
 ^(devimages|xp-cdn|playgrounds(|-assets))-cdn\.apple\.com$
 ^(download.developer|ns.itunes|static.ips|vpp.itunes)\.apple\.com$
 ^(ocsp[0-9]*?\.(apple|apzones|digicert|entrust|verisign)\.(com|net))$
+^gsp-ssl\.ls(\.|-)apple\.com(|\.akadns\.net)$
 
 ## A progressive delivery and experimentation software for other companies
 ^cdn[0-3]*?\.optimizely\.com$
