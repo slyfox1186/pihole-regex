@@ -125,7 +125,6 @@ giphy.com
 giphy-proxy-production.whispersystems.org
 gitcdn.github.io
 g.live.com
-go.microsoft.com
 goo.gl
 googleapis.com
 googleapis.l.google.com
