@@ -21,6 +21,7 @@
 ^connectivitycheck\.(android|gstatic|ubuntu)\.com$
 ^cdn\.boot(|cdn|css)\.(com|net)\.maoyundns\.com$
 ^code\.(bildstatic|createjs|jquery)\.(com|de)
+^cds\.[a-z0-9]+\.hwcdn\.net$
 
 ## Apple - Main domains for a good chunk of legitimate iOS services
 ^(appattest|appleid|apps|audiocontentdownload|bpapi|business|captive|cdn-apple|certs|configuration|crl|cssubmissions|deviceenrollment|diagassets|fba|gc|gdmf|gg.*|gs(|[ap1]*?)|humb|identity|idmsa|i(|g|profiles|su|tunes|work)|mdmenrollment|mesu|oscdn|oscp|osrecovery|ppq|push|radarsubmissions|school|serverstatus|skl|suconfig|sw(|cdn|dist|download|post|scan)|sylvan|sym[b-d]+?|tbsc|valid|www|axm-app|deviceservices-external|gnf-mdn|gnf-mr|lcdn-(locator|registration)|sq-device|time(|-ios|-macos)|xp(|-cdn))\.apple\.com$
