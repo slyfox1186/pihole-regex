@@ -217,7 +217,6 @@ mirror.clarkson.edu
 mirror.msys2.org
 mirror.umd.edu
 mobileandroidapi.punchh.com
-mobile-ap.spotify.com
 mobile.pipe.aria.microsoft.com
 mobile.twitter.com
 models.topazlabs.com
@@ -307,7 +306,6 @@ sls.update.microsoft.com.akadns.net
 society6.com
 someonewhocares.org
 souqcdn.com
-spclient-wg.spotify.com
 ssl.p.jwpcdn.com
 stackpath.bootstrapcdn.com
 staging.plex.tv
@@ -361,7 +359,6 @@ unsplash.com
 upcdn.b0.upaiyun.com
 update.biv.sony.tv
 updates2.signal.org
-upgrade.scdn.com
 upload.appleschoolcontent.com
 upload.twitter.com
 us-east-1.amazonaws.com
