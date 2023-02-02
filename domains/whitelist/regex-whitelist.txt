@@ -16,6 +16,9 @@
 ## AMD Microchip Maker
 (\.|^)amd\.com$
 
+# Content Delivery Networks AKA CDN's
+^cdn\.(bootcss|cloudflare|datatables|discordapp|embed|mathjax|plyr|signal|staticfile)\.(com|io|ly|net|org)
+
 # Connectivity checks by Android and Ubuntu OS
 ^connectivitycheck\.(android|gstatic|ubuntu)\.com$
 
