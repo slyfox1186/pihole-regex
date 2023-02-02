@@ -33,8 +33,6 @@ cdn.jsdelivr.net.cdn.cloudflare.net
 cdnjs.loli.net
 cdnjs.loli.net.cdn.cloudflare.net
 cdn-mobile.api.pluto.tv
-cds.d3x4y6v5.hwcdn.net
-cds.s5x3j6q5.hwcdn.net
 chat.signal.org
 chatsvcagg.teams.microsoft.com
 check2.tsb.co.uk
