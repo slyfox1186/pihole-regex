@@ -127,7 +127,6 @@ giphy.com
 giphy-proxy-production.whispersystems.org
 gitcdn.github.io
 g.live.com
-global-dealer-ssl.spotify.com
 go.microsoft.com
 goo.gl
 googleapis.com
@@ -141,7 +140,6 @@ gravatar.com
 gsp-ssl.ls.apple.com
 gsp-ssl.ls-apple.com.akadns.net
 gstatic.com
-gucl-6.ap.spotify.com
 has.spserv.microsoft.com
 hls.ted.com
 hostsfile.mine.nu
@@ -359,6 +357,7 @@ unsplash.com
 upcdn.b0.upaiyun.com
 update.biv.sony.tv
 updates2.signal.org
+upgrade.scdn.co
 upload.appleschoolcontent.com
 upload.twitter.com
 us-east-1.amazonaws.com
@@ -377,7 +376,6 @@ vo.aicdn.com
 v.shopify.com
 v.w-x.co
 wa.me
-weblb-wg.dual-gslb.spotify.com
 weeklyad.target.com.edgesuite.net
 whispersystems-textsecure-attachments.s3-accelerate.amazonaws.com
 whiteboard.microsoft.com
