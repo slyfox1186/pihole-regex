@@ -16,8 +16,8 @@
 ## AMD Microchip Maker
 (\.|^)amd\.com$
 
-# Android
-^connectivitycheck\.(android|gstatic)\.com$
+# Connectivity checks by Android and Ubuntu OS
+^connectivitycheck\.(android|gstatic|ubuntu)\.com$
 
 ## Apple - Main domains for a good chunk of legitimate iOS services
 ^(appattest|appleid|apps|audiocontentdownload|bpapi|business|captive|cdn-apple|certs|configuration|crl|cssubmissions|deviceenrollment|diagassets|fba|gc|gdmf|gg.*|gs(|[ap1]*?)|humb|identity|idmsa|i(|g|profiles|su|tunes|work)|mdmenrollment|mesu|oscdn|oscp|osrecovery|ppq|push|radarsubmissions|school|serverstatus|skl|suconfig|sw(|cdn|dist|download|post|scan)|sylvan|sym[b-d]+?|tbsc|valid|www|axm-app|deviceservices-external|gnf-mdn|gnf-mr|lcdn-(locator|registration)|sq-device|time(|-ios|-macos)|xp(|-cdn))\.apple\.com$
@@ -38,8 +38,7 @@
 
 ## Facebook - Essentail CND servers
 (\.|^)(connect\.|)facebook\.(com|net)$
-(\.|^)accountkit\.com$
-(\.|^)messenger\.com$
+(\.|^)(accountkit|messenger)\.com$
 ^scontent-(atl3|lhr3|mia3|ort2)-1\.xx\.fbcdn\.net$
 ^[0-6]+?-edge-chat\.facebook\.com$
 
