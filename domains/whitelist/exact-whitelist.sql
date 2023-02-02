@@ -136,8 +136,6 @@
 (0, 'graph.oculus.com', 1, 'Facebook - SlyEWL')
 (0, 'graphql.epicgames.com', 1, 'Epic Games - Required for the store to work properly - SlyEWL')
 (0, 'gravatar.com', 1, 'Gravatar is a service for providing globally unique avatars - SlyEWL')
-(0, 'gsp-ssl.ls.apple.com', 1, 'Apple - SlyEWL')
-(0, 'gsp-ssl.ls-apple.com.akadns.net', 1, 'Apple - SlyEWL')
 (0, 'gstatic.com', 1, 'Google - gstatic.com is a cookieless domain to deliver static content for Google - SlyEWL')
 (0, 'has.spserv.microsoft.com', 1, 'Microsoft - SlyEWL')
 (0, 'hls.ted.com', 1, 'Used by ted.com streams - SlyEWL')
