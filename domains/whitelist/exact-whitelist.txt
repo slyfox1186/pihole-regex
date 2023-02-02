@@ -133,7 +133,6 @@ europe.smartscreen.microsoft.com
 europe.smartscreen-prod.microsoft.com
 events-test.redditmedia.com
 events-test-v2.redditmedia.com
-facebook.net
 fbcdn-creative-a.akamaihd.net
 fe3cr.delivery.mp.microsoft.com
 fe3.delivery.dsp.mp.microsoft.com.nsatc.net
