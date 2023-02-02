@@ -42,6 +42,9 @@
 (\.|^)ad-score\.com$
 (\.|^)fake\.video\.url\.webm$
 
+# QNAP Computers
+^(api-software|d-20p1an5qn|marketing-materials|marketing|origin-marketing|origin-www|ixq|iot|partner)\.qnap\.com$
+
 # Reddit.com
 ^(advertising|www)\.reddithelp\.com$
 ^(ssl|static|www)\.redditgifts\.com$
