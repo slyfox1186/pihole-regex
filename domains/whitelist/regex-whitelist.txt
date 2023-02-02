@@ -83,7 +83,7 @@
 ^otnprd[0-9]+?\.samsungcloudsolution\.net$
 
 ## Spotify
-^(apresolve|audio2|embed|dealer|login5|market|play|spclient\.wg)\.spotify\.com$
+^(apresolve|audio2|embed|dealer|login5|market|open|play|spclient\.wg)\.spotify\.com$
 
 ## SSL Certificate
 ^crl[3-4]\.digicert\.com$
