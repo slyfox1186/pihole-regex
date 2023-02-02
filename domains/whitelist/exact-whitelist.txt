@@ -434,7 +434,6 @@ www.aliexpress.com
 www.appleiphonecell.com
 www.dataplicity.com
 www.ecdinterface.philips.com
-www.facebook.com
 www.googleapis.com
 www.howtogeek.com
 www.icloud.com
