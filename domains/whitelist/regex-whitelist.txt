@@ -62,6 +62,9 @@
 ^europe.(cp\.wd|smartscreen(-prod|))\.microsoft\.com$
 ^outlook\.(live|office(|365))\.com$
 ^v[0-2]+?\.events\.data\.microsoft\.com$
+^microsoft(|online)\.com$
+^(csp|c\.s|devicelistenerprod)(-|\.)microsoft\.com$
+^(edge|fs|mobile\.pipe\.aria|msedge\.api.\cdp|officecdnmac|officeclient|support|teams|vlscppe|whiteboard|www)\.microsoft\.com$
 
 ## Mobile and Tablets
 ^m\.(hotmail|reddit|weeklyad.target|yahoo|youtube)\.com$
