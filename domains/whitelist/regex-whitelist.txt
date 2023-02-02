@@ -17,8 +17,7 @@
 (\.|^)amd\.com$
 
 # Content Delivery Networks AKA CDN's
-^cdn\.(bootcss|cloudflare|datatables|discordapp|embed|mathjax|plyr|signal|staticfile)\.(com|io|ly|net|org)
-
+^cdn\.(bootcss|cloudflare|datatables|discordapp|embed|embedly|materialdesignicons|mathjax|plyr|samsungcloudsolution|signal|staticfile)\.(com|io|ly|net|org)
 # Connectivity checks by Android and Ubuntu OS
 ^connectivitycheck\.(android|gstatic|ubuntu)\.com$
 
