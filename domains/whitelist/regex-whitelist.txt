@@ -45,6 +45,9 @@
 ^scontent-(atl3|lhr3|mia3|ort2)-1\.xx\.fbcdn\.net$
 ^[0-6]+?-edge-chat\.facebook\.com$
 
+## GitHub
+^github\.(com|io)$
+
 ## Google - Allow known essential widget service
 ^beacons[0-9]*\.gvt[0-9]+\.com$
 ^clients[1-6]*\.google\.com$
@@ -54,6 +57,7 @@
 (\.|^)1drv\.ms$
 ^(attestation|cert\.mgt|def-vef|(device(|\.auth))|eds|help\.ui|licensing|notify|title(|\.(auth|mgt))|user|xflight|www|xboxexperiencesprod\.experimentation|xkms|xsts\.auth)\.xboxlive\.com$
 ^(settings|v10\.vortex)-win\.data\.microsoft\.com$
+^europe.(cp\.wd|smartscreen(-prod|))\.microsoft\.com$
 ^outlook\.(live|office(|365))\.com$
 ^v[0-2]+?\.events\.data\.microsoft\.com$
 
