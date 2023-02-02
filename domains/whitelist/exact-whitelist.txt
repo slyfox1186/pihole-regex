@@ -137,8 +137,6 @@ graph.instagram.com
 graph.oculus.com
 graphql.epicgames.com
 gravatar.com
-gsp-ssl.ls.apple.com
-gsp-ssl.ls-apple.com.akadns.net
 gstatic.com
 has.spserv.microsoft.com
 hls.ted.com
