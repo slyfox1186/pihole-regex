@@ -435,7 +435,6 @@
 (0, 'www.appleiphonecell.com', 1, 'Apple - SlyEWL')
 (0, 'www.dataplicity.com', 1, 'Used to remotely control your Raspberry-Pi - SlyEWL')
 (0, 'www.ecdinterface.philips.com', 1, 'Philips TV - SlyEWL')
-(0, 'www.facebook.com', 1, 'Facebook - Main website - SlyEWL')
 (0, 'www.googleapis.com', 1, 'Google - An important domain used to provide APIs to various Google services. - SlyEWL')
 (0, 'www.howtogeek.com', 1, 'Misc - SlyEWL')
 (0, 'www.icloud.com', 1, 'Apple - SlyEWL')
