@@ -124,7 +124,6 @@
 (0, 'giphy-proxy-production.whispersystems.org', 1, 'Misc - SlyEWL')
 (0, 'gitcdn.github.io', 1, 'Crucial CDN server - SlyEWL')
 (0, 'g.live.com', 1, 'Microsoft - Outlook.com and OneDrive products. Backup bitlocker recovery key to Microsoft account - SlyEWL')
-(0, 'go.microsoft.com', 1, 'Microsoft - SlyEWL')
 (0, 'goo.gl', 1, 'Google - SlyEWL')
 (0, 'googleapis.com', 1, 'Google - An important domain used to provide APIs to various Google services - SlyEWL')
 (0, 'googleapis.l.google.com', 1, 'Google - SlyEWL')
