@@ -18,8 +18,9 @@
 
 # Content Delivery Networks AKA CDN's
 ^cdn\.(bootcss|cloudflare|datatables|discordapp|embed|embedly|materialdesignicons|mathjax|plyr|samsungcloudsolution|signal|staticfile)\.(com|io|ly|net|org)
-# Connectivity checks by Android and Ubuntu OS
 ^connectivitycheck\.(android|gstatic|ubuntu)\.com$
+^cdn\.boot(|cdn|css)\.(com|net)\.maoyundns\.com$
+^code\.(bildstatic|createjs|jquery)\.(com|de)
 
 ## Apple - Main domains for a good chunk of legitimate iOS services
 ^(appattest|appleid|apps|audiocontentdownload|bpapi|business|captive|cdn-apple|certs|configuration|crl|cssubmissions|deviceenrollment|diagassets|fba|gc|gdmf|gg.*|gs(|[ap1]*?)|humb|identity|idmsa|i(|g|profiles|su|tunes|work)|mdmenrollment|mesu|oscdn|oscp|osrecovery|ppq|push|radarsubmissions|school|serverstatus|skl|suconfig|sw(|cdn|dist|download|post|scan)|sylvan|sym[b-d]+?|tbsc|valid|www|axm-app|deviceservices-external|gnf-mdn|gnf-mr|lcdn-(locator|registration)|sq-device|time(|-ios|-macos)|xp(|-cdn))\.apple\.com$
@@ -68,6 +69,7 @@
 ## Reddit - Main CND's and other legit content delivery comains for Reddit. Some of these carry ads and will cripple the site as a whole if not whitelisted.
 (thumbs\.|^)(reddit(media|static))\.com
 (\.|^)([iv]?\.|)redd\.it$
+^events-test(|-v2)\.redditmedia\.com$
 
 ## Smart TV's
 (\.|^)samsungcloudcdn\.com$
@@ -81,6 +83,9 @@
 
 ## SSL Certificate
 ^crl[3-4]\.digicert\.com$
+
+## Xbox Live (Microsoft)
+^(attestation|cert\.mgt|def-vef|eds|help\.ui|licensing|notify|title\.mgt|www|xboxexperiencesprod\.experimentation|xflight|xkms)\.xboxlive\.com$
 
 ## YouTube
 ^(www|youtubei|oauthaccountmanager)\.googleapis\.com$
