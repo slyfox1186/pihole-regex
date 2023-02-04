@@ -132,7 +132,7 @@
 (0, 'graph.oculus.com', 1, 'Facebook - SlyEWL')
 (0, 'graphql.epicgames.com', 1, 'Epic Games - Required for the store to work properly - SlyEWL')
 (0, 'gravatar.com', 1, 'Gravatar is a service for providing globally unique avatars - SlyEWL')
-(0, 'gs-loc.ls-apple.com.akadns.net', 1, 'Locationd is a daemon that provides location services for OS X's "Core Location". This uses skyhook technology to figure out your mac's location (using WiFi). It's the same system used by the iPod Touch, and is also used by the iPhone (The iPhone also uses cell tower triangulation and GPS) - SlyEWL')
+(0, 'gs-loc.ls-apple.com.akadns.net', 1, 'Locationd is a daemon that provides location services for OSx Core Location. This uses skyhook technology to figure out your macs location (using WiFi). Its the same system used by the iPod Touch, and is also used by the iPhone (The iPhone also uses cell tower triangulation and GPS) - SlyEWL')
 (0, 'gstatic.com', 1, 'Google - gstatic.com is a cookieless domain to deliver static content for Google - SlyEWL')
 (0, 'has.spserv.microsoft.com', 1, 'Microsoft - SlyEWL')
 (0, 'hls.ted.com', 1, 'Used by ted.com streams - SlyEWL')
