@@ -81,6 +81,9 @@ dl.dropbox.com
 dl.dropboxusercontent.com
 dl.google.com
 dns.msftncsi.com
+download.scdn.co
+download.sonarr.tv
+downloads.boi9osyg1uwtyafn.com
 drscdn.500px.org
 dualstack.osff.map.fastly.net
 dynupdate.no-ip.com
@@ -159,8 +162,8 @@ itunes.com
 itv.ard.de
 j.mp
 jquery.com
+js.appboycdn.com
 js.stripe.com
-jsdelivr.net
 json.bild.de
 keyserver.ubuntu.com
 keystone.mwbsys.com
@@ -179,6 +182,8 @@ live.com
 lm.licenses.adobe.com
 location-api.hdhomerun.com
 login.aliexpress.com
+login.live.com
+login.microsoftonline.com
 logincdn.msauth.net
 m3u8.gammacdn.com
 mamservice.manage.microsoft.com
@@ -197,6 +202,7 @@ medium.com
 meta-db-worker02.pop.ric.plex.bz
 meta.plex.bz
 meta.plex.tv
+microsoft.com
 microsoftonline.com
 mirror.clarkson.edu
 mirror.msys2.org
@@ -233,7 +239,6 @@ openpgpkey.gmail.com
 openpgpkey.martellmalone.com
 ota-downloads.nvidia.com
 otn.samsungcloudcdn.com
-outlook-1.cdn.office.net
 pagecdn.io
 pgl.yoyo.org
 pinterest.com
@@ -319,6 +324,7 @@ tlu.dl.delivery.mp.microsoft.com
 todo-ta-g7g.amazon.com
 tracking-protection.cdn.mozilla.net
 tracking.dpd.de
+tracking.epicgames.com
 traffic.libsyn.com
 trailers-fame.gammacdn.com
 transform.gammacdn.com
@@ -368,6 +374,7 @@ wordpress.com
 wp.com
 ws-ee-maidsvc.icloud.com
 ws.audioscrobbler.com
+www.adf.ly
 www.aliexpress.com
 www.appleiphonecell.com
 www.dataplicity.com
