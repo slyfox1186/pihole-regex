@@ -6,6 +6,8 @@
 (\.|^)shadowadcity\.com$
 (\.|^)trafyield\.com$
 
+# 3d Mark PC Benchmark Tests
+
 # AdultTime
 (\.|^)cognito-identity\.us-east-1\.amazonaws\.com$
 (\.|^)gammaentertainment\.com$
