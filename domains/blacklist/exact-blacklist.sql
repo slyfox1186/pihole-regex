@@ -20,4 +20,5 @@
 (1, 'ocsp.sca1b.amazontrust.com', 1, 'amazon.com ads - SlyEBL')
 (1, 'redirector.googlevideo.com', 1, 'Google ads - SlyEBL')
 (1, 'survey.iobit.com', 1, 'iobit.com ads - SlyEBL')
+(1, 'usage.truenas.com', 1, 'TrueNAS Software Telemetry - SlyEBL')
 (1, 'video-edge-8491b8.pdx01.abs.hls.ttvnw.net', 1, 'twitch.tv - Video ads - SlyEBL')

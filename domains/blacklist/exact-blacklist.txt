@@ -20,4 +20,5 @@ lzzos7clo5.execute-api.us-east-1.amazonaws.com
 ncp-gw-sports.media.yahoo.com
 ocsp.sca1b.amazontrust.com
 survey.iobit.comiobit.com
+usage.truenas.com
 video-edge-8491b8.pdx01.abs.hls.ttvnw.net

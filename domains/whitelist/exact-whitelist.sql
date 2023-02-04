@@ -1,3 +1,4 @@
+(0, 'api.termius.com', 1, 'Termius SSH Desktop App - Required to login to your account - SlyEWL')
 (0, '79423.analytics.edgekey.net', 1, 'REHL online learning, training embedded videos to work properly - SlyEWL')
 (0, 'android.clients.google.com', 1, 'Google Play - SlyEWL')
 (0, 'api.flightproxy.teams.microsoft.com', 1, 'Microsoft - SlyEWL')

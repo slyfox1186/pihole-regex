@@ -24,6 +24,9 @@
 # Bittorrent
 (\.|^)xyz$
 
+# Google
+^(ads|captive\.adservice|adwords(|\.l))\.google\.com$
+
 # HBBTV
 ^hbbtv\.(3sat|kabeleins|qvc|rtl2|sat1|sixx|superrtl)\.de$
 
