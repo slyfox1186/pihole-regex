@@ -56,6 +56,9 @@
 ^beacons[0-9]*\.gvt[0-9]+\.com$
 ^clients[1-6]*\.google\.com$
 
+## Lets Encrypt - One of the main SSL certificate encryption websites
+(\.|^)lencr\.org$
+
 ## Microsoft OneDrive, Azure, Windows Esentials updates, other, xboxlive required for saves to the cloud
 (www\.|^)((go\.|)microsoft|windows)\.com$
 (\.|^)1drv\.ms$
