@@ -25,12 +25,9 @@ https://raw.githubusercontent.com/dfederlein/dnsbl-dfed/master/spotifyads.txt
 ## Firebog "Safe Lists" (Reduced due to my tests mentioned above.) https://firebog.net/
 # Suspicious Lists
 https://raw.githubusercontent.com/RooneyMcNibNug/pihole-stuff/master/SNAFU.txt
-https://raw.githubusercontent.com/VeleSila/yhosts/master/hosts
-https://v.firebog.net/hosts/Easylist.txt
 
 # Tracking & Telemetry Lists
 https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-blocklist.txt
-https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/AmazonFireTV.txt
 https://www.github.developerdan.com/hosts/lists/ads-and-tracking-extended.txt
 
 # Advertising Lists
@@ -38,13 +35,6 @@ https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt
 
 # Other lists
 https://raw.githubusercontent.com/anudeepND/blacklist/master/facebook.txt
-https://v.firebog.net/hosts/Prigent-Adult.txt
 
 ## Default adlist included with Pi-hole on install and very important
 https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
-
-## Miscellaneous
-https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt
-
-## Smart TV Advertisements
-https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/SmartTV.txt
