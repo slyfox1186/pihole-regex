@@ -48,4 +48,4 @@ https://raw.githubusercontent.com/unknownFalleN/xiaomi-dns-blocklist/master/xiao
 https://raw.githubusercontent.com/stamparm/blackbook/master/blackbook.txt
 
 # All Blacklists put together into one list and the duplicated removed
-https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/blacklist/all-blacklists-de-duped.txt
+# https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/blacklist/all-blacklists-de-duped.txt
