@@ -1,0 +1,3 @@
+api.github.com
+central.github.com
+

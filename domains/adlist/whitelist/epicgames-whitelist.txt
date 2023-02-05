@@ -1,0 +1,5 @@
+# Ubisoft
+datarouter.ol.epicgames.com
+graphql.epicgames.com
+tracking.epicgames.com
+

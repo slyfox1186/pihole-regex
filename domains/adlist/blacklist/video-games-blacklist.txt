@@ -1,0 +1,45 @@
+# nVidia
+ls.dtrace.nvidia.com
+telemetry.gfe.nvidia.com
+accounts.nvgs.nvidia.com
+nvidia.tt.omtrdc.net
+api.commune.ly
+login.nvgs.nvidia.cn
+events.gfe.nvidia.com
+
+# Redshell
+redshell.io
+api.redshell.io
+treasuredata.com
+api.treasuredata.com
+
+# Blizzard
+telemetry-in.battle.net
+
+# Epic Games
+api.epicgames.dev
+datarouter.ol.epicgames.com
+dev.epicgames.com
+et.epicgames.com
+et2.epicgames.com
+etsource.epicgames.com
+metrics.ol.epicgames.com
+udn.epicgames.com
+
+# Unity Engine
+api.uca.cloud.unity3d.com
+cdp.cloud.unity3d.com
+config.uca.cloud.unity3d.com
+data-optout-service.uca.cloud.unity3d.com
+perf-events.cloud.unity3d.com
+prd-lender.cdp.internal.unity3d.com
+remote-config-proxy-prd.uca.cloud.unity3d.com
+thind-gke-usc.prd.data.corp.unity3d.com
+thind-prd-knob.data.ie.unity3d.com
+
+# GOG
+insights-collector.gog.com
+marketing-sections.gog.com
+
+# Ubisoft
+

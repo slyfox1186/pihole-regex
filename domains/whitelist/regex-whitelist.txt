@@ -65,6 +65,7 @@
 ## Microsoft OneDrive, Azure, Windows Esentials updates, other, xboxlive required for saves to the cloud
 (www\.|^)((go\.|)microsoft|windows)\.com$
 (\.|^)1drv\.ms$
+(\.|^)windowsupdate\.com$
 ^(attestation|cert\.mgt|def-vef|(device(|\.auth))|eds|help\.ui|licensing|notify|title(|\.(auth|mgt))|user|xflight|www|xboxexperiencesprod\.experimentation|xkms|xsts\.auth)\.xboxlive\.com$
 ^(csp|c\.s|devicelistenerprod)(-|\.)microsoft\.com$
 ^(edge|fs|mobile\.pipe\.aria|msedge\.api.\cdp|officecdnmac|officeclient|support|teams|vlscppe|whiteboard|www)\.microsoft\.com$
@@ -73,6 +74,7 @@
 ^microsoft(|online)\.com$
 ^outlook\.(live|office(|365))\.com$
 ^v[0-2]+?\.events\.data\.microsoft\.com$
+
 
 ## Mobile and Tablets
 ^m\.(hotmail|reddit|reuters|twitch|weeklyad.target|yahoo|youtube)\.(com|tv)$
