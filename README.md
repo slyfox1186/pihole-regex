@@ -10,7 +10,7 @@ The ***purpose*** of this repository is to compliment your existing **Pi-hole** 
 
 1. Duplicate entries that were already covered by the adlists were removed.
 2. Domains that shared likeness were put into the RegEx lists to free up the total length of the Exact lists (tested and working).
-3. My own white and blacklist entries were input included the ability to bypass video ads on yahoo.com and serverly cut back video ads on twitch.tv as well.
+3. My own white and blacklist entries were added with the ability to bypass video ads on yahoo.com and serverly cut back video ads on twitch.tv as well.
 
 ## The filter lists
   - **[Adlist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt)**
