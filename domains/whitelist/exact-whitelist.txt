@@ -153,6 +153,7 @@ imagesak.secureserver.net
 img.vidible.tv
 imgix.net
 imgs.xkcd.com
+incoming.telemetry.mozilla.org
 instagram.c10r.facebook.com
 instantmessaging-pa.googleapis.com
 intercom.io
