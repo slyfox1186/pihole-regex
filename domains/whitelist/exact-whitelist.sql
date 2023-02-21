@@ -154,6 +154,7 @@
 (0, 'img.vidible.tv', 1, 'Video delivery systems, popular in entertainment and news sites - SlyEWL')
 (0, 'imgix.net', 1, 'Misc - SlyEWL')
 (0, 'imgs.xkcd.com', 1, 'XKCD - Used to deliver images - SlyEWL')
+(0, 'incoming.telemetry.mozilla.org', 1, 'Firefox Browser - Required to sync your user account - SlyEWL')
 (0, 'instagram.c10r.facebook.com', 1, 'Facebook - SlyEWL')
 (0, 'instantmessaging-pa.googleapis.com', 1, 'Google - An important domain used to provide APIs to various Google services - SlyEWL')
 (0, 'intercom.io', 1, 'Live chat platform for websites to chat with the website owner. Blocking this domain will block chat widget - SlyEWL')
