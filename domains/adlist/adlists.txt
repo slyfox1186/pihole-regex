@@ -25,7 +25,10 @@ https://dbl.oisd.nl/
 ## I use Spotify a lot and this list has lit up pi-hole's blocking like a Christmas tree.
 https://raw.githubusercontent.com/dfederlein/dnsbl-dfed/master/spotifyads.txt
 
-## Firebog "Safe Lists" (Reduced due to my tests mentioned above.) https://firebog.net/
+#############################################################################################
+## Firebog "Safe Lists" (Reduced due to my tests mentioned above.) https://firebog.net/ ##
+#############################################################################################
+
 # Suspicious Lists
 https://raw.githubusercontent.com/RooneyMcNibNug/pihole-stuff/master/SNAFU.txt
 
