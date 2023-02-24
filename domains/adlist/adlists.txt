@@ -47,6 +47,3 @@ https://raw.githubusercontent.com/unknownFalleN/xiaomi-dns-blocklist/master/xiao
 
 #  Blackbook huge list of unwated domains
 https://raw.githubusercontent.com/stamparm/blackbook/master/blackbook.txt
-
-# All Blacklists put together into one list and the duplicated removed
-# https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/blacklist/all-blacklists-de-duped.txt
