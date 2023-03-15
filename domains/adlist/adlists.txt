@@ -48,5 +48,5 @@ https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 # Xiaomi specializes in taking your personal information and this should help block that
 https://raw.githubusercontent.com/unknownFalleN/xiaomi-dns-blocklist/master/xiaomi_dns_block.lst
 
-#  Blackbook huge list of unwated domains
+# Blackbook huge list of unwated domains
 https://raw.githubusercontent.com/stamparm/blackbook/master/blackbook.txt
