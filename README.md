@@ -2,12 +2,12 @@
 
 The ***purpose*** of this repository is to compliment your existing **Pi-hole** filters using ***powerful*** regular expressions (**RegEx**) that cover a broad range of domains ***in one go***. Included are an optional customized list of **Exact** filters and the ability to add or remove entries from the **Adlist Group**.
 
-#### Major Updates: A series of major tweaking was performed from 02.01.23-02.04.23
+### Major Updates: A series of major tweaking was performed between 02.01.23 and 02.04.23
 
-  - **Adlists changes**
+#### **Adlists changes**
 1. The pihole_adlist_tool allowed the elimination of **almost 75% of the total domains blocked** due to the **extremely low hit count over the last 2 months**. The domains in the adlist that are no longer included produced a maximum of **1 hit each** and had a max total **unique domain coverage of 4** compared to the **hundreds of unique domains** that the other lists registered.
 
-  - **Exact & RegEx changes**
+#### **Exact & RegEx changes**
 
 1. Duplicate entries that were already covered by the adlists were removed.
 2. Domains that shared likeness were put into the RegEx lists to free up the total length of the Exact lists (tested and working).
