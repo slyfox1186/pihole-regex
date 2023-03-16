@@ -12,8 +12,10 @@ d1ut6fykkt3imt.cloudfront.net
 d20qwf0wrdtevy.cloudfront.net
 d2u28gf9o4d1cv.cloudfront.net
 d306ecvlh9tfv.cloudfront.net
+d3a3ewgd1iewwz.cloudfront.net
 d3aqoihi2n8ty8.cloudfront.net
 d3cqix4sol87xw.cloudfront.net
+dns-fxp05etdx.sombrero.yahoo.net
 doh.dns.apple.com
 estore.IObit
 giveaway.IObit
@@ -23,11 +25,14 @@ kinesis.us-east-1.amazonaws.com
 kosmos-assets-prod.react.gammacdn.com
 lynx-prod-beacon-alb-498367235.us-east-1.elb.amazonaws.com
 m-node-alb-ssl-1111-1982902297.us-east-1.elb.amazonaws.com
+munchkin.marketo.net
 ncp-gw-sports.media.yahoo.com
 ocsp.sca1b.amazontrust.com
 prod-elb-ats-620772989.us-east-1.elb.amazonaws.com
 prod.ups-ats.us-east-1.aolp-ds-prd.aws.oath.cloud
 redirector.googlevideo.com
+snap.licdn.com
 survey.IObit
 usage.truenas.com
+video-edge-830e74.atl01.abs.hls.ttvnw.net
 video-edge-8491b8.pdx01.abs.hls.ttvnw.net
