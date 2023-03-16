@@ -5,13 +5,14 @@ The ***purpose*** of this repository is to compliment your existing **Pi-hole** 
 ### Major Updates: A series of major tweaking was performed between 02.01.23 and 02.04.23
 
 #### **Adlists changes**
-1. The pihole_adlist_tool allowed the elimination of **almost 75% of the total domains blocked** due to the **extremely low hit count over the last 2 months**. The domains in the adlist that are no longer included produced a maximum of **1 hit each** and had a max total **unique domain coverage of 4** compared to the **hundreds of unique domains** that the other lists registered.
+  - The pihole_adlist_tool allowed the elimination of **almost 75% of the total domains blocked** due to the **extremely low hit count over the last 2 months**
+  - The adlists that are no longer included produced a maximum of **1 hit each** and a max **unique domain coverage of 4** compared to the **hundreds of unique domains** that the other lists registered.
 
 #### **Exact & RegEx changes**
 
-1. Duplicate entries that were already covered by the adlists were removed.
-2. Domains that shared likeness were put into the RegEx lists to free up the total length of the Exact lists (tested and working).
-3. Filters that bypass video ads on yahoo.com and serverly cut back video ads on twitch.tv are now included.
+  - Duplicate entries that were already covered by the adlists were removed.
+  - Domains that shared likeness were put into the RegEx lists to free up the total length of the Exact lists (tested and working).
+  - Filters that bypass video ads on yahoo.com and serverly cut back video ads on twitch.tv are now included.
 
 ## The filter lists
   - **[Adlist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt)**
