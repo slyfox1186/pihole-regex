@@ -1,5 +1,7 @@
-#### RegEx Whitelist
-#### Github repository: https://github.com/slyfox1186/pihole-regex
+## 
+## RegEx Whitelist
+## GitHub: https://github.com/slyfox1186/pihole-regex
+## 
 
 ## 3d Mark PC Benchmark tests
 ^(benchmarks|commons|empoweringtrust|support\.benchmarks|www)(\.ul\.com(|\.cdn\.cloudflare\.net))$
