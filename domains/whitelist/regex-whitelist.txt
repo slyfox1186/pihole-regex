@@ -3,18 +3,18 @@
 ## GitHub: https://github.com/slyfox1186/pihole-regex
 ## 
 
-## 3d Mark PC Benchmark tests
+# 3d Mark PC Benchmark tests
 ^(benchmarks|commons|empoweringtrust|support\.benchmarks|www)(\.ul\.com(|\.cdn\.cloudflare\.net))$
 
-## AdultTime Necessary for the site to deliver non ad content
+# AdultTime Necessary for the site to deliver non ad content
 (\.|^)(dns|)algolia(|net)\.(com|io|net)$
 (\.|^)gammacdn\.com$
 ^([a-z0-9]+\.|)(appsync|execute)-api\.us-east-1\.amazonaws\.com$
 
-## Amazon
+# Amazon
 (\.|^)(amzn|amazonaws|amazontrust|apzones|digicert|marketwatch|mzstatic|sym[b-d]+?|wp|yimg|youtube|ytimg)\.(com|to)$
 
-## AMD Microchip Maker
+# AMD Microchip Maker
 (\.|^)amd\.com$
 
 # Content Delivery Networks AKA CDN's
@@ -24,7 +24,7 @@
 ^code\.(bildstatic|createjs|jquery)\.(com|de)
 ^cds\.[a-z0-9]+\.hwcdn\.net$
 
-## Apple - Main domains for a good chunk of legitimate iOS services
+# Apple - Main domains for a good chunk of legitimate iOS services
 (\.|^)apple-(cloudkit|livephotoskit)\.com$
 ^(appattest|appleid|apps|audiocontentdownload|bpapi|business|captive|cdn-apple|certs|configuration|crl|cssubmissions|deviceenrollment|diagassets|fba|gc|gdmf|gg.*|gs(|[ap1]*?)|humb|identity|idmsa|i(|g|profiles|su|tunes|work)|mdmenrollment|mesu|oscdn|oscp|osrecovery|ppq|push|radarsubmissions|school|serverstatus|skl|suconfig|sw(|cdn|dist|download|post|scan)|sylvan|sym[b-d]+?|tbsc|valid|www|axm-app|deviceservices-external|gnf-mdn|gnf-mr|lcdn-(locator|registration)|sq-device|time(|-ios|-macos)|xp(|-cdn))\.apple\.com$
 ^(devimages|xp-cdn|playgrounds(|-assets))-cdn\.apple\.com$
@@ -33,35 +33,35 @@
 ^axm-adm-|(adm|mdm|enroll|scep)\.apple\.com$
 ^gsp-ssl\.ls(\.|-)apple\.com(|\.akadns\.net)$
 
-## A progressive delivery and experimentation software for other companies
+# A progressive delivery and experimentation software for other companies
 ^cdn[0-3]*?\.optimizely\.com$
 
-## Chrome Browser Discord App MEE6 Support Website
+# Chrome Browser Discord App MEE6 Support Website
 (\.|^)mee6\.xyz$
 
-## DropBox
+# DropBox
 ^ns[12]?\.dropbox\.com$
 
-## Epic Games - Essential Domains for authentication during user login and other services such as purchasing/unlocking games to your user library
+# Epic Games - Essential Domains for authentication during user login and other services such as purchasing/unlocking games to your user library
 ^(account|accts|catalog|entitlement|eulatracking|lightswitch|metric|priceengine)-public-service-prod[0-9]*?\.(ak|ol)\.epicgames\.com$
 
-## Facebook - Essentail CND servers
+# Facebook - Essential CDN servers
 (\.|^)(accountkit|messenger)\.com$
 (\.|^)(connect\.|)facebook\.(com|net)$
 ^scontent-(atl3|lhr3|mia3|ort2)-1\.xx\.fbcdn\.net$
 ^[0-6]+?-edge-chat\.facebook\.com$
 
-## GitHub
+# GitHub
 ^(github(|\.githubassets)\.(com|io))$
 
 ## Google - Allow known essential widget service
 ^beacons[0-9]*\.gvt[0-9]+\.com$
 ^(calendar|developer(|s)|dns|docs|home|inbox|clients[1-6]*|mail|meet|pay(|ments)|photos|sites|time|wallet|workspace|www)\.google\.com$
 
-## Lets Encrypt - One of the main SSL certificate encryption websites
+# Lets Encrypt - One of the main SSL certificate encryption websites
 (\.|^)lencr\.org$
 
-## Microsoft OneDrive, Azure, Windows Esentials updates, other, xboxlive required for saves to the cloud
+# Microsoft OneDrive, Azure, Windows Esentials updates, other, xboxlive required for saves to the cloud
 (www\.|^)((go\.|)microsoft|windows)\.com$
 (\.|^)1drv\.ms$
 (\.|^)windowsupdate\.com$
@@ -74,41 +74,41 @@
 ^outlook\.(live|office(|365))\.com$
 ^v[0-2]+?\.events\.data\.microsoft\.com$
 
-## Mobile and Tablets
+# Mobile and Tablets
 ^m\.(hotmail|reddit|reuters|twitch|weeklyad.target|yahoo|youtube)\.(com|tv)$
 
-## QNAP NAS - Reguired for the myqnapclub feature to work in it's entirety
+# QNAP NAS - Reguired for the myqnapclub feature to work in it's entirety
 (\.|^)(myqnapcloud|qnap)\.com$
 
-## Rob VanderWoude Learn how to code multiple languages
+# Rob VanderWoude Learn how to code multiple languages
 (\.|^)robvanderwoude\.com$
 
-## Reddit - Main CND's and other legit content delivery comains for Reddit. Some of these carry ads and will cripple the site as a whole if not whitelisted.
+# Reddit - Main CND's and other legit content delivery comains for Reddit. Some of these carry ads and will cripple the site as a whole if not whitelisted.
 (thumbs\.|^)(reddit(media|static))\.com
 (\.|^)([iv]?\.|)redd\.it$
 ^events-test(|-v2)\.redditmedia\.com$
 
-## Stackoverflow Developer\Coding help site
+# Stackoverflow Developer\Coding help site
 ^(blog|business|(www\.|)careers|email|(dev(|\.careers)|channels|contests|insights|meta|talent))\.stackoverflow\.com$
 
-## Smart TV's
+# Smart TV's
 (\.|^)samsungcloudcdn\.com$
 (\.|^)samsungotn\.net$
 ^aic\.(homeprv|service)\.lgtvcommon\.com$
 ^hbbtv\.(prosieben|redbutton|zdf|ard)\.de$
 ^otnprd[0-9]+?\.samsungcloudsolution\.net$
 
-## Spotify
+# Spotify
 ^(apresolve|audio2|embed|dealer|global-dealer-ssl|gucl-6.ap|login5|market|mobile-ap|open|play|spclient\.wg|spclient-wg|weblb-wg.dual-gslb)\.spotify\.com$
 
-## SSL Certificate
+# SSL Certificate
 ^crl[3-4]\.digicert\.com$
 
-## Twitch.tv
+# Twitch.tv
 ^(affiliate|app|id(|\.|-(canary|cdn|dev)))\.twitch\.tv
 
-## Xbox Live (Microsoft)
+# Xbox Live (Microsoft)
 ^(attestation|cert\.mgt|def-vef|eds|help\.ui|licensing|notify|title\.mgt|www|xboxexperiencesprod\.experimentation|xflight|xkms)\.xboxlive\.com$
 
-## YouTube
+# YouTube
 ^(oauthaccountmanager|www|youtubei)\.googleapis\.com$
