@@ -205,6 +205,7 @@
 (0, 'maxcdn.bootstrapcdn.com', 1, 'Crucial CDN server - SlyEWL')
 (0, 'mdmenrollment.apple.com', 1, 'Apple - SlyEWL')
 (0, 'medium.com', 1, 'Misc - SlyEWL')
+(0, 'members.adulttime.com', 1, 'AdultTime one of the main urls - SlyEWL')
 (0, 'meta-db-worker02.pop.ric.plex.bz', 1, 'Plex Media Server - SlyEWL')
 (0, 'meta.plex.bz', 1, 'Plex Media Server - SlyEWL')
 (0, 'meta.plex.tv', 1, 'Plex Media Server - SlyEWL')
