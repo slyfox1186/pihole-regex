@@ -21,7 +21,6 @@
 (1, 'global.poe.live-video.net', 1, 'Twitch Video ads - SlyEBL')
 (1, 'gsn-rinkeby.redditspace.com', 1, 'Reddit suspected ads - SlyEBL')
 (1, 'kinesis.us-east-1.amazonaws.com', 1, 'AdultTime ads - SlyEBL')
-(1, 'kosmos-assets-prod.react.gammacdn.com', 1, 'AdultTime ads - SlyEBL')
 (1, 'lynx-prod-beacon-alb-498367235.us-east-1.elb.amazonaws.com', 1, 'Amazon CDN ad server - SlyEBL')
 (1, 'm-node-alb-ssl-1111-1982902297.us-east-1.elb.amazonaws.com', 1, 'Amazon CDN ad server - SlyEBL')
 (1, 'munchkin.marketo.net', 1, '3D Mark Software tracking cookies - SlyEBL')
