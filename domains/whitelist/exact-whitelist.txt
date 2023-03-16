@@ -61,7 +61,7 @@ cse.google.com
 ctldl.windowsupdate.com
 d27xxe7juh1us6.cloudfront.net
 d2gatte9o95jao.cloudfront.net
-d3a3ewgd1iewwz.cloudfront.net
+d2v02itv0y9u9t.cloudfront.net
 d3a3ewgd1iewwz.cloudfront.net
 d83eunklitikj.cloudfront.net
 daily-mix.scdn.co
@@ -187,6 +187,7 @@ login.aliexpress.com
 login.live.com
 login.microsoftonline.com
 logincdn.msauth.net
+m-node-alb-ssl-1111-1982902297.us-east-1.elb.amazonaws.com
 m3u8.gammacdn.com
 mamservice.manage.microsoft.com
 manifest.googlevideo.com
@@ -356,8 +357,12 @@ v.firebog.net
 v.shopify.com
 v.w-x.co
 vcs.vdspf.com
+video-edge-55b156.pdx01.abs.hls.ttvnw.net
+video-edge-833564.atl01.abs.hls.ttvnw.net
 video-stats.l.google.com
 video-stats.video.google.com
+video-weaver.atl01.hls.ttvnw.net
+video-weaver.jfk04.hls.ttvnw.net
 videos.vidible.tv
 vidtech.cbsinteractive.com
 viewer.content.glympse.com
