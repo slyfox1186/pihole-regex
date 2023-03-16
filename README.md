@@ -5,7 +5,7 @@ The ***purpose*** of this repository is to compliment your existing **Pi-hole** 
 #### Major Updates: A series of major tweaking was performed from 02.01.23-02.04.23
 
   - **Adlists changes**
-1. The pihole_adlist_tool allowed the elimination of **almost 75% of the total domains blocked** due to the **extremely low hit count over the last 2 months**. The domains in the adlist that are no longer included produced a maximum of **1 hit each** and had a max total **unique domain coverage of 4** compared to **hundreds of unique domains** that the other adlists registered.
+1. The pihole_adlist_tool allowed the elimination of **almost 75% of the total domains blocked** due to the **extremely low hit count over the last 2 months**. The domains in the adlist that are no longer included produced a maximum of **1 hit each** and had a max total **unique domain coverage of 4** compared to the **hundreds of unique domains** that the other lists registered.
 
   - **Exact & RegEx changes**
 
