@@ -12,7 +12,6 @@
 (1, 'd20qwf0wrdtevy.cloudfront.net', 1, 'Cloudfront CDN ad server - SlyEBL')
 (1, 'd2u28gf9o4d1cv.cloudfront.net', 1, 'Cloudfront CDN ad server - SlyEBL')
 (1, 'd306ecvlh9tfv.cloudfront.net', 1, 'AdultTime ads - SlyEBL')
-(1, 'd3a3ewgd1iewwz.cloudfront.net', 1, 'AdultTime ads - SlyEBL')
 (1, 'd3aqoihi2n8ty8.cloudfront.net', 1, 'AdultTime ads - SlyEBL')
 (1, 'd3cqix4sol87xw.cloudfront.net', 1, 'AdultTime ads - SlyEBL')
 (1, 'dns-fxp05etdx.sombrero.yahoo.net', 1, 'Yahoo video ads - SlyEBL')
