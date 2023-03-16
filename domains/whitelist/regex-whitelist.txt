@@ -5,12 +5,9 @@
 ^(benchmarks|commons|empoweringtrust|support\.benchmarks|www)(\.ul\.com(|\.cdn\.cloudflare\.net))$
 
 ## AdultTime Necessary for the site to deliver non ad content
-(\.|^)(adulttime|algolianet|react\.gammacdn)\.com$
-(\.|^)kosmos-((|assets-)prod)\.react\.gammacdn\.com$
 (\.|^)(dns|)algolia(|net)\.(com|io|net)$
-^static[0,1,3]+-cms-fame\.gammacdn\.com$
 ^([a-z0-9]+\.|)(appsync|execute)-api\.us-east-1\.amazonaws\.com$
-^(streaming|images[0-9]+)-(fame|hls)\.gammacdn\.com$
+(\.|^)gammacdn\.com$
 
 ## Amazon
 (\.|^)(amzn|amazonaws|amazontrust|apzones|digicert|marketwatch|mzstatic|sym[b-d]+?|wp|yimg|youtube|ytimg)\.(com|to)$
