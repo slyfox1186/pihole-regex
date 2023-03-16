@@ -72,7 +72,6 @@
 ^outlook\.(live|office(|365))\.com$
 ^v[0-2]+?\.events\.data\.microsoft\.com$
 
-
 ## Mobile and Tablets
 ^m\.(hotmail|reddit|reuters|twitch|weeklyad.target|yahoo|youtube)\.(com|tv)$
 
