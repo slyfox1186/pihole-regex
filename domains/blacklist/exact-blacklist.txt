@@ -21,7 +21,6 @@ giveaway.IObit
 global.poe.live-video.net
 gsn-rinkeby.redditspace.com
 kinesis.us-east-1.amazonaws.com
-kosmos-assets-prod.react.gammacdn.com
 lynx-prod-beacon-alb-498367235.us-east-1.elb.amazonaws.com
 m-node-alb-ssl-1111-1982902297.us-east-1.elb.amazonaws.com
 munchkin.marketo.net
