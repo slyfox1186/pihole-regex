@@ -15,7 +15,7 @@ fn_exit_white_regex()
     if [ -d 'pihole-regex' ]; then rm -R 'pihole-regex'; fi
     echo
     echo 'Make sure to star this repository to show your support!'
-    echo 'GitHub Repository:  https://github.com/slyfox1186/pihole-regex'
+    echo 'GitHub: https://github.com/slyfox1186/pihole-regex'
     echo
     exit
 }
