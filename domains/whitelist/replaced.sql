@@ -70,3 +70,7 @@
 
 # RegEx Strings
 ^kosmos(|-assets)-prod\.react\.gammacdn\.com$
+(\.|^)(adulttime|algolianet|react\.gammacdn)\.com$
+(\.|^)kosmos-((|assets-)prod)\.react\.gammacdn\.com$
+^static[0,1,3]+-cms-fame\.gammacdn\.com$
+^(streaming|images[0-9]+)-(fame|hls)\.gammacdn\.com$
