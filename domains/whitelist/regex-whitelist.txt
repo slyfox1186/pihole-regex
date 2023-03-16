@@ -74,6 +74,9 @@
 ^outlook\.(live|office(|365))\.com$
 ^v[0-2]+?\.events\.data\.microsoft\.com$
 
+# Required to log into general website user account pages
+^accounts\..*\.(com|net|org|uk|br|ly|gov)$
+
 # Mobile and Tablets
 ^m\.(hotmail|reddit|reuters|twitch|weeklyad.target|yahoo|youtube)\.(com|tv)$
 
@@ -107,6 +110,9 @@
 # Twitch.tv
 ^(affiliate|app|id(|\.|-(canary|cdn|dev)))\.twitch\.tv
 ^video-edge-[0-9]+?\.[a-z]+?[0-9]+?\.abs\.hls\.ttvnw\.net$
+
+# unraid.com - required for the operating system to update
+(\.|^)unraid\.net$
 
 # Xbox Live (Microsoft)
 ^(attestation|cert\.mgt|def-vef|eds|help\.ui|licensing|notify|title\.mgt|www|xboxexperiencesprod\.experimentation|xflight|xkms)\.xboxlive\.com$
