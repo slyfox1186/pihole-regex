@@ -62,6 +62,7 @@ ctldl.windowsupdate.com
 d27xxe7juh1us6.cloudfront.net
 d2gatte9o95jao.cloudfront.net
 d3a3ewgd1iewwz.cloudfront.net
+d3a3ewgd1iewwz.cloudfront.net
 d83eunklitikj.cloudfront.net
 daily-mix.scdn.co
 dailymix-images.scdn.co
