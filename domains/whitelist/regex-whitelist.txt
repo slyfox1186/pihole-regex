@@ -106,6 +106,7 @@
 
 # Twitch.tv
 ^(affiliate|app|id(|\.|-(canary|cdn|dev)))\.twitch\.tv
+^video-edge-[0-9]+?\.[a-z]+?[0-9]+?\.abs\.hls\.ttvnw\.net$
 
 # Xbox Live (Microsoft)
 ^(attestation|cert\.mgt|def-vef|eds|help\.ui|licensing|notify|title\.mgt|www|xboxexperiencesprod\.experimentation|xflight|xkms)\.xboxlive\.com$
