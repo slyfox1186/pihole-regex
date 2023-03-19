@@ -11,7 +11,7 @@
 ##
 ##  https://github.com/yubiuser/pihole_adlist_tool
 ##
-##  Updated (see the README.md): 02.04.23
+##  Updated (see the README.md): 03.19.23
 ##
 ###########################################################################
 
@@ -25,9 +25,9 @@ https://dbl.oisd.nl/
 ## I use Spotify a lot and this list has lit up pi-hole's blocking like a Christmas tree.
 https://raw.githubusercontent.com/dfederlein/dnsbl-dfed/master/spotifyads.txt
 
-##########################################################################################
+##
 ## Firebog "Safe Lists" (Reduced due to my tests mentioned above.) https://firebog.net/ ##
-##########################################################################################
+##
 
 # Suspicious Lists
 https://raw.githubusercontent.com/RooneyMcNibNug/pihole-stuff/master/SNAFU.txt
