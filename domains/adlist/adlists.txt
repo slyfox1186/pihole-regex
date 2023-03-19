@@ -15,15 +15,30 @@
 ##
 ###########################################################################
 
+##
+## slyfox1186 personal lists
+##
+
 ## This is a list of others I have come across and my own contributions.
 https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/exact-blacklist.txt
+
+## I use Spotify a lot and this list has lit up pi-hole's blocking like a Christmas tree.
+https://raw.githubusercontent.com/dfederlein/dnsbl-dfed/master/spotifyads.txt
+
+##
+## default list
+##
+
+## Default adlist included with Pi-hole on install and very important
+https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+
+##
+## gigantic list
+##
 
 ## This list is huge and is a big reason why any lists you expect to see
 ## below may not exist anymore. They duplicate this list to the max.
 https://dbl.oisd.nl/
-
-## I use Spotify a lot and this list has lit up pi-hole's blocking like a Christmas tree.
-https://raw.githubusercontent.com/dfederlein/dnsbl-dfed/master/spotifyads.txt
 
 ##
 ## Firebog "Safe Lists" (Reduced due to my tests mentioned above.) https://firebog.net/ ##
@@ -42,11 +57,8 @@ https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt
 # Other lists
 https://raw.githubusercontent.com/anudeepND/blacklist/master/facebook.txt
 
-## Default adlist included with Pi-hole on install and very important
-https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
-
 ##
-## Disabled section ( pihole_adlist_tool )
+## Disabled lists ( pihole_adlist_tool )
 ##
 
 # Xiaomi specializes in taking your personal information and this should help block that
