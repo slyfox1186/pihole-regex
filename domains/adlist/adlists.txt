@@ -16,7 +16,7 @@
 ###########################################################################
 
 ##
-## slyfox1186 personal lists
+## slyfox1186 personal
 ##
 
 ## This is a list of others I have come across and my own contributions.
@@ -26,14 +26,14 @@ https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist
 https://raw.githubusercontent.com/dfederlein/dnsbl-dfed/master/spotifyads.txt
 
 ##
-## default list
+## default
 ##
 
 ## Default adlist included with Pi-hole on install and very important
 https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 
 ##
-## gigantic list
+## gigantic
 ##
 
 ## This list is huge and is a big reason why any lists you expect to see
@@ -41,27 +41,28 @@ https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 https://dbl.oisd.nl/
 
 ##
-## Firebog "Safe Lists" (Reduced due to my tests mentioned above.) https://firebog.net/ ##
+## firebog "Safe Lists" (Reduced due to my tests mentioned above.) https://firebog.net/ ##
 ##
 
-# Suspicious Lists
+# suspicious
 https://raw.githubusercontent.com/RooneyMcNibNug/pihole-stuff/master/SNAFU.txt
 
-# Tracking & Telemetry Lists
+# tracking and telemetry
 https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-blocklist.txt
 https://www.github.developerdan.com/hosts/lists/ads-and-tracking-extended.txt
 
-# Advertising Lists
+# advertising
 https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt
 
-# Other lists
+# other
 https://raw.githubusercontent.com/anudeepND/blacklist/master/facebook.txt
 
 ##
-## Disabled lists ( pihole_adlist_tool )
+## disabled ( pihole_adlist_tool )
 ##
 
 # Xiaomi specializes in taking your personal information and this should help block that
-## https://raw.githubusercontent.com/unknownFalleN/xiaomi-dns-blocklist/master/xiaomi_dns_block.lst
+# https://raw.githubusercontent.com/unknownFalleN/xiaomi-dns-blocklist/master/xiaomi_dns_block.lst
+
 # Blackbook huge list of unwated domains
-## https://raw.githubusercontent.com/stamparm/blackbook/master/blackbook.txt
+# https://raw.githubusercontent.com/stamparm/blackbook/master/blackbook.txt
