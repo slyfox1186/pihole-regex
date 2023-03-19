@@ -45,8 +45,8 @@ https://raw.githubusercontent.com/anudeepND/blacklist/master/facebook.txt
 ## Default adlist included with Pi-hole on install and very important
 https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 
+# Disabled section ( pihole_adlist_tool )
 # Xiaomi specializes in taking your personal information and this should help block that
-https://raw.githubusercontent.com/unknownFalleN/xiaomi-dns-blocklist/master/xiaomi_dns_block.lst
-
+## https://raw.githubusercontent.com/unknownFalleN/xiaomi-dns-blocklist/master/xiaomi_dns_block.lst
 # Blackbook huge list of unwated domains
-https://raw.githubusercontent.com/stamparm/blackbook/master/blackbook.txt
+## https://raw.githubusercontent.com/stamparm/blackbook/master/blackbook.txt
