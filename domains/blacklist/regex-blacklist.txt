@@ -18,7 +18,7 @@
 (\.|^)deimos3.apple\.com$
 
 # Amazon
-^(\.|^)iad\.amazon\.com$
+^.*iad.*\.amazon\.com$
 
 # Bittorrent
 (\.|^)xyz$
