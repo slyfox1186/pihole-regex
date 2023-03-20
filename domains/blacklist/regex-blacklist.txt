@@ -9,10 +9,12 @@
 # 3d Mark PC Benchmark Tests
 
 # AdultTime
+(\.|^)appsync-api\.us-[a-z]+-[0-9]?\.amazonaws\.com$
 (\.|^)gammaentertainment\.com$
 (\.|^)getbeamer\.com$
 (\.|^)lambda-url\.us-east-1\.on\.aws$
 (\.|^)usage\.trackjs\.com$
+(\.|^)[a-z0-9]+\.execute-api\.us-[a-z]+-[0-9]?\.amazonaws\.com$
 
 # Apple
 (\.|^)deimos3.apple\.com$
