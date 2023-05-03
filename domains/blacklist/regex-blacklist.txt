@@ -1,6 +1,10 @@
 ## RegEx Blacklist
 ## Github: https://github.com/slyfox1186/pihole-regex
 
+# Take out all ad servers in one go for master domain com.edgesuite.net
+^[a-z+]+ad\.[a-z]+\.com\.edgesuite\.net$
+
+
 # 1337x.to - Sneaky redirect domains that probably log your IP and any other information it gets from your browser sending a GET or POST request.
 (\.|^)antivirushub\.com$
 (\.|^)shadowadcity\.com$
