@@ -37,7 +37,7 @@ shopt -s nocasematch
 fn_done()
 {
     clear
-    echo 'The script has completed.'
+    echo '[i] The script has completed.'
     echo
     echo 'Please make sure you report any issues on my GitHub page!'
     echo 'https://github.com/slyfox1186/pihole-regex/issues'
