@@ -66,7 +66,7 @@ fn_dns()
         '[2] No'
     read -p 'Enter a number: ' dns_choice
     clear
-    if [[ "$dns_choice" -eq '1' ]]; then
+    if [ "$dns_choice" -eq '1' ]; then
         sudo pihole restartdns
     fi
 }
@@ -81,7 +81,7 @@ fn_gravity()
         '[2] No'
     read -p 'Your choices are (1 or 2): ' gravity_choice
     clear
-    if [[ "$gravity_choice" -eq '1' ]]; then
+    if [ "$gravity_choice" -eq '1' ]; then
         pihole -g
     fi
 }
