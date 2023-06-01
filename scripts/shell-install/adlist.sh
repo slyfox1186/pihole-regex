@@ -108,7 +108,8 @@ case "$choice_1" in
         clear
         ;;
     2)
-        if sqlite3 "$gravity" "DELETE FROM adlist WHERE comment LIKE '%SlyADL%'"; then
+        if sudo sqlite3 "$gravity" "DELETE FROM adlist WHERE comment LIKE '%SlyADL%'"; then
+            clear
             echo 'Success: All adlists have been removed from Pi-hole.'
             fn_gravity
             fn_dns
@@ -139,26 +140,26 @@ clear
 case "$choice_2" in
     1)
         wget "$user_agent" -qO - "$ad_url" |
-        sed '/^#/ d' | sed '/^$/ d' > "$list"
-        cat < "$list" | xargs -n1 -I{} sudo sqlite3 "$gravity" \
+        sudo sed '/^#/ d' | sudo sed '/^$/ d' 2>/dev/null > "$list"
+        sudo cat < "$list" | sudo xargs -n1 -I{} sudo sqlite3 "$gravity" 2>/dev/null \
         "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"$c1\")"
         ;;
     2)
         wget "$user_agent" -qO - "$url_base"=tick |
-        sed '/^#/ d' | sed '/^$/ d' > "$list"
-        cat < "$list" | xargs -n1 -I{} sudo sqlite3 "$gravity" \
+        sudo sed '/^#/ d' | sudo sed '/^$/ d' 2>/dev/null > "$list"
+        sudo cat < "$list" | sudo xargs -n1 -I{} sudo sqlite3 "$gravity" 2>/dev/null \
         "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"$c2\")"
         ;;
     3)
         wget "$user_agent" -qO - "$url_base"=nocross |
-        sed '/^#/ d' | sed '/^$/ d' > "$list"
-        cat < "$list" | xargs -n1 -I{} sudo sqlite3 "$gravity" \
+        sudo sed '/^#/ d' | sudo sed '/^$/ d' 2>/dev/null > "$list"
+        sudo cat < "$list" | sudo xargs -n1 -I{} sudo sqlite3 "$gravity" 2>/dev/null \
         "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"$c3\")"
         ;;
     4)
         wget "$user_agent" -qO - "$url_base"=all |
-        sed '/^#/ d' | sed '/^$/ d' > "$list"
-        cat < "$list" | xargs -n1 -I{} sudo sqlite3 "$gravity" \
+        sudo sed '/^#/ d' | sudo sed '/^$/ d' 2>/dev/null > "$list"
+        sudo cat < "$list" | sudo xargs -n1 -I{} sudo sqlite3 "$gravity" 2>/dev/null \
         "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"$c4\")"
         ;;
     *)
