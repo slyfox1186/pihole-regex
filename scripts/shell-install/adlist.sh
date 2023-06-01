@@ -13,13 +13,6 @@ clear
 ##
 ################################################################################################################################
 
-# VERIFY THE SCRIPT HAS ROOT ACCESS BEFORE CONTINUING
-if [ "$EUID" -ne '0' ]; then
-    echo 'You must run this script as root/sudo.'
-    echo
-    exit 1
-fi
-
 if ! which 'sqlite3' &>/dev/null; then
     echo 'sqlite3 must be installed to run this script.'
     echo
@@ -80,7 +73,7 @@ fn_gravity()
     read -p 'Your choices are (1 or 2): ' gravity_choice
     clear
     if [ "$gravity_choice" -eq '1' ]; then
-        pihole -g
+        sudo pihole -g
     fi
 }
 
@@ -91,7 +84,7 @@ c1='SlyADL - SlyFox1186 + Firebog'\''s safe list'
 c2='SlyADL - Firebog - Ticked'
 c3='SlyADL - Firebog - Non-Crossed'
 c4='SlyADL - Firebog - All'
-ua="--user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'"
+user_agent="--user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'"
 list='/tmp/adlist.txt'
 url_base='https://v.firebog.net/hosts/lists.php?type'
 gravity="$(sudo find /etc -type f -name gravity.db)"
@@ -108,9 +101,9 @@ printf "%s\n\n%s\n\n%s\n%s\n%s\n\n" \
     '[1] Add domains' \
     '[2] Remove all domains (This should only delete lists added by this script)' \
     '[3] Exit'
-read -p 'Your choices are (1 to 3): ' ad_choice_1
+read -p 'Your choices are (1 to 3): ' choice_1
 
-case "$ad_choice_1" in
+case "$choice_1" in
     1)
         clear
         ;;
@@ -140,30 +133,30 @@ printf "%s\n\n%s\n%s\n%s\n%s\n\n" \
     '[2] Firebog:    [Ticked] - Perfect for system admins with little time available to fix database issues.' \
     '[3] Firebog:    [Non-Crossed] - These domains are generally less safe than the "Tick" list and most likely have an increased risk of false positives.' \
     '[4] Firebog:    [All] - False positives are very likely and will required much more effort than the average system admin would wish to spend fixing a database.'
-read -p 'Your choices are (1 to 4): ' ad_choice_2
+read -p 'Your choices are (1 to 4): ' choice_2
 clear
 
-case "$ad_choice_2" in
+case "$choice_2" in
     1)
-        wget "$ua" -qO - "$ad_url" |
+        wget "$user_agent" -qO - "$ad_url" |
         sed '/^#/ d' | sed '/^$/ d' > "$list"
         cat < "$list" | xargs -n1 -I{} sqlite3 "$gravity" \
         "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"$c1\")"
         ;;
     2)
-        wget "$ua" -qO - "$url_base"=tick |
+        wget "$user_agent" -qO - "$url_base"=tick |
         sed '/^#/ d' | sed '/^$/ d' > "$list"
         cat < "$list" | xargs -n1 -I{} sqlite3 "$gravity" \
         "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"$c2\")"
         ;;
     3)
-        wget "$ua" -qO - "$url_base"=nocross |
+        wget "$user_agent" -qO - "$url_base"=nocross |
         sed '/^#/ d' | sed '/^$/ d' > "$list"
         cat < "$list" | xargs -n1 -I{} sqlite3 "$gravity" \
         "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"$c3\")"
         ;;
     4)
-        wget "$ua" -qO - "$url_base"=all |
+        wget "$user_agent" -qO - "$url_base"=all |
         sed '/^#/ d' | sed '/^$/ d' > "$list"
         cat < "$list" | xargs -n1 -I{} sqlite3 "$gravity" \
         "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"$c4\")"
@@ -176,6 +169,5 @@ esac
 fn_gravity
 # Prompt the user to restart Pi-hole's DNS
 fn_dns
-rm -f "$0"
 # Show exit message
 fn_done
