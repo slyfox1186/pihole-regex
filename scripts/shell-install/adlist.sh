@@ -91,6 +91,8 @@ c1='SlyADL - SlyFox1186 + Firebog'\''s safe list'
 c2='SlyADL - Firebog - Ticked'
 c3='SlyADL - Firebog - Non-Crossed'
 c4='SlyADL - Firebog - All'
+ua="--user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'"
+list='/tmp/adlist.txt'
 url_base='https://v.firebog.net/hosts/lists.php?type'
 gravity="$(sudo find /etc -type f -name gravity.db)"
 
@@ -99,14 +101,8 @@ if [ -x "$gravity" ]; then
     fail_fn 'Unable to find the full path of the "gravity.db" file in the /etc folder.'
 fi
 
-# Store the online adlist file that contains all of the urls of interest in the system's tmp
-# folder to keep things tidy while the script parses each line of text looking for valid urls
-# while discarding any lines that begin with a hashtag '#' or are blank
-list='/tmp/adlist.txt'
-ua="--user-agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'"
-
 # Prompt the user with choice 1
-printf "\n%s\n\n%s\n\n%s\n%s\n%s\n\n" \
+printf "%s\n\n%s\n\n%s\n%s\n%s\n\n" \
     'Modify the Pi-hole Adlist Group' \
     'Enter one of the selections.' \
     '[1] Add domains' \
