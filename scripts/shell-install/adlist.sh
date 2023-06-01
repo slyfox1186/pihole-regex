@@ -3,17 +3,17 @@
 
 clear
 
-#############################################################################################################################
+################################################################################################################################
 ##
 ## Purpose: Add or remove adlists from Pi-hole's database.
 ##
 ## About info
 ##
 ## Important: Make SURE to keep the text 'SlyADL - ' in the front of any comment you customize that were added by THIS script.
-##  - The reason for this is because when you tell the script to remove domains it looks for that exact string
-##  - in each domain's comment section as a way to identify what domains need removing and what needs to be ignored.
+##           - The reason for this is because when you tell the script to remove domains it looks for that exact string
+##           - in each domain's comment section as a way to identify what domains need removing and what needs to be ignored.
 ##
-#############################################################################################################################
+################################################################################################################################
 
 # VERIFY THE SCRIPT HAS ROOT ACCESS BEFORE CONTINUING
 if [ "$EUID" -ne '0' ]; then
