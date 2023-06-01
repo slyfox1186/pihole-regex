@@ -107,7 +107,7 @@ echo
 echo 'Enter one of the selections.'
 echo
 echo '[1] Add domains'
-echo '[2] Remove all domains (This should only delete lists added by this script.)'
+echo '[2] Remove all domains (This should only delete lists added by this script)'
 echo '[3] Exit'
 read CHOICE
 if [[ "${CHOICE}" == "1" ]]; then
