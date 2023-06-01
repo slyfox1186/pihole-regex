@@ -140,25 +140,25 @@ case "$choice_2" in
     1)
         wget "$user_agent" -qO - "$ad_url" |
         sed '/^#/ d' | sed '/^$/ d' > "$list"
-        cat < "$list" | xargs -n1 -I{} sqlite3 "$gravity" \
+        cat < "$list" | xargs -n1 -I{} sudo sqlite3 "$gravity" \
         "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"$c1\")"
         ;;
     2)
         wget "$user_agent" -qO - "$url_base"=tick |
         sed '/^#/ d' | sed '/^$/ d' > "$list"
-        cat < "$list" | xargs -n1 -I{} sqlite3 "$gravity" \
+        cat < "$list" | xargs -n1 -I{} sudo sqlite3 "$gravity" \
         "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"$c2\")"
         ;;
     3)
         wget "$user_agent" -qO - "$url_base"=nocross |
         sed '/^#/ d' | sed '/^$/ d' > "$list"
-        cat < "$list" | xargs -n1 -I{} sqlite3 "$gravity" \
+        cat < "$list" | xargs -n1 -I{} sudo sqlite3 "$gravity" \
         "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"$c3\")"
         ;;
     4)
         wget "$user_agent" -qO - "$url_base"=all |
         sed '/^#/ d' | sed '/^$/ d' > "$list"
-        cat < "$list" | xargs -n1 -I{} sqlite3 "$gravity" \
+        cat < "$list" | xargs -n1 -I{} sudo sqlite3 "$gravity" \
         "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"$c4\")"
         ;;
     *)
