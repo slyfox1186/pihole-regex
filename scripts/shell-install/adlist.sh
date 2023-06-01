@@ -89,7 +89,7 @@ fn_gravity()
 # Set adlist url variable
 ad_url='https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt'
 # Set the comments
-c1='SlyADL - SlyFox1186 + Firebog'\''s Ticked'
+c1='SlyADL - SlyFox1186 + Firebog'\''s safe list'
 c2='SlyADL - Firebog - Ticked'
 c3='SlyADL - Firebog - Non-Crossed'
 c4='SlyADL - Firebog - All'
