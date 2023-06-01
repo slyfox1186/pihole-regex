@@ -21,7 +21,7 @@ if [[ "${EUID}" -gt '0' ]]; then
     exit 1
 fi
 
-if ! which 'sqlite3'; then
+if ! which 'sqlite3' &>/dev/null; then
     echo 'sqlite3 must be installed to run this script.'
     echo
     exit 1
@@ -45,7 +45,7 @@ fail_fn()
     exit 1
 }
 
-# Function to exit script
+# Set the exit script function
 fn_done()
 {
     printf "\n%s\n\n%s\n%s\n\n" \
@@ -55,7 +55,7 @@ fn_done()
     exit 0
 }
 
-# Function to prompt the user to restart Pi-hole's DNS resolver
+# Set the function to restart pihole's dns
 fn_dns()
 {
     local dns_choice
@@ -70,7 +70,7 @@ fn_dns()
     fi
 }
 
-# Function to prompt the user to update Gravity's database
+# Set the function to prompt the user to update Gravity's database
 fn_gravity()
 {
     local gravity_choice
@@ -88,7 +88,7 @@ fn_gravity()
 # Set adlist url variable
 ad_url='https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt'
 # Set the comments
-c1='SlyADL - SlyFox1186 + Firebog'\''s Ticked + Non-Crossed'
+c1='SlyADL - SlyFox1186 + Firebog'\''s Ticked'
 c2='SlyADL - Firebog - Ticked'
 c3='SlyADL - Firebog - Non-Crossed'
 c4='SlyADL - Firebog - All'
