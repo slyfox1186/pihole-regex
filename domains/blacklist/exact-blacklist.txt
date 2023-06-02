@@ -1,6 +1,7 @@
 a1241.dsct.akamai.net
 a21ed24aedde648804e7-228765c84088fef4ff5e70f2710398e9.r17.cf1.rackcdn.com
 adserver-use1-ext-prod-a-563525597.us-east-1.elb.amazonaws.com
+api.itopvpn.com
 api.nfl.com
 api.topaz-labs.net
 applytics.nordvpn.com
