@@ -34,6 +34,9 @@
 # HBBTV
 ^hbbtv\.(3sat|kabeleins|qvc|rtl2|sat1|sixx|superrtl)\.de$
 
+#iTop VPN
+(\.|^)filesupdating\.com$
+
 # LG Smart TVs
 (\.|^)ibs\.lgappstv\.com
 (\.|^)lgsmartad\.com
