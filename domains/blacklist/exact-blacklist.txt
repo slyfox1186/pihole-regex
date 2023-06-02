@@ -30,7 +30,9 @@ prod-elb-ats-620772989.us-east-1.elb.amazonaws.com
 prod.ups-ats.us-east-1.aolp-ds-prd.aws.oath.cloud
 redirector.googlevideo.com
 snap.licdn.com
+stats.itopvpn.com
 survey.IObit
+update.filesupdating.com
 usage.truenas.com
 video-edge-830e74.atl01.abs.hls.ttvnw.net
 video-edge-8491b8.pdx01.abs.hls.ttvnw.net
