@@ -1,6 +1,7 @@
 (1, 'a1241.dsct.akamai.net', 1, 'Akamai CDN ad server - SlyEBL')
 (1, 'a21ed24aedde648804e7-228765c84088fef4ff5e70f2710398e9.r17.cf1.rackcdn.com', 1, 'Twitch - Video ads - SlyEBL')
 (1, 'adserver-use1-ext-prod-a-563525597.us-east-1.elb.amazonaws.com', 1, 'Amazon CDN ad server - SlyEBL')
+(1, 'api.itopvpn.com', 1, 'iTop VPN Telemetry - SlyEBL')
 (1, 'api.nfl.com', 1, 'NFL - American Football telemetry - SlyEBL')
 (1, 'api.topaz-labs.net', 1, 'Topaz Labs telemetry - SlyEBL')
 (1, 'applytics.nordvpn.com', 1, 'NordVPN telemetry - SlyEBL')
