@@ -10,9 +10,10 @@
 ##
 ##  https://github.com/yubiuser/pihole_adlist_tool
 ##
-##  Updated (see the README.md): 06.30.23
+##  Updated: 06.30.23
 ##
-##  Added: blacklists from Blocklist Project - https://github.com/blocklistproject/Lists
+##  Added: Blocklist Project - https://github.com/blocklistproject/Lists
+##  Added: Perflyst - github.com/Perflyst/PiHoleBlocklist
 ##
 #########################################################################################################
 
@@ -50,3 +51,12 @@ https://blocklistproject.github.io/Lists/tracking.txt
 
 # Blocklist Project - beta lists
 https://blocklistproject.github.io/Lists/smart-tv.txt
+
+#
+# Perflyst - github.com/Perflyst/PiHoleBlocklist
+#
+
+https://perflyst.github.io/PiHoleBlocklist/AmazonFireTV.txt
+https://perflyst.github.io/PiHoleBlocklist/android-tracking.txt
+https://perflyst.github.io/PiHoleBlocklist/SessionReplay.txt
+https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt
