@@ -65,6 +65,7 @@ dns_fn()
     case "$choice" in
         1)      sudo pihole restartdns;;
         2)      echo;;
+        '')     sudo pihole restartdns;;
         *)
                 unset choice
                 clear
@@ -89,6 +90,7 @@ gravity_fn()
     case "$choice" in
         1)      sudo pihole -g;;
         2)      echo;;
+        '')     sudo pihole restartdns;;
         *)
                 unset choice
                 clear
