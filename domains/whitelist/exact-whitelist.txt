@@ -1,5 +1,6 @@
 79423.analytics.edgekey.net
 android.clients.google.com
+anti-ad.net
 api.flightproxy.teams.microsoft.com
 appboot.netflix.com
 appleglobal.102.112.2o7.net
@@ -147,6 +148,7 @@ i.ytimg.com
 i1.ytimg.com
 icloud.com
 iduwdjf.qiniudns.com
+iij.ad.jp
 images.ctfassets.net
 images.pluto.tv
 images.vizio.com
@@ -301,6 +303,8 @@ stackpath.bootstrapcdn.com
 staging.plex.tv
 static.opensubtitles.org
 statics.teams.cdn.office.net
+stats.foldingathome.org
+stats.stackexchange.com
 stats.streamelements.com
 status.plex.tv
 stitcher.pluto.tv
@@ -382,6 +386,7 @@ wordpress.com
 wp.com
 ws-ee-maidsvc.icloud.com
 ws.audioscrobbler.com
+www.ad.nl
 www.adf.ly
 www.aliexpress.com
 www.appleiphonecell.com
@@ -390,6 +395,7 @@ www.ecdinterface.philips.com
 www.googleapis.com
 www.howtogeek.com
 www.icloud.com
+www.iij.ad.jp
 www.itunes.com
 www.linuxtracker.org
 www.msftconnecttest.com
