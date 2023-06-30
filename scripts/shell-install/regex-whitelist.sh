@@ -31,7 +31,7 @@ exit_fn()
                 ;;
     esac
 
-    printf "%s\n\n%s\n\n" \
+    printf "\n%s\n\n%s\n\n" \
         'Make sure to star this repository to show your support!' \
         'GitHub: https://github.com/slyfox1186/pihole-regex'
     exit 0
