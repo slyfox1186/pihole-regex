@@ -5,13 +5,15 @@
 ##
 ## Purpose: Add or remove Adlists from Pi-hole's database.
 ##
-## Important: Make SURE to keep the text 'SlyADL - ' in the front of any comment you customize that were added by THIS script.
+## Important: Make SURE to keep the text 'SlyADL - ' in the front of any comment you customize that was added by THIS script.
 ##           - This is because when you tell the script to remove domains it looks for that exact string in each domain's comment
 ##           - section as a way to identify what domains need removing and what needs to be ignored.
 ##
 ################################################################################################################################
 
 clear
+
+repo=https://github.com/slyfox1186/pihole-regex
 
 # MAKE USER INPUT CASE INSENSITIVE
 shopt -s nocasematch
@@ -22,7 +24,7 @@ if ! which sqlite3 &>/dev/null; then
     clear
 fi
 
-# DELETE ANY USELESS FILES THAT WERE DOWNLOADED ALONGSIDE THE OTHER SCRIPTS
+# DELETE ANY USELESS FILES THAT WERE DOWNLOADED WITH THE ADLIST SCRIPT
 if [ -f index.html ] || [ -f urls.txt ]; then
     sudo rm index.html urls.txt 2>/dev/null
 fi
@@ -32,8 +34,8 @@ fail_fn()
 {
     printf "\n%s\n\n%s\n%s\n\n" \
         "[x] $1" \
-        'Please enter a support ticket at: ' \
-        'https://github.com/slyfox1186/pihole-regex/issues'
+        'Please create an issue at: ' \
+        "$repo/issues"
     exit 1
 }
 
@@ -41,9 +43,9 @@ fail_fn()
 exit_fn()
 {
     printf "\n%s\n\n%s\n%s\n\n" \
-        '[i] The script has completed.' \
+        '[i] The script has finished.' \
         'Please make sure to star this repo to show your support!' \
-        'https://github.com/slyfox1186/pihole-regex'
+        "$repo"
     exit 0
 }
 
@@ -147,10 +149,10 @@ esac
 # PROMPT THE USER TO SELECT THE ADLIST
 printf "%s\n\n%s\n%s\n%s\n%s\n\n" \
     'Choose from the adlists below to insert their contents into the Gravity database.' \
-    '[1] SlyFox1186: [Personal Adlist] - Self made with lists from the good work of others. (Includes: Firebog Ticked).' \
+    '[1] SlyFox1186: [Personal Adlist] - Self-made with lists from the good work of others. (Includes: Firebog Ticked).' \
     '[2] Firebog:    [Ticked] - Perfect for system admins with little time available to fix database issues.' \
     '[3] Firebog:    [Non-Crossed] - These domains are generally less safe than the "Tick" list and most likely have an increased risk of false positives.' \
-    '[4] Firebog:    [All] - False positives are very likely and will required much more effort than the average system admin would wish to spend fixing a database.'
+    '[4] Firebog:    [All] - False positives are very likely and will require much more effort than the average system admin would wish to spend fixing a database.'
 read -p 'Your choices are (1 to 4): ' choice2
 clear
 
