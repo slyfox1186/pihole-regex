@@ -107,7 +107,8 @@ c3='SlyADL - Firebog - Non-Crossed'
 c4='SlyADL - Firebog - All'
 
 # SET ADDITIONAL VARS
-user_agent='--user-agent='\''Mozilla/5.0 (Macintosh; Intel Mac OS X 13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'\'''
+user_agent='--user-agent='\''Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36'\'''
+
 sly_adlist=/tmp/sly_adlist.txt
 fb_adlist=/tmp/firebog_tick_adlist.txt
 fb_url_base='https://v.firebog.net/hosts/lists.php?type'
