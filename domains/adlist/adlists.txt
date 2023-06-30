@@ -30,7 +30,7 @@ if ! which sqlite3 &>/dev/null; then
     clear
 fi
 
-# DELETE ANY USELESS FILES THAT WERE DOWNLOADED ALONGSIDE THE OTHER SCRIPTS
+# DELETE ANY USELESS FILES THAT WERE DOWNLOADED WITH THE ADLIST SCRIPT
 if [ -f index.html ] || [ -f urls.txt ]; then
     sudo rm index.html urls.txt 2>/dev/null
 fi
@@ -40,7 +40,7 @@ fail_fn()
 {
     printf "\n%s\n\n%s\n%s\n\n" \
         "[x] $1" \
-        'Please enter a support ticket at: ' \
+        'Please create an issue at: ' \
         'https://github.com/slyfox1186/pihole-regex/issues'
     exit 1
 }
