@@ -5,17 +5,17 @@
 ##
 ##          SlyFox1186's Customized AdList
 ##
-##  I analyzed the adlists over 180 days using the pihole_adlist_tool's\
+##  I analyzed the adlists over 180 days using the pihole_adlist_tool's
 ##  analytics which told me how often each list produces a "hit" of some nature.
-##  I keep the least amount of adlists required to cover all the domains with
-##  "hits" registered. This allows the adlists database to stay as slim as possible
+##  I keep the least amount of adlists required to cover all domains with "hits"
+##  registered. This allows the adlist database to stay as slim as possible
 ##  and helps speed up Pihole's efficiency overall.
 ##
 ##  https://github.com/yubiuser/pihole_adlist_tool
 ##
-##  Updated (see the README.md): 06.30.23
+##  Updated 06.30.23
 ##
-##  Added: blacklists from Blocklist Project - https://github.com/blocklistproject/Lists
+##  Added: Blocklist Project - https://github.com/blocklistproject/Lists
 ##
 #########################################################################################################
 
