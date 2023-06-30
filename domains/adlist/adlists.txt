@@ -1,46 +1,42 @@
-##############################################################################
-#
-#          SlyFox1186's Customized AdList
-#
-#  I analyzed the adlists over a period of 180 days using the
-#  pihole_adlist_tool's analytics which told me how often each list
-#  produces a "hit" of some nature. I keep the least amount of adlists
-#  required to cover all the domains with "hits" registered. This allows
-#  the adlists database to stay as slim as possible and this helps speedup
-#  pihole's efficiency overall.
-#
-#  https://github.com/yubiuser/pihole_adlist_tool
-#
-#  Updated (see the README.md): 03.19.23
-#
-##############################################################################
+#########################################################################################################
+##
+##          SlyFox1186's Customized AdList
+##
+##  I analyzed the adlists over 180 days using the pihole_adlist_tool's\
+##  analytics which told me how often each list produces a "hit" of some nature.
+##  I keep the least amount of adlists required to cover all the domains with
+##  "hits" registered. This allows the adlists database to stay as slim as possible
+##  and helps speed up Pihole's efficiency overall.
+##
+##  https://github.com/yubiuser/pihole_adlist_tool
+##
+##  Updated (see the README.md): 06.30.23
+##
+##  Added: blacklists from Blocklist Project - https://github.com/blocklistproject/Lists
+##
+#########################################################################################################
 
 #
-# slyfox1186 added lists
+# slyfox1186's blacklists
 #
 
 https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/exact-blacklist.txt
 https://raw.githubusercontent.com/dfederlein/dnsbl-dfed/master/spotifyads.txt
 
 #
-# Included with Pi-hole with the pihole installation and very important
-#
-
-https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
-
-#
-# This list is huge and is a big reason why any lists you expect to see below may not exist anymore.
+# This list is vast and is a big reason why any lists you expect to see below may not exist anymore.
 #
 
 https://dbl.oisd.nl/
 
 #
-# Firebog Safelist (the safe "tick" list will be added behind the scenes so don't worry)
-# Adding lists from: https://v.firebog.net/hosts/lists.php?type=tick
+# Firebog "Tick" list
+# If you chose #1 when running the adlist script Firebog's
+# tick list will be added behind the scenes during execution
 #
 
 #
-# Blocklist Project - https://github.com/blocklistproject/Lists
+# Blocklist Project
 #
 
 # Blocklist Project - release lists
