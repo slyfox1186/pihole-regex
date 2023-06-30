@@ -21,6 +21,8 @@
 
 clear
 
+repo=https://github.com/slyfox1186/pihole-regex
+
 # MAKE USER INPUT CASE INSENSITIVE
 shopt -s nocasematch
 
@@ -41,7 +43,7 @@ fail_fn()
     printf "\n%s\n\n%s\n%s\n\n" \
         "[x] $1" \
         'Please create an issue at: ' \
-        'https://github.com/slyfox1186/pihole-regex/issues'
+        "$repo/issues"
     exit 1
 }
 
@@ -51,7 +53,7 @@ exit_fn()
     printf "\n%s\n\n%s\n%s\n\n" \
         '[i] The script has finished.' \
         'Please make sure to star this repo to show your support!' \
-        'https://github.com/slyfox1186/pihole-regex'
+        "$repo"
     exit 0
 }
 
