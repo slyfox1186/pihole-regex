@@ -68,7 +68,7 @@ dns_fn()
         *)
                 unset choice
                 clear
-                gravity_fn
+                dns_fn
                 ;;
     esac
 }
