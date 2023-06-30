@@ -126,6 +126,9 @@
 ^uplynk-beacon-newvpc-[0-9]+\.[a-z]{2}-[a-z]+-[0-9]\.elb\.amazonaws\.com$
 ^v-[a-z0-9]+\.wc\.yahoodns\.net$
 
+# YouTube
+(\.|^)youtube-nocookie\.com$
+
 # mmotti's RegEx - github.com/mmotti/pihole-regex/blob/master/regex.list
 ^(.+[_.-])?adse?rv(er?|ice)?s?[0-9]*[_.-]
 ^(.+[_.-])?telemetry[_.-]
@@ -141,6 +144,3 @@
 ^mads\.
 ^pixels?[-.]
 ^stat(s|istics)?[0-9]*[_.-]
-
-# YouTube
-(\.|^)youtube-nocookie\.com$
