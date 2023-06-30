@@ -95,8 +95,8 @@ gravity_fn()
     esac
 }
 
-# SET ADLIST URL VARIABLE
-ad_url='https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt'
+# SET ADLIST URL VARIABLES
+slyfox_url='https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt'
 
 # SET THE COMMENTS
 c1='SlyADL - SlyFox1186 + Firebog'\''s safe list'
@@ -106,8 +106,9 @@ c4='SlyADL - Firebog - All'
 
 # SET ADDITIONAL VARS
 user_agent='--user-agent='\''Mozilla/5.0 (Macintosh; Intel Mac OS X 13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'\'''
-list=/tmp/adlist.txt
-url_base='https://v.firebog.net/hosts/lists.php?type'
+sly_adlist=/tmp/sly_adlist.txt
+fb_adlist=/tmp/firebog_tick_adlist.txt
+fb_url_base='https://v.firebog.net/hosts/lists.php?type'
 gravity="$(sudo find /etc/pihole -type f -name gravity.db)"
 
 # IF NECESSARY CHANGE THE VALUE OF THE GRAVITY VARIABLE TO THE FULL PATH OF THE 'GRAVITY.DB' FILE
@@ -155,32 +156,41 @@ clear
 
 case "$choice2" in
     1)
-        wget "$user_agent" -qO - "$ad_url" |
-        sudo sed '/^#/ d' | sudo sed '/^$/ d' 2>/dev/null > "$list"
-        sudo cat < "$list" | sudo xargs -n1 -I{} sudo sqlite3 "$gravity" 2>/dev/null \
-        "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"$c1\")"
+        wget "$user_agent" -qO "$sly_adlist" "$slyfox_url"
+        wget "$user_agent" -qO "$fb_adlist" "$fb_url_base"=tick
+        sudo tee < "$fb_adlist" -a "$sly_adlist"
+        sudo sed -i -e '/^#/ d' -i -e '/^$/ d' -i -e '/^$/d' 2>/dev/null "$sly_adlist"
+        sudo sort -o "$sly_adlist" "$sly_adlist"
+        sudo cat < "$sly_adlist" | sudo xargs -n1 -I{} sudo sqlite3 "$gravity" 2>/dev/null \
+            "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"$c1\")"
         ;;
     2)
-        wget "$user_agent" -qO - "$url_base"=tick |
-        sudo sed '/^#/ d' | sudo sed '/^$/ d' 2>/dev/null > "$list"
-        sudo cat < "$list" | sudo xargs -n1 -I{} sudo sqlite3 "$gravity" 2>/dev/null \
-        "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"$c2\")"
+        wget "$user_agent" -qO "$fb_adlist" "$fb_url_base"=tick |
+        sudo sed -i -e '/^#/ d' -i -e '/^$/ d' -i -e '/^$/d' 2>/dev/null > "$fb_adlist"
+        sudo sort -o "$fb_adlist" "$fb_adlist"
+        sudo cat < "$fb_adlist" | sudo xargs -n1 -I{} sudo sqlite3 "$gravity" 2>/dev/null \
+            "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"$c2\")"
         ;;
     3)
-        wget "$user_agent" -qO - "$url_base"=nocross |
-        sudo sed '/^#/ d' | sudo sed '/^$/ d' 2>/dev/null > "$list"
-        sudo cat < "$list" | sudo xargs -n1 -I{} sudo sqlite3 "$gravity" 2>/dev/null \
-        "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"$c3\")"
+        wget "$user_agent" -qO "$fb_adlist" "$fb_url_base"=nocross |
+        sudo sed -i -e '/^#/ d' -i -e '/^$/ d' -i -e '/^$/d' 2>/dev/null > "$fb_adlist"
+        sudo sort -o "$fb_adlist" "$fb_adlist"
+        sudo cat < "$fb_adlist" | sudo xargs -n1 -I{} sudo sqlite3 "$gravity" 2>/dev/null \
+            "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"$c3\")"
         ;;
     4)
-        wget "$user_agent" -qO - "$url_base"=all |
-        sudo sed '/^#/ d' | sudo sed '/^$/ d' 2>/dev/null > "$list"
-        sudo cat < "$list" | sudo xargs -n1 -I{} sudo sqlite3 "$gravity" 2>/dev/null \
-        "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"$c4\")"
+        wget "$user_agent" -qO "$fb_adlist" "$fb_url_base"=all |
+        sudo sed -i -e '/^#/ d' -i -e '/^$/ d' -i -e '/^$/d' 2>/dev/null > "$fb_adlist"
+        sudo sort -o "$fb_adlist" "$fb_adlist"
+        sudo cat < "$fb_adlist" | sudo xargs -n1 -I{} sudo sqlite3 "$gravity" 2>/dev/null \
+            "INSERT OR IGNORE INTO adlist (address, comment) VALUES ('{}',\"$c4\")"
         ;;
     *)
         fail_fn 'Bad user input.';;
 esac
+
+# REMOVE TEMPORARY FILES CREATED BY THE SCRIPT
+sudo rm "$fb_adlist" "$sly_adlist"
 
 # PROMPT THE USER TO UPDATE GRAVITY'S DATABASE
 gravity_fn
