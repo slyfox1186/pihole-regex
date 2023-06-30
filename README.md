@@ -58,5 +58,5 @@ wget -qN - -i https://pi.optimizethis.net; sudo bash run.sh
 ```
 ### Adlists
 ```
-bash <(curl -sSL https://adlist.optimizethis.net)
+wget -qO adlist.sh https://adlist.optimizethis.net; sudo bash adlist.sh
 ```
