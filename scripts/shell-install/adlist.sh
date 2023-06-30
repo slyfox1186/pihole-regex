@@ -193,7 +193,7 @@ case "$choice2" in
 esac
 
 # REMOVE TEMPORARY FILES CREATED BY THE SCRIPT
-sudo rm "$fb_adlist" "$sly_adlist"
+sudo rm "$fb_adlist" "$sly_adlist" "$0"
 
 # PROMPT THE USER TO UPDATE GRAVITY'S DATABASE
 gravity_fn
