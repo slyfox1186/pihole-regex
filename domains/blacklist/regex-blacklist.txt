@@ -144,3 +144,29 @@
 ^mads\.
 ^pixels?[-.]
 ^stat(s|istics)?[0-9]*[_.-]
+
+#
+# Title: Perflyst's SmartTV Blocklist for Pi-hole - RegEx extension
+# Version: 02October2021v1
+#
+
+# Perflyst LG
+(^|\.)ibs\.lgappstv\.com
+(^|\.)lgsmartad\.com
+(^|\.)smartshare\.lgtvsdp\.com
+(^|\.)rdx2\.lgtvsdp\.com
+^[a-z]{11,15}$
+
+# Perflyst Samsung
+(^|\.)giraffic\.com$
+(^|\.)internetat\.tv$
+(^|\.)pavv\.co\.kr$
+(^|\.)samsungcloudsolution\.net$
+(^|\.)samsungelectronics\.com$
+(^|\.)samsungrm\.net$
+
+# Perflyst Vizio
+(\.|^)tvinteractive\.tv$
+
+# Perflyst Other
+^api\..*\.hismarttv\.com$
