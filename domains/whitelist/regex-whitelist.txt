@@ -86,7 +86,7 @@
 # Rob VanderWoude Learn how to code multiple languages
 (\.|^)robvanderwoude\.com$
 
-# Reddit - Main CND's and other legit content delivery comains for Reddit. Some of these carry ads and will cripple the site as a whole if not whitelisted.
+# Reddit - Main CND's and other legit content delivery domains for Reddit. Some of these carry ads and will cripple the site as a whole if not whitelisted.
 (thumbs\.|^)(reddit(media|static))\.com
 (\.|^)([iv]?\.|)redd\.it$
 ^events-test(|-v2)\.redditmedia\.com$
