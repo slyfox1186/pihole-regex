@@ -29,16 +29,6 @@ if [ -f index.html ] || [ -f urls.txt ]; then
     sudo rm index.html urls.txt 2>/dev/null
 fi
 
-# FAILURE FUNCTION
-fail_fn()
-{
-    printf "\n%s\n\n%s\n%s\n\n" \
-        "[x] $1" \
-        'Please create an issue at: ' \
-        "$repo/issues"
-    exit 1
-}
-
 # EXIT FUNCTION
 exit_fn()
 {
@@ -47,6 +37,16 @@ exit_fn()
         'Please make sure to star this repo to show your support!' \
         "$repo"
     exit 0
+}
+
+# FAILURE FUNCTION
+fail_fn()
+{
+    printf "\n%s\n\n%s\n%s\n\n" \
+        "[x] $1" \
+        'Please create an issue at: ' \
+        "$repo/issues"
+    exit 1
 }
 
 # SET THE FUNCTION TO RESTART PIHOLE'S DNS
