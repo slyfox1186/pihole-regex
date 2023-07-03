@@ -90,7 +90,7 @@ gravity_fn()
     case "$choice" in
         1)      sudo pihole -g;;
         2)      echo;;
-        '')     sudo pihole restartdns;;
+        '')     sudo pihole -g;;
         *)
                 unset choice
                 clear
