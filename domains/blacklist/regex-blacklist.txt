@@ -36,10 +36,10 @@
 (\.|^)filesupdating\.com$
 
 # LG Smart TVs
-(\.|^)ibs\.lgappstv\.com
-(\.|^)lgsmartad\.com
-(\.|^)rdx2\.lgtvsdp\.com
-(\.|^)smartshare\.lgtvsdp\.com
+(\.|^)ibs\.lgappstv\.com$
+(\.|^)lgsmartad\.com$
+(\.|^)rdx2\.lgtvsdp\.com$
+(\.|^)smartshare\.lgtvsdp\.com$
 
 # OK.ru
 (\.|^)ok\.ru$
@@ -60,7 +60,7 @@
 ^(ssl|static|www)\.redditgifts\.com$
 
 # Samsung Smart TVs
-((abtauthprd|acr0|amauthprd|cdn|configprd|fkp|gamespromotion|musicid|notice|noticecdn|noticefile|oempprd|prderrordumphsm|prov|sas|vdterms)\.|^)samsungcloudsolution\.(com|net)
+((abtauthprd|acr0|amauthprd|cdn|configprd|fkp|gamespromotion|musicid|notice|noticecdn|noticefile|oempprd|prderrordumphsm|prov|sas|vdterms)\.|^)samsungcloudsolution\.(com|net)$
 (\.|^)giraffic\.com$
 (\.|^)internetat\.tv$
 ^log-[0-3]+\.samsungacr\.com$
