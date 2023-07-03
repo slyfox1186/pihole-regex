@@ -118,7 +118,7 @@ gravity="$(sudo find /etc/pihole -type f -name gravity.db)"
 
 # IF NECESSARY CHANGE THE VALUE OF THE GRAVITY VARIABLE TO THE FULL PATH OF THE 'GRAVITY.DB' FILE
 if [ -z "$gravity" ]; then
-    fail_fn "Unable to find the database file: $gravity"
+    fail_fn "Unable to find the database file: gravity.db"
 fi
 
 # PROMPT THE USER TO MODIFY THE PIHOLE DATABASE
