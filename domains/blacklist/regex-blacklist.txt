@@ -9,8 +9,6 @@
 (\.|^)shadowadcity\.com$
 (\.|^)trafyield\.com$
 
-# 3d Mark PC Benchmark Tests
-
 # AdultTime
 (\.|^)appsync-api\.us-[a-z]+-[0-9]?\.amazonaws\.com$
 (\.|^)gammaentertainment\.com$
