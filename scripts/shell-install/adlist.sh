@@ -112,7 +112,7 @@ c4='SlyADL - Firebog - All'
 user_agent='--user-agent='\''Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36'\'''
 
 sly_adlist=/tmp/sly_adlist.txt
-fb_adlist=/tmp/firebog_tick_adlist.txt
+fb_adlist=/tmp/firebog_adlist.txt
 fb_url_base='https://v.firebog.net/hosts/lists.php?type'
 gravity="$(sudo find /etc/pihole -type f -name gravity.db)"
 
