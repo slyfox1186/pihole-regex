@@ -61,7 +61,7 @@
 # Lets Encrypt - One of the main SSL certificate encryption websites
 (\.|^)lencr\.org$
 
-# Microsoft OneDrive, Azure, Windows Esentials updates, other, xboxlive required for saves to the cloud
+# Microsoft OneDrive, Azure, Windows Essentials updates, other, xboxlive required for saves to the cloud
 (www\.|^)((go\.|)microsoft|windows)\.com$
 (\.|^)1drv\.ms$
 (\.|^)windowsupdate\.com$
