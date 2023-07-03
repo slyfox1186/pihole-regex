@@ -88,7 +88,7 @@
 (\.|^)snap(-dev|ads|chat|kit)\.(c|com|net)$
 
 # Sony Smart TVs
-^ad8641f3cff742de893d919add74c2bb\.ssm[1-2]?\.internet\.sony\.tv$
+^[a-z0-9]+\.ssm[1-2]?\.internet\.sony\.tv$
 
 # Spotify
 (\.|^)log[0-9]*\.spotify\.com$
