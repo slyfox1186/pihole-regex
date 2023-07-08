@@ -56,3 +56,7 @@ https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt
 
 # COIN MINING HIJACKERS
 https://raw.githubusercontent.com/TheSmashy/my-pihole-lists/master/Crypto%20Mining%20Pool%20Blocklist.txt
+
+# YOUTUBE
+https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/black.list
+https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/youtubelist.txt
