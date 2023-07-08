@@ -25,12 +25,6 @@ https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist
 https://raw.githubusercontent.com/dfederlein/dnsbl-dfed/master/spotifyads.txt
 
 #
-# This list is vast and is a big reason why any lists you expect to see below may not exist anymore.
-#
-
-https://big.oisd.nl/domains
-
-#
 # Firebog "Tick" list
 #   If you chose #1 when running the adlist script Firebog's
 #   tick list will be added behind the scenes during execution
