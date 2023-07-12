@@ -12,9 +12,9 @@
 ##
 ##  Updated: 07.11.23
 ##
-##  Added: Blocklist Project      - github.com/blocklistproject/Lists
-##  Added: Perflyst               - github.com/Perflyst/PiHoleBlocklist
-##  Added: YouTube Ads Blocklists - github.com/kboghdady/youTube_ads_4_pi-hole
+##  Added: Blocklist Project       -  github.com/blocklistproject/Lists
+##  Added: Perflyst                -  github.com/Perflyst/PiHoleBlocklist
+##  Added: YouTube Ads Blocklists  -  github.com/kboghdady/youTube_ads_4_pi-hole
 ##
 ##  Note: The disabled Adlists (for imformational purposes) are located at the below URL:
 ##        https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/disabled-adlists.txt
