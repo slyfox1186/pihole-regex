@@ -1,6 +1,6 @@
-#########################################################################################################
+###############################################################################################################
 ##
-##          SlyFox1186's Customized AdList
+##  SlyFox1186's Customized AdList
 ##
 ##  I analyzed the adlists over 180 days using the pihole_adlist_tool's\
 ##  analytics which told me how often each list produces a "hit" of some nature.
@@ -8,55 +8,82 @@
 ##  "hits" registered. This allows the adlists database to stay as slim as possible
 ##  and helps speed up Pihole's efficiency overall.
 ##
-##  https://github.com/yubiuser/pihole_adlist_tool
+##  GitHub Repository: https://github.com/yubiuser/pihole_adlist_tool
 ##
-##  Updated: 07.07.23
+##  Updated: 07.11.23
 ##
-##  Added: Blocklist Project - https://github.com/blocklistproject/Lists
-##  Added: Perflyst - github.com/Perflyst/PiHoleBlocklist
+##  Added: Blocklist Project      - github.com/blocklistproject/Lists
+##  Added: Perflyst               - github.com/Perflyst/PiHoleBlocklist
+##  Added: YouTube Ads Blocklists - github.com/kboghdady/youTube_ads_4_pi-hole
 ##
-#########################################################################################################
+##  Note: The disabled Adlists (for imformational purposes) are located at the below URL:
+##        https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/disabled-adlists.txt
+##
+###############################################################################################################
 
 #
-# slyfox1186's blacklists
+# slyfox1186's blocklists
 #
 
 https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/exact-blacklist.txt
 https://raw.githubusercontent.com/dfederlein/dnsbl-dfed/master/spotifyads.txt
 
 #
-# Firebog "Tick" list
-#   If you chose #1 when running the adlist script Firebog's
-#   tick list will be added behind the scenes during execution
+# Firebog "Tick" blocklists
 #
 
-#
-# Blocklist Project
-#
-
-# Blocklist Project - release lists
+https://adaway.org/hosts.txt
 https://blocklistproject.github.io/Lists/fraud.txt
 https://blocklistproject.github.io/Lists/malware.txt
-https://blocklistproject.github.io/Lists/phishing.txt
-https://blocklistproject.github.io/Lists/ransomware.txt
-https://blocklistproject.github.io/Lists/redirect.txt
-https://blocklistproject.github.io/Lists/scam.txt
+https://blocklistproject.github.io/Lists/smart-tv.txt
 https://blocklistproject.github.io/Lists/tracking.txt
-# Blocklist Project - beta lists
+https://perflyst.github.io/PiHoleBlocklist/AmazonFireTV.txt
+https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext
+https://phishing.army/download/phishing_army_blocklist_extended.txt
+https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt
+https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts
+https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt
+https://raw.githubusercontent.com/dfederlein/dnsbl-dfed/master/spotifyads.txt
+https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/black.list
+https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/exact-blacklist.txt
+https://raw.githubusercontent.com/TheSmashy/my-pihole-lists/master/Crypto%20Mining%20Pool%20Blocklist.txt
+https://v.firebog.net/hosts/AdguardDNS.txt
+https://v.firebog.net/hosts/Easylist.txt
+https://v.firebog.net/hosts/Easyprivacy.txt
+https://v.firebog.net/hosts/Prigent-Ads.txt
+https://v.firebog.net/hosts/Prigent-Crypto.txt
+https://v.firebog.net/hosts/RPiList-Malware.txt
+https://v.firebog.net/hosts/static/w3kbl.txt
+
+#
+# Blocklist Project - release blocklists
+#
+
+https://blocklistproject.github.io/Lists/fraud.txt
+https://blocklistproject.github.io/Lists/malware.txt
+https://blocklistproject.github.io/Lists/tracking.txt
+
+#
+# Blocklist Project - beta blocklists
+#
+
 https://blocklistproject.github.io/Lists/smart-tv.txt
 
 #
-# Perflyst - github.com/Perflyst/PiHoleBlocklist
+# Perflyst blocklists - github.com/Perflyst/PiHoleBlocklist
 #
 
 https://perflyst.github.io/PiHoleBlocklist/AmazonFireTV.txt
-https://perflyst.github.io/PiHoleBlocklist/android-tracking.txt
-https://perflyst.github.io/PiHoleBlocklist/SessionReplay.txt
-https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt
 
-# COIN MINING HIJACKERS
+#
+# Coin mining/hijackers
+#
+
 https://raw.githubusercontent.com/TheSmashy/my-pihole-lists/master/Crypto%20Mining%20Pool%20Blocklist.txt
 
-# YOUTUBE
+#
+# YouTube blocklists
+#
+
 https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/black.list
 https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/youtubelist.txt
