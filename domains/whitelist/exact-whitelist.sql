@@ -84,6 +84,7 @@
 (0, 'dl.dropbox.com', 1, 'Dropbox - Used to download files from Dropbox - SlyEWL')
 (0, 'dl.dropboxusercontent.com', 1, 'Dropbox - Used to download files from Dropbox - SlyEWL')
 (0, 'dl.google.com', 1, 'Google - SlyEWL')
+(0, 'dns.msftncsi.com', 1, 'Microsoft - Connectivity Checker, helps display connection icons depending on if you are connected to the internet or not - SlyEWL')
 (0, 'dns.msftncsi.com', 1, 'Microsoft - Used to check whether the internet connection is up or not in Windows systems. - SlyEWL')
 (0, 'download.scdn.co', 1, 'Spotify - SlyEWL')
 (0, 'download.sonarr.tv', 1, 'Plex Media Server - Sonarr is a PVR for Usenet and BitTorrent users. - SlyEWL')
