@@ -10,7 +10,7 @@
 ##
 ##  GitHub Repository: https://github.com/yubiuser/pihole_adlist_tool
 ##
-##  Updated: 07.11.23
+##  Updated: 08.07.23
 ##
 ##  Added: Blocklist Project       -  github.com/blocklistproject/Lists
 ##  Added: Perflyst                -  github.com/Perflyst/PiHoleBlocklist
