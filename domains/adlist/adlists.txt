@@ -16,7 +16,7 @@
 ##  Added: Perflyst                -  github.com/Perflyst/PiHoleBlocklist
 ##  Added: YouTube Ads Blocklists  -  github.com/kboghdady/youTube_ads_4_pi-hole
 ##
-##  Note: The disabled Adlists (for imformational purposes) are located at the below URL:
+##  Note: The disabled Adlists (for informational purposes) are located at the below URL:
 ##        https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/disabled-adlists.txt
 ##
 ###############################################################################################################
@@ -39,7 +39,6 @@ https://blocklistproject.github.io/Lists/smart-tv.txt
 https://blocklistproject.github.io/Lists/tracking.txt
 https://perflyst.github.io/PiHoleBlocklist/AmazonFireTV.txt
 https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext
-https://phishing.army/download/phishing_army_blocklist_extended.txt
 https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt
 https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts
 https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt
@@ -86,4 +85,3 @@ https://raw.githubusercontent.com/TheSmashy/my-pihole-lists/master/Crypto%20Mini
 #
 
 https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/black.list
-https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/youtubelist.txt
