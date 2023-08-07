@@ -64,6 +64,7 @@ d27xxe7juh1us6.cloudfront.net
 d2gatte9o95jao.cloudfront.net
 d2v02itv0y9u9t.cloudfront.net
 d3a3ewgd1iewwz.cloudfront.net
+d3ag4hukkh62yn.cloudfront.net
 d83eunklitikj.cloudfront.net
 dailymix-images.scdn.co
 daily-mix.scdn.co
