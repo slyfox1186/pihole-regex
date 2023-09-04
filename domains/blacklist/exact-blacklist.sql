@@ -52,7 +52,6 @@
 (1, 'lgtvonline.lge.com', 1, 'LG Smart TV - SlyEBL')
 (1, 'lss.lgthinq.com', 1, 'LG Smart TV - SlyEBL')
 (1, 'lynx-prod-beacon-alb-498367235.us-east-1.elb.amazonaws.com', 1, 'Amazon CDN ad server - SlyEBL')
-(1, 'm-node-alb-ssl-1111-1982902297.us-east-1.elb.amazonaws.com', 1, 'Amazon CDN ad server - SlyEBL')
 (1, 'mediaservices.cdn-apple.com', 1, 'LG Smart TV - SlyEBL')
 (1, 'mindfieldonline.com', 1, 'LG Smart TV - SlyEBL')
 (1, 'munchkin.marketo.net', 1, '3D Mark Software tracking cookies - SlyEBL')
