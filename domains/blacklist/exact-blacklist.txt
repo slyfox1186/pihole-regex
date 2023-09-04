@@ -79,7 +79,6 @@ us.rdx2.lgtvsdp.com
 usage.truenas.com
 video-edge-55b156.pdx01.abs.hls.ttvnw.net
 video-edge-6dca22.atl01.abs.hls.ttvnw.net
-video-edge-830e74.atl01.abs.hls.ttvnw.net
 video-edge-833564.atl01.abs.hls.ttvnw.net
 video-edge-8491b8.pdx01.abs.hls.ttvnw.net
 video-weaver.atl01.hls.ttvnw.net
