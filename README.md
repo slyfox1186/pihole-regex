@@ -26,14 +26,8 @@ __________
   - Website: [https://pi-hole.net/](https://pi-hole.net/)
 
 * **Required Packages:**
-  - **Python3**
-    - sudo apt install python3
-  - **SQLite3**
-    - sudo apt install sqlite3
-  - **WGet**
-    - sudo apt install wget
-  - **cURL**
-    - sudo apt install curl
+  - **Python3 SQLite3 WGET cURL**
+    - sudo apt -y install curl python3 sqlite3 wget
 
 * **Adlist info:** If you choose the "remove adlists" option it should only affect the lists added by this script.
 
