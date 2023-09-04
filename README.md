@@ -22,14 +22,15 @@ __________
   - **[RegEx Whitelist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/whitelist/regex-whitelist.txt)**
   
 ## Requirements and other important information
-* **Made for:** Pi-hole (FTLDNS) v5+
+**Made for:** Pi-hole (FTLDNS) v5+
   - Website: [https://pi-hole.net/](https://pi-hole.net/)
 
-* **Required Packages:**
-  - **Python3 SQLite3 WGET cURL**
-    - sudo apt -y install curl python3 sqlite3 wget
+**Required Packages:**
+```bash
+  sudo apt -y install curl python3 sqlite3 wget
+```
 
-* **Adlist info:** If you choose the "remove adlists" option it should only affect the lists added by this script.
+**Adlist info:** If you choose the `remove adlists` option it should only affect the lists added by this script.
 
 ## If you're *not* on the PC that's running Pi-hole
 * **Use your ssh client of choice (examples below)**
@@ -46,7 +47,7 @@ __________
 
 ## To execute, run one of the below commands
 
-### RegEx and Exact
+### RegEx and Exact Lists
 ```
 wget -qN - -i https://pi.optimizethis.net; sudo bash run.sh
 ```
