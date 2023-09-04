@@ -79,7 +79,6 @@
 (1, 'usage.truenas.com', 1, 'TrueNAS Software telemetry - SlyEBL')
 (1, 'video-edge-55b156.pdx01.abs.hls.ttvnw.net', 1, 'Twitch - Video ads - SlyEBL')
 (1, 'video-edge-6dca22.atl01.abs.hls.ttvnw.net', 1, 'Twitch - Video ads - SlyEBL')
-(1, 'video-edge-830e74.atl01.abs.hls.ttvnw.net', 1, 'Twitch Video ads - SlyEBL')
 (1, 'video-edge-833564.atl01.abs.hls.ttvnw.net', 1, 'Twitch - Video ads - SlyEBL')
 (1, 'video-edge-8491b8.pdx01.abs.hls.ttvnw.net', 1, 'Twitch - Video ads - SlyEBL')
 (1, 'video-weaver.atl01.hls.ttvnw.net', 1, 'Twitch - Video ads - SlyEBL')
