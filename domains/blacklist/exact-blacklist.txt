@@ -32,10 +32,12 @@ d2u28gf9o4d1cv.cloudfront.net
 d306ecvlh9tfv.cloudfront.net
 d3aqoihi2n8ty8.cloudfront.net
 d3cqix4sol87xw.cloudfront.net
+d3m1uefep57n8q.cloudfront.net
 developers.google.com
 discovery.meethue.com
 dns-fxp05etdx.sombrero.yahoo.net
 doh.dns.apple.com
+dxtkri2c61io4.cloudfront.net
 estore.IObit
 giveaway.IObit
 global.poe.live-video.net
@@ -45,6 +47,7 @@ images.pluto.tv
 images.redbox.com
 img.nvidiagrid.net
 ipv6.unagi-na.amazon.com
+jc9wr0p5rbtco3ibchj4vnjz7z1lr1.ext-twitch.tv
 kinesis.us-east-1.amazonaws.com
 lgtvonline.lge.com
 lss.lgthinq.com
@@ -75,6 +78,11 @@ us.ibs.lgappstv.com
 us.lgeapi.com
 us.rdx2.lgtvsdp.com
 usage.truenas.com
+video-edge-55b156.pdx01.abs.hls.ttvnw.net
+video-edge-6dca22.atl01.abs.hls.ttvnw.net
 video-edge-830e74.atl01.abs.hls.ttvnw.net
+video-edge-833564.atl01.abs.hls.ttvnw.net
 video-edge-8491b8.pdx01.abs.hls.ttvnw.net
+video-weaver.atl01.hls.ttvnw.net
+video-weaver.jfk04.hls.ttvnw.net
 www.ueiwsp.com
