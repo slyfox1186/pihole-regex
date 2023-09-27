@@ -3,6 +3,9 @@
 ## GitHub: https://github.com/slyfox1186/pihole-regex
 ## 
 
+# Mincraft Video Game
+(\.|^)minecraft\.net$
+
 # 3d Mark PC Benchmark tests
 ^(benchmarks|commons|empoweringtrust|support\.benchmarks|www)(\.ul\.com(|\.cdn\.cloudflare\.net))$
 
