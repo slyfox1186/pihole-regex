@@ -1,3 +1,4 @@
+(0, 'androidtvwatsonfe-pa.googleapis.com', 1, 'DisneyPlus - Required to stream without crashes - SlyEWL')
 (0, '79423.analytics.edgekey.net', 1, 'REHL online learning, training embedded videos to work properly - SlyEWL')
 (0, 'android.clients.google.com', 1, 'Google Play - SlyEWL')
 (0, 'anti-ad.net', 1, 'github.com/mmotti/pihole-regex - SlyEWL')
