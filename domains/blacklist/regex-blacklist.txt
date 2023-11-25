@@ -1,5 +1,9 @@
-## RegEx Blacklist
-## Github: https://github.com/slyfox1186/pihole-regex
+###########################################################
+##
+##  Pi-Hole RegEx Blacklist
+##  Github: https://github.com/slyfox1186/pihole-regex
+##
+###########################################################
 
 # Take out all ad servers in one go for master domain com.edgesuite.net
 ^[a-z]+ad\.[a-z]+\.com\.edgesuite\.net$
@@ -94,10 +98,10 @@
 (\.|^)log[0-9]*\.spotify\.com$
 (\.|^)pixel(|-static)\.spotify\.com$
 
-# Tinder Ads
+# Tinder ads
 (\.|^)[go]*tinder[sparks]*\.com$
 
-# Twitch.tv Video Ads
+# Twitch video ads
 ^video-edge-(046b4c|078ff6|82d760|82dc48|830164|833564|918014|918388|9183d4|9183f0)\.atl01\.abs\.hls\.ttvnw\.net$
 
 # Vizio Smart TVs
@@ -145,7 +149,7 @@
 
 #
 # Title: Perflyst's SmartTV Blocklist for Pi-hole - RegEx extension
-# Version: 02October2021v1
+# Version: 13July2023v1
 #
 
 # Perflyst LG
