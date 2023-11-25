@@ -55,12 +55,17 @@ https://v.firebog.net/hosts/RPiList-Malware.txt
 https://v.firebog.net/hosts/static/w3kbl.txt
 
 #
-# Blocklist Project - release blocklists
+# Blocklist Project - I have optimized these for use with Pi-Hole, otherwise I left all notes at the top of the script in tact.
 #
 
-https://blocklistproject.github.io/Lists/fraud.txt
-https://blocklistproject.github.io/Lists/malware.txt
-https://blocklistproject.github.io/Lists/tracking.txt
+https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/blocklist-project/ads-list.txt
+https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/blocklist-project/crypto-list.txt
+https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/blocklist-project/fraud-list.txt
+https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/blocklist-project/phishing-list.txt
+https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/blocklist-project/redirect-list.txt
+https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/blocklist-project/scam-list.txt
+https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/blocklist-project/malware.txt
+https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/blocklist-project/tracking.txt
 
 #
 # Blocklist Project - beta blocklists
