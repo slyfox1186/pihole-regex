@@ -1,8 +1,9 @@
-androidtvwatsonfe-pa.googleapis.com
 79423.analytics.edgekey.net
 android.clients.google.com
+androidtvwatsonfe-pa.googleapis.com
 anti-ad.net
 api.flightproxy.teams.microsoft.com
+api.termius.com
 appboot.netflix.com
 appleglobal.102.112.2o7.net
 applicast.ga.sony.net
@@ -48,6 +49,7 @@ clients.config.office.net
 cloudsync-prod.s3.amazonaws.com
 cluster95-elbwpeel-12if8kvnohvm9-1396764601.us-east-1.elb.amazonaws.com
 cms.souqcdn.com
+codeload.github.com
 codepush.teams.microsoft.com
 cognito-identity.us-east-1.amazonaws.com
 color.adobe.com
@@ -176,6 +178,7 @@ keystone.mwbsys.com
 l.messenger.com
 lastfm-img2.akamaized.net
 lb.sae.sina.com.cn
+lh3.googleusercontent.com
 lib.baomitu.com
 lib.baomitu.com.qh-cdn.com
 lib.sinaapp.com
@@ -319,6 +322,7 @@ substrate.office.com
 surveymonkey.com
 sysctl.org
 t.co
+t.paydaythegame.com
 t.scdn.co
 t0.ssl.ak.dynamic.tiles.virtualearth.net
 t0.ssl.ak.tiles.virtualearth.net
@@ -366,9 +370,13 @@ v.w-x.co
 vcs.vdspf.com
 video-edge-046b4c.atl01.abs.hls.ttvnw.net
 video-edge-078cfa.atl01.abs.hls.ttvnw.net
+video-edge-55b156.pdx01.abs.hls.ttvnw.net
 video-edge-830e74.atl01.abs.hls.ttvnw.net
+video-edge-833564.atl01.abs.hls.ttvnw.net
 video-stats.l.google.com
 video-stats.video.google.com
+video-weaver.atl01.hls.ttvnw.net
+video-weaver.jfk04.hls.ttvnw.net
 videos.vidible.tv
 vidtech.cbsinteractive.com
 viewer.content.glympse.com
@@ -393,6 +401,7 @@ www.aliexpress.com
 www.appleiphonecell.com
 www.dataplicity.com
 www.ecdinterface.philips.com
+www.g2a.com
 www.googleapis.com
 www.howtogeek.com
 www.icloud.com
@@ -409,12 +418,14 @@ www.redditmedia.com
 www.redditstatic.com
 www.refersion.com
 www.samsungotn.net
+www.shellcheck.net
 www.signal.org
 www.solaredge.com
 www.squaretrade.com
 www.twitter.com
 www.vbsedit.com
 www.wa.me
+www.yahoo.com
 x-default-stgec.uplynk.com
 xbox.ipv6.microsoft.com
 xp.apple.com
