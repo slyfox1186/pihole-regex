@@ -13,8 +13,8 @@
 
 # AdultTime Necessary for the site to deliver non-ad content
 (\.|^)(dns|)algolia(|net)\.(com|io|net)$
-(\.|^)gammacdn\.com$
 ^([a-z0-9]+\.|)(appsync|execute)-api\.us-east-1\.amazonaws\.com$
+^images[0-9]*+-fame\.gammacdn\.com
 
 # Amazon
 ^(ad(|s))\.(amzn|amazonaws|amazontrust|apzones|digicert|marketwatch|mzstatic|sym[b-d]+?|wp|yimg|youtube|ytimg)\.(com|to)$
