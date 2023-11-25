@@ -92,3 +92,4 @@ https://raw.githubusercontent.com/TheSmashy/my-pihole-lists/master/Crypto%20Mini
 #
 
 https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/black.list
+https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/youtubelist.txt
