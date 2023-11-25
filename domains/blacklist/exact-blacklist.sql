@@ -20,6 +20,7 @@
 (1, 'bench.utorrent.com', 1, 'uTorrent Desktop App Ads- SlyEBL')
 (1, 'canvas.tubitv.com', 1, 'LG Smart TV - SlyEBL')
 (1, 'cc-api-data.adobe.io', 1, 'Adobe Systems Telemetry - SlyEBL')
+(1, 'ccleaner.tools.avcdn.net', 1, 'CCleaner Telemetry Desktop App Spyware - SlyEBL')
 (1, 'cdn.cookielaw.org', 1, '3D Mark Software tracking cookies - SlyEBL')
 (1, 'cdn.inspectlet.com', 1, 'IObit Desktop Popup Advertisements - SlyEBL')
 (1, 'cdn77.utomik.com', 1, 'LG Smart TV - SlyEBL')
