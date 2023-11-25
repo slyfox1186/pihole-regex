@@ -72,7 +72,9 @@ https://blocklistproject.github.io/Lists/smart-tv.txt
 # Perflyst blocklists - github.com/Perflyst/PiHoleBlocklist
 #
 
-https://perflyst.github.io/PiHoleBlocklist/AmazonFireTV.txt
+https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/AmazonFireTV.txt
+https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/android-tracking.txt
+https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/SmartTV.txt
 
 #
 # Coin mining/hijackers
