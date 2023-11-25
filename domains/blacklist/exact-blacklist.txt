@@ -58,6 +58,7 @@ kinesis.us-east-1.amazonaws.com
 lgtvonline.lge.com
 lss.lgthinq.com
 lynx-prod-beacon-alb-498367235.us-east-1.elb.amazonaws.com
+manifest.googlevideo.com
 mediaservices.cdn-apple.com
 mindfieldonline.com
 munchkin.marketo.net
