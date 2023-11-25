@@ -197,7 +197,6 @@ logincdn.msauth.net
 m-node-alb-ssl-1111-1982902297.us-east-1.elb.amazonaws.com
 m3u8.gammacdn.com
 mamservice.manage.microsoft.com
-manifest.googlevideo.com
 martellmalone.com
 mask-api.icloud.com
 mask-h2.icloud.com
