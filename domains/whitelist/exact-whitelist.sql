@@ -200,7 +200,6 @@
 (0, 'm-node-alb-ssl-1111-1982902297.us-east-1.elb.amazonaws.com', 1, 'Twitch - Required for streamer video feeds to work - SlyEWL')
 (0, 'm3u8.gammacdn.com', 1, 'AdultTime - Required for streaming - SlyEWL')
 (0, 'mamservice.manage.microsoft.com', 1, 'Microsoft - SlyEWL')
-(0, 'manifest.googlevideo.com', 1, 'YouTube - SlyEWL')
 (0, 'martellmalone.com', 1, 'Github - Required CDN for downloading packages - SlyEWL')
 (0, 'mask-api.icloud.com', 1, 'Apple - SlyEWL')
 (0, 'mask-h2.icloud.com', 1, 'Apple - SlyEWL')
