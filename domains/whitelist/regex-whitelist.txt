@@ -1,7 +1,9 @@
-## 
-## RegEx Whitelist
-## GitHub: https://github.com/slyfox1186/pihole-regex
-## 
+###########################################################
+##
+##  Pi-Hole RegEx Whitelist
+##  GitHub: https://github.com/slyfox1186/pihole-regex
+##
+###########################################################
 
 # Mincraft Video Game
 (\.|^)minecraft\.net$
@@ -9,7 +11,7 @@
 # 3d Mark PC Benchmark tests
 ^(benchmarks|commons|empoweringtrust|support\.benchmarks|www)(\.ul\.com(|\.cdn\.cloudflare\.net))$
 
-# AdultTime Necessary for the site to deliver non ad content
+# AdultTime Necessary for the site to deliver non-ad content
 (\.|^)(dns|)algolia(|net)\.(com|io|net)$
 (\.|^)gammacdn\.com$
 ^([a-z0-9]+\.|)(appsync|execute)-api\.us-east-1\.amazonaws\.com$
@@ -45,7 +47,7 @@
 # DropBox
 ^ns[1-2]?\.dropbox\.com$
 
-# Epic Games - Essential Domains for authentication during user login and other services such as purchasing/unlocking games to your user library
+# Epic Games - Essential domains for authentication during user login and other services such as purchasing/unlocking games to your user library
 ^(account|accts|catalog|entitlement|eulatracking|lightswitch|metric|priceengine)-public-service-prod[0-9]*?\.(ak|ol)\.epicgames\.com$
 
 # Facebook - Essential CDN servers
@@ -83,13 +85,13 @@
 # Mobile and Tablets
 ^m\.(hotmail|reddit|reuters|twitch|weeklyad.target|yahoo|youtube)\.(com|tv)$
 
-# QNAP NAS - Reguired for the myqnapclub feature to work in it's entirety
+# QNAP NAS - Required for the myqnapclub feature to work in its entirety
 (\.|^)(myqnapcloud|qnap)\.com$
 
 # Rob VanderWoude Learn how to code multiple languages
 (\.|^)robvanderwoude\.com$
 
-# Reddit - Main CND's and other legit content delivery domains for Reddit. Some of these carry ads and will cripple the site as a whole if not whitelisted.
+# Reddit - Main CNDs and other legitimate content delivery domains for Reddit. Some of these carry ads and will cripple the site as a whole if not whitelisted.
 (thumbs\.|^)(reddit(media|static))\.com
 (\.|^)([iv]?\.|)redd\.it$
 ^events-test(|-v2)\.redditmedia\.com$
@@ -114,11 +116,14 @@
 ^(affiliate|app|id(|\.|-(canary|cdn|dev)))\.twitch\.tv
 ^video-edge-[0-9]+?\.[a-z]+?[0-9]+?\.abs\.hls\.ttvnw\.net$
 
-# unraid.com - required for the operating system to update
+# Unraid - Required for the operating system to update
 (\.|^)unraid\.net$
 
 # Xbox Live (Microsoft)
 ^(attestation|cert\.mgt|def-vef|eds|help\.ui|licensing|notify|title\.mgt|www|xboxexperiencesprod\.experimentation|xflight|xkms)\.xboxlive\.com$
+
+# Yahoo
+(www\.|^)yahoo\.com$
 
 # YouTube
 ^(oauthaccountmanager|www|youtubei)\.googleapis\.com$
