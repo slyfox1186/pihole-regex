@@ -2,13 +2,16 @@
 
 The ***purpose*** of this repository is to compliment your existing **Pi-hole** filters using ***powerful*** regular expressions (**RegEx**) that cover a broad range of domains ***in one go***. Included are an optional customized list of **Exact** filters and the ability to add or remove entries from the **Adlist Group**.
 
-## The filter lists
-  - **[Adlist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt)**
-  - **[Exact Blacklist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/exact-blacklist.txt)**
-  - **[Exact Whitelist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/whitelist/exact-whitelist.txt)**
-  - **[RegEx Blacklist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/regex-blacklist.txt)**
-  - **[RegEx Whitelist](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/whitelist/regex-whitelist.txt)**
-  
+## Filter Lists
+
+| Script Names | Raw Links |
+| :----: | :----: |
+| Adlists | [Link](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt) |
+| Exact Blacklist | [Link](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/exact-blacklist.txt) |
+| Exact Whitelist | [Link](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/whitelist/exact-whitelist.txt) |
+| RegEx Blacklist | [Link](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/regex-blacklist.txt) |
+| RegEx Whitelist | [Link](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/whitelist/regex-whitelist.txt) |
+
 ## Requirements and other important information
 **Made for:** Pi-hole (FTLDNS) v5+
   - Website: [https://pi-hole.net/](https://pi-hole.net/)
@@ -39,9 +42,9 @@ The ***purpose*** of this repository is to compliment your existing **Pi-hole** 
 
 ### RegEx and Exact Lists
 ```
-wget -qN - -i https://pi.optimizethis.net; sudo bash run.sh
+wget --show-progress -qN - -i https://pi.optimizethis.net; sudo bash run.sh
 ```
 ### Adlists
 ```
-wget -qO adlist.sh https://adlist.optimizethis.net; sudo bash adlist.sh
+wget --show-progress -qO adlist.sh https://adlist.optimizethis.net; sudo bash adlist.sh
 ```
