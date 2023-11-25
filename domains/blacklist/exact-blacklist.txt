@@ -20,6 +20,7 @@ applytics.nordvpn.com
 bench.utorrent.com
 canvas.tubitv.com
 cc-api-data.adobe.io
+ccleaner.tools.avcdn.net
 cdn.cookielaw.org
 cdn.inspectlet.com
 cdn77.utomik.com
