@@ -58,6 +58,7 @@
 (1, 'lgtvonline.lge.com', 1, 'LG Smart TV - SlyEBL')
 (1, 'lss.lgthinq.com', 1, 'LG Smart TV - SlyEBL')
 (1, 'lynx-prod-beacon-alb-498367235.us-east-1.elb.amazonaws.com', 1, 'Amazon CDN Ad Server - SlyEBL')
+(1, 'manifest.googlevideo.com', 1, 'Possibly the number one domain that servers YouTube Ads. We must block it. - SlyEBL')
 (1, 'mediaservices.cdn-apple.com', 1, 'LG Smart TV - SlyEBL')
 (1, 'mindfieldonline.com', 1, 'LG Smart TV - SlyEBL')
 (1, 'munchkin.marketo.net', 1, '3D Mark Software Tracking Cookies - SlyEBL')
