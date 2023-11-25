@@ -60,7 +60,7 @@
 (1, 'mediaservices.cdn-apple.com', 1, 'LG Smart TV - SlyEBL')
 (1, 'mindfieldonline.com', 1, 'LG Smart TV - SlyEBL')
 (1, 'munchkin.marketo.net', 1, '3D Mark Software Tracking Cookies - SlyEBL')
-(1, 'Ncp-Gw-Sports.Media.Yahoo.Com', 1, 'Yahoo - Sports Video Ads - SlyEBL')
+(1, 'ncp-gw-sports.media.yahoo.com', 1, 'Yahoo - Sports Video Ads - SlyEBL')
 (1, 'nevoai-iothub-54-prod.azure-devices.net', 1, 'LG Smart TV - SlyEBL')
 (1, 'ngfts.lge.com', 1, 'LG Smart TV - SlyEBL')
 (1, 'ocsp.sca1b.amazontrust.com', 1, 'amazon.com Ads - SlyEBL')
