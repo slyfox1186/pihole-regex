@@ -62,6 +62,7 @@ cpms.spop10.ams.plex.bz
 creative.ak.fbcdn.net
 crl.entrust.net
 cse.google.com
+ctf-videos.gammacdn.com
 ctldl.windowsupdate.com
 d27xxe7juh1us6.cloudfront.net
 d2gatte9o95jao.cloudfront.net
@@ -156,6 +157,7 @@ iij.ad.jp
 images.ctfassets.net
 images.pluto.tv
 images.vizio.com
+images02-fame.gammacdn.com
 imagesak.secureserver.net
 img.vidible.tv
 imgix.net
@@ -341,6 +343,7 @@ tracking.epicgames.com
 traffic.libsyn.com
 trailers-fame.gammacdn.com
 transform.gammacdn.com
+transform.gammacdn.com
 translate.google.com
 tuner-api.hdhomerun.com
 turn1.whispersystems.org
@@ -377,6 +380,7 @@ video-stats.video.google.com
 video-weaver.atl01.hls.ttvnw.net
 video-weaver.jfk04.hls.ttvnw.net
 videos.vidible.tv
+videothumb.gammacdn.com
 vidtech.cbsinteractive.com
 viewer.content.glympse.com
 vimeo.com
