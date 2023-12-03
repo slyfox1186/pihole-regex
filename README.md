@@ -42,9 +42,9 @@ The ***purpose*** of this repository is to compliment your existing **Pi-hole** 
 
 ### RegEx and Exact Lists
 ```
-wget --show-progress -qN - -i https://pi.optimizethis.net; sudo bash run.sh
+wget -qN - -i https://pi.optimizethis.net; sudo bash run.sh
 ```
 ### Adlists
 ```
-wget --show-progress -qO adlist.sh https://adlist.optimizethis.net; sudo bash adlist.sh
+wget -qO adlist.sh https://adlist.optimizethis.net; sudo bash adlist.sh
 ```
