@@ -63,6 +63,8 @@ exit_message_fn()
         '[i] The script has finished.'                             \
         'Please make sure to star this repo to show your support!' \
         "${repo}"
+    rm -fr "${random_dir}"
+    exit 0
 }
 
 # FUNCTION TO REPORT FAILURES
@@ -242,5 +244,3 @@ gravity_update_fn
 dns_restart_fn
 # SHOW THE EXIT MESSAGE
 exit_message_fn
-# REMOVE THE TEMPORARY FILES AND DIRECTORIES CREATED BY THE SCRIPT
-rm -fr "${random_dir}"
