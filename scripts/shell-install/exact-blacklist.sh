@@ -18,7 +18,7 @@ user_prompt_fn()
         *)
                     unset choice
                     clear
-                    sudo bash "${0}"
+                    user_prompt_fn
                     ;;
     esac
 }
