@@ -57,11 +57,6 @@ if [ -f 'index.html' ] || [ -f 'urls.txt' ]; then
     rm 'index.html' 'urls.txt' 2>/dev/null
 fi
 
-# Delete the pihole-regex folder if it already exists.
-if [ -d 'pihole-regex' ]; then
-    rm -fr 'pihole-regex'
-fi
-
 # Create the pihole-regex folder to store the downloaded files in.
 mkdir -p "${random_dir}/pihole-regex"
 
