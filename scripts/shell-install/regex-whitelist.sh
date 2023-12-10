@@ -58,4 +58,4 @@ unset choice
 
 echo
 read -p 'Press Enter to continue: '
-exit_fn
+exit 0
