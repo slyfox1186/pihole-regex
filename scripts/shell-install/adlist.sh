@@ -1,22 +1,25 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2162
 
-################################################################################################################################
+#################################################################################################################################################
 ##
-## Purpose: Add or remove adlists from Pi-hole's database.
+## Purpose:
+##           - Add or remove adlists from Pi-hole's Gravity database.
 ##
-## Important: Make SURE to keep the text 'SlyADL - ' in the front of any comment you customize that was added by THIS script.
-##           - This is because when you tell the script to remove domains it looks for that exact string in each domain's comment
-##           - section as a way to identify what domains need removing and what needs to be ignored.
+## Important: 
+##           - You must keep the text "SlyADL - " located in the comment boxes next to each adlist the same if it was added by this script.
+##           - This is because if you tell the script to remove the domains added by this script it will look for that exact string in each
+##           - adlists comment box to identify what domains should be removed and what the script should ignore, otherwise you will not be happy
+##           - when all of the adlists you added by some other method are now missing.
 ##
-################################################################################################################################
+################################################################################################################################################
 
 clear
 
 cwd="${PWD}"
 
 # SET GITHUB REPO URL VARIABLE
-repo='https://github.com/slyfox1186/pihole-regex'
+web_repo='https://github.com/slyfox1186/pihole-regex'
 
 # SET SLYFOX1186'S ADLIST URL VARIABLE
 slyfox_url='https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt'
@@ -47,7 +50,7 @@ if [ -f 'adlist.sh' ]; then
     mv "${random_dir}/adlist.sh"
 fi
 
-# CD INTO THE RANDOM DIRECOTRY
+# CD INTO THE RANDOM DIRECTORY
 cd "${random_dir}" || exit 1
 
 # INSTALL SQLITE3 USING APT PACKAGE MANAGER IF NOT INSTALLED
@@ -59,10 +62,10 @@ fi
 # FUNCTION TO SHOW THE EXIT MESSAGE
 exit_message_fn()
 {
-    printf "\n%s\n\n%s\n%s\n\n"                                    \
-        '[i] The script has finished.'                             \
-        'Please make sure to star this repo to show your support!' \
-        "${repo}"
+    printf "\n%s\n\n%s\n%s\n\n"                                          \
+        '[i] The script has finished.'                                   \
+        'Please make sure to star this repository to show your support!' \
+        "${web_repo}"
     rm -fr "${random_dir}"
     exit 0
 }
@@ -73,7 +76,7 @@ fail_fn()
     printf "\n%s\n\n%s\n%s\n\n"                                      \
         "[x] ${1}"                                                   \
         'Please submit a support issue for any unexpected bugs at: ' \
-        "${repo}/issues"
+        "${web_repo}/issues"
     exit 1
 }
 
