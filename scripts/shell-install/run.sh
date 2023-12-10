@@ -27,9 +27,9 @@ cleanup_fn()
     local choice
     clear
 
-    printf "%s\n\n%s\n%s\n\n"                                             \
-        'Would you like to restart Pi-hole's DNS resolver? (recommended)' \
-        '[1] Yes'                                                         \
+    printf "%s\n\n%s\n%s\n\n"                                                \
+        'Would you like to restart Pi-hole'\''s DNS resolver? (recommended)' \
+        '[1] Yes'                                                            \
         '[2] No'
     read -p 'Your choices are (1 or 2): ' choice
     clear
