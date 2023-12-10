@@ -4,28 +4,27 @@ clear
 
 exit_fn()
 {
+    local choice
     clear
     printf "%s\n\n%s\n%s\n\n" \
         'Do you want to restart pihole'\''s DNS?' \
         '[1] Yes' \
         '[2] No'
-    read -p 'Your choices are (1 or 2): ' rchoice
+    read -p 'Your choices are (1 or 2): ' choice
     clear
 
-    case "$rchoice" in
+    case "${choice}" in
         1)
                 sudo rm -fr 'pihole-regex'
                 sudo pihole restartdns
                 ;;
         2)      sudo rm -fr 'pihole-regex';;
-        '')
+        "")
                 sudo rm -fr 'pihole-regex'
                 sudo pihole restartdns
                 ;;
         *)      
-                printf "%s\n\n" 'Bad user input. Restarting script...'
-                unset rchoice
-                sleep 2
+                unset choice
                 clear
                 exit_fn
                 ;;
