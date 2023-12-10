@@ -6,7 +6,7 @@ random_dir="$(mktemp -d)"
 
 exit_fn()
 {
-    printf "\n%s\n\n%s\n\n" \
+    printf "\n%s\n\n%s\n\n"                                       \
         'Make sure to star this repository to show your support!' \
         'GitHub: https://github.com/slyfox1186/pihole-regex'
     exit 0
@@ -27,9 +27,9 @@ cleanup_fn()
     local choice
     clear
 
-    printf "%s\n\n%s\n%s\n\n" \
-        'Do you want to restart pihole'\''s DNS? (recommended)' \
-        '[1] Yes' \
+    printf "%s\n\n%s\n%s\n\n"                                             \
+        'Would you like to restart Pi-hole's DNS resolver? (recommended)' \
+        '[1] Yes'                                                         \
         '[2] No'
     read -p 'Your choices are (1 or 2): ' choice
     clear
