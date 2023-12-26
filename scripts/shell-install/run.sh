@@ -65,10 +65,10 @@ scripts='exact-blacklist.sh exact-whitelist.sh regex-blacklist.sh regex-whitelis
 mv_scripts=("${scripts}" 'run.sh')
 
 # If the shell scripts exist, move them to the pihole-regex dir
-for f in "${mv_scripts[@]}"
+for f in ${mv_scripts[@]}
 do
     if [ -f "${f}" ]; then
-        if ! mv -f "${f}" "${random_dir}/pihole-regex"; then
+        if ! mv "${f}" "${random_dir}/pihole-regex"; then
             fail_fn 'Script error: Failed to move the shell scripts to the pihole-regex folder.'
         fi
     else
