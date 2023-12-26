@@ -15,7 +15,7 @@ exit_fn()
 fail_fn()
 {
     clear
-    printf "%s\n\n%s\n%s\n\n"
+    printf "%s\n\n%s\n%s\n\n"                          \
         "${1}"                                         \
         'Please report this on my GitHub Issues page.' \
         'https://github.com/slyfox1186/pihole-regex/issues'
