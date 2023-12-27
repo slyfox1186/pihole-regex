@@ -13,6 +13,9 @@
 (\.|^)shadowadcity\.com$
 (\.|^)trafyield\.com$
 
+# Amazon
+^(ad(|s))\.(amzn|amazonaws|amazontrust|apzones|digicert|marketwatch|mzstatic|sym[b-d]+?|wp|yimg|youtube|ytimg)\.(com|to)$
+
 # AdultTime
 (\.|^)appsync-api\.us-[a-z]+-[0-9]?\.amazonaws\.com$
 (\.|^)gammaentertainment\.com$
