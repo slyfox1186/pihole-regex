@@ -13,7 +13,7 @@ user_prompt_fn()
     case "${choice}" in
         ([Aa])      curl -A "${user_agent}" -sSL 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-install/exact-whitelist.py' | python3;;
     
-        ([Rr])      curl -A "${user_agent}" -sSL 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-install/exact-whitelist.py' | python3;;
+        ([Rr])      curl -A "${user_agent}" -sSL 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-uninstall/exact-whitelist.py' | python3;;
         ([Ss])      return 0;;
         *)
                     unset choice
