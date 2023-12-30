@@ -2,7 +2,7 @@
 ##
 ##  SlyFox1186's Customized AdList
 ##
-##  I analyzed the adlists over 180 days using the pihole_adlist_tool's\
+##  I analyzed the adlists over 180 days using the pihole_adlist_tool's
 ##  analytics which told me how often each list produces a "hit" of some nature.
 ##  I keep the least amount of adlists required to cover all the domains with
 ##  "hits" registered. This allows the adlists database to stay as slim as possible
@@ -78,3 +78,9 @@ https://raw.githubusercontent.com/TheSmashy/my-pihole-lists/master/Crypto%20Mini
 
 https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/black.list
 https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/youtubelist.txt
+
+#
+# REMOVE POPUP WINDOWS REGARDING COOKIE CONSENT
+#
+
+https://raw.githubusercontent.com/johang/cookie-consent-hosts/master/hosts.txt
