@@ -10,7 +10,7 @@
 ##
 ##  GitHub Repository: https://github.com/yubiuser/pihole_adlist_tool
 ##
-##  Updated: 11.25.23
+##  Updated: 12.30.23
 ##
 ##  Added: Blocklist Project       -  github.com/blocklistproject/Lists
 ##  Added: Perflyst                -  github.com/Perflyst/PiHoleBlocklist
@@ -35,8 +35,13 @@ https://raw.githubusercontent.com/dfederlein/dnsbl-dfed/master/spotifyads.txt
 https://adaway.org/hosts.txt
 https://blocklistproject.github.io/Lists/fraud.txt
 https://blocklistproject.github.io/Lists/malware.txt
+https://blocklistproject.github.io/Lists/piracy.txt
+https://blocklistproject.github.io/Lists/ransomware.txt
+https://blocklistproject.github.io/Lists/redirect.txt
+https://blocklistproject.github.io/Lists/scam.txt
 https://blocklistproject.github.io/Lists/smart-tv.txt
 https://blocklistproject.github.io/Lists/tracking.txt
+https://blocklistproject.github.io/Lists/youtube.txt
 https://perflyst.github.io/PiHoleBlocklist/AmazonFireTV.txt
 https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext
 https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt
@@ -55,29 +60,9 @@ https://v.firebog.net/hosts/RPiList-Malware.txt
 https://v.firebog.net/hosts/static/w3kbl.txt
 
 #
-# Blocklist Project - I have optimized these for use with Pi-Hole, otherwise I left all notes at the top of the script in tact.
-#
-
-https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/blocklist-project/ads-list.txt
-https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/blocklist-project/crypto-list.txt
-https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/blocklist-project/fraud-list.txt
-https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/blocklist-project/phishing-list.txt
-https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/blocklist-project/redirect-list.txt
-https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/blocklist-project/scam-list.txt
-https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/blocklist-project/malware.txt
-https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/blocklist-project/tracking.txt
-
-#
-# Blocklist Project - beta blocklists
-#
-
-https://blocklistproject.github.io/Lists/smart-tv.txt
-
-#
 # Perflyst blocklists - github.com/Perflyst/PiHoleBlocklist
 #
 
-https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/AmazonFireTV.txt
 https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/android-tracking.txt
 https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/SmartTV.txt
 
