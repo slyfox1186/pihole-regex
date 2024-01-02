@@ -7,7 +7,7 @@ import subprocess
 import requests
 import time
 
-def fetch_blacklist_url(url):
+def fetch_whitelist_url(url):
     if not url:
         return None
 
@@ -47,7 +47,7 @@ def remove_domains_from_database(db_path, domains):
             cursor = conn.cursor()
             for domain in domains:
                 # Assuming the domain variable now holds a regex string
-                cursor.execute("DELETE FROM domainlist WHERE type = 1 AND comment LIKE 'SlyRBL%'")
+                cursor.execute("DELETE FROM domainlist WHERE type = 0 AND comment LIKE 'SlyRWL%'")
                 print(f'Removed exact: {domain}')
     except sqlite3.Error as e:
         print(f'[X] Database error: {e}')
@@ -57,7 +57,7 @@ def remove_domains_from_database(db_path, domains):
         with sqlite3.connect(db_path) as conn:
             cursor = conn.cursor()
             for domain in domains:
-                cursor.execute("DELETE FROM domainlist WHERE type = 1 AND comment LIKE 'SlyRBL%'")
+                cursor.execute("DELETE FROM domainlist WHERE type = 0 AND comment LIKE 'SlyRWL%'")
                 print(f'Removed exact: {domain}')
     except sqlite3.Error as e:
         print(f'[X] Database error: {e}')
@@ -73,12 +73,12 @@ def main():
     args = parse_arguments()
     db_path = os.path.join(args.dir, 'gravity.db')
 
-    blacklist_url = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/exact-blacklist.txt'  # Replace with actual URL
-    domains = fetch_blacklist_url(blacklist_url)
+    whitelist_url = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/whitelist/exact-whitelist.txt'  # Replace with actual URL
+    domains = fetch_whitelist_url(whitelist_url)
     if domains:
         remove_domains_from_database(db_path, domains)
         restart_pihole(args.docker)
-        print('[i] Pi-hole blacklist updated and DNS service restarted.')
+        print('[i] Pi-hole whitelist updated and DNS service restarted.')
     else:
         print('[X] No domains to update.')
 
