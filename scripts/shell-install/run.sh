@@ -39,20 +39,15 @@ cleanup_fn()
     clear
 
     case "${choice}" in
-        1)
-                sudo rm -fr "${random_dir}"
-                sudo pihole restartdns
-                ;;
-        2)      sudo rm -fr "${random_dir}";;
-        "")
-                sudo rm -fr "${random_dir}"
-                sudo pihole restartdns
-                ;;
+        1)      sudo pihole restartdns;;
+        2)      clear;;
+        "")     sudo pihole restartdns;;
         *)      
                 unset choice
                 cleanup_fn
                 ;;
     esac
+    sudo rm -fr "${random_dir}"
 }
 
 # Create a random directory to download and execute the scripts in
