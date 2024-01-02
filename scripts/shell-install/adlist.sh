@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#shellcheck disable=SC2162
 
 # Define necessary variables
 user_agent='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'  # Set your desired user agent for HTTP requests
@@ -79,14 +80,14 @@ choose_adlist_fn()
 # Function to add adlist from URL
 add_adlist_from_url()
 {
-    local url=$1
-    local comment=$2
-    local adlist_file=$(mktemp)
+    local adlist_file comment url
+    url=$1
+    comment=$2
+    adlist_file=$(mktemp)
 
     # Download the adlist
     if ! curl -A "${user_agent}" -Lso "${adlist_file}" "${url}"; then
         fail_fn "Failed to download adlist from: ${url}"
-        return 1
     fi
 
     # Process and insert adlists
