@@ -17,11 +17,11 @@ def fetch_whitelist_url(url):
         response.raise_for_status()
         domains = []
         for line in response.text.strip().split("\n"):
-            if not line.startswith("#"):
-                domains.append(line)
+            if not line.startswith("#") and line.strip():
+                domains.append(line.strip())
         return domains
     except requests.exceptions.RequestException as e:
-        print(f"[X] Error fetching URL {url}: {e}")
+        print(f'[X] Error fetching URL {url}: {e}')
         return None
 
     if not url:
