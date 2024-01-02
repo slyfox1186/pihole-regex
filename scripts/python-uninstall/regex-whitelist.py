@@ -73,7 +73,7 @@ def main():
     args = parse_arguments()
     db_path = os.path.join(args.dir, 'gravity.db')
 
-    whitelist_url = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/whitelist/exact-whitelist.txt'  # Replace with actual URL
+    whitelist_url = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/whitelist/exact-whitelist.txt'
     domains = fetch_whitelist_url(whitelist_url)
     if domains:
         remove_domains_from_database(db_path, domains)
