@@ -7,7 +7,7 @@ import subprocess
 import requests
 import time
 
-def fetch_whitelist_url(url):
+def fetch_blacklist_url(url):
     if not url:
         return None
 
@@ -21,7 +21,7 @@ def fetch_whitelist_url(url):
                 domains.append(line.strip())
         return domains
     except requests.exceptions.RequestException as e:
-        print(f"[X] Error fetching URL {url}: {e}")
+        print(f'[X] Error fetching URL {url}: {e}')
         return None
 
     if not url:
