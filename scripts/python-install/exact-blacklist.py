@@ -74,7 +74,7 @@ def main():
     args = parse_arguments()
     db_path = os.path.join(args.dir, "gravity.db")
 
-    blacklist_url = "https://raw.githubusercontent.com/slyfox1186/pihole-exact/main/domains/blacklist/exact-blacklist.txt"  # Replace with actual URL
+    blacklist_url = "https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/exact-blacklist.txt"  # Replace with actual URL
     domains = fetch_blacklist_url(blacklist_url)
     if domains:
         update_database(db_path, domains)
