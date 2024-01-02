@@ -25,7 +25,6 @@
 # slyfox1186's blocklists
 #
 
-https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/exact-blacklist.txt
 https://raw.githubusercontent.com/dfederlein/dnsbl-dfed/master/spotifyads.txt
 
 #
