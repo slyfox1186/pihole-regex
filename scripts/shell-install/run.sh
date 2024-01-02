@@ -16,16 +16,6 @@ exit_fn()
     exit 0
 }
 
-fail_fn()
-{
-    clear
-    printf "%s\n\n%s\n%s\n\n" \
-        "${1}" \
-        'Please report this on my GitHub Issues page.' \
-        'https://github.com/slyfox1186/pihole-regex/issues'
-    exit 1
-}
-
 cleanup_fn()
 {
     local choice
@@ -59,7 +49,7 @@ fi
 mkdir -p "${random_dir}"
 
 # Change into the random directory before downloading the other files
-cd "${random_dir}" | fail_fn 'Could not cd into the random directory... it must not have been created...'
+cd "${random_dir}"
 
 # Create a tmp file that stores the URL of all the required shell scripts
 cat > wget.txt <<EOF
