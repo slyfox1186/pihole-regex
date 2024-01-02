@@ -59,7 +59,7 @@ def remove_domains_from_database(db_path, domains):
             cursor = conn.cursor()
             for domain in domains:
                 cursor.execute("DELETE FROM domainlist WHERE type = 3 AND domain = ?", (domain,))
-                print(f'Removed domain: {domain}')
+                print(f'Removed regex: {domain}')
     except sqlite3.Error as e:
         print(f'[X] Database error: {e}')
         return
