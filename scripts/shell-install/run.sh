@@ -3,8 +3,8 @@
 
 clear
 
-if [ $EUID -ne 0 ]; then
-    printf "%s\n\n" 'You must run this script as root. Please use sudo.'
+if [ $EUID -eq 0 ]; then
+    printf "%s\n\n" 'You must run this script WITHOUT root/sudo'
     exit 1
 fi
 
@@ -50,14 +50,19 @@ cleanup_fn()
     sudo rm -fr "${random_dir}"
 }
 
-# Create a random directory to download and execute the scripts in
-random_dir="$(mktemp -d)/pihole-regex"
+# Create a random directory
+random_dir="${PWD}/tmp.fasf09asfkpjamsfa090okmagfp"
+
+if [ -d "${random_dir}" ]; then
+    sudo rm -fr "${random_dir}"
+fi
+mkdir -p "${random_dir}"
 
 # Change into the random directory before downloading the other files
-cd "${random_dir}" || fail_fn 'Could not cd into the randomly created directory.'
+cd "${random_dir}"
 
 # Create a tmp file that stores the URL of all the required shell scripts
-cat > 'wget.txt' <<EOF
+cat > wget.txt <<EOF
 https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-blacklist.sh
 https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-whitelist.sh
 https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-blacklist.sh
@@ -66,7 +71,7 @@ https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-ins
 EOF
 
 # Download the required shell scripts using wget
-wget -qN - -i 'https://pi.optimizethis.net'
+wget -qN - -i 'wget.txt'
 bash run.sh
 
 # Define the variables and arrays
