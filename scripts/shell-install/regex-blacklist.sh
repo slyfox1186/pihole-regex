@@ -11,9 +11,9 @@ user_prompt_fn()
     clear
     
     case "${choice}" in
-        ([Aa])      curl -A "${user_agent}" -sSL 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-install/regex-blacklist.py' | python3;;
+        ([Aa])      curl -A "${user_agent}" -sSL 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-install/regex-blacklist.py' | sudo python3;;
     
-        ([Rr])      curl -A "${user_agent}" -sSL 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-uninstall/regex-blacklist.py' | python3;;
+        ([Rr])      curl -A "${user_agent}" -sSL 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python-uninstall/regex-blacklist.py' | sudo python3;;
         ([Ss])      return 0;;
         *)
                     unset choice
