@@ -7,7 +7,7 @@ import subprocess
 import requests
 import time
 
-def fetch_blacklist_url(url):
+def fetch_whitelist_url(url):
     if not url:
         return None
 
