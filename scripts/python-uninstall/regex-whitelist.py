@@ -48,7 +48,7 @@ def remove_domains_from_database(db_path, domains):
             for domain in domains:
                 # Assuming the domain variable now holds a regex string
                 cursor.execute('DELETE FROM domainlist WHERE type = 2 AND comment LIKE "SlyRWL%"')
-                print(f"Removed exact: {domain}")
+                print(f"Removed regex: {domain}")
     except sqlite3.Error as e:
         print(f"[X] Database error: {e}")
         return
@@ -58,7 +58,7 @@ def remove_domains_from_database(db_path, domains):
             cursor = conn.cursor()
             for domain in domains:
                 cursor.execute('DELETE FROM domainlist WHERE type = 2 AND comment LIKE "SlyRWL%"')
-                print(f"Removed exact: {domain}")
+                print(f"Removed regex: {domain}")
     except sqlite3.Error as e:
         print(f"[X] Database error: {e}")
         return
