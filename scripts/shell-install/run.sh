@@ -54,7 +54,7 @@ cleanup_fn()
 random_dir="$(mktemp -d)/pihole-regex"
 
 # Change into the random directory before downloading the other files
-cd "${random_dir}/pihole-regex" || fail_fn 'Could not cd into the randomly created directory.'
+cd "${random_dir}" || fail_fn 'Could not cd into the randomly created directory.'
 
 # Create a tmp file that stores the URL of all the required shell scripts
 cat > 'wget.txt' <<EOF
