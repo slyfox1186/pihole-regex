@@ -73,7 +73,7 @@ def main():
     args = parse_arguments()
     db_path = os.path.join(args.dir, 'gravity.db')
 
-    blacklist_url = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/regex-blacklist.txt'  # Replace with actual URL
+    blacklist_url = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/regex-blacklist.txt'
     domains = fetch_blacklist_url(blacklist_url)
     if domains:
         remove_domains_from_database(db_path, domains)
