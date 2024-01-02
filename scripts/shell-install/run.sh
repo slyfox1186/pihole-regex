@@ -57,7 +57,6 @@ https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-ins
 https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-whitelist.sh
 https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-blacklist.sh
 https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-whitelist.sh
-https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/run.sh
 EOF
 
 # Download the required shell scripts using wget
