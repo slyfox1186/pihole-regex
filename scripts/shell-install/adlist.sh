@@ -22,7 +22,7 @@ cwd="${PWD}"
 web_repo='https://github.com/slyfox1186/pihole-regex'
 
 # SET SLYFOX1186'S ADLIST URL VARIABLE
-slyfox_url='https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt'
+slyfox_url='https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlists.txt'
 
 # SET THE ADLIST COMMENTS VARIABLES
 c1='SlyADL - SlyFox1186 + Firebog'\''s Ticked'
