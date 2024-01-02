@@ -3,8 +3,7 @@
 
 #################################################################################################################################################
 ##
-## Purpose:
-##           - Add or remove adlists from Pi-hole's Gravity database.
+## Purpose:    Add or remove adlists from Pi-hole's Gravity database.
 ##
 ## Important: 
 ##           - You must keep the text "SlyADL - " located in the comment boxes next to each adlist the same if it was added by this script.
