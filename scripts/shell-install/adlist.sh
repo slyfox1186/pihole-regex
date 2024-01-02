@@ -7,7 +7,7 @@ fb_base_url='https://v.firebog.net/hosts/lists.php?type'  # Replace with the act
 
 # Comments for each adlist
 c1='SlyADL - SlyFox1186 AdList - github.com/slyfox1186/pihole-regex'
-c2='SlyADL - Firebog tick AdList - github.com/slyfox1186/pihole-regex'
+c2='SlyADL - Firebogs tick AdList - github.com/slyfox1186/pihole-regex'
 c3='SlyADL - Firebog non-crossed AdList - github.com/slyfox1186/pihole-regex'
 c4='SlyADL - Firebog all AdList - github.com/slyfox1186/pihole-regex'
 
@@ -84,9 +84,8 @@ add_adlist_from_url()
     local adlist_file=$(mktemp)
 
     # Download the adlist
-    curl -A "${user_agent}" -Lso "${adlist_file}" "${url}"
-    if [ $? -ne 0 ]; then
-        echo "Failed to download adlist from ${url}"
+    if ! curl -A "${user_agent}" -Lso "${adlist_file}" "${url}"; then
+        fail_fn "Failed to download adlist from: ${url}"
         return 1
     fi
 
