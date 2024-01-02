@@ -57,29 +57,19 @@ if [ -f 'index.html' ] || [ -f 'urls.txt' ]; then
     rm 'index.html' 'urls.txt' 2>/dev/null
 fi
 
-# Create the pihole-regex folder to store the downloaded files in.
+# Create the pihole-regex folder to store the downloaded files in
 mkdir -p "${random_dir}/pihole-regex"
+
+# Change into the random directory before download the other files
+cd "${random_dir}/pihole-regex" || exit 1
 
 # Define the variables and arrays
 scripts='exact-blacklist.sh exact-whitelist.sh regex-blacklist.sh regex-whitelist.sh'
-mv_scripts=("${scripts}" 'run.sh')
-
-# If the shell scripts exist, move them to the pihole-regex dir
-for f in ${mv_scripts[@]}
-do
-    if [ -f "${f}" ]; then
-        if ! mv "${f}" "${random_dir}/pihole-regex"; then
-            fail_fn 'Script error: Failed to move the shell scripts to the pihole-regex folder.'
-        fi
-    else
-        fail_fn 'Script error: The shell scripts were not found.'
-    fi
-done
 
 # Execute all of the shell scripts in the pihole-regex folder
 for script in ${scripts[@]}
 do
-    source "${random_dir}/pihole-regex/${script}"
+    source "${script}"
 done
 
 # Cleanup the leftover files and folders
