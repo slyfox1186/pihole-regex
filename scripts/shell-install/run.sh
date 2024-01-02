@@ -2,11 +2,14 @@
 
 clear
 
-random_dir="$(mktemp -d)"
+if [ $EUID -ne 0 ]; then
+    printf "%s\n\n" 'You must run this script as root. Please use sudo.'
+    exit 1
+fi
 
 exit_fn()
 {
-    printf "\n%s\n\n%s\n\n"                                       \
+    printf "\n%s\n\n%s\n\n" \
         'Make sure to star this repository to show your support!' \
         'GitHub: https://github.com/slyfox1186/pihole-regex'
     exit 0
@@ -15,8 +18,8 @@ exit_fn()
 fail_fn()
 {
     clear
-    printf "%s\n\n%s\n%s\n\n"                          \
-        "${1}"                                         \
+    printf "%s\n\n%s\n%s\n\n" \
+        "${1}" \
         'Please report this on my GitHub Issues page.' \
         'https://github.com/slyfox1186/pihole-regex/issues'
     exit 1
@@ -27,9 +30,9 @@ cleanup_fn()
     local choice
     clear
 
-    printf "%s\n\n%s\n%s\n\n"                                                \
+    printf "%s\n\n%s\n%s\n\n" \
         'Would you like to restart Pi-hole'\''s DNS resolver? (recommended)' \
-        '[1] Yes'                                                            \
+        '[1] Yes' \
         '[2] No'
     read -p 'Your choices are (1 or 2): ' choice
     clear
@@ -46,30 +49,37 @@ cleanup_fn()
                 ;;
         *)      
                 unset choice
-                clear
-                exit_fn
+                cleanup_fn
                 ;;
     esac
 }
 
-# Delete any useless files that get downloaded.
-if [ -f 'index.html' ] || [ -f 'urls.txt' ]; then
-    rm 'index.html' 'urls.txt' 2>/dev/null
-fi
+# Create a random directory to download and execute the scripts in
+random_dir="$(mktemp -d)/pihole-regex"
 
-# Create the pihole-regex folder to store the downloaded files in
-mkdir -p "${random_dir}/pihole-regex"
-
-# Change into the random directory before download the other files
+# Change into the random directory before downloading the other files
 cd "${random_dir}/pihole-regex" || exit 1
 
+# Create a tmp file that stores the URL of all the required shell scripts
+cat > 'wget.txt' <<EOF
+https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-blacklist.sh
+https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-whitelist.sh
+https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-blacklist.sh
+https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-whitelist.sh
+https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/run.sh
+EOF
+
+# Download the required shell scripts using wget
+wget -qN - -i 'https://pi.optimizethis.net'
+bash run.sh
+
 # Define the variables and arrays
-scripts='exact-blacklist.sh exact-whitelist.sh regex-blacklist.sh regex-whitelist.sh'
+scripts=('exact-blacklist.sh' 'exact-whitelist.sh' 'regex-blacklist.sh' 'regex-whitelist.sh')
 
 # Execute all of the shell scripts in the pihole-regex folder
-for script in ${scripts[@]}
+for f in ${scripts[@]}
 do
-    source "${script}"
+    source "${f}"
 done
 
 # Cleanup the leftover files and folders
