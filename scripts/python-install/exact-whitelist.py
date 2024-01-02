@@ -48,7 +48,7 @@ def update_database(db_path, domains):
             for domain in domains:
                 # Assuming the domain variable now holds a regex string
                 cursor.execute("INSERT OR IGNORE INTO domainlist (type, domain, enabled, date_added, comment) VALUES (?, ?, ?, ?, ?)", 
-                               (0, domain, 1, int(time.time()), 'SlyRWL - github.com/slyfox1186/pihole-regex'))
+                               (0, domain, 1, int(time.time()), 'SlyEWL - github.com/slyfox1186/pihole-regex'))
                 print(f'Added exact: {domain}')
     except sqlite3.Error as e:
         print(f'[X] Database error: {e}')
