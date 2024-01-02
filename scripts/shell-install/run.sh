@@ -59,7 +59,7 @@ fi
 mkdir -p "${random_dir}"
 
 # Change into the random directory before downloading the other files
-cd "${random_dir}"
+cd "${random_dir}" | fail_fn 'Could not cd into the random directory... it must not have been created...'
 
 # Create a tmp file that stores the URL of all the required shell scripts
 cat > wget.txt <<EOF
