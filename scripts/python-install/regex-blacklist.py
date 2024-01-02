@@ -21,7 +21,7 @@ def fetch_blacklist_url(url):
                 domains.append(line.strip())
         return domains
     except requests.exceptions.RequestException as e:
-        print(f"[X] Error fetching URL {url}: {e}")
+        print(f'[X] Error fetching URL {url}: {e}')
         return None
 
     if not url:
