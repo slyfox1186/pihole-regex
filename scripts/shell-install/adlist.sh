@@ -7,7 +7,7 @@ fb_base_url='https://v.firebog.net/hosts/lists.php?type'  # Replace with the act
 
 # Comments for each adlist
 c1='SlyADL - SlyFox1186 AdList - github.com/slyfox1186/pihole-regex'
-c2='SlyADL - Firebogs tick AdList - github.com/slyfox1186/pihole-regex'
+c2='SlyADL - Firebog tick AdList - github.com/slyfox1186/pihole-regex'
 c3='SlyADL - Firebog non-crossed AdList - github.com/slyfox1186/pihole-regex'
 c4='SlyADL - Firebog all AdList - github.com/slyfox1186/pihole-regex'
 
