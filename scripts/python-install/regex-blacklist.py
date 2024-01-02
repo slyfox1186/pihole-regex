@@ -59,8 +59,8 @@ def update_database(db_path, domains):
         with sqlite3.connect(db_path) as conn:
             cursor = conn.cursor()
             for domain in domains:
-                cursor.execute("INSERT OR IGNORE INTO domainlist (type, domain, enabled, date_added, comment) VALUES (?, ?, ?, ?, ?)", (3, domain, 1, int(time.time()), 'Added domain: '))
-                print(f'Added domain: {domain}')
+                cursor.execute("INSERT OR IGNORE INTO domainlist (type, domain, enabled, date_added, comment) VALUES (?, ?, ?, ?, ?)", (3, domain, 1, int(time.time()), 'Added regex: '))
+                print(f'Added regex: {domain}')
     except sqlite3.Error as e:
         print(f'[X] Database error: {e}')
         return
