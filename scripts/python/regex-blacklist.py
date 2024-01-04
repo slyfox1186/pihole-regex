@@ -95,7 +95,7 @@ def main():
             print("\nNo domains were removed from the regex blacklist.\n")
 
         if not added and not removed:
-            print("\nNo changes were required to the regex blacklist.\n")
+            print("\nNo changes were required for the regex blacklist.\n")
 
         if check_for_updates() and user_confirm("\nPi-hole update available. Do you want to update? (yes/no): "):
             subprocess.run(['pihole', '-up'], check=True)
