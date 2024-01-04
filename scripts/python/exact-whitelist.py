@@ -69,11 +69,11 @@ def main():
 
         added, removed = update_pihole_db(domains_to_update)
         if added:
-            print("Added domains:")
+            print("\nAdded domains:")
             for domain, comment in added:
                 print(f"{domain} -- {comment}")
         if removed:
-            print("Removed domains:")
+            print("\nRemoved domains:")
             for domain, comment in removed:
                 print(f"{domain} -- {comment}")
 
