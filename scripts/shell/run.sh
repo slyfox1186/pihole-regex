@@ -16,29 +16,7 @@ exit_fn()
     exit 0
 }
 
-cleanup_fn()
-{
-    local choice
-    clear
-
-    printf "%s\n\n%s\n%s\n\n" \
-        'Would you like to restart Pi-hole'\''s DNS resolver? (recommended)' \
-        '[1] Yes' \
-        '[2] No'
-    read -p 'Your choices are (1 or 2): ' choice
-    clear
-
-    case "${choice}" in
-        1)      sudo pihole restartdns;;
-        2)      clear;;
-        "")     sudo pihole restartdns;;
-        *)      
-                unset choice
-                cleanup_fn
-                ;;
-    esac
-    sudo rm -fr "${random_dir}"
-}
+cleanup_fn() { sudo rm -fr "${random_dir}"; }
 
 # Create a random directory
 random_dir="${PWD}/tmp.fasf09asfkpjamsfa090okmagfp"
@@ -61,15 +39,15 @@ EOF
 
 # Download the required shell scripts using wget
 wget -qN - -i 'wget.txt'
-bash run.sh
+sudo bash run.sh
 
 # Define the variables and arrays
-scripts=('exact-blacklist.sh' 'exact-whitelist.sh' 'regex-blacklist.sh' 'regex-whitelist.sh')
+scripts=('exact-blacklist.py' 'exact-whitelist.py' 'regex-blacklist.py' 'regex-whitelist.py')
 
 # Execute all of the shell scripts in the pihole-regex folder
 for f in ${scripts[@]}
 do
-    source "${f}"
+    sudo python3 "${f}"
 done
 
 # Cleanup the leftover files and folders
