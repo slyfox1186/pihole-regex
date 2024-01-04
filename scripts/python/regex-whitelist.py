@@ -29,7 +29,6 @@ def update_pihole_db(domains_to_update):
     conn = sqlite3.connect(GRAVITY_DB_PATH)
     cursor = conn.cursor()
 
-    # Change to type 2 or 3 for regex whitelist (depending on Pi-hole version)
     cursor.execute("SELECT domain, comment FROM domainlist WHERE type=2")
     existing_domains = {row[0]: row[1] for row in cursor.fetchall()}
 
@@ -70,21 +69,32 @@ def main():
         domains_to_update = {d: c for d, c in (process_sql_line(l) for l in sql_lines) if d}
 
         added, removed = update_pihole_db(domains_to_update)
+
         if added:
             print("\nAdded to regex whitelist:")
             for domain, comment in added:
                 print(f"{domain} -- {comment}")
+        else:
+            print("\nNo domains were added.")
+
         if removed:
             print("\nRemoved from regex whitelist:")
             for domain, comment in removed:
                 print(f"{domain} -- {comment}")
+        else:
+            print("\nNo domains were removed.")
+
+        if not added and not removed:
+            print("\nNo changes were made to the regex whitelist.")
+
+        if check_for_updates() and user_confirm("\nPi-hole update available. Do you want to update? (yes/no): "):
+            subprocess.run(['pihole', '-up'], check=True)
 
     except Exception as e:
         print(f"Error: {e}")
         sys.exit(1)
-    finally:
-        # Wait for 3 seconds before the script ends
-        time.sleep(3)
+
+    time.sleep(3)
 
 if __name__ == "__main__":
     main()
