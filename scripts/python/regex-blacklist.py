@@ -107,6 +107,10 @@ def main():
         print(f"Error: {e}")
         sys.exit(1)
 
+    # Print the message about starring the repository
+    print("\nMake sure to star this repository to show your support!")
+    print("https://github.com/slyfox1186/pihole-regex")
+
     time.sleep(3)
 
 if __name__ == "__main__":
