@@ -7,7 +7,7 @@ import sys
 import time
 
 # URL of the remote SQL file
-SQL_FILE_URL = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/exact-blacklist.sql'
+SQL_FILE_URL = 'https://raw.githubusercontent.com/slyfox1186/pihole-exact/main/domains/exact-blacklist.sql'
 
 # Local path of the Pi-hole gravity.db file
 GRAVITY_DB_PATH = '/etc/pihole/gravity.db'
@@ -68,21 +68,21 @@ def main():
         added, removed = update_pihole_db(domains_to_update)
 
         if added:
-            print("\nAdded to exact blacklist:")
+            print("\nAdded to exact blacklist:\n")
             for domain, comment in added:
                 print(f"{domain} -- {comment}")
         else:
-            print("\nNo domains were added.")
+            print("\nNo domains needed to be added to the exact blacklist.\n")
 
         if removed:
-            print("\nRemoved from exact blacklist:")
+            print("\nRemoved from exact blacklist\n")
             for domain, comment in removed:
                 print(f"{domain} -- {comment}")
         else:
-            print("\nNo domains were removed.")
+            print("\nNo domains needing removing from the exact blacklist.\n")
 
         if not added and not removed:
-            print("\nNo changes were made to the regex blacklist.")
+            print("\nNo changes were made to the exact blacklist.")
 
         if check_for_updates() and user_confirm("\nPi-hole update available. Do you want to update? (yes/no): "):
             subprocess.run(['pihole', '-up'], check=True)
