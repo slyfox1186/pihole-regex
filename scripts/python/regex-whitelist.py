@@ -22,7 +22,7 @@ def process_sql_line(line):
         return None, None
     parts = line.split(' -- ')
     domain = parts[0].strip()
-    comment = 'SlyEBL - ' + parts[1].strip() if len(parts) > 1 else 'SlyEBL -'
+    comment = 'SlyRWL - ' + parts[1].strip() if len(parts) > 1 else 'SlyRWL -'
     return domain, comment
 
 def update_pihole_db(domains_to_update):
@@ -38,19 +38,19 @@ def update_pihole_db(domains_to_update):
     # Add new domains or update existing ones
     for domain, comment in domains_to_update.items():
         if domain in existing_domains:
-            if existing_domains[domain].startswith('SlyEBL'):
+            if existing_domains[domain].startswith('SlyRWL'):
                 if existing_domains[domain] != comment:
                     cursor.execute("DELETE FROM domainlist WHERE domain=?", (domain,))
-                    removed.append((domain, existing_domains[domain].replace('SlyEBL - ', '')))
+                    removed.append((domain, existing_domains[domain].replace('SlyRWL - ', '')))
         else:
             cursor.execute("INSERT INTO domainlist (type, domain, comment) VALUES (?, ?, ?)", (2, domain, comment))
-            added.append((domain, comment.replace('SlyEBL - ', '')))
+            added.append((domain, comment.replace('SlyRWL - ', '')))
 
     # Remove domains that are no longer in the SQL file
     for domain, comment in existing_domains.items():
-        if domain not in domains_to_update and comment.startswith('SlyEBL'):
+        if domain not in domains_to_update and comment.startswith('SlyRWL'):
             cursor.execute("DELETE FROM domainlist WHERE domain=?", (domain,))
-            removed.append((domain, comment.replace('SlyEBL - ', '')))
+            removed.append((domain, comment.replace('SlyRWL - ', '')))
 
     conn.commit()
     conn.close()
