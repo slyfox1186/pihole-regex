@@ -63,16 +63,6 @@ def check_for_updates():
 def restart_dns_resolver():
     subprocess.run(['pihole', 'restartdns', 'reload'], check=True)
 
-def user_confirm(prompt):
-    while True:
-        user_input = input(prompt).strip().lower()
-        if user_input in ['yes', 'y']:
-            return True
-        elif user_input in ['no', 'n']:
-            return False
-        else:
-            print("Please enter 'yes', 'y', 'no', or 'n'.")
-
 def main():
     try:
         sql_lines = download_sql_file(SQL_FILE_URL)
@@ -90,9 +80,6 @@ def main():
 
         if check_for_updates() and user_confirm("Pi-hole update available. Do you want to update? (yes/no): "):
             subprocess.run(['pihole', '-up'], check=True)
-
-        if user_confirm("\nDo you want to restart the Pi-hole DNS resolver? (yes/no): "):
-            restart_dns_resolver()
 
     except Exception as e:
         print(f"Error: {e}")
