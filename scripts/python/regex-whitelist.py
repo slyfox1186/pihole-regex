@@ -70,11 +70,11 @@ def main():
 
         added, removed = update_pihole_db(domains_to_update)
         if added:
-            print("Added to regex whitelist:")
+            print("\nAdded to regex whitelist:")
             for domain, comment in added:
                 print(f"{domain} -- {comment}")
         if removed:
-            print("Removed from regex whitelist:")
+            print("\nRemoved from regex whitelist:")
             for domain, comment in removed:
                 print(f"{domain} -- {comment}")
 
