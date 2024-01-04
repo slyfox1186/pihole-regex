@@ -79,10 +79,10 @@ def main():
             for domain, comment in removed:
                 print(f"{domain} -- {comment}")
         else:
-            print("\nNo domains needing removing from the regex whitelist.\n")
+            print("\nNo domains were emoved from the regex whitelist.\n")
 
         if not added and not removed:
-            print("\nNo changes were made to the regex whitelist.\n")
+            print("\nNo changes were required for the regex whitelist.\n")
 
         if check_for_updates() and user_confirm("\nPi-hole update available. Do you want to update? (yes/no): "):
             subprocess.run(['pihole', '-up'], check=True)
