@@ -17,11 +17,11 @@ The ***purpose*** of this repository is to compliment your existing **Pi-hole** 
 
 | Script Names | Raw Links |
 | :----: | :----: |
-| Adlists | [Link](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlist/adlists.txt) |
-| Exact Blacklist | [Link](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/exact-blacklist.txt) |
-| Exact Whitelist | [Link](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/whitelist/exact-whitelist.txt) |
-| RegEx Blacklist | [Link](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/blacklist/regex-blacklist.txt) |
-| RegEx Whitelist | [Link](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/whitelist/regex-whitelist.txt) |
+| Adlists | [Link](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlists.txt) |
+| Exact Whitelist | [Link](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/exact-whitelist.sql) |
+| Exact Blacklist | [Link](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/exact-blacklist.sql) |
+| RegEx Whitelist | [Link](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/regex-whitelist.sql) |
+| RegEx Blacklist | [Link](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/regex-blacklist.sql) |
 
 ## Requirements and other important information
 **Made for:** Pi-hole (FTLDNS) v5+
