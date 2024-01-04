@@ -2,3 +2,4 @@ https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python/ex
 https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python/exact-blacklist.py
 https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python/regex-whitelist.py
 https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python/regex-blacklist.py
+https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/shell-install/run.sh
