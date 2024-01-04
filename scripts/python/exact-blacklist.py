@@ -68,14 +68,14 @@ def main():
         added, removed = update_pihole_db(domains_to_update)
 
         if added:
-            print("\nAdded to exact blacklist:\n")
+            print("\nAdded domains to the exact blacklist:\n")
             for domain, comment in added:
                 print(f"{domain} -- {comment}")
         else:
             print("\nNo domains needed to be added to the exact blacklist.\n")
 
         if removed:
-            print("\nRemoved from exact blacklist\n")
+            print("\nRemoved domains from the exact blacklist\n")
             for domain, comment in removed:
                 print(f"{domain} -- {comment}")
         else:
