@@ -1,3 +1,30 @@
+79423.analytics.edgekey.net -- REHL online learning, training embedded videos to work properly
+android.clients.google.com -- Google Play
+androidtvwatsonfe-pa.googleapis.com -- DisneyPlus - Required to stream without crashes
+anti-ad.net -- github.com/mmotti/pihole-regex
+api.flightproxy.teams.microsoft.com -- Microsoft
+api.termius.com -- Termius SSH Desktop App - Required to login to your account
+api.termius.com -- Termius SSH Desktop Client Required to login to your Account
+appboot.netflix.com -- Netflix
+appleglobal.102.112.2o7.net -- Apple iOS - Required to add someone to your account recovery list
+applicast.ga.sony.net -- Sony
+apps.bdimg.com -- Crucial CDN server
+apps.bdimg.jomodns.com -- Crucial CDN server
+apps.skype.com -- Microsoft Skype - Used to make group calls, group chats, etc
+appsbackup-pa.clients6.google.com -- Google - Used to backup device settings and app data
+appsbackup-pa.googleapis.com -- Google - Used to backup device settings and app data
+appspot-preview.l.google.com -- Google - Used to deliver system updates to Moto phones
+apt.sonarr.tv -- Plex Media Server - Sonarr is a PVR for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new episodes of your favorite shows and will grab, sort and rename them.
+arc.msn.com -- Microsoft
+aspnetcdn.com -- Microsoft - Used to deliver files such as Windows updates and other services
+assets.adobedtm.com -- Adobe
+audio4-fa.scdn.co -- Spotify
+auth.samsungosp.com -- Samsung TV
+auth.split.io -- Spotify - Required to login to Spotify through browsers
+authsvc.teams.microsoft.com -- Microsoft
+avpro.global.yamaha.com -- Yamaha AV Receivers - Blocks system updates on rx-v685 so we whitelist
+aws.amazon.com -- Amazon their main cloud service
+azure.com -- Microsoft - Azure is a major part of their cloud network
 b-api.facebook.com -- Facebook
 best.aliexpress.com -- AliExpress - online shopping site
 bing.com -- Microsoft - Their main search engine
