@@ -70,24 +70,32 @@ def main():
         domains_to_update = {d: c for d, c in (process_sql_line(l) for l in sql_lines) if d}
 
         added, removed = update_pihole_db(domains_to_update)
+
         if added:
-            print("\nAdded to blacklist:")
+            print("\nAdded to exact blacklist:")
             for domain, comment in added:
                 print(f"{domain} -- {comment}")
+        else:
+            print("\nNo domains were added.")
+
         if removed:
-            print("\nRemoved from blacklist:")
+            print("\nRemoved from exact blacklist:")
             for domain, comment in removed:
                 print(f"{domain} -- {comment}")
+        else:
+            print("\nNo domains were removed.")
 
-        if check_for_updates() and user_confirm("Pi-hole update available. Do you want to update? (yes/no): "):
+        if not added and not removed:
+            print("\nNo changes were made to the regex blacklist.")
+
+        if check_for_updates() and user_confirm("\nPi-hole update available. Do you want to update? (yes/no): "):
             subprocess.run(['pihole', '-up'], check=True)
 
     except Exception as e:
         print(f"Error: {e}")
         sys.exit(1)
-    finally:
-        # Wait for 3 seconds before the script ends
-        time.sleep(3)
+
+    time.sleep(3)
 
 if __name__ == "__main__":
     main()
