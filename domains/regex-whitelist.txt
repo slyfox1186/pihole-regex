@@ -94,8 +94,8 @@
 [a-z]\.thumbs\.redditmedia\.com
 ^events-test(|-v2)\.redditmedia\.com$
 
-# Stackoverflow Developer\Coding help site
-^(blog|business|(www\.|)careers|email|(dev(|\.careers)|channels|contests|insights|meta|talent))\.stackoverflow\.com$
+# Skype
+s{1..5}.symcb.com 
 
 # Smart TV's
 (\.|^)samsungcloudcdn\.com$
@@ -109,6 +109,9 @@
 
 # SSL Certificate
 ^crl[3-4]\.digicert\.com$
+
+# Stackoverflow Developer\Coding help site
+^(blog|business|(www\.|)careers|email|(dev(|\.careers)|channels|contests|insights|meta|talent))\.stackoverflow\.com$
 
 # Twitch.tv
 ^(affiliate|app|id(|\.|-(canary|cdn|dev)))\.twitch\.tv
