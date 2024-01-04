@@ -30,15 +30,15 @@ mkdir -p "${random_dir}"
 cd "${random_dir}"
 
 # Create a tmp file that stores the URL of all the required shell scripts
-cat > wget.txt <<EOF
-https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-blacklist.sh
-https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/exact-whitelist.sh
-https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-blacklist.sh
-https://raw.githubusercontent.com/slyfox1186/pihole.regex/main/scripts/shell-install/regex-whitelist.sh
+cat > 'urls.txt' <<EOF
+https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python/exact-whitelist.py
+https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python/exact-blacklist.py
+https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python/regex-whitelist.py
+https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/python/regex-blacklist.py
 EOF
 
 # Download the required shell scripts using wget
-wget -qN - -i 'wget.txt'
+wget -qN - -i 'urls.txt'
 sudo bash run.sh
 
 # Define the variables and arrays
