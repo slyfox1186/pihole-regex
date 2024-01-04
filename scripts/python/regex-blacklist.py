@@ -81,21 +81,21 @@ def main():
         added, removed = update_pihole_db(domains_to_update)
 
         if added:
-            print("\nAdded to regex blacklist:")
+            print("\nAdded domains to the regex blacklist:\n")
             for domain, comment in added:
                 print(f"{domain} -- {comment}")
         else:
-            print("\nNo domains were added.")
+            print("\nNo domains were added to the regex blacklist.\n")
 
         if removed:
-            print("\nRemoved from regex blacklist:")
+            print("\nRemoved domains from the regex blacklist:\n")
             for domain, comment in removed:
                 print(f"{domain} -- {comment}")
         else:
-            print("\nNo domains were removed.")
+            print("\nNo domains were removed from the regex blacklist.\n")
 
         if not added and not removed:
-            print("\nNo changes were made to the regex blacklist.")
+            print("\nNo changes were required to the regex blacklist.\n")
 
         if check_for_updates() and user_confirm("\nPi-hole update available. Do you want to update? (yes/no): "):
             subprocess.run(['pihole', '-up'], check=True)
