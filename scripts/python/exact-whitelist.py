@@ -4,6 +4,7 @@ import sqlite3
 import requests
 import subprocess
 import sys
+import time
 
 # URL of the remote SQL file
 SQL_FILE_URL = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/exact-whitelist.sql'
