@@ -42,7 +42,7 @@ sudo apt -y install curl python3 sqlite3 wget
   - **[PuTTY](https://www.putty.org/)**
   - **[Termius](https://termius.com/)**
 
-## To execute, run one of the below commands
+## To execute, run each of the below commands
 
 ### RegEx and Exact Lists
 ```
