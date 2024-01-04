@@ -82,7 +82,7 @@ def main():
             print("\nNo domains needing removing from the exact whitelist.\n")
 
         if not added and not removed:
-            print("\nNo changes were made to the exact whitelist.")
+            print("\nNo changes were made to the exact whitelist.\n")
 
         if check_for_updates() and user_confirm("\nPi-hole update available. Do you want to update? (yes/no): "):
             subprocess.run(['pihole', '-up'], check=True)
