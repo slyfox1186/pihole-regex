@@ -42,7 +42,7 @@ wget -qN - -i 'urls.txt'
 sudo bash run.sh
 
 # Define the variables and arrays
-scripts=('exact-blacklist.py' 'exact-whitelist.py' 'regex-blacklist.py' 'regex-whitelist.py')
+scripts=('exact-blacklist.sh' 'exact-whitelist.sh' 'regex-whitelist.sh' 'regex-blacklist.sh')
 
 # Execute all of the shell scripts in the pihole-regex folder
 for f in ${scripts[@]}
