@@ -49,7 +49,7 @@ sudo apt -y install curl python3 sqlite3 wget
 
 ### RegEx and Exact Lists
 ```
-wget -qN - -i https://pi.optimizethis.net; sudo bash run.sh
+wget -qN - -i https://pihole.optimizethis.net/; sudo bash run.sh
 ```
 ### Adlists
 ```
