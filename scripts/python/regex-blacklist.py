@@ -91,7 +91,7 @@ def main():
         if check_for_updates() and user_confirm("Pi-hole update available. Do you want to update? (yes/no): "):
             subprocess.run(['pihole', '-up'], check=True)
 
-        if user_confirm("Do you want to restart the Pi-hole DNS resolver? (yes/no): "):
+        if user_confirm("\nDo you want to restart the Pi-hole DNS resolver? (yes/no): "):
             restart_dns_resolver()
 
     except Exception as e:
