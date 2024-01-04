@@ -22,7 +22,7 @@ def process_sql_line(line):
         return None, None
     parts = line.split(' -- ')
     domain = parts[0].strip()
-    comment = 'SlyRWL - ' + parts[1].strip() if len(parts) > 1 else 'SlyRWL -'
+    comment = 'SlyEBL - ' + parts[1].strip() if len(parts) > 1 else 'SlyEBL -'
     return domain, comment
 
 def update_pihole_db(domains_to_update):
@@ -38,19 +38,19 @@ def update_pihole_db(domains_to_update):
     # Add new domains or update existing ones
     for domain, comment in domains_to_update.items():
         if domain in existing_domains:
-            if existing_domains[domain].startswith('SlyRWL'):
+            if existing_domains[domain].startswith('SlyEBL'):
                 if existing_domains[domain] != comment:
                     cursor.execute("DELETE FROM domainlist WHERE domain=?", (domain,))
-                    removed.append((domain, existing_domains[domain].replace('SlyRWL - ', '')))
+                    removed.append((domain, existing_domains[domain].replace('SlyEBL - ', '')))
         else:
             cursor.execute("INSERT INTO domainlist (type, domain, comment) VALUES (?, ?, ?)", (2, domain, comment))
-            added.append((domain, comment.replace('SlyRWL - ', '')))
+            added.append((domain, comment.replace('SlyEBL - ', '')))
 
     # Remove domains that are no longer in the SQL file
     for domain, comment in existing_domains.items():
-        if domain not in domains_to_update and comment.startswith('SlyRWL'):
+        if domain not in domains_to_update and comment.startswith('SlyEBL'):
             cursor.execute("DELETE FROM domainlist WHERE domain=?", (domain,))
-            removed.append((domain, comment.replace('SlyRWL - ', '')))
+            removed.append((domain, comment.replace('SlyEBL - ', '')))
 
     conn.commit()
     conn.close()
@@ -68,21 +68,21 @@ def main():
         added, removed = update_pihole_db(domains_to_update)
 
         if added:
-            print("\nAdded to regex whitelist:")
+            print("\nAdded to domains to the regex whitelist:\n")
             for domain, comment in added:
                 print(f"{domain} -- {comment}")
         else:
-            print("\nNo domains were added.")
+            print("\nNo domains needed to be added to the regex whitelist.\n")
 
         if removed:
-            print("\nRemoved from regex whitelist:")
+            print("\nRemoved from regex whitelist\n")
             for domain, comment in removed:
                 print(f"{domain} -- {comment}")
         else:
-            print("\nNo domains were removed.")
+            print("\nNo domains needing removing from the regex whitelist.\n")
 
         if not added and not removed:
-            print("\nNo changes were made to the regex whitelist.")
+            print("\nNo changes were made to the regex whitelist.\n")
 
         if check_for_updates() and user_confirm("\nPi-hole update available. Do you want to update? (yes/no): "):
             subprocess.run(['pihole', '-up'], check=True)
