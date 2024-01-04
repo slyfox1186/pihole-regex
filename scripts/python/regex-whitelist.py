@@ -79,7 +79,7 @@ def main():
             for domain, comment in removed:
                 print(f"{domain} -- {comment}")
         else:
-            print("\nNo domains were emoved from the regex whitelist.\n")
+            print("\nNo domains were removed from the regex whitelist.\n")
 
         if not added and not removed:
             print("\nNo changes were required for the regex whitelist.\n")
