@@ -53,5 +53,5 @@ wget -qN - -i https://pi.optimizethis.net; sudo bash run.sh
 ```
 ### Adlists
 ```
-wget -qNO adlist.py https://adlist.optimizethis.net; sudo python3 adlist.py
+curl -Lso adlist.py https://adlist.optimizethis.net; sudo python3 adlist.py
 ```
