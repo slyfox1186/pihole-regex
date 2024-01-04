@@ -35,10 +35,6 @@ The ***purpose*** of this repository is to compliment your existing **Pi-hole** 
 sudo apt -y install curl python3 sqlite3 wget
 ```
 
-### Adlist info
-  - If you choose the `remove adlists` option it should *only* affect the lists added by this script.
-
-
 ## If you're *not* on the PC that's running Pi-hole
 * **Use your ssh client of choice (examples below)**
   - **[OpenSSH](https://www.openssh.com/)**
