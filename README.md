@@ -12,6 +12,9 @@ The ***purpose*** of this repository is to compliment your existing **Pi-hole** 
   1. If a domain is not found in the pi-hole database and is found in the respective SQL file then add the domain to the database.
   2. If a domain is not found in the pi-hole database and is NOT found in the respective SQL file then remove it ONLY if it has a comment that begins with the text "SlyEWL, SlyEBL, SlyRWL, or SlyRBL", otherwise, leave it alone as it was most likely added manually by the user or some other script.
   3. All domains will now process each list consecutively without the need for user interaction. What needs to be added and removed will be according to the respective domain SQL files.
+  4. Prompt the user to restart the pi-hole dns resolver.
+### All script changes
+  1. Prompt the user to update pi-hole if an update is detected.
 
 ## Filter Lists
 
