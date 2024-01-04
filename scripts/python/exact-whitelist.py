@@ -6,7 +6,7 @@ import subprocess
 import sys
 
 # URL of the remote SQL file
-SQL_FILE_URL = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/exact-whitelis.sql'
+SQL_FILE_URL = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/exact-whitelist.sql'
 
 # Local path of the Pi-hole gravity.db file
 GRAVITY_DB_PATH = '/etc/pihole/gravity.db'
