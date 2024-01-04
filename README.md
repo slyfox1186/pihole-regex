@@ -6,7 +6,8 @@ The ***purpose*** of this repository is to compliment your existing **Pi-hole** 
 ### The Adlist script is now solely a python3 script. It will only do the following.
   1. If an adlist is not found in the pi-hole database and is found in the adlist text file add the domain to the adlist database.
   2. If an adlist is not found in the pi-hole database and is NOT found in the adlist text file then remove it ONLY if it has a comment that begins with the text "SlyADL", otherwise, leave it alone as it was most likely added manually by the user or some other script.
-  3. Prompt the user to update the Gravity database if changes were made.
+  3. Print the changes being made to the terminal so the user can clearly understand what is happening.
+  4. Prompt the user to update the Gravity database if changes were made.
 
 ## Filter Lists
 
