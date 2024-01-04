@@ -60,9 +60,6 @@ def check_for_updates():
     result = subprocess.run(['pihole', '-v', '-c'], capture_output=True, text=True)
     return 'Update available!' in result.stdout
 
-def restart_dns_resolver():
-    subprocess.run(['pihole', 'restartdns', 'reload'], check=True)
-
 def main():
     try:
         sql_lines = download_sql_file(SQL_FILE_URL)
