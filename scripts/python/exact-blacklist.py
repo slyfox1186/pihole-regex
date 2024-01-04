@@ -70,11 +70,11 @@ def main():
 
         added, removed = update_pihole_db(domains_to_update)
         if added:
-            print("Added to blacklist:")
+            print("\nAdded to blacklist:")
             for domain, comment in added:
                 print(f"{domain} -- {comment}")
         if removed:
-            print("Removed from blacklist:")
+            print("\nRemoved from blacklist:")
             for domain, comment in removed:
                 print(f"{domain} -- {comment}")
 
