@@ -39,10 +39,9 @@ EOF
 
 # Download the required shell scripts using wget
 wget -qN - -i 'urls.txt'
-sudo bash run.sh
 
 # Define the variables and arrays
-scripts=('exact-blacklist.sh' 'exact-whitelist.sh' 'regex-whitelist.sh' 'regex-blacklist.sh')
+scripts=('exact-blacklist.py' 'exact-whitelist.py' 'regex-whitelist.py' 'regex-blacklist.py')
 
 # Execute all of the shell scripts in the pihole-regex folder
 for f in ${scripts[@]}
