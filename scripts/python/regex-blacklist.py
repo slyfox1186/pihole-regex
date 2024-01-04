@@ -63,6 +63,16 @@ def check_for_updates():
 def restart_dns_resolver():
     subprocess.run(['pihole', 'restartdns', 'reload'], check=True)
 
+def user_confirm(prompt):
+    while True:
+        user_input = input(prompt).strip().lower()
+        if user_input in ['yes', 'y']:
+            return True
+        elif user_input in ['no', 'n']:
+            return False
+        else:
+            print("Please enter 'yes', 'y', 'no', or 'n'.")
+
 def main():
     try:
         sql_lines = download_sql_file(SQL_FILE_URL)
