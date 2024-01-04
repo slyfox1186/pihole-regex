@@ -29,7 +29,6 @@ def update_pihole_db(domains_to_update):
     conn = sqlite3.connect(GRAVITY_DB_PATH)
     cursor = conn.cursor()
 
-    # Change to type 1 for exact blacklist
     cursor.execute("SELECT domain, comment FROM domainlist WHERE type=1")
     existing_domains = {row[0]: row[1] for row in cursor.fetchall()}
 
