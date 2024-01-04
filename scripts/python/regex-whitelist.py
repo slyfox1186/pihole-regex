@@ -81,6 +81,9 @@ def main():
     except Exception as e:
         print(f"Error: {e}")
         sys.exit(1)
+    finally:
+        # Wait for 3 seconds before the script ends
+        time.sleep(3)
 
 if __name__ == "__main__":
     main()
