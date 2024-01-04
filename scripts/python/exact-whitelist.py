@@ -75,14 +75,14 @@ def main():
             print("\nNo domains needed to be added to the exact whitelist.\n")
 
         if removed:
-            print("\nRemoved domains from the regex whitelist:\n")
+            print("\nRemoved domains from the exact whitelist:\n")
             for domain, comment in removed:
                 print(f"{domain} -- {comment}")
         else:
-            print("\nNo domains were removed from the regex whitelist.\n")
+            print("\nNo domains were removed from the exact whitelist.\n")
 
         if not added and not removed:
-            print("\nNo changes were required for the regex whitelist.\n")
+            print("\nNo changes were required for the exact whitelist.\n")
 
         if check_for_updates() and user_confirm("\nPi-hole update available. Do you want to update? (yes/no): "):
             subprocess.run(['pihole', '-up'], check=True)
