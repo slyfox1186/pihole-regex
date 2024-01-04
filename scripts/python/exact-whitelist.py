@@ -68,18 +68,18 @@ def main():
         added, removed = update_pihole_db(domains_to_update)
 
         if added:
-            print("\nAdded to exact whitelist:")
+            print("\nAdded to exact whitelist:\n")
             for domain, comment in added:
                 print(f"{domain} -- {comment}")
         else:
-            print("\nNo domains were added.")
+            print("\nNo domains were added.\n")
 
         if removed:
-            print("\nRemoved from exact whitelist:")
+            print("\nRemoved from exact whitelist\n")
             for domain, comment in removed:
                 print(f"{domain} -- {comment}")
         else:
-            print("\nNo domains were removed.")
+            print("\nNo domains were removed.\n")
 
         if not added and not removed:
             print("\nNo changes were made to the regex whitelist.")
