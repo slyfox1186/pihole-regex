@@ -42,13 +42,6 @@ sudo apt -y install curl python3 sqlite3 wget
   - **[PuTTY](https://www.putty.org/)**
   - **[Termius](https://termius.com/)**
 
-## **The user will be prompted to press a key to advance their choices**
-* **Input examples**
-  - **[A]** to ***Add***
-  - **[R]** to ***Remove***
-  - **[S]** to ***Skip***
-  - ***Any number***
-
 ## To execute, run one of the below commands
 
 ### RegEx and Exact Lists
