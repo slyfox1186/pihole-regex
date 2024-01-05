@@ -38,6 +38,9 @@ def domain_exists(cursor, domain, domain_type):
     cursor.execute("SELECT EXISTS(SELECT 1 FROM domainlist WHERE domain = ? AND type = ? LIMIT 1)", (domain, domain_type))
     return cursor.fetchone()[0]
 
+def get_user_confirmation():
+    response = input("Do you want to proceed? (Hit Enter for Yes, type No to cancel): ")
+    return response.strip().lower() != 'no'
 
 def get_user_domain_type():
     print("Select the domain type to process:")
