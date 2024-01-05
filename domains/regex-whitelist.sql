@@ -47,7 +47,7 @@
 (\.|^)reddit\.com$ -- Reddit
 [a-z]\.thumbs\.redditmedia\.com$ -- Reddit
 ^events-test(|-v2)\.redditmedia\.com$ -- Reddit
-^s{1..5}\.symcb\.com$ -- Skype
+^\s{1,5}\.symcb\.com$ -- Skype
 (\.|^)samsungcloudcdn\.com$ -- Smart TV
 (\.|^)samsungotn\.net$ -- Smart TV
 ^aic\.(homeprv|service)\.lgtvcommon\.com$ -- Smart TV
