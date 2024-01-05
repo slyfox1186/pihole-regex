@@ -31,7 +31,7 @@ sudo apt -y install curl python3 sqlite3 wget
 
 ### RegEx and Exact Lists
 ```
-curl -Lso pihole.py https://pi.optimizethis.net; sudo python3 pihole.py
+curl -Lso pi.py https://pi.optimizethis.net; sudo python3 pi.py
 ```
 ### Adlists
 ```
