@@ -63,6 +63,7 @@ def add_or_remove_domains(domains, domain_type, add=True):
     removed_count = 0
     skipped_count = 0
     attempts = 0
+    changes_made = False
 
     while attempts < retry_count:
         try:
@@ -78,7 +79,6 @@ def add_or_remove_domains(domains, domain_type, add=True):
 
                 if add:
                     if not domain_exists(cursor, domain_name, domain_type):
-
                         comment = ''
                         if domain_type == 0:  # Exact Whitelist
                             comment = 'SlyEWL - ' + parts[1].strip() if len(parts) > 1 else ''
@@ -89,9 +89,9 @@ def add_or_remove_domains(domains, domain_type, add=True):
                         elif domain_type == 3:  # Regex Blacklist
                             comment = 'SlyRBL - ' + parts[1].strip() if len(parts) > 1 else ''
                         cursor.execute("INSERT INTO domainlist (type, domain, enabled, comment) VALUES (?, ?, 1, ?)", (domain_type, domain_name, comment))
-                    
                         print(f"Added: {domain_name}")
                         added_count += 1
+                        changes_made = True
                     else:
                         print(f"Skipped (already exists): {domain_name}")
                         skipped_count += 1
@@ -100,6 +100,7 @@ def add_or_remove_domains(domains, domain_type, add=True):
                         cursor.execute("DELETE FROM domainlist WHERE type = ? AND domain = ?", (domain_type, domain_name))
                         print(f"Removed: {domain_name}")
                         removed_count += 1
+                        changes_made = True
                     else:
                         print(f"Skipped (not found): {domain_name}")
                         skipped_count += 1
@@ -131,6 +132,8 @@ def add_or_remove_domains(domains, domain_type, add=True):
     print(f"Domains Added: {added_count}")
     print(f"Domains Removed: {removed_count}")
     print(f"Domains Skipped: {skipped_count}")
+
+    return changes_made
 
 def list_domains(domain_type):
     try:
@@ -175,12 +178,13 @@ def main():
 
     clear_screen()
 
+    changes_made = False
     if action == 'add' or action == 'remove':
         domains = get_domains_from_url(urls[domain_type])
         if not domains:
             print("\nNo domains to process. Exiting.")
             return
-        add_or_remove_domains(domains, domain_type, add=(action == 'add'))
+        changes_made = add_or_remove_domains(domains, domain_type, add=(action == 'add'))
     elif action == 'list':
         list_domains(domain_type)
     elif action == 'clear':
@@ -189,7 +193,7 @@ def main():
         print("\nInvalid action. Exiting.")
         return
 
-    if input("\nRestart Pi-hole DNS resolver? (yes/no): ").strip().lower() == 'yes':
+    if changes_made and input("\nRestart Pi-hole DNS resolver? (yes/no): ").strip().lower() == 'yes':
         os.system('pihole restartdns')
 
     print("\nMake sure to star this repository to show your support!")
