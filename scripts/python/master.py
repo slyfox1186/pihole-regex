@@ -165,7 +165,7 @@ def clear_domains(domain_type):
 def main():
     clear_screen()
 
-    print("Options: add, remove, list, clear")
+    print("Options: add, remove, list")
     action = input("Choose an action: ").strip().lower()
 
     clear_screen()
@@ -187,8 +187,6 @@ def main():
         changes_made = add_or_remove_domains(domains, domain_type, add=(action == 'add'))
     elif action == 'list':
         list_domains(domain_type)
-    elif action == 'clear':
-        clear_domains(domain_type)
     else:
         print("\nInvalid action. Exiting.")
         return
