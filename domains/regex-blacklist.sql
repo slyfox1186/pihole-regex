@@ -49,7 +49,6 @@
 (\.|^)log[0-9]*\.spotify\.com$ -- Spotify
 (\.|^)pixel(|-static)\.spotify\.com$ -- Spotify
 (\.|^)[go]*tinder[sparks]*\.com$ -- Tinder app
-(\.|^)tvinteractive\.tv$ -- Vizio Smart TV
 (\.|^)((www|(w[0-9]\.)?web|media((-[a-z]{3}|\.[a-z]{4})[0-9]{1,2}-[0-9](\.|-)(cdn|fna))?)\.)?whatsapp\.(com|net)$ -- WhatsApp
 (\.|^)whatsapp-cdn-shv-[0-9]{2}-[a-z]{3}[0-9]\.fbcdn\.net$ -- WhatsApp
 ^a-content-[a-z0-9]+-[0-9]+\.[a-z]{2}-[a-z]+-[0-9]\.elb\.amazonaws\.com$ -- Yahoo
@@ -94,5 +93,5 @@
 (^|\.)samsungcloudsolution\.net$ -- Samsung TV
 (^|\.)samsungelectronics\.com$ -- Samsung TV
 (^|\.)samsungrm\.net$ -- Samsung TV
-(\.|^)tvinteractive\.tv$ -- Vizio TV
+(\.|^)tvinteractive\.tv$ -- Vizio Smart TV
 ^api\..*\.hismarttv\.com$ -- Other TV
