@@ -49,7 +49,6 @@
 (\.|^)log[0-9]*\.spotify\.com$ -- Spotify
 (\.|^)pixel(|-static)\.spotify\.com$ -- Spotify
 (\.|^)[go]*tinder[sparks]*\.com$ -- Tinder app
-^video-edge-(046b4c|078ff6|82d760|82dc48|830164|833564|918014|918388|9183d4|9183f0)\.atl01\.abs\.hls\.ttvnw\.net$ -- Twitch.tv Video ads
 (\.|^)tvinteractive\.tv$ -- Vizio Smart TV
 (\.|^)((www|(w[0-9]\.)?web|media((-[a-z]{3}|\.[a-z]{4})[0-9]{1,2}-[0-9](\.|-)(cdn|fna))?)\.)?whatsapp\.(com|net)$ -- WhatsApp
 (\.|^)whatsapp-cdn-shv-[0-9]{2}-[a-z]{3}[0-9]\.fbcdn\.net$ -- WhatsApp
