@@ -375,6 +375,7 @@ v.firebog.net -- Pi-Hole adlists meta site
 v.shopify.com -- Shopping
 v.w-x.co -- Weather
 vcs.vdspf.com -- Panasonic Viera TV
+static-cdn.jtvnw.net -- Required to load icons
 video-edge-046b4c.atl01.abs.hls.ttvnw.net -- Twitch - Required for streamer video feeds to work
 video-edge-078cfa.atl01.abs.hls.ttvnw.net -- Twitch - Required for streamer video feeds to work
 video-edge-55b156.pdx01.abs.hls.ttvnw.net -- Twitch - Required for streamer video feeds to work
