@@ -38,26 +38,6 @@ def domain_exists(cursor, domain, domain_type):
     cursor.execute("SELECT EXISTS(SELECT 1 FROM domainlist WHERE domain = ? AND type = ? LIMIT 1)", (domain, domain_type))
     return cursor.fetchone()[0]
 
-def get_user_confirmation():
-    response = input("Do you want to proceed? (Hit Enter for Yes, type No to cancel): ")
-    return response.strip().lower() != 'no'
-
-def get_user_domain_type():
-    print("Select the domain type to process:")
-    print("1: Exact Whitelist")
-    print("2: Exact Blacklist")
-    print("3: Regex Whitelist")
-    print("4: Regex Blacklist")
-    while True:
-        try:
-            choice = int(input("Enter your choice (1-4): "))
-            if 1 <= choice <= 4:
-                return choice - 1
-            else:
-                print("Invalid choice. Please enter a number between 1 and 4.")
-        except ValueError:
-            print("Invalid input. Please enter a number.")
-
 def add_or_remove_domains(domains, domain_type, add=True):
     added_count = 0
     removed_count = 0
