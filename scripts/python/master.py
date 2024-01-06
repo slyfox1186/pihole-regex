@@ -46,8 +46,8 @@ def get_user_domain_type():
     print("Select the domain type to process:")
     print("1: Exact Whitelist")
     print("2: Exact Blacklist")
-    print("3: RegEx Whitelist")
-    print("4: RegEx Blacklist")
+    print("3: Regex Whitelist")
+    print("4: Regex Blacklist")
     while True:
         try:
             choice = int(input("Enter your choice (1-4): "))
