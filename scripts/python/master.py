@@ -122,11 +122,11 @@ def list_domains(domain_type):
         cursor.execute("SELECT domain FROM domainlist WHERE type = ?", (domain_type,))
         domains = cursor.fetchall()
         if domains:
-            print("Current domains:")
+            print("Current domains found in the database:")
             for domain in domains:
                 print(domain[0])
         else:
-            print("No domains found.")
+            print("No domains found in the database.")
         conn.close()
     except Exception as e:
         print(f"Error: {e}")
