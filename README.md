@@ -18,7 +18,7 @@ The ***purpose*** of this repository is to compliment your existing **Pi-hole** 
 
 ### Required Packages
 ```bash
-sudo apt -y install curl python3 sqlite3 wget
+sudo apt -y install curl python3 sqlite3
 ```
 
 ## If you're *not* on the PC that's running Pi-hole
