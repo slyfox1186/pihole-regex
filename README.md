@@ -35,5 +35,5 @@ curl -Lso pi.py https://pi.optimizethis.net; sudo python3 pi.py
 ```
 ### Adlists
 ```
-curl -Lso adlist.py https://ad.optimizethis.net; sudo python3 adlist.py
+curl -Lso adlist.py https://adlist.optimizethis.net; sudo python3 adlist.py
 ```
