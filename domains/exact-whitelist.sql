@@ -2,6 +2,7 @@
 android.clients.google.com -- Google Play
 androidtvwatsonfe-pa.googleapis.com -- DisneyPlus - Required to stream without crashes
 anti-ad.net -- github.com/mmotti/pihole-regex
+api.gitkraken.com -- GitHub - Advanced Git CLI Program
 api.flightproxy.teams.microsoft.com -- Microsoft
 api.termius.com -- Termius SSH Desktop App - Required to login to your account
 api.termius.com -- Termius SSH Desktop Client Required to login to your Account
