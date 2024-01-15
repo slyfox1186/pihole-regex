@@ -106,14 +106,38 @@ def add_or_remove_domains(domains, domain_type, add=True):
     # Check if all retries have been exhausted
     if attempts == retry_count:
         print("\nFailed to update the database after several retries.")
-        return
 
-    print("\nSummary:")
-    print(f"Domains Added: {added_count}")
-    print(f"Domains Removed: {removed_count}")
-    print(f"Domains Skipped: {skipped_count}")
+    return added_count, removed_count, skipped_count, changes_made
 
-    return changes_made
+def add_domain(domain_type):
+    try:
+        conn = sqlite3.connect(pihole_db_path)
+        cursor = conn.cursor()
+        domain = input("Enter the domain to add: ")
+        cursor.execute("INSERT INTO domainlist (type, domain, enabled) VALUES (?, ?, 1)", (domain_type, domain))
+        conn.commit()
+        print(f"Domain {domain} added successfully.")
+    except Exception as e:
+        print(f"Error: {e}")
+    finally:
+        conn.close()
+    if input("Restart Pi-hole DNS resolver? (yes/no): ").strip().lower() == 'yes':
+        os.system('pihole restartdns')
+
+def remove_domain(domain_type):
+    try:
+        conn = sqlite3.connect(pihole_db_path)
+        cursor = conn.cursor()
+        domain = input("Enter the domain to remove: ")
+        cursor.execute("DELETE FROM domainlist WHERE type = ? AND domain = ?", (domain_type, domain))
+        conn.commit()
+        print(f"Domain {domain} removed successfully.")
+    except Exception as e:
+        print(f"Error: {e}")
+    finally:
+        conn.close()
+    if input("Restart Pi-hole DNS resolver? (yes/no): ").strip().lower() == 'yes':
+        os.system('pihole restartdns')
 
 def list_domains(domain_type):
     try:
@@ -155,6 +179,10 @@ def main():
     clear_screen()  # Clear the screen after choosing an action
 
     changes_made = False
+    added_total = 0
+    removed_total = 0
+    skipped_total = 0
+
     if action == 'add':
         print("Add domains")
         print("0: Exact Whitelist\n1: Exact Blacklist\n2: Regex Whitelist\n3: Regex Blacklist\n4: All")
@@ -168,13 +196,20 @@ def main():
             for type_num in urls.keys():
                 domains = get_domains_from_url(urls[type_num])
                 if domains:
-                    changes_made |= add_or_remove_domains(domains, type_num, add=True)
+                    added, removed, skipped, changes = add_or_remove_domains(domains, type_num, add=True)
+                    added_total += added
+                    removed_total += removed
+                    skipped_total += skipped
+                    changes_made |= changes
         else:
             domains = get_domains_from_url(urls[domain_type])
             if not domains:
                 print("\nNo domains to process. Exiting.")
                 return
-            changes_made |= add_or_remove_domains(domains, domain_type, add=True)
+            added, removed, skipped, changes_made = add_or_remove_domains(domains, domain_type, add=True)
+            added_total += added
+            removed_total += removed
+            skipped_total += skipped
     elif action == 'remove':
         print("Remove domains")
         print("0: Exact Whitelist\n1: Exact Blacklist\n2: Regex Whitelist\n3: Regex Blacklist\n4: All")
@@ -184,13 +219,20 @@ def main():
             for type_num in urls.keys():
                 domains = get_domains_from_url(urls[type_num])
                 if domains:
-                    changes_made |= add_or_remove_domains(domains, type_num, add=False)
+                    added, removed, skipped, changes = add_or_remove_domains(domains, type_num, add=False)
+                    added_total += added
+                    removed_total += removed
+                    skipped_total += skipped
+                    changes_made |= changes
         elif remove_option in urls.keys():
             domains = get_domains_from_url(urls[remove_option])
             if not domains:
                 print("\nNo domains to process. Exiting.")
                 return
-            changes_made |= add_or_remove_domains(domains, remove_option, add=False)
+            added, removed, skipped, changes_made = add_or_remove_domains(domains, remove_option, add=False)
+            added_total += added
+            removed_total += removed
+            skipped_total += skipped
         else:
             print("\nInvalid option. Exiting.")
             return
@@ -210,6 +252,11 @@ def main():
     else:
         print("\nInvalid action. Exiting.")
         return
+
+    print("\nSummary:")
+    print(f"Total Domains Added: {added_total}")
+    print(f"Total Domains Removed: {removed_total}")
+    print(f"Total Domains Skipped: {skipped_total}")
 
     if changes_made:
         restart_pihole_dns()
