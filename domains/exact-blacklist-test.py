@@ -212,7 +212,7 @@ snap.net -- Snapchat
 nevoai-iothub-54-prod.azure-devices.net -- LG Smart TV
 
 # Yahoo
-dns-fxp05etdx.sombrero.yahoo.net -- Yahoo Video Ads
+dns-fxp05etdx.sombrero.yahoo.net -- Yahoo - Video Ads
 ncp-gw-sports.media.yahoo.com -- Yahoo - Sports Video Ads
 
 # Pi-Hole Queries
@@ -222,24 +222,24 @@ doh.dns.apple.com -- Apple DoH Blocks Pi-Hole Queries Entirely
 cdn.cookielaw.org -- 3D Mark Software tracking cookies
 snap.licdn.com -- 3D Mark Software tracking cookies
 
-# IObit Desktop Popup Advertisements
-cdn.inspectlet.com -- IObit Desktop Popup Advertisements
-codes.iobit.com -- IObit Desktop Pop up Ads
-doug1izaerwt3.cloudfront.net -- IObit Desktop Pop-up Ads
-cs833182181.wpc.etacdn.net -- IObit Desktop Pop-up Ads
-stats.iobit.com -- IObit Desktop Pop up Ads
-store.iobit.com -- IObit Desktop Pop up Ads
-purchase-iobit-com.us-east-1.elasticbeanstalk.com -- IObit Desktop Pop-up Ads
-purchase.iobit.com -- IObit Desktop Pop up Ads
+# IObit - Desktop Popup Advertisements
+cdn.inspectlet.com -- IObit - Desktop Popup Advertisements
+codes.iobit.com -- IObit - Desktop Pop up Ads
+doug1izaerwt3.cloudfront.net -- IObit - Desktop Pop-up Ads
+cs833182181.wpc.etacdn.net -- IObit - Desktop Pop-up Ads
+stats.iobit.com -- IObit - Desktop Pop up Ads
+store.iobit.com -- IObit - Desktop Pop up Ads
+purchase-iobit-com.us-east-1.elasticbeanstalk.com -- IObit - Desktop Pop-up Ads
+purchase.iobit.com -- IObit - Desktop Pop up Ads
 
 # CCleaner Telemetry Desktop App Spyware
 ccleaner.tools.avcdn.net -- CCleaner Telemetry Desktop App Spyware
 
-# AdultTime Ads
-d186rixkn5ruba.cloudfront.net -- AdultTime Ads
-d1ut6fykkt3imt.cloudfront.net -- AdultTime Ads
-d306ecvlh9tfv.cloudfront.net -- AdultTime Ads
-kinesis.us-east-1.amazonaws.com -- AdultTime Ads
+# AdultTime - Ads
+d186rixkn5ruba.cloudfront.net -- AdultTime - Ads
+d1ut6fykkt3imt.cloudfront.net -- AdultTime - Ads
+d306ecvlh9tfv.cloudfront.net -- AdultTime - Ads
+kinesis.us-east-1.amazonaws.com -- AdultTime - Ads
 
 # Topaz Labs Telemetry
 api.topaz-labs.net -- Topaz Labs Telemetry
