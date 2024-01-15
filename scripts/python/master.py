@@ -18,6 +18,16 @@ pihole_db_path = '/etc/pihole/gravity.db'
 retry_count = 5  # Number of retries
 retry_delay = 2  # Delay in seconds between retries
 
+# Function to filter unwanted lines from SQL source files
+def filter_sql_file(lines):
+    filtered_lines = []
+    for line in lines:
+        line = line.strip()
+        if not line or line.startswith('#'):
+            continue
+        filtered_lines.append(line)
+    return filtered_lines
+
 # URLs of SQL files for each domain type
 urls = {
     0: 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/exact-whitelist.sql',
@@ -29,7 +39,9 @@ urls = {
 def get_domains_from_url(url):
     response = requests.get(url)
     if response.status_code == 200:
-        return response.text.strip().split('\n')
+        lines = response.text.strip().split('\n')
+        filtered_lines = filter_sql_file(lines)  # Filter unwanted lines
+        return filtered_lines
     else:
         print(f"Failed to download domains from {url}")
         return []
@@ -208,7 +220,7 @@ def main():
                 return
             added, removed, skipped, changes_made = add_or_remove_domains(domains, domain_type, add=True)
             added_total += added
-            removed_total += removed
+            removed_total += 1
             skipped_total += skipped
     elif action == 'remove':
         print("Remove domains")
