@@ -119,26 +119,14 @@ def list_domains(domain_type):
     try:
         conn = sqlite3.connect(pihole_db_path)
         cursor = conn.cursor()
-        
-        if domain_type == 4:
-            print("All domains:")
-            for type_num in urls.keys():
-                cursor.execute("SELECT domain FROM domainlist WHERE type = ?", (type_num,))
-                domains = cursor.fetchall()
-                if domains:
-                    print(f"Domain type {type_num}:")
-                    for domain in domains:
-                        print(domain[0])
+        cursor.execute("SELECT domain FROM domainlist WHERE type = ?", (domain_type,))
+        domains = cursor.fetchall()
+        if domains:
+            print("Current domains found in the database:")
+            for domain in domains:
+                print(domain[0])
         else:
-            cursor.execute("SELECT domain FROM domainlist WHERE type = ?", (domain_type,))
-            domains = cursor.fetchall()
-            if domains:
-                print(f"Domains for type {domain_type}:")
-                for domain in domains:
-                    print(domain[0])
-            else:
-                print("No domains found for the selected type.")
-        
+            print("No domains found in the database.")
         conn.close()
     except Exception as e:
         print(f"Error: {e}")
@@ -154,19 +142,24 @@ def clear_domains(domain_type):
     except Exception as e:
         print(f"Error: {e}")
 
+def restart_pihole_dns():
+    restart_option = input("\nRestart Pi-hole DNS resolver? (yes/no): ").strip().lower()
+    if restart_option == 'yes':
+        os.system('pihole restartdns')
+
 def main():
-    clear_screen()  # Clear the screen when the script first starts
+    clear_screen()
 
     print("Options: add, remove, list")
     action = input("Choose an action: ").strip().lower()
-
-    clear_screen()  # Clear the screen after the user chooses an action
+    clear_screen()  # Clear the screen after choosing an action
 
     changes_made = False
     if action == 'add':
         print("Add domains")
         print("0: Exact Whitelist\n1: Exact Blacklist\n2: Regex Whitelist\n3: Regex Blacklist\n4: All")
         domain_type = int(input("Choose an option: "))
+        clear_screen()  # Clear the screen after choosing the domain type
         if domain_type not in urls and domain_type != 4:
             print("Invalid domain type. Exiting.")
             return
@@ -186,6 +179,7 @@ def main():
         print("Remove domains")
         print("0: Exact Whitelist\n1: Exact Blacklist\n2: Regex Whitelist\n3: Regex Blacklist\n4: All")
         remove_option = int(input("Choose an option: "))
+        clear_screen()  # Clear the screen after choosing the remove option
         if remove_option == 4:
             for type_num in urls.keys():
                 domains = get_domains_from_url(urls[type_num])
@@ -204,6 +198,7 @@ def main():
         print("List domains")
         print("0: Exact Whitelist\n1: Exact Blacklist\n2: Regex Whitelist\n3: Regex Blacklist\n4: All")
         domain_type = int(input("Choose an option: "))
+        clear_screen()  # Clear the screen after choosing the domain type for listing
         if domain_type not in urls and domain_type != 4:
             print("Invalid domain type. Exiting.")
             return
@@ -221,11 +216,6 @@ def main():
 
     print("\nMake sure to star this repository to show your support!")
     print("https://github.com/slyfox1186/pihole-regex")
-
-def restart_pihole_dns():
-    restart_option = input("\nRestart Pi-hole DNS resolver? (yes/no): ").strip().lower()
-    if restart_option == 'yes':
-        os.system('pihole restartdns')
 
 if __name__ == "__main__":
     main()
