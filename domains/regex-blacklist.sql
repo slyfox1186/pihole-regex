@@ -27,7 +27,6 @@
 ^(api-software|d-20p1an5qn|marketing-materials|marketing|origin-marketing|origin-www|ixq|iot|partner)\.qnap\.com$ -- QNAP Computers
 ^(advertising|www)\.reddithelp\.com$ -- Reddit.com
 ^(ssl|static|www)\.redditgifts\.com$ -- Reddit.com
-((abtauthprd|acr0|amauthprd|cdn|configprd|fkp|gamespromotion|musicid|notice|noticecdn|noticefile|oempprd|prderrordumphsm|prov|sas|vdterms)\.|^)samsungcloudsolution\.(com|net)$ -- Samsung Smart TV
 (\.|^)giraffic\.com$ -- Samsung Smart TV
 (\.|^)internetat\.tv$ -- Samsung Smart TV
 ^log-[0-3]+\.samsungacr\.com$ -- Samsung Smart TV
