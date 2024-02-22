@@ -1,6 +1,9 @@
 # Akamai CDN Ad Server
 a1241.dsct.akamai.net -- Akamai CDN Ad Server
 
+# Curseforge (Software program for gaming)
+ads.stickyadstv.com -- Curseforge Ads
+
 # Twitch Video Ads
 a21ed24aedde648804e7-228765c84088fef4ff5e70f2710398e9.r17.cf1.rackcdn.com -- Twitch Video Ads
 d3m1uefep57n8q.cloudfront.net -- Twitch Video Ads
@@ -247,3 +250,4 @@ api.topaz-labs.net -- Topaz Labs Telemetry
 # Miscellaneous
 manifest.googlevideo.com -- Possibly the number one domain that serves YouTube Ads. We must block it.
 mindfieldonline.com -- LG Smart TV
+
