@@ -2,8 +2,8 @@
 android.clients.google.com -- Google Play
 androidtvwatsonfe-pa.googleapis.com -- DisneyPlus - Required to stream without crashes
 anti-ad.net -- github.com/mmotti/pihole-regex
-api.gitkraken.com -- GitHub - Advanced Git CLI Program
 api.flightproxy.teams.microsoft.com -- Microsoft
+api.gitkraken.com -- GitHub - Advanced Git CLI Program
 api.termius.com -- Termius SSH Desktop App - Required to login to your account
 api.termius.com -- Termius SSH Desktop Client Required to login to your Account
 appboot.netflix.com -- Netflix
@@ -57,6 +57,7 @@ cognito-identity.us-east-1.amazonaws.com -- Amazon
 color.adobe.com -- Adobe
 config.teams.microsoft.com -- Microsoft
 connect.ubisoft.com -- Required to buy items from the Ubisoft Desktop App
+connectivity.pod1.avatar.ext.hp.com -- HP Printers - Required to activate a new printer using the software app on Windows.
 contentproxy.signal.org -- Proxy Service
 continuum.dds.microsoft.com -- Microsoft - Used by YourPhone app by Microsoft on Windows 10 for mirroring Android notifications
 cp801.prod.do.dsp.mp.microsoft.com -- Microsoft
@@ -111,6 +112,7 @@ entitlement.auth.adobe.com -- Adobe
 eos-gateway-ingressv2-prod-c2-w4.befa.live.use1a.on.epicgames.com -- Epic Games - Loads essential game traffic for online play
 epg.corio.com -- Philips TV
 et.topazlabs.com -- Topaz Labs - Required to download algorithms
+external-preview.redd.it -- Reddit - Required to see image previews
 fbcdn-creative-a.akamaihd.net -- Akami Facebook CDN
 fe3.delivery.dsp.mp.microsoft.com.nsatc.net -- Microsoft
 fe3cr.delivery.mp.microsoft.com -- Microsoft
@@ -313,6 +315,7 @@ souqcdn.com -- Misc
 ssl.p.jwpcdn.com -- Video delivery systems, popular in entertainment and news sites
 stackpath.bootstrapcdn.com -- Crucial CDN server
 staging.plex.tv -- Plex Media Server
+static-cdn.jtvnw.net -- Twitch.tv - Required to load icons
 static.opensubtitles.org -- Misc
 statics.teams.cdn.office.net -- Microsoft
 stats.foldingathome.org -- github.com/mmotti/pihole-regex
@@ -361,6 +364,7 @@ twitter.com -- Twitter
 ubisoft-uplay-savegames.s3.amazonaws.com -- Ubisoft Launcher - Required for cloud saves
 ud-chat.signal.org -- Signal
 ui.skype.com -- Microsoft Skype - Used to make group calls, group chats, etc. on Skype
+uiboot.netflix.com -- Required to login to NetFlix on Nvidia Shield
 unpkg.com -- Crucial CDN server
 unsplash.com -- Misc
 upcdn.b0.upaiyun.com -- Crucial CDN server
@@ -376,7 +380,6 @@ v.firebog.net -- Pi-Hole adlists meta site
 v.shopify.com -- Shopping
 v.w-x.co -- Weather
 vcs.vdspf.com -- Panasonic Viera TV
-static-cdn.jtvnw.net -- Twitch.tv - Required to load icons
 video-edge-046b4c.atl01.abs.hls.ttvnw.net -- Twitch - Required for streamer video feeds to work
 video-edge-078cfa.atl01.abs.hls.ttvnw.net -- Twitch - Required for streamer video feeds to work
 video-edge-55b156.pdx01.abs.hls.ttvnw.net -- Twitch - Required for streamer video feeds to work
@@ -414,6 +417,7 @@ www.adf.ly -- URL Shortener
 www.aliexpress.com -- Shopping
 www.appleiphonecell.com -- Apple
 www.dataplicity.com -- Used to remotely control your Raspberry-Pi
+www.duplicatephotocleaner.com -- Legitimate duplicate photo removing software on Windows
 www.ecdinterface.philips.com -- Philips TV
 www.g2a.com -- G2A is a legit discount software website for items such as video games
 www.googleapis.com -- Google - An important domain used to provide APIs to various Google services.
