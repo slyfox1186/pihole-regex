@@ -16,6 +16,7 @@
 ^(ocsp[0-9]*?\.(apple|apzones|digicert|entrust|verisign)\.(com|net))$ -- Apple - Main domains for a good chunk of legitimate iOS services
 ^axm-adm-|(adm|mdm|enroll|scep)\.apple\.com$ -- Apple - Main domains for a good chunk of legitimate iOS services
 ^gsp-ssl\.ls(\.|-)apple\.com(|\.akadns\.net)$ -- Apple - Main domains for a good chunk of legitimate iOS services
+^orderprocessor.*\.ol\.epicgames\.com$ -- Epic Games - Required to purchase games on Windows
 ^cdn[0-3]*?\.optimizely\.com$ -- A progressive delivery and experimentation software for other companies
 (\.|^)mee6\.xyz$ -- Chrome Browser Discord App MEE6 Support Website
 ^ns[1-2]?\.dropbox\.com$ -- DropBox
@@ -25,7 +26,7 @@
 ^scontent-(atl3|lhr3|mia3|ort2)-1\.xx\.fbcdn\.net$ -- Facebook - Essential CDN servers
 ^[0-6]+?-edge-chat\.facebook\.com$ -- Facebook - Essential CDN servers
 ^(github(|\.githubassets)\.(com|io))$ -- GitHub
-^beacons[0-9]*\.gvt[0-9]+\.com$ --
+^beacons[0-9]*\.gvt[0-9]+\.com$ -- Google - Controls a lot of essential background processes which run a great many of the legitimate apps that people use every day
 ^(calendar|developer(|s)|dns|docs|home|inbox|clients[1-6]*|mail|meet|pay(|ments)|photos|sites|time|wallet|workspace|www)\.google\.com$ -- Google - Allow known essential widget service
 (\.|^)lencr\.org$ -- Lets Encrypt - One of the main SSL certificate encryption websites
 (www\.|^)((go\.|)microsoft|windows)\.com$ -- Microsoft OneDrive, Azure, Windows Essentials updates, other, xboxlive required for saves to the cloud
@@ -33,7 +34,7 @@
 (\.|^)windowsupdate\.com$ -- Microsoft OneDrive, Azure, Windows Essentials updates, other, xboxlive required for saves to the cloud
 ^(attestation|cert\.mgt|def-vef|(device(|\.auth))|eds|help\.ui|licensing|notify|title(|\.(auth|mgt))|user|xflight|www|xboxexperiencesprod\.experimentation|xkms|xsts\.auth)\.xboxlive\.com$ -- Microsoft OneDrive, Azure, Windows Essentials updates, other, xboxlive required for saves to the cloud
 ^(csp|c\.s|devicelistenerprod)(-|\.)microsoft\.com$ -- Microsoft OneDrive, Azure, Windows Essentials updates, other, xboxlive required for saves to the cloud
-^(edge|fs|mobile\.pipe\.aria|msedge\.api.\cdp|officecdnmac|officeclient|support|teams|vlscppe|whiteboard|www)\.microsoft\.com$ --
+^(edge|fs|mobile\.pipe\.aria|msedge\.api.\cdp|officecdnmac|officeclient|support|teams|vlscppe|whiteboard|www)\.microsoft\.com$ -- Essential Microsoft domains
 ^(settings|v10\.vortex)-win\.data\.microsoft\.com$ -- Microsoft OneDrive, Azure, Windows Essentials updates, other, xboxlive required for saves to the cloud
 ^europe.(cp\.wd|smartscreen(-prod|))\.microsoft\.com$ -- Microsoft OneDrive, Azure, Windows Essentials updates, other, xboxlive required for saves to the cloud
 ^microsoft(|online)\.com$ -- Microsoft OneDrive, Azure, Windows Essentials updates, other, xboxlive required for saves to the cloud
