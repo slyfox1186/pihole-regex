@@ -1,4 +1,5 @@
 79423.analytics.edgekey.net -- REHL online learning, training embedded videos to work properly
+accounts.epicgames.com -- Required to login to your account
 android.clients.google.com -- Google Play
 androidtvwatsonfe-pa.googleapis.com -- DisneyPlus - Required to stream without crashes
 anti-ad.net -- github.com/mmotti/pihole-regex
