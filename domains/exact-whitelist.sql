@@ -256,6 +256,7 @@ office365.com -- Microsoft - Office apps
 officeci-mauservice.azurewebsites.net -- Microsoft
 onedrive.live.com -- Microsoft - Used to sign in to One Drive
 oops.redditmedia.com -- Reddit
+open.spotify.com -- Spotify - Required to open music sent by friends in a link
 openpgpkey.gmail.com -- Github - Required CDN for downloading packages
 openpgpkey.martellmalone.com -- Github - Required CDN for downloading packages
 ota-downloads.nvidia.com -- Nvidia
