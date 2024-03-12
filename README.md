@@ -47,11 +47,11 @@ Execute the following commands to apply the filters to your Pi-hole setup:
 ### RegEx and Exact Lists
 
 ```bash
-curl -Lso pi.py https://pi.optimizethis.net; sudo python3 pi.py
+curl -Lso pi.py https://pi.optimizethis.net; python3 pi.py
 ```
 
 ### Adlists
 
 ```bash
-curl -Lso adlist.py https://adlist.optimizethis.net; sudo python3 adlist.py
+curl -Lso adlist.py https://adlist.optimizethis.net; python3 adlist.py
 ```
