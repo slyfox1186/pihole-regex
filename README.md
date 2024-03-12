@@ -29,7 +29,7 @@ Utilize our curated filter lists to enhance your Pi-hole's blocking capabilities
 Before starting, ensure your system has the necessary packages:
 
 ```bash
-sudo apt-get install curl python3 sqlite3
+apt-get install curl python3 sqlite3
 ```
 
 ### Remote Management
