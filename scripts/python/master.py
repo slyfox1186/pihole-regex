@@ -2,211 +2,182 @@
 
 import requests
 import sqlite3
-import sys
 import os
 import time
+from contextlib import contextmanager
+from colorama import init, Fore, Style
 
-# Clear the terminal screen
-def clear_screen():
-    if os.name == 'nt':  # for Windows
-        os.system('cls')
-    else:  # for Linux and macOS
-        os.system('clear')
+init()
 
-# Pi-hole database location and other constants
-pihole_db_path = '/etc/pihole/gravity.db'
-retry_count = 5  # Number of retries
-retry_delay = 2  # Delay in seconds between retries
+PIHOLE_DB_PATH = '/etc/pihole/gravity.db'
+RETRY_COUNT = 5
+RETRY_DELAY = 2
 
-# Function to filter unwanted lines from SQL source files
-def filter_sql_file(lines):
-    filtered_lines = []
-    for line in lines:
-        line = line.strip()
-        if not line or line.startswith('#'):
-            continue
-        filtered_lines.append(line)
-    return filtered_lines
-
-# URLs of SQL files for each domain type
-urls = {
+URLS = {
     0: 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/exact-whitelist.sql',
     1: 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/exact-blacklist.sql',
     2: 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/regex-whitelist.sql',
     3: 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/regex-blacklist.sql'
 }
 
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 def get_domains_from_url(url):
-    response = requests.get(url)
-    if response.status_code == 200:
-        lines = response.text.strip().split('\n')
-        filtered_lines = filter_sql_file(lines)  # Filter unwanted lines
-        return filtered_lines
-    else:
-        print(f"Failed to download domains from {url}")
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        return [line.strip() for line in response.text.strip().split('\n') if line.strip() and not line.startswith('#')]
+    except requests.exceptions.RequestException as e:
+        print(f"{Fore.RED}Failed to download domains from {url}: {e}{Style.RESET_ALL}")
         return []
+
+@contextmanager
+def db_connection():
+    conn = None
+    try:
+        conn = sqlite3.connect(PIHOLE_DB_PATH, timeout=20)
+        yield conn
+    finally:
+        if conn:
+            conn.close()
 
 def domain_exists(cursor, domain, domain_type):
     cursor.execute("SELECT EXISTS(SELECT 1 FROM domainlist WHERE domain = ? AND type = ? LIMIT 1)", (domain, domain_type))
     return cursor.fetchone()[0]
 
 def add_or_remove_domains(domains, domain_type, add=True):
-    added_count = 0
-    removed_count = 0
-    skipped_count = 0
-    attempts = 0
+    added_count = removed_count = skipped_count = attempts = 0
     changes_made = False
 
-    while attempts < retry_count:
+    while attempts < RETRY_COUNT:
         try:
-            conn = sqlite3.connect(pihole_db_path, timeout=20)  # Increased timeout
-            cursor = conn.cursor()
+            with db_connection() as conn:
+                cursor = conn.cursor()
+                cursor.execute("BEGIN TRANSACTION;")
 
-            # Start transaction
-            cursor.execute("BEGIN TRANSACTION;")
+                for domain in domains:
+                    parts = domain.split(' -- ')
+                    domain_name = parts[0].strip()
+                    comment = ('SlyEWL - ' if domain_type == 0 else 'SlyEBL - ' if domain_type == 1 else 'SlyRWL - ' if domain_type == 2 else 'SlyRBL - ') + parts[1].strip() if len(parts) > 1 else ''
 
-            for domain in domains:
-                parts = domain.split(' -- ')
-                domain_name = parts[0].strip()
-
-                if add:
-                    if not domain_exists(cursor, domain_name, domain_type):
-                        comment = ''
-                        if domain_type == 0:  # Exact Whitelist
-                            comment = 'SlyEWL - ' + parts[1].strip() if len(parts) > 1 else ''
-                        elif domain_type == 1:  # Exact Blacklist
-                            comment = 'SlyEBL - ' + parts[1].strip() if len(parts) > 1 else ''
-                        elif domain_type == 2:  # Regex Whitelist
-                            comment = 'SlyRWL - ' + parts[1].strip() if len(parts) > 1 else ''
-                        elif domain_type == 3:  # Regex Blacklist
-                            comment = 'SlyRBL - ' + parts[1].strip() if len(parts) > 1 else ''
-                        cursor.execute("INSERT INTO domainlist (type, domain, enabled, comment) VALUES (?, ?, 1, ?)", (domain_type, domain_name, comment))
-                        print(f"Added: {domain_name}")
-                        added_count += 1
-                        changes_made = True
+                    if add:
+                        if not domain_exists(cursor, domain_name, domain_type):
+                            cursor.execute("INSERT INTO domainlist (type, domain, enabled, comment) VALUES (?, ?, 1, ?)", (domain_type, domain_name, comment))
+                            print(f"{Fore.GREEN}Added: {domain_name}{Style.RESET_ALL}")
+                            added_count += 1
+                            changes_made = True
+                        else:
+                            print(f"{Fore.YELLOW}Skipped (already exists): {domain_name}{Style.RESET_ALL}")
+                            skipped_count += 1
                     else:
-                        print(f"Skipped (already exists): {domain_name}")
-                        skipped_count += 1
-                else:
-                    if domain_exists(cursor, domain_name, domain_type):
-                        cursor.execute("DELETE FROM domainlist WHERE type = ? AND domain = ?", (domain_type, domain_name))
-                        print(f"Removed: {domain_name}")
-                        removed_count += 1
-                        changes_made = True
-                    else:
-                        print(f"Skipped (not found): {domain_name}")
-                        skipped_count += 1
+                        if domain_exists(cursor, domain_name, domain_type):
+                            cursor.execute("DELETE FROM domainlist WHERE type = ? AND domain = ?", (domain_type, domain_name))
+                            print(f"{Fore.RED}Removed: {domain_name}{Style.RESET_ALL}")
+                            removed_count += 1
+                            changes_made = True
+                        else:
+                            print(f"{Fore.YELLOW}Skipped (not found): {domain_name}{Style.RESET_ALL}")
+                            skipped_count += 1
 
-            # Commit transaction
-            conn.commit()
-
-            # Close connection
-            conn.close()
-            break  # Break the loop if successful
+                conn.commit()
+                break
         except sqlite3.OperationalError as e:
             if str(e) == "database is locked":
                 attempts += 1
-                print(f"Database is locked, retrying in {retry_delay} seconds... (Attempt {attempts}/{retry_count})")
-                time.sleep(retry_delay)
+                print(f"{Fore.MAGENTA}Database is locked, retrying in {RETRY_DELAY} seconds... (Attempt {attempts}/{RETRY_COUNT}){Style.RESET_ALL}")
+                time.sleep(RETRY_DELAY)
             else:
-                print(f"Error: {e}")
+                print(f"{Fore.RED}Error: {e}{Style.RESET_ALL}")
                 break
         except Exception as e:
-            print(f"Error: {e}")
+            print(f"{Fore.RED}Error: {e}{Style.RESET_ALL}")
             break
 
-    # Check if all retries have been exhausted
-    if attempts == retry_count:
-        print("\nFailed to update the database after several retries.")
+    if attempts == RETRY_COUNT:
+        print(f"{Fore.RED}Failed to update the database after several retries.{Style.RESET_ALL}")
 
     return added_count, removed_count, skipped_count, changes_made
 
 def add_domain(domain_type):
     try:
-        conn = sqlite3.connect(pihole_db_path)
-        cursor = conn.cursor()
-        domain = input("Enter the domain to add: ")
-        cursor.execute("INSERT INTO domainlist (type, domain, enabled) VALUES (?, ?, 1)", (domain_type, domain))
-        conn.commit()
-        print(f"Domain {domain} added successfully.")
+        with db_connection() as conn:
+            cursor = conn.cursor()
+            domain = input("Enter the domain to add: ")
+            cursor.execute("INSERT INTO domainlist (type, domain, enabled) VALUES (?, ?, 1)", (domain_type, domain))
+            conn.commit()
+            print(f"{Fore.GREEN}Domain {domain} added successfully.{Style.RESET_ALL}")
     except Exception as e:
-        print(f"Error: {e}")
-    finally:
-        conn.close()
+        print(f"{Fore.RED}Error: {e}{Style.RESET_ALL}")
     if input("Restart Pi-hole DNS resolver? (yes/no): ").strip().lower() == 'yes':
         os.system('pihole restartdns')
 
 def remove_domain(domain_type):
     try:
-        conn = sqlite3.connect(pihole_db_path)
-        cursor = conn.cursor()
-        domain = input("Enter the domain to remove: ")
-        cursor.execute("DELETE FROM domainlist WHERE type = ? AND domain = ?", (domain_type, domain))
-        conn.commit()
-        print(f"Domain {domain} removed successfully.")
+        with db_connection() as conn:
+            cursor = conn.cursor()
+            domain = input("Enter the domain to remove: ")
+            cursor.execute("DELETE FROM domainlist WHERE type = ? AND domain = ?", (domain_type, domain))
+            conn.commit()
+            print(f"{Fore.RED}Domain {domain} removed successfully.{Style.RESET_ALL}")
     except Exception as e:
-        print(f"Error: {e}")
-    finally:
-        conn.close()
+        print(f"{Fore.RED}Error: {e}{Style.RESET_ALL}")
     if input("Restart Pi-hole DNS resolver? (yes/no): ").strip().lower() == 'yes':
         os.system('pihole restartdns')
 
 def list_domains(domain_type):
     try:
-        conn = sqlite3.connect(pihole_db_path)
-        cursor = conn.cursor()
-        cursor.execute("SELECT domain FROM domainlist WHERE type = ?", (domain_type,))
-        domains = cursor.fetchall()
-        if domains:
-            print("Current domains found in the database:")
-            for domain in domains:
-                print(domain[0])
-        else:
-            print("No domains found in the database.")
-        conn.close()
+        with db_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT domain FROM domainlist WHERE type = ?", (domain_type,))
+            domains = cursor.fetchall()
+            if domains:
+                print(f"{Fore.CYAN}Current domains found in the database:{Style.RESET_ALL}")
+                for domain in domains:
+                    print(f"{Fore.CYAN}{domain[0]}{Style.RESET_ALL}")
+            else:
+                print(f"{Fore.YELLOW}No domains found in the database.{Style.RESET_ALL}")
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"{Fore.RED}Error: {e}{Style.RESET_ALL}")
 
 def clear_domains(domain_type):
     try:
-        conn = sqlite3.connect(pihole_db_path)
-        cursor = conn.cursor()
-        cursor.execute("DELETE FROM domainlist WHERE type = ?", (domain_type,))
-        conn.commit()
-        conn.close()
-        print("All domains cleared.")
+        with db_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute("DELETE FROM domainlist WHERE type = ?", (domain_type,))
+            conn.commit()
+            print(f"{Fore.RED}All domains cleared.{Style.RESET_ALL}")
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"{Fore.RED}Error: {e}{Style.RESET_ALL}")
 
 def restart_pihole_dns():
-    restart_option = input("\nRestart Pi-hole DNS resolver? (yes/no): ").strip().lower()
+    restart_option = input(f"{Fore.MAGENTA}Restart Pi-hole DNS resolver? (yes/no): {Style.RESET_ALL}").strip().lower()
     if restart_option == 'yes':
         os.system('pihole restartdns')
+        print()
 
 def main():
     clear_screen()
 
-    print("Options: add, remove, list")
-    action = input("Choose an action: ").strip().lower()
-    clear_screen()  # Clear the screen after choosing an action
+    print(f"{Fore.CYAN}Options: add, remove, list{Style.RESET_ALL}")
+    action = input(f"{Fore.MAGENTA}Choose an action: {Style.RESET_ALL}").strip().lower()
+    clear_screen()
 
     changes_made = False
-    added_total = 0
-    removed_total = 0
-    skipped_total = 0
+    added_total = removed_total = skipped_total = 0
 
     if action == 'add':
-        print("Add domains")
-        print("0: Exact Whitelist\n1: Exact Blacklist\n2: Regex Whitelist\n3: Regex Blacklist\n4: All")
-        domain_type = int(input("Choose an option: "))
-        clear_screen()  # Clear the screen after choosing the domain type
-        if domain_type not in urls and domain_type != 4:
-            print("Invalid domain type. Exiting.")
+        print(f"{Fore.CYAN}Add domains{Style.RESET_ALL}")
+        print(f"{Fore.MAGENTA}0: Exact Whitelist\n1: Exact Blacklist\n2: Regex Whitelist\n3: Regex Blacklist\n4: All{Style.RESET_ALL}")
+        domain_type = int(input(f"{Fore.MAGENTA}Choose an option: {Style.RESET_ALL}"))
+        clear_screen()
+        if domain_type not in URLS and domain_type != 4:
+            print(f"{Fore.RED}Invalid domain type. Exiting.{Style.RESET_ALL}")
             return
 
         if domain_type == 4:
-            for type_num in urls.keys():
-                domains = get_domains_from_url(urls[type_num])
+            for type_num in URLS:
+                domains = get_domains_from_url(URLS[type_num])
                 if domains:
                     added, removed, skipped, changes = add_or_remove_domains(domains, type_num, add=True)
                     added_total += added
@@ -214,67 +185,63 @@ def main():
                     skipped_total += skipped
                     changes_made |= changes
         else:
-            domains = get_domains_from_url(urls[domain_type])
+            domains = get_domains_from_url(URLS[domain_type])
             if not domains:
-                print("\nNo domains to process. Exiting.")
+                print(f"{Fore.YELLOW}No domains to process. Exiting.{Style.RESET_ALL}")
                 return
-            added, removed, skipped, changes_made = add_or_remove_domains(domains, domain_type, add=True)
-            added_total += added
-            removed_total += 1
-            skipped_total += skipped
+            added_total, removed_total, skipped_total, changes_made = add_or_remove_domains(domains, domain_type, add=True)
     elif action == 'remove':
-        print("Remove domains")
-        print("0: Exact Whitelist\n1: Exact Blacklist\n2: Regex Whitelist\n3: Regex Blacklist\n4: All")
-        remove_option = int(input("Choose an option: "))
-        clear_screen()  # Clear the screen after choosing the remove option
+        print(f"{Fore.CYAN}Remove domains{Style.RESET_ALL}")
+        print(f"{Fore.MAGENTA}0: Exact Whitelist\n1: Exact Blacklist\n2: Regex Whitelist\n3: Regex Blacklist\n4: All{Style.RESET_ALL}")
+        remove_option = int(input(f"{Fore.MAGENTA}Choose an option: {Style.RESET_ALL}"))
+        clear_screen()
         if remove_option == 4:
-            for type_num in urls.keys():
-                domains = get_domains_from_url(urls[type_num])
+            for type_num in URLS:
+                domains = get_domains_from_url(URLS[type_num])
                 if domains:
                     added, removed, skipped, changes = add_or_remove_domains(domains, type_num, add=False)
                     added_total += added
                     removed_total += removed
                     skipped_total += skipped
                     changes_made |= changes
-        elif remove_option in urls.keys():
-            domains = get_domains_from_url(urls[remove_option])
+        elif remove_option in URLS:
+            domains = get_domains_from_url(URLS[remove_option])
             if not domains:
-                print("\nNo domains to process. Exiting.")
+                print(f"{Fore.YELLOW}No domains to process. Exiting.{Style.RESET_ALL}")
                 return
-            added, removed, skipped, changes_made = add_or_remove_domains(domains, remove_option, add=False)
-            added_total += added
-            removed_total += removed
-            skipped_total += skipped
+            added_total, removed_total, skipped_total, changes_made = add_or_remove_domains(domains, remove_option, add=False)
         else:
-            print("\nInvalid option. Exiting.")
+            print(f"{Fore.RED}Invalid option. Exiting.{Style.RESET_ALL}")
             return
     elif action == 'list':
-        print("List domains")
-        print("0: Exact Whitelist\n1: Exact Blacklist\n2: Regex Whitelist\n3: Regex Blacklist\n4: All")
-        domain_type = int(input("Choose an option: "))
-        clear_screen()  # Clear the screen after choosing the domain type for listing
-        if domain_type not in urls and domain_type != 4:
-            print("Invalid domain type. Exiting.")
+        print(f"{Fore.CYAN}List domains{Style.RESET_ALL}")
+        print(f"{Fore.MAGENTA}0: Exact Whitelist\n1: Exact Blacklist\n2: Regex Whitelist\n3: Regex Blacklist\n4: All{Style.RESET_ALL}")
+        domain_type = int(input(f"{Fore.MAGENTA}Choose an option: {Style.RESET_ALL}"))
+        clear_screen()
+        if domain_type not in URLS and domain_type != 4:
+            print(f"{Fore.RED}Invalid domain type. Exiting.{Style.RESET_ALL}")
             return
         if domain_type == 4:
-            for type_num in urls.keys():
+            for type_num in URLS:
                 list_domains(type_num)
         else:
             list_domains(domain_type)
     else:
-        print("\nInvalid action. Exiting.")
+        print(f"{Fore.RED}Invalid action. Exiting.{Style.RESET_ALL}")
         return
 
-    print("\nSummary:")
-    print(f"Total Domains Added: {added_total}")
-    print(f"Total Domains Removed: {removed_total}")
-    print(f"Total Domains Skipped: {skipped_total}")
+    print()
+    print(f"{Fore.CYAN}Summary:{Style.RESET_ALL}")
+    print(f"Total Domains Added: {Fore.GREEN}{added_total}{Style.RESET_ALL}")
+    print(f"Total Domains Removed: {Fore.RED}{removed_total}{Style.RESET_ALL}")
+    print(f"Total Domains Skipped: {Fore.YELLOW}{skipped_total}{Style.RESET_ALL}")
 
+    print()
     if changes_made:
         restart_pihole_dns()
 
-    print("\nMake sure to star this repository to show your support!")
-    print("https://github.com/slyfox1186/pihole-regex")
+    print(f"{Fore.CYAN}Make sure to star this repository to show your support!{Style.RESET_ALL}")
+    print(f"{Fore.CYAN}https://github.com/slyfox1186/pihole-regex{Style.RESET_ALL}")
 
 if __name__ == "__main__":
     main()
