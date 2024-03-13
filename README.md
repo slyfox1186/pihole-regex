@@ -30,7 +30,7 @@ To get started, ensure your system meets the following requirements:
 
 ```bash
 sudo apt-get update
-sudo apt-get install -y curl python3 sqlite3
+sudo apt-get install -y curl python3 python3-colorama sqlite3
 ```
 
 ### Remote Management Tools
