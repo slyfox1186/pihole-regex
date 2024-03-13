@@ -1,25 +1,27 @@
-(\.|^)hokaclearances\.com$ -- Hacker website - They install a backdoor trojan on your pc and remote in secretly to record you on webcam and copy a list of all your file paths
-(\.|^)gardensuny\.com$ -- Hacker website - They install a backdoor trojan on your pc and remote in secretly to record you on webcam and copy a list of all your file paths
-(\.|^)buybuggle\.com$ -- Hacker website - They install a backdoor trojan on your pc and remote in secretly to record you on webcam and copy a list of all your file paths
 (\.|^)((www|(w[0-9]\.)?web|media((-[a-z]{3}|\.[a-z]{4})[0-9]{1,2}-[0-9](\.|-)(cdn|fna))?)\.)?whatsapp\.(com|net)$ -- WhatsApp
 (\.|^)ad-score\.com$ -- Overwolf Desktop App (PC Games)
 (\.|^)ahoravideo.*$ -- Suspected Virus Harboring Websites
 (\.|^)antivirushub\.com$ -- 1337x.to - Sneaky redirect domains that probably log your IP and any other information it gets from your browser sending a GET or POST request.
 (\.|^)appsync-api\.us-[a-z]+-[0-9]?\.amazonaws\.com$ -- AdultTime
 (\.|^)bideo.*$ -- Suspected Virus Harboring Websites
+(\.|^)buybuggle\.com$ -- Hacker website - They install a backdoor trojan on your pc and remote in secretly to record you on webcam and copy a list of all your file paths
+(\.|^)client\.mchsi\.com$ -- BitTorrent - Background Tracking
 (\.|^)deimos3.apple\.com$ -- Apple
 (\.|^)fairu.*$ -- Suspected Virus Harboring Websites
 (\.|^)fake\.video\.url\.webm$ -- Overwolf Desktop App (PC Games)
 (\.|^)filesupdating\.com$ -- iTop VPN
 (\.|^)gammaentertainment\.com$ -- AdultTime
+(\.|^)gardensuny\.com$ -- Hacker website - They install a backdoor trojan on your pc and remote in secretly to record you on webcam and copy a list of all your file paths
 (\.|^)getbeamer\.com$ -- AdultTime
 (\.|^)giraffic\.com$ -- Samsung Smart TV
+(\.|^)hokaclearances\.com$ -- Hacker website - They install a backdoor trojan on your pc and remote in secretly to record you on webcam and copy a list of all your file paths
 (\.|^)ibs\.lgappstv\.com$ -- LG Smart TVs
 (\.|^)impala-media-production\.s3\.amazonaws\.com$ -- Snapchat
 (\.|^)internetat\.tv$ -- Samsung Smart TV
 (\.|^)lambda-url\.us-east-1\.on\.aws$ -- AdultTime
 (\.|^)lgsmartad\.com$ -- LG Smart TVs
 (\.|^)log[0-9]*\.spotify\.com$ -- Spotify
+(\.|^)lstartanalystconcepts\.org\.uk$ -- BitTorrent - Background Tracking
 (\.|^)ok\.ru$ -- OK.ru
 (\.|^)pavv\.co\.kr$ -- Samsung Smart TV
 (\.|^)privatproxy.*$ -- Suspected Virus Harboring Websites
