@@ -58,7 +58,6 @@
 ^m\.(hotmail|reddit|reuters|twitch|weeklyad.target|yahoo|youtube)\.(com|tv)$ -- Mobile and Tablets
 ^ns[1-2]?\.dropbox\.com$ -- DropBox
 ^orderprocessor.*\.ol\.epicgames\.com$ -- Epic Games - Required to purchase games on Windows
-^orderprocessor.*\.ol\.epicgames\.com$ -- Epic Games - Required to purchase games on Windows
 ^otnprd[0-9]+?\.samsungcloudsolution\.net$ -- Smart TV
 ^outlook\.(live|office(|365))\.com$ -- Microsoft OneDrive, Azure, Windows Essentials updates, other, xboxlive required for saves to the cloud
 ^payment.*\.ol\.epicgames\.com -- Epic Games - Required for payments to process
