@@ -1,3 +1,15 @@
+blog.topazlabs.com -- TopazLabs - Legit purposes
+community-cdn.topazlabs.com -- TopazLabs - Legit purposes
+community-staging.topazlabs.com -- TopazLabs - Legit purposes
+community.topazlabs.com -- TopazLabs - Legit purposes
+d-cloudflare.topazlabs.com -- TopazLabs - Legit purposes
+docs.topazlabs.com -- TopazLabs - Legit purposes
+downloads-staging.topazlabs.com -- TopazLabs - Legit purposes
+downloads.topazlabs.com -- TopazLabs - Legit purposes
+guide.topazlabs.com -- TopazLabs - Legit purposes
+help.topazlabs.com -- TopazLabs - Legit purposes
+learn.topazlabs.com -- TopazLabs - Legit purposes
+models-r2.topazlabs.com -- TopazLabs - Legit purposes
 79423.analytics.edgekey.net -- REHL online learning, training embedded videos to work properly
 accounts.epicgames.com -- Required to login to your account
 android.clients.google.com -- Google Play
