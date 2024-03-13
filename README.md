@@ -32,6 +32,10 @@ To get started, ensure your system meets the following requirements:
 sudo apt-get update
 sudo apt-get install -y curl python3 python3-colorama sqlite3
 ```
+Another way to install the colorama module:
+```bash
+pip install colorama
+```
 
 ### Remote Management Tools
 
