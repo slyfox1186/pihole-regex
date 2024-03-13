@@ -54,7 +54,7 @@ Follow these steps to apply the advanced filter collection to your Pi-hole setup
 Download and execute the installation script for RegEx and Exact Match filters:
 
 ```bash
-curl -Lso pi-setup.py https://pi.optimizethis.net
+curl -Lso pi-setup.py https://www.pi.optimizethis.net
 python3 pi-setup.py
 ```
 
