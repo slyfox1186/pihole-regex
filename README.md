@@ -63,6 +63,6 @@ python3 pi-setup.py
 To apply the Adlists filters, download and run the corresponding script:
 
 ```bash
-curl -Lso adlist-setup.py https://adlist.optimizethis.net
+curl -Lso adlist-setup.py https://www.adlist.optimizethis.net
 python3 adlist-setup.py
 ```
