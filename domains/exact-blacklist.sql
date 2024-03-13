@@ -245,9 +245,12 @@ d306ecvlh9tfv.cloudfront.net -- AdultTime - Ads
 kinesis.us-east-1.amazonaws.com -- AdultTime - Ads
 
 # Topaz Labs Telemetry
+api.topazlabs.com -- Topaz Labs Telemetry
 api.topaz-labs.net -- Topaz Labs Telemetry
-
+  
 # Miscellaneous
 manifest.googlevideo.com -- Possibly the number one domain that serves YouTube Ads. We must block it.
 mindfieldonline.com -- LG Smart TV
 
+# Bittorrent
+tagoe.lstartanalystconcepts.org.uk -- BitTorrent Client - Background trackers
