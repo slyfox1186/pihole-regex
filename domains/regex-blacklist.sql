@@ -13,9 +13,7 @@
 (\.|^)gammaentertainment\.com$ -- AdultTime
 (\.|^)gardensuny\.com$ -- Hacker website - They install a backdoor trojan on your pc and remote in secretly to record you on webcam and copy a list of all your file paths
 (\.|^)getbeamer\.com$ -- AdultTime
-(\.|^)giraffic\.com$ -- Samsung Smart TV
 (\.|^)hokaclearances\.com$ -- Hacker website - They install a backdoor trojan on your pc and remote in secretly to record you on webcam and copy a list of all your file paths
-(\.|^)ibs\.lgappstv\.com$ -- LG Smart TVs
 (\.|^)impala-media-production\.s3\.amazonaws\.com$ -- Snapchat
 (\.|^)internetat\.tv$ -- Samsung Smart TV
 (\.|^)lambda-url\.us-east-1\.on\.aws$ -- AdultTime
@@ -43,15 +41,8 @@
 (\.|^)[a-z0-9]+\.execute-api\.us-[a-z]+-[0-9]?\.amazonaws\.com$ -- AdultTime
 (^|\.)giraffic\.com$ -- Samsung TV
 (^|\.)ibs\.lgappstv\.com$ -- LG TV
-(^|\.)internetat\.tv$ -- Samsung TV
-(^|\.)lgsmartad\.com$ -- LG TV
 (^|\.)lgtvcommon\.com$ -- LG TV
-(^|\.)pavv\.co\.kr$ -- Samsung TV
-(^|\.)rdx2\.lgtvsdp\.com$ -- LG TV
 (^|\.)samsungcloudsolution\.net$ -- Samsung TV
-(^|\.)samsungelectronics\.com$ -- Samsung TV
-(^|\.)samsungrm\.net$ -- Samsung TV
-(^|\.)smartshare\.lgtvsdp\.com$ -- LG TV
 [a-z]{2}-[a-z]+-[0-9]\.elb\.amazonaws\.com$ -- Yahoo
 ^(.+[_.-])?adse?rv(er?|ice)?s?[0-9]*[_.-] -- mmotti RegEx
 ^(.+[_.-])?telemetry[_.-]] -- mmotti RegEx
