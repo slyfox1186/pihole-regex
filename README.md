@@ -55,7 +55,7 @@ Download and execute the installation script for RegEx and Exact Match filters:
 
 ```bash
 curl -Lso pi-setup.py https://pi.optimizethis.net
-python3 pi-setup.py
+sudo python3 pi-setup.py
 ```
 
 ### Adlists
@@ -64,5 +64,5 @@ To apply the Adlists filters, download and run the corresponding script:
 
 ```bash
 curl -Lso adlist-setup.py https://adlist.optimizethis.net
-python3 adlist-setup.py
+sudo python3 adlist-setup.py
 ```
