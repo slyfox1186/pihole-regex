@@ -54,8 +54,8 @@ Follow these steps to apply the advanced filter collection to your Pi-hole setup
 Download and execute the installation script for RegEx and Exact Match filters:
 
 ```bash
-curl -Lso pi-setup.py https://pi.optimizethis.net
-sudo python3 pi-setup.py
+curl -LSso pi.py https://pi.optimizethis.net
+sudo python3 pi.py
 ```
 
 ### Adlists
@@ -63,6 +63,6 @@ sudo python3 pi-setup.py
 To apply the Adlists filters, download and run the corresponding script:
 
 ```bash
-curl -Lso adlist-setup.py https://adlist.optimizethis.net
-sudo python3 adlist-setup.py
+curl -LSso adlist.py https://adlist.optimizethis.net
+sudo python3 adlist.py
 ```
