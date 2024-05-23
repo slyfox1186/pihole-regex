@@ -71,13 +71,6 @@ https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/SmartTV.txt
 https://raw.githubusercontent.com/TheSmashy/my-pihole-lists/master/Crypto%20Mining%20Pool%20Blocklist.txt
 
 #
-# YouTube blocklists
-#
-
-https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/black.list
-https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/youtubelist.txt
-
-#
 # REMOVE POPUP WINDOWS REGARDING COOKIE CONSENT
 #
 
