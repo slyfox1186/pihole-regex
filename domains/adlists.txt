@@ -6,7 +6,7 @@
 ##  analytics which told me how often each list produces a "hit" of some nature.
 ##  I keep the least amount of adlists required to cover all the domains with
 ##  "hits" registered. This allows the adlists database to stay as slim as possible
-##  and helps speed up Pihole's efficiency overall.
+##  which helps speed up Pihole's efficiency overall.
 ##
 ##  GitHub Repository: https://github.com/yubiuser/pihole_adlist_tool
 ##
@@ -21,16 +21,10 @@
 ##
 ###############################################################################################################
 
-#
 # slyfox1186's blocklists
-#
-
 https://raw.githubusercontent.com/dfederlein/dnsbl-dfed/master/spotifyads.txt
 
-#
 # Firebog "Tick" blocklists
-#
-
 https://adaway.org/hosts.txt
 https://blocklistproject.github.io/Lists/fraud.txt
 https://blocklistproject.github.io/Lists/malware.txt
@@ -56,21 +50,12 @@ https://v.firebog.net/hosts/Prigent-Crypto.txt
 https://v.firebog.net/hosts/RPiList-Malware.txt
 https://v.firebog.net/hosts/static/w3kbl.txt
 
-#
 # Perflyst blocklists - github.com/Perflyst/PiHoleBlocklist
-#
-
 https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/android-tracking.txt
 https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/SmartTV.txt
 
-#
 # Coin mining/hijackers
-#
-
 https://raw.githubusercontent.com/TheSmashy/my-pihole-lists/master/Crypto%20Mining%20Pool%20Blocklist.txt
 
-#
 # REMOVE POPUP WINDOWS REGARDING COOKIE CONSENT
-#
-
 https://raw.githubusercontent.com/johang/cookie-consent-hosts/master/hosts.txt
