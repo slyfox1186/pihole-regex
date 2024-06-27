@@ -18,7 +18,6 @@ anti-ad.net -- github.com/mmotti/pihole-regex
 api.flightproxy.teams.microsoft.com -- Microsoft
 api.gitkraken.com -- GitHub - Advanced Git CLI Program
 api.termius.com -- Termius SSH Desktop App - Required to login to your account
-api.termius.com -- Termius SSH Desktop Client Required to login to your Account
 appboot.netflix.com -- Netflix
 appleglobal.102.112.2o7.net -- Apple iOS - Required to add someone to your account recovery list
 applicast.ga.sony.net -- Sony
@@ -84,7 +83,6 @@ d27xxe7juh1us6.cloudfront.net -- adulttime.com - required main cdn
 d2gatte9o95jao.cloudfront.net -- adulttime.com - required main cdn
 d2v02itv0y9u9t.cloudfront.net -- Twitch - Required for streamer video feeds to work
 d3a3ewgd1iewwz.cloudfront.net -- AdultTime - Required to load performer headshot photos in a browser
-d3a3ewgd1iewwz.cloudfront.net -- adulttime.com - required main cdn
 d3ag4hukkh62yn.cloudfront.net -- Amazon False Positive
 d83eunklitikj.cloudfront.net -- adulttime.com - required main cdn
 daily-mix.scdn.co -- Spotify
@@ -119,7 +117,6 @@ edge.gycpi.b.yahoodns.net -- Yahoo - If not whitelisted it breaks the entire web
 emea.ng.msg.teams.microsoft.com -- Microsoft
 emea.pptservicescast.officeapps.live.com -- Microsoft
 encore.scdn.co -- Spotify - Required to login to your account through a browser
-entitlement-public-service-prod.ak.epicgames.com -- Epic Games
 entitlement-public-service-prod.ak.epicgames.com -- Epic Games Required to purchase games
 entitlement.auth.adobe.com -- Adobe
 eos-gateway-ingressv2-prod-c2-w4.befa.live.use1a.on.epicgames.com -- Epic Games - Loads essential game traffic for online play
@@ -182,7 +179,6 @@ imagesak.secureserver.net -- GoDaddy - Webmail buttons
 img.vidible.tv -- Video delivery systems, popular in entertainment and news sites
 imgix.net -- Misc
 imgs.xkcd.com -- XKCD - Used to deliver images
-incoming.telemetry.mozilla.org -- Firefox Browser - Required to log into your account
 incoming.telemetry.mozilla.org -- Firefox Browser - Required to sync your user account
 instagram.c10r.facebook.com -- Facebook
 instantmessaging-pa.googleapis.com -- Google - An important domain used to provide APIs to various Google services
@@ -365,7 +361,6 @@ tracking.dpd.de -- Misc
 tracking.epicgames.com -- Epic Games - Required to make a purchase on the website
 traffic.libsyn.com -- Used in Pocketcasts app to serve and download podcasts
 trailers-fame.gammacdn.com -- AdultTime - A required domain of the site to access images, videos, etc
-transform.gammacdn.com -- AdultTime - Required to display recommended videos
 transform.gammacdn.com -- AdultTime essential video and images
 translate.google.com -- Google
 tuner-api.hdhomerun.com -- SiliconDust HDHomeRun - Both required for firmware updates
@@ -397,16 +392,12 @@ vcs.vdspf.com -- Panasonic Viera TV
 video-edge-046b4c.atl01.abs.hls.ttvnw.net -- Twitch - Required for streamer video feeds to work
 video-edge-078cfa.atl01.abs.hls.ttvnw.net -- Twitch - Required for streamer video feeds to work
 video-edge-55b156.pdx01.abs.hls.ttvnw.net -- Twitch - Required for streamer video feeds to work
-video-edge-55b156.pdx01.abs.hls.ttvnw.net -- Twitch TV Ad Serving Domain
 video-edge-830e74.atl01.abs.hls.ttvnw.net -- Twitch - Required for streamer video feeds to work
 video-edge-833564.atl01.abs.hls.ttvnw.net -- Twitch - Required for streamer video feeds to work
-video-edge-833564.atl01.abs.hls.ttvnw.net -- Twitch TV Ad Serving Domain
 video-stats.l.google.com -- Google - Used to record YouTube watch history. Blocking this domain will pause your watch history on YouTube
 video-stats.video.google.com -- Required for the YouTube Android app to work
 video-weaver.atl01.hls.ttvnw.net -- Twitch - Required for streamer video feeds to work
-video-weaver.atl01.hls.ttvnw.net -- Twitch TV Ad Serving Domain
 video-weaver.jfk04.hls.ttvnw.net -- Twitch - Required for streamer video feeds to work
-video-weaver.jfk04.hls.ttvnw.net -- Twitch TV Ad Serving Domain
 videos.vidible.tv -- Video delivery systems, popular in entertainment and news sites
 videothumb.gammacdn.com -- AdultTime essential video and images
 vidtech.cbsinteractive.com -- Used to deliver videos over the internet
