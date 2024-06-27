@@ -126,6 +126,4 @@ video-edge-55b156.pdx01.abs.hls.ttvnw.net -- Twitch Video Ads
 video-edge-6dca22.atl01.abs.hls.ttvnw.net -- Twitch Video Ads
 video-edge-833564.atl01.abs.hls.ttvnw.net -- Twitch Video Ads
 video-edge-8491b8.pdx01.abs.hls.ttvnw.net -- Twitch Video Ads
-video-weaver.atl01.hls.ttvnw.net -- Twitch Video Ads
-video-weaver.jfk04.hls.ttvnw.net -- Twitch Video Ads
 www.ueiwsp.com -- LG Smart TV
