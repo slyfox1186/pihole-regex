@@ -396,8 +396,6 @@ video-edge-830e74.atl01.abs.hls.ttvnw.net -- Twitch - Required for streamer vide
 video-edge-833564.atl01.abs.hls.ttvnw.net -- Twitch - Required for streamer video feeds to work
 video-stats.l.google.com -- Google - Used to record YouTube watch history. Blocking this domain will pause your watch history on YouTube
 video-stats.video.google.com -- Required for the YouTube Android app to work
-video-weaver.atl01.hls.ttvnw.net -- Twitch - Required for streamer video feeds to work
-video-weaver.jfk04.hls.ttvnw.net -- Twitch - Required for streamer video feeds to work
 videos.vidible.tv -- Video delivery systems, popular in entertainment and news sites
 videothumb.gammacdn.com -- AdultTime essential video and images
 vidtech.cbsinteractive.com -- Used to deliver videos over the internet
