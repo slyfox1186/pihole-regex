@@ -1,4 +1,5 @@
 (\.|^)((www|(w[0-9]\.)?web|media((-[a-z]{3}|\.[a-z]{4})[0-9]{1,2}-[0-9](\.|-)(cdn|fna))?)\.)?whatsapp\.(com|net)$ -- WhatsApp
+(\.|^)[a-z0-9]+\.execute-api\.us-[a-z]+-[0-9]?\.amazonaws\.com$ -- AdultTime
 (\.|^)ad-score\.com$ -- Overwolf Desktop App (PC Games)
 (\.|^)ahoravideo.*$ -- Suspected Virus Harboring Websites
 (\.|^)antivirushub\.com$ -- 1337x.to - Sneaky redirect domains that probably log your IP and any other information it gets from your browser sending a GET or POST request.
@@ -30,6 +31,7 @@
 (\.|^)sc-cdn\.net$ -- Snapchat
 (\.|^)shadowadcity\.com$ -- 1337x.to - Sneaky redirect domains that probably log your IP and any other information it gets from your browser sending a GET or POST request.
 (\.|^)smartshare\.lgtvsdp\.com$ -- LG Smart TVs
+(\.|^)steamcommurnily\.com$ -- Confirmed hacker website with malicious intent - DANGER
 (\.|^)stickyadstv\.com\.akadns\.net$ -- Curseforge App Ads
 (\.|^)trafyield\.com$ -- 1337x.to - Sneaky redirect domains that probably log your IP and any other information it gets from your browser sending a GET or POST request.
 (\.|^)tvinteractive\.tv$ -- Vizio Smart TV
@@ -38,7 +40,6 @@
 (\.|^)wmail.*$ -- Suspected Virus Harboring Websites
 (\.|^)xyz$ -- Bittorrent
 (\.|^)youtube-nocookie\.com$ -- YouTube
-(\.|^)[a-z0-9]+\.execute-api\.us-[a-z]+-[0-9]?\.amazonaws\.com$ -- AdultTime
 (^|\.)giraffic\.com$ -- Samsung TV
 (^|\.)ibs\.lgappstv\.com$ -- LG TV
 (^|\.)lgtvcommon\.com$ -- LG TV
@@ -48,6 +49,10 @@
 ^(.+[_.-])?telemetry[_.-]] -- mmotti RegEx
 ^(collect|usage)-(eu|us)-fy[0-9]+\.myhomescreen\.(tv|tvcollect)$ -- Other Smart TVs
 ^.*iad.*\.amazon\.com$ -- Amazon
+^[a-rt-z][a-z]{10,14}$ -- LG TV
+^[a-z0-9]+\.ssm[1-2]?\.internet\.sony\.tv$ -- Sony Smart TV
+^[a-z]+ad\.[a-z]+\.com\.edgesuite\.net$ -- Take out all ad servers in one go for master domain com.edgesuite.net
+^[a-z]{2}-[a-z]{2}-[a-z]{2}\.ybp\.gysm\.yahoodns\.net$ -- Yahoo
 ^a-content-[a-z0-9]+-[0-9]+\.[a-z]{2}-[a-z]+-[0-9]\.elb\.amazonaws\.com$ -- Yahoo
 ^ad([sxv]?[0-9]*|system)[_.-]([^.[:space:]]+\.){1,}|[_.-]ad([sxv]?[0-9]*|system)[_.-]] -- mmotti RegEx
 ^adim(age|g)s?[0-9]*[_.-]] -- mmotti RegEx
@@ -75,7 +80,3 @@
 ^stat(s|istics)?[0-9]*[_.-]] -- mmotti RegEx
 ^uplynk-beacon-newvpc-[0-9]+\.[a-z]{2}-[a-z]+-[0-9]\.elb\.amazonaws\.com$ -- Yahoo
 ^v-[a-z0-9]+\.wc\.yahoodns\.net$ -- Yahoo
-^[a-rt-z][a-z]{10,14}$ -- LG TV
-^[a-z0-9]+\.ssm[1-2]?\.internet\.sony\.tv$ -- Sony Smart TV
-^[a-z]+ad\.[a-z]+\.com\.edgesuite\.net$ -- Take out all ad servers in one go for master domain com.edgesuite.net
-^[a-z]{2}-[a-z]{2}-[a-z]{2}\.ybp\.gysm\.yahoodns\.net$ -- Yahoo
