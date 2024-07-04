@@ -44,6 +44,7 @@ cp801.prod.do.dsp.mp.microsoft.com -- Microsoft
 creative.ak.fbcdn.net -- Facebook
 crl.entrust.net -- Apple
 ctldl.windowsupdate.com -- Microsoft - Required for getting the latest Windows Updates
+d29g4g2dyqv443.cloudfront.net -- Nvidia CUDA SDK Toolkit Website
 daily-mix.scdn.co -- Spotify
 dailymix-images.scdn.co -- Spotify
 dataplicity.com -- Raspberry-Pi - Remotely control your pi
@@ -52,6 +53,7 @@ dev.virtualearth.net -- Microsoft - Used by Bing Maps to get information about v
 developer.n.shifen.com -- Crucial CDN server
 deviceportal.nettvservices.com -- Philips TV
 directvnow.com -- Misc
+dirms4qsy6412.cloudfront.net -- Nvidia CUDA SDK Toolkit Website
 displaycatalog.mp.microsoft.com -- Microsoft - Used for Xbox updates, game downloads, achievements
 dl.delivery.mp.microsoft.com -- Used to deliver updates to Microsoft products
 dl.dropbox.com -- Dropbox - Used to download files from Dropbox
@@ -177,6 +179,7 @@ no-ip.com -- No-IP offers DNS services, email, network monitoring and SSL certif
 node.plexapp.com -- Plex Media Server
 northeurope-prod-4.notifications.teams.microsoft.com -- Microsoft
 nrdp.prod.cloud.netflix.com -- Netflix - Needed to log in on Nvidia Shield TV
+nvidia.tt.omtrdc.net -- Nvidia CUDA SDK Toolkit Website
 o1.email.plex.tv -- Plex Media Server
 o2.sg0.plex.tv -- Plex Media Server
 objects.githubusercontent.com -- Github - Required CDN for downloading packages
@@ -221,8 +224,10 @@ secure.surveymonkey.com -- Used by Survey Monkey to deliver surveys
 sendbirdproxyk8s.chat.redditmedia.com -- Reddit
 services.sonarr.tv -- Plex Media Server - Sonarr is a PVR for Usenet and BitTorrent users.
 setup.icloud.com -- Apple
+sh.rustup.rs -- RustUp Linux Install Script
 sharepoint.com -- Misc
 signal.org -- Signal
+signin.nexon.com -- The First Decendant
 skyhook.sonarr.tv -- Plex Media Server - Sonarr is a PVR for Usenet and BitTorrent users.
 sls.update.microsoft.com.akadns.net -- Microsoft
 society6.com -- Misc
@@ -234,12 +239,14 @@ staging.plex.tv -- Plex Media Server
 static-assets-prod.unrealengine.com -- Load the Epic Games desktop app
 static-cdn.jtvnw.net -- Twitch.tv - Required to load icons
 static.opensubtitles.org -- Misc
+static.rust-lang.org -- RustUp Linux Install Script
 statics.teams.cdn.office.net -- Microsoft
 stats.foldingathome.org -- github.com/mmotti/pihole-regex
 stats.stackexchange.com -- github.com/mmotti/pihole-regex
 stats.streamelements.com -- Misc
 storage.live.com -- Microsoft
 storage.signal.org -- Signal
+storeedgefd.dsx.mp.microsoft.com -- Microsoft Store
 styles.redditmedia.com -- Reddit
 substrate.office.com -- Microsoft
 surveymonkey.com -- Misc
@@ -261,7 +268,6 @@ tlu.dl.delivery.mp.microsoft.com -- Microsoft Store
 tracking-protection.cdn.mozilla.net -- Firefox
 tracking.dpd.de -- Misc
 traffic.libsyn.com -- Used in Pocketcasts app to serve and download podcasts
-storeedgefd.dsx.mp.microsoft.com -- Microsoft Store
 tuner-api.hdhomerun.com -- SiliconDust HDHomeRun - Both required for firmware updates
 turn1.whispersystems.org -- Misc
 tv.deezer.com -- HBBTV
