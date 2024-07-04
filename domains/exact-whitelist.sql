@@ -119,6 +119,7 @@ img.vidible.tv -- Video delivery systems, popular in entertainment and news site
 imgix.net -- Misc
 imgs.xkcd.com -- XKCD - Used to deliver images
 incoming.telemetry.mozilla.org -- Firefox Browser - Required to sync your user account
+index.crates.io -- Cargo Linux Installer CDN
 intercom.io -- Live chat platform for websites to chat with the website owner. Blocking this domain will block the chat widget
 ipv6.msftncsi.com -- Microsoft ipv6 connection checker
 itv.ard.de -- HBBTV
