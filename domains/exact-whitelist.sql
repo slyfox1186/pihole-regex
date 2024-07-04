@@ -17,6 +17,7 @@ auth.samsungosp.com -- Samsung TV
 auth.split.io -- Spotify - Required to login to Spotify through browsers
 authsvc.teams.microsoft.com -- Microsoft
 avpro.global.yamaha.com -- Yamaha AV Receivers - Blocks system updates on rx-v685 so we whitelist
+bbuseruploads.s3.amazonaws.com -- Required to build the Linux package x264 from source code.
 best.aliexpress.com -- AliExpress - online shopping site
 bit.ly -- URL Shortener
 bufferapp.com -- Misc
