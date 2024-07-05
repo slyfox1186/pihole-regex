@@ -174,7 +174,6 @@ my.plexapp.com -- Plex Media Server
 netdna.bootstrapcdn.com -- Crucial CDN server
 netflix.com -- Netflix
 newjams-images.scdn.co -- Spotify
-ngfts.lge.com -- LG TV
 nine.plugins.plexapp.com -- Plex Media Server
 nleditor.osi.office.net -- Microsoft
 no-ip.com -- No-IP offers DNS services, email, network monitoring and SSL certificates
