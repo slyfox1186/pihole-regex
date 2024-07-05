@@ -48,7 +48,6 @@ ctldl.windowsupdate.com -- Microsoft - Required for getting the latest Windows U
 d29g4g2dyqv443.cloudfront.net -- Nvidia CUDA SDK Toolkit Website
 daily-mix.scdn.co -- Spotify
 dailymix-images.scdn.co -- Spotify
-dataplicity.com -- Raspberry-Pi - Remotely control your pi
 delivery.vidible.tv -- Video delivery systems, popular in entertainment and news sites
 dev.virtualearth.net -- Microsoft - Used by Bing Maps to get information about various places
 developer.n.shifen.com -- Crucial CDN server
@@ -112,7 +111,6 @@ i.s-microsoft.com -- Microsoft
 i.scdn.co -- Spotify
 icloud.com -- Apple
 iduwdjf.qiniudns.com -- Crucial CDN server
-iij.ad.jp -- github.com/mmotti/pihole-regex
 images.ctfassets.net -- AdultTime.com - Icons
 images.vizio.com -- Vizio
 imagesak.secureserver.net -- GoDaddy - Webmail buttons
@@ -142,7 +140,6 @@ libs.baidu.com -- Crucial CDN server
 licensing.mp.microsoft.com -- Microsoft
 lineup-images.scdn.co -- Spotify
 linkedin.com -- Misc
-linuxtracker.org -- Linux
 lm.licenses.adobe.com -- Adobe
 location-api.hdhomerun.com -- SiliconDust HDHomeRun - Required for firmware updates
 login.aliexpress.com -- Misc
@@ -176,7 +173,6 @@ netflix.com -- Netflix
 newjams-images.scdn.co -- Spotify
 nine.plugins.plexapp.com -- Plex Media Server
 nleditor.osi.office.net -- Microsoft
-no-ip.com -- No-IP offers DNS services, email, network monitoring and SSL certificates
 node.plexapp.com -- Plex Media Server
 northeurope-prod-4.notifications.teams.microsoft.com -- Microsoft
 nrdp.prod.cloud.netflix.com -- Netflix - Needed to log in on Nvidia Shield TV
@@ -227,7 +223,6 @@ services.sonarr.tv -- Plex Media Server - Sonarr is a PVR for Usenet and BitTorr
 setup.icloud.com -- Apple
 sh.rustup.rs -- RustUp Linux Install Script
 sharepoint.com -- Misc
-signal.org -- Signal
 signin.nexon.com -- The First Decendant
 skyhook.sonarr.tv -- Plex Media Server - Sonarr is a PVR for Usenet and BitTorrent users.
 sls.update.microsoft.com.akadns.net -- Microsoft
@@ -294,7 +289,6 @@ vidtech.cbsinteractive.com -- Used to deliver videos over the internet
 viewer.content.glympse.com -- Papa Johns Pizza - Required to PapaTrack to work (where is my pizza)
 vimeo.com -- Misc
 vo.aicdn.com -- Crucial CDN server
-wa.me -- Misc
 weeklyad.target.com.edgesuite.net -- Target
 widget-cdn.rpxnow.com -- Required to log into teambeachbody.com
 wikipedia.org -- Misc
@@ -310,31 +304,22 @@ www.ad.nl -- github.com/mmotti/pihole-regex
 www.adf.ly -- URL Shortener
 www.aliexpress.com -- Shopping
 www.appleiphonecell.com -- Apple
-www.dataplicity.com -- Used to remotely control your Raspberry-Pi
 www.duplicatephotocleaner.com -- Legitimate duplicate photo removing software on Windows
 www.ecdinterface.philips.com -- Philips TV
 www.g2a.com -- G2A is a legit discount software website for items such as video games
 www.howtogeek.com -- Misc
-www.icloud.com -- Apple
-www.iij.ad.jp -- github.com/mmotti/pihole-regex
-www.linuxtracker.org -- Linux
 www.msftconnecttest.com -- Microsoft - Used by Windows systems to check internet connectivity
-www.no-ip.com -- NO-IP - Offers DNS services, email, network monitoring and SSL certificates
 www.opensubtitles.org -- Plex Media Server
 www.propublica.org -- Government information website
 www.refersion.com -- Misc
 www.samsungotn.net -- Samsung TV
 www.shellcheck.net -- One of the best sites to help you troubleshoot your shell scripts when they are giving trouble
-www.signal.org -- Signal
 www.solaredge.com -- Misc
 www.squaretrade.com -- Shopping
 www.vbsedit.com -- Safe website for learning to code in VBScript
-www.wa.me -- Misc
-www.yahoo.com -- Yahoo had to be whitelisted due to some unknown conflict with the blacklist domains take domain over the whitelist
 x-default-stgec.uplynk.com -- DiscoveryPlus App - Required on Nvidia Shield TV
 xbox.ipv6.microsoft.com -- Microsoft Xbox - Used for Xbox updates, game downloads, achievements
 xp.apple.com -- Apple
-yahoo.com -- Yahoo
 yastatic.net -- Crucial CDN server
 z.cdn.turner.com -- Turner
 zeustracker.abuse.com -- Misc
