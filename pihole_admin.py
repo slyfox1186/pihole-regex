@@ -10,9 +10,9 @@ import sys
 import time
 from collections import defaultdict
 from datetime import datetime, timedelta
+from fuzzywuzzy import fuzz
 from tabulate import tabulate
 from typing import List, Dict, Any
-from fuzzywuzzy import fuzz
 
 class PiholeDBAdmin:
     def __init__(self, gravity_db_path: str = "/etc/pihole/gravity.db", query_db_path: str = "/etc/pihole/pihole-FTL.db"):
