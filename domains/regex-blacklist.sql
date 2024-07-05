@@ -1,4 +1,3 @@
-(\.|^)((www|(w[0-9]\.)?web|media((-[a-z]{3}|\.[a-z]{4})[0-9]{1,2}-[0-9](\.|-)(cdn|fna))?)\.)?whatsapp\.(com|net)$ -- WhatsApp
 (\.|^)[a-z0-9]+\.execute-api\.us-[a-z]+-[0-9]?\.amazonaws\.com$ -- AdultTime
 (\.|^)ad-score\.com$ -- Overwolf Desktop App (PC Games)
 (\.|^)ahoravideo.*$ -- Suspected Virus Harboring Websites
