@@ -1,5 +1,3 @@
-Got it, here's the updated markdown script with the announcement of the new "pihole_admin.py" script:
-
 # Pi-hole® v5+ FTLDNS: Advanced Filter Collection
 Maximize the efficiency of your Pi-hole setup with our extensive collection of Regular Expressions (RegEx) and Exact Match filters. Designed to block a broad range of domains effectively, our filters simplify your blocking strategy by minimizing the need for numerous individual entries. Additionally, this repository includes customizable Exact Match filters for precise domain blocking and tools to facilitate the easy management of Adlist Group entries.
 
@@ -20,6 +18,32 @@ We're excited to announce the addition of a new script to our Pi-hole toolset! T
 
 This tool is designed to simplify the management of your Pi-hole and provide deeper insights into your network's activity. You can find the script in our GitHub repository at [link-to-script].
 
+## Prerequisites
+To use the "pihole_admin.py" script, you will need to install the following Python packages:
+
+- `argparse`
+- `logging`
+- `matplotlib`
+- `requests`
+- `sqlite3`
+- `tabulate`
+- `typing`
+- `fuzzywuzzy`
+
+You can install these packages using pip:
+
+```bash
+pip install argparse logging matplotlib requests sqlite3 tabulate typing fuzzywuzzy
+```
+
+Alternatively, you can install the packages using the following commands:
+
+```bash
+sudo apt-get update
+sudo apt-get install -y python3 python3-pip
+pip3 install argparse logging matplotlib requests sqlite3 tabulate typing fuzzywuzzy
+```
+
 ## Quick Links
 - **[Pi-hole Official Website](https://pi-hole.net/)** - Your starting point for Pi-hole setup and comprehensive information.
 
@@ -37,20 +61,6 @@ Our expertly curated filter lists are tailored to bolster your Pi-hole's domain 
 ## Getting Started
 ### Compatibility
 This collection is compatible with Pi-hole (FTLDNS) version 5 and newer.
-
-### Prerequisites
-To get started, ensure your system meets the following requirements:
-
-```bash
-sudo apt-get update
-sudo apt-get install -y curl python3 python3-colorama sqlite3
-```
-
-Another way to install the colorama module:
-
-```bash
-pip install colorama
-```
 
 ### Remote Management Tools
 For managing your Pi-hole remotely, consider using one of the following SSH clients:
