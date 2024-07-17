@@ -11,7 +11,7 @@ from colorama import init, Fore, Style
 from contextlib import contextmanager
 from datetime import datetime
 
-# Initialize colorama, fallback to no-color if the terminal doesn't support ANSI escape codes
+# Initialize colorama, fallback to no-color if terminal doesn't support ANSI escape codes
 init()
 
 PIHOLE_DB_PATH = '/etc/pihole/gravity.db'
@@ -193,8 +193,19 @@ def list_domains(domain_type):
                     domain_str = row[0]
                     comment = row[1]
                     enabled = row[2]
-                    date_added = datetime.fromtimestamp(int(row[3])).strftime('%b-%d-%Y %I:%M:%S %p')
-                    date_modified = datetime.fromtimestamp(int(row[4])).strftime('%b-%d-%Y %I:%M:%S %p')
+                    date_added = row[3]
+                    date_modified = row[4]
+
+                    # Try to parse the date_added and date_modified values
+                    try:
+                        date_added = datetime.strptime(date_added, '%Y-%m-%d %H:%M:%S.%f').strftime('%b-%d-%Y %I:%M:%S %p')
+                    except ValueError:
+                        date_added = datetime.fromtimestamp(int(date_added)).strftime('%b-%d-%Y %I:%M:%S %p')
+
+                    try:
+                        date_modified = datetime.strptime(date_modified, '%Y-%m-%d %H:%M:%S.%f').strftime('%b-%d-%Y %I:%M:%S %p')
+                    except ValueError:
+                        date_modified = datetime.fromtimestamp(int(date_modified)).strftime('%b-%d-%Y %I:%M:%S %p')
 
                     wrapped_comment = textwrap.wrap(comment, width=box_width - 4)
 
