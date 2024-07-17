@@ -10,6 +10,8 @@ import time
 from colorama import init, Fore, Style
 from contextlib import contextmanager
 from datetime import datetime
+from tabulate import tabulate
+from textwrap import shorten
 
 # Initialize colorama, fallback to no-color if terminal doesn't support ANSI escape codes
 init()
@@ -225,27 +227,118 @@ def list_domains(domain_type):
     except Exception as e:
         logging.error(f"Error: {e}")
 
+def format_table(data, headers, column_widths):
+    def format_row(row):
+        return "| " + " | ".join(f"{cell:<{width}}" for cell, width in zip(row, column_widths)) + " |"
+
+    separator = "+" + "+".join("-" * (width + 2) for width in column_widths) + "+"
+    
+    table = [separator]
+    table.append(format_row(headers))
+    table.append(separator)
+    for row in data:
+        table.append(format_row(row))
+    table.append(separator)
+    
+    return "\n".join(table)
+
 def search_domains(domain_type):
     try:
         with db_connection() as conn:
             cursor = conn.cursor()
-            search_term = input("Enter the search term: ")
-            cursor.execute("SELECT domain, comment, enabled, date_added, date_modified FROM domainlist WHERE type = ? AND domain LIKE ?",
-                           (domain_type, f"%{search_term}%"))
+            search_term = input("Enter the search term: ").lower()
+            cursor.execute("SELECT domain, comment, enabled, date_added, date_modified, type FROM domainlist WHERE LOWER(domain) LIKE ? ORDER BY type",
+                           (f"%{search_term}%",))
             domains = cursor.fetchall()
             if domains:
-                logging.info("Search Results:")
+                logging.info(f"{Fore.CYAN}Search Results for '{search_term}':{Style.RESET_ALL}")
+                
+                grouped_results = {}
                 for row in domains:
-                    domain_str = row[0]
-                    comment = row[1]
-                    enabled = row[2]
-                    date_added = row[3]
-                    date_modified = row[4]
-                    logging.info(f"{domain_str} | Comment: {comment} | Enabled: {'Yes' if enabled else 'No'} | Added: {date_added} | Modified: {date_modified}")
+                    domain_type = row[5]
+                    if domain_type not in grouped_results:
+                        grouped_results[domain_type] = []
+                    grouped_results[domain_type].append(row)
+                
+                for domain_type, results in grouped_results.items():
+                    type_name = {0: "Exact Whitelist", 1: "Exact Blacklist", 2: "Regex Whitelist", 3: "Regex Blacklist"}.get(domain_type, "Unknown")
+                    print(f"\n{Fore.YELLOW}{type_name}:{Style.RESET_ALL}")
+                    
+                    headers = ["Domain", "Comment", "Enabled", "Added", "Modified"]
+                    column_widths = [40, 30, 7, 19, 19]
+                    
+                    table_data = []
+                    for row in results:
+                        domain_str = shorten(row[0], width=column_widths[0], placeholder="...")
+                        comment = shorten(row[1], width=column_widths[1], placeholder="...")
+                        enabled = "Yes" if row[2] else "No"
+                        date_added = row[3][:19]  # Truncate milliseconds
+                        date_modified = row[4][:19]  # Truncate milliseconds
+                        
+                        table_data.append([
+                            domain_str,
+                            comment,
+                            enabled,
+                            date_added,
+                            date_modified
+                        ])
+                    
+                    print(format_table(table_data, headers, column_widths))
+                
+                print(f"\n{Fore.CYAN}Total results: {len(domains)}{Style.RESET_ALL}")
+                
+                while True:
+                    view_details = input("View full details for any domain? (y/n): ").lower().strip()
+                    if view_details == 'y':
+                        while True:
+                            domain_to_view = input("Enter the domain (or 'exit' to return to main menu): ").strip().lower()
+                            if domain_to_view == 'exit':
+                                break
+                            if domain_to_view:
+                                matching_domains = []
+                                for domain_type, results in grouped_results.items():
+                                    for row in results:
+                                        if domain_to_view in row[0].lower():
+                                            matching_domains.append(row)
+                                
+                                if matching_domains:
+                                    if len(matching_domains) > 1:
+                                        print(f"\n{Fore.CYAN}Multiple matches found. Please choose:{Style.RESET_ALL}")
+                                        for i, domain in enumerate(matching_domains, 1):
+                                            print(f"{i}. {domain[0]}")
+                                        choice = input("Enter the number of the domain to view (or 'all' to view all): ")
+                                        if choice.lower() == 'all':
+                                            domains_to_show = matching_domains
+                                        else:
+                                            try:
+                                                index = int(choice) - 1
+                                                domains_to_show = [matching_domains[index]]
+                                            except (ValueError, IndexError):
+                                                print(f"{Fore.RED}Invalid choice. Showing all matches.{Style.RESET_ALL}")
+                                                domains_to_show = matching_domains
+                                    else:
+                                        domains_to_show = matching_domains
+
+                                    for row in domains_to_show:
+                                        print(f"\n{Fore.CYAN}Full details for {row[0]}:{Style.RESET_ALL}")
+                                        print(f"Domain: {row[0]}")
+                                        print(f"Comment: {row[1]}")
+                                        print(f"Enabled: {Fore.GREEN if row[2] else Fore.RED}{row[2]}{Style.RESET_ALL}")
+                                        print(f"Added: {row[3]}")
+                                        print(f"Modified: {row[4]}")
+                                        print(f"Type: {['Exact Whitelist', 'Exact Blacklist', 'Regex Whitelist', 'Regex Blacklist'][row[5]]}")
+                                else:
+                                    print(f"{Fore.RED}Domain not found in search results.{Style.RESET_ALL}")
+                            else:
+                                print(f"{Fore.YELLOW}No domain entered. Please try again or type 'exit' to return to main menu.{Style.RESET_ALL}")
+                    elif view_details == 'n':
+                        break
+                    else:
+                        print(f"{Fore.YELLOW}Invalid input. Please enter 'y' or 'n'.{Style.RESET_ALL}")
             else:
-                logging.warning("No matching domains found.")
+                logging.warning(f"{Fore.YELLOW}No matching domains found.{Style.RESET_ALL}")
     except Exception as e:
-        logging.error(f"Error: {e}")
+        logging.error(f"{Fore.RED}Error: {e}{Style.RESET_ALL}")
 
 def get_domain_statistics():
     try:
