@@ -82,6 +82,7 @@
 ^ds-beap[0-9]\.[a-z]{2}\.[a-z0-9]+\.yahoodns\.net$ -- Yahoo
 ^ds-global[0-9]\.l[0-9].search\.[a-z0-9]+\.yahoo\.com$ -- Yahoo
 ^ext[0-9]?-iad[0-9]?\.steamserver\.net$ -- Steam Desktop App (Gaming)
+^iad[0-9]*-[a-z]+[0-9]*\.netflix\.com$ -- Netflix Ads
 ^mads\.] -- mmotti RegEx
 ^nado-ecs-lb-[a-z]+-[a-z]+-[0-9]-[0-9]+\.[a-z]+-[a-z]+-[0-9]\.elb\.amazonaws\.com$ -- Yahoo
 ^pixels?[-.]] -- mmotti RegEx
