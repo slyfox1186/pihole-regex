@@ -39,15 +39,27 @@
 (\.|^)wmail.*$ -- Suspected Virus Harboring Websites
 (\.|^)xyz$ -- Bittorrent
 (\.|^)youtube-nocookie\.com$ -- YouTube
+(^|\.)giraffic\.com$ -- Other Smart TV
 (^|\.)giraffic\.com$ -- Samsung TV
+(^|\.)ibs\.lgappstv\.com -- LG Smart TV
 (^|\.)ibs\.lgappstv\.com$ -- LG TV
+(^|\.)internetat\.tv$ -- Other Smart TV
+(^|\.)lgsmartad\.com -- LG Smart TV
+(^|\.)lgtvcommon\.com -- LG Smart TV
 (^|\.)lgtvcommon\.com$ -- LG TV
+(^|\.)pavv\.co\.kr$ -- Other Smart TV
+(^|\.)rdx2\.lgtvsdp\.com -- LG Smart TV
+(^|\.)samsungcloudsolution\.net$ -- Samsung Smart TV
 (^|\.)samsungcloudsolution\.net$ -- Samsung TV
+(^|\.)samsungelectronics\.com$ -- Samsung Smart TV
+(^|\.)samsungrm\.net$ -- Samsung Smart TV
+(^|\.)smartshare\.lgtvsdp\.com -- LG Smart TV
 [a-z]{2}-[a-z]+-[0-9]\.elb\.amazonaws\.com$ -- Yahoo
 ^(.+[_.-])?adse?rv(er?|ice)?s?[0-9]*[_.-] -- mmotti RegEx
 ^(.+[_.-])?telemetry[_.-]] -- mmotti RegEx
 ^(collect|usage)-(eu|us)-fy[0-9]+\.myhomescreen\.(tv|tvcollect)$ -- Other Smart TVs
 ^.*iad.*\.amazon\.com$ -- Amazon
+^[a-rt-z][a-z]{10,14}$ -- LG Smart TV
 ^[a-rt-z][a-z]{10,14}$ -- LG TV
 ^[a-z0-9]+\.ssm[1-2]?\.internet\.sony\.tv$ -- Sony Smart TV
 ^[a-z]+ad\.[a-z]+\.com\.edgesuite\.net$ -- Take out all ad servers in one go for master domain com.edgesuite.net
@@ -61,6 +73,7 @@
 ^aff(iliat(es?|ion))?[_.-]] -- mmotti RegEx
 ^analytics?[_.-]] -- mmotti RegEx
 ^api\..*\.hismarttv\.com$ -- Other TV
+^api\..*\.hismarttv\.com$ -- Vizio Smart TV
 ^banners?[_.-]] -- mmotti RegEx
 ^beacons?[0-9]*[_.-]] -- mmotti RegEx
 ^content(|-geo)\.uplynk\.com$ -- Yahoo
