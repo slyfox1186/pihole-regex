@@ -48,6 +48,7 @@ ctldl.windowsupdate.com -- Microsoft - Required for getting the latest Windows U
 d29g4g2dyqv443.cloudfront.net -- Nvidia CUDA SDK Toolkit Website
 daily-mix.scdn.co -- Spotify
 dailymix-images.scdn.co -- Spotify
+dcape-na.amazon.com -- Required to login to Amazon using Windows Android Subsystem for Linux
 delivery.vidible.tv -- Video delivery systems, popular in entertainment and news sites
 dev.virtualearth.net -- Microsoft - Used by Bing Maps to get information about various places
 developer.n.shifen.com -- Crucial CDN server
@@ -119,6 +120,7 @@ imgix.net -- Misc
 imgs.xkcd.com -- XKCD - Used to deliver images
 incoming.telemetry.mozilla.org -- Firefox Browser - Required to sync your user account
 index.crates.io -- Cargo Linux Installer CDN
+insights-collector.gog.com -- GOG.com Galaxy updates
 intercom.io -- Live chat platform for websites to chat with the website owner. Blocking this domain will block the chat widget
 ipv6.msftncsi.com -- Microsoft ipv6 connection checker
 itv.ard.de -- HBBTV
@@ -164,6 +166,7 @@ mirror.msys2.org -- Github - Required CDN for downloading packages
 mirror.umd.edu -- Github - Required CDN for downloading packages
 mirror2.sandyriver.net -- Github - Required CDN for downloading packages
 mobileandroidapi.punchh.com -- Misc
+mparticle.map.fastly.net -- weather.com searching
 mrs-efz.ms-acdc.office.com -- Microsoft
 mscomajax.vo.msecnd.net -- Crucial CDN server
 msedge.api.cdp.microsoft.com -- Download Edge Browser Updates
@@ -193,6 +196,8 @@ pgl.yoyo.org -- Misc
 pinterest.com -- Pinterest.com
 placehold.it -- Placehold.it, Image placeholders often used during web page loading
 placeholdit.imgix.net -- Placehold.it, Image placeholders often used during web page loading
+play-lh.googleusercontent.com -- Google play Store
+play.google.com -- Google play Store
 play.kayosports.com.au -- Kayo is an Australian sports streaming service created for sports-loving Aussies
 play.spotify.edgekey.net -- Spotify
 players.brightcove.net -- Video delivery systems, popular in entertainment and news sites
@@ -213,6 +218,7 @@ rover.ebay.com -- eBay
 s-bid.rmp.rakuten.com -- Rakuten viber image to send
 samsungosp.com -- Samsung TV
 scontent.fgdl5-1.fna.fbcdn.net -- Facebook - Messenger
+sdk.split.io -- Needed by EA Games to work
 sdn.geekzu.org -- Crucial CDN server
 sdn.inbond.gslb.geekzu.org -- Crucial CDN server
 secure.avangate.com -- Used to perform online payments
