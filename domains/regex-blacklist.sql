@@ -59,8 +59,6 @@
 ^(.+[_.-])?telemetry[_.-]] -- mmotti RegEx
 ^(collect|usage)-(eu|us)-fy[0-9]+\.myhomescreen\.(tv|tvcollect)$ -- Other Smart TVs
 ^.*iad.*\.amazon\.com$ -- Amazon
-^[a-rt-z][a-z]{10,14}$ -- LG Smart TV
-^[a-rt-z][a-z]{10,14}$ -- LG TV
 ^[a-z0-9]+\.ssm[1-2]?\.internet\.sony\.tv$ -- Sony Smart TV
 ^[a-z]+ad\.[a-z]+\.com\.edgesuite\.net$ -- Take out all ad servers in one go for master domain com.edgesuite.net
 ^[a-z]{2}-[a-z]{2}-[a-z]{2}\.ybp\.gysm\.yahoodns\.net$ -- Yahoo
