@@ -18,11 +18,13 @@ aic.sports.lgtviot.com -- LG Smart TV
 aic.wiseconfig.lgtvcommon.com -- LG Smart TV
 amauthprd.samsungcloudsolution.com -- Samsung Smart TV
 amauthprd.samsungcloudsolution.net -- Samsung Smart TV
+amoeba.web.roku.com -- Roku Smart TV Ads
 api.itopvpn.com -- iTop VPN Telemetry
 api.nfl.com -- NFL - American Football Telemetry
 api.topaz-labs.net -- Topaz Labs Telemetry
 api.us-east-1.aiv-delivery.net -- LG Smart TV
 applytics.nordvpn.com -- NordVPN Telemetry
+assets.sr.roku.com -- Roku Smart TV Ads
 bench.utorrent.com -- uTorrent Desktop App Ads- SlyEBL
 canvas.tubitv.com -- LG Smart TV
 cc-api-data.adobe.io -- Adobe Systems Telemetry
@@ -35,6 +37,7 @@ cdn77.utomik.com -- LG Smart TV
 cf-trickplay.aux.pv-cdn.net -- LG Smart TV
 client-api.nordvpn.com -- NordVPN Telemetry
 cloudfront.xp-assets.aiv-cdn.net -- LG Smart TV
+cloudservices.roku.com -- Roku Smart TV Ads
 codes.iobit.com -- IObit Desktop Pop up Ads
 common.lgthinq.com -- LG Smart TV
 configprd.samsungcloudsolution.com -- Samsung Smart TV
@@ -93,6 +96,7 @@ oempprd.samsungcloudsolution.net -- Samsung Smart TV
 prderrordumphsm.samsungcloudsolution.com -- Samsung Smart TV
 prderrordumphsm.samsungcloudsolution.net -- Samsung Smart TV
 prod-elb-ats-620772989.us-east-1.elb.amazonaws.com -- Amazon CDN Ad Server
+prod.mobile.roku.com -- Roku Smart TV Ads
 prod.ups-ats.us-east-1.aolp-ds-prd.aws.oath.cloud -- Amazon CDN Ad Server
 prov.samsungcloudsolution.com -- Samsung Smart TV
 prov.samsungcloudsolution.net -- Samsung Smart TV
@@ -127,3 +131,4 @@ video-edge-6dca22.atl01.abs.hls.ttvnw.net -- Twitch Video Ads
 video-edge-833564.atl01.abs.hls.ttvnw.net -- Twitch Video Ads
 video-edge-8491b8.pdx01.abs.hls.ttvnw.net -- Twitch Video Ads
 www.ueiwsp.com -- LG Smart TV
+wwwimg.roku.com -- Roku Smart TV Ads
