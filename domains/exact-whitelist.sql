@@ -150,9 +150,6 @@ login.microsoftonline.com -- Microsoft - Office apps
 logincdn.msauth.net -- Microsoft Windows - Required to sign in to your account during a fresh installation
 mamservice.manage.microsoft.com -- Microsoft
 martellmalone.com -- Github - Required CDN for downloading packages
-mask-api.icloud.com -- Apple
-mask-h2.icloud.com -- Apple
-mask.icloud.com -- Apple
 mat1.gtimg.com -- Crucial CDN server
 mat1.gtimg.com.tegsea.tc.qq.com -- Crucial CDN server
 materialdesignicons.b-cdn.net -- Crucial CDN server
@@ -226,7 +223,6 @@ secure.netflix.com -- Netflix
 secure.surveymonkey.com -- Used by Survey Monkey to deliver surveys
 sendbirdproxyk8s.chat.redditmedia.com -- Reddit
 services.sonarr.tv -- Plex Media Server - Sonarr is a PVR for Usenet and BitTorrent users.
-setup.icloud.com -- Apple
 sh.rustup.rs -- RustUp Linux Install Script
 sharepoint.com -- Misc
 signin.nexon.com -- The First Decendant
@@ -304,7 +300,6 @@ windows.msn.com -- Microsoft Windows - Required to sign in to your account durin
 winhelp2002.mvps.org -- Misc
 wordpress.com -- WordPress
 wp.com -- WordPress - Site hosting service
-ws-ee-maidsvc.icloud.com -- Apple
 ws.audioscrobbler.com -- Plex Media Server - Last.fm; used to get track metadata using API
 www.ad.nl -- github.com/mmotti/pihole-regex
 www.adf.ly -- URL Shortener
