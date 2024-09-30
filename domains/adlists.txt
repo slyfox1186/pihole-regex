@@ -4,7 +4,7 @@
 ##
 ##  GitHub Repository: https://github.com/slyfox1186/pihole-regex
 ##
-##  Updated: 08.18.24
+##  Updated: 09.29.24
 ##
 ##  Added: Blocklist Project       -  github.com/blocklistproject/Lists
 ##  Added: Perflyst                -  github.com/Perflyst/PiHoleBlocklist
