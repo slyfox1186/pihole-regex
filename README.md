@@ -33,7 +33,7 @@ To use the "pihole_admin.py" script, you will need to install the following Pyth
 You can install these packages using pip:
 
 ```bash
-pip install argparse logging matplotlib requests sqlite3 tabulate typing fuzzywuzzy
+pip install argparse matplotlib requests tabulate typing fuzzywuzzy
 ```
 
 Alternatively, you can install the packages using the following commands:
