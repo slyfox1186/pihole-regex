@@ -41,7 +41,7 @@ Alternatively, you can install the packages using the following commands:
 ```bash
 sudo apt-get update
 sudo apt-get install -y python3 python3-pip
-pip3 install argparse logging matplotlib requests sqlite3 tabulate typing fuzzywuzzy
+pip install argparse matplotlib requests tabulate typing fuzzywuzzy
 ```
 
 ## Quick Links
