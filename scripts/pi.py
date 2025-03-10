@@ -387,7 +387,7 @@ def restore_database():
 
 def restart_pihole_dns():
     try:
-        output = os.system('pihole restartdns')
+        output = os.system('pihole reloaddns')
         if output == 0:
             logging.info("Pi-hole DNS resolver restarted successfully.")
         else:
