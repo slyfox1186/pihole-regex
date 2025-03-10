@@ -20,7 +20,7 @@ We're excited to announce the addition of a new script to our Pi-hole toolset! T
 - Remove duplicate domains across all lists
 - Find similar domains based on a specified similarity threshold
 
-This tool is designed to simplify the management of your Pi-hole and provide deeper insights into your network's activity. You can find the script in our GitHub repository at [link-to-script].
+This tool is designed to simplify the management of your Pi-hole and provide deeper insights into your network's activity. You can find the script in our GitHub repository at [pihole_admin.py](https://github.com/slyfox1186/pihole-regex/blob/main/pihole_admin.py)
 
 ## Prerequisites
 To use the "pihole_admin.py" script, you will need to install the following Python packages:
