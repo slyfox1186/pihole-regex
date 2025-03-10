@@ -1,7 +1,11 @@
-# Pi-hole® v5+ FTLDNS: Advanced Filter Collection
-Maximize the efficiency of your Pi-hole setup with our extensive collection of Regular Expressions (RegEx) and Exact Match filters. Designed to block a broad range of domains effectively, our filters simplify your blocking strategy by minimizing the need for numerous individual entries. Additionally, this repository includes customizable Exact Match filters for precise domain blocking and tools to facilitate the easy management of Adlist Group entries.
+# Pi-hole® v6+ FTLDNS: Advanced Filter Collection
+- Maximize the efficiency of your Pi-hole setup with our extensive collection of Regular Expressions (RegEx) and Exact Match filters. Designed to block a broad range of domains effectively, our filters simplify your blocking strategy by minimizing the need for numerous individual entries. Additionally, this repository includes customizable Exact Match filters for precise domain blocking and tools to facilitate the easy management of Adlist Group entries.
 
-## Announcement: New Pi-hole Database Management Tool
+## Last Update:
+- Added the new commands for pi-hole's version 6+
+- You NEED to update to the latest version to use both scripts to their full potential
+
+## Announcement: 
 We're excited to announce the addition of a new script to our Pi-hole toolset! The "pihole_admin.py" script is a powerful Python-based tool that provides advanced management capabilities for your Pi-hole database. Some of the key features include:
 
 - Optimize the Pi-hole database to reduce size and fragmentation
