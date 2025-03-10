@@ -121,6 +121,7 @@ def add_or_remove_domains(domains, domain_type, add=True):
                                 logging.info(f"Added: {domain_name}")
                             else:
                                 skipped_domains.append(domain_name)
+                                skipped_count += 1
                         else:
                             if domain_exists(cursor, domain_name, domain_type):
                                 cursor.execute("DELETE FROM domainlist WHERE type = ? AND domain = ?", (domain_type, domain_name))
@@ -129,10 +130,11 @@ def add_or_remove_domains(domains, domain_type, add=True):
                                 logging.log(logging.REMOVED, f"Removed: {domain_name}")
                             else:
                                 skipped_domains.append(domain_name)
+                                skipped_count += 1
 
                 # Print the warning messages for skipped domains
                 for domain in skipped_domains:
-                    logging.warning(f"Skipped (already exists): {domain}")
+                    logging.warning(f"Skipped (already {'exists' if add else 'does not exist'}): {domain}")
 
                 conn.commit()
                 break
@@ -164,7 +166,10 @@ def add_domain(domain_type):
     except Exception as e:
         logging.error(f"Error: {e}")
     if input("Restart Pi-hole DNS resolver? (yes/no): ").strip().lower() == 'yes':
-        restart_pihole_dns()
+        success = restart_pihole_dns()
+        if not success:
+            print(f"{Fore.YELLOW}You may need to manually restart Pi-hole DNS for changes to take effect.{Style.RESET_ALL}")
+            print(f"{Fore.YELLOW}Try running 'pihole reloaddns' directly on your Pi-hole server.{Style.RESET_ALL}")
 
 def remove_domain(domain_type):
     try:
@@ -180,7 +185,10 @@ def remove_domain(domain_type):
     except Exception as e:
         logging.error(f"Error: {e}")
     if input("Restart Pi-hole DNS resolver? (yes/no): ").strip().lower() == 'yes':
-        restart_pihole_dns()
+        success = restart_pihole_dns()
+        if not success:
+            print(f"{Fore.YELLOW}You may need to manually restart Pi-hole DNS for changes to take effect.{Style.RESET_ALL}")
+            print(f"{Fore.YELLOW}Try running 'pihole reloaddns' directly on your Pi-hole server.{Style.RESET_ALL}")
 
 def list_domains(domain_type):
     try:
@@ -381,19 +389,36 @@ def restore_database():
         with open(backup_filename, 'rb') as src_file, open(PIHOLE_DB_PATH, 'wb') as dst_file:
             dst_file.write(src_file.read())
         logging.info(f"Database restored from: {backup_filename}")
-        restart_pihole_dns()
+        success = restart_pihole_dns()
+        if not success:
+            print(f"{Fore.YELLOW}Database was restored, but DNS was not reloaded.{Style.RESET_ALL}")
+            print(f"{Fore.YELLOW}You may need to manually restart Pi-hole DNS for changes to take effect.{Style.RESET_ALL}")
+            print(f"{Fore.YELLOW}Try running 'pihole reloaddns' directly on your Pi-hole server.{Style.RESET_ALL}")
     except Exception as e:
         logging.error(f"Error: {e}")
 
 def restart_pihole_dns():
     try:
+        print(f"{Fore.YELLOW}Attempting to restart Pi-hole DNS resolver...{Style.RESET_ALL}")
+        
+        # Execute the reload command
         output = os.system('pihole reloaddns')
         if output == 0:
+            print(f"{Fore.GREEN}Pi-hole DNS resolver restarted successfully.{Style.RESET_ALL}")
             logging.info("Pi-hole DNS resolver restarted successfully.")
+            return True
         else:
-            logging.error("Failed to restart the Pi-hole DNS resolver.")
+            print(f"{Fore.RED}Failed to restart the Pi-hole DNS resolver.{Style.RESET_ALL}")
+            print(f"{Fore.YELLOW}Possible reasons for failure:{Style.RESET_ALL}")
+            print(f"{Fore.YELLOW}1. This script is not running on the Pi-hole server{Style.RESET_ALL}")
+            print(f"{Fore.YELLOW}2. The 'pihole' command is not in your PATH{Style.RESET_ALL}")
+            print(f"{Fore.YELLOW}3. You may need to run this script with sudo privileges{Style.RESET_ALL}")
+            logging.error(f"Failed to restart the Pi-hole DNS resolver. Exit code: {output}")
+            return False
     except Exception as e:
+        print(f"{Fore.RED}Error restarting Pi-hole DNS: {e}{Style.RESET_ALL}")
         logging.error(f"Error restarting Pi-hole DNS: {e}")
+        return False
 
 def main():
     clear_screen()
@@ -437,6 +462,12 @@ def main():
         if remove_option == 4:
             for type_num in URLS:
                 domains = get_domains_from_url(URLS[type_num])
+                if domains:
+                    added, removed, skipped, changes = add_or_remove_domains(domains, type_num, add=False)
+                    added_total += added
+                    removed_total += removed
+                    skipped_total += skipped
+                    changes_made |= changes
         elif remove_option in URLS:
             domains = get_domains_from_url(URLS[remove_option])
             if not domains:
@@ -488,10 +519,24 @@ def main():
     print(f"Total Domains Removed: {Fore.RED}{removed_total}{Style.RESET_ALL}")
     print(f"Total Domains Skipped: {Fore.YELLOW}{skipped_total}{Style.RESET_ALL}")
 
+    # Ensure changes_made is True if any domains were added or removed
+    if added_total > 0 or removed_total > 0:
+        changes_made = True
+    
+    # Debug print for changes_made flag
+    print(f"Changes made: {changes_made}")
+
     if changes_made:
         print()  # Add a blank line before the restart prompt
-        if input("Restart Pi-hole DNS resolver? (yes/no): ").strip().lower() == 'yes':
-            restart_pihole_dns()
+        print(f"{Fore.CYAN}{'='*50}{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}Changes were made to the Pi-hole database.{Style.RESET_ALL}")
+        restart_choice = input(f"{Fore.YELLOW}Restart Pi-hole DNS resolver? (yes/no): {Style.RESET_ALL}").strip().lower()
+        if restart_choice == 'yes':
+            success = restart_pihole_dns()
+            if not success:
+                print(f"{Fore.YELLOW}You may need to manually restart Pi-hole DNS for changes to take effect.{Style.RESET_ALL}")
+                print(f"{Fore.YELLOW}Try running 'pihole reloaddns' directly on your Pi-hole server.{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}{'='*50}{Style.RESET_ALL}")
 
     print()  # Add an extra blank line before the final message
     print(f"{Fore.GREEN}Make sure to star this repository to show your support!{Style.RESET_ALL}")
