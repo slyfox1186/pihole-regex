@@ -1,52 +1,9 @@
 # Pi-hole® v6+ FTLDNS: Advanced Filter Collection
 - Maximize the efficiency of your Pi-hole setup with our extensive collection of Regular Expressions (RegEx) and Exact Match filters. Designed to block a broad range of domains effectively, our filters simplify your blocking strategy by minimizing the need for numerous individual entries. Additionally, this repository includes customizable Exact Match filters for precise domain blocking and tools to facilitate the easy management of Adlist Group entries.
 
-## Last Update:
+## Last updated on 03.10.2025:
 - Added the new commands for pi-hole's version 6+
 - You NEED to update to the latest version to use both scripts to their full potential
-
-## Announcement: 
-We're excited to announce the addition of a new script to our Pi-hole toolset! The "pihole_admin.py" script is a powerful Python-based tool that provides advanced management capabilities for your Pi-hole database. Some of the key features include:
-
-- Optimize the Pi-hole database to reduce size and fragmentation
-- Backup the Pi-hole database to a specified location
-- Fetch comprehensive statistics about your Pi-hole setup
-- Clean up old data from the query storage
-- Add or remove domains from the whitelist and blacklist
-- Update the gravity database
-- Analyze top blocked and allowed domains
-- Run custom SQL queries on the Pi-hole databases
-- Check for Pi-hole updates
-- Remove duplicate domains across all lists
-- Find similar domains based on a specified similarity threshold
-
-This tool is designed to simplify the management of your Pi-hole and provide deeper insights into your network's activity. You can find the script at [pihole_admin.py](https://github.com/slyfox1186/pihole-regex/blob/main/pihole_admin.py).
-
-## Prerequisites
-To use the "pihole_admin.py" script, you will need to install the following Python packages:
-
-- `argparse`
-- `logging`
-- `matplotlib`
-- `requests`
-- `sqlite3`
-- `tabulate`
-- `typing`
-- `fuzzywuzzy`
-
-You can install these packages using pip:
-
-```bash
-pip install argparse matplotlib requests tabulate typing fuzzywuzzy
-```
-
-Alternatively, you can install the packages using the following commands:
-
-```bash
-sudo apt-get update
-sudo apt-get install -y python3 python3-pip
-pip install argparse matplotlib requests tabulate typing fuzzywuzzy
-```
 
 ## Quick Links
 - **[Pi-hole Official Website](https://pi-hole.net/)** - Your starting point for Pi-hole setup and comprehensive information.
