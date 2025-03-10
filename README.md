@@ -33,6 +33,11 @@ For managing your Pi-hole remotely, consider using one of the following SSH clie
 ## Installation
 Follow these steps to apply the advanced filter collection to your Pi-hole setup:
 
+### Required pip packages
+```bash
+pip install colorama tabulate
+```
+
 ### RegEx and Exact Lists
 Download and execute the installation script for RegEx and Exact Match filters:
 
