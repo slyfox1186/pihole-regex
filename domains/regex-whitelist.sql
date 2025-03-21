@@ -78,7 +78,7 @@
 ^cdn\.boot(|cdn|css)\.(com|net)\.maoyundns\.com$ -- Content Delivery Networks AKA CDN
 ^cdnjs\.(cloudflare|loli)\.(com|net)$ -- Crucial CDN server
 ^cds\.[a-z0-9]+\.hwcdn\.net$ -- Content Delivery Networks AKA CDN
-^code\.(bildstatic|createjs|jquery)\.(com|de)Content Delivery Networks AKA CDN
+^code\.(bildstatic|createjs|jquery)\.(com|de)$ -- Content Delivery Networks AKA CDN
 ^connectivitycheck\.(android|gstatic|ubuntu)\.com$ -- Content Delivery Networks AKA CDN
 ^crl[3-4]\.digicert\.com$ -- SSL Certificate
 ^d(27xxe7juh1us6|2gatte9o95jao|2v02itv0y9u9t|3a3ewgd1iewwz|3ag4hukkh62yn|83eunklitikj)\.cloudfront\.net$ -- Legit Cloudfront CDNs for non-ad based services
