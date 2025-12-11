@@ -1,6 +1,5 @@
-# pihole_admin.py
-
 #!/usr/bin/env python3
+# pihole_admin.py
 
 import argparse
 import logging
@@ -92,7 +91,6 @@ class PiholeDBAdmin:
     def __del__(self):
         self.close_pools()
 
-    @lru_cache(maxsize=128)
     def _get_connection(self, db_path: str) -> sqlite3.Connection:
         if db_path == self.gravity_db_pool.db_path:
             return self.gravity_db_pool.get_connection()
@@ -201,7 +199,6 @@ Changes Made:
             except OSError as e:
                 self.logger.error(f"Failed to access backup file {backup_file}: {e}")
 
-    @lru_cache(maxsize=1)
     def get_statistics(self) -> Dict[str, Any]:
         self.logger.info("Fetching database statistics...")
         stats = {}

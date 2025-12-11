@@ -28,6 +28,11 @@ URLS = {
     3: 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/regex-blacklist.sql'
 }
 
+# Define custom log level before the class that uses it
+REMOVED_LEVEL = 25
+logging.addLevelName(REMOVED_LEVEL, "REMOVED")
+logging.REMOVED = REMOVED_LEVEL
+
 class SingleTimeStampLogger(logging.Logger):
     def __init__(self, name, level=logging.NOTSET):
         super().__init__(name, level)
@@ -52,9 +57,6 @@ class SingleTimeStampLogger(logging.Logger):
         
         colored_msg = f"{label} {msg}"
         super()._log(level, colored_msg, args, exc_info, extra, stack_info)
-
-logging.REMOVED = 25
-logging.addLevelName(logging.REMOVED, "REMOVED")
 
 logging.setLoggerClass(SingleTimeStampLogger)
 logging.basicConfig(
@@ -250,7 +252,7 @@ def format_table(data, headers, column_widths):
     
     return "\n".join(table)
 
-def search_domains(domain_type):
+def search_domains():
     try:
         with db_connection() as conn:
             cursor = conn.cursor()
@@ -492,17 +494,7 @@ def main():
             list_domains(domain_type)
     elif action == 'search':
         logging.info("Search domains")
-        print(f"{Fore.MAGENTA}0: Exact Whitelist\n1: Exact Blacklist\n2: Regex Whitelist\n3: Regex Blacklist\n4: All{Style.RESET_ALL}")
-        domain_type = int(input("Choose an option: "))
-        clear_screen()
-        if domain_type not in URLS and domain_type != 4:
-            logging.error("Invalid domain type. Exiting.")
-            return
-        if domain_type == 4:
-            for type_num in URLS:
-                search_domains(type_num)
-        else:
-            search_domains(domain_type)
+        search_domains()
     elif action == 'stats':
         get_domain_statistics()
     elif action == 'backup':
