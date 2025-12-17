@@ -28,9 +28,14 @@ def clear_screen():
 def fetch_remote_domains():
     try:
         print(f"{Fore.YELLOW}Fetching domains from remote URL...{Style.RESET_ALL}")
-        response = requests.get(REMOTE_URL)
+        response = requests.get(REMOTE_URL, timeout=20)
         response.raise_for_status()
-        domains = {line.strip() for line in response.text.split('\n') if line.strip() and not line.startswith('#')}
+        domains = set()
+        for raw_line in response.text.splitlines():
+            line = raw_line.strip()
+            if not line or line.startswith('#'):
+                continue
+            domains.add(line)
         print(f"{Fore.GREEN}Successfully fetched {len(domains)} domains from remote URL.{Style.RESET_ALL}")
         logging.info(f"Successfully fetched {len(domains)} domains from remote URL.")
         return domains
@@ -109,7 +114,7 @@ def main():
     attempts = 0
     while attempts < RETRY_COUNT:
         try:
-            with sqlite3.connect(PIHOLE_DB_PATH) as conn:
+            with sqlite3.connect(PIHOLE_DB_PATH, timeout=RETRY_DELAY * RETRY_COUNT) as conn:
                 local_domains = fetch_local_domains(conn)
                 domains_to_add = remote_domains - local_domains
 
