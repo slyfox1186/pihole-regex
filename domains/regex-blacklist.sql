@@ -44,14 +44,14 @@
 (^|\.)samsungcloudsolution\.net$ -- Smart TV (Samsung/Other)
 [a-z]{2}-[a-z]+-[0-9]\.elb\.amazonaws\.com$ -- Yahoo
 ^(.+[_.-])?adse?rv(er?|ice)?s?[0-9]*[_.-] -- mmotti RegEx
-^(.+[_.-])?telemetry[_.-] -- mmotti RegEx
+(^|\.)telemetry[-_][a-z0-9] -- telemetry (narrowed to avoid false positives)
 ^(collect|usage)-(eu|us)-fy[0-9]+\.myhomescreen\.(tv|tvcollect)$ -- Other Smart TVs
 ^.*iad.*\.amazon\.com$ -- Amazon
 ^[a-z0-9]+\.ssm[1-2]?\.internet\.sony\.tv$ -- Sony Smart TV
-^[a-z]+ad\.[a-z]+\.com\.edgesuite\.net$ -- Take out all ad servers in one go for master domain com.edgesuite.net
+^ad[a-z0-9-]*\.[a-z0-9-]+\.com\.edgesuite\.net$ -- Take out common ad subdomains for master domain com.edgesuite.net
 ^[a-z]{2}-[a-z]{2}-[a-z]{2}\.ybp\.gysm\.yahoodns\.net$ -- Yahoo
 ^a-content-[a-z0-9]+-[0-9]+\.[a-z]{2}-[a-z]+-[0-9]\.elb\.amazonaws\.com$ -- Yahoo
-^ad([sxv]?[0-9]*|system)[_.-]([^.[:space:]]+\.){1,}|[_.-]ad([sxv]?[0-9]*|system)[_.-] -- mmotti RegEx
+(^|\.)ad([sxv][0-9]*|[0-9]+|system)[_.-] -- ad servers (narrowed; avoids anti-ad/ad.nl false positives)
 ^adim(age|g)s?[0-9]*[_.-] -- mmotti RegEx
 ^adserver-.*\.amazonaws\.com$ -- Yahoo
 ^adtrack(er|ing)?[0-9]*[_.-] -- mmotti RegEx
@@ -75,6 +75,6 @@
 ^pixels?[-.] -- mmotti RegEx
 ^prod-elb-ats-[0-9]+\.[a-z]{2}-[a-z]+-[0-9]\.elb\.amazonaws\.com$ -- Yahoo
 ^ssp-ats-prod-[a-z\-]+-[0-9]\.one-mobile-prod\.aws\.oath\.cloud$ -- Yahoo
-^stat(s|istics)?[0-9]*[_.-] -- mmotti RegEx
+^stat(s|istics)?[0-9]*[-_] -- stats/metrics (narrowed to avoid false positives)
 ^uplynk-beacon-newvpc-[0-9]+\.[a-z]{2}-[a-z]+-[0-9]\.elb\.amazonaws\.com$ -- Yahoo
 ^v-[a-z0-9]+\.wc\.yahoodns\.net$ -- Yahoo

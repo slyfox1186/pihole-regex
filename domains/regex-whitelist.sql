@@ -23,16 +23,15 @@
 (\.|^)unraid\.net$ -- Unraid - Required for the operating system to update
 (\.|^)wa\.me$ -- Misc
 (\.|^)windowsupdate\.com$ -- Microsoft OneDrive, Azure, Windows Essentials updates, other, xboxlive required for saves to the cloud
-(\.|^)yahoo\.com$ -- Yahoo had to be whitelisted due to some unknown conflict with the blacklist domains take domain over the whitelist
+^(?!ncp-gw-sports\.media\.yahoo\.com$)(?!service\.idsync\.analytics\.yahoo\.com$)(?:[a-z0-9-]+\.)*yahoo\.com$ -- Yahoo (excludes specific blacklisted subdomains)
 (^|\.)itunes(-apple)?\.com(\.akadns\.net)?$ -- Apple iTunes
 (www\.|^)((go\.|)microsoft|windows)\.com$ -- Microsoft OneDrive, Azure, Windows Essentials updates, other, xboxlive required for saves to the cloud
-(www\.|^)yahoo\.com$ -- Yahoo
 [a-z]\.thumbs\.redditmedia\.com$ -- Reddit
 ^((diagnostics|oops|www)\.redditmedia|www\.redditstatic)\.com$|^reddit\.map\.fastly\.net$ -- reddit.com
 ^((mobile|www|upload)\.)?twitter\.com$ -- x.com formerly known as twitter.com
 ^((www|(w[0-9]\.)?web|media((-[a-z]{3}|\.[a-z]{4})[0-9]{1,2}-[0-9](\.|-)(cdn|fna))?)\.)?whatsapp\.(com|net)$ -- WhatsApp
 ^(.*\.)?(aspnetcdn|azure|bing|live|microsoft|microsoftonline|msftncsi|msn|office|office365|skype|windowsupdate|xbox)\.(com|net)$ -- Legit Microsoft domains for essential functions and services
-^(.*\.)?(ggpht|google|googleapis|gstatic|youtube|ytimg)\.(com|net)$ -- Google and YouTube - Legit services such as video streaming, icons, ect.
+^(?!developers\.google\.com$)(?:.*\.)?(ggpht|google|googleapis|gstatic|youtube|ytimg)\.(com|net)$ -- Google and YouTube - Legit services such as video streaming, icons, ect. (excludes developers.google.com)
 ^([a-z0-9]+\.|)(appsync|execute)-api\.us-east-1\.amazonaws\.com$ -- AdultTime Necessary for the site to deliver non-ad content
 ^(accounts|datarouter\.ol|download|entitlement-public-service-prod\.ak|eos-gateway-ingressv2-prod-c2-w4\.befa\.live\.use1a\.on|fg-matchmaking-public-service-live-c\.ol|graphql|launcher-public-service-prod06\.ol|tracking)\.epicgames\.com$ -- Epic Games
 ^(account|accts|catalog|entitlement|eulatracking|lightswitch|metric|priceengine)-public-service-prod[0-9]*?\.(ak|ol)\.epicgames\.com$ -- Epic Games - Essential domains for authentication during user login and other services such as purchasing/unlocking games to your user library
@@ -49,8 +48,8 @@
 ^(benchmarks|commons|empoweringtrust|support\.benchmarks|www)(\.ul\.com(|\.cdn\.cloudflare\.net))$ -- 3d Mark PC Benchmark tests
 ^(blog|business|(www\.|)careers|email|(dev(|\.careers)|channels|contests|insights|meta|talent))\.stackoverflow\.com$ -- Stackoverflow Developer\Coding help site
 ^(blog|community(-cdn|-staging)?|d-cloudflare|docs|downloads(-staging)?|et|guide|help|learn|models(-r2)?)\.(topazlabs\.com)$ -- TopazLabs - Legit purposes
-^(calendar|developer(|s)|dns|docs|home|inbox|clients[1-6]*|mail|meet|pay(|ments)|photos|sites|time|wallet|workspace|www)\.google\.com$ -- Google - Allow known essential widget service
-^(cdn-mobile\.api|images|players|silo|siloh|stitcher)\.pluto\.tv$ -- pluto.tv streaming
+^(calendar|dns|docs|home|inbox|clients[1-6]*|mail|meet|pay(|ments)|photos|sites|time|wallet|workspace|www)\.google\.com$ -- Google - Allow known essential widget service (excludes developer(s))
+^(?!images\.pluto\.tv$)(cdn-mobile\.api|images|players|silo|siloh|stitcher)\.pluto\.tv$ -- pluto.tv streaming (excludes images.pluto.tv)
 ^(cdn\.embed\.ly|cdn\.jsdelivr\.net|cdnjs\.loli\.net)\.cdn\.cloudflare\.net$ -- Crucial CDN server
 ^(client\.wns|edge\.activity)\.windows\.com$ -- Microsoft legit services
 ^(clientconfig\.passport|dns\.msftncsi|ipv6\.msftncsi|logincdn\.msauth|msedge\.api\.cdp|winatp-gw-neu|windows)\.microsoft\.com$ -- Microsoft legit services
@@ -69,12 +68,12 @@
 ^[0-6]+?-edge-chat\.facebook\.com$ -- Facebook - Essential CDN servers
 (\.|^)symcb\.com$ -- Skype
 ^accounts\..*\.(com|net|org|uk|br|ly|gov)$ -- Required to log into general website user account pages
-^aic\.(homeprv|service)\.lgtvcommon\.com$ -- Smart TV
+^aic\.service\.lgtvcommon\.com$ -- Smart TV (excludes aic.homeprv.lgtvcommon.com)
 ^apps\.bdimg\.(com|jomodns\.com)$
 ^(axm-adm-[a-z0-9-]+|(?:adm|mdm|enroll|scep))\.apple\.com$ -- Apple - Main domains for a good chunk of legitimate iOS services
 ^beacons[0-9]*\.gvt[0-9]+\.com$ -- Google - Controls a lot of essential background processes which run a great many of the legitimate apps that people use every day
 ^cdn[0-3]*?\.optimizely\.com$ -- A progressive delivery and experimentation software for other companies
-^cdn\.(bootcss|cloudflare|datatables|discordapp|embed|embedly|materialdesignicons|mathjax|plyr|samsungcloudsolution|signal|staticfile)\.(com|io|ly|net|org)$ -- Content Delivery Networks AKA CDN
+^cdn\.(bootcss|cloudflare|datatables|discordapp|embed|embedly|materialdesignicons|mathjax|plyr|signal|staticfile)\.(com|io|ly|net|org)$ -- Content Delivery Networks AKA CDN (excludes samsungcloudsolution)
 ^cdn\.boot(|cdn|css)\.(com|net)\.maoyundns\.com$ -- Content Delivery Networks AKA CDN
 ^cdnjs\.(cloudflare|loli)\.(com|net)$ -- Crucial CDN server
 ^cds\.[a-z0-9]+\.hwcdn\.net$ -- Content Delivery Networks AKA CDN
@@ -96,5 +95,5 @@
 ^payment.*\.ol\.epicgames\.com -- Epic Games - Required for payments to process
 ^scontent-(atl3|lhr3|mia3|ort2)-1\.xx\.fbcdn\.net$ -- Facebook - Essential CDN servers
 ^v[0-2]+?\.events\.data\.microsoft\.com$ -- Microsoft OneDrive, Azure, Windows Essentials updates, other, xboxlive required for saves to the cloud
-^video-edge-[0-9]+?\.[a-z]+?[0-9]+?\.abs\.hls\.ttvnw\.net$ -- Twitch.tv
+^(?!(video-edge-55b156\.pdx01\.abs\.hls\.ttvnw\.net|video-edge-6dca22\.atl01\.abs\.hls\.ttvnw\.net|video-edge-833564\.atl01\.abs\.hls\.ttvnw\.net|video-edge-8491b8\.pdx01\.abs\.hls\.ttvnw\.net)$)video-edge-[0-9]+?\.[a-z]+?[0-9]+?\.abs\.hls\.ttvnw\.net$ -- Twitch.tv (excludes exact-blacklist ad hosts)
 ^whatsapp-cdn-shv-[0-9]{2}-[a-z]{3}[0-9]\.fbcdn\.net$ -- WhatsApp
