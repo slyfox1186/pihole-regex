@@ -73,9 +73,14 @@ def clear_screen():
 
 def get_domains_from_url(url):
     try:
-        response = requests.get(url)
+        response = requests.get(url, timeout=20)
         response.raise_for_status()
-        domains = [line.strip() for line in response.text.strip().split('\n') if line.strip() and not line.startswith('#')]
+        domains = []
+        for raw_line in response.text.splitlines():
+            line = raw_line.strip()
+            if not line or line.startswith('#'):
+                continue
+            domains.append(line)
         return domains
     except requests.exceptions.RequestException as e:
         logging.error(f"Failed to download domains from {url}: {e}")
@@ -85,7 +90,7 @@ def get_domains_from_url(url):
 def db_connection():
     conn = None
     try:
-        conn = sqlite3.connect(PIHOLE_DB_PATH)
+        conn = sqlite3.connect(PIHOLE_DB_PATH, timeout=RETRY_DELAY * RETRY_COUNT)
         yield conn
     finally:
         if conn:
@@ -108,7 +113,7 @@ def add_or_remove_domains(domains, domain_type, add=True):
 
                 skipped_domains = []
                 for domain in domains:
-                    parts = domain.split(' -- ')
+                    parts = domain.split(' -- ', 1)
                     domain_name = parts[0].strip()
                     comment = f"Sly{'EWL' if domain_type == 0 else 'EBL' if domain_type == 1 else 'RWL' if domain_type == 2 else 'RBL'} - {parts[1].strip()}" if len(parts) > 1 else ''
 
@@ -515,9 +520,6 @@ def main():
     if added_total > 0 or removed_total > 0:
         changes_made = True
     
-    # Debug print for changes_made flag
-    print(f"Changes made: {changes_made}")
-
     if changes_made:
         print()  # Add a blank line before the restart prompt
         print(f"{Fore.CYAN}{'='*50}{Style.RESET_ALL}")

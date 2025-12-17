@@ -647,10 +647,23 @@ Changes Made:
                 cursor.execute("SELECT domain, type FROM domainlist")
                 domains = cursor.fetchall()
 
-            def compare_domains(chunk: List[Tuple[str, int]]) -> List[Tuple[str, str, int]]:
+            domain_types = defaultdict(set)
+            for domain, type_value in domains:
+                domain_types[domain].add(type_value)
+
+            def list_type_summary(domain: str) -> str:
+                types = sorted(domain_types.get(domain, []))
+                if not types:
+                    return "unknown list type"
+                if len(types) == 1:
+                    return self.get_list_type(types[0])
+                return ", ".join(self.get_list_type(t) for t in types)
+
+            def compare_domains(start_index: int, chunk: List[Tuple[str, int]]) -> List[Tuple[str, str, int]]:
                 results = []
-                for i, (domain1, type1) in enumerate(chunk):
-                    for domain2, type2 in domains[i+1:]:
+                for offset, (domain1, _type1) in enumerate(chunk):
+                    i = start_index + offset
+                    for domain2, _type2 in domains[i + 1:]:
                         similarity = fuzz.ratio(domain1, domain2)
                         if similarity >= similarity_threshold:
                             results.append((domain1, domain2, similarity))
@@ -659,14 +672,14 @@ Changes Made:
             with ThreadPoolExecutor() as executor:
                 futures = []
                 chunk_size = 500
-                for i in range(0, len(domains), chunk_size):
-                    chunk = domains[i:i + chunk_size]
-                    futures.append(executor.submit(compare_domains, chunk))
+                for start_index in range(0, len(domains), chunk_size):
+                    chunk = domains[start_index:start_index + chunk_size]
+                    futures.append(executor.submit(compare_domains, start_index, chunk))
 
                 for future in as_completed(futures):
                     for domain1, domain2, similarity in future.result():
-                        similar_domains[domain1].append((domain2, self.get_list_type_by_domain(domain2), similarity))
-                        similar_domains[domain2].append((domain1, self.get_list_type_by_domain(domain1), similarity))
+                        similar_domains[domain1].append((domain2, list_type_summary(domain2), similarity))
+                        similar_domains[domain2].append((domain1, list_type_summary(domain1), similarity))
 
             self.logger.info(f"Found {len(similar_domains)} domains with similar matches.")
             return similar_domains

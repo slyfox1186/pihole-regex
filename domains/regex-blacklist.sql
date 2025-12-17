@@ -6,7 +6,7 @@
 (\.|^)bideo.*$ -- Suspected Virus Harboring Websites
 (\.|^)buybuggle\.com$ -- Hacker website - They install a backdoor trojan on your pc and remote in secretly to record you on webcam and copy a list of all your file paths
 (\.|^)client\.mchsi\.com$ -- BitTorrent - Background Tracking
-(\.|^)deimos3.apple\.com$ -- Apple
+(\.|^)deimos3\.apple\.com$ -- Apple
 (\.|^)fairu.*$ -- Suspected Virus Harboring Websites
 (\.|^)fake\.video\.url\.webm$ -- Overwolf Desktop App (PC Games)
 (\.|^)filesupdating\.com$ -- iTop VPN
@@ -15,13 +15,13 @@
 (\.|^)getbeamer\.com$ -- AdultTime
 (\.|^)hokaclearances\.com$ -- Hacker website - They install a backdoor trojan on your pc and remote in secretly to record you on webcam and copy a list of all your file paths
 (\.|^)impala-media-production\.s3\.amazonaws\.com$ -- Snapchat
-(\.|^)internetat\.tv$ -- Samsung Smart TV
+(\.|^)internetat\.tv$ -- Smart TV (Samsung/Other)
 (\.|^)lambda-url\.us-east-1\.on\.aws$ -- AdultTime
 (\.|^)lgsmartad\.com$ -- LG Smart TVs
 (\.|^)log[0-9]*\.spotify\.com$ -- Spotify
 (\.|^)lstartanalystconcepts\.org\.uk$ -- BitTorrent - Background Tracking
 (\.|^)ok\.ru$ -- OK.ru
-(\.|^)pavv\.co\.kr$ -- Samsung Smart TV
+(\.|^)pavv\.co\.kr$ -- Smart TV (Samsung/Other)
 (\.|^)privatproxy.*$ -- Suspected Virus Harboring Websites
 (\.|^)rdx2\.lgtvsdp\.com$ -- LG Smart TVs
 (\.|^)samsungelectronics\.com$ -- Samsung Smart TV
@@ -35,25 +35,13 @@
 (\.|^)trafyield\.com$ -- 1337x.to - Sneaky redirect domains that probably log your IP and any other information it gets from your browser sending a GET or POST request.
 (\.|^)tvinteractive\.tv$ -- Vizio Smart TV
 (\.|^)usage\.trackjs\.com$ -- AdultTime
-(\.|^)whatsapp-cdn-shv-[0-9]{2}-[a-z]{3}[0-9]\.fbcdn\.net$ -- WhatsApp
 (\.|^)wmail.*$ -- Suspected Virus Harboring Websites
 (\.|^)xyz$ -- Bittorrent
 (\.|^)youtube-nocookie\.com$ -- YouTube
-(^|\.)giraffic\.com$ -- Other Smart TV
-(^|\.)giraffic\.com$ -- Samsung TV
-(^|\.)ibs\.lgappstv\.com -- LG Smart TV
-(^|\.)ibs\.lgappstv\.com$ -- LG TV
-(^|\.)internetat\.tv$ -- Other Smart TV
-(^|\.)lgsmartad\.com -- LG Smart TV
-(^|\.)lgtvcommon\.com -- LG Smart TV
-(^|\.)lgtvcommon\.com$ -- LG TV
-(^|\.)pavv\.co\.kr$ -- Other Smart TV
-(^|\.)rdx2\.lgtvsdp\.com -- LG Smart TV
-(^|\.)samsungcloudsolution\.net$ -- Samsung Smart TV
-(^|\.)samsungcloudsolution\.net$ -- Samsung TV
-(^|\.)samsungelectronics\.com$ -- Samsung Smart TV
-(^|\.)samsungrm\.net$ -- Samsung Smart TV
-(^|\.)smartshare\.lgtvsdp\.com -- LG Smart TV
+(^|\.)giraffic\.com$ -- Smart TV (Samsung/Other)
+(^|\.)ibs\.lgappstv\.com$ -- LG Smart TV / LG TV
+(^|\.)lgtvcommon\.com$ -- LG Smart TV / LG TV
+(^|\.)samsungcloudsolution\.net$ -- Smart TV (Samsung/Other)
 [a-z]{2}-[a-z]+-[0-9]\.elb\.amazonaws\.com$ -- Yahoo
 ^(.+[_.-])?adse?rv(er?|ice)?s?[0-9]*[_.-] -- mmotti RegEx
 ^(.+[_.-])?telemetry[_.-] -- mmotti RegEx
@@ -70,8 +58,7 @@
 ^advert(s|is(ing|ements?))?[0-9]*[_.-] -- mmotti RegEx
 ^aff(iliat(es?|ion))?[_.-] -- mmotti RegEx
 ^analytics?[_.-] -- mmotti RegEx
-^api\..*\.hismarttv\.com$ -- Other TV
-^api\..*\.hismarttv\.com$ -- Vizio Smart TV
+^api\..*\.hismarttv\.com$ -- Smart TV (Vizio/Other)
 ^banners?[_.-] -- mmotti RegEx
 ^beacons?[0-9]*[_.-] -- mmotti RegEx
 ^content(|-geo)\.uplynk\.com$ -- Yahoo
@@ -80,7 +67,7 @@
 ^dms-[a-z0-9]+report\.wc\.yahoodns\.net$ -- Yahoo
 ^dns-[a-z0-9]+\.sombrero\.yahoo\.net$ -- Yahoo
 ^ds-beap[0-9]\.[a-z]{2}\.[a-z0-9]+\.yahoodns\.net$ -- Yahoo
-^ds-global[0-9]\.l[0-9].search\.[a-z0-9]+\.yahoo\.com$ -- Yahoo
+^ds-global[0-9]\.l[0-9]\.search\.[a-z0-9]+\.yahoo\.com$ -- Yahoo
 ^ext[0-9]?-iad[0-9]?\.steamserver\.net$ -- Steam Desktop App (Gaming)
 ^iad[0-9]*-[a-z]+[0-9]*\.netflix\.com$ -- Netflix Ads
 ^mads\. -- mmotti RegEx
