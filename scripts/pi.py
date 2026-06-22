@@ -10,7 +10,6 @@ import time
 from colorama import init, Fore, Style
 from contextlib import contextmanager
 from datetime import datetime
-from tabulate import tabulate
 from textwrap import shorten
 
 # Initialize colorama, fallback to no-color if terminal doesn't support ANSI escape codes
@@ -33,6 +32,17 @@ REMOVED_LEVEL = 25
 logging.addLevelName(REMOVED_LEVEL, "REMOVED")
 logging.REMOVED = REMOVED_LEVEL
 
+# Matches ANSI color escape codes so they can be stripped from the log file.
+ANSI_ESCAPE = re.compile(r'\x1b\[[0-9;]*m')
+
+LEVEL_COLORS = {
+    logging.INFO: Fore.GREEN,
+    logging.WARNING: Fore.YELLOW,
+    logging.ERROR: Fore.RED,
+    REMOVED_LEVEL: Fore.MAGENTA,
+}
+
+
 class SingleTimeStampLogger(logging.Logger):
     def __init__(self, name, level=logging.NOTSET):
         super().__init__(name, level)
@@ -43,33 +53,53 @@ class SingleTimeStampLogger(logging.Logger):
             timestamp = datetime.now().strftime('[%m-%d-%Y %I:%M:%S %p]')
             print(f"{Fore.CYAN}{timestamp}{Style.RESET_ALL}")
             self.first_log = False
-        
-        if level == logging.INFO:
-            label = f"{Fore.GREEN}[INFO]{Style.RESET_ALL}"
-        elif level == logging.ERROR:
-            label = f"{Fore.RED}[ERROR]{Style.RESET_ALL}"
-        elif level == logging.WARNING:
-            label = f"{Fore.YELLOW}[WARNING]{Style.RESET_ALL}"
-        elif level == logging.REMOVED:
-            label = f"{Fore.MAGENTA}[REMOVED]{Style.RESET_ALL}"
-        else:
-            label = f"[{logging.getLevelName(level)}]"
-        
-        colored_msg = f"{label} {msg}"
-        super()._log(level, colored_msg, args, exc_info, extra, stack_info)
+        super()._log(level, msg, args, exc_info, extra, stack_info)
+
+
+class ColorFormatter(logging.Formatter):
+    """Renders a colored [LEVEL] label for console output."""
+
+    def format(self, record):
+        color = LEVEL_COLORS.get(record.levelno, '')
+        reset = Style.RESET_ALL if color else ''
+        return f"{color}[{record.levelname}]{reset} {record.getMessage()}"
+
+
+class PlainFormatter(logging.Formatter):
+    """Renders a plain [LEVEL] label and strips ANSI codes for the log file."""
+
+    def format(self, record):
+        return ANSI_ESCAPE.sub('', f"[{record.levelname}] {record.getMessage()}")
+
 
 logging.setLoggerClass(SingleTimeStampLogger)
-logging.basicConfig(
-    format='%(message)s',
-    level=logging.INFO,
-    handlers=[
-        logging.FileHandler(LOG_FILE),
-        logging.StreamHandler()
-    ]
-)
+
+_file_handler = logging.FileHandler(LOG_FILE)
+_file_handler.setFormatter(PlainFormatter())
+_stream_handler = logging.StreamHandler()
+_stream_handler.setFormatter(ColorFormatter())
+logging.basicConfig(level=logging.INFO, handlers=[_file_handler, _stream_handler])
 
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+def format_db_date(value):
+    """Format a Pi-hole date_added/date_modified value for display.
+
+    Pi-hole stores these columns as unix epoch integers. Older versions of this
+    script stored ISO-8601 strings, so both are handled, with a raw-value
+    fallback so display never raises on unexpected data.
+    """
+    if value is None or value == '':
+        return "Unknown"
+    try:
+        return datetime.fromtimestamp(int(value)).strftime('%b-%d-%Y %I:%M:%S %p')
+    except (ValueError, TypeError, OSError):
+        pass
+    try:
+        return datetime.strptime(str(value), '%Y-%m-%d %H:%M:%S.%f').strftime('%b-%d-%Y %I:%M:%S %p')
+    except ValueError:
+        return str(value)
 
 def get_domains_from_url(url):
     try:
@@ -101,11 +131,16 @@ def domain_exists(cursor, domain, domain_type):
     return cursor.fetchone() is not None
 
 def add_or_remove_domains(domains, domain_type, add=True):
-    added_count = removed_count = skipped_count = attempts = 0
+    added_count = removed_count = skipped_count = 0
     changes_made = False
-    processed_domains = set()
+    attempts = 0
 
     while attempts < RETRY_COUNT:
+        # Reset per-attempt state so a retry after a rolled-back transaction
+        # re-processes every domain cleanly instead of skipping them all.
+        added_count = removed_count = skipped_count = 0
+        changes_made = False
+        processed_domains = set()
         try:
             with db_connection() as conn:
                 cursor = conn.cursor()
@@ -121,8 +156,10 @@ def add_or_remove_domains(domains, domain_type, add=True):
                         processed_domains.add(domain_name)
                         if add:
                             if not domain_exists(cursor, domain_name, domain_type):
-                                cursor.execute("INSERT INTO domainlist (type, domain, enabled, comment, date_added, date_modified) VALUES (?, ?, 1, ?, ?, ?)",
-                                               (domain_type, domain_name, comment, datetime.now(), datetime.now()))
+                                cursor.execute(
+                                    "INSERT INTO domainlist (type, domain, enabled, comment, date_added, date_modified) "
+                                    "VALUES (?, ?, 1, ?, strftime('%s','now'), strftime('%s','now'))",
+                                    (domain_type, domain_name, comment))
                                 added_count += 1
                                 changes_made = True
                                 logging.info(f"Added: {domain_name}")
@@ -166,8 +203,10 @@ def add_domain(domain_type):
         with db_connection() as conn:
             cursor = conn.cursor()
             domain = input("Enter the domain to add: ")
-            cursor.execute("INSERT INTO domainlist (type, domain, enabled, date_added, date_modified) VALUES (?, ?, 1, ?, ?)",
-                           (domain_type, domain, datetime.now(), datetime.now()))
+            cursor.execute(
+                "INSERT INTO domainlist (type, domain, enabled, date_added, date_modified) "
+                "VALUES (?, ?, 1, strftime('%s','now'), strftime('%s','now'))",
+                (domain_type, domain))
             conn.commit()
             logging.info(f"Domain {domain} added successfully.")
     except Exception as e:
@@ -208,21 +247,10 @@ def list_domains(domain_type):
                 box_width = 90
                 for row in domains:
                     domain_str = row[0]
-                    comment = row[1]
+                    comment = row[1] or ""
                     enabled = row[2]
-                    date_added = row[3]
-                    date_modified = row[4]
-
-                    # Try to parse the date_added and date_modified values
-                    try:
-                        date_added = datetime.strptime(date_added, '%Y-%m-%d %H:%M:%S.%f').strftime('%b-%d-%Y %I:%M:%S %p')
-                    except ValueError:
-                        date_added = datetime.fromtimestamp(int(date_added)).strftime('%b-%d-%Y %I:%M:%S %p')
-
-                    try:
-                        date_modified = datetime.strptime(date_modified, '%Y-%m-%d %H:%M:%S.%f').strftime('%b-%d-%Y %I:%M:%S %p')
-                    except ValueError:
-                        date_modified = datetime.fromtimestamp(int(date_modified)).strftime('%b-%d-%Y %I:%M:%S %p')
+                    date_added = format_db_date(row[3])
+                    date_modified = format_db_date(row[4])
 
                     wrapped_comment = textwrap.wrap(comment, width=box_width - 4)
 
@@ -285,10 +313,10 @@ def search_domains():
                     table_data = []
                     for row in results:
                         domain_str = shorten(row[0], width=column_widths[0], placeholder="...")
-                        comment = shorten(row[1], width=column_widths[1], placeholder="...")
+                        comment = shorten(row[1] or "", width=column_widths[1], placeholder="...")
                         enabled = "Yes" if row[2] else "No"
-                        date_added = row[3][:19]  # Truncate milliseconds
-                        date_modified = row[4][:19]  # Truncate milliseconds
+                        date_added = format_db_date(row[3])
+                        date_modified = format_db_date(row[4])
                         
                         table_data.append([
                             domain_str,
@@ -337,10 +365,10 @@ def search_domains():
                                     for row in domains_to_show:
                                         print(f"\n{Fore.CYAN}Full details for {row[0]}:{Style.RESET_ALL}")
                                         print(f"Domain: {row[0]}")
-                                        print(f"Comment: {row[1]}")
+                                        print(f"Comment: {row[1] or ''}")
                                         print(f"Enabled: {Fore.GREEN if row[2] else Fore.RED}{row[2]}{Style.RESET_ALL}")
-                                        print(f"Added: {row[3]}")
-                                        print(f"Modified: {row[4]}")
+                                        print(f"Added: {format_db_date(row[3])}")
+                                        print(f"Modified: {format_db_date(row[4])}")
                                         print(f"Type: {['Exact Whitelist', 'Exact Blacklist', 'Regex Whitelist', 'Regex Blacklist'][row[5]]}")
                                 else:
                                     print(f"{Fore.RED}Domain not found in search results.{Style.RESET_ALL}")
@@ -440,7 +468,11 @@ def main():
     if action == 'add':
         logging.info("Add domains")
         print(f"{Fore.MAGENTA}0: Exact Whitelist\n1: Exact Blacklist\n2: Regex Whitelist\n3: Regex Blacklist\n4: All{Style.RESET_ALL}")
-        domain_type = int(input("Choose an option: "))
+        try:
+            domain_type = int(input("Choose an option: "))
+        except ValueError:
+            logging.error("Invalid input. Please enter a number. Exiting.")
+            return
         clear_screen()
         if domain_type not in URLS and domain_type != 4:
             logging.error("Invalid domain type. Exiting.")
@@ -464,7 +496,11 @@ def main():
     elif action == 'remove':
         logging.info("Remove domains")
         print(f"{Fore.MAGENTA}0: Exact Whitelist\n1: Exact Blacklist\n2: Regex Whitelist\n3: Regex Blacklist\n4: All{Style.RESET_ALL}")
-        remove_option = int(input("Choose an option: "))
+        try:
+            remove_option = int(input("Choose an option: "))
+        except ValueError:
+            logging.error("Invalid input. Please enter a number. Exiting.")
+            return
         clear_screen()
         if remove_option == 4:
             for type_num in URLS:
@@ -487,7 +523,11 @@ def main():
     elif action == 'list':
         logging.info("List domains")
         print(f"{Fore.MAGENTA}0: Exact Whitelist\n1: Exact Blacklist\n2: Regex Whitelist\n3: Regex Blacklist\n4: All{Style.RESET_ALL}")
-        domain_type = int(input("Choose an option: "))
+        try:
+            domain_type = int(input("Choose an option: "))
+        except ValueError:
+            logging.error("Invalid input. Please enter a number. Exiting.")
+            return
         clear_screen()
         if domain_type not in URLS and domain_type != 4:
             logging.error("Invalid domain type. Exiting.")

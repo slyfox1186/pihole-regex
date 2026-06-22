@@ -7,7 +7,6 @@ import sqlite3
 import subprocess
 import time
 from colorama import init, Fore, Style
-from datetime import datetime
 
 # Initialize colorama
 init()
@@ -112,6 +111,8 @@ def main():
         return
 
     attempts = 0
+    added_count = removed_count = 0
+    changes_made = False
     while attempts < RETRY_COUNT:
         try:
             with sqlite3.connect(PIHOLE_DB_PATH, timeout=RETRY_DELAY * RETRY_COUNT) as conn:
@@ -129,8 +130,10 @@ def main():
                 if domains_to_add:
                     print(f"\n{Fore.GREEN}Domains to be Added:{Style.RESET_ALL}")
                     for domain in domains_to_add:
-                        cursor.execute("INSERT INTO adlist (address, comment, enabled, date_added, date_modified) VALUES (?, ?, 1, ?, ?)",
-                                    (domain, "SlyADL - SlyFox1186 AdList - github.com/slyfox1186/pihole-regex", datetime.now(), datetime.now()))
+                        cursor.execute(
+                            "INSERT INTO adlist (address, comment, enabled, date_added, date_modified) "
+                            "VALUES (?, ?, 1, strftime('%s','now'), strftime('%s','now'))",
+                            (domain, "SlyADL - SlyFox1186 AdList - github.com/slyfox1186/pihole-regex"))
                         print(f" - Added: {domain}")
                         added_count += 1
                     changes_made = True
