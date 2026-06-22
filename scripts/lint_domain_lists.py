@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 import argparse
+import shutil
 import subprocess
-import sys
 import unicodedata
 from dataclasses import dataclass
 from pathlib import Path
@@ -136,6 +136,14 @@ def main() -> int:
 
     lists = {name: parse_entries(path) for name, path in LIST_FILES.items()}
 
+    # pcre2grep powers the regex compile/conflict checks; degrade gracefully if absent.
+    have_pcre2grep = shutil.which("pcre2grep") is not None
+    if not have_pcre2grep:
+        warnings.append(
+            "pcre2grep not found on PATH; skipping regex compile and regex-vs-exact "
+            "checks. Install it (e.g. 'apt install pcre2-utils' or 'brew install pcre2')."
+        )
+
     # 1) Control/non-printable characters
     for name, entries in lists.items():
         for entry in entries:
@@ -160,10 +168,11 @@ def main() -> int:
     # 3) Regex compile check + suspicious heuristics
     for name in ("regex_whitelist", "regex_blacklist"):
         for entry in lists[name]:
-            rc, _, err = pcre2grep_matches(entry.pattern, ["example.com"])
-            if rc == 2:
-                errors.append(f"{entry.file.name}:{entry.line_no}: PCRE2 compile error: {err}")
-                continue
+            if have_pcre2grep:
+                rc, _, err = pcre2grep_matches(entry.pattern, ["example.com"])
+                if rc == 2:
+                    errors.append(f"{entry.file.name}:{entry.line_no}: PCRE2 compile error: {err}")
+                    continue
 
             if "\\c" in entry.pattern:
                 warnings.append(f"{entry.file.name}:{entry.line_no}: contains \\\\c escape (often accidental): {entry.pattern}")
@@ -176,28 +185,29 @@ def main() -> int:
                 warnings.append(f"{entry.file.name}:{entry.line_no}: suspicious unescaped '.' at offsets {caret}: {entry.pattern}")
 
     # 4) Regex-vs-exact conflicts
-    exact_wl = [e.pattern for e in lists["exact_whitelist"]]
-    exact_bl = [e.pattern for e in lists["exact_blacklist"]]
+    if have_pcre2grep:
+        exact_wl = [e.pattern for e in lists["exact_whitelist"]]
+        exact_bl = [e.pattern for e in lists["exact_blacklist"]]
 
-    for entry in lists["regex_blacklist"]:
-        rc, matches, err = pcre2grep_matches(entry.pattern, exact_wl)
-        if rc == 2:
-            continue
-        if matches:
-            sample = ", ".join(matches[:5])
-            warnings.append(
-                f"{entry.file.name}:{entry.line_no}: regex blacklist matches exact whitelist ({len(matches)}): {sample}"
-            )
+        for entry in lists["regex_blacklist"]:
+            rc, matches, err = pcre2grep_matches(entry.pattern, exact_wl)
+            if rc == 2:
+                continue
+            if matches:
+                sample = ", ".join(matches[:5])
+                warnings.append(
+                    f"{entry.file.name}:{entry.line_no}: regex blacklist matches exact whitelist ({len(matches)}): {sample}"
+                )
 
-    for entry in lists["regex_whitelist"]:
-        rc, matches, err = pcre2grep_matches(entry.pattern, exact_bl)
-        if rc == 2:
-            continue
-        if matches:
-            sample = ", ".join(matches[:5])
-            warnings.append(
-                f"{entry.file.name}:{entry.line_no}: regex whitelist matches exact blacklist ({len(matches)}): {sample}"
-            )
+        for entry in lists["regex_whitelist"]:
+            rc, matches, err = pcre2grep_matches(entry.pattern, exact_bl)
+            if rc == 2:
+                continue
+            if matches:
+                sample = ", ".join(matches[:5])
+                warnings.append(
+                    f"{entry.file.name}:{entry.line_no}: regex whitelist matches exact blacklist ({len(matches)}): {sample}"
+                )
 
     # 5) Regex whitelist vs regex blacklist overlap (normalized)
     wl_norm: dict[str, Entry] = {}

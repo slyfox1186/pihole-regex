@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 # pihole_admin.py
 
+from __future__ import annotations
+
 import argparse
 import logging
-import matplotlib.pyplot as plt
 import os
-import pandas as pd
 import re
 import requests
 import sqlite3
@@ -15,33 +15,70 @@ import time
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta
-from functools import lru_cache
-from fuzzywuzzy import fuzz
 from tabulate import tabulate
-from typing import Any, Dict, List, Optional, Tuple
+from typing import TYPE_CHECKING, Any, Dict, List, Optional, Tuple
 
-# Try to import seaborn, use fallback if not available
-try:
-    import seaborn as sns
-    SEABORN_AVAILABLE = True
-except ImportError:
-    SEABORN_AVAILABLE = False
-    logging.warning("Seaborn is not installed. Using matplotlib for plotting. For enhanced visualizations, install seaborn: pip install seaborn")
+if TYPE_CHECKING:  # Imported only for type hints; pandas stays an optional runtime dep.
+    import pandas as pd
 
-# Try to import tld, use a simple fallback if not available
-try:
-    from tld import get_tld
-    TLD_AVAILABLE = True
-except ImportError:
-    TLD_AVAILABLE = False
-    logging.warning("tld package is not installed. Using a simple TLD extraction method. For better TLD extraction, install tld: pip install tld")
+# Pi-hole FTL "status" codes that represent a blocked answer (gravity, regex,
+# denied, special-domain, etc.). Centralized so every query stays consistent.
+BLOCKED_STATUS_CODES = (1, 4, 5, 6, 7, 8, 9, 10, 11)
+BLOCKED_STATUS_IN = ", ".join(str(code) for code in BLOCKED_STATUS_CODES)
 
-    def get_tld(url, as_object=False, fail_silently=False):
-        """Simple TLD extraction fallback."""
-        parts = url.split('.')
-        if len(parts) > 1:
-            return '.'.join(parts[-2:])
-        return url
+# The heavy / optional third-party packages below (matplotlib, pandas, seaborn,
+# rapidfuzz/fuzzywuzzy, tld) are imported lazily inside the few methods that use
+# them. This keeps common commands (stats, add/remove, optimize, backup) fast and
+# lets the tool run even when those plotting/analysis extras are not installed.
+
+
+def _load_pyplot():
+    """Import matplotlib with a headless-safe backend, plus optional seaborn."""
+    import matplotlib
+    matplotlib.use("Agg")  # Must precede pyplot import; renders without a display.
+    import matplotlib.pyplot as plt
+    try:
+        import seaborn as sns
+    except ImportError:
+        sns = None
+    return plt, sns
+
+
+def _get_ratio():
+    """Return a string-similarity function (0-100), preferring the fastest lib."""
+    try:
+        from rapidfuzz import fuzz
+        return fuzz.ratio
+    except ImportError:
+        pass
+    try:
+        from fuzzywuzzy import fuzz
+        return fuzz.ratio
+    except ImportError:
+        from difflib import SequenceMatcher
+        return lambda a, b: SequenceMatcher(None, a, b).ratio() * 100
+
+
+def _suffix_extractor():
+    """Return a function mapping a domain to its registry suffix/category."""
+    try:
+        from tld import get_tld
+    except ImportError:
+        get_tld = None
+
+    def extract(domain: str) -> str:
+        if get_tld is not None:
+            try:
+                # fix_protocol lets bare domains (no scheme) be parsed correctly;
+                # without it tld returns None for every Pi-hole entry.
+                info = get_tld(domain, as_object=True, fail_silently=True, fix_protocol=True)
+                return info.suffix if info else "Unknown"
+            except Exception:
+                return "Unknown"
+        parts = domain.split('.')
+        return '.'.join(parts[-2:]) if len(parts) > 1 else "Unknown"
+
+    return extract
 
 
 class DatabaseConnectionPool:
@@ -49,7 +86,6 @@ class DatabaseConnectionPool:
         self.db_path = db_path
         self.max_connections = max_connections
         self.connections = []
-        self.lock = False  # Simple lock mechanism
 
     def get_connection(self) -> sqlite3.Connection:
         if len(self.connections) < self.max_connections:
@@ -253,7 +289,7 @@ Changes Made:
 
                 stats['total_queries'] = int(cursor.execute("SELECT COUNT(*) FROM queries").fetchone()[0] or 0)
                 stats['blocked_queries'] = int(
-                    cursor.execute("SELECT COUNT(*) FROM queries WHERE status IN (1,4,5,6,7,8,9,10,11)").fetchone()[0] or 0)
+                    cursor.execute(f"SELECT COUNT(*) FROM queries WHERE status IN ({BLOCKED_STATUS_IN})").fetchone()[0] or 0)
                 stats['forwarded_queries'] = int(
                     cursor.execute("SELECT COUNT(*) FROM queries WHERE status = 2").fetchone()[0] or 0)
                 stats['cached_queries'] = int(
@@ -352,7 +388,7 @@ Changes Made:
             self.logger.error(f"An unexpected error occurred during gravity update: {e}")
 
     def analyze_top_domains(self, limit: int = 10, blocked: bool = True) -> List[Dict[str, Any]]:
-        status_codes = (1, 4, 5, 6, 7, 8, 9, 10, 11) if blocked else (2, 3)
+        status_codes = BLOCKED_STATUS_CODES if blocked else (2, 3)
         status_label = 'blocked' if blocked else 'allowed'
         self.logger.info(f"Analyzing top {limit} {status_label} domains...")
 
@@ -403,48 +439,23 @@ Changes Made:
 
         self.logger.info(f"Running simplified query: type={query_type}, order_by={order_by}, limit={limit}")
 
+        # Both columns come from the fixed allow-lists validated above, so it is
+        # safe to embed them directly in the SQL text.
+        group_column = 'domain' if query_type == 'domains' else 'client'
+        order_column = 'blocked_queries' if order_by == 'blocked' else 'total_queries'
+
+        query = f"""
+            SELECT {group_column}, COUNT(*) as total_queries,
+                   SUM(CASE WHEN status IN ({BLOCKED_STATUS_IN}) THEN 1 ELSE 0 END) as blocked_queries
+            FROM queries
+            GROUP BY {group_column}
+            ORDER BY {order_column} DESC
+            LIMIT ?
+        """
+
         try:
             with self._get_connection(self.query_db_pool.db_path) as conn:
                 cursor = conn.cursor()
-                if query_type == 'domains':
-                    if order_by == 'blocked':
-                        query = """
-                            SELECT domain, COUNT(*) as total_queries,
-                                   SUM(CASE WHEN status IN (1,4,5,6,7,8,9,10,11) THEN 1 ELSE 0 END) as blocked_queries
-                            FROM queries
-                            GROUP BY domain
-                            ORDER BY blocked_queries DESC
-                            LIMIT ?
-                        """
-                    else:
-                        query = """
-                            SELECT domain, COUNT(*) as total_queries,
-                                   SUM(CASE WHEN status IN (1,4,5,6,7,8,9,10,11) THEN 1 ELSE 0 END) as blocked_queries
-                            FROM queries
-                            GROUP BY domain
-                            ORDER BY total_queries DESC
-                            LIMIT ?
-                        """
-                elif query_type == 'clients':
-                    if order_by == 'blocked':
-                        query = """
-                            SELECT client, COUNT(*) as total_queries,
-                                   SUM(CASE WHEN status IN (1,4,5,6,7,8,9,10,11) THEN 1 ELSE 0 END) as blocked_queries
-                            FROM queries
-                            GROUP BY client
-                            ORDER BY blocked_queries DESC
-                            LIMIT ?
-                        """
-                    else:
-                        query = """
-                            SELECT client, COUNT(*) as total_queries,
-                                   SUM(CASE WHEN status IN (1,4,5,6,7,8,9,10,11) THEN 1 ELSE 0 END) as blocked_queries
-                            FROM queries
-                            GROUP BY client
-                            ORDER BY total_queries DESC
-                            LIMIT ?
-                        """
-
                 cursor.execute(query, (limit,))
                 columns = [description[0] for description in cursor.description]
                 results = [dict(zip(columns, row)) for row in cursor.fetchall()]
@@ -496,8 +507,9 @@ Changes Made:
     def generate_charts(self, top_blocked_domains: List[Dict[str, Any]],
                         top_allowed_domains: List[Dict[str, Any]]):
         try:
+            plt, sns = _load_pyplot()
             plt.figure(figsize=(14, 7))
-            if SEABORN_AVAILABLE:
+            if sns:
                 sns.set_style("whitegrid")
 
             # Top Blocked Domains
@@ -659,12 +671,14 @@ Changes Made:
                     return self.get_list_type(types[0])
                 return ", ".join(self.get_list_type(t) for t in types)
 
+            ratio = _get_ratio()
+
             def compare_domains(start_index: int, chunk: List[Tuple[str, int]]) -> List[Tuple[str, str, int]]:
                 results = []
                 for offset, (domain1, _type1) in enumerate(chunk):
                     i = start_index + offset
                     for domain2, _type2 in domains[i + 1:]:
-                        similarity = fuzz.ratio(domain1, domain2)
+                        similarity = int(round(ratio(domain1, domain2)))
                         if similarity >= similarity_threshold:
                             results.append((domain1, domain2, similarity))
                 return results
@@ -717,16 +731,9 @@ Changes Made:
             self.logger.error(f"Error fetching domains for categorization: {e}")
             return {}
 
+        extract_suffix = _suffix_extractor()
         for domain in domains:
-            try:
-                tld_info = get_tld(domain, as_object=True, fail_silently=True)
-                if tld_info:
-                    category = tld_info.suffix
-                else:
-                    category = "Unknown"
-            except Exception:
-                category = "Unknown"
-            categories[category].append(domain)
+            categories[extract_suffix(domain)].append(domain)
 
         self.logger.info(f"Domains categorized into {len(categories)} categories.")
         return dict(categories)
@@ -734,17 +741,22 @@ Changes Made:
     def analyze_query_trends(self, days: int = 30) -> Optional[pd.DataFrame]:
         self.logger.info(f"Analyzing query trends for the last {days} days...")
         try:
+            import pandas as pd
+        except ImportError:
+            self.logger.error("pandas is required for query-trend analysis. Install it with: pip install pandas")
+            return None
+        try:
             with self._get_connection(self.query_db_pool.db_path) as conn:
                 query = f"""
                     SELECT date(timestamp, 'unixepoch') as date,
                            COUNT(*) as total_queries,
-                           SUM(CASE WHEN status IN (1,4,5,6,7,8,9,10,11) THEN 1 ELSE 0 END) as blocked_queries
+                           SUM(CASE WHEN status IN ({BLOCKED_STATUS_IN}) THEN 1 ELSE 0 END) as blocked_queries
                     FROM queries
-                    WHERE timestamp >= strftime('%s', 'now', '-{days} days')
+                    WHERE timestamp >= strftime('%s', 'now', ?)
                     GROUP BY date
                     ORDER BY date
                 """
-                df = pd.read_sql_query(query, conn)
+                df = pd.read_sql_query(query, conn, params=(f"-{days} days",))
         except sqlite3.Error as e:
             self.logger.error(f"Error analyzing query trends: {e}")
             return None
@@ -769,8 +781,9 @@ Changes Made:
             return
 
         try:
+            plt, sns = _load_pyplot()
             plt.figure(figsize=(14, 8))
-            if SEABORN_AVAILABLE:
+            if sns:
                 sns.set_style("whitegrid")
 
             # Plot total, blocked, and allowed queries

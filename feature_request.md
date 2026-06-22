@@ -1,7 +1,7 @@
 ---
 name: Feature request
 about: Suggest an idea for this project
-title: "[FALSE_POSTIIVE]"
+title: "[FALSE_POSITIVE]"
 labels: bug
 assignees: slyfox1186
 

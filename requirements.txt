@@ -1,0 +1,21 @@
+# Pi-hole RegEx — Python dependencies
+#
+# Quick start (installer scripts pi.py / adlist.py only):
+#   pip install colorama requests
+#
+# Full install (adds the pihole_admin.py advanced toolkit):
+#   pip install -r requirements.txt
+
+# ---- Core (required) ----
+colorama       # colored terminal output (pi.py, adlist.py)
+requests       # downloading lists / version checks (all scripts)
+tabulate       # table rendering in pihole_admin.py
+
+# ---- Optional: pihole_admin.py advanced features ----
+# Each feature degrades gracefully (or prints an install hint) if its
+# package is missing, so these are only needed for the noted commands.
+matplotlib     # charts for --report and --analyze-query-trends
+pandas         # --analyze-query-trends
+seaborn        # nicer chart styling (optional, on top of matplotlib)
+rapidfuzz      # fast --find-similar (falls back to fuzzywuzzy, then stdlib difflib)
+tld            # --categorize-domains (falls back to a simple extractor)
