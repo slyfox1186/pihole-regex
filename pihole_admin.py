@@ -14,9 +14,10 @@ import sys
 import time
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from contextlib import closing
 from datetime import datetime, timedelta
 from tabulate import tabulate
-from typing import TYPE_CHECKING, Any, Dict, List, Optional, Tuple
+from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:  # Imported only for type hints; pandas stays an optional runtime dep.
     import pandas as pd
@@ -222,10 +223,8 @@ Changes Made:
 
             try:
                 start_time = time.time()
-                with self._get_connection(db) as conn:
-                    backup = sqlite3.connect(backup_file)
+                with self._get_connection(db) as conn, closing(sqlite3.connect(backup_file)) as backup:
                     conn.backup(backup)
-                    backup.close()
                 backup_time = time.time() - start_time
                 backup_size = os.path.getsize(backup_file) / (1024 * 1024)  # Size in MB
                 self.logger.info(f"Database {db_name} backup completed in {backup_time:.2f} seconds")
@@ -235,7 +234,7 @@ Changes Made:
             except OSError as e:
                 self.logger.error(f"Failed to access backup file {backup_file}: {e}")
 
-    def get_statistics(self) -> Dict[str, Any]:
+    def get_statistics(self) -> dict[str, Any]:
         self.logger.info("Fetching database statistics...")
         stats = {}
         stats['stats_generated_at'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -323,7 +322,7 @@ Changes Made:
         except sqlite3.Error as e:
             self.logger.error(f"Error cleaning old data: {e}")
 
-    def add_domains_to_list(self, domains: List[str], list_type: int) -> None:
+    def add_domains_to_list(self, domains: list[str], list_type: int) -> None:
         list_name = self.get_list_type(list_type)
         self.logger.info(f"Adding domains to {list_name}...")
         added_count = 0
@@ -343,7 +342,7 @@ Changes Made:
         except sqlite3.Error as e:
             self.logger.error(f"Error adding domains to {list_name}: {e}")
 
-    def remove_domains_from_list(self, domains: List[str], list_type: int) -> None:
+    def remove_domains_from_list(self, domains: list[str], list_type: int) -> None:
         list_name = self.get_list_type(list_type)
         self.logger.info(f"Removing domains from {list_name}...")
         removed_count = 0
@@ -387,7 +386,7 @@ Changes Made:
         except Exception as e:
             self.logger.error(f"An unexpected error occurred during gravity update: {e}")
 
-    def analyze_top_domains(self, limit: int = 10, blocked: bool = True) -> List[Dict[str, Any]]:
+    def analyze_top_domains(self, limit: int = 10, blocked: bool = True) -> list[dict[str, Any]]:
         status_codes = BLOCKED_STATUS_CODES if blocked else (2, 3)
         status_label = 'blocked' if blocked else 'allowed'
         self.logger.info(f"Analyzing top {limit} {status_label} domains...")
@@ -411,7 +410,7 @@ Changes Made:
             self.logger.error(f"Error analyzing top {status_label} domains: {e}")
             return []
 
-    def run_custom_query(self, query: str) -> List[Dict[str, Any]]:
+    def run_custom_query(self, query: str) -> list[dict[str, Any]]:
         self.logger.info("Running custom query...")
         results = []
         try:
@@ -427,7 +426,7 @@ Changes Made:
             self.logger.error(f"Error executing custom query: {e}")
         return results
 
-    def run_simplified_query(self, query_type: str, order_by: str, limit: int) -> List[Dict[str, Any]]:
+    def run_simplified_query(self, query_type: str, order_by: str, limit: int) -> list[dict[str, Any]]:
         valid_query_types = ['domains', 'clients']
         if query_type not in valid_query_types:
             self.logger.error(f"Invalid query type: {query_type}. Must be one of {valid_query_types}.")
@@ -504,8 +503,8 @@ Changes Made:
         self.logger.info("Comprehensive report generated.")
         return report_str
 
-    def generate_charts(self, top_blocked_domains: List[Dict[str, Any]],
-                        top_allowed_domains: List[Dict[str, Any]]):
+    def generate_charts(self, top_blocked_domains: list[dict[str, Any]],
+                        top_allowed_domains: list[dict[str, Any]]):
         try:
             plt, sns = _load_pyplot()
             plt.figure(figsize=(14, 7))
@@ -602,7 +601,7 @@ Changes Made:
             self.logger.error(f"Error during Pi-hole update: {e}")
             print(f"An error occurred during the update process: {e}")
 
-    def remove_duplicate_domains(self) -> List[List[Tuple[int, str, str]]]:
+    def remove_duplicate_domains(self) -> list[list[tuple[int, str, str]]]:
         self.logger.info("Searching for duplicate domains...")
         duplicates = []
         try:
@@ -645,7 +644,7 @@ Changes Made:
         }
         return list_types.get(type_value, f"unknown list type ({type_value})")
 
-    def find_similar_domains(self, similarity_threshold: int) -> Dict[str, List[Tuple[str, str, int]]]:
+    def find_similar_domains(self, similarity_threshold: int) -> dict[str, list[tuple[str, str, int]]]:
         if not (0 < similarity_threshold <= 100):
             self.logger.error("Similarity threshold must be between 1 and 100.")
             return {}
@@ -673,7 +672,7 @@ Changes Made:
 
             ratio = _get_ratio()
 
-            def compare_domains(start_index: int, chunk: List[Tuple[str, int]]) -> List[Tuple[str, str, int]]:
+            def compare_domains(start_index: int, chunk: list[tuple[str, int]]) -> list[tuple[str, str, int]]:
                 results = []
                 for offset, (domain1, _type1) in enumerate(chunk):
                     i = start_index + offset
@@ -718,7 +717,7 @@ Changes Made:
             self.logger.error(f"Error retrieving list type for domain {domain}: {e}")
             return "unknown list type"
 
-    def categorize_domains(self) -> Dict[str, List[str]]:
+    def categorize_domains(self) -> dict[str, list[str]]:
         self.logger.info("Categorizing domains...")
         categories = defaultdict(list)
 
@@ -738,7 +737,7 @@ Changes Made:
         self.logger.info(f"Domains categorized into {len(categories)} categories.")
         return dict(categories)
 
-    def analyze_query_trends(self, days: int = 30) -> Optional[pd.DataFrame]:
+    def analyze_query_trends(self, days: int = 30) -> pd.DataFrame | None:
         self.logger.info(f"Analyzing query trends for the last {days} days...")
         try:
             import pandas as pd
