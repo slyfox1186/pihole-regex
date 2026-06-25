@@ -27,6 +27,10 @@ URLS = {
     3: 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/regex-blacklist.sql'
 }
 
+# Comment prefix tagging entries this script manages, keyed by domainlist type
+# (E/R = exact/regex, WL/BL = white/black list).
+COMMENT_PREFIXES = {0: 'SlyEWL', 1: 'SlyEBL', 2: 'SlyRWL', 3: 'SlyRBL'}
+
 # Define custom log level before the class that uses it
 REMOVED_LEVEL = 25
 logging.addLevelName(REMOVED_LEVEL, "REMOVED")
@@ -150,7 +154,8 @@ def add_or_remove_domains(domains, domain_type, add=True):
                 for domain in domains:
                     parts = domain.split(' -- ', 1)
                     domain_name = parts[0].strip()
-                    comment = f"Sly{'EWL' if domain_type == 0 else 'EBL' if domain_type == 1 else 'RWL' if domain_type == 2 else 'RBL'} - {parts[1].strip()}" if len(parts) > 1 else ''
+                    prefix = COMMENT_PREFIXES.get(domain_type, 'SlyRBL')
+                    comment = f"{prefix} - {parts[1].strip()}" if len(parts) > 1 else ''
 
                     if domain_name not in processed_domains:
                         processed_domains.add(domain_name)
@@ -199,10 +204,10 @@ def add_or_remove_domains(domains, domain_type, add=True):
     return added_count, removed_count, skipped_count, changes_made
 
 def add_domain(domain_type):
+    domain = input("Enter the domain to add: ")
     try:
         with db_connection() as conn:
             cursor = conn.cursor()
-            domain = input("Enter the domain to add: ")
             cursor.execute(
                 "INSERT INTO domainlist (type, domain, enabled, date_added, date_modified) "
                 "VALUES (?, ?, 1, strftime('%s','now'), strftime('%s','now'))",
@@ -218,10 +223,10 @@ def add_domain(domain_type):
             print(f"{Fore.YELLOW}Try running 'pihole reloaddns' directly on your Pi-hole server.{Style.RESET_ALL}")
 
 def remove_domain(domain_type):
+    domain = input("Enter the domain to remove: ")
     try:
         with db_connection() as conn:
             cursor = conn.cursor()
-            domain = input("Enter the domain to remove: ")
             if domain_exists(cursor, domain, domain_type):
                 cursor.execute("DELETE FROM domainlist WHERE type = ? AND domain = ?", (domain_type, domain))
                 conn.commit()
