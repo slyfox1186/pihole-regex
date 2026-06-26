@@ -7,6 +7,7 @@ import sqlite3
 import subprocess
 import time
 from colorama import init, Fore, Style
+from contextlib import closing
 
 # Initialize colorama
 init()
@@ -115,7 +116,7 @@ def main():
     changes_made = False
     while attempts < RETRY_COUNT:
         try:
-            with sqlite3.connect(PIHOLE_DB_PATH, timeout=RETRY_DELAY * RETRY_COUNT) as conn:
+            with closing(sqlite3.connect(PIHOLE_DB_PATH, timeout=RETRY_DELAY * RETRY_COUNT)) as conn:
                 local_domains = fetch_local_domains(conn)
                 domains_to_add = remote_domains - local_domains
 
