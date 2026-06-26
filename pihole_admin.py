@@ -703,20 +703,6 @@ Changes Made:
             self.logger.error(f"Unexpected error: {e}")
             return {}
 
-    def get_list_type_by_domain(self, domain: str) -> str:
-        try:
-            with self._get_connection(self.gravity_db_pool.db_path) as conn:
-                cursor = conn.cursor()
-                cursor.execute("SELECT type FROM domainlist WHERE domain = ? LIMIT 1", (domain,))
-                result = cursor.fetchone()
-                if result:
-                    return self.get_list_type(result[0])
-                else:
-                    return "unknown list type"
-        except sqlite3.Error as e:
-            self.logger.error(f"Error retrieving list type for domain {domain}: {e}")
-            return "unknown list type"
-
     def categorize_domains(self) -> dict[str, list[str]]:
         self.logger.info("Categorizing domains...")
         categories = defaultdict(list)

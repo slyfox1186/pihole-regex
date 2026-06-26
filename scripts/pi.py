@@ -4,7 +4,9 @@ import logging
 import os
 import re
 import requests
+import shutil
 import sqlite3
+import subprocess
 import textwrap
 import time
 from colorama import init, Fore, Style
@@ -417,8 +419,7 @@ def get_domain_statistics():
 def backup_database():
     try:
         backup_filename = f"gravity_backup_{datetime.now().strftime('%Y%m%d_%H%M%S')}.db"
-        with open(PIHOLE_DB_PATH, 'rb') as src_file, open(backup_filename, 'wb') as dst_file:
-            dst_file.write(src_file.read())
+        shutil.copyfile(PIHOLE_DB_PATH, backup_filename)
         logging.info(f"Database backup created: {backup_filename}")
     except Exception as e:
         logging.error(f"Error: {e}")
@@ -426,8 +427,7 @@ def backup_database():
 def restore_database():
     try:
         backup_filename = input("Enter the backup filename: ")
-        with open(backup_filename, 'rb') as src_file, open(PIHOLE_DB_PATH, 'wb') as dst_file:
-            dst_file.write(src_file.read())
+        shutil.copyfile(backup_filename, PIHOLE_DB_PATH)
         logging.info(f"Database restored from: {backup_filename}")
         success = restart_pihole_dns()
         if not success:
@@ -442,8 +442,8 @@ def restart_pihole_dns():
         print(f"{Fore.YELLOW}Attempting to restart Pi-hole DNS resolver...{Style.RESET_ALL}")
         
         # Execute the reload command
-        output = os.system('pihole reloaddns')
-        if output == 0:
+        result = subprocess.run(["pihole", "reloaddns"], check=False)
+        if result.returncode == 0:
             print(f"{Fore.GREEN}Pi-hole DNS resolver restarted successfully.{Style.RESET_ALL}")
             logging.info("Pi-hole DNS resolver restarted successfully.")
             return True
@@ -453,7 +453,7 @@ def restart_pihole_dns():
             print(f"{Fore.YELLOW}1. This script is not running on the Pi-hole server{Style.RESET_ALL}")
             print(f"{Fore.YELLOW}2. The 'pihole' command is not in your PATH{Style.RESET_ALL}")
             print(f"{Fore.YELLOW}3. You may need to run this script with sudo privileges{Style.RESET_ALL}")
-            logging.error(f"Failed to restart the Pi-hole DNS resolver. Exit code: {output}")
+            logging.error(f"Failed to restart the Pi-hole DNS resolver. Exit code: {result.returncode}")
             return False
     except Exception as e:
         print(f"{Fore.RED}Error restarting Pi-hole DNS: {e}{Style.RESET_ALL}")
