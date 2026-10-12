@@ -4,7 +4,7 @@
 ##
 ##  GitHub Repository: https://github.com/slyfox1186/pihole-regex
 ##
-##  Updated: 06.22.26
+##  Updated: 10.12.26
 ##
 ##  Added: Blocklist Project       -  github.com/blocklistproject/Lists
 ##  Added: Perflyst                -  github.com/Perflyst/PiHoleBlocklist
@@ -52,14 +52,14 @@ https://raw.githubusercontent.com/AssoEchap/stalkerware-indicators/master/genera
 https://urlhaus.abuse.ch/downloads/hostfile/
 https://lists.cyberhost.uk/malware.txt
 https://malware-filter.gitlab.io/malware-filter/phishing-filter-hosts.txt
-https://raw.githubusercontent.com/hagezi/dns-blocklists/main/hosts/tif.txt
+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/tif.txt
 
 # HaGeZi Native Trackers (Smart TV / IoT / app telemetry) - github.com/hagezi/dns-blocklists
-https://raw.githubusercontent.com/hagezi/dns-blocklists/main/hosts/native.samsung.txt
-https://raw.githubusercontent.com/hagezi/dns-blocklists/main/hosts/native.lgwebos.txt
-https://raw.githubusercontent.com/hagezi/dns-blocklists/main/hosts/native.roku.txt
-https://raw.githubusercontent.com/hagezi/dns-blocklists/main/hosts/native.amazon.txt
-https://raw.githubusercontent.com/hagezi/dns-blocklists/main/hosts/native.tiktok.txt
+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.samsung.txt
+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.lgwebos.txt
+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.roku.txt
+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.amazon.txt
+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.tiktok.txt
 
 # Perflyst blocklists - github.com/Perflyst/PiHoleBlocklist
 https://perflyst.github.io/PiHoleBlocklist/AmazonFireTV.txt
