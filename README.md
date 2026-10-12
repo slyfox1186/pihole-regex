@@ -43,7 +43,7 @@ pip install colorama requests
 Download and execute the installation script for RegEx and Exact Match filters:
 
 ```bash
-curl -LSso pi.py https://pi.optimizethis.net
+curl -LSso pi.py https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/pi.py
 sudo python3 pi.py
 ```
 
@@ -51,7 +51,7 @@ sudo python3 pi.py
 To apply the Adlists filters, download and run the corresponding script:
 
 ```bash
-curl -LSso adlist.py https://adlist.optimizethis.net
+curl -LSso adlist.py https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/adlist.py
 sudo python3 adlist.py
 ```
 
