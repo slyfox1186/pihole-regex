@@ -2,6 +2,10 @@
 - Maximize the efficiency of your Pi-hole setup with our extensive collection of Regular Expressions (RegEx) and Exact Match filters. Designed to block a broad range of domains effectively, our filters simplify your blocking strategy by minimizing the need for numerous individual entries. Additionally, this repository includes customizable Exact Match filters for precise domain blocking and tools to facilitate the easy management of Adlist Group entries.
 
 ## Last updated on 11.12.2026:
+- Full audit of all five lists. Four allowlist regexes that Pi-hole could never load (they used lookaheads, which Pi-hole's regex engine does not support) were removed or rewritten
+- Removed blocks that broke real services: YouTube playback and embeds, the whole `.xyz` domain, catch-all rules for Amazon AWS load balancers and US API endpoints, Snapchat, Steam sign-in, Prime Video, Philips Hue setup, LG and Samsung TV cover art, sign-in and updates
+- Removed allow rules that reopened ads, trackers and phishing (`accounts.` on any domain, the Microsoft catch-all, Yahoo and Algolia analytics)
+- Adlists: added HaGeZi Multi PRO, replaced the retired URLhaus hostfile with its malware-filter mirror, and dropped lists that were stale, duplicated or made for AdGuard Home, including the Block List Project YouTube list, which blocked YouTube's video servers
 - `pi.py` and `adlist.py` were rebuilt: an interactive menu, command-line options for every task, previews before any change, and color help (`--help`)
 - `adlist.py` can now remove one, several or all of its adlists, and turn them off or on
 - Neither script needs any pip packages anymore
@@ -22,7 +26,7 @@ Our expertly curated filter lists are tailored to bolster your Pi-hole's domain 
 
 ## Getting Started
 ### Compatibility
-This collection is compatible with Pi-hole (FTLDNS) version 5 and newer.
+This collection needs Pi-hole (FTLDNS) version 6 or newer. Several adlists use the Adblock format (`||example.com^`), which Pi-hole reads only from v6 on.
 
 ### Remote Management Tools
 For managing your Pi-hole remotely, consider using one of the following SSH clients:
@@ -107,8 +111,12 @@ python3 pihole_admin.py --help     # full list of commands
 
 ## Linting the filter lists
 `scripts/lint_domain_lists.py` checks the `.sql` lists for control characters,
-duplicate patterns, invalid regexes, and whitelist/blacklist overlaps. The regex
-checks use `pcre2grep` (skipped with a warning if it is not installed):
+duplicate patterns, invalid hostnames, invalid regexes, and whitelist/blacklist
+overlaps. Pi-hole compiles regexes with the TRE engine, which has no lookahead or
+lookbehind, so the linter rejects those. When `pihole-FTL` is installed it also
+compiles every regex with Pi-hole's own engine. The overlap checks use `pcre2grep`
+(skipped with a warning if it is not installed):
 ```bash
 python3 scripts/lint_domain_lists.py
+python3 scripts/lint_domain_lists.py --check-tlds   # also check top-level domains against IANA's list
 ```

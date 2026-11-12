@@ -3,23 +3,32 @@
 from __future__ import annotations
 
 import argparse
+import re
 import shutil
 import subprocess
 import unicodedata
+import urllib.request
+from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable
-
 
 DOMAINS_DIR = Path(__file__).resolve().parent.parent / "domains"
-LIST_FILES = {
-    "exact_whitelist": DOMAINS_DIR / "exact-whitelist.sql",
-    "exact_blacklist": DOMAINS_DIR / "exact-blacklist.sql",
-    "regex_whitelist": DOMAINS_DIR / "regex-whitelist.sql",
-    "regex_blacklist": DOMAINS_DIR / "regex-blacklist.sql",
+LIST_NAMES = {
+    "exact_whitelist": "exact-whitelist.sql",
+    "exact_blacklist": "exact-blacklist.sql",
+    "regex_whitelist": "regex-whitelist.sql",
+    "regex_blacklist": "regex-blacklist.sql",
 }
 
 COMMON_PREFIXES = ("(\\.|^)", "(^|\\.)", "(?:^|\\.)")
+
+# Pi-hole FTL compiles regexes with TRE, not PCRE. After "(?" TRE accepts only
+# flag letters (i, n, r, U, -) ending in ":" or ")", or a "#" comment; anything
+# else, such as a lookahead "(?!", fails to compile and the entry never applies.
+TRE_BAD_EXTENSION = re.compile(r"(?<!\\)\(\?(?!#|[inrU-]*[:)])")
+HOSTNAME_LABEL = re.compile(r"^[a-z0-9_]([a-z0-9_-]{0,61}[a-z0-9_])?$")
+IANA_TLDS_URL = "https://data.iana.org/TLD/tlds-alpha-by-domain.txt"
+USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64; rv:159.0) Gecko/20100101 Firefox/159.0"
 
 
 @dataclass(frozen=True)
@@ -66,8 +75,7 @@ def iter_control_chars(text: str) -> Iterable[tuple[int, str]]:
 
 def normalize_regex_for_overlap(pattern: str) -> str:
     p = pattern.strip()
-    if p.startswith("^"):
-        p = p[1:]
+    p = p.removeprefix("^")
     for prefix in COMMON_PREFIXES:
         if p.startswith(prefix):
             p = p[len(prefix) :]
@@ -104,12 +112,80 @@ def find_suspicious_unescaped_dots(pattern: str) -> list[int]:
     return indices
 
 
+class FtlUnavailable(Exception):
+    """pihole-FTL is on PATH but its regex test did not give a recognizable answer."""
+
+
+def ftl_compile_error(pattern: str) -> str | None:
+    """Compile with Pi-hole FTL's own engine; return its message if the regex is invalid.
+
+    `pihole-FTL regex-test` exits 0 (match) or 2 (no match) after printing
+    "Compiled regex filter", and exits 1 with "Invalid regex" when compiling fails.
+    Anything else raises FtlUnavailable, so a broken FTL is never read as a pass.
+    """
+    try:
+        proc = subprocess.run(
+            ["pihole-FTL", "regex-test", "example.com", pattern],
+            text=True,
+            capture_output=True,
+            check=False,
+            timeout=30,
+        )
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        raise FtlUnavailable(str(exc)) from exc
+    output = proc.stdout + proc.stderr
+    if proc.returncode in (0, 2) and "Compiled regex filter" in output:
+        return None
+    if proc.returncode == 1:
+        for line in output.splitlines():
+            if line.startswith("Invalid regex"):
+                return line.strip()
+    raise FtlUnavailable(f"unexpected result (exit {proc.returncode}): {output.strip()[:200]}")
+
+
+def ftl_self_test() -> None:
+    """Prove pihole-FTL accepts a valid regex and rejects an invalid one before trusting it."""
+    if ftl_compile_error(r"^ok\.example\.com$") is not None:
+        raise FtlUnavailable("it rejected a valid test regex")
+    if ftl_compile_error("(abc") is None:
+        raise FtlUnavailable("it accepted an invalid test regex")
+
+
+def hostname_problem(name: str) -> str | None:
+    if len(name) > 253:
+        return "longer than 253 characters"
+    labels = name.lower().split(".")
+    if len(labels) < 2:
+        return "has no top-level domain"
+    for label in labels:
+        if not HOSTNAME_LABEL.match(label):
+            return f"invalid label {label!r}"
+    tld = labels[-1]
+    if not (tld.isalpha() or tld.startswith("xn--")):
+        return f"top-level domain {tld!r} is not alphabetic"
+    return None
+
+
+def fetch_iana_tlds() -> set[str]:
+    request = urllib.request.Request(IANA_TLDS_URL, headers={"User-Agent": USER_AGENT})
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:
+            text = response.read().decode("ascii", "replace")
+    except OSError as exc:
+        raise SystemExit(f"--check-tlds: could not download {IANA_TLDS_URL}: {exc}") from exc
+    tlds = {line.strip().lower() for line in text.splitlines() if line.strip() and not line.startswith("#")}
+    if len(tlds) < 100:
+        raise SystemExit(f"--check-tlds: {IANA_TLDS_URL} returned only {len(tlds)} entries; refusing to use it.")
+    return tlds
+
+
 def pcre2grep_matches(pattern: str, subjects: list[str]) -> tuple[int, list[str], str]:
     proc = subprocess.run(
         ["pcre2grep", "-n", pattern],
         input="\n".join(subjects) + "\n",
         text=True,
         capture_output=True,
+        check=False,
     )
     if proc.returncode == 2:
         return proc.returncode, [], proc.stderr.strip()
@@ -129,12 +205,25 @@ def pcre2grep_matches(pattern: str, subjects: list[str]) -> tuple[int, list[str]
 def main() -> int:
     parser = argparse.ArgumentParser(description="Lint Pi-hole domain list files for overlaps and regex issues.")
     parser.add_argument("--verbose", action="store_true", help="Print more details.")
+    parser.add_argument("--domains-dir", type=Path, default=DOMAINS_DIR,
+                        help="Folder holding the four .sql lists (default: the repository's domains/).")
+    parser.add_argument("--check-tlds", action="store_true",
+                        help="Also check every exact entry's top-level domain against IANA's root list (downloads it).")
     args = parser.parse_args()
 
     errors: list[str] = []
     warnings: list[str] = []
+    exceptions: list[str] = []
 
-    lists = {name: parse_entries(path) for name, path in LIST_FILES.items()}
+    lists = {name: parse_entries(args.domains_dir / file) for name, file in LIST_NAMES.items()}
+    have_ftl = shutil.which("pihole-FTL") is not None
+    if have_ftl:
+        try:
+            ftl_self_test()
+        except FtlUnavailable as exc:
+            errors.append(f"pihole-FTL is installed but its regex test does not work, so regexes were not "
+                          f"compiled with Pi-hole's engine: {exc}")
+            have_ftl = False
 
     # pcre2grep powers the regex compile/conflict checks; degrade gracefully if absent.
     have_pcre2grep = shutil.which("pcre2grep") is not None
@@ -165,9 +254,39 @@ def main() -> int:
             locs = ", ".join(f"{e.file.name}:{e.line_no}" for e in group)
             warnings.append(f"Duplicate pattern in {name}: {pat} ({locs})")
 
+    # 2b) Exact entries must be hostnames Pi-hole can ever be asked for
+    tlds = fetch_iana_tlds() if args.check_tlds else set()
+    for name in ("exact_whitelist", "exact_blacklist"):
+        for entry in lists[name]:
+            problem = hostname_problem(entry.pattern)
+            if problem is None and tlds:
+                tld = entry.pattern.lower().rsplit(".", 1)[-1]
+                if tld not in tlds:
+                    problem = f"top-level domain {tld!r} does not exist (IANA root list)"
+            if problem:
+                errors.append(f"{entry.file.name}:{entry.line_no}: not a valid hostname, {problem}: {entry.pattern}")
+
     # 3) Regex compile check + suspicious heuristics
     for name in ("regex_whitelist", "regex_blacklist"):
         for entry in lists[name]:
+            # FTL's own compile is authoritative; the text scan only runs without it.
+            if not have_ftl and TRE_BAD_EXTENSION.search(entry.pattern):
+                errors.append(
+                    f"{entry.file.name}:{entry.line_no}: Pi-hole's regex engine (TRE) has no lookaround or other "
+                    f"'(?' extensions besides '(?:', '(?#...)' and flags: {entry.pattern}"
+                )
+                continue
+            if have_ftl:
+                try:
+                    message = ftl_compile_error(entry.pattern)
+                except FtlUnavailable as exc:
+                    errors.append(f"{entry.file.name}:{entry.line_no}: pihole-FTL stopped answering; "
+                                  f"the remaining regexes were not compiled with it: {exc}")
+                    have_ftl = False
+                    message = None
+                if message:
+                    errors.append(f"{entry.file.name}:{entry.line_no}: pihole-FTL rejects this regex: {message}")
+                    continue
             if have_pcre2grep:
                 rc, _, err = pcre2grep_matches(entry.pattern, ["example.com"])
                 if rc == 2:
@@ -194,9 +313,11 @@ def main() -> int:
             if rc == 2:
                 continue
             if matches:
+                # An exact allow inside a regex deny is how Pi-hole carves out an
+                # exception (allow always wins), so it is reported, not failed.
                 sample = ", ".join(matches[:5])
-                warnings.append(
-                    f"{entry.file.name}:{entry.line_no}: regex blacklist matches exact whitelist ({len(matches)}): {sample}"
+                exceptions.append(
+                    f"{entry.file.name}:{entry.line_no}: exact whitelist exceptions to this regex ({len(matches)}): {sample}"
                 )
 
         for entry in lists["regex_whitelist"]:
@@ -235,8 +356,16 @@ def main() -> int:
             print(f"  - {msg}")
         print()
 
+    if exceptions and (args.verbose or errors or warnings):
+        print("EXCEPTIONS (intended):")
+        for msg in exceptions:
+            print(f"  - {msg}")
+        print()
+
     if not errors and not warnings:
-        print("OK: no issues found.")
+        engine = "pihole-FTL" if have_ftl else "static TRE rules"
+        print(f"OK: no issues found (regexes checked with {engine}; "
+              f"{len(exceptions)} regex blacklist rule(s) have exact whitelist exceptions).")
         return 0
 
     if args.verbose:
