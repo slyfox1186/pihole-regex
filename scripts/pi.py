@@ -482,8 +482,10 @@ def restart_pihole_dns():
 def main():
     clear_screen()
 
-    print(f"{Fore.CYAN}Options: add, remove, list, search, stats, backup, restore{Style.RESET_ALL}")
+    print(f"{Fore.CYAN}Options: add, remove, list, search, stats, backup, restore, quit{Style.RESET_ALL}")
     action = input("Choose an action: ").strip().lower()
+    if action in ('quit', 'q', 'exit'):
+        return
     clear_screen()
 
     changes_made = False
@@ -601,4 +603,11 @@ def main():
     print(f"{Fore.GREEN}https://github.com/slyfox1186/pihole-regex{Style.RESET_ALL}")
 
 if __name__ == "__main__":
-    main()
+    # Ctrl+C or Ctrl+D at any prompt returns to the shell without a traceback.
+    try:
+        main()
+    except KeyboardInterrupt:
+        print()
+        sys.exit(130)
+    except EOFError:
+        print()
