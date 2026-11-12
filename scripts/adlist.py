@@ -519,13 +519,25 @@ def help_text() -> str:
         colored += f" {a}{arg}{r}" if arg else ""
         return f"  {colored}{' ' * (24 - visible)}{text}"
 
-    options = "\n".join((
+    options = "\n\n".join((
         row("-l, --list", "", "Show every list with its number, status and domain count"),
-        row("-a, --add", "[ITEMS]", "Add selected lists, or all missing lists"),
-        row("-r, --remove", "[ITEMS]", "Remove selected lists, or all managed lists (asks for all)"),
+        row("-a, --add", "", "Add repository lists.\n"
+            "      No value: selects ALL repository lists; adds missing ones.\n"
+            "      Optional values: 'all', list numbers, or URLs.\n"
+            f"      Examples: {b}--add{r}   {b}--add all{r}   {b}--add 4,7{r}"),
+        row("-r, --remove", "", "Remove lists; selecting ALL asks first.\n"
+            "      No value: selects ALL installed managed lists.\n"
+            "      Optional values: 'all', list numbers, or URLs.\n"
+            f"      Examples: {b}--remove{r}   {b}--remove all{r}   {b}--remove 4,7{r}"),
         row("-R, --remove-all", "", f"Remove every list this script added {d}(asks first){r}"),
-        row("-e, --enable", "[ITEMS]", "Turn selected lists back on, or all managed lists"),
-        row("-d, --disable", "[ITEMS]", "Turn selected lists off, or all managed lists; keep them installed"),
+        row("-e, --enable", "", "Turn installed managed lists back on.\n"
+            "      No value: selects ALL installed managed lists.\n"
+            "      Optional values: 'all', list numbers, or URLs.\n"
+            f"      Examples: {b}--enable{r}   {b}--enable all{r}   {b}--enable 4,7{r}"),
+        row("-d, --disable", "", "Turn lists off but keep them installed.\n"
+            "      No value: selects ALL installed managed lists.\n"
+            "      Optional values: 'all', list numbers, or URLs.\n"
+            f"      Examples: {b}--disable{r}   {b}--disable all{r}   {b}--disable 4,7{r}"),
     ))
     modifiers = "\n".join((
         row("-n, --dry-run", "", "Show what would change, change nothing"),
@@ -540,7 +552,9 @@ def help_text() -> str:
 {h}adlist.py{r} {d}v{VERSION}{r}  Manage the SlyFox1186 adlists in your Pi-hole
 
 {h}USAGE{r}
-  sudo python3 adlist.py {d}[option] [modifiers]{r}
+  sudo python3 adlist.py
+  sudo python3 adlist.py --disable
+  sudo python3 adlist.py --disable 4,7
 
   With no option, adds every repository adlist that Pi-hole is missing and
   removes the ones this script added that the repository has since dropped.
@@ -548,11 +562,10 @@ def help_text() -> str:
 {h}OPTIONS{r}
 {options}
 
-  {a}ITEMS{r} is one or more list numbers from {o}--list{r} or adlist URLs, separated by
+  Use list numbers from {o}--list{r} or adlist URLs, separated by
   commas or spaces:  {b}-r 4{r}   {b}-r 4,7,12{r}   {b}-r "4, 7"{r}   {b}-r https://adaway.org/hosts.txt{r}
-  Leave {a}ITEMS{r} out, or use {b}all{r} by itself, to select all applicable lists.
-  For add, that means repository lists; for remove, enable and disable, it means
-  installed lists managed by this script, including retired lists.
+  The literal value {b}'all'{r} must be used by itself, as in {b}--disable all{r}.
+  Managed lists include retired lists still installed in Pi-hole.
 
 {h}MODIFIERS{r}
 {modifiers}

@@ -765,13 +765,25 @@ def help_text() -> str:
         colored += f" {a}{arg}{r}" if arg else ""
         return f"  {colored}{' ' * (26 - visible)}{text}"
 
-    options = "\n".join((
-        row("-a, --add", "[LISTS]", "Add the repository's entries Pi-hole is missing"),
-        row("-r, --remove", "[LISTS]", f"Remove this repository's entries {d}(asks first){r}"),
-        row("-l, --list", "[LISTS]", "Show the entries in Pi-hole"),
+    options = "\n\n".join((
+        row("-a, --add", "", "Add the repository's entries Pi-hole is missing.\n"
+            "      No value: selects ALL four list types.\n"
+            "      Optional values: 'all', list names, or short forms listed below.\n"
+            f"      Examples: {b}--add{r}   {b}--add all{r}   {b}--add ed,rd{r}"),
+        row("-r, --remove", "", f"Remove this repository's entries {d}(asks first){r}.\n"
+            "      No value: selects ALL four list types.\n"
+            "      Optional values: 'all', list names, or short forms listed below.\n"
+            f"      Examples: {b}--remove{r}   {b}--remove all{r}   {b}--remove ed,rd{r}"),
+        row("-l, --list", "", "Show the entries in Pi-hole.\n"
+            "      No value: selects ALL four list types.\n"
+            "      Optional values: 'all', list names, or short forms listed below.\n"
+            f"      Examples: {b}--list{r}   {b}--list all{r}   {b}--list ed,rd{r}"),
         row("-s, --search", "TEXT", "Find entries by domain or comment"),
         row("-S, --stats", "", "Counts for every list"),
-        row("-b, --backup", "[PATH]", "Save a copy of Pi-hole's database"),
+        row("-b, --backup", "", "Save a copy of Pi-hole's database.\n"
+            "      No value: saves a new backup in the current directory.\n"
+            "      Optional value: destination file or directory.\n"
+            f"      Examples: {b}--backup{r}   {b}--backup ~/backups{r}"),
         row("--restore", "FILE", f"Put a saved copy back {d}(saves the current one first){r}"),
     ))
     modifiers = "\n".join((
@@ -791,12 +803,14 @@ def help_text() -> str:
 
 {h}USAGE{r}
   sudo python3 pi.py                 {d}# interactive menu{r}
-  sudo python3 pi.py {d}<option> [modifiers]{r}
+  sudo python3 pi.py --list          {d}# show all four lists{r}
+  sudo python3 pi.py --list ed,rd    {d}# show the two denylists{r}
 
 {h}OPTIONS{r}
 {options}
 
-{h}LISTS{r}  {d}one or more, separated by commas or spaces; leave out for all four{r}
+{h}LIST VALUES{r}  {d}list names or short forms, separated by commas or spaces{r}
+  {o}{'all':<13}{r}All four list types {d}(literal value, for example: --list all){r}
 {names}
 
 {h}MODIFIERS{r}
