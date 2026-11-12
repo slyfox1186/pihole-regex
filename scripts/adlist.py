@@ -5,12 +5,30 @@ import os
 import requests
 import sqlite3
 import subprocess
+import sys
 import time
-from colorama import init, Fore, Style
 from contextlib import closing
 
-# Initialize colorama
-init()
+# Colors are built in instead of using colorama so `sudo python3 adlist.py` runs
+# on the system Python that sudo selects, which usually lacks colorama. They are
+# disabled when output is not a terminal so redirected output stays plain.
+_USE_COLOR = sys.stdout.isatty()
+
+
+def _ansi(code):
+    return f'\033[{code}m' if _USE_COLOR else ''
+
+
+class Fore:
+    RED = _ansi(31)
+    GREEN = _ansi(32)
+    YELLOW = _ansi(33)
+    MAGENTA = _ansi(35)
+    CYAN = _ansi(36)
+
+
+class Style:
+    RESET_ALL = _ansi(0)
 
 PIHOLE_DB_PATH = '/etc/pihole/gravity.db'
 REMOTE_URL = 'https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/adlists.txt'

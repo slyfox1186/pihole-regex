@@ -7,15 +7,34 @@ import requests
 import shutil
 import sqlite3
 import subprocess
+import sys
 import textwrap
 import time
-from colorama import init, Fore, Style
 from contextlib import contextmanager
 from datetime import datetime
 from textwrap import shorten
 
-# Initialize colorama, fallback to no-color if terminal doesn't support ANSI escape codes
-init()
+# Colors are built in instead of using colorama so `sudo python3 pi.py` runs on
+# the system Python that sudo selects, which usually lacks colorama. They are
+# disabled when output is not a terminal so redirected output stays plain.
+_USE_COLOR = sys.stdout.isatty()
+
+
+def _ansi(code):
+    return f'\033[{code}m' if _USE_COLOR else ''
+
+
+class Fore:
+    RED = _ansi(31)
+    GREEN = _ansi(32)
+    YELLOW = _ansi(33)
+    MAGENTA = _ansi(35)
+    CYAN = _ansi(36)
+
+
+class Style:
+    RESET_ALL = _ansi(0)
+
 
 PIHOLE_DB_PATH = '/etc/pihole/gravity.db'
 RETRY_COUNT = 5

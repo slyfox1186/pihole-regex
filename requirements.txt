@@ -1,13 +1,12 @@
 # Pi-hole RegEx — Python dependencies
 #
 # Quick start (installer scripts pi.py / adlist.py only):
-#   pip install colorama requests
+#   pip install requests
 #
 # Full install (adds the pihole_admin.py advanced toolkit):
 #   pip install -r requirements.txt
 
 # ---- Core (required) ----
-colorama       # colored terminal output (pi.py, adlist.py)
 requests       # downloading lists / version checks (all scripts)
 tabulate       # table rendering in pihole_admin.py
 

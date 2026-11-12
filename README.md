@@ -33,10 +33,12 @@ For managing your Pi-hole remotely, consider using one of the following SSH clie
 ## Installation
 Follow these steps to apply the advanced filter collection to your Pi-hole setup:
 
-### Required pip packages
-The installer scripts (`pi.py` and `adlist.py`) only need two packages:
+### Requirements
+The installer scripts (`pi.py` and `adlist.py`) need only the `requests` package, which most Debian,
+Ubuntu and Raspberry Pi OS systems already include. If `sudo python3 pi.py` reports that `requests`
+is missing, install it with:
 ```bash
-pip install colorama requests
+sudo apt install python3-requests
 ```
 
 ### RegEx and Exact Lists
