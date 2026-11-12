@@ -242,11 +242,15 @@ class Catalog:
         self._by_address = {entry.address: entry for entry in self.entries}
 
     def resolve(self, items: list[str], *, changing_rows: bool = True) -> list[Entry]:
-        """Map numbers and URLs to entries, refusing the whole request on any bad item.
+        """Map all, numbers and URLs to entries, refusing requests with bad items.
 
         changing_rows is False for --add, where a list the user already added by
         hand simply counts as installed instead of being refused.
         """
+        if items == ["all"]:
+            if changing_rows:
+                return [e for e in self.entries if e.row is not None and e.row.managed]
+            return [e for e in self.entries if e.in_source]
         found: list[Entry] = []
         problems: list[str] = []
         for item in items:
@@ -346,16 +350,21 @@ def update_gravity(args: argparse.Namespace) -> int:
 # ---------------------------------------------------------------------------
 
 def split_items(values: list[list[str]]) -> list[str]:
-    """Accept "1,2", "1, 2" and "1 2" alike, keeping order and dropping repeats."""
+    """Default omitted items to all; preserve explicit selections and reject empty ones."""
+    if not any(values):
+        return ["all"]
     items: list[str] = []
     for group in values:
         for value in group:
-            for item in value.split(","):
-                item = item.strip()
-                if item and item not in items:
+            for item in value.replace(",", " ").split():
+                if item.lower() == "all":
+                    item = "all"
+                if item not in items:
                     items.append(item)
     if not items:
         raise AppError("No adlist numbers or URLs were given.")
+    if "all" in items and len(items) > 1:
+        raise AppError("Use all by itself, or give specific adlist numbers or URLs.")
     return items
 
 
@@ -441,23 +450,32 @@ def cmd_sync(args: argparse.Namespace) -> int:
 
 
 def cmd_add(args: argparse.Namespace) -> int:
+    items = split_items(args.add)
     db, catalog = load(args, write=True, need_source=True)
-    chosen = catalog.resolve(split_items(args.add), changing_rows=False)
-    for entry in chosen:
-        if entry.installed:
-            info(f"{C.dim}Already installed:{C.reset} {entry.address}")
-        elif not entry.in_source:
-            raise AppError(f"{entry.address} is no longer in the repository and cannot be added.")
+    try:
+        chosen = catalog.resolve(items, changing_rows=False)
+        for entry in chosen:
+            if entry.installed:
+                info(f"{C.dim}Already installed:{C.reset} {entry.address}")
+            elif not entry.in_source:
+                raise AppError(f"{entry.address} is no longer in the repository and cannot be added.")
+    except BaseException:
+        db.close()
+        raise
     return run_plan(args, db, Plan([e for e in chosen if not e.installed], [], [], []))
 
 
 def cmd_remove(args: argparse.Namespace) -> int:
+    items = ["all"] if args.remove_all else split_items(args.remove)
     db, catalog = load(args, write=True, need_source=False)
-    if args.remove_all:
-        chosen = [e for e in catalog.entries if e.row is not None and e.row.managed]
+    try:
+        chosen = catalog.resolve(items)
+    except BaseException:
+        db.close()
+        raise
+    if items == ["all"]:
         ask = f"Remove all {len(chosen)} adlists that adlist.py installed?"
     else:
-        chosen = catalog.resolve(split_items(args.remove))
         ask = None
         for entry in chosen:
             if not entry.installed:
@@ -467,8 +485,13 @@ def cmd_remove(args: argparse.Namespace) -> int:
 
 
 def cmd_toggle(args: argparse.Namespace, enabled: bool) -> int:
+    items = split_items(args.enable if enabled else args.disable)
     db, catalog = load(args, write=True, need_source=False)
-    chosen = catalog.resolve(split_items(args.enable if enabled else args.disable))
+    try:
+        chosen = catalog.resolve(items)
+    except BaseException:
+        db.close()
+        raise
     targets = []
     for entry in chosen:
         if entry.row is None:
@@ -498,11 +521,11 @@ def help_text() -> str:
 
     options = "\n".join((
         row("-l, --list", "", "Show every list with its number, status and domain count"),
-        row("-a, --add", "ITEMS", "Add only the lists given"),
-        row("-r, --remove", "ITEMS", "Remove the lists given"),
+        row("-a, --add", "[ITEMS]", "Add selected lists, or all missing lists"),
+        row("-r, --remove", "[ITEMS]", "Remove selected lists, or all managed lists (asks for all)"),
         row("-R, --remove-all", "", f"Remove every list this script added {d}(asks first){r}"),
-        row("-e, --enable", "ITEMS", "Turn lists back on"),
-        row("-d, --disable", "ITEMS", "Turn lists off but keep them installed"),
+        row("-e, --enable", "[ITEMS]", "Turn selected lists back on, or all managed lists"),
+        row("-d, --disable", "[ITEMS]", "Turn selected lists off, or all managed lists; keep them installed"),
     ))
     modifiers = "\n".join((
         row("-n, --dry-run", "", "Show what would change, change nothing"),
@@ -527,6 +550,9 @@ def help_text() -> str:
 
   {a}ITEMS{r} is one or more list numbers from {o}--list{r} or adlist URLs, separated by
   commas or spaces:  {b}-r 4{r}   {b}-r 4,7,12{r}   {b}-r "4, 7"{r}   {b}-r https://adaway.org/hosts.txt{r}
+  Leave {a}ITEMS{r} out, or use {b}all{r} by itself, to select all applicable lists.
+  For add, that means repository lists; for remove, enable and disable, it means
+  installed lists managed by this script, including retired lists.
 
 {h}MODIFIERS{r}
 {modifiers}
@@ -534,8 +560,11 @@ def help_text() -> str:
 {h}EXAMPLES{r}
   sudo python3 adlist.py                  {d}# install every missing list{r}
   sudo python3 adlist.py --list           {d}# see numbers and what is installed{r}
+  sudo python3 adlist.py -a               {d}# add missing lists; keep retired lists{r}
   sudo python3 adlist.py -r 4,7           {d}# remove lists 4 and 7{r}
-  sudo python3 adlist.py -R --dry-run     {d}# preview removing everything{r}
+  sudo python3 adlist.py -r --dry-run     {d}# preview removing all managed lists{r}
+  sudo python3 adlist.py -d               {d}# switch all managed lists off{r}
+  sudo python3 adlist.py -e all           {d}# switch all managed lists back on{r}
   sudo python3 adlist.py -d 12            {d}# switch list 12 off{r}
   sudo python3 adlist.py -y               {d}# unattended install, then update gravity{r}
 
@@ -570,7 +599,7 @@ def build_parser() -> Parser:
     actions = parser.add_mutually_exclusive_group()
     actions.add_argument("-l", "--list", action="store_true")
     for short, name in (("-a", "--add"), ("-r", "--remove"), ("-e", "--enable"), ("-d", "--disable")):
-        actions.add_argument(short, name, nargs="+", action="append", metavar="ITEMS")
+        actions.add_argument(short, name, nargs="*", action="append", metavar="ITEMS")
     actions.add_argument("-R", "--remove-all", action="store_true")
     parser.add_argument("-n", "--dry-run", action="store_true")
     parser.add_argument("-y", "--yes", action="store_true")
@@ -586,13 +615,13 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     if args.list:
         return cmd_list(args)
-    if args.add:
+    if args.add is not None:
         return cmd_add(args)
-    if args.remove or args.remove_all:
+    if args.remove is not None or args.remove_all:
         return cmd_remove(args)
-    if args.enable:
+    if args.enable is not None:
         return cmd_toggle(args, True)
-    if args.disable:
+    if args.disable is not None:
         return cmd_toggle(args, False)
     return cmd_sync(args)
 

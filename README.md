@@ -29,7 +29,9 @@ For managing your Pi-hole remotely, consider using one of the following SSH clie
 
 - **[OpenSSH](https://www.openssh.com/)** - A secure shell for remote management.
 - **[PuTTY](https://www.putty.org/)** - A popular SSH and telnet client for Windows.
-- **[Termius](https://termius.com/)** - A ### Requirements
+- **[Termius](https://termius.com/)** - An SSH client for Android, iOS, and desktop systems.
+
+### Requirements
 Both scripts need only Python 3.9 or newer, which Pi-hole's supported systems already have. There is nothing to install with pip.
 
 ### RegEx and Exact Lists
@@ -63,20 +65,25 @@ To see, remove or switch off individual adlists:
 
 ```bash
 sudo python3 adlist.py --list         # every adlist with its number and status
+sudo python3 adlist.py -a             # add missing lists; keep retired lists
 sudo python3 adlist.py -r 4,7         # remove adlists 4 and 7
+sudo python3 adlist.py -r             # remove all managed adlists (asks first)
 sudo python3 adlist.py --remove-all   # remove all of them (asks first)
 sudo python3 adlist.py -d 12          # turn adlist 12 off but keep it
+sudo python3 adlist.py -d             # turn all managed adlists off
+sudo python3 adlist.py -e all         # turn all managed adlists back on
 sudo python3 adlist.py --help         # every option
 ```
 
+For `--add`, `--remove`, `--enable` and `--disable`, omit the items or pass
+`all` by itself (case-insensitive) to select all applicable lists. Adding selects
+the repository's lists; the other actions select only installed lists managed by
+this script, including retired lists. Numbers and URLs still select individual
+lists. Quote shell variables used as selections: `-r "$ITEMS"` rejects an empty
+value, while `-r $ITEMS` with an empty variable means remove all. `--yes` skips
+the removal confirmation.
+
 Both scripts only change entries they added themselves, which are tagged in their comment. Entries you added to Pi-hole yourself are never touched. Add `--dry-run` to any change to see it first.
-
-ding script:
-
-```bash
-curl -LSso adlist.py https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/adlist.py
-sudo python3 adlist.py
-```
 
 ## Advanced: Pi-hole Database Administrator
 `pihole_admin.py` is an optional power-user toolkit for managing the Pi-hole
