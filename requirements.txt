@@ -1,13 +1,12 @@
-# Pi-hole RegEx — Python dependencies
+# Pi-hole RegEx: Python dependencies
 #
-# Quick start (installer scripts pi.py / adlist.py only):
-#   pip install requests
+# The installer scripts pi.py and adlist.py use only the standard library.
 #
-# Full install (adds the pihole_admin.py advanced toolkit):
+# pihole_admin.py advanced toolkit:
 #   pip install -r requirements.txt
 
 # ---- Core (required) ----
-requests       # downloading lists / version checks (all scripts)
+requests       # Pi-hole version check in pihole_admin.py
 tabulate       # table rendering in pihole_admin.py
 
 # ---- Optional: pihole_admin.py advanced features ----

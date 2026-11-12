@@ -1,9 +1,10 @@
 # Pi-hole® v6+ FTLDNS: Advanced Filter Collection
 - Maximize the efficiency of your Pi-hole setup with our extensive collection of Regular Expressions (RegEx) and Exact Match filters. Designed to block a broad range of domains effectively, our filters simplify your blocking strategy by minimizing the need for numerous individual entries. Additionally, this repository includes customizable Exact Match filters for precise domain blocking and tools to facilitate the easy management of Adlist Group entries.
 
-## Last updated on 03.10.2025:
-- Added the new commands for pi-hole's version 6+
-- You NEED to update to the latest version to use both scripts to their full potential
+## Last updated on 11.12.2026:
+- `pi.py` and `adlist.py` were rebuilt: an interactive menu, command-line options for every task, previews before any change, and color help (`--help`)
+- `adlist.py` can now remove one, several or all of its adlists, and turn them off or on
+- Neither script needs any pip packages anymore
 
 ## Quick Links
 - **[Pi-hole Official Website](https://pi-hole.net/)** - Your starting point for Pi-hole setup and comprehensive information.
@@ -28,29 +29,49 @@ For managing your Pi-hole remotely, consider using one of the following SSH clie
 
 - **[OpenSSH](https://www.openssh.com/)** - A secure shell for remote management.
 - **[PuTTY](https://www.putty.org/)** - A popular SSH and telnet client for Windows.
-- **[Termius](https://termius.com/)** - A versatile SSH client for Android, iOS, and Desktop.
-
-## Installation
-Follow these steps to apply the advanced filter collection to your Pi-hole setup:
-
-### Requirements
-The installer scripts (`pi.py` and `adlist.py`) need only the `requests` package, which most Debian,
-Ubuntu and Raspberry Pi OS systems already include. If `sudo python3 pi.py` reports that `requests`
-is missing, install it with:
-```bash
-sudo apt install python3-requests
-```
+- **[Termius](https://termius.com/)** - A ### Requirements
+Both scripts need only Python 3.9 or newer, which Pi-hole's supported systems already have. There is nothing to install with pip.
 
 ### RegEx and Exact Lists
-Download and execute the installation script for RegEx and Exact Match filters:
+Download and run `pi.py`. With no options it opens a menu:
 
 ```bash
 curl -LSso pi.py https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/pi.py
 sudo python3 pi.py
 ```
 
+Every menu task is also a command-line option:
+
+```bash
+sudo python3 pi.py -a              # add or update all four lists
+sudo python3 pi.py -a exact-deny   # only the exact denylist
+sudo python3 pi.py -r rd -n        # preview removing the regex denylist entries
+sudo python3 pi.py -s netflix      # search the lists in Pi-hole
+sudo python3 pi.py -b              # back up Pi-hole's database
+sudo python3 pi.py --help          # every option
+```
+
 ### Adlists
-To apply the Adlists filters, download and run the corresponding script:
+Download and run `adlist.py`. With no options it adds every adlist Pi-hole is missing:
+
+```bash
+curl -LSso adlist.py https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/adlist.py
+sudo python3 adlist.py
+```
+
+To see, remove or switch off individual adlists:
+
+```bash
+sudo python3 adlist.py --list         # every adlist with its number and status
+sudo python3 adlist.py -r 4,7         # remove adlists 4 and 7
+sudo python3 adlist.py --remove-all   # remove all of them (asks first)
+sudo python3 adlist.py -d 12          # turn adlist 12 off but keep it
+sudo python3 adlist.py --help         # every option
+```
+
+Both scripts only change entries they added themselves, which are tagged in their comment. Entries you added to Pi-hole yourself are never touched. Add `--dry-run` to any change to see it first.
+
+ding script:
 
 ```bash
 curl -LSso adlist.py https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/adlist.py
