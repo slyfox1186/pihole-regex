@@ -7,7 +7,7 @@ We checked every domain in these lists, one by one, against how the internet loo
 - Removed six blocklists whose author stopped maintaining them. Their mistakes could no longer be fixed. The lists that remain still protect you from malware and scam sites.
 - Closed a gap that let a group of unsafe websites through. These sites were linked to a well-known attack on websites in 2024.
 - Stopped letting several ad and tracking services through, and now block a few that no other list was catching.
-- Fixed things that were blocked by mistake, including Windows updates, LG TV software and app updates, the LG ThinQ app, some smart home appliances, county property records and sports scores.
+- Fixed things that were blocked by mistake, including a Windows Update service, LG TV software and app updates, the LG ThinQ app, some smart home appliances, county property records and sports scores.
 - Removed entries for websites that no longer exist, and rewrote the descriptions so each entry says what it is.
 
 To get these changes, run `sudo python3 pi.py -a` and `sudo python3 adlist.py` again. `pi.py` now also updates the descriptions it added to your Pi-hole before. Anything you added yourself is left alone.
