@@ -14,8 +14,16 @@ affiliate-program.amazon.sa -- Amazon Associates - Caught by the affiliate regex
 affiliate-program.amazon.se -- Amazon Associates - Caught by the affiliate regex
 affiliate-program.amazon.sg -- Amazon Associates - Caught by the affiliate regex
 affiliate.amazon.co.jp -- Amazon Associates - Caught by the affiliate regex
+affiliate.shopee.co.id -- Shopee Affiliate Program - Caught by the affiliate regex
+affiliate.shopee.co.th -- Shopee Affiliate Program - Caught by the affiliate regex
+affiliate.shopee.com.br -- Shopee Affiliate Program - Caught by the affiliate regex
+affiliate.shopee.com.my -- Shopee Affiliate Program - Caught by the affiliate regex
+affiliate.shopee.ph -- Shopee Affiliate Program - Caught by the affiliate regex
+affiliate.shopee.sg -- Shopee Affiliate Program - Caught by the affiliate regex
+affiliate.shopee.vn -- Shopee Affiliate Program - Caught by the affiliate regex
+affiliate.tiktok.com -- TikTok Shop Affiliate creator portal - Caught by the affiliate regex
+affiliates.expediagroup.com -- Expedia Group Travel Creator Program - Caught by the affiliate regex
 aic-ngfts.lge.com -- LG Smart TV - Content Store cover art (HaGeZi #309)
-aic.cdpsvc.lgtvcommon.com -- LG Smart TV - Internet channel guide data
 analytics.dev.azure.com -- Azure DevOps Analytics - Caught by the analytics regex
 android.clients.google.com -- Google Play and Android connectivity check
 anti-ad.net -- anti-AD blocklist project site - Insurance against the original mmotti ad regex
@@ -34,17 +42,19 @@ auth.samsungosp.com -- Samsung TV
 auth.split.io -- Spotify - Required to login to Spotify through browsers
 avpro.global.yamaha.com -- Yamaha AV Receivers - Blocks system updates on rx-v685 so we whitelist
 bbuseruploads.s3.amazonaws.com -- Required to build the Linux package x264 from source code.
+beacon.pharos.com -- Pharos Cloud print management sign-in - Caught by the beacon regex
+beacon.schneidercorp.com -- Schneider Geospatial Beacon - County property and GIS records - Caught by the beacon regex
 beacons-npa.gov.uk -- Bannau Brycheiniog National Park Authority - Caught by the beacon regex
 best.aliexpress.com -- AliExpress - online shopping site
 bit.ly -- URL Shortener
-bitcoin.org -- Bitcoin project site - Blocked by Prigent-Crypto and the Block List Project fraud list
+bitcoin.org -- Bitcoin project site - Prigent-Crypto blocks it
 bufferapp.com -- Buffer social media scheduling
 bugmenot.com -- BugMeNot shared website logins
 cdn.samsungcloudsolution.com -- Samsung Smart TV - System update check (Perflyst)
 chat.signal.org -- Chat service
 check2.tsb.co.uk -- TSB Bank (UK) - Online banking
 chevrolet.com -- Car maker
-client-rapi.recombee.us -- AdultTime
+client-rapi.recombee.us -- Recombee recommendations API (AdultTime)
 clientconfig.passport.net -- Microsoft - Windows Store App
 clients.config.office.net -- Microsoft
 codeload.github.com -- GitHub - Repository archive and source downloads
@@ -55,7 +65,7 @@ connectivity.pod1.avatar.ext.hp.com -- HP Printers - Required to activate a new 
 contentproxy.signal.org -- Proxy Service
 continuum.dds.microsoft.com -- Microsoft - Used by YourPhone app by Microsoft on Windows 10 for mirroring Android notifications
 cp801.prod.do.dsp.mp.microsoft.com -- Microsoft
-crl.entrust.net -- Entrust certificate revocation list (Apple devices check it)
+crl.entrust.net -- Entrust certificate revocation list
 d29g4g2dyqv443.cloudfront.net -- Nvidia CUDA SDK Toolkit Website
 dcape-na.amazon.com -- Required to login to Amazon using Windows Android Subsystem for Linux
 ddns.net -- No-IP dynamic DNS provider site (not its customer hosts) - Was blocked by a Block List Project list (dropped from adlists.txt; kept for setups that still use it)
@@ -102,7 +112,7 @@ gitcdn.github.io -- GitCDN - Serves GitHub files as a CDN
 goo.gl -- Google
 googlehosted.l.googleusercontent.com -- Google
 gpm.samsungqbe.com -- Samsung Smart TV - Connection problems when blocked
-graph.instagram.com -- Facebook
+graph.instagram.com -- Instagram Graph API (Instagram app and embeds)
 graph.oculus.com -- Facebook
 gravatar.com -- Gravatar is a service for providing globally unique avatars
 gs-loc.ls-apple.com.akadns.net -- Locationd is a daemon that provides location services for OSx Core Location. This uses skyhook technology to figure out your macs location (using WiFi). Its the same system used by the iPod Touch, and is also used by the iPhone (The iPhone also uses cell tower triangulation and GPS)
@@ -111,14 +121,14 @@ hls.ted.com -- Used by ted.com streams
 i.cdn.turner.com -- Turner
 i.s-microsoft.com -- Microsoft
 icloud.com -- Apple iCloud
-images.ctfassets.net -- AdultTime.com - Icons
+images.ctfassets.net -- Contentful image CDN (AdultTime and many other sites)
 images.vizio.com -- Vizio
 imagesak.secureserver.net -- GoDaddy - Webmail buttons
 imgix.net -- imgix image CDN
 imgs.xkcd.com -- XKCD - Used to deliver images
 index.crates.io -- Rust crates.io package index (Cargo)
 infolink.pavv.co.kr -- Samsung Smart TV - App store and sign-in
-insights-collector.gog.com -- GOG Galaxy telemetry collector - Kept because Galaxy updates failed without it
+insights-collector.gog.com -- GOG Galaxy telemetry collector - Allowed for GOG Galaxy updates
 intercom.io -- Live chat platform for websites to chat with the website owner. Blocking this domain will block the chat widget
 ipv6.msftncsi.com -- Microsoft ipv6 connection checker
 itv.ard.de -- HBBTV
@@ -133,12 +143,13 @@ lcprd1.samsungcloudsolution.net -- Samsung Smart TV - Connectivity test
 lh3.googleusercontent.com -- NVidia Shield TV apps break when loading up due to this domain hosting a slew of important api info
 lib.baomitu.com -- 360 public JavaScript library CDN (China)
 lib.baomitu.com.qh-cdn.com -- 360 public JavaScript library CDN (China) - CNAME target
+libs.baidu.com -- Baidu public JavaScript library CDN (China) - HaGeZi Pro blocks it
 licensing.mp.microsoft.com -- Microsoft
 linkedin.com -- LinkedIn
 lm.licenses.adobe.com -- Adobe
 location-api.hdhomerun.com -- SiliconDust HDHomeRun - Required for firmware updates
 login.aliexpress.com -- AliExpress - Sign-in
-login.live.com -- Microsoft - The following endpoint is used to authenticate a device.
+login.live.com -- Microsoft account sign-in
 login.microsoftonline.com -- Microsoft - Office apps
 logincdn.msauth.net -- Microsoft Windows - Required to sign in to your account during a fresh installation
 mamservice.manage.microsoft.com -- Microsoft
@@ -153,7 +164,7 @@ mirror.clarkson.edu -- Clarkson University Linux package mirror
 mirror.msys2.org -- MSYS2 package mirror (Windows)
 mirror.umd.edu -- University of Maryland Linux package mirror
 mobileandroidapi.punchh.com -- Punchh restaurant loyalty apps - Android API
-mparticle.map.fastly.net -- mParticle customer data platform - weather.com search fails without it
+mparticle.map.fastly.net -- mParticle customer data platform - Allowed for weather.com search
 mrs-efz.ms-acdc.office.com -- Microsoft
 mscomajax.vo.msecnd.net -- Microsoft Ajax CDN
 my.plexapp.com -- Plex Media Server
@@ -165,7 +176,7 @@ nexusrules.officeapps.live.com -- Microsoft Office - Microsoft 365 apps service 
 ngfts.lge.com -- LG Smart TV - Content Store thumbnails (HaGeZi #309, Perflyst)
 nine.plugins.plexapp.com -- Plex Media Server
 nrdp.prod.cloud.netflix.com -- Netflix - Needed to log in on Nvidia Shield TV
-nvidia.tt.omtrdc.net -- Adobe Target for nvidia.com - Kept because the CUDA Toolkit download pages stalled without it
+nvidia.tt.omtrdc.net -- Adobe Target for nvidia.com - Allowed for the Nvidia CUDA Toolkit website
 o1.email.plex.tv -- Plex Media Server
 o2.sg0.plex.tv -- Plex Media Server
 objects.githubusercontent.com -- GitHub - Release and package downloads
@@ -176,6 +187,7 @@ ota-downloads.nvidia.com -- Nvidia
 pagecdn.io -- PageCDN public library CDN
 pgl.yoyo.org -- Peter Lowe's ad server list (an adlist source)
 pinterest.com -- Pinterest.com
+pixel-by-labcorp.zendesk.com -- Pixel by Labcorp home test kits - Help center - Caught by the pixel regex
 placehold.it -- Placehold.it, Image placeholders often used during web page loading
 play-lh.googleusercontent.com -- Google play Store
 play.google.com -- Google play Store
@@ -186,7 +198,7 @@ pmd.cdn.turner.com -- Turner
 portal.fb.com -- Facebook
 portal.store.sonyentertainmentnetwork.com -- Sony
 presence.teams.live.com -- Microsoft Teams - Online status
-privacyportal-de.onetrust.com -- Nvidia Shield TV
+privacyportal-de.onetrust.com -- OneTrust privacy portal - Allowed for Nvidia Shield TV
 products.office.com -- Microsoft Office - Microsoft - Office apps
 r.manage.microsoft.com -- Microsoft
 raw.githubusercontent.com -- GitHub - It is used to serve unprocessed versions of files stored in GitHub repositories.
@@ -194,8 +206,7 @@ redirector.gvt1.com -- Android TV
 res-1.cdn.office.net -- Microsoft
 res.cloudinary.com -- Cloudinary - Provides a cloud-based image and video management services
 romeccs.microsoft.com -- Microsoft Phone Link and cross-device features
-rover.ebay.com -- eBay Partner Network link redirects - eBay links on other sites fail without it
-s-bid.rmp.rakuten.com -- Rakuten Viber - Required to send images
+rover.ebay.com -- eBay Partner Network redirects - eBay links on other sites pass through it
 s.mzstatic.com -- Apple Music and App Store artwork
 scontent.fgdl5-1.fna.fbcdn.net -- Facebook - Messenger
 sdk.split.io -- Needed by EA Games to work
@@ -222,6 +233,9 @@ static-cdn.jtvnw.net -- Twitch.tv - Required to load icons
 static.opensubtitles.org -- OpenSubtitles - Site files
 static.rust-lang.org -- RustUp Linux Install Script
 statics.teams.cdn.office.net -- Microsoft
+stats-api.mlssoccer.com -- MLS match statistics on mlssoccer.com - Caught by the stats regex
+stats-prod.sidearmsports.com -- SIDEARM live game stats for college athletics sites - Caught by the stats regex
+stats-widgets.mlsdigital.net -- MLS match statistics widgets on mlssoccer.com - Caught by the stats regex
 stats.foldingathome.org -- Folding@home statistics - Insurance against the original mmotti stats regex
 stats.stackexchange.com -- Cross Validated (Stack Exchange statistics Q&A) - Insurance against the original mmotti stats regex
 stats.streamelements.com -- StreamElements stream overlay statistics
@@ -243,7 +257,7 @@ time-a.timefreq.bldrdoc.gov -- NIST time server (Sharp TV clock)
 time.samsungcloudsolution.com -- Samsung TV
 tinyurl.com -- URL Shortener
 tlu.dl.delivery.mp.microsoft.com -- Microsoft Store
-tracking-protection.cdn.mozilla.net -- Firefox
+tracking-protection.cdn.mozilla.net -- Firefox - Downloads the tracking protection lists
 tracking.dpd.de -- DPD parcel tracking (Germany)
 traffic.libsyn.com -- Used in Pocketcasts app to serve and download podcasts
 tuner-api.hdhomerun.com -- SiliconDust HDHomeRun - Both required for firmware updates
@@ -254,13 +268,13 @@ unsplash.com -- Unsplash free photos
 upcdn.b0.upaiyun.com -- Upyun public library CDN (China)
 update.biv.sony.tv -- Sony
 updates2.signal.org -- Signal
-upload.appleschoolcontent.com -- Apple
+upload.appleschoolcontent.com -- Apple School Manager uploads
 us.ibs.lgappstv.com -- LG Smart TV - Service location setting (HaGeZi #309)
 us.rdx2.lgtvsdp.com -- LG Smart TV - Cover art (confirmed by HaGeZi #309)
 use.fontawesome.com -- Font Awesome icon CDN
 use.fontawesome.com.cdn.cloudflare.net -- Font Awesome icon CDN - Cloudflare CNAME target
 v.firebog.net -- Pi-Hole adlists meta site
-v.w-x.co -- Weather
+v.w-x.co -- The Weather Company (weather.com) data
 vcs.vdspf.com -- Panasonic Viera TV
 vidtech.cbsinteractive.com -- Used to deliver videos over the internet
 viewer.content.glympse.com -- Papa Johns Pizza - Required to PapaTrack to work (where is my pizza)
@@ -279,7 +293,7 @@ wordpress.com -- WordPress
 wp.com -- WordPress - Site hosting service
 ws.audioscrobbler.com -- Plex Media Server - Last.fm; used to get track metadata using API
 www.ad.nl -- AD.nl Dutch news site - Insurance against the original mmotti ad regex
-www.aliexpress.com -- Shopping
+www.aliexpress.com -- AliExpress
 www.appleiphonecell.com -- Apple captive network check (iPhone)
 www.duplicatephotocleaner.com -- Legitimate duplicate photo removing software on Windows
 www.ecdinterface.philips.com -- Philips TV
@@ -287,11 +301,11 @@ www.g2a.com -- G2A is a legit discount software website for items such as video 
 www.howtogeek.com -- How-To Geek
 www.msftconnecttest.com -- Microsoft - Used by Windows systems to check internet connectivity
 www.msftncsi.com -- Microsoft - Windows internet connectivity check
-www.opensubtitles.org -- Plex Media Server
+www.opensubtitles.org -- OpenSubtitles - Subtitles for Plex and other players
 www.propublica.org -- ProPublica - Nonprofit investigative newsroom
 www.shellcheck.net -- One of the best sites to help you troubleshoot your shell scripts when they are giving trouble
 www.solaredge.com -- SolarEdge solar monitoring
-www.squaretrade.com -- Shopping
+www.squaretrade.com -- SquareTrade product protection plans
 www.trustpilot.com -- Trustpilot reviews - Was blocked by a Block List Project list (dropped from adlists.txt; kept for setups that still use it)
 www.vbsedit.com -- Safe website for learning to code in VBScript
 www.wallpapers.com -- Wallpapers.com - Was blocked by a Block List Project list (dropped from adlists.txt; kept for setups that still use it)

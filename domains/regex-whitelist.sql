@@ -2,8 +2,9 @@
 ^(account|accts|catalog|entitlement|eulatracking|lightswitch|priceengine)-public-service-prod[0-9]*\.(ak|ol)\.epicgames\.com$ -- Epic Games - Sign-in, game library, entitlements and store prices
 (\.|^)messenger\.com$ -- Facebook Messenger
 ^(accounts|download|entitlement-public-service-prod\.ak|fg-matchmaking-public-service-live-c\.ol|graphql|launcher-public-service-prod06\.ol)\.epicgames\.com$ -- Epic Games - Sign-in, downloads, launcher and Fortnite matchmaking
+^ads-[a-z0-9-]+\.aylanetworks\.com$ -- Ayla Networks IoT device service (Shark, Fujitsu FGLair, Bradford White and other connected appliances) - Caught by the ad regex
 ^(affiliate|app|id|id-cdn)\.twitch\.tv$ -- Twitch - Sign-in and the creator affiliate dashboard
-^aic\.service\.lgtvcommon\.com$ -- LG Smart TV - Home screen service (aic.homeprv.lgtvcommon.com stays blocked)
+^(aic|eic|kic|ruc)\.service\.lgtvcommon\.com$|^(aic|eic|kic)\.cdpsvc\.lgtvcommon\.com$ -- LG Smart TV - Broadcast and internet channel guide data in every region (HaGeZi #309 and #1216)
 ^((www|drivers|download|account|community)\.)?amd\.com$ -- AMD - Main site, driver downloads and support community
 ^(api\.flightproxy|authsvc|chatsvcagg|config|go\.trouter|presence)\.teams\.microsoft\.com$ -- Microsoft Teams - Sign-in, chat, calls and presence
 ^(appleid|apps|audiocontentdownload|bpapi|business|captive|certs|configuration|crl|cssubmissions|deviceenrollment|diagassets|fba|gc|gdmf|gg|gs|gsa|gsp1|humb|identity|idmsa|ig|iprofiles|itunes|mdmenrollment|mesu|oscdn|osrecovery|ppq|radarsubmissions|school|serverstatus|skl|suconfig|sw(cdn|dist|download|scan)|sylvan|tbsc|valid|www|axm-app|deviceservices-external|gnf-mdn|gnf-mr|lcdn-(locator|registration)|sq-device|time(-ios|-macos)?|xp)\.apple\.com$ -- Apple - Apple ID, App Store, device enrollment, software updates, captive portal and time servers

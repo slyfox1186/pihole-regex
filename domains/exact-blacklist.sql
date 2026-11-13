@@ -1,11 +1,9 @@
 a1241.dsct.akamai.net -- DoubleVerify ad verification CDN (cdn.doubleverify.com points here)
 a21ed24aedde648804e7-228765c84088fef4ff5e70f2710398e9.r17.cf1.rackcdn.com -- Twitch Video Ads
 acr0.samsungcloudsolution.com -- Samsung Smart TV - Content recognition (ACR)
-aic-gfts.lge.com -- LG Smart TV
-aic-op-lss.lgthinq.com -- LG Smart TV
-aic.api.lgtviot.com -- LG Smart TV
-aic.lgtviot.com -- LG Smart TV
-aic.sports.lgtviot.com -- LG Smart TV
+aic.api.lgtviot.com -- LG Smart TV - IoT telemetry
+aic.lgtviot.com -- LG Smart TV - IoT telemetry
+aic.sports.lgtviot.com -- LG Smart TV - IoT telemetry
 api.itopvpn.com -- iTop VPN Telemetry
 applytics.nordvpn.com -- NordVPN Telemetry
 assets.sr.roku.com -- Roku Smart TV Ads
@@ -31,7 +29,6 @@ giveaway.iobit.com -- IObit promotions
 ipv6.unagi-na.amazon.com -- Amazon device and app metrics (seen on LG Smart TV)
 jc9wr0p5rbtco3ibchj4vnjz7z1lr1.ext-twitch.tv -- Twitch Video Ads
 lgtvonline.lge.com -- LG Smart TV
-lss.lgthinq.com -- LG Smart TV
 lynx-prod-beacon-alb-498367235.us-east-1.elb.amazonaws.com -- Ad beacon load balancer on Amazon AWS
 mindfieldonline.com -- Online survey panel (seen on LG Smart TV)
 munchkin.marketo.net -- Marketo marketing tracker (seen in 3DMark)
@@ -42,7 +39,7 @@ oempprd.samsungcloudsolution.com -- Samsung Smart TV
 prderrordumphsm.samsungcloudsolution.com -- Samsung Smart TV - Error reports
 prod.ups-ats.us-east-1.aolp-ds-prd.aws.oath.cloud -- Yahoo (AOL) ad targeting
 prov.samsungcloudsolution.com -- Samsung Smart TV
-qt2-ngfts.lge.com -- LG Smart TV
+qt2-ngfts.lge.com -- LG Smart TV - File transfer service (HaGeZi blocks it in Pro++)
 samsungcloudsolution.com -- Samsung Smart TV
 sas.samsungcloudsolution.com -- Samsung Smart TV
 service.idsync.analytics.yahoo.com -- Yahoo ad identity sync (seen on LG Smart TV)
