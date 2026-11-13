@@ -6,7 +6,7 @@
 - Closed an allow rule that let through `cdn.bootcss.com` and `cdn.staticfile.org`, CDNs tied to the 2024 Polyfill supply-chain attack. The CDN allow rules now name each real host instead of matching every combination
 - Stopped allowing trackers that had no stated reason to be allowed: Braze (`js.appboycdn.com`), Optimizely, Reddit's event collector, Epic Games telemetry and Viber's ad server (`s-bid.rmp.rakuten.com`)
 - Unblocked LG TV firmware updates (`snu.lge.com`), the LG ThinQ app (`common.lgthinq.com`, `lss.lgthinq.com`, `aic-op-lss.lgthinq.com`), LG app store installs (`aic-gfts.lge.com`) and the IObit store checkout
-- LG TV channel guide data now works in Europe, Korea and Russia too, not only the US
+- The LG TV channel guide allow rule now covers the European, Korean and Russian guide servers, not only the US ones
 - Stopped blocking Windows Update's compatibility database host (`adl.windows.com`), which an Akamai ad rule caught through its CNAME
 - Allowed real services the generic keyword rules were blocking: Azure DevOps Analytics, the Amazon, TikTok Shop, Shopee and Expedia affiliate portals, Ayla Networks smart appliances (Shark, Fujitsu FGLair, Bradford White), Schneider Beacon county property records, Pharos Cloud printing, MLS and SIDEARM college sports stats
 - Removed entries for hosts that no longer exist in DNS, and corrected wrong or empty comments on more than 100 entries
