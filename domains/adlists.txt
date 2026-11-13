@@ -11,13 +11,13 @@
 ##  Added: Perflyst                -  github.com/Perflyst/PiHoleBlocklist
 ##  Added: HaGeZi Trackers + TIF   -  github.com/hagezi/dns-blocklists
 ##  Note:  Firebog lists organized into Suspicious / Advertising / Tracking / Malicious categories.
+##  Note:  Firebog lists follow the ticked lists on firebog.net as of 11.12.26, except the retired URLhaus hostfile.
 ##  Note:  URLhaus now comes from the malware-filter mirror; abuse.ch retired its keyless hostfile in Oct 2026.
 ##
 ###############################################################################################################
 
 # Suspicious Lists
 https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Spam/hosts
-https://raw.githubusercontent.com/matomo-org/referrer-spam-blacklist/master/spammers.txt
 https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
 https://v.firebog.net/hosts/static/w3kbl.txt
 
@@ -27,13 +27,12 @@ https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimet
 https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt
 https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts
 https://raw.githubusercontent.com/FadeMind/hosts.extras/master/UncheckyAds/hosts
-https://raw.githubusercontent.com/RooneyMcNibNug/pihole-stuff/master/SNAFU.txt
 https://v.firebog.net/hosts/AdguardDNS.txt
 https://v.firebog.net/hosts/Admiral.txt
 https://v.firebog.net/hosts/Easylist.txt
 
 # Tracking & Telemetry Lists
-https://hostfiles.frogeye.fr/multiparty-trackers-hosts.txt
+https://hostfiles.frogeye.fr/firstparty-trackers-hosts.txt
 https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt
 https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts
 https://v.firebog.net/hosts/Easyprivacy.txt
@@ -42,7 +41,6 @@ https://v.firebog.net/hosts/Prigent-Ads.txt
 # Malicious Lists
 https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-malware.txt
 https://lists.cyberhost.uk/malware.txt
-https://malware-filter.gitlab.io/malware-filter/phishing-filter-hosts.txt
 https://malware-filter.gitlab.io/malware-filter/urlhaus-filter-hosts-online.txt
 https://phishing.army/download/phishing_army_blocklist_extended.txt
 https://raw.githubusercontent.com/AssoEchap/stalkerware-indicators/master/generated/hosts
