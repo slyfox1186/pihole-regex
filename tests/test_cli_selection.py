@@ -232,3 +232,37 @@ class DomainListSelectionTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class PiCommentRefreshTests(unittest.TestCase):
+    """--add brings this script's comments in line with the repository and leaves the user's alone."""
+
+    def test_add_updates_outdated_tagged_comments_only(self):
+        kind = pi.KINDS[0]
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "gravity.db"
+            with closing(sqlite3.connect(path)) as db, db:
+                db.execute("CREATE TABLE domainlist (id INTEGER PRIMARY KEY, type INTEGER, domain TEXT, "
+                           "enabled INTEGER, comment TEXT, date_added INTEGER, date_modified INTEGER)")
+                db.executemany("INSERT INTO domainlist (type, domain, enabled, comment) VALUES (?, ?, 1, ?)", [
+                    (kind.type, "old.example.com", f"{kind.tag} - Misc"),
+                    (kind.type, "same.example.com", f"{kind.tag} - Current note"),
+                    (kind.type, "blank.example.com", ""),
+                    (kind.type, "mine.example.com", "my own note"),
+                ])
+            source = [pi.SourceEntry("old.example.com", "Corrected note"),
+                      pi.SourceEntry("same.example.com", "Current note"),
+                      pi.SourceEntry("blank.example.com", "Filled in"),
+                      pi.SourceEntry("mine.example.com", "Repository note")]
+            with patch.object(pi, "fetch_sources", return_value={kind.type: source}), \
+                    redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
+                code = pi.main(["--add", kind.key, "--yes", "--no-reload", "--database", str(path)])
+            self.assertEqual(code, pi.EXIT_OK)
+            with closing(sqlite3.connect(path)) as db:
+                comments = dict(db.execute("SELECT domain, comment FROM domainlist"))
+            self.assertEqual(comments, {
+                "old.example.com": f"{kind.tag} - Corrected note",
+                "same.example.com": f"{kind.tag} - Current note",
+                "blank.example.com": f"{kind.tag} - Filled in",
+                "mine.example.com": "my own note",
+            })

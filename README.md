@@ -9,7 +9,9 @@
 - The LG TV channel guide allow rule now covers the European, Korean and Russian guide servers, not only the US ones
 - Stopped blocking Windows Update's compatibility database host (`adl.windows.com`), which an Akamai ad rule caught through its CNAME
 - Allowed real services the generic keyword rules were blocking: Azure DevOps Analytics, the Amazon, TikTok Shop, Shopee and Expedia affiliate portals, Ayla Networks smart appliances (Shark, Fujitsu FGLair, Bradford White), Schneider Beacon county property records, Pharos Cloud printing, MLS and SIDEARM college sports stats
+- Now blocks Reddit's `events-test` event collectors and Epic Games' `datarouter` telemetry, which no included adlist covers
 - Removed entries for hosts that no longer exist in DNS, and corrected wrong or empty comments on more than 100 entries
+- `pi.py --add` now also updates the comments on entries it added before, so corrected descriptions reach your Pi-hole. Entries you added yourself are not touched
 
 ## Updated on 11.12.2026:
 - Full audit of all five lists. Four allowlist regexes that Pi-hole could never load (they used lookaheads, which Pi-hole's regex engine does not support) were removed or rewritten

@@ -319,7 +319,8 @@ def open_db(path: str, *, write: bool) -> PiholeDB:
 class Plan:
     add: dict[int, list[SourceEntry]]
     remove: dict[int, list[Row]]
-    # Untagged entries left by older versions of this script, to be given their tag.
+    # Entries this script added whose comment no longer matches the repository: older
+    # versions left it empty, and the repository may since have corrected the note.
     tag: dict[int, list[tuple[Row, SourceEntry]]] = field(default_factory=dict)
 
     @property
@@ -339,7 +340,7 @@ class Plan:
                 continue
             parts = [f"{C.green}+{len(adds)} to add{C.reset}" if adds else "",
                      f"{C.red}-{len(removes)} to remove{C.reset}" if removes else "",
-                     f"{C.blue}{len(tags)} older entr{'y' if len(tags) == 1 else 'ies'} to tag{C.reset}"
+                     f"{C.blue}{len(tags)} comment{'' if len(tags) == 1 else 's'} to update{C.reset}"
                      if tags else ""]
             heading(f"{kind.title}")
             print("  " + "   ".join(p for p in parts if p))
@@ -404,7 +405,7 @@ def run_plan(args: argparse.Namespace, db: PiholeDB, plan: Plan, *, ask_first: s
         plan.show(args.verbose)
         added, removed, tagged = plan.counts()
         if args.dry_run:
-            print(f"\n{C.cyan}Dry run:{C.reset} {added} would be added, {removed} removed and {tagged} tagged. "
+            print(f"\n{C.cyan}Dry run:{C.reset} {added} would be added, {removed} removed and {tagged} comments updated. "
                   "Nothing was changed.")
             return EXIT_OK
         print()
@@ -414,8 +415,8 @@ def run_plan(args: argparse.Namespace, db: PiholeDB, plan: Plan, *, ask_first: s
         apply_plan(db, plan)
     finally:
         db.close()
-    success(f"Saved: {added} added, {removed} removed" + (f", {tagged} tagged." if tagged else "."))
-    # Tags only change comments, which Pi-hole does not need to reload for.
+    success(f"Saved: {added} added, {removed} removed" + (f", {tagged} comments updated." if tagged else "."))
+    # Comment updates do not change filtering, so Pi-hole does not need to reload for them.
     return reload_pihole(args) if added or removed else EXIT_OK
 
 
@@ -458,7 +459,8 @@ def cmd_add(args: argparse.Namespace, kinds: list[Kind]) -> int:
                                   and r.comment.startswith(kind.tag) and r.domain not in names]
         by_domain = {e.domain: e for e in source}
         plan.tag[kind.type] = [(r, by_domain[r.domain]) for r in existing if r.type == kind.type
-                               and r.comment == "" and r.domain in names]
+                               and r.domain in names and (r.comment == "" or r.comment.startswith(kind.tag))
+                               and r.comment != by_domain[r.domain].comment(kind)]
     return run_plan(args, db, plan, ask_first=None)
 
 
@@ -827,7 +829,8 @@ def help_text() -> str:
 {h}GOOD TO KNOW{r}
   Entries this script adds are tagged in their comment (SlyEWL, SlyEBL, SlyRWL, SlyRBL).
   {o}--remove{r} only takes out this repository's entries; ones you added yourself stay.
-  {o}--add{r} also removes tagged entries the repository has since dropped.
+  {o}--add{r} also removes tagged entries the repository has since dropped, and updates
+  their comments when the repository corrects them.
   Changes take effect after Pi-hole reloads; you are asked after each change.
 
   {d}Exit codes: 0 done, 1 error, 2 bad option, 130 cancelled.  {REPO_URL}{r}

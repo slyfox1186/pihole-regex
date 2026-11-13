@@ -21,15 +21,19 @@ d306ecvlh9tfv.cloudfront.net -- AdultTime Ads
 d3aqoihi2n8ty8.cloudfront.net -- AdultTime Ads
 d3cqix4sol87xw.cloudfront.net -- AdultTime Ads
 d3m1uefep57n8q.cloudfront.net -- Twitch Video Ads
+datarouter.ol.epicgames.com -- Epic Games telemetry (StevenBlack blocks it too)
 doh.dns.apple.com -- Apple DNS over HTTPS (bypasses Pi-hole entirely)
 doug1izaerwt3.cloudfront.net -- IObit desktop app pop-up ads
 dxtkri2c61io4.cloudfront.net -- Twitch Video Ads
+events-test-v2.redditmedia.com -- Reddit event collector (same service as events.redditmedia.com)
+events-test.redditmedia.com -- Reddit event collector (same service as events.redditmedia.com)
 fkp.samsungcloudsolution.com -- Samsung Smart TV
 giveaway.iobit.com -- IObit promotions
 ipv6.unagi-na.amazon.com -- Amazon device and app metrics (seen on LG Smart TV)
 jc9wr0p5rbtco3ibchj4vnjz7z1lr1.ext-twitch.tv -- Twitch Video Ads
 lgtvonline.lge.com -- LG Smart TV
 lynx-prod-beacon-alb-498367235.us-east-1.elb.amazonaws.com -- Ad beacon load balancer on Amazon AWS
+metric-public-service-prod.ol.epicgames.com -- Epic Games telemetry (CNAME to the datarouter pipeline)
 mindfieldonline.com -- Online survey panel (seen on LG Smart TV)
 munchkin.marketo.net -- Marketo marketing tracker (seen in 3DMark)
 nevoai-iothub-54-prod.azure-devices.net -- LG Smart TV
