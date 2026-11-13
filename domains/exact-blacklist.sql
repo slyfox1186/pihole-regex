@@ -6,6 +6,7 @@ aic.sports.lgtviot.com -- LG Smart TV - IoT telemetry
 api.itopvpn.com -- iTop VPN Telemetry
 applytics.nordvpn.com -- NordVPN Telemetry
 assets.sr.roku.com -- Roku Smart TV Ads
+banners.hangmyads.com -- HangMyAds ad network banners
 bench.utorrent.com -- uTorrent desktop app ads
 cdn.inspectlet.com -- Inspectlet session recording (seen in IObit pop-ups)
 cloudservices.roku.com -- Roku Smart TV Ads
