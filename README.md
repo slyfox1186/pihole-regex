@@ -1,7 +1,15 @@
 # Pi-hole® v6+ FTLDNS: Advanced Filter Collection
 - Maximize the efficiency of your Pi-hole setup with our extensive collection of Regular Expressions (RegEx) and Exact Match filters. Designed to block a broad range of domains effectively, our filters simplify your blocking strategy by minimizing the need for numerous individual entries. Additionally, this repository includes customizable Exact Match filters for precise domain blocking and tools to facilitate the easy management of Adlist Group entries.
 
-## Last updated on 11.12.2026:
+## Last updated on 11.13.2026:
+- Dropped the six Block List Project adlists. Their repository was archived and the lists stopped updating in July 2026, so their false positives could no longer be fixed. HaGeZi TIF, Phishing Army, URLhaus and cyberhost still cover malware and phishing
+- Closed an allow rule that let through `cdn.bootcss.com` and `cdn.staticfile.org`, CDNs tied to the 2024 Polyfill supply-chain attack. The CDN allow rules now name each real host instead of matching every combination
+- Stopped allowing trackers that had no stated reason to be allowed: Braze (`js.appboycdn.com`), Optimizely, Reddit's event collector, Epic Games telemetry and the `libs.baidu.com` mirror
+- Unblocked LG TV firmware updates (`snu.lge.com`), the LG ThinQ app (`common.lgthinq.com`) and the IObit store checkout
+- Allowed Azure DevOps Analytics and the Amazon Associates sites, which the generic analytics and affiliate rules were blocking
+- Removed entries for hosts that no longer exist in DNS, and corrected wrong or empty comments on more than 100 entries
+
+## Updated on 11.12.2026:
 - Full audit of all five lists. Four allowlist regexes that Pi-hole could never load (they used lookaheads, which Pi-hole's regex engine does not support) were removed or rewritten
 - Removed blocks that broke real services: YouTube playback and embeds, the whole `.xyz` domain, catch-all rules for Amazon AWS load balancers and US API endpoints, Snapchat, Steam sign-in, Prime Video, Philips Hue setup, LG and Samsung TV cover art, sign-in and updates
 - Removed allow rules that reopened ads, trackers and phishing (`accounts.` on any domain, the Microsoft catch-all, Yahoo and Algolia analytics)

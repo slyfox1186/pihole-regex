@@ -4,10 +4,10 @@
 ##
 ##  GitHub Repository: https://github.com/slyfox1186/pihole-regex
 ##
-##  Updated: 11.12.26
+##  Updated: 11.13.26
 ##
 ##  Added: HaGeZi Multi PRO        -  github.com/hagezi/dns-blocklists
-##  Added: Blocklist Project       -  github.com/blocklistproject/Lists (youtube.txt dropped: it blocks YouTube video servers)
+##  Removed: Blocklist Project     -  its repository was archived on 10.27.26 and its lists stopped updating in July 2026
 ##  Added: Perflyst                -  github.com/Perflyst/PiHoleBlocklist
 ##  Added: HaGeZi Trackers + TIF   -  github.com/hagezi/dns-blocklists
 ##  Note:  Firebog lists organized into Suspicious / Advertising / Tracking / Malicious categories.
@@ -65,14 +65,6 @@ https://perflyst.github.io/PiHoleBlocklist/AmazonFireTV.txt
 https://perflyst.github.io/PiHoleBlocklist/android-tracking.txt
 https://perflyst.github.io/PiHoleBlocklist/SessionReplay.txt
 https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt
-
-# The BlockList Project
-https://raw.githubusercontent.com/blocklistproject/Lists/master/fraud.txt
-https://raw.githubusercontent.com/blocklistproject/Lists/master/malware.txt
-https://raw.githubusercontent.com/blocklistproject/Lists/master/ransomware.txt
-https://raw.githubusercontent.com/blocklistproject/Lists/master/redirect.txt
-https://raw.githubusercontent.com/blocklistproject/Lists/master/scam.txt
-https://raw.githubusercontent.com/blocklistproject/Lists/master/smart-tv.txt
 
 # REMOVE POPUP WINDOWS REGARDING COOKIE CONSENT
 https://raw.githubusercontent.com/johang/cookie-consent-hosts/master/hosts.txt
