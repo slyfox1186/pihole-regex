@@ -96,12 +96,13 @@ query analysis, and reporting).
 
 Install its dependencies (or run `pip install -r requirements.txt` for everything):
 ```bash
-pip install requests tabulate          # core commands
+pip install requests tabulate          # result tables, --check-updates
 pip install matplotlib pandas seaborn  # --report, --analyze-query-trends charts
 pip install rapidfuzz tld              # --find-similar, --categorize-domains
 ```
-The optional packages are loaded only when needed, so commands such as
-`--stats`, `--backup`, and `--optimize` work with just `requests` and `tabulate`.
+Each package is loaded only when a command needs it, so `--help`, `--stats`,
+`--backup`, and `--optimize` work with none of them installed. `--help` lists
+which options need which package.
 
 ```bash
 python3 pihole_admin.py --stats

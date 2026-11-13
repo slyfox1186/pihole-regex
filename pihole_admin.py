@@ -7,17 +7,18 @@ import argparse
 import logging
 import os
 import re
-import requests
+import shutil
 import sqlite3
 import subprocess
 import sys
+import textwrap
 import time
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from contextlib import closing
+from dataclasses import dataclass, field
 from datetime import datetime, timedelta
-from tabulate import tabulate
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, NoReturn
 
 if TYPE_CHECKING:  # Imported only for type hints; pandas stays an optional runtime dep.
     import pandas as pd
@@ -27,10 +28,19 @@ if TYPE_CHECKING:  # Imported only for type hints; pandas stays an optional runt
 BLOCKED_STATUS_CODES = (1, 4, 5, 6, 7, 8, 9, 10, 11)
 BLOCKED_STATUS_IN = ", ".join(str(code) for code in BLOCKED_STATUS_CODES)
 
-# The heavy / optional third-party packages below (matplotlib, pandas, seaborn,
-# rapidfuzz/fuzzywuzzy, tld) are imported lazily inside the few methods that use
-# them. This keeps common commands (stats, add/remove, optimize, backup) fast and
-# lets the tool run even when those plotting/analysis extras are not installed.
+# Every third-party package (requests, tabulate, matplotlib, pandas, seaborn,
+# rapidfuzz/fuzzywuzzy, tld) is imported lazily inside the few functions that use
+# it. This keeps --help and the common commands (stats, add/remove, optimize,
+# backup) fast and lets them run when none of those packages are installed.
+
+
+def _grid(rows: list[dict[str, Any]]) -> str:
+    """Render rows of dicts as a bordered table."""
+    try:
+        from tabulate import tabulate
+    except ImportError:
+        sys.exit("tabulate is required to print tables. Install it with: pip install tabulate")
+    return tabulate(rows, headers="keys", tablefmt="grid")
 
 
 def _load_pyplot():
@@ -491,9 +501,9 @@ Changes Made:
         report.append(f"Blocking percentage: {stats.get('blocking_percentage', 0.0):.2f}%\n")
 
         report.append("Top 10 Blocked Domains:\n")
-        report.append(tabulate(top_blocked_domains, headers="keys", tablefmt="grid"))
+        report.append(_grid(top_blocked_domains))
         report.append("\nTop 10 Allowed Domains:\n")
-        report.append(tabulate(top_allowed_domains, headers="keys", tablefmt="grid"))
+        report.append(_grid(top_allowed_domains))
 
         report_str = "\n".join(report)
         print(report_str)
@@ -541,6 +551,11 @@ Changes Made:
 
     def check_for_updates(self) -> None:
         self.logger.info("Checking for Pi-hole updates...")
+        try:
+            import requests
+        except ImportError:
+            self.logger.error("requests is required to check for updates. Install it with: pip install requests")
+            return
         try:
             # Get current Pi-hole version
             result = subprocess.run(["pihole", "-v"], capture_output=True, text=True)
@@ -796,63 +811,263 @@ Changes Made:
             self.logger.error(f"Error plotting query trends: {e}")
 
 
+# ---------------------------------------------------------------------------
+# Command line
+# ---------------------------------------------------------------------------
+
+REPO_URL = "https://github.com/slyfox1186/pihole-regex"
+HELP_MAX_WIDTH = 100
+# Below this much room beside the option column, descriptions move under the option.
+HELP_MIN_TEXT_WIDTH = 36
+
+
+class Palette:
+    def __init__(self, enabled: bool) -> None:
+        def code(n: int) -> str:
+            return f"\033[{n}m" if enabled else ""
+
+        self.reset, self.bold, self.dim = code(0), code(1), code(2)
+        self.red, self.green = code(31), code(32)
+        self.magenta, self.cyan = code(35), code(36)
+
+
+def _color_wanted(stream: Any) -> bool:
+    # Follows the NO_COLOR convention (https://no-color.org) and keeps escape
+    # codes out of pipes and log files.
+    return (stream.isatty() and os.environ.get("NO_COLOR", "") == ""
+            and os.environ.get("TERM") != "dumb")
+
+
+class HelpAction(argparse.Action):
+    def __init__(self, option_strings: list[str], dest: str, **_kwargs: Any) -> None:
+        super().__init__(option_strings, dest, nargs=0, default=argparse.SUPPRESS)
+
+    def __call__(self, parser, namespace, values, option_string=None):
+        print_help(parser.prog)
+        parser.exit()
+
+
+@dataclass(frozen=True)
+class Option:
+    """One command-line option: the single source for the parser and the help."""
+    flags: tuple[str, ...]
+    text: str
+    note: str = ""
+    parser_kwargs: dict[str, Any] = field(default_factory=dict)
+
+    @property
+    def value_name(self) -> str:
+        return self.parser_kwargs.get("metavar", "")
+
+    @property
+    def label(self) -> str:
+        # Short flags are padded so the long flags line up in one column.
+        short = self.flags[0] + "," if len(self.flags) > 1 else ""
+        value = f" {self.value_name}" if self.value_name else ""
+        return f"{short:<5} {self.flags[-1]}{value}"
+
+
+def _option(flags: str, text: str, note: str = "", **parser_kwargs: Any) -> Option:
+    return Option(tuple(flags.split(", ")), text, note, parser_kwargs)
+
+
+def _switch(flags: str, text: str, note: str = "") -> Option:
+    return _option(flags, text, note, action="store_true")
+
+
+# (title, introduction, options). Texts are kept short enough to sit on one
+# line beside the option column in an 80-column terminal.
+OPTION_SECTIONS: tuple[tuple[str, str, tuple[Option, ...]], ...] = (
+    ("MAINTENANCE", "", (
+        _switch("-o, --optimize",
+                "Compact and re-index both databases.",
+                "VACUUM and ANALYZE, with a size report."),
+        _option("-b, --backup",
+                "Copy both databases into DIR.",
+                "Timestamped files. Creates DIR if missing.", metavar="DIR"),
+        _option("-c, --clean",
+                "Delete query history older than DAYS days.",
+                "Permanent. Runs without asking first.", type=int, metavar="DAYS"),
+        _switch("-g, --update-gravity",
+                "Rebuild gravity from the adlists.",
+                "Runs 'pihole -g'."),
+        _switch("-u, --check-updates",
+                "Check for a newer Pi-hole release.",
+                "Asks before it runs the update."),
+    )),
+    ("STATISTICS AND REPORTS", "", (
+        _switch("-s, --stats",
+                "Counts for the lists, gravity and queries."),
+        _switch("-r, --report",
+                "The statistics plus the top 10 domains.",
+                "Saves a chart to ./pihole_domain_stats.png"),
+        _option("-td, --top-domains",
+                "Top N blocked and top N allowed domains.", type=int, metavar="N"),
+        _option("-q, --query",
+                "Rank domains or clients by query count.",
+                choices=["domains", "clients"], metavar="domains|clients"),
+        _option("--order-by",
+                "With --query, the count to rank by.",
+                "Default: queries.", choices=["queries", "blocked"], metavar="queries|blocked"),
+        _option("--limit",
+                "With --query, how many rows to show.",
+                "Default: 10.", type=int, default=10, metavar="N"),
+        _option("-aqt, --analyze-query-trends",
+                "Daily query totals for the last DAYS days.",
+                "Saves a chart to ./pihole_query_trends.png", type=int, metavar="DAYS"),
+        _option("-aq, --advanced-query",
+                "Run your own SQL on the query database.",
+                "Written for SELECT. Quote the statement.", metavar="SQL"),
+    )),
+    ("DOMAIN LISTS",
+     ("DOMAINS is one quoted value with spaces between the names, for example "
+      "\"ads.example.com ad.example.net\". A leading http://, https:// or www. is dropped."), (
+        _option("-aw, --add-whitelist", "Add domains to the exact whitelist.", metavar="DOMAINS"),
+        _option("-ab, --add-blacklist", "Add domains to the exact blacklist.", metavar="DOMAINS"),
+        _option("-rw, --remove-whitelist", "Remove domains from the exact whitelist.", metavar="DOMAINS"),
+        _option("-rb, --remove-blacklist", "Remove domains from the exact blacklist.", metavar="DOMAINS"),
+        _switch("-rd, --remove-duplicates",
+                "List entries that appear more than once.",
+                "Report only. Nothing is removed."),
+        _option("-fs, --find-similar",
+                "Find entries at least PERCENT% alike.",
+                "PERCENT is a whole number from 1 to 100.", type=int, metavar="PERCENT"),
+        _switch("-cd, --categorize-domains",
+                "Group entries by ending (com, co.uk)."),
+    )),
+    ("OTHER", "", (
+        _option("-h, --help", "Show this help.", action=HelpAction),
+    )),
+)
+
+# (package, what uses it)
+PACKAGES = (
+    ("tabulate", "tables for --report, --top-domains, --query, --advanced-query"),
+    ("requests", "--check-updates"),
+    ("matplotlib", "charts for --report and --analyze-query-trends"),
+    ("pandas", "--analyze-query-trends"),
+    ("seaborn", "grid styling on the charts"),
+    ("rapidfuzz", "a faster --find-similar"),
+    ("tld", "a more accurate --categorize-domains"),
+)
+
+# (what it does, arguments). Each command fits an 80-column terminal.
+EXAMPLES = (
+    ("Counts for every list and the query history", "--stats"),
+    ("Save a copy of both databases", "--backup ~/pihole-backups"),
+    ("Block two domains", '--add-blacklist "ads.example.com ad.example.net"'),
+    ("The 5 clients with the most blocked queries", "--query clients --order-by blocked --limit 5"),
+    ("Daily query trends for the last 60 days", "--analyze-query-trends 60"),
+    ("Your own SQL", '--advanced-query "SELECT COUNT(*) FROM queries"'),
+)
+
+NOTES = (
+    ("Pi-hole's databases belong to the pihole user. Run this script with sudo, or as a "
+     "member of the pihole group."),
+    "Several options can be given in one run.",
+    "After changing a domain list, run: sudo pihole reloaddns",
+    "Lists: /etc/pihole/gravity.db. Query history: /etc/pihole/pihole-FTL.db.",
+    "Color turns off when the output is not a terminal or NO_COLOR is set.",
+)
+
+
+def help_text(prog: str, color: bool, width: int) -> str:
+    c = Palette(color)
+    head, flag, value, dim, reset = c.bold + c.cyan, c.green, c.magenta, c.dim, c.reset
+    width = max(40, min(width, HELP_MAX_WIDTH))
+    options = [option for _title, _intro, group in OPTION_SECTIONS for option in group]
+    text_column = 2 + max(len(option.label) for option in options) + 2
+    side_by_side = width - text_column >= HELP_MIN_TEXT_WIDTH
+    if not side_by_side:
+        # Deeper than the long flags, which start at column 8.
+        text_column = 10
+    pad = " " * text_column
+
+    def wrap(text: str, room: int, **kwargs: Any) -> list[str]:
+        # Flags, file names and commands stay in one piece.
+        return textwrap.wrap(text, room, break_on_hyphens=False, break_long_words=False, **kwargs)
+
+    def colored_label(option: Option) -> str:
+        # Mirrors Option.label, whose plain length sets the column padding.
+        long_flag = f"{flag}{option.flags[-1]}{reset}"
+        name = f" {value}{option.value_name}{reset}" if option.value_name else ""
+        if len(option.flags) == 1:
+            return f"{' ' * 6}{long_flag}{name}"
+        short = option.flags[0]
+        return f"{flag}{short}{reset},{' ' * (5 - len(short))}{long_flag}{name}"
+
+    def option_rows(option: Option) -> list[str]:
+        text = wrap(option.text, width - text_column)
+        notes = [f"{pad}{dim}{line}{reset}" for line in wrap(option.note, width - text_column)]
+        if side_by_side:
+            gap = " " * (text_column - 2 - len(option.label))
+            first = [f"  {colored_label(option)}{gap}{text[0]}"]
+            return first + [pad + line for line in text[1:]] + notes
+        return [f"  {colored_label(option)}"] + [pad + line for line in text] + notes
+
+    def paragraph(text: str, style: str = "", hang: str = "") -> list[str]:
+        return [f"  {style}{line}{reset if style else ''}"
+                for line in wrap(text, width - 2, subsequent_indent=hang)]
+
+    lines = [
+        "",
+        f"{head}{prog}{reset}  Inspect and maintain Pi-hole's databases",
+        "",
+        f"{head}USAGE{reset}",
+        f"  sudo python3 {prog} {value}OPTION{reset} [{value}OPTION{reset} ...]",
+    ]
+    for title, intro, group in OPTION_SECTIONS:
+        lines += ["", f"{head}{title}{reset}"]
+        if intro:
+            lines += paragraph(intro, dim) + [""]
+        for option in group:
+            lines += option_rows(option)
+
+    lines += ["", f"{head}EXAMPLES{reset}"]
+    for comment, arguments in EXAMPLES:
+        lines += [f"  {dim}# {comment}{reset}", f"  sudo python3 {prog} {arguments}"]
+
+    name_width = max(len(name) for name, _use in PACKAGES) + 2
+    lines += ["", f"{head}EXTRA PACKAGES{reset}"]
+    lines += paragraph("Each one is needed only by the options named beside it. "
+                       "Install any of them with: pip install NAME", dim) + [""]
+    for name, use in PACKAGES:
+        use_lines = wrap(use, width - 2 - name_width)
+        lines.append(f"  {flag}{name}{reset}{' ' * (name_width - len(name))}{use_lines[0]}")
+        lines += [" " * (2 + name_width) + line for line in use_lines[1:]]
+
+    lines += ["", f"{head}GOOD TO KNOW{reset}"]
+    for note in NOTES:
+        lines += paragraph(note, hang="  ")
+    lines += ["", f"  {dim}{REPO_URL}{reset}", ""]
+    return "\n".join(lines)
+
+
+def print_help(prog: str) -> None:
+    print(help_text(prog, _color_wanted(sys.stdout), shutil.get_terminal_size((80, 24)).columns))
+
+
+class Parser(argparse.ArgumentParser):
+    def error(self, message: str) -> NoReturn:
+        c = Palette(_color_wanted(sys.stderr))
+        self.exit(2, f"{c.red}{c.bold}Error:{c.reset} {message}\n"
+                     f"       Run {c.bold}{self.prog} --help{c.reset} to see the options.\n")
+
+
+def build_parser() -> Parser:
+    parser = Parser(add_help=False)
+    for _title, _intro, group in OPTION_SECTIONS:
+        for option in group:
+            parser.add_argument(*option.flags, **option.parser_kwargs)
+    return parser
+
+
 def main():
-    script_name = os.path.basename(sys.argv[0])
-
-    examples = f"""
-Examples:
-  {script_name} --add-blacklist "badsite.com malware.org"
-  {script_name} --add-whitelist "example.com another-example.com"
-  {script_name} --advanced-query "SELECT domain, COUNT(*) as count FROM queries GROUP BY domain ORDER BY count DESC LIMIT 10"
-  {script_name} --analyze-query-trends 60
-  {script_name} --backup /path/to/backup/folder
-  {script_name} --categorize-domains
-  {script_name} --check-updates
-  {script_name} --clean 30
-  {script_name} --find-similar 90
-  {script_name} --optimize
-  {script_name} --query clients --order-by blocked --limit 5
-  {script_name} --query domains --limit 10
-  {script_name} --remove-blacklist "badsite.com"
-  {script_name} --remove-duplicates
-  {script_name} --remove-whitelist "example.com"
-  {script_name} --report
-  {script_name} --stats
-  {script_name} --top-domains 20
-  {script_name} --update-gravity
-    """
-
-    parser = argparse.ArgumentParser(description="Pi-hole Database Administrator",
-                                     epilog=examples,
-                                     formatter_class=argparse.RawDescriptionHelpFormatter)
-
-    parser.add_argument("--optimize", "-o", action="store_true", help="Optimize the database")
-    parser.add_argument("--backup", "-b", metavar="PATH", help="Backup the database to the specified path")
-    parser.add_argument("--stats", "-s", action="store_true", help="Get database statistics")
-    parser.add_argument("--clean", "-c", type=int, metavar="DAYS", help="Clean data older than specified days")
-    parser.add_argument("--add-whitelist", "-aw", type=str, help="Add domains to whitelist (space-separated, enclose in quotes)")
-    parser.add_argument("--add-blacklist", "-ab", type=str, help="Add domains to blacklist (space-separated, enclose in quotes)")
-    parser.add_argument("--remove-whitelist", "-rw", type=str, help="Remove domains from whitelist (space-separated, enclose in quotes)")
-    parser.add_argument("--remove-blacklist", "-rb", type=str, help="Remove domains from blacklist (space-separated, enclose in quotes)")
-    parser.add_argument("--update-gravity", "-g", action="store_true", help="Update gravity")
-    parser.add_argument("--top-domains", "-td", type=int, metavar="LIMIT", help="Analyze top domains")
-    parser.add_argument("--query", "-q", choices=['domains', 'clients'], help="Run a simplified query on the Pi-hole database. Types: domains, clients")
-    parser.add_argument("--order-by", choices=['queries', 'blocked'], help="Order results by total queries or blocked queries")
-    parser.add_argument("--limit", type=int, default=10, help="Limit the number of results (default: 10)")
-    parser.add_argument("--advanced-query", "-aq", metavar="QUERY", help="Run an advanced SQL query on the Pi-hole database")
-    parser.add_argument("--report", "-r", action="store_true", help="Generate a comprehensive report")
-    parser.add_argument("--check-updates", "-u", action="store_true", help="Check for Pi-hole updates")
-    parser.add_argument("--remove-duplicates", "-rd", action="store_true", help="Remove duplicate domains across all lists")
-    parser.add_argument("--find-similar", "-fs", type=int, metavar="THRESHOLD",
-                        help="Find similar domains based on the specified similarity threshold (e.g., 90 for 90% similarity)")
-    parser.add_argument("--categorize-domains", "-cd", action="store_true", help="Categorize domains into categories")
-    parser.add_argument("--analyze-query-trends", "-aqt", type=int, metavar="DAYS",
-                        help="Analyze query trends for the last specified number of days")
-
+    parser = build_parser()
     args = parser.parse_args()
 
     if len(sys.argv) == 1:
-        parser.print_help()
+        print_help(parser.prog)
         sys.exit(1)
 
     admin = PiholeDBAdmin()
@@ -920,9 +1135,9 @@ Examples:
             top_blocked = admin.analyze_top_domains(args.top_domains, blocked=True)
             top_allowed = admin.analyze_top_domains(args.top_domains, blocked=False)
             print("\nTop Blocked Domains:")
-            print(tabulate(top_blocked, headers="keys", tablefmt="grid"))
+            print(_grid(top_blocked))
             print("\nTop Allowed Domains:")
-            print(tabulate(top_allowed, headers="keys", tablefmt="grid"))
+            print(_grid(top_allowed))
 
         if args.query:
             query_type = args.query
@@ -932,13 +1147,13 @@ Examples:
             results = admin.run_simplified_query(query_type, order_by, limit)
             if results:
                 print(f"\nTop {limit} {query_type.capitalize()} (ordered by {order_by}):")
-                print(tabulate(results, headers="keys", tablefmt="grid"))
+                print(_grid(results))
 
         if args.advanced_query:
             results = admin.run_custom_query(args.advanced_query)
             if results:
                 print("\nAdvanced Query Results:")
-                print(tabulate(results, headers="keys", tablefmt="grid"))
+                print(_grid(results))
 
         if args.report:
             admin.generate_report()
