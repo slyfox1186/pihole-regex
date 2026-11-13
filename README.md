@@ -26,8 +26,7 @@ Our expertly curated filter lists are tailored to bolster your Pi-hole's domain 
 
 ## Getting Started
 ### Compatibility
-This collection needs Pi-hole (FTLDNS) version 6 or newer. Several adlists use the Adblock
-format (`||example.com^`), which Pi-hole reads only from v6 on.
+This collection needs Pi-hole (FTLDNS) version 6 or newer. Several adlists use the Adblock format (`||example.com^`), which Pi-hole reads only from v6 on.
 
 ### Remote Management Tools
 For managing your Pi-hole remotely, consider using one of the following SSH clients:
