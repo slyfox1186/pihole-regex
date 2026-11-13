@@ -230,9 +230,6 @@ class DomainListSelectionTests(unittest.TestCase):
                 self.assertEqual(raised.exception.code, pi.EXIT_USAGE)
 
 
-if __name__ == "__main__":
-    unittest.main()
-
 
 class PiCommentRefreshTests(unittest.TestCase):
     """--add brings this script's comments in line with the repository and leaves the user's alone."""
@@ -266,3 +263,57 @@ class PiCommentRefreshTests(unittest.TestCase):
                 "blank.example.com": f"{kind.tag} - Filled in",
                 "mine.example.com": "my own note",
             })
+            with patch.object(pi, "fetch_sources", return_value={kind.type: source}), \
+                    redirect_stdout(io.StringIO()) as out, redirect_stderr(io.StringIO()):
+                self.assertEqual(pi.main(["--add", kind.key, "--yes", "--no-reload", "--database", str(path)]),
+                                 pi.EXIT_OK)
+            self.assertIn("Nothing to change", out.getvalue())
+
+    def test_comment_changed_after_planning_is_kept(self):
+        kind = pi.KINDS[0]
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "gravity.db"
+            with closing(sqlite3.connect(path)) as db, db:
+                db.execute("CREATE TABLE domainlist (id INTEGER PRIMARY KEY, type INTEGER, domain TEXT, "
+                           "enabled INTEGER, comment TEXT, date_added INTEGER, date_modified INTEGER)")
+                db.execute("INSERT INTO domainlist (id, type, domain, enabled, comment) VALUES (1, ?, ?, 1, ?)",
+                           (kind.type, "old.example.com", f"{kind.tag} - Misc"))
+            row = pi.Row(1, kind.type, "old.example.com", True, f"{kind.tag} - Misc", 0)
+            plan = pi.Plan({}, {}, {kind.type: [(row, pi.SourceEntry("old.example.com", "Corrected note"))]})
+            with closing(sqlite3.connect(path)) as db, db:
+                db.execute("UPDATE domainlist SET comment = 'edited in Pi-hole' WHERE id = 1")
+            database = pi.PiholeDB(str(path), write=True)
+            try:
+                self.assertEqual(pi.apply_plan(database, plan), (0, 0, 0))
+            finally:
+                database.close()
+            with closing(sqlite3.connect(path)) as db:
+                self.assertEqual(db.execute("SELECT comment FROM domainlist").fetchone()[0], "edited in Pi-hole")
+
+    def test_removal_skips_entry_edited_after_planning(self):
+        kind = pi.KINDS[0]
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "gravity.db"
+            with closing(sqlite3.connect(path)) as db, db:
+                db.execute("CREATE TABLE domainlist (id INTEGER PRIMARY KEY, type INTEGER, domain TEXT, "
+                           "enabled INTEGER, comment TEXT, date_added INTEGER, date_modified INTEGER)")
+                db.executemany("INSERT INTO domainlist (id, type, domain, enabled, comment) VALUES (?, ?, ?, 1, ?)",
+                               [(1, kind.type, "kept.example.com", f"{kind.tag} - Old"),
+                                (2, kind.type, "gone.example.com", f"{kind.tag} - Old")])
+            rows = [pi.Row(1, kind.type, "kept.example.com", True, f"{kind.tag} - Old", 0),
+                    pi.Row(2, kind.type, "gone.example.com", True, f"{kind.tag} - Old", 0)]
+            plan = pi.Plan({}, {kind.type: rows})
+            with closing(sqlite3.connect(path)) as db, db:
+                db.execute("UPDATE domainlist SET comment = 'my own note' WHERE id = 1")
+            database = pi.PiholeDB(str(path), write=True)
+            try:
+                self.assertEqual(pi.apply_plan(database, plan), (0, 1, 0))
+            finally:
+                database.close()
+            with closing(sqlite3.connect(path)) as db:
+                self.assertEqual(db.execute("SELECT domain, comment FROM domainlist").fetchall(),
+                                 [("kept.example.com", "my own note")])
+
+
+if __name__ == "__main__":
+    unittest.main()

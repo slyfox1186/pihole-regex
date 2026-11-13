@@ -353,27 +353,34 @@ class Plan:
                     note(f"    ... and {len(names) - limit} more (--verbose shows all)")
 
 
-def apply_plan(db: PiholeDB, plan: Plan) -> None:
+def apply_plan(db: PiholeDB, plan: Plan) -> tuple[int, int, int]:
+    """Write the plan in one transaction; return how many entries were added, removed and updated."""
     try:
         with db.transaction():
+            added = 0
             for type_, entries in plan.add.items():
                 kind = KIND_BY_TYPE[type_]
-                db.conn.executemany(
+                added += max(db.conn.executemany(
                     "INSERT OR IGNORE INTO domainlist (type, domain, enabled, comment, date_added, date_modified) "
                     "VALUES (?, ?, 1, ?, CAST(strftime('%s', 'now') AS INTEGER), "
                     "CAST(strftime('%s', 'now') AS INTEGER))",
-                    [(type_, e.domain, e.comment(kind)) for e in entries])
-            db.conn.executemany("UPDATE domainlist SET comment = ? WHERE id = ?",
-                                [(entry.comment(KIND_BY_TYPE[type_]), row.id)
-                                 for type_, pairs in plan.tag.items() for row, entry in pairs])
-            ids = [(row.id,) for rows in plan.remove.values() for row in rows]
+                    [(type_, e.domain, e.comment(kind)) for e in entries]).rowcount, 0)
+            # Only rewrite or remove an entry whose comment still reads as it did when the plan
+            # was made, so an entry someone edits in Pi-hole meanwhile is left alone.
+            updated = db.conn.executemany(
+                "UPDATE domainlist SET comment = ? WHERE id = ? AND COALESCE(comment, '') = ?",
+                [(entry.comment(KIND_BY_TYPE[type_]), row.id, row.comment)
+                 for type_, pairs in plan.tag.items() for row, entry in pairs]).rowcount
             # Pi-hole's tr_domainlist_delete trigger removes the group links.
-            db.conn.executemany("DELETE FROM domainlist WHERE id = ?", ids)
+            removed = db.conn.executemany(
+                "DELETE FROM domainlist WHERE id = ? AND COALESCE(comment, '') = ?",
+                [(row.id, row.comment) for rows in plan.remove.values() for row in rows]).rowcount
     except sqlite3.OperationalError as exc:
         if "locked" in str(exc) or "busy" in str(exc):
             raise AppError(f"Pi-hole's database stayed busy for {DB_TIMEOUT} seconds "
                            "(gravity may be running). Try again shortly.") from exc
         raise AppError(f"Pi-hole's database refused the change: {exc}") from exc
+    return added, max(removed, 0), max(updated, 0)
 
 
 def reload_pihole(args: argparse.Namespace) -> int:
@@ -412,10 +419,15 @@ def run_plan(args: argparse.Namespace, db: PiholeDB, plan: Plan, *, ask_first: s
         if ask_first and not confirm(ask_first, default=False, assume_yes=args.yes):
             note("Cancelled. Nothing was changed.")
             return EXIT_OK
-        apply_plan(db, plan)
+        planned = added + removed + tagged
+        added, removed, updated = apply_plan(db, plan)
     finally:
         db.close()
-    success(f"Saved: {added} added, {removed} removed" + (f", {tagged} comments updated." if tagged else "."))
+    success(f"Saved: {added} added, {removed} removed" + (f", {updated} comments updated." if updated else "."))
+    skipped = planned - added - removed - updated
+    if skipped:
+        note(f"{skipped} entr{'y' if skipped == 1 else 'ies'} changed in Pi-hole while this ran "
+             "and were left as they are.")
     # Comment updates do not change filtering, so Pi-hole does not need to reload for them.
     return reload_pihole(args) if added or removed else EXIT_OK
 
@@ -828,7 +840,9 @@ def help_text() -> str:
 
 {h}GOOD TO KNOW{r}
   Entries this script adds are tagged in their comment (SlyEWL, SlyEBL, SlyRWL, SlyRBL).
-  {o}--remove{r} only takes out this repository's entries; ones you added yourself stay.
+  {o}--remove{r} takes out tagged entries, and entries with no comment that match the
+  repository's domains (older versions left comments empty). Entries with a comment
+  of your own stay.
   {o}--add{r} also removes tagged entries the repository has since dropped, and updates
   their comments when the repository corrects them.
   Changes take effect after Pi-hole reloads; you are asked after each change.

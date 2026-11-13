@@ -1,4 +1,3 @@
-a1241.dsct.akamai.net -- DoubleVerify ad verification CDN (cdn.doubleverify.com points here)
 a21ed24aedde648804e7-228765c84088fef4ff5e70f2710398e9.r17.cf1.rackcdn.com -- Twitch Video Ads
 acr0.samsungcloudsolution.com -- Samsung Smart TV - Content recognition (ACR)
 aic.api.lgtviot.com -- LG Smart TV - IoT telemetry
@@ -8,8 +7,6 @@ api.itopvpn.com -- iTop VPN Telemetry
 applytics.nordvpn.com -- NordVPN Telemetry
 assets.sr.roku.com -- Roku Smart TV Ads
 bench.utorrent.com -- uTorrent desktop app ads
-ccleaner.tools.avcdn.net -- CCleaner desktop app telemetry
-cdn.cookielaw.org -- OneTrust cookie-consent script (cookie banners; seen in 3DMark)
 cdn.inspectlet.com -- Inspectlet session recording (seen in IObit pop-ups)
 cloudservices.roku.com -- Roku Smart TV Ads
 codes.iobit.com -- IObit desktop app pop-up ads

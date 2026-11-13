@@ -7,7 +7,7 @@
 ##  Updated: 11.13.26
 ##
 ##  Added: HaGeZi Multi PRO        -  github.com/hagezi/dns-blocklists
-##  Removed: Blocklist Project     -  its repository was archived on 10.27.26 and its lists stopped updating in July 2026
+##  Removed: Blocklist Project     -  its repository is archived and its lists have not changed since 07.20.26
 ##  Added: Perflyst                -  github.com/Perflyst/PiHoleBlocklist
 ##  Added: HaGeZi Trackers + TIF   -  github.com/hagezi/dns-blocklists
 ##  Note:  Firebog lists organized into Suspicious / Advertising / Tracking / Malicious categories.

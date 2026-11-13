@@ -6,11 +6,14 @@ This update is a full review of every domain in these lists. Companies move thei
 
 - Retired six blocklists whose author stopped maintaining them. The other malware and scam lists stay in place.
 - Tightened an allow rule so a group of websites linked to a 2024 attack on websites is now blocked.
-- Now blocks more ad and tracking services, including a few that no other list was catching.
-- Allowed a Windows Update service, LG TV updates and apps, the LG ThinQ app, some smart home appliances, county property records and sports scores, so they work normally.
-- Removed entries for websites that no longer exist and gave every entry a clear description.
+- Now blocks more ad and tracking services, including a few that the other lists in this collection were not catching.
+- Removed blocks that affected a Windows Update service, LG TV updates and apps, the LG ThinQ app, some smart home appliances, county property records and sports scores.
+- Removed entries for websites that no longer exist and improved the entry descriptions.
+- Removed three broad rules that blocked college student portals, Maryland's unemployment website and other sites whose names start with `banner`, `beacon` or `affiliate`.
+- Stopped blocking Brazilian law firm websites (`.adv.br`), the Jamaica tax portal and CCleaner's update server.
+- Now blocks Microsoft Office telemetry that an older allow entry let through.
 
-To get these changes, run `sudo python3 pi.py -a` and `sudo python3 adlist.py` again. `pi.py` now also updates the descriptions it added to your Pi-hole before. Anything you added yourself is left alone.
+To get these changes, download fresh copies of `pi.py` and `adlist.py` with the `curl` commands below, then run `sudo python3 pi.py -a` and `sudo python3 adlist.py`. The new `pi.py` also updates the descriptions on entries it manages.
 
 ## Updated on 11.12.2026:
 - Full audit of all five lists. Four allowlist regexes that Pi-hole could never load (they used lookaheads, which Pi-hole's regex engine does not support) were removed or rewritten
@@ -37,7 +40,7 @@ Our expertly curated filter lists are tailored to bolster your Pi-hole's domain 
 
 ## Getting Started
 ### Compatibility
-This collection needs Pi-hole (FTLDNS) version 6 or newer. Several adlists use the Adblock format (`||example.com^`), which Pi-hole reads only from v6 on.
+This collection is built and tested for Pi-hole (FTLDNS) version 6 or newer. Several adlists use the Adblock format (`||example.com^`), which needs FTL v5.22 or newer.
 
 ### Remote Management Tools
 For managing your Pi-hole remotely, consider using one of the following SSH clients:
@@ -98,7 +101,7 @@ lists. Quote shell variables used as selections: `-r "$ITEMS"` rejects an empty
 value, while `-r $ITEMS` with an empty variable means remove all. `--yes` skips
 the removal confirmation.
 
-Both scripts only change entries they added themselves, which are tagged in their comment. Entries you added to Pi-hole yourself are never touched. Add `--dry-run` to any change to see it first.
+Both scripts only change entries they manage, which are tagged in their comment. Entries you added with a comment of your own are never touched. Older versions of `pi.py` left some comments empty, so `pi.py` also takes over an entry that has no comment and matches one of the repository's domains. Add `--dry-run` to any change to see it first.
 
 ## Advanced: Pi-hole Database Administrator
 `pihole_admin.py` is an optional power-user toolkit for managing the Pi-hole

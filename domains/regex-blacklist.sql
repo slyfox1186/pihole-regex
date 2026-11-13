@@ -5,16 +5,13 @@
 (\.|^)ad-score\.com$ -- Overwolf Desktop App (PC Games)
 ^adserver-.*\.amazonaws\.com$ -- Ad server load balancers hosted on Amazon AWS
 ^(.+[_.-])?adse?rv(er?|ice)?s?[0-9]*[_.-] -- mmotti RegEx
-(^|\.)ad([sxv][0-9]*|[0-9]+|system)[_.-] -- ad servers (narrowed; avoids anti-ad/ad.nl false positives)
+(^|\.)ad([sx][0-9]*|[0-9]+|system)[_.-]|(^|\.)adv[0-9]*([_-]|\.[^.]+\.[^.]+) -- ad servers (narrowed; avoids anti-ad/ad.nl false positives, and adv. needs two more labels so Brazil's .adv.br lawyer sites stay reachable)
 ^adtrack(er|ing)?[0-9]*[_.-] -- mmotti RegEx
 ^advert(s|is(ing|ements?))?[0-9]*[_.-] -- mmotti RegEx
-^aff(iliat(es?|ion))?[_.-] -- mmotti RegEx
 (^|\.)(ahoravideo|bideo|fairu|privatproxy|wmail)-(blog|cdn|chat|endpoint|schnellvpn)\.(com|xyz)$ -- ViperSoftX remote-access trojan command servers (Emerging Threats)
 ^analytics?[_.-] -- mmotti RegEx
 (\.|^)antivirushub\.com$ -- 1337x.to - Sneaky redirect domains that probably log your IP and any other information it gets from your browser sending a GET or POST request.
 ^api\..*\.hismarttv\.com$ -- Hisense VIDAA Smart TV (Perflyst)
-^banners?[_.-] -- mmotti RegEx
-^beacons?[0-9]*(\.|[_-][^.]*\.)[^.]+\.[^.]+ -- mmotti RegEx (needs three or more labels, so sites like beacons.ai stay reachable)
 (\.|^)buybuggle\.com$ -- Hacker website - They install a backdoor trojan on your pc and remote in secretly to record you on webcam and copy a list of all your file paths
 ^(collect|usage)-(eu|us)-fy[0-9]+\.myhomescreen\.tv$ -- Panasonic Viera Smart TV - Usage data collection
 ^count(ers?)?[0-9]*(\.|[_-][^.]*\.)[^.]+\.[^.]+ -- mmotti RegEx (needs three or more labels, so sites like counter-strike.net stay reachable)

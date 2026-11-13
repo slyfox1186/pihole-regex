@@ -1,28 +1,6 @@
 79423.analytics.edgekey.net -- Akamai media analytics host - Red Hat (RHEL) online learning videos play only with it
 7ba3f64df98de730df38846b54ecfbdf7f61f80f.cws.conviva.com -- Conviva video analytics host - Disney+ saves The Simpsons watch history through it
 adverts.ie -- Irish classifieds site - Caught by the advert regex
-affiliate-program.amazon.ae -- Amazon Associates - Caught by the affiliate regex
-affiliate-program.amazon.co.uk -- Amazon Associates - Caught by the affiliate regex
-affiliate-program.amazon.com -- Amazon Associates - Caught by the affiliate regex
-affiliate-program.amazon.com.au -- Amazon Associates - Caught by the affiliate regex
-affiliate-program.amazon.com.be -- Amazon Associates - Caught by the affiliate regex
-affiliate-program.amazon.eg -- Amazon Associates - Caught by the affiliate regex
-affiliate-program.amazon.ie -- Amazon Associates - Caught by the affiliate regex
-affiliate-program.amazon.in -- Amazon Associates - Caught by the affiliate regex
-affiliate-program.amazon.pl -- Amazon Associates - Caught by the affiliate regex
-affiliate-program.amazon.sa -- Amazon Associates - Caught by the affiliate regex
-affiliate-program.amazon.se -- Amazon Associates - Caught by the affiliate regex
-affiliate-program.amazon.sg -- Amazon Associates - Caught by the affiliate regex
-affiliate.amazon.co.jp -- Amazon Associates - Caught by the affiliate regex
-affiliate.shopee.co.id -- Shopee Affiliate Program - Caught by the affiliate regex
-affiliate.shopee.co.th -- Shopee Affiliate Program - Caught by the affiliate regex
-affiliate.shopee.com.br -- Shopee Affiliate Program - Caught by the affiliate regex
-affiliate.shopee.com.my -- Shopee Affiliate Program - Caught by the affiliate regex
-affiliate.shopee.ph -- Shopee Affiliate Program - Caught by the affiliate regex
-affiliate.shopee.sg -- Shopee Affiliate Program - Caught by the affiliate regex
-affiliate.shopee.vn -- Shopee Affiliate Program - Caught by the affiliate regex
-affiliate.tiktok.com -- TikTok Shop Affiliate creator portal - Caught by the affiliate regex
-affiliates.expediagroup.com -- Expedia Group Travel Creator Program - Caught by the affiliate regex
 aic-ngfts.lge.com -- LG Smart TV - Content Store cover art (HaGeZi #309)
 analytics.dev.azure.com -- Azure DevOps Analytics - Caught by the analytics regex
 android.clients.google.com -- Google Play and Android connectivity check
@@ -40,11 +18,9 @@ arc.msn.com -- Microsoft
 assets.adobedtm.com -- Adobe Experience Platform tag manager - Many sites load page scripts through it
 auth.samsungosp.com -- Samsung TV
 auth.split.io -- Spotify - Required to login to Spotify through browsers
-avpro.global.yamaha.com -- Yamaha AV Receivers - Blocks system updates on rx-v685 so we whitelist
+avpro.global.yamaha.com -- Yamaha AV receivers - Blocking it stops system updates on the RX-V685
 bbuseruploads.s3.amazonaws.com -- Required to build the Linux package x264 from source code.
-beacon.pharos.com -- Pharos Cloud print management sign-in - Caught by the beacon regex
-beacon.schneidercorp.com -- Schneider Geospatial Beacon - County property and GIS records - Caught by the beacon regex
-beacons-npa.gov.uk -- Bannau Brycheiniog National Park Authority - Caught by the beacon regex
+beacons-npa.gov.uk -- Bannau Brycheiniog National Park Authority - HaGeZi Pro blocks it
 best.aliexpress.com -- AliExpress - online shopping site
 bit.ly -- URL Shortener
 bitcoin.org -- Bitcoin project site - Prigent-Crypto blocks it
@@ -93,8 +69,6 @@ entitlement.auth.adobe.com -- Adobe
 epg.corio.com -- Philips TV
 fairuse.org -- Fair use information site - Was blocked by a Block List Project list (dropped from adlists.txt; kept for setups that still use it)
 fe3cr.delivery.mp.microsoft.com -- Microsoft
-filament.io -- Filament (Flare) website share buttons
-fivethirtyeight.com -- FiveThirtyEight news and data site
 fonts.loli.net -- Google Fonts China mirror (loli.net)
 fonts.loli.net.cdn.cloudflare.net -- Google Fonts China mirror (loli.net) - Cloudflare CNAME target
 forms.office.com -- Microsoft
@@ -108,7 +82,6 @@ geo-prod.do.dsp.mp.microsoft.com -- Microsoft - Enables connections to Windows U
 geover.prod.do.dsp.mp.microsoft.com -- Microsoft
 gfwsl.geforce.com -- Nvidia Geforce - Used for checking nVidia driver updates
 giphy.com -- Giphy - Gifs hosting platform
-gitcdn.github.io -- GitCDN - Serves GitHub files as a CDN
 goo.gl -- Google
 googlehosted.l.googleusercontent.com -- Google
 gpm.samsungqbe.com -- Samsung Smart TV - Connection problems when blocked
@@ -168,11 +141,10 @@ mparticle.map.fastly.net -- mParticle customer data platform - Allowed for weath
 mrs-efz.ms-acdc.office.com -- Microsoft
 mscomajax.vo.msecnd.net -- Microsoft Ajax CDN
 my.plexapp.com -- Plex Media Server
+mytaxes.ads.taj.gov.jm -- Tax Administration Jamaica taxpayer portal - Caught by the ad regex
 name.com -- Name.com domain registrar - Was blocked by a Block List Project list (dropped from adlists.txt; kept for setups that still use it)
 netdna.bootstrapcdn.com -- Bootstrap CDN
 netflix.com -- Netflix
-nexus.officeapps.live.com -- Microsoft Office - Microsoft 365 apps service
-nexusrules.officeapps.live.com -- Microsoft Office - Microsoft 365 apps service rules
 ngfts.lge.com -- LG Smart TV - Content Store thumbnails (HaGeZi #309, Perflyst)
 nine.plugins.plexapp.com -- Plex Media Server
 nrdp.prod.cloud.netflix.com -- Netflix - Needed to log in on Nvidia Shield TV
@@ -188,7 +160,6 @@ pagecdn.io -- PageCDN public library CDN
 pgl.yoyo.org -- Peter Lowe's ad server list (an adlist source)
 pinterest.com -- Pinterest.com
 pixel-by-labcorp.zendesk.com -- Pixel by Labcorp home test kits - Help center - Caught by the pixel regex
-placehold.it -- Placehold.it, Image placeholders often used during web page loading
 play-lh.googleusercontent.com -- Google play Store
 play.google.com -- Google play Store
 play.kayosports.com.au -- Kayo is an Australian sports streaming service created for sports-loving Aussies
@@ -281,6 +252,7 @@ viewer.content.glympse.com -- Papa Johns Pizza - Required to PapaTrack to work (
 vimeo.com -- Vimeo
 vo.aicdn.com -- Upyun CDN host (China)
 wallpapers.com -- Wallpapers.com - Was blocked by a Block List Project list (dropped from adlists.txt; kept for setups that still use it)
+webmail.adv.oabsp.org.br -- OAB Sao Paulo bar association webmail - Caught by the ad regex
 weeklyad.target.com.edgesuite.net -- Target
 widget-cdn.rpxnow.com -- Required to log into teambeachbody.com
 wikipedia.org -- Wikipedia
