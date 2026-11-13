@@ -2,16 +2,15 @@
 - Maximize the efficiency of your Pi-hole setup with our extensive collection of Regular Expressions (RegEx) and Exact Match filters. Designed to block a broad range of domains effectively, our filters simplify your blocking strategy by minimizing the need for numerous individual entries. Additionally, this repository includes customizable Exact Match filters for precise domain blocking and tools to facilitate the easy management of Adlist Group entries.
 
 ## Last updated on 11.13.2026:
-- Dropped the six Block List Project adlists. Their repository was archived and the lists stopped updating in July 2026, so their false positives could no longer be fixed. HaGeZi TIF, Phishing Army, URLhaus and cyberhost still cover malware and phishing
-- Closed an allow rule that let through `cdn.bootcss.com` and `cdn.staticfile.org`, CDNs tied to the 2024 Polyfill supply-chain attack. The CDN allow rules now name each real host instead of matching every combination
-- Stopped allowing trackers that had no stated reason to be allowed: Braze (`js.appboycdn.com`), Optimizely, Reddit's event collector, Epic Games telemetry and Viber's ad server (`s-bid.rmp.rakuten.com`)
-- Unblocked LG TV firmware updates (`snu.lge.com`), the LG ThinQ app (`common.lgthinq.com`, `lss.lgthinq.com`, `aic-op-lss.lgthinq.com`), LG app store installs (`aic-gfts.lge.com`) and the IObit store checkout
-- The LG TV channel guide allow rule now covers the European, Korean and Russian guide servers, not only the US ones
-- Stopped blocking Windows Update's compatibility database host (`adl.windows.com`), which an Akamai ad rule caught through its CNAME
-- Allowed real services the generic keyword rules were blocking: Azure DevOps Analytics, the Amazon, TikTok Shop, Shopee and Expedia affiliate portals, Ayla Networks smart appliances (Shark, Fujitsu FGLair, Bradford White), Schneider Beacon county property records, Pharos Cloud printing, MLS and SIDEARM college sports stats
-- Now blocks Reddit's `events-test` event collectors and Epic Games' `datarouter` telemetry, which no included adlist covers
-- Removed entries for hosts that no longer exist in DNS, and corrected wrong or empty comments on more than 100 entries
-- `pi.py --add` now also updates the comments on entries it added before, so corrected descriptions reach your Pi-hole. Entries you added yourself are not touched
+We checked every domain in these lists, one by one, against how the internet looks today. The lists should block ads, tracking and harmful websites without breaking the apps, devices and sites you actually use. That check turned up mistakes in both directions, so we fixed them:
+
+- Removed six blocklists whose author stopped maintaining them. Their mistakes could no longer be fixed. The lists that remain still protect you from malware and scam sites.
+- Closed a gap that let a group of unsafe websites through. These sites were linked to a well-known attack on websites in 2024.
+- Stopped letting several ad and tracking services through, and now block a few that no other list was catching.
+- Fixed things that were blocked by mistake, including Windows updates, LG TV software and app updates, the LG ThinQ app, some smart home appliances, county property records and sports scores.
+- Removed entries for websites that no longer exist, and rewrote the descriptions so each entry says what it is.
+
+To get these changes, run `sudo python3 pi.py -a` and `sudo python3 adlist.py` again. `pi.py` now also updates the descriptions it added to your Pi-hole before. Anything you added yourself is left alone.
 
 ## Updated on 11.12.2026:
 - Full audit of all five lists. Four allowlist regexes that Pi-hole could never load (they used lookaheads, which Pi-hole's regex engine does not support) were removed or rewritten
