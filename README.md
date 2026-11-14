@@ -64,6 +64,9 @@ For managing your Pi-hole remotely, consider using one of the following SSH clie
 ### Requirements
 Both scripts need only Python 3.9 or newer, which Pi-hole's supported systems already have. There is nothing to install with pip.
 
+### Recursive DNS with unbound (optional)
+Pi-hole normally passes the lookups it does not block to an outside DNS provider. If you would rather not depend on one, Pi-hole can use its own recursive resolver, unbound, running on the same machine. Pi-hole's official guide walks through the setup and how to test it: [Pi-hole documentation: unbound](https://docs.pi-hole.net/guides/dns/unbound/).
+
 ### RegEx and Exact Lists
 Download and run `pi.py`. With no options it opens a menu:
 
