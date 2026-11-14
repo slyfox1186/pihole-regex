@@ -160,7 +160,7 @@ the removal confirmation.
 
 ## Advanced: Pi-hole Database Administrator
 `pihole_admin.py` is an optional power-user toolkit for managing the Pi-hole
-databases directly (statistics, backups, optimization, duplicate detection,
+databases directly (statistics, backups, optimization, removal of duplicate entries,
 query analysis, and reporting).
 
 Install its dependencies (or run `pip install -r requirements.txt` for everything):

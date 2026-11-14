@@ -56,7 +56,7 @@ class ParserTests(unittest.TestCase):
         args = pihole_admin.build_parser().parse_args([
             "-o", "-b", "/tmp/x", "-s", "-c", "30", "-aw", "a.com b.org", "-ab", "c.com",
             "-rw", "d.com", "-rb", "e.com", "-g", "-td", "20", "-q", "clients",
-            "--order-by", "blocked", "--limit", "5", "-aq", "SELECT 1", "-r", "-u", "-rd",
+            "--order-by", "blocked", "--limit", "5", "-aq", "SELECT 1", "-r", "-u", "-rd", "-y",
             "-fs", "90", "-cd", "-aqt", "60",
         ])
         self.assertEqual(vars(args), {
@@ -65,7 +65,7 @@ class ParserTests(unittest.TestCase):
             "remove_whitelist": "d.com", "remove_blacklist": "e.com",
             "update_gravity": True, "top_domains": 20, "query": "clients",
             "order_by": "blocked", "limit": 5, "advanced_query": "SELECT 1", "report": True,
-            "check_updates": True, "remove_duplicates": True, "find_similar": 90,
+            "check_updates": True, "remove_duplicates": True, "yes": True, "find_similar": 90,
             "categorize_domains": True, "analyze_query_trends": 60,
         })
 

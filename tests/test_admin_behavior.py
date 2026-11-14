@@ -1,6 +1,7 @@
 """Check pihole_admin.py's database, update and chart code against disposable databases and fakes."""
 
 import importlib.util
+import io
 import os
 import sqlite3
 import subprocess
@@ -8,6 +9,7 @@ import sys
 import tempfile
 import types
 import unittest
+from contextlib import redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 
@@ -16,6 +18,25 @@ import pihole_admin
 LOGGER = "PiholeDBAdmin"
 HAVE_MATPLOTLIB = importlib.util.find_spec("matplotlib") is not None
 TOP = [{"domain": "ads.example.com", "count": 3}]
+# The domain list tables and triggers of a live Pi-hole v6.9 gravity.db.
+GRAVITY_SCHEMA = """
+CREATE TABLE "group" (id INTEGER PRIMARY KEY AUTOINCREMENT, enabled BOOLEAN NOT NULL DEFAULT 1,
+    name TEXT UNIQUE NOT NULL, date_added INTEGER NOT NULL DEFAULT (cast(strftime('%s', 'now') as int)),
+    date_modified INTEGER NOT NULL DEFAULT (cast(strftime('%s', 'now') as int)), description TEXT);
+CREATE TABLE domainlist (id INTEGER PRIMARY KEY AUTOINCREMENT, type INTEGER NOT NULL DEFAULT 0,
+    domain TEXT NOT NULL, enabled BOOLEAN NOT NULL DEFAULT 1,
+    date_added INTEGER NOT NULL DEFAULT (cast(strftime('%s', 'now') as int)),
+    date_modified INTEGER NOT NULL DEFAULT (cast(strftime('%s', 'now') as int)),
+    comment TEXT, UNIQUE(domain, type));
+CREATE TABLE domainlist_by_group (domainlist_id INTEGER NOT NULL REFERENCES domainlist (id) ON DELETE CASCADE,
+    group_id INTEGER NOT NULL REFERENCES "group" (id) ON DELETE CASCADE,
+    PRIMARY KEY (domainlist_id, group_id)) WITHOUT ROWID;
+CREATE TRIGGER tr_domainlist_delete AFTER DELETE ON domainlist
+    BEGIN DELETE FROM domainlist_by_group WHERE domainlist_id = OLD.id; END;
+CREATE TRIGGER tr_domainlist_add AFTER INSERT ON domainlist
+    BEGIN INSERT INTO domainlist_by_group (domainlist_id, group_id) VALUES (NEW.id, 0); END;
+INSERT INTO "group" (id, enabled, name) VALUES (0, 1, 'Default'), (1, 1, 'Kids');
+"""
 
 
 def fake_requests(payload, status=200):
@@ -49,11 +70,7 @@ class AdminTestCase(unittest.TestCase):
         self.gravity = root / "gravity.db"
         self.queries = root / "pihole-FTL.db"
         with sqlite3.connect(self.gravity) as conn:
-            conn.executescript(
-                "CREATE TABLE info (property TEXT PRIMARY KEY, value TEXT);"
-                "CREATE TABLE domainlist (id INTEGER PRIMARY KEY, type INTEGER, domain TEXT,"
-                " enabled INTEGER, date_added INTEGER, UNIQUE(domain, type));"
-            )
+            conn.executescript("CREATE TABLE info (property TEXT PRIMARY KEY, value TEXT);" + GRAVITY_SCHEMA)
         conn.close()
         with sqlite3.connect(self.queries) as conn:
             conn.executescript(
@@ -184,6 +201,178 @@ class DatabaseTests(AdminTestCase):
         (match,) = similar["ads.example.com"]
         self.assertEqual(match[0], "ad.example.com")
         self.assertIsInstance(match[2], int)
+
+
+class DuplicateTests(AdminTestCase):
+    def add(self, list_type, domain, enabled=1, comment=None, groups=None):
+        with sqlite3.connect(self.gravity) as conn:
+            row_id = conn.execute("INSERT INTO domainlist (type, domain, enabled, comment) VALUES (?, ?, ?, ?)",
+                                  (list_type, domain, enabled, comment)).lastrowid
+            if groups is not None:
+                conn.execute("DELETE FROM domainlist_by_group WHERE domainlist_id = ?", (row_id,))
+                conn.executemany("INSERT INTO domainlist_by_group VALUES (?, ?)", [(row_id, g) for g in groups])
+        conn.close()
+        return row_id
+
+    def rows(self):
+        return self.run_sql(self.gravity, "SELECT id, type, domain FROM domainlist ORDER BY id")
+
+    def plan(self):
+        with self.assertLogs(LOGGER, "INFO"):
+            return self.admin.find_duplicates()
+
+    def removed_ids(self, plan):
+        return [(r.entry.id, r.keeper.id) for r in plan.removals]
+
+    def test_www_pairs_are_not_duplicates(self):
+        self.add(0, "g2a.com")
+        self.add(0, "www.g2a.com")
+        plan = self.plan()
+        self.assertEqual((plan.removals, plan.overlaps), ([], []))
+
+    def test_capitalized_copy_goes_and_the_lowercase_entry_stays(self):
+        upper = self.add(1, "Ads.Example.com", comment="old", groups=[0, 1])
+        lower = self.add(1, "ads.example.com", enabled=0)
+        self.assertEqual(self.removed_ids(self.plan()), [(upper, lower)])
+
+    def test_all_capitalized_copies_keep_the_oldest(self):
+        first = self.add(1, "ADS.example.com")
+        second = self.add(1, "Ads.example.com")
+        self.assertEqual(self.removed_ids(self.plan()), [(second, first)])
+
+    def test_regex_and_non_ascii_entries_are_left_alone(self):
+        self.add(3, r"^\w+\.example$")
+        self.add(3, r"^\W+\.example$")
+        self.add(3, "^a\\.example$;querytype=A")
+        self.add(3, "^a\\.example$;QUERYTYPE=A")
+        self.add(1, "bücher.example")
+        self.add(1, "BÜCHER.example")
+        self.assertEqual(self.plan().removals, [])
+
+    def test_allow_and_deny_overlap_is_reported_but_kept(self):
+        allow = self.add(0, "Example.com")
+        deny = self.add(1, "example.com")
+        regex_allow = self.add(2, "^x$")
+        regex_deny = self.add(3, "^x$")
+        plan = self.plan()
+        self.assertEqual(plan.removals, [])
+        self.assertEqual([(a.id, d.id) for a, d in plan.overlaps], [(allow, deny), (regex_allow, regex_deny)])
+
+    def test_capitalized_copy_on_an_overlap_still_goes(self):
+        upper = self.add(0, "Example.com")
+        lower = self.add(0, "example.com")
+        deny = self.add(1, "example.com")
+        asked, out = self.run_command("y")
+        asked.assert_called_once()
+        self.assertIn("this alone removes nothing", out)
+        self.assertIn(f"remove #{upper} Example.com", out)
+        self.assertEqual([row[0] for row in self.rows()], [lower, deny])
+
+    def test_preview_reads_one_snapshot_and_releases_it(self):
+        self.add(1, "Ads.example.com")
+        self.add(1, "ads.example.com")
+        seen = []
+        original = pihole_admin.read_domainlist
+
+        def checked(conn):
+            seen.append(conn.in_transaction)
+            return original(conn)
+
+        with patch.object(pihole_admin, "read_domainlist", checked):
+            self.plan()
+        self.assertEqual(seen, [True])
+        with sqlite3.connect(self.gravity, isolation_level=None, timeout=0) as writer:
+            writer.execute("BEGIN IMMEDIATE")
+            writer.execute("ROLLBACK")
+        writer.close()
+
+    def remove(self, plan):
+        with self.assertLogs(LOGGER, "INFO"):
+            return self.admin.remove_duplicates(plan)
+
+    def test_removal_deletes_the_row_and_its_group_links(self):
+        upper = self.add(1, "Ads.example.com", groups=[0, 1])
+        lower = self.add(1, "ads.example.com")
+        removed, skipped = self.remove(self.plan())
+        self.assertEqual(([e.id for e in removed], skipped), ([upper], []))
+        self.assertEqual(self.rows(), [(lower, 1, "ads.example.com")])
+        self.assertEqual(self.run_sql(self.gravity, "SELECT domainlist_id FROM domainlist_by_group"), [(lower,)])
+
+    def test_entries_changed_after_they_were_shown_are_skipped(self):
+        changes = (
+            "UPDATE domainlist SET domain = 'ADS.example.com' WHERE id = {upper}",
+            "UPDATE domainlist SET enabled = 0 WHERE id = {upper}",
+            "UPDATE domainlist SET comment = 'new' WHERE id = {upper}",
+            "INSERT INTO domainlist_by_group VALUES ({upper}, 1)",
+            "UPDATE domainlist SET comment = 'new' WHERE id = {lower}",
+            "DELETE FROM domainlist WHERE id = {lower}",
+        )
+        for change in changes:
+            with self.subTest(change=change):
+                self.run_sql(self.gravity, "DELETE FROM domainlist")
+                upper = self.add(1, "Ads.example.com")
+                lower = self.add(1, "ads.example.com")
+                plan = self.plan()
+                self.run_sql(self.gravity, change.format(upper=upper, lower=lower))
+                before = self.rows()
+                removed, skipped = self.remove(plan)
+                self.assertEqual(([e.id for e in skipped], removed), ([upper], []))
+                self.assertEqual(self.rows(), before)
+
+    def test_a_failed_removal_changes_nothing(self):
+        self.add(1, "Ads.example.com")
+        self.add(1, "ADS.example.com")
+        self.add(1, "ads.example.com")
+        plan = self.plan()
+        self.run_sql(self.gravity, "CREATE TRIGGER fail_second BEFORE DELETE ON domainlist"
+                                   " WHEN OLD.domain = 'ADS.example.com' BEGIN SELECT RAISE(ABORT, 'boom'); END")
+        before = (self.rows(), self.run_sql(self.gravity, "SELECT * FROM domainlist_by_group ORDER BY 1"))
+        with self.assertLogs(LOGGER, "ERROR") as logs:
+            self.assertIsNone(self.admin.remove_duplicates(plan))
+        self.assertIn("Nothing was removed", "\n".join(logs.output))
+        self.assertEqual((self.rows(), self.run_sql(self.gravity, "SELECT * FROM domainlist_by_group ORDER BY 1")),
+                         before)
+
+    def run_command(self, answer=None, assume_yes=False):
+        reply = {"side_effect": EOFError} if answer is None else {"return_value": answer}
+        out = io.StringIO()
+        with patch("builtins.input", **reply) as asked, redirect_stdout(out), self.assertLogs(LOGGER, "INFO"):
+            pihole_admin.remove_duplicates(self.admin, assume_yes)
+        return asked, out.getvalue()
+
+    def test_command_asks_before_removing(self):
+        for answer, assume_yes, kept in ((None, False, 2), ("n", False, 2), ("y", False, 1), (None, True, 1)):
+            with self.subTest(answer=answer, assume_yes=assume_yes):
+                self.run_sql(self.gravity, "DELETE FROM domainlist")
+                self.add(1, "Ads.example.com")
+                self.add(1, "ads.example.com")
+                asked, out = self.run_command(answer, assume_yes)
+                self.assertEqual(len(self.rows()), kept)
+                self.assertEqual(asked.called, not assume_yes)
+                self.assertIn("remove #", out)
+                if answer is None and not assume_yes:
+                    self.assertIn("Add --yes to remove without asking.", out)
+                if kept == 1:
+                    self.assertIn("Removed 1 entries.", out)
+
+    def test_command_with_nothing_to_remove_does_not_ask(self):
+        self.add(0, "www.example.com")
+        self.add(0, "example.com")
+        asked, out = self.run_command("y")
+        asked.assert_not_called()
+        self.assertIn("No duplicate entries found.", out)
+        self.assertEqual(len(self.rows()), 2)
+
+
+class ListEditTests(AdminTestCase):
+    def test_www_stays_part_of_the_name(self):
+        with self.assertLogs(LOGGER, "INFO"):
+            self.admin.add_domains_to_list(["HTTPS://WWW.Example.com/", "example.com"], 1)
+        self.assertEqual(self.run_sql(self.gravity, "SELECT domain FROM domainlist ORDER BY id"),
+                         [("www.example.com",), ("example.com",)])
+        with self.assertLogs(LOGGER, "INFO"):
+            self.admin.remove_domains_from_list(["www.example.com"], 1)
+        self.assertEqual(self.run_sql(self.gravity, "SELECT domain FROM domainlist"), [("example.com",)])
 
 
 class ChartTests(AdminTestCase):

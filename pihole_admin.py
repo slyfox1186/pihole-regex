@@ -90,6 +90,84 @@ def _suffix_extractor():
     return extract
 
 
+# Exact allow (0) and deny (1) entries; Pi-hole lowercases these before storing them.
+EXACT_LIST_TYPES = (0, 1)
+REGEX_LIST_TYPES = (2, 3)
+
+
+@dataclass(frozen=True)
+class ListEntry:
+    """One domainlist row with its group links, as read in a single snapshot."""
+    id: int
+    type: int
+    domain: str
+    enabled: bool
+    comment: str | None
+    groups: tuple[int, ...]
+
+
+@dataclass(frozen=True)
+class Removal:
+    entry: ListEntry
+    keeper: ListEntry
+
+
+@dataclass
+class DuplicatePlan:
+    removals: list[Removal] = field(default_factory=list)
+    # Same entry on an allow list and its deny list: reported, never changed.
+    overlaps: list[tuple[ListEntry, ListEntry]] = field(default_factory=list)
+
+
+def read_domainlist(conn: sqlite3.Connection) -> list[ListEntry]:
+    links: dict[int, list[int]] = defaultdict(list)
+    for domain_id, group_id in conn.execute(
+            "SELECT domainlist_id, group_id FROM domainlist_by_group ORDER BY domainlist_id, group_id"):
+        links[domain_id].append(group_id)
+    return [ListEntry(row_id, list_type, domain, bool(enabled), comment, tuple(links[row_id]))
+            for row_id, list_type, domain, enabled, comment in conn.execute(
+                "SELECT id, type, domain, enabled, comment FROM domainlist ORDER BY id")]
+
+
+def plan_duplicates(entries: list[ListEntry]) -> DuplicatePlan:
+    """Find exact-list entries that only differ in letter case, and the copies to remove.
+
+    Pi-hole FTL lowercases exact domains when they are added and compares them byte for byte
+    with the query name, which it lowercases (ASCII A-Z only). An exact entry with a capital
+    letter therefore never matches, so removing it changes no filtering whatever its groups or
+    enabled state. Regex entries are never touched: case-insensitive matching does not make
+    regexes that differ in case equivalent (\\w and \\W, ;querytype= and ;QUERYTYPE=), and
+    FTL stops at the first regex that matches. Non-ASCII entries are left alone too.
+    """
+    plan = DuplicatePlan()
+    by_name: dict[tuple[int, str], list[ListEntry]] = defaultdict(list)
+    for entry in entries:
+        if entry.type in EXACT_LIST_TYPES and entry.domain.isascii():
+            by_name[(entry.type, entry.domain.lower())].append(entry)
+    for key in sorted(by_name):
+        copies = sorted(by_name[key], key=lambda entry: entry.id)
+        if len(copies) < 2:
+            continue
+        # UNIQUE(domain, type) allows at most one all-lowercase copy; it is the only one
+        # Pi-hole can match.
+        keeper = next((entry for entry in copies if entry.domain == key[1]), copies[0])
+        plan.removals += [Removal(entry, keeper) for entry in copies if entry is not keeper]
+
+    # Keys are (first list type of the pair, text): 0 for exact lists, 2 for regex lists.
+    by_text: dict[tuple[int, str], dict[int, list[ListEntry]]] = defaultdict(lambda: defaultdict(list))
+    for entry in entries:
+        if entry.type in EXACT_LIST_TYPES:
+            text = entry.domain.lower() if entry.domain.isascii() else entry.domain
+            by_text[(0, text)][entry.type].append(entry)
+        elif entry.type in REGEX_LIST_TYPES:
+            by_text[(2, entry.domain)][entry.type].append(entry)
+    for key in sorted(by_text):
+        allow_type, deny_type = key[0], key[0] + 1
+        by_type = by_text[key]
+        plan.overlaps += [(allow, deny) for allow in by_type[allow_type] for deny in by_type[deny_type]]
+    return plan
+
+
 class DatabaseConnectionPool:
     def __init__(self, db_path: str, max_connections: int = 5):
         self.db_path = db_path
@@ -640,36 +718,58 @@ Changes Made:
             self.logger.error(f"Could not run 'pihole -up': {e}")
             print(f"An error occurred during the update process: {e}")
 
-    def remove_duplicate_domains(self) -> list[list[tuple[int, str, str]]]:
-        self.logger.info("Searching for duplicate domains...")
-        duplicates = []
+    def find_duplicates(self) -> DuplicatePlan | None:
+        self.logger.info("Searching for duplicate entries...")
         try:
-            with self._get_connection(self.gravity_db_pool.db_path) as conn:
-                cursor = conn.cursor()
-
-                cursor.execute("SELECT id, domain, type FROM domainlist")
-                all_domains = cursor.fetchall()
-
-                domain_map = defaultdict(list)
-                for id, domain, type_value in all_domains:
-                    normalized = self.normalize_domain(domain)
-                    domain_map[normalized].append((id, domain, self.get_list_type(type_value)))
-
-                for domain, entries in domain_map.items():
-                    if len(entries) > 1:
-                        duplicates.append(entries)
-
-            total_duplicates = sum(len(group) - 1 for group in duplicates)
-            self.logger.info(f"Found {total_duplicates} duplicate entries.")
-            return duplicates
+            with closing(sqlite3.connect(self.gravity_db_pool.db_path, isolation_level=None, timeout=30)) as conn:
+                # One read transaction, so rows and group links come from the same moment. It ends
+                # here, before any confirmation prompt, so no lock is held while waiting.
+                conn.execute("BEGIN")
+                try:
+                    plan = plan_duplicates(read_domainlist(conn))
+                finally:
+                    conn.execute("COMMIT")
         except sqlite3.Error as e:
-            self.logger.error(f"Error searching for duplicate domains: {e}")
-            return []
+            self.logger.error(f"Error searching for duplicate entries: {e}")
+            return None
+        self.logger.info(f"Found {len(plan.removals)} duplicate entries.")
+        return plan
+
+    def remove_duplicates(self, approved: DuplicatePlan) -> tuple[list[ListEntry], list[ListEntry]] | None:
+        """Delete the approved removals that still hold; return (removed, skipped), or None on error.
+
+        The table is read again inside one write transaction. A removal is carried out only
+        when the fresh plan contains it unchanged: the same row, text, enabled state, comment
+        and groups, with the same unchanged keeper. Anything edited since it was shown is skipped.
+        """
+        removed: list[ListEntry] = []
+        skipped: list[ListEntry] = []
+        try:
+            with closing(sqlite3.connect(self.gravity_db_pool.db_path, isolation_level=None, timeout=30)) as conn:
+                conn.execute("BEGIN IMMEDIATE")
+                try:
+                    current = set(plan_duplicates(read_domainlist(conn)).removals)
+                    for removal in approved.removals:
+                        if removal in current:
+                            conn.execute("DELETE FROM domainlist WHERE id = ?", (removal.entry.id,))
+                            removed.append(removal.entry)
+                        else:
+                            skipped.append(removal.entry)
+                    conn.execute("COMMIT")
+                finally:
+                    if conn.in_transaction:
+                        conn.execute("ROLLBACK")
+        except sqlite3.Error as e:
+            self.logger.error(f"Nothing was removed. Error removing duplicate entries: {e}")
+            return None
+        self.logger.info(f"Removed {len(removed)} duplicate entries.")
+        return removed, skipped
 
     @staticmethod
     def normalize_domain(domain: str) -> str:
+        # "www." stays: www.example.com and example.com are separate exact entries in Pi-hole.
         domain = domain.lower().strip()
-        domain = re.sub(r'^(https?://)?(www\.)?', '', domain)
+        domain = re.sub(r'^https?://', '', domain)
         domain = re.sub(r'/$', '', domain)
         return domain
 
@@ -948,14 +1048,17 @@ OPTION_SECTIONS: tuple[tuple[str, str, tuple[Option, ...]], ...] = (
     )),
     ("DOMAIN LISTS",
      ("DOMAINS is one quoted value with spaces between the names, for example "
-      "\"ads.example.com ad.example.net\". A leading http://, https:// or www. is dropped."), (
+      "\"ads.example.com ad.example.net\". Names are stored in lowercase, without a leading "
+      "http:// or https:// and a trailing /."), (
         _option("-aw, --add-whitelist", "Add domains to the exact whitelist.", metavar="DOMAINS"),
         _option("-ab, --add-blacklist", "Add domains to the exact blacklist.", metavar="DOMAINS"),
         _option("-rw, --remove-whitelist", "Remove domains from the exact whitelist.", metavar="DOMAINS"),
         _option("-rb, --remove-blacklist", "Remove domains from the exact blacklist.", metavar="DOMAINS"),
         _switch("-rd, --remove-duplicates",
-                "List entries that appear more than once.",
-                "Report only. Nothing is removed."),
+                "Remove exact entries listed twice.",
+                "Shows them and asks first."),
+        _switch("-y, --yes",
+                "With -rd, remove without asking."),
         _option("-fs, --find-similar",
                 "Find entries at least PERCENT% alike.",
                 "PERCENT is a whole number from 1 to 100.", type=int, metavar="PERCENT"),
@@ -993,6 +1096,10 @@ NOTES = (
      "member of the pihole group."),
     "Several options can be given in one run.",
     "After changing a domain list, run: sudo pihole reloaddns",
+    ("Duplicates are exact entries in plain ASCII that differ only in letter case. Pi-hole "
+     "stores exact entries in lowercase and never matches a copy with capital letters, so those "
+     "copies are removed and the lowercase entry stays (the oldest one if none is lowercase). "
+     "Regex and non-ASCII entries are never removed."),
     "Lists: /etc/pihole/gravity.db. Query history: /etc/pihole/pihole-FTL.db.",
     "Color turns off when the output is not a terminal or NO_COLOR is set.",
 )
@@ -1087,6 +1194,49 @@ def build_parser() -> Parser:
         for option in group:
             parser.add_argument(*option.flags, **option.parser_kwargs)
     return parser
+
+
+def describe_entry(entry: ListEntry) -> str:
+    state = "" if entry.enabled else ", disabled"
+    comment = f', comment "{entry.comment}"' if entry.comment else ""
+    return f"#{entry.id} {entry.domain} ({PiholeDBAdmin.get_list_type(entry.type)}{state}{comment})"
+
+
+def remove_duplicates(admin: PiholeDBAdmin, assume_yes: bool) -> None:
+    plan = admin.find_duplicates()
+    if plan is None:
+        return
+    if plan.overlaps:
+        print("\nOn both an allow and a deny list (shown only; this alone removes nothing):")
+        for allow, deny in plan.overlaps:
+            print(f"  {describe_entry(allow)}\n  {describe_entry(deny)}\n")
+    if not plan.removals:
+        print("No duplicate entries found.")
+        return
+
+    print("\nDuplicate entries. Pi-hole never matches the copies with capital letters:")
+    for removal in plan.removals:
+        print(f"  remove {describe_entry(removal.entry)}\n"
+              f"    keep {describe_entry(removal.keeper)}")
+    if not assume_yes:
+        try:
+            answer = input(f"\nRemove {len(plan.removals)} entries? [y/N]: ").strip().lower()
+        except EOFError:
+            print("\nNo answer, so nothing was removed. Add --yes to remove without asking.")
+            return
+        if answer not in ("y", "yes"):
+            print("Nothing was removed.")
+            return
+
+    result = admin.remove_duplicates(plan)
+    if result is None:
+        return
+    removed, skipped = result
+    for entry in skipped:
+        print(f"Skipped {describe_entry(entry)}: it changed after it was shown.")
+    print(f"Removed {len(removed)} entries.")
+    if removed:
+        print("Pi-hole uses the change after you run: sudo pihole reloaddns")
 
 
 def main():
@@ -1189,30 +1339,7 @@ def main():
             admin.check_for_updates()
 
         if args.remove_duplicates:
-            duplicate_groups = admin.remove_duplicate_domains()
-            if duplicate_groups:
-                print("\nFound Duplicate Domain Groups:")
-                for i, group in enumerate(duplicate_groups, start=1):
-                    print(f"\nGroup {i}:")
-                    for entry in group:
-                        print(f"  - {entry[1]} (ID: {entry[0]}, Type: {entry[2]})")
-
-                create_log = input("\nDo you want to create an output log file with these results? (y/n): ").lower().strip()
-                if create_log == 'y':
-                    script_dir = os.path.dirname(os.path.realpath(__file__))
-                    log_file_path = os.path.join(script_dir, 'duplicate-domains.txt')
-                    try:
-                        with open(log_file_path, 'w') as log_file:
-                            log_file.write("Found Duplicate Domain Groups:\n")
-                            for i, group in enumerate(duplicate_groups, start=1):
-                                log_file.write(f"\nGroup {i}:\n")
-                                for entry in group:
-                                    log_file.write(f"  - {entry[1]} (ID: {entry[0]}, Type: {entry[2]})\n")
-                        print(f"Log file created at: {log_file_path}")
-                    except OSError as e:
-                        admin.logger.error(f"Failed to write log file: {e}")
-            else:
-                print("No duplicate domains found.")
+            remove_duplicates(admin, args.yes)
 
         if args.find_similar:
             similar_domains = admin.find_similar_domains(args.find_similar)
