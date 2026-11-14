@@ -17,7 +17,7 @@ from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from contextlib import closing
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import TYPE_CHECKING, Any, NoReturn
 
 if TYPE_CHECKING:  # Imported only for type hints; pandas stays an optional runtime dep.
@@ -79,13 +79,11 @@ def _suffix_extractor():
 
     def extract(domain: str) -> str:
         if get_tld is not None:
-            try:
-                # fix_protocol lets bare domains (no scheme) be parsed correctly;
-                # without it tld returns None for every Pi-hole entry.
-                info = get_tld(domain, as_object=True, fail_silently=True, fix_protocol=True)
-                return info.suffix if info else "Unknown"
-            except Exception:
-                return "Unknown"
+            # fix_protocol lets bare domains (no scheme) be parsed correctly;
+            # without it tld returns None for every Pi-hole entry. fail_silently
+            # makes tld return None for anything it cannot parse instead of raising.
+            info = get_tld(domain, as_object=True, fail_silently=True, fix_protocol=True)
+            return info.suffix if info else "Unknown"
         parts = domain.split('.')
         return '.'.join(parts[-2:]) if len(parts) > 1 else "Unknown"
 
@@ -228,7 +226,7 @@ Changes Made:
         dbs = [self.gravity_db_pool.db_path, self.query_db_pool.db_path]
         for db in dbs:
             db_name = os.path.basename(db)
-            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            timestamp = datetime.now().astimezone().strftime('%Y%m%d_%H%M%S')
             backup_file = os.path.join(backup_path, f"{db_name}_backup_{timestamp}.db")
 
             try:
@@ -247,7 +245,7 @@ Changes Made:
     def get_statistics(self) -> dict[str, Any]:
         self.logger.info("Fetching database statistics...")
         stats = {}
-        stats['stats_generated_at'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        stats['stats_generated_at'] = datetime.now().astimezone().strftime("%Y-%m-%d %H:%M:%S")
 
         try:
             with self._get_connection(self.gravity_db_pool.db_path) as conn:
@@ -283,9 +281,9 @@ Changes Made:
                 result = cursor.fetchone()
                 if result:
                     try:
-                        last_updated = datetime.fromtimestamp(int(result[0]))
+                        last_updated = datetime.fromtimestamp(int(result[0]), tz=timezone.utc).astimezone()
                         stats['last_gravity_update'] = last_updated.strftime("%m-%d-%Y %I:%M:%S %p")
-                    except (ValueError, OSError):
+                    except (ValueError, OverflowError, OSError):
                         stats['last_gravity_update'] = "Invalid timestamp"
                 else:
                     stats['last_gravity_update'] = "Unknown"
@@ -319,7 +317,7 @@ Changes Made:
         try:
             with self._get_connection(self.query_db_pool.db_path) as conn:
                 cursor = conn.cursor()
-                cutoff_timestamp = int((datetime.now() - timedelta(days=days)).timestamp())
+                cutoff_timestamp = int((datetime.now(timezone.utc) - timedelta(days=days)).timestamp())
 
                 cursor.execute("SELECT COUNT(*) FROM query_storage WHERE timestamp < ?", (cutoff_timestamp,))
                 queries_to_delete = cursor.fetchone()[0] or 0
@@ -380,6 +378,7 @@ Changes Made:
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
                 text=True,
+                errors="replace",
                 bufsize=1
             )
             if process.stdout:
@@ -393,8 +392,8 @@ Changes Made:
                 self.logger.error(f"Gravity update failed after {update_time:.2f} seconds.")
         except FileNotFoundError:
             self.logger.error("Pi-hole command not found. Ensure Pi-hole is installed and accessible.")
-        except Exception as e:
-            self.logger.error(f"An unexpected error occurred during gravity update: {e}")
+        except OSError as e:
+            self.logger.error(f"Could not run 'pihole -g': {e}")
 
     def analyze_top_domains(self, limit: int = 10, blocked: bool = True) -> list[dict[str, Any]]:
         status_codes = BLOCKED_STATUS_CODES if blocked else (2, 3)
@@ -429,6 +428,12 @@ Changes Made:
                 start_time = time.time()
                 cursor.execute(query)
                 query_time = time.time() - start_time
+                # Statements such as DELETE or UPDATE return no result columns.
+                if cursor.description is None:
+                    changed = f" {cursor.rowcount} rows changed." if cursor.rowcount >= 0 else ""
+                    self.logger.info(f"Custom statement executed in {query_time:.2f} seconds. "
+                                     f"It returns no rows.{changed}")
+                    return results
                 columns = [description[0] for description in cursor.description]
                 results = [dict(zip(columns, row)) for row in cursor.fetchall()]
             self.logger.info(f"Custom query executed successfully in {query_time:.2f} seconds.")
@@ -517,6 +522,11 @@ Changes Made:
                         top_allowed_domains: list[dict[str, Any]]):
         try:
             plt, sns = _load_pyplot()
+        except ImportError:
+            self.logger.error("matplotlib is required for charts. Install it with: pip install matplotlib")
+            return
+        chart_path = 'pihole_domain_stats.png'
+        try:
             plt.figure(figsize=(14, 7))
             if sns:
                 sns.set_style("whitegrid")
@@ -542,12 +552,13 @@ Changes Made:
             plt.xticks(rotation=45, ha='right')
 
             plt.tight_layout()
-            chart_path = 'pihole_domain_stats.png'
             plt.savefig(chart_path)
-            plt.close()
-            self.logger.info(f"Charts saved as {chart_path}")
-        except Exception as e:
+        except (OSError, ValueError) as e:
             self.logger.error(f"Error generating charts: {e}")
+            return
+        finally:
+            plt.close("all")
+        self.logger.info(f"Charts saved as {chart_path}")
 
     def check_for_updates(self) -> None:
         self.logger.info("Checking for Pi-hole updates...")
@@ -558,12 +569,17 @@ Changes Made:
             return
         try:
             # Get current Pi-hole version
-            result = subprocess.run(["pihole", "-v"], capture_output=True, text=True)
+            result = subprocess.run(["pihole", "-v"], capture_output=True, text=True,
+                                    errors="replace", check=False)
             if result.returncode != 0:
                 self.logger.error(f"Failed to get current Pi-hole version: {result.stderr.strip()}")
                 return
 
-            current_version_match = re.search(r'Pi-hole version is (\S+)', result.stdout)
+            # Pi-hole v6 prints "Core version is v6.6 (Latest: v6.6)". v5 printed an indented
+            # "Pi-hole version is v5.18.2 (Latest: ...)", with the branch name before the
+            # version when not on master and "Current " in front when GitHub was unreachable.
+            current_version_match = re.search(r'(?:Core|Pi-hole) version is (?:\S+ )?(v?\d\S*)',
+                                              result.stdout)
             if not current_version_match:
                 self.logger.error("Could not parse current Pi-hole version.")
                 return
@@ -577,7 +593,9 @@ Changes Made:
                 self.logger.error(f"Failed to fetch latest Pi-hole version: HTTP {response.status_code}")
                 return
 
-            latest_version = response.json().get("tag_name", "").strip()
+            release = response.json()
+            tag = release.get("tag_name") if isinstance(release, dict) else None
+            latest_version = tag.strip() if isinstance(tag, str) else ""
             if not latest_version:
                 self.logger.error("Could not parse latest Pi-hole version from GitHub.")
                 return
@@ -586,7 +604,10 @@ Changes Made:
 
             if current_version != latest_version:
                 self.logger.info(f"Update available: {latest_version} (current: {current_version})")
-                user_input = input("\nDo you want to update Pi-hole? (y/n): ").lower().strip()
+                try:
+                    user_input = input("\nDo you want to update Pi-hole? (y/n): ").lower().strip()
+                except EOFError:
+                    user_input = ""
                 if user_input == 'y':
                     self.update_pihole()
                 else:
@@ -595,13 +616,16 @@ Changes Made:
                 self.logger.info("Pi-hole is up to date.")
         except requests.RequestException as e:
             self.logger.error(f"Network error while checking for updates: {e}")
-        except Exception as e:
-            self.logger.error(f"Error checking for updates: {e}")
+        except FileNotFoundError:
+            self.logger.error("Pi-hole command not found. Ensure Pi-hole is installed and accessible.")
+        except OSError as e:
+            self.logger.error(f"Could not run 'pihole -v': {e}")
 
     def update_pihole(self) -> None:
         self.logger.info("Updating Pi-hole...")
         try:
-            result = subprocess.run(["pihole", "-up"], capture_output=True, text=True)
+            result = subprocess.run(["pihole", "-up"], capture_output=True, text=True,
+                                    errors="replace", check=False)
             if result.returncode == 0:
                 self.logger.info("Pi-hole updated successfully.")
                 self.logger.debug(f"Update output: {result.stdout}")
@@ -612,8 +636,8 @@ Changes Made:
                 print("Failed to update Pi-hole. Please check the logs for more information.")
         except FileNotFoundError:
             self.logger.error("Pi-hole command not found. Ensure Pi-hole is installed and accessible.")
-        except Exception as e:
-            self.logger.error(f"Error during Pi-hole update: {e}")
+        except OSError as e:
+            self.logger.error(f"Could not run 'pihole -up': {e}")
             print(f"An error occurred during the update process: {e}")
 
     def remove_duplicate_domains(self) -> list[list[tuple[int, str, str]]]:
@@ -692,7 +716,7 @@ Changes Made:
                 for offset, (domain1, _type1) in enumerate(chunk):
                     i = start_index + offset
                     for domain2, _type2 in domains[i + 1:]:
-                        similarity = int(round(ratio(domain1, domain2)))
+                        similarity = round(ratio(domain1, domain2))
                         if similarity >= similarity_threshold:
                             results.append((domain1, domain2, similarity))
                 return results
@@ -713,9 +737,6 @@ Changes Made:
             return similar_domains
         except sqlite3.Error as e:
             self.logger.error(f"Error finding similar domains: {e}")
-            return {}
-        except Exception as e:
-            self.logger.error(f"Unexpected error: {e}")
             return {}
 
     def categorize_domains(self) -> dict[str, list[str]]:
@@ -782,6 +803,11 @@ Changes Made:
 
         try:
             plt, sns = _load_pyplot()
+        except ImportError:
+            self.logger.error("matplotlib is required for charts. Install it with: pip install matplotlib")
+            return
+        chart_path = 'pihole_query_trends.png'
+        try:
             plt.figure(figsize=(14, 8))
             if sns:
                 sns.set_style("whitegrid")
@@ -803,12 +829,13 @@ Changes Made:
             ax2.legend(loc='lower right')
 
             plt.tight_layout()
-            chart_path = 'pihole_query_trends.png'
             plt.savefig(chart_path)
-            plt.close()
-            self.logger.info(f"Query trend chart saved as {chart_path}")
-        except Exception as e:
+        except (OSError, ValueError) as e:
             self.logger.error(f"Error plotting query trends: {e}")
+            return
+        finally:
+            plt.close("all")
+        self.logger.info(f"Query trend chart saved as {chart_path}")
 
 
 # ---------------------------------------------------------------------------
