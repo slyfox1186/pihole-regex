@@ -1,5 +1,5 @@
 # Pi-hole® v6+ FTLDNS: Advanced Filter Collection
-- Maximize the efficiency of your Pi-hole setup with our extensive collection of Regular Expressions (RegEx) and Exact Match filters. Designed to block a broad range of domains effectively, our filters simplify your blocking strategy by minimizing the need for numerous individual entries. Additionally, this repository includes customizable Exact Match filters for precise domain blocking and tools to facilitate the easy management of Adlist Group entries.
+- Maximize the efficiency of your Pi-hole setup with our extensive collection of Regular Expressions (RegEx) and Exact Match filters. Designed to block a broad range of domains effectively, our filters simplify your blocking strategy by minimizing the need for numerous individual entries. Additionally, this repository includes customizable Exact Match filters for precise domain blocking, tools to facilitate the easy management of Adlist Group entries, and a script that sets up unbound as Pi-hole's own recursive DNS resolver.
 
 ## Last updated on 11.14.2026:
 Every entry now has a description that says what the domain is and what it does, backed by sources you can check in [docs/domain-notes-sources.md](docs/domain-notes-sources.md). While checking every entry we also fixed four rules:
@@ -56,6 +56,13 @@ Each entry's description says what the domain is and what it does. The sources b
 ### Compatibility
 This collection is built and tested for Pi-hole (FTLDNS) version 6 or newer. Several adlists use the Adblock format (`||example.com^`), which needs FTL v5.22 or newer.
 
+### Scripts
+| Script | What it does |
+|--------|--------------|
+| [`pi.py`](#regex-and-exact-lists) | Adds, updates, removes and searches the RegEx and Exact lists in Pi-hole, and backs up Pi-hole's database |
+| [`adlist.py`](#adlists) | Adds, removes and turns off or on this collection's adlists |
+| [`unbound.py`](#recursive-dns-with-unbound-optional) | Installs unbound as Pi-hole's own recursive DNS resolver, or removes it completely (Debian-based systems only) |
+
 ### Remote Management Tools
 For managing your Pi-hole remotely, consider using one of the following SSH clients:
 
@@ -64,7 +71,7 @@ For managing your Pi-hole remotely, consider using one of the following SSH clie
 - **[Termius](https://termius.com/)** - An SSH client for Android, iOS, and desktop systems.
 
 ### Requirements
-Both scripts need only Python 3.9 or newer, which Pi-hole's supported systems already have. There is nothing to install with pip.
+`pi.py`, `adlist.py` and `unbound.py` need only Python 3.9 or newer, which Pi-hole's supported systems already have. There is nothing to install with pip.
 
 ### Recursive DNS with unbound (optional)
 Pi-hole normally passes the lookups it does not block to an outside DNS provider. If you would rather not depend on one, Pi-hole can use its own recursive resolver, unbound, running on the same machine. Pi-hole's official guide walks through the setup and how to test it: [Pi-hole documentation: unbound](https://docs.pi-hole.net/guides/dns/unbound/).
@@ -149,7 +156,7 @@ lists. Quote shell variables used as selections: `-r "$ITEMS"` rejects an empty
 value, while `-r $ITEMS` with an empty variable means remove all. `--yes` skips
 the removal confirmation.
 
-Both scripts only change entries they manage, which are tagged in their comment. Entries you added with a comment of your own are never touched. Older versions of `pi.py` left some comments empty, so `pi.py` also takes over an entry that has no comment and matches one of the repository's domains. Add `--dry-run` to any change to see it first.
+`pi.py` and `adlist.py` only change entries they manage, which are tagged in their comment. Entries you added with a comment of your own are never touched. Older versions of `pi.py` left some comments empty, so `pi.py` also takes over an entry that has no comment and matches one of the repository's domains. Add `--dry-run` to any change to see it first.
 
 ## Advanced: Pi-hole Database Administrator
 `pihole_admin.py` is an optional power-user toolkit for managing the Pi-hole
