@@ -9,7 +9,7 @@ import sys
 import tempfile
 import types
 import unittest
-from contextlib import redirect_stdout
+from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 
@@ -262,8 +262,8 @@ class DuplicateTests(AdminTestCase):
         upper = self.add(0, "Example.com")
         lower = self.add(0, "example.com")
         deny = self.add(1, "example.com")
-        asked, out = self.run_command("y")
-        asked.assert_called_once()
+        asked, out = self.run_command(["n", "y"])
+        self.assertEqual(asked.call_count, 2)
         self.assertIn("this alone removes nothing", out)
         self.assertIn(f"remove #{upper} Example.com", out)
         self.assertEqual([row[0] for row in self.rows()], [lower, deny])
@@ -333,12 +333,92 @@ class DuplicateTests(AdminTestCase):
         self.assertEqual((self.rows(), self.run_sql(self.gravity, "SELECT * FROM domainlist_by_group ORDER BY 1")),
                          before)
 
-    def run_command(self, answer=None, assume_yes=False):
-        reply = {"side_effect": EOFError} if answer is None else {"return_value": answer}
+    def run_command(self, answer=None, assume_yes=False, script_dir=None):
+        if answer is None:
+            reply = {"side_effect": EOFError}
+        elif isinstance(answer, list):
+            reply = {"side_effect": answer}
+        else:
+            reply = {"return_value": answer}
+        script = Path(script_dir or self.tmp.name, "pihole_admin.py")
         out = io.StringIO()
-        with patch("builtins.input", **reply) as asked, redirect_stdout(out), self.assertLogs(LOGGER, "INFO"):
+        with patch("builtins.input", **reply) as asked, patch.object(pihole_admin, "__file__", str(script)), \
+                redirect_stdout(out), self.assertLogs(LOGGER, "INFO"):
             pihole_admin.remove_duplicates(self.admin, assume_yes)
         return asked, out.getvalue()
+
+    def two_copies(self):
+        self.run_sql(self.gravity, "DELETE FROM domainlist")
+        self.add(1, "Ads.example.com")
+        self.add(1, "ads.example.com")
+
+    def test_list_can_be_saved_before_anything_is_removed(self):
+        self.two_copies()
+        saved = Path(self.tmp.name, "duplicate-domains.txt")
+        asked, out = self.run_command(["y", "n"])
+        self.assertEqual(asked.call_count, 2)
+        self.assertIn(f"Saved the list to {saved}", out)
+        self.assertIn("remove #1 Ads.example.com", saved.read_text())
+        self.assertIn("Nothing was removed.", out)
+        self.assertEqual(len(self.rows()), 2)
+
+    def test_unsaved_list_still_lets_you_remove(self):
+        self.two_copies()
+        asked, out = self.run_command(["y", "y"], script_dir=Path(self.tmp.name, "missing"))
+        self.assertEqual(asked.call_count, 2)
+        self.assertIn("Could not save the list", out)
+        self.assertIn("Removed 1 entries.", out)
+
+    def test_yes_neither_asks_nor_saves(self):
+        self.two_copies()
+        asked, _out = self.run_command(assume_yes=True)
+        asked.assert_not_called()
+        self.assertFalse(Path(self.tmp.name, "duplicate-domains.txt").exists())
+        self.assertEqual(len(self.rows()), 1)
+
+    def remove_with_failure(self, fail_on):
+        """Run remove_duplicates on a connection whose statement `fail_on` raises."""
+        real_connect = sqlite3.connect
+        deletes = []
+
+        class FailingConnection(sqlite3.Connection):
+            def execute(self, sql, *args):
+                if sql.startswith("DELETE"):
+                    deletes.append(sql)
+                if fail_on == "COMMIT" and sql == "COMMIT":
+                    raise sqlite3.OperationalError("disk I/O error")
+                if fail_on == "second DELETE" and len(deletes) == 2 and sql.startswith("DELETE"):
+                    raise KeyboardInterrupt
+                return super().execute(sql, *args)
+
+        def connect(*args, **kwargs):
+            return real_connect(*args, factory=FailingConnection, **kwargs)
+
+        plan = self.plan()
+        with patch.object(pihole_admin.sqlite3, "connect", connect):
+            return self.admin.remove_duplicates(plan)
+
+    def three_copies(self):
+        self.add(1, "Ads.example.com")
+        self.add(1, "ADS.example.com")
+        self.add(1, "ads.example.com")
+        return (self.rows(), self.run_sql(self.gravity, "SELECT * FROM domainlist_by_group ORDER BY 1"))
+
+    def test_failed_commit_changes_nothing(self):
+        before = self.three_copies()
+        with self.assertLogs(LOGGER, "ERROR") as logs:
+            self.assertIsNone(self.remove_with_failure("COMMIT"))
+        self.assertIn("Nothing was removed. Error removing duplicate entries: disk I/O error",
+                      "\n".join(logs.output))
+        self.assertEqual((self.rows(), self.run_sql(self.gravity, "SELECT * FROM domainlist_by_group ORDER BY 1")),
+                         before)
+
+    def test_ctrl_c_during_removal_changes_nothing(self):
+        before = self.three_copies()
+        with self.assertRaises(KeyboardInterrupt):
+            self.remove_with_failure("second DELETE")
+        self.assertEqual((self.rows(), self.run_sql(self.gravity, "SELECT * FROM domainlist_by_group ORDER BY 1")),
+                         before)
 
     def test_command_asks_before_removing(self):
         for answer, assume_yes, kept in ((None, False, 2), ("n", False, 2), ("y", False, 1), (None, True, 1)):
@@ -362,6 +442,16 @@ class DuplicateTests(AdminTestCase):
         asked.assert_not_called()
         self.assertIn("No duplicate entries found.", out)
         self.assertEqual(len(self.rows()), 2)
+
+
+class CancelTests(unittest.TestCase):
+    def test_ctrl_c_exits_130_with_a_short_message(self):
+        err = io.StringIO()
+        with patch.object(pihole_admin, "main", side_effect=KeyboardInterrupt), redirect_stderr(err), \
+                self.assertRaises(SystemExit) as caught:
+            pihole_admin.run()
+        self.assertEqual(caught.exception.code, 130)
+        self.assertEqual(err.getvalue(), "\nCancelled.\n")
 
 
 class ListEditTests(AdminTestCase):

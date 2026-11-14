@@ -1056,7 +1056,7 @@ OPTION_SECTIONS: tuple[tuple[str, str, tuple[Option, ...]], ...] = (
         _option("-rb, --remove-blacklist", "Remove domains from the exact blacklist.", metavar="DOMAINS"),
         _switch("-rd, --remove-duplicates",
                 "Remove exact entries listed twice.",
-                "Shows them and asks first."),
+                "Shows them, can save them, asks first."),
         _switch("-y, --yes",
                 "With -rd, remove without asking."),
         _option("-fs, --find-similar",
@@ -1095,6 +1095,7 @@ NOTES = (
     ("Pi-hole's databases belong to the pihole user. Run this script with sudo, or as a "
      "member of the pihole group."),
     "Several options can be given in one run.",
+    "Ctrl+C stops the script with exit code 130. A duplicate removal that is cut short is undone.",
     "After changing a domain list, run: sudo pihole reloaddns",
     ("Duplicates are exact entries in plain ASCII that differ only in letter case. Pi-hole "
      "stores exact entries in lowercase and never matches a copy with capital letters, so those "
@@ -1202,29 +1203,58 @@ def describe_entry(entry: ListEntry) -> str:
     return f"#{entry.id} {entry.domain} ({PiholeDBAdmin.get_list_type(entry.type)}{state}{comment})"
 
 
+def duplicate_report(plan: DuplicatePlan) -> list[str]:
+    lines = []
+    if plan.overlaps:
+        lines.append("On both an allow and a deny list (shown only; this alone removes nothing):")
+        for allow, deny in plan.overlaps:
+            lines += [f"  {describe_entry(allow)}", f"  {describe_entry(deny)}", ""]
+    if plan.removals:
+        lines.append("Duplicate entries. Pi-hole never matches the copies with capital letters:")
+        for removal in plan.removals:
+            lines += [f"  remove {describe_entry(removal.entry)}", f"    keep {describe_entry(removal.keeper)}"]
+    return lines
+
+
+def ask(question: str) -> bool | None:
+    """True for yes, False for anything else, None when there is no input to read."""
+    try:
+        return input(question).strip().lower() in ("y", "yes")
+    except EOFError:
+        return None
+
+
+def save_report(lines: list[str]) -> None:
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "duplicate-domains.txt")
+    if ask(f"\nSave this list to {path}? [y/N]: ") is not True:
+        return
+    try:
+        with open(path, "w", encoding="utf-8") as report:
+            report.write("\n".join(lines) + "\n")
+    except OSError as e:
+        print(f"Could not save the list: {e}")
+        return
+    print(f"Saved the list to {path}")
+
+
 def remove_duplicates(admin: PiholeDBAdmin, assume_yes: bool) -> None:
     plan = admin.find_duplicates()
     if plan is None:
         return
-    if plan.overlaps:
-        print("\nOn both an allow and a deny list (shown only; this alone removes nothing):")
-        for allow, deny in plan.overlaps:
-            print(f"  {describe_entry(allow)}\n  {describe_entry(deny)}\n")
+    lines = duplicate_report(plan)
+    if lines:
+        print("\n" + "\n".join(lines))
     if not plan.removals:
         print("No duplicate entries found.")
         return
 
-    print("\nDuplicate entries. Pi-hole never matches the copies with capital letters:")
-    for removal in plan.removals:
-        print(f"  remove {describe_entry(removal.entry)}\n"
-              f"    keep {describe_entry(removal.keeper)}")
     if not assume_yes:
-        try:
-            answer = input(f"\nRemove {len(plan.removals)} entries? [y/N]: ").strip().lower()
-        except EOFError:
+        save_report(lines)
+        answer = ask(f"\nRemove {len(plan.removals)} entries? [y/N]: ")
+        if answer is None:
             print("\nNo answer, so nothing was removed. Add --yes to remove without asking.")
             return
-        if answer not in ("y", "yes"):
+        if not answer:
             print("Nothing was removed.")
             return
 
@@ -1377,5 +1407,15 @@ def main():
         admin.close_pools()
 
 
+def run() -> None:
+    # Matches pi.py and adlist.py: Ctrl+C ends with a short message and exit code 130. Database
+    # work cut short is rolled back by SQLite, and a duplicate removal by its own transaction.
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("\nCancelled.", file=sys.stderr)
+        sys.exit(130)
+
+
 if __name__ == "__main__":
-    main()
+    run()
