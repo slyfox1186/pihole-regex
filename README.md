@@ -11,6 +11,8 @@ Every entry now has a description that says what the domain is and what it does,
 
 To get these changes, run `sudo python3 pi.py -a`. It also updates the descriptions on entries it manages.
 
+New: `unbound.py` sets up Pi-hole's own recursive DNS resolver for you, following Pi-hole's official guide, and can remove it completely. See [Recursive DNS with unbound](#recursive-dns-with-unbound-optional).
+
 ## Updated on 11.13.2026:
 This update is a full review of every domain in these lists. Companies move their services to new servers over time, so an entry that was right when it was added can fall out of date. We checked each one against how things work today and brought the lists up to date:
 
@@ -35,7 +37,7 @@ To get these changes, download fresh copies of `pi.py` and `adlist.py` with the 
 - Neither script needs any pip packages anymore
 
 ## Quick Links
-- **[Pi-hole Official Website](https://pi-hole.net/)** - Your starting point for Pi-hole setup and comprehensive information.
+- **[Pi-hole Official Website](https://pi-hole.net/)** - Your starting point for Pi-hole setup and documentation.
 
 ## Filter Lists Overview
 Our expertly curated filter lists are tailored to bolster your Pi-hole's domain blocking capabilities. Each list is focused on eliminating specific types of unwanted content, offering a more refined and efficient filtering approach:
@@ -66,6 +68,37 @@ Both scripts need only Python 3.9 or newer, which Pi-hole's supported systems al
 
 ### Recursive DNS with unbound (optional)
 Pi-hole normally passes the lookups it does not block to an outside DNS provider. If you would rather not depend on one, Pi-hole can use its own recursive resolver, unbound, running on the same machine. Pi-hole's official guide walks through the setup and how to test it: [Pi-hole documentation: unbound](https://docs.pi-hole.net/guides/dns/unbound/).
+
+`unbound.py` follows that guide for you, step by step, and can remove unbound completely again later.
+
+It works only on Debian-based systems: Debian, Ubuntu, Raspberry Pi OS, Armbian and other systems built on Debian. It was tested on Debian 13 and Ubuntu 24.04. It also needs Pi-hole v6 installed on the machine itself (the Pi-hole Docker image is not supported), systemd, and a network that lets the machine reach the internet's root DNS servers on port 53 over UDP and TCP. On any other operating system it changes nothing and exits with code 1.
+
+```bash
+curl -LSso unbound.py https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/scripts/unbound.py
+sudo python3 unbound.py              # menu: install, remove or status
+sudo python3 unbound.py --install    # install unbound and point Pi-hole at it
+sudo python3 unbound.py --status     # show the setup and run the guide's checks
+sudo python3 unbound.py --remove     # remove unbound and put everything back
+sudo python3 unbound.py --help       # every option
+```
+
+Add `--dry-run` to run the checks and see the plan without changing anything, and `--yes` to skip the questions.
+
+When you install, the script:
+
+1. Checks that the root DNS servers answer directly (the guide's UDP, TCP and identity tests). If your internet provider or router changes DNS traffic, it stops before changing anything.
+2. Writes the guide's settings to `/etc/unbound/unbound.conf.d/pi-hole.conf`, so unbound listens on 127.0.0.1 port 5335, and installs unbound with apt.
+3. Applies the guide's fix for Debian's resolvconf and raises `net.core.rmem_max` for the guide's `so-rcvbuf` setting, but only where needed.
+4. Starts unbound and runs the guide's DNSSEC checks.
+5. Only then points Pi-hole at `127.0.0.1#5335`, and checks that Pi-hole really sends its lookups there.
+
+If a step fails or you press Ctrl+C, the changes are undone, starting with Pi-hole's DNS servers. The script does not install over an unbound you set up yourself; it tells you and stops.
+
+When you remove, the script moves Pi-hole back to the DNS servers it used before (or the ones you name with `--upstream 9.9.9.9,149.112.112.112`) and proves that Pi-hole resolves names with unbound stopped. Only then does it remove unbound and the packages it installed, and put back every setting it changed. If the new servers do not work, Pi-hole stays on unbound and nothing is removed. It can also remove an unbound you set up yourself; then it removes only the unbound package and the guide's `pi-hole.conf`.
+
+If something cannot be undone safely, the script leaves unbound installed, keeps its record of changes in `/var/lib/pihole-unbound/`, and tells you what it could not do and how to fix it; running `--remove` again finishes the job.
+
+Exit codes: 0 done, 1 error or unsupported system, 2 bad option, 130 cancelled.
 
 ### RegEx and Exact Lists
 Download and run `pi.py`. With no options it opens a menu:
