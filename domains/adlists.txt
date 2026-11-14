@@ -4,7 +4,7 @@
 ##
 ##  GitHub Repository: https://github.com/slyfox1186/pihole-regex
 ##
-##  Updated: 11.13.26
+##  Updated: 11.14.26
 ##
 ##  Added: HaGeZi Multi PRO        -  github.com/hagezi/dns-blocklists
 ##  Removed: Blocklist Project     -  its repository is archived and its lists have not changed since 07.20.26
@@ -13,58 +13,96 @@
 ##  Note:  Firebog lists organized into Suspicious / Advertising / Tracking / Malicious categories.
 ##  Note:  Firebog lists follow the ticked lists on firebog.net as of 11.12.26, except the retired URLhaus hostfile.
 ##  Note:  URLhaus now comes from the malware-filter mirror; abuse.ch retired its keyless hostfile in Oct 2026.
+##  Note:  Each list has a one-line description above it; sources are in docs/domain-notes-sources.md.
 ##
 ###############################################################################################################
 
 # Suspicious Lists
+# FadeMind add.Spam (StevenBlack extras) - Spam websites
 https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Spam/hosts
+# KADhosts by PolishFiltersTeam - Scam and fraud sites (SMS subscription traps, viruses, fake shops)
 https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
+# WaLLy3K's personal blocklist (Firebog maintainer) - Manually verified suspicious domains
 https://v.firebog.net/hosts/static/w3kbl.txt
 
 # Advertising Lists
+# AdAway default list - Mobile ad providers and some analytics
 https://adaway.org/hosts.txt
+# Peter Lowe's ad server list - Ads, trackers and other unwanted hosts
 https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext
+# Anudeep's Blacklist - Ad servers and tracking hosts
 https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt
+# hostsVN by bigdargon - Firebog Advertising list
 https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts
+# FadeMind UncheckyAds - Ad sources used by Windows software installers
 https://raw.githubusercontent.com/FadeMind/hosts.extras/master/UncheckyAds/hosts
+# AdGuard DNS filter (parsed by Firebog) - Domain version of AdGuard's DNS filter
 https://v.firebog.net/hosts/AdguardDNS.txt
+# Admiral anti-adblock domains (LanikSJ, parsed by Firebog)
 https://v.firebog.net/hosts/Admiral.txt
+# EasyList (parsed by Firebog) - Domain version of easylist.txt
 https://v.firebog.net/hosts/Easylist.txt
 
 # Tracking & Telemetry Lists
+# Frogeye first-party trackers host list
 https://hostfiles.frogeye.fr/firstparty-trackers-hosts.txt
+# WindowsSpyBlocker spy rules by crazy-max - Windows telemetry hosts
 https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt
+# FadeMind add.2o7Net - Adobe 2o7 network tracking hosts
 https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts
+# EasyPrivacy (parsed by Firebog) - Domain version of easyprivacy.txt
 https://v.firebog.net/hosts/Easyprivacy.txt
+# Fabrice Prigent's ad list (Toulouse Capitole University, parsed by Firebog) - Ad domains
 https://v.firebog.net/hosts/Prigent-Ads.txt
 
 # Malicious Lists
+# NoTrack malware list by QuidsUp - Malware, phishing and adware domains
 https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-malware.txt
+# CyberHost.uk malware and phishing list
 https://lists.cyberhost.uk/malware.txt
+# Online malicious hosts from abuse.ch URLhaus (malware-filter mirror)
 https://malware-filter.gitlab.io/malware-filter/urlhaus-filter-hosts-online.txt
+# Phishing Army extended list - Phishing domains from PhishTank, OpenPhish, CERT.PL and others
 https://phishing.army/download/phishing_army_blocklist_extended.txt
+# Echap stalkerware indicators - Domains used by stalkerware apps that secretly spy on phones
 https://raw.githubusercontent.com/AssoEchap/stalkerware-indicators/master/generated/hosts
+# Dandelion Sprout's Anti-Malware List
 https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareHosts.txt
+# FadeMind add.Risk - Risky sites (malware and similar)
 https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Risk/hosts
+# HaGeZi Threat Intelligence Feeds - Malware, cryptojacking, scams, spam and phishing
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/tif.txt
+# Spam404 main blacklist - Firebog Malicious list
 https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt
+# Fabrice Prigent's cryptojacking list (parsed by Firebog)
 https://v.firebog.net/hosts/Prigent-Crypto.txt
 
 # HaGeZi Multi PRO (ads, trackers, telemetry, phishing, malware, scams) - github.com/hagezi/dns-blocklists
+# HaGeZi Multi PRO - Ads, trackers, telemetry, phishing, malware and scams
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt
 
 # HaGeZi Native Trackers (Smart TV / IoT / app telemetry) - github.com/hagezi/dns-blocklists
+# HaGeZi Amazon native tracker list - Trackers built into Amazon devices, apps and operating systems
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.amazon.txt
+# HaGeZi LG webOS native tracker list - Trackers built into LG webOS devices, apps and operating systems
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.lgwebos.txt
+# HaGeZi Roku native tracker list - Trackers built into Roku devices, apps and operating systems
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.roku.txt
+# HaGeZi Samsung native tracker list - Trackers built into Samsung devices, apps and operating systems
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.samsung.txt
+# HaGeZi TikTok native tracker list - Trackers built into TikTok devices, apps and operating systems
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.tiktok.txt
 
 # Perflyst blocklists - github.com/Perflyst/PiHoleBlocklist
+# Perflyst Amazon Fire TV list
 https://perflyst.github.io/PiHoleBlocklist/AmazonFireTV.txt
+# Perflyst Android tracking list
 https://perflyst.github.io/PiHoleBlocklist/android-tracking.txt
+# Perflyst session replay blocklist - Includes FullStory and SessionCam domains
 https://perflyst.github.io/PiHoleBlocklist/SessionReplay.txt
+# Perflyst Smart TV list - Stops smart TVs sending data back home and blocks some TV interface ads
 https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt
 
 # REMOVE POPUP WINDOWS REGARDING COOKIE CONSENT
+# Cookie consent hosts by johang - Hides cookie and privacy consent banners on websites
 https://raw.githubusercontent.com/johang/cookie-consent-hosts/master/hosts.txt

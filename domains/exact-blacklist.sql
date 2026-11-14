@@ -1,56 +1,54 @@
-a21ed24aedde648804e7-228765c84088fef4ff5e70f2710398e9.r17.cf1.rackcdn.com -- Twitch Video Ads
-acr0.samsungcloudsolution.com -- Samsung Smart TV - Content recognition (ACR)
-aic.api.lgtviot.com -- LG Smart TV - IoT telemetry
-aic.lgtviot.com -- LG Smart TV - IoT telemetry
-aic.sports.lgtviot.com -- LG Smart TV - IoT telemetry
-api.itopvpn.com -- iTop VPN Telemetry
-applytics.nordvpn.com -- NordVPN Telemetry
-assets.sr.roku.com -- Roku Smart TV Ads
-banners.hangmyads.com -- HangMyAds ad network banners
-bench.utorrent.com -- uTorrent desktop app ads
-cdn.inspectlet.com -- Inspectlet session recording (seen in IObit pop-ups)
-cloudservices.roku.com -- Roku Smart TV Ads
-codes.iobit.com -- IObit desktop app pop-up ads
-d186rixkn5ruba.cloudfront.net -- AdultTime Ads
-d1ut6fykkt3imt.cloudfront.net -- AdultTime Ads
-d20qwf0wrdtevy.cloudfront.net -- CloudFront ad server
-d2u28gf9o4d1cv.cloudfront.net -- CloudFront ad server
-d306ecvlh9tfv.cloudfront.net -- AdultTime Ads
-d3aqoihi2n8ty8.cloudfront.net -- AdultTime Ads
-d3cqix4sol87xw.cloudfront.net -- AdultTime Ads
-d3m1uefep57n8q.cloudfront.net -- Twitch Video Ads
-datarouter.ol.epicgames.com -- Epic Games telemetry (StevenBlack blocks it too)
-doh.dns.apple.com -- Apple DNS over HTTPS (bypasses Pi-hole entirely)
-doug1izaerwt3.cloudfront.net -- IObit desktop app pop-up ads
-dxtkri2c61io4.cloudfront.net -- Twitch Video Ads
-events-test-v2.redditmedia.com -- Reddit event collector (same service as events.redditmedia.com)
-events-test.redditmedia.com -- Reddit event collector (same service as events.redditmedia.com)
-fkp.samsungcloudsolution.com -- Samsung Smart TV
-giveaway.iobit.com -- IObit promotions
-ipv6.unagi-na.amazon.com -- Amazon device and app metrics (seen on LG Smart TV)
-jc9wr0p5rbtco3ibchj4vnjz7z1lr1.ext-twitch.tv -- Twitch Video Ads
-lgtvonline.lge.com -- LG Smart TV
-lynx-prod-beacon-alb-498367235.us-east-1.elb.amazonaws.com -- Ad beacon load balancer on Amazon AWS
-metric-public-service-prod.ol.epicgames.com -- Epic Games telemetry (CNAME to the datarouter pipeline)
-mindfieldonline.com -- Online survey panel (seen on LG Smart TV)
-munchkin.marketo.net -- Marketo marketing tracker (seen in 3DMark)
-nevoai-iothub-54-prod.azure-devices.net -- LG Smart TV
-notice.samsungcloudsolution.com -- Samsung Smart TV
-noticecdn.samsungcloudsolution.com -- Samsung Smart TV
-oempprd.samsungcloudsolution.com -- Samsung Smart TV
-prderrordumphsm.samsungcloudsolution.com -- Samsung Smart TV - Error reports
-prod.ups-ats.us-east-1.aolp-ds-prd.aws.oath.cloud -- Yahoo (AOL) ad targeting
-prov.samsungcloudsolution.com -- Samsung Smart TV
-qt2-ngfts.lge.com -- LG Smart TV - File transfer service (HaGeZi blocks it in Pro++)
-samsungcloudsolution.com -- Samsung Smart TV
-sas.samsungcloudsolution.com -- Samsung Smart TV
-service.idsync.analytics.yahoo.com -- Yahoo ad identity sync (seen on LG Smart TV)
-snap.licdn.com -- LinkedIn Insight tag tracker (seen in 3DMark)
-stats.iobit.com -- IObit desktop app pop-up ads
-stats.itopvpn.com -- iTop VPN Telemetry
-survey.iobit.com -- IObit surveys
-unagi-na.amazon.com -- Amazon device and app metrics (seen on LG Smart TV)
-usage.truenas.com -- TrueNAS Software Telemetry
-vdterms.samsungcloudsolution.com -- Samsung Smart TV
-www.ueiwsp.com -- Universal Electronics QuickSet tracker (seen on LG Smart TV)
-wwwimg.roku.com -- Roku Smart TV Ads
+a21ed24aedde648804e7-228765c84088fef4ff5e70f2710398e9.r17.cf1.rackcdn.com -- rackcdn.com host - Maintainer added it in 2023 as Twitch video ads; customer unverified
+acr0.samsungcloudsolution.com -- Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung
+aic.api.lgtviot.com -- LG webOS TV host (lgtviot.com) - Proposed for blocking in HaGeZi issue #309; role unverified
+aic.lgtviot.com -- LG webOS TV host (lgtviot.com) - Proposed for blocking in HaGeZi issue #309; role unverified
+aic.sports.lgtviot.com -- LG webOS TV host (lgtviot.com) - Listed in HaGeZi issue #309; role unverified
+api.itopvpn.com -- iTop VPN host - Maintainer reported it as telemetry
+applytics.nordvpn.com -- NordVPN analytics host - Contacted even with analytics turned off, per a report on NordVPN's issue tracker
+assets.sr.roku.com -- Roku service host - Listed in community Roku ad and telemetry blocklists; exact role unverified
+banners.hangmyads.com -- HangMyAds ad network (Portugal) - Maintainer labeled this host as serving banner ads
+bench.utorrent.com -- uTorrent host - Maintainer reported it serves ads in the desktop app
+cdn.inspectlet.com -- Inspectlet session recording script host
+cloudservices.roku.com -- Roku service host - Listed in community Roku ad and telemetry blocklists; exact role unverified
+codes.iobit.com -- IObit host - Maintainer reported it serves in-app pop-up ads
+d186rixkn5ruba.cloudfront.net -- CloudFront host - Labeled Twitch video ads in 2023, AdultTime ads since 2024; customer unverified
+d1ut6fykkt3imt.cloudfront.net -- CloudFront host - Labeled Twitch video ads in 2023, AdultTime ads since 2024; customer unverified
+d20qwf0wrdtevy.cloudfront.net -- CloudFront host - Maintainer added it in 2023 as an ad server; customer unverified
+d2u28gf9o4d1cv.cloudfront.net -- CloudFront host - Maintainer added it in 2023 as an ad server; customer unverified
+d306ecvlh9tfv.cloudfront.net -- CloudFront host - Maintainer added it in 2022 for AdultTime ads; customer unverified
+d3aqoihi2n8ty8.cloudfront.net -- CloudFront host - Labeled Twitch video ads in 2023, AdultTime ads since 2024; customer unverified
+d3cqix4sol87xw.cloudfront.net -- CloudFront host - Maintainer added it in 2022 for AdultTime ads; customer unverified
+d3m1uefep57n8q.cloudfront.net -- CloudFront host - Maintainer added it in 2023 as Twitch video ads; customer unverified
+datarouter.ol.epicgames.com -- Epic Games data collection (hardware, operating system and app performance data) - Data Router
+doh.dns.apple.com -- Apple DNS over HTTPS (DoH) server - Apple lists it for DoH
+doug1izaerwt3.cloudfront.net -- CloudFront host - Maintainer labeled it IObit desktop pop-up ads; customer unverified
+events-test-v2.redditmedia.com -- Reddit-run host - Maintainer labeled it an event collector; exact role unverified
+events-test.redditmedia.com -- Reddit-run host - Maintainer labeled it an event collector; exact role unverified
+fkp.samsungcloudsolution.com -- Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung
+giveaway.iobit.com -- IObit host - Maintainer labeled it IObit promotions
+ipv6.unagi-na.amazon.com -- Amazon host ipv6.unagi-na (see unagi-na.amazon.com: device and app metrics)
+lgtvonline.lge.com -- LG webOS TV online service host - Role unverified
+lynx-prod-beacon-alb-498367235.us-east-1.elb.amazonaws.com -- Amazon AWS load balancer named 'beacon' - Owner and purpose unverified
+metric-public-service-prod.ol.epicgames.com -- Epic Games telemetry - Resolves to the same Data Router service
+mindfieldonline.com -- MindField website - Maintainer reported it on an LG Smart TV
+munchkin.marketo.net -- Adobe Marketo Munchkin - Marketing tracking script that records site visitors
+nevoai-iothub-54-prod.azure-devices.net -- Microsoft Azure IoT Hub instance named 'nevoai' - Customer unverified (old note: LG Smart TV)
+notice.samsungcloudsolution.com -- Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung
+noticecdn.samsungcloudsolution.com -- Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung
+oempprd.samsungcloudsolution.com -- Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung
+prderrordumphsm.samsungcloudsolution.com -- Samsung TV host - Perflyst blocks it
+prod.ups-ats.us-east-1.aolp-ds-prd.aws.oath.cloud -- oath.cloud host whose CNAME names an online-targeting service
+prov.samsungcloudsolution.com -- Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung
+qt2-ngfts.lge.com -- LG host sharing ngfts.lge.com's Akamai name - Proposed for blocking in HaGeZi #309; role unverified
+samsungcloudsolution.com -- Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung
+sas.samsungcloudsolution.com -- Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung
+service.idsync.analytics.yahoo.com -- Yahoo analytics host (idsync) - Block List Project's ads list blocks it
+snap.licdn.com -- LinkedIn Insight Tag script host
+stats.iobit.com -- IObit host - mmotti's original stats regex also blocks it
+stats.itopvpn.com -- iTop VPN host - Maintainer labeled it telemetry; mmotti's original stats regex also blocks it
+survey.iobit.com -- IObit host - Maintainer labeled it IObit surveys
+unagi-na.amazon.com -- Amazon device and app metrics host - Fire TV analytics uploads go here
+usage.truenas.com -- TrueNAS analytics data collection host
+vdterms.samsungcloudsolution.com -- Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung
+www.ueiwsp.com -- Universal Electronics QuickSet Cloud API - LG TVs use it to detect HDMI devices; reports conflict on whether blocking breaks LG Universal Control
+wwwimg.roku.com -- Roku service host - Listed in community Roku ad and telemetry blocklists; exact role unverified

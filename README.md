@@ -1,7 +1,17 @@
 # Pi-hole® v6+ FTLDNS: Advanced Filter Collection
 - Maximize the efficiency of your Pi-hole setup with our extensive collection of Regular Expressions (RegEx) and Exact Match filters. Designed to block a broad range of domains effectively, our filters simplify your blocking strategy by minimizing the need for numerous individual entries. Additionally, this repository includes customizable Exact Match filters for precise domain blocking and tools to facilitate the easy management of Adlist Group entries.
 
-## Last updated on 11.13.2026:
+## Last updated on 11.14.2026:
+Every entry now has a description that says what the domain is and what it does, backed by sources you can check in [docs/domain-notes-sources.md](docs/domain-notes-sources.md). While checking every entry we also fixed four rules:
+
+- Twitch extensions work again. A blocked Twitch server turned out to be the one that loads every extension, not an ad server.
+- The LG Channels app on LG TVs can start again. Two LG services it needs were blocked; LG's tracking services stay blocked.
+- Removed the allow for `pagecdn.io`. That domain no longer hosts code libraries and now sends visitors somewhere else.
+- Fixed a rule so Apple's Swift Playgrounds downloads are allowed.
+
+To get these changes, run `sudo python3 pi.py -a`. It also updates the descriptions on entries it manages.
+
+## Updated on 11.13.2026:
 This update is a full review of every domain in these lists. Companies move their services to new servers over time, so an entry that was right when it was added can fall out of date. We checked each one against how things work today and brought the lists up to date:
 
 - Retired six blocklists whose author stopped maintaining them. The other malware and scam lists stay in place.
@@ -37,6 +47,8 @@ Our expertly curated filter lists are tailored to bolster your Pi-hole's domain 
 | Exact Blacklist     | [View](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/exact-blacklist.sql) |
 | RegEx Whitelist     | [View](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/regex-whitelist.sql) |
 | RegEx Blacklist     | [View](https://raw.githubusercontent.com/slyfox1186/pihole-regex/main/domains/regex-blacklist.sql) |
+
+Each entry's description says what the domain is and what it does. The sources behind every description are listed in [docs/domain-notes-sources.md](docs/domain-notes-sources.md).
 
 ## Getting Started
 ### Compatibility
