@@ -2174,6 +2174,14 @@ Note: xkcd host - Listed in anudeep's allowlist
 - anudeep's whitelist lists it (product): [https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt](https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt): "imgs.xkcd.com"
 - Fastly CNAME (observation): DNS CNAME chain: `dualstack.i.ssl.global.fastly.net.`
 
+### `d.adguard-dns.com`
+
+Note: AdGuard DNS server - HaGeZi's DoH list blocks it; iPhones with an AdGuard DNS profile cannot load Messages photos without it
+
+- HaGeZi's DoH/VPN/Proxy list blocks it (allow_reason): the list contains `||adguard-dns.com^` (checked with `pihole -q` on 2026-11-15)
+- Name and address (observation): DNS answer `94.140.14.49`; the TLS certificate is domain-validated (`CN=*.d.adguard-dns.com`), so it does not name the owner
+- Maintainer's iPhone (observation): the phone uses an AdGuard DNS profile and asks the network only for this name. From 2026-11-14 20:56, when the DoH list was added, Pi-hole blocked it 1,010 times and photos in Messages stayed on "loading" on home Wi-Fi while they loaded on cellular. Allowing it on 2026-11-15 fixed the photos.
+
 ## Exact blocklist (exact-blacklist.sql)
 
 ### `acr0.samsungcloudsolution.com`

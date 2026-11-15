@@ -42,6 +42,7 @@ contentproxy.signal.org -- Signal messenger host - Pi-hole users list it for Sig
 continuum.dds.microsoft.com -- Microsoft-run host - Purpose unverified (old note said Your Phone notification mirroring, no source found)
 cp801.prod.do.dsp.mp.microsoft.com -- Microsoft Delivery Optimization host - Microsoft lists *.prod.do.dsp.mp.microsoft.com for Windows Update
 crl.entrust.net -- Entrust certificate revocation host - Maintainer added it for certificate validation
+d.adguard-dns.com -- AdGuard DNS server - HaGeZi's DoH list blocks it; iPhones with an AdGuard DNS profile cannot load Messages photos without it
 d29g4g2dyqv443.cloudfront.net -- CloudFront host - Maintainer added it for the Nvidia CUDA Toolkit website
 dcape-na.amazon.com -- Amazon host - Maintainer added it to sign in to Amazon apps on Windows Subsystem for Android
 ddns.net -- ddns.net dynamic DNS domain - Block List Project's malware list blocks it
