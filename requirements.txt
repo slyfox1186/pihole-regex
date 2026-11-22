@@ -9,7 +9,6 @@
 # whose package is missing falls back or prints an install hint.
 
 # ---- Core ----
-requests       # --check-updates
 tabulate       # tables for --report, --top-domains, --query, --advanced-query
 
 # ---- Optional: pihole_admin.py advanced features ----

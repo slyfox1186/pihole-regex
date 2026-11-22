@@ -165,7 +165,7 @@ query analysis, and reporting).
 
 Install its dependencies (or run `pip install -r requirements.txt` for everything):
 ```bash
-pip install requests tabulate          # result tables, --check-updates
+pip install tabulate                   # result tables
 pip install matplotlib pandas seaborn  # --report, --analyze-query-trends charts
 pip install rapidfuzz tld              # --find-similar, --categorize-domains
 ```
@@ -178,6 +178,10 @@ python3 pihole_admin.py --stats
 python3 pihole_admin.py --report
 python3 pihole_admin.py --help     # full list of commands
 ```
+
+`--check-updates` compares the installed Core, Web and FTL versions with the latest releases (Pi-hole v5.14 or newer). With sudo it also offers to run `pihole -up`, and afterwards checks that the new versions are installed.
+
+Exit codes: 0 done, 1 something failed, 2 bad option, 130 cancelled.
 
 ## Linting the filter lists
 `scripts/lint_domain_lists.py` checks the `.sql` lists for control characters,

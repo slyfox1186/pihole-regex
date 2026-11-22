@@ -8,6 +8,7 @@ import logging
 import os
 import re
 import shutil
+import signal
 import sqlite3
 import subprocess
 import sys
@@ -28,7 +29,7 @@ if TYPE_CHECKING:  # Imported only for type hints; pandas stays an optional runt
 BLOCKED_STATUS_CODES = (1, 4, 5, 6, 7, 8, 9, 10, 11)
 BLOCKED_STATUS_IN = ", ".join(str(code) for code in BLOCKED_STATUS_CODES)
 
-# Every third-party package (requests, tabulate, matplotlib, pandas, seaborn,
+# Every third-party package (tabulate, matplotlib, pandas, seaborn,
 # rapidfuzz/fuzzywuzzy, tld) is imported lazily inside the few functions that use
 # it. This keeps --help and the common commands (stats, add/remove, optimize,
 # backup) fast and lets them run when none of those packages are installed.
@@ -166,6 +167,105 @@ def plan_duplicates(entries: list[ListEntry]) -> DuplicatePlan:
         by_type = by_text[key]
         plan.overlaps += [(allow, deny) for allow in by_type[allow_type] for deny in by_type[deny_type]]
     return plan
+
+
+# Pi-hole's `updatechecker` keeps the installed and the latest version of every part of
+# Pi-hole in this file (since v5.14); its web interface reads the same file.
+VERSIONS_FILE = "/etc/pihole/versions"
+# (name shown, key prefix in the versions file)
+COMPONENTS = (("Core", "CORE"), ("Web", "WEB"), ("FTL", "FTL"))
+UP_TO_DATE, UPDATE_AVAILABLE, UNKNOWN = "up to date", "update available", "unknown"
+
+
+def version_key(text: str) -> tuple[int, ...] | None:
+    """Turn 'v6.6.1' into (6, 6, 1) for comparing; None when it is not a version."""
+    # A release tag, or `git describe` output based on one (v6.6-3-gabc1234, v5.14-0-gabc1234-dirty).
+    # Pi-hole records a bare commit hash when it finds no tag, and that must not read as a version.
+    match = re.fullmatch(r"v(\d+(?:\.\d+)*)(?:-\d+-g[0-9a-f]+)?(?:-dirty)?", text)
+    if match is None:
+        return None
+    parts = [int(part) for part in match.group(1).split(".")]
+    # v6.6.0 and v6.6 are the same release.
+    while parts and parts[-1] == 0:
+        parts.pop()
+    return tuple(parts)
+
+
+def same_commit(first: str, second: str) -> bool:
+    # Pi-hole v5 abbreviates the installed and the latest hash to different lengths.
+    return first != "" and second != "" and (first.startswith(second) or second.startswith(first))
+
+
+@dataclass(frozen=True)
+class Component:
+    """One part of Pi-hole as recorded in its versions file."""
+    name: str
+    installed: str
+    latest: str
+    branch: str
+    installed_hash: str
+    latest_hash: str
+
+    @property
+    def on_release(self) -> bool:
+        return self.branch == "master"
+
+    @property
+    def state(self) -> str:
+        # The same rule as Pi-hole's web interface (scripts/js/footer.js): releases
+        # compare version numbers, and any other branch compares commit hashes.
+        if self.on_release:
+            installed, latest = version_key(self.installed), version_key(self.latest)
+            if installed is None or latest is None:
+                return UNKNOWN
+            return UPDATE_AVAILABLE if installed < latest else UP_TO_DATE
+        if self.installed_hash == "" or self.latest_hash == "":
+            return UNKNOWN
+        return UP_TO_DATE if same_commit(self.installed_hash, self.latest_hash) else UPDATE_AVAILABLE
+
+    @property
+    def installed_text(self) -> str:
+        if self.on_release:
+            return self.installed or "unknown"
+        return f"{self.branch or 'unknown branch'} {self.installed_hash}".strip()
+
+    @property
+    def latest_text(self) -> str:
+        return (self.latest if self.on_release else self.latest_hash) or "unknown"
+
+    def has_reached(self, target: Component) -> bool:
+        """True when this component now runs what `target` offered before the update."""
+        if target.on_release:
+            now, wanted = version_key(self.installed), version_key(target.latest)
+            return now is not None and wanted is not None and now >= wanted
+        # A branch can gain commits while the update runs, so the commit Pi-hole now names as
+        # the latest counts as well as the one offered.
+        return self.branch == target.branch and (same_commit(self.installed_hash, target.latest_hash)
+                                                 or same_commit(self.installed_hash, self.latest_hash))
+
+
+def read_versions(path: str) -> dict[str, str]:
+    values = {}
+    with open(path, encoding="utf-8", errors="replace") as record:
+        for line in record:
+            key, separator, value = line.partition("=")
+            if separator:
+                value = value.strip()
+                # Pi-hole writes "null" for a value it could not look up.
+                values[key.strip()] = "" if value == "null" else value
+    return values
+
+
+def components_from(versions: dict[str, str]) -> list[Component]:
+    # A part the file does not mention is not installed (Pi-hole v5 without the web interface).
+    return [Component(name,
+                      installed=versions.get(f"{key}_VERSION", ""),
+                      latest=versions.get(f"GITHUB_{key}_VERSION", ""),
+                      branch=versions.get(f"{key}_BRANCH", ""),
+                      installed_hash=versions.get(f"{key}_HASH", ""),
+                      latest_hash=versions.get(f"GITHUB_{key}_HASH", ""))
+            for name, key in COMPONENTS
+            if f"{key}_VERSION" in versions or f"{key}_BRANCH" in versions]
 
 
 class DatabaseConnectionPool:
@@ -335,7 +435,7 @@ Changes Made:
                         result = cursor.fetchone()
                         return int(result[0]) if result and result[0] is not None else default
                     except sqlite3.OperationalError as e:
-                        self.logger.warning(f"Query failed: {query}. Error: {e}")
+                        self.logger.error(f"Query failed: {query}. Error: {e}")
                         return default
 
                 stats['total_domains'] = safe_execute("SELECT COUNT(*) FROM gravity")
@@ -640,83 +740,119 @@ Changes Made:
 
     def check_for_updates(self) -> None:
         self.logger.info("Checking for Pi-hole updates...")
-        try:
-            import requests
-        except ImportError:
-            self.logger.error("requests is required to check for updates. Install it with: pip install requests")
+        root = os.geteuid() == 0
+        if root and not self._refresh_versions():
             return
         try:
-            # Get current Pi-hole version
-            result = subprocess.run(["pihole", "-v"], capture_output=True, text=True,
-                                    errors="replace", check=False)
-            if result.returncode != 0:
-                self.logger.error(f"Failed to get current Pi-hole version: {result.stderr.strip()}")
-                return
+            versions = read_versions(VERSIONS_FILE)
+            checked = datetime.fromtimestamp(os.path.getmtime(VERSIONS_FILE)).astimezone()
+        except OSError as e:
+            self.logger.error(f"Could not read Pi-hole's versions: {e}. Pi-hole v5.14 or newer keeps them there.")
+            return
+        components = components_from(versions)
+        # Only the web interface is optional (Pi-hole v5 can be installed without it).
+        missing = [name for name in ("Core", "FTL") if name not in [component.name for component in components]]
+        if missing:
+            self.logger.error(f"{VERSIONS_FILE} has no version for {', '.join(missing)}.")
+            return
 
-            # Pi-hole v6 prints "Core version is v6.6 (Latest: v6.6)". v5 printed an indented
-            # "Pi-hole version is v5.18.2 (Latest: ...)", with the branch name before the
-            # version when not on master and "Current " in front when GitHub was unreachable.
-            current_version_match = re.search(r'(?:Core|Pi-hole) version is (?:\S+ )?(v?\d\S*)',
-                                              result.stdout)
-            if not current_version_match:
-                self.logger.error("Could not parse current Pi-hole version.")
-                return
+        for component in components:
+            self.logger.info(f"{component.name}: installed {component.installed_text}, "
+                             f"latest {component.latest_text} ({component.state})")
+        self.logger.info(f"Pi-hole looked these versions up on {checked:%Y-%m-%d at %H:%M}."
+                         + ("" if root else " Run with sudo for a fresh check."))
+        unknown = [component.name for component in components if component.state == UNKNOWN]
+        if unknown:
+            self.logger.error(f"Cannot compare versions for {', '.join(unknown)}: the installed or the latest "
+                              "version is not known (GitHub unreachable or rate-limited?). Try again later.")
+            return
+        if versions.get("DOCKER_VERSION", "") != "":
+            self.logger.info("This Pi-hole runs in Docker, where every part is updated by replacing the image: "
+                             "https://docs.pi-hole.net/docker/upgrading/")
+            return
+        outdated = [component for component in components if component.state == UPDATE_AVAILABLE]
+        if not outdated:
+            self.logger.info("Pi-hole is up to date.")
+            return
 
-            current_version = current_version_match.group(1).strip()
-            self.logger.info(f"Current Pi-hole version: {current_version}")
+        self.logger.info("Update available: "
+                         + ", ".join(f"{component.name} {component.latest_text}" for component in outdated))
+        if not root:
+            self.logger.info("Updating needs root. Run: sudo pihole -up")
+            return
+        answer = ask("\nDo you want to update Pi-hole? [y/N]: ")
+        if answer is True:
+            self.update_pihole(outdated)
+        elif answer is None:
+            self.logger.info("No answer, so Pi-hole was not updated.")
+        else:
+            self.logger.info("Update skipped by user.")
 
-            # Get latest Pi-hole version from GitHub
-            response = requests.get("https://api.github.com/repos/pi-hole/pi-hole/releases/latest", timeout=10)
-            if response.status_code != 200:
-                self.logger.error(f"Failed to fetch latest Pi-hole version: HTTP {response.status_code}")
-                return
+    def _refresh_versions(self) -> bool:
+        """Have Pi-hole look the versions up now instead of waiting for its daily check."""
+        def identity() -> tuple[int, int] | None:
+            try:
+                status = os.stat(VERSIONS_FILE)
+            except OSError:
+                return None
+            return status.st_ino, status.st_mtime_ns
 
-            release = response.json()
-            tag = release.get("tag_name") if isinstance(release, dict) else None
-            latest_version = tag.strip() if isinstance(tag, str) else ""
-            if not latest_version:
-                self.logger.error("Could not parse latest Pi-hole version from GitHub.")
-                return
-
-            self.logger.info(f"Latest Pi-hole version: {latest_version}")
-
-            if current_version != latest_version:
-                self.logger.info(f"Update available: {latest_version} (current: {current_version})")
-                try:
-                    user_input = input("\nDo you want to update Pi-hole? (y/n): ").lower().strip()
-                except EOFError:
-                    user_input = ""
-                if user_input == 'y':
-                    self.update_pihole()
-                else:
-                    self.logger.info("Update skipped by user.")
-            else:
-                self.logger.info("Pi-hole is up to date.")
-        except requests.RequestException as e:
-            self.logger.error(f"Network error while checking for updates: {e}")
+        before = identity()
+        try:
+            # No pipes: after a timeout, run() would wait on them for as long as a stuck
+            # download started by the command keeps them open.
+            subprocess.run(["pihole", "updatechecker"], stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,
+                           stderr=subprocess.DEVNULL, timeout=120, check=False)
         except FileNotFoundError:
             self.logger.error("Pi-hole command not found. Ensure Pi-hole is installed and accessible.")
+            return False
+        except subprocess.TimeoutExpired:
+            self.logger.error("'pihole updatechecker' did not finish in 120 seconds.")
+            return False
         except OSError as e:
-            self.logger.error(f"Could not run 'pihole -v': {e}")
+            self.logger.error(f"Could not run 'pihole updatechecker': {e}")
+            return False
+        # The command exits 0 even when it fails; it rewrites the file only when it worked.
+        if identity() in (None, before):
+            self.logger.error(f"'pihole updatechecker' did not rewrite {VERSIONS_FILE}, "
+                              "so the latest versions are not known.")
+            return False
+        return True
 
-    def update_pihole(self) -> None:
-        self.logger.info("Updating Pi-hole...")
+    def update_pihole(self, targets: list[Component]) -> None:
+        self.logger.info("Updating Pi-hole with 'pihole -up'...")
+        interrupted = []
+        # The terminal sends Ctrl+C to Pi-hole's updater as well, and it stops by itself.
+        # Python's default would raise here and kill the installer in the middle of its work.
+        previous = signal.signal(signal.SIGINT, lambda _signum, _frame: interrupted.append(True))
         try:
-            result = subprocess.run(["pihole", "-up"], capture_output=True, text=True,
-                                    errors="replace", check=False)
-            if result.returncode == 0:
-                self.logger.info("Pi-hole updated successfully.")
-                self.logger.debug(f"Update output: {result.stdout}")
-                print("Pi-hole has been successfully updated.")
-            else:
-                self.logger.error("Pi-hole update failed.")
-                self.logger.error(f"Update error: {result.stderr}")
-                print("Failed to update Pi-hole. Please check the logs for more information.")
+            subprocess.run(["pihole", "-up"], check=False)
+            self._report_update(targets)
         except FileNotFoundError:
             self.logger.error("Pi-hole command not found. Ensure Pi-hole is installed and accessible.")
         except OSError as e:
             self.logger.error(f"Could not run 'pihole -up': {e}")
-            print(f"An error occurred during the update process: {e}")
+        finally:
+            signal.signal(signal.SIGINT, previous)
+        # Ctrl+C still ends the script here, so no later option runs after it.
+        if interrupted:
+            raise KeyboardInterrupt
+
+    def _report_update(self, targets: list[Component]) -> None:
+        # 'pihole -up' exits 0 whatever happened, so the installed versions decide.
+        try:
+            now = {component.name: component for component in components_from(read_versions(VERSIONS_FILE))}
+        except OSError as e:
+            self.logger.error(f"Could not read Pi-hole's versions after the update: {e}")
+            return
+        behind = [target.name for target in targets
+                  if target.name not in now or not now[target.name].has_reached(target)]
+        if behind:
+            self.logger.error(f"Pi-hole update failed: {', '.join(behind)} not updated. "
+                              "See the output of 'pihole -up' above.")
+        else:
+            self.logger.info("Update finished. Installed now: " + ", ".join(
+                f"{target.name} {now[target.name].installed_text}" for target in targets))
 
     def find_duplicates(self) -> DuplicatePlan | None:
         self.logger.info("Searching for duplicate entries...")
@@ -1002,6 +1138,22 @@ def _switch(flags: str, text: str, note: str = "") -> Option:
     return _option(flags, text, note, action="store_true")
 
 
+def _whole_number(minimum: int, maximum: int | None = None):
+    """An argparse type: a whole number no smaller than `minimum`, no larger than `maximum`."""
+    def parse(text: str) -> int:
+        try:
+            value = int(text)
+        except ValueError:
+            raise argparse.ArgumentTypeError(f"'{text}' is not a whole number") from None
+        if maximum is not None and not minimum <= value <= maximum:
+            raise argparse.ArgumentTypeError(f"{value} is not from {minimum} to {maximum}")
+        if value < minimum:
+            raise argparse.ArgumentTypeError(f"{value} is less than {minimum}")
+        return value
+
+    return parse
+
+
 # (title, introduction, options). Texts are kept short enough to sit on one
 # line beside the option column in an 80-column terminal.
 OPTION_SECTIONS: tuple[tuple[str, str, tuple[Option, ...]], ...] = (
@@ -1014,13 +1166,13 @@ OPTION_SECTIONS: tuple[tuple[str, str, tuple[Option, ...]], ...] = (
                 "Timestamped files. Creates DIR if missing.", metavar="DIR"),
         _option("-c, --clean",
                 "Delete query history older than DAYS days.",
-                "Permanent. Runs without asking first.", type=int, metavar="DAYS"),
+                "Permanent. Runs without asking first.", type=_whole_number(0), metavar="DAYS"),
         _switch("-g, --update-gravity",
                 "Rebuild gravity from the adlists.",
                 "Runs 'pihole -g'."),
         _switch("-u, --check-updates",
                 "Check for a newer Pi-hole release.",
-                "Asks before it runs the update."),
+                "Checks Core, Web and FTL. Asks first."),
     )),
     ("STATISTICS AND REPORTS", "", (
         _switch("-s, --stats",
@@ -1029,7 +1181,7 @@ OPTION_SECTIONS: tuple[tuple[str, str, tuple[Option, ...]], ...] = (
                 "The statistics plus the top 10 domains.",
                 "Saves a chart to ./pihole_domain_stats.png"),
         _option("-td, --top-domains",
-                "Top N blocked and top N allowed domains.", type=int, metavar="N"),
+                "Top N blocked and top N allowed domains.", type=_whole_number(1), metavar="N"),
         _option("-q, --query",
                 "Rank domains or clients by query count.",
                 choices=["domains", "clients"], metavar="domains|clients"),
@@ -1038,10 +1190,10 @@ OPTION_SECTIONS: tuple[tuple[str, str, tuple[Option, ...]], ...] = (
                 "Default: queries.", choices=["queries", "blocked"], metavar="queries|blocked"),
         _option("--limit",
                 "With --query, how many rows to show.",
-                "Default: 10.", type=int, default=10, metavar="N"),
+                "Default: 10.", type=_whole_number(1), default=10, metavar="N"),
         _option("-aqt, --analyze-query-trends",
                 "Daily query totals for the last DAYS days.",
-                "Saves a chart to ./pihole_query_trends.png", type=int, metavar="DAYS"),
+                "Saves a chart to ./pihole_query_trends.png", type=_whole_number(1), metavar="DAYS"),
         _option("-aq, --advanced-query",
                 "Run your own SQL on the query database.",
                 "Written for SELECT. Quote the statement.", metavar="SQL"),
@@ -1061,7 +1213,7 @@ OPTION_SECTIONS: tuple[tuple[str, str, tuple[Option, ...]], ...] = (
                 "With -rd, remove without asking."),
         _option("-fs, --find-similar",
                 "Find entries at least PERCENT% alike.",
-                "PERCENT is a whole number from 1 to 100.", type=int, metavar="PERCENT"),
+                "PERCENT is a whole number from 1 to 100.", type=_whole_number(1, 100), metavar="PERCENT"),
         _switch("-cd, --categorize-domains",
                 "Group entries by ending (com, co.uk)."),
     )),
@@ -1073,7 +1225,6 @@ OPTION_SECTIONS: tuple[tuple[str, str, tuple[Option, ...]], ...] = (
 # (package, what uses it)
 PACKAGES = (
     ("tabulate", "tables for --report, --top-domains, --query, --advanced-query"),
-    ("requests", "--check-updates"),
     ("matplotlib", "charts for --report and --analyze-query-trends"),
     ("pandas", "--analyze-query-trends"),
     ("seaborn", "grid styling on the charts"),
@@ -1096,6 +1247,7 @@ NOTES = (
      "member of the pihole group."),
     "Several options can be given in one run.",
     "Ctrl+C stops the script with exit code 130. A duplicate removal that is cut short is undone.",
+    "Exit codes: 0 done, 1 something failed, 2 bad option, 130 cancelled.",
     "After changing a domain list, run: sudo pihole reloaddns",
     ("Duplicates are exact entries in plain ASCII that differ only in letter case. Pi-hole "
      "stores exact entries in lowercase and never matches a copy with capital letters, so those "
@@ -1224,7 +1376,7 @@ def ask(question: str) -> bool | None:
         return None
 
 
-def save_report(lines: list[str]) -> None:
+def save_report(lines: list[str], logger: logging.Logger) -> None:
     path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "duplicate-domains.txt")
     if ask(f"\nSave this list to {path}? [y/N]: ") is not True:
         return
@@ -1232,7 +1384,7 @@ def save_report(lines: list[str]) -> None:
         with open(path, "w", encoding="utf-8") as report:
             report.write("\n".join(lines) + "\n")
     except OSError as e:
-        print(f"Could not save the list: {e}")
+        logger.error(f"Could not save the list: {e}")
         return
     print(f"Saved the list to {path}")
 
@@ -1249,7 +1401,7 @@ def remove_duplicates(admin: PiholeDBAdmin, assume_yes: bool) -> None:
         return
 
     if not assume_yes:
-        save_report(lines)
+        save_report(lines, admin.logger)
         answer = ask(f"\nRemove {len(plan.removals)} entries? [y/N]: ")
         if answer is None:
             print("\nNo answer, so nothing was removed. Add --yes to remove without asking.")
@@ -1269,7 +1421,26 @@ def remove_duplicates(admin: PiholeDBAdmin, assume_yes: bool) -> None:
         print("Pi-hole uses the change after you run: sudo pihole reloaddns")
 
 
-def main():
+def extend_path() -> None:
+    # cron starts jobs with PATH=/usr/bin:/bin. Pi-hole's own cron jobs add these two
+    # folders, which hold the pihole command and system tools it calls.
+    folders = os.environ.get("PATH", "").split(os.pathsep)
+    folders += [folder for folder in ("/usr/sbin", "/usr/local/bin") if folder not in folders]
+    os.environ["PATH"] = os.pathsep.join(folders)
+
+
+class ErrorCounter(logging.Handler):
+    """Counts the errors logged; every command reports a failure through the logger."""
+
+    def __init__(self) -> None:
+        super().__init__(logging.ERROR)
+        self.count = 0
+
+    def emit(self, record: logging.LogRecord) -> None:
+        self.count += 1
+
+
+def main() -> int:
     parser = build_parser()
     args = parser.parse_args()
 
@@ -1277,7 +1448,10 @@ def main():
         print_help(parser.prog)
         sys.exit(1)
 
+    extend_path()
     admin = PiholeDBAdmin()
+    errors = ErrorCounter()
+    admin.logger.addHandler(errors)
 
     try:
         if args.optimize:
@@ -1404,14 +1578,16 @@ def main():
                 print("No data available for query trends analysis.")
 
     finally:
+        admin.logger.removeHandler(errors)
         admin.close_pools()
+    return 1 if errors.count > 0 else 0
 
 
 def run() -> None:
     # Matches pi.py and adlist.py: Ctrl+C ends with a short message and exit code 130. Database
     # work cut short is rolled back by SQLite, and a duplicate removal by its own transaction.
     try:
-        main()
+        sys.exit(main())
     except KeyboardInterrupt:
         print("\nCancelled.", file=sys.stderr)
         sys.exit(130)

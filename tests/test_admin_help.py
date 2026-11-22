@@ -102,13 +102,30 @@ class ParserTests(unittest.TestCase):
                 self.assertIn("Run pihole_admin.py --help to see the options.", err)
                 self.assertNotIn("usage:", err)
 
+    def test_numbers_that_make_no_sense_are_refused(self):
+        # --clean -5 used to put the cutoff in the future and delete the whole query history.
+        for argv, reason in ((["--clean", "-5"], "-5 is less than 0"),
+                             (["--top-domains", "0"], "0 is less than 1"),
+                             (["--query", "domains", "--limit", "-1"], "-1 is less than 1"),
+                             (["--analyze-query-trends", "-3"], "-3 is less than 1"),
+                             (["--find-similar", "0"], "0 is not from 1 to 100"),
+                             (["--find-similar", "101"], "101 is not from 1 to 100"),
+                             (["--top-domains", "2.5"], "'2.5' is not a whole number")):
+            with self.subTest(argv=argv):
+                code, out, err = self.run_main(*argv)
+                self.assertEqual((code, out), (2, ""))
+                self.assertIn(reason, err)
+
+    def test_clean_zero_still_means_everything(self):
+        self.assertEqual(pihole_admin.build_parser().parse_args(["--clean", "0"]).clean, 0)
+
 
 class MissingPackageTests(unittest.TestCase):
     def run_without_packages(self, *argv):
         # A None entry in sys.modules makes the import fail, as on a system without the package.
         code = (
             "import runpy, sys\n"
-            "for name in ('requests', 'tabulate', 'matplotlib', 'pandas', 'seaborn', 'rapidfuzz', 'tld'):\n"
+            "for name in ('tabulate', 'matplotlib', 'pandas', 'seaborn', 'rapidfuzz', 'tld'):\n"
             "    sys.modules[name] = None\n"
             f"sys.argv = {[str(SCRIPT), *argv]!r}\n"
             f"runpy.run_path({str(SCRIPT)!r}, run_name='__main__')\n"

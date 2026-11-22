@@ -3,11 +3,11 @@
 import importlib.util
 import io
 import os
+import signal
 import sqlite3
 import subprocess
 import sys
 import tempfile
-import types
 import unittest
 from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
@@ -39,27 +39,17 @@ INSERT INTO "group" (id, enabled, name) VALUES (0, 1, 'Default'), (1, 1, 'Kids')
 """
 
 
-def fake_requests(payload, status=200):
-    """A stand-in requests module whose get() returns one canned response."""
-    module = types.ModuleType("requests")
-
-    class RequestException(Exception):
-        pass
-
-    class Response:
-        status_code = status
-
-        @staticmethod
-        def json():
-            return payload
-
-    module.RequestException = RequestException
-    module.get = lambda *_args, **_kwargs: Response()
-    return module
-
-
-def version_output(stdout):
-    return subprocess.CompletedProcess(["pihole", "-v"], 0, stdout=stdout, stderr="")
+UPDATER = ("pihole", "-up")
+CHECKER = ("pihole", "updatechecker")
+# /etc/pihole/versions of a live Pi-hole v6 that is fully up to date.
+VERSIONS = {
+    "CORE_VERSION": "v6.6", "CORE_BRANCH": "master", "CORE_HASH": "f7c0220e",
+    "GITHUB_CORE_VERSION": "v6.6", "GITHUB_CORE_HASH": "f7c0220e",
+    "WEB_VERSION": "v6.6.1", "WEB_BRANCH": "master", "WEB_HASH": "fb699c4e",
+    "GITHUB_WEB_VERSION": "v6.6.1", "GITHUB_WEB_HASH": "fb699c4e",
+    "FTL_VERSION": "v6.9", "FTL_BRANCH": "master", "FTL_HASH": "2a0fcb74",
+    "GITHUB_FTL_VERSION": "v6.9", "GITHUB_FTL_HASH": "2a0fcb74",
+}
 
 
 class AdminTestCase(unittest.TestCase):
@@ -89,58 +79,197 @@ class AdminTestCase(unittest.TestCase):
 
 
 class CheckForUpdatesTests(AdminTestCase):
-    def check(self, stdout, payload, answer="n"):
-        with patch.dict(sys.modules, {"requests": fake_requests(payload)}), \
-                patch.object(pihole_admin.subprocess, "run", return_value=version_output(stdout)), \
-                patch("builtins.input", return_value=answer), \
+    def check(self, values=None, root=True, answer="n", installs=None, press_ctrl_c=False,
+              refreshes=True, **changes):
+        """Run the update check on a versions file; `installs` is what 'pihole -up' changes in it."""
+        values = dict(VERSIONS if values is None else values, **changes)
+        path = Path(self.tmp.name, "versions")
+
+        def write():
+            fresh = path.with_suffix(".new")
+            fresh.write_text("".join(f"{key}={value}\n" for key, value in values.items()))
+            os.replace(fresh, path)
+
+        def run(argv, **_kwargs):
+            self.commands.append(tuple(argv))
+            if tuple(argv) == CHECKER and refreshes:
+                write()
+            if tuple(argv) == UPDATER:
+                if press_ctrl_c:
+                    signal.getsignal(signal.SIGINT)(signal.SIGINT, None)
+                if installs is not None:
+                    values.update(installs)
+                    write()
+            return subprocess.CompletedProcess(argv, 0, "", "")
+
+        write()
+        self.commands = []
+        reply = {"side_effect": EOFError} if answer is None else {"return_value": answer}
+        with patch.object(pihole_admin, "VERSIONS_FILE", str(path)), \
+                patch.object(pihole_admin.subprocess, "run", run), \
+                patch.object(pihole_admin.os, "geteuid", return_value=0 if root else 1000), \
+                patch("builtins.input", **reply), \
                 self.assertLogs(LOGGER, "INFO") as logs:
             self.admin.check_for_updates()
         return "\n".join(logs.output)
 
-    def test_reads_the_pihole_v6_core_version(self):
-        out = self.check("Core version is v6.6 (Latest: v6.6)\nWeb version is v6.6.1 (Latest: v6.6.1)\n"
-                         "FTL version is v6.9 (Latest: v6.9)\n", {"tag_name": "v6.6"})
-        self.assertIn("Current Pi-hole version: v6.6", out)
+    def test_up_to_date_offers_nothing(self):
+        out = self.check()
+        self.assertIn("Core: installed v6.6, latest v6.6 (up to date)", out)
+        self.assertIn("Pi-hole is up to date.", out)
+        self.assertEqual(self.commands, [CHECKER])
+
+    def test_a_web_or_ftl_release_is_noticed(self):
+        for changes, found in (({"GITHUB_WEB_VERSION": "v6.7"}, "Update available: Web v6.7"),
+                               ({"GITHUB_FTL_VERSION": "v6.10"}, "Update available: FTL v6.10"),
+                               ({"GITHUB_CORE_VERSION": "v6.6.1"}, "Update available: Core v6.6.1")):
+            with self.subTest(changes=changes):
+                out = self.check(**changes)
+                self.assertIn(found, out)
+                self.assertIn("Update skipped by user.", out)
+                self.assertNotIn(UPDATER, self.commands)
+
+    def test_installed_ahead_of_the_latest_release_is_not_an_update(self):
+        out = self.check(CORE_VERSION="v6.7", FTL_VERSION="v6.9-4-gabc1234")
         self.assertIn("Pi-hole is up to date.", out)
 
-    def test_still_reads_the_pihole_v5_version(self):
-        # The line formats of Pi-hole v5.18.3's advanced/Scripts/version.sh.
-        for stdout in (("  Pi-hole version is v5.18.2 (Latest: v5.18.3)\n"
-                        "  web version is v5.21 (Latest: v5.21)\n"),
-                       "  Pi-hole version is development v5.18.2 (Latest: v5.18.3)\n",
-                       "  Current Pi-hole version is v5.18.2\n"):
-            with self.subTest(stdout=stdout):
-                out = self.check(stdout, {"tag_name": "v5.18.3"})
-                self.assertIn("Current Pi-hole version: v5.18.2", out)
-                self.assertIn("Update skipped by user.", out)
+    def test_latest_version_not_looked_up_offers_nothing(self):
+        for changes in ({"GITHUB_CORE_VERSION": "null"}, {"GITHUB_CORE_VERSION": ""}, {"CORE_VERSION": "null"}):
+            with self.subTest(changes=changes):
+                out = self.check(GITHUB_FTL_VERSION="v6.10", answer="y", **changes)
+                self.assertIn("Cannot compare versions for Core", out)
+                self.assertNotIn(UPDATER, self.commands)
 
-    def test_unknown_version_is_reported(self):
-        out = self.check("Core version is N/A (Latest: v6.6)\n", {"tag_name": "v6.6"})
-        self.assertIn("Could not parse current Pi-hole version.", out)
+    def test_yes_updates_and_confirms_the_new_version(self):
+        out = self.check(GITHUB_FTL_VERSION="v6.10", answer="y", installs={"FTL_VERSION": "v6.10"})
+        self.assertEqual(self.commands, [CHECKER, UPDATER])
+        self.assertIn("Update finished. Installed now: FTL v6.10", out)
+
+    def test_update_that_changes_nothing_is_reported_as_failed(self):
+        out = self.check(GITHUB_FTL_VERSION="v6.10", GITHUB_WEB_VERSION="v6.7", answer="y",
+                         installs={"WEB_VERSION": "v6.7"})
+        self.assertIn("ERROR:PiholeDBAdmin:Pi-hole update failed: FTL not updated.", out)
+        self.assertNotIn("Update finished", out)
 
     def test_closed_input_skips_the_update(self):
-        with patch.dict(sys.modules, {"requests": fake_requests({"tag_name": "v6.7"})}), \
-                patch.object(pihole_admin.subprocess, "run",
-                             return_value=version_output("Core version is v6.6\n")), \
-                patch("builtins.input", side_effect=EOFError), \
-                patch.object(self.admin, "update_pihole") as update, \
-                self.assertLogs(LOGGER, "INFO") as logs:
-            self.admin.check_for_updates()
-        update.assert_not_called()
-        self.assertIn("Update skipped by user.", "\n".join(logs.output))
+        out = self.check(GITHUB_CORE_VERSION="v6.7", answer=None)
+        self.assertIn("No answer, so Pi-hole was not updated.", out)
+        self.assertNotIn(UPDATER, self.commands)
 
-    def test_release_reply_without_a_tag_is_reported(self):
-        for payload in ([], {"tag_name": None}, {}):
-            with self.subTest(payload=payload):
-                out = self.check("Core version is v6.6\n", payload)
-                self.assertIn("Could not parse latest Pi-hole version from GitHub.", out)
+    def test_without_root_it_reads_the_saved_versions_and_names_the_command(self):
+        out = self.check(GITHUB_CORE_VERSION="v6.7", root=False, answer="y")
+        self.assertIn("Run with sudo for a fresh check.", out)
+        self.assertIn("Updating needs root. Run: sudo pihole -up", out)
+        self.assertEqual(self.commands, [])
+
+    def test_docker_install_is_pointed_at_the_image(self):
+        for changes in ({"GITHUB_CORE_VERSION": "v6.7"}, {}):
+            with self.subTest(changes=changes):
+                out = self.check(DOCKER_VERSION="2026.11.0", answer="y", **changes)
+                self.assertIn("runs in Docker", out)
+                self.assertNotIn("Pi-hole is up to date.", out)
+                self.assertNotIn(UPDATER, self.commands)
+        out = self.check(DOCKER_VERSION="2026.11.0", GITHUB_CORE_VERSION="null")
+        self.assertIn("ERROR:PiholeDBAdmin:Cannot compare versions for Core", out)
+
+    def test_pihole_v5_file_without_web_interface_or_hashes(self):
+        # The keys Pi-hole v5.13 writes when the web interface is not installed.
+        v5 = {"CORE_VERSION": "v5.18.2", "CORE_BRANCH": "master", "GITHUB_CORE_VERSION": "v5.18.3",
+              "FTL_VERSION": "v5.25.2", "FTL_BRANCH": "master", "GITHUB_FTL_VERSION": "v5.25.2"}
+        out = self.check(v5)
+        self.assertIn("Update available: Core v5.18.3", out)
+        self.assertNotIn("Web:", out)
+
+    def test_other_branch_compares_commit_hashes(self):
+        out = self.check(FTL_BRANCH="development", FTL_HASH="aaaaaaaa", GITHUB_FTL_HASH="bbbbbbbb",
+                         GITHUB_FTL_VERSION="null", answer="y", installs={"FTL_HASH": "bbbbbbbb"})
+        self.assertIn("FTL: installed development aaaaaaaa, latest bbbbbbbb (update available)", out)
+        self.assertIn("Update finished. Installed now: FTL development bbbbbbbb", out)
+        out = self.check(FTL_BRANCH="development", GITHUB_FTL_VERSION="null")
+        self.assertIn("Pi-hole is up to date.", out)
+
+    def test_other_branch_that_moved_on_during_the_update_still_counts(self):
+        out = self.check(FTL_BRANCH="development", FTL_HASH="aaaaaaaa", GITHUB_FTL_HASH="bbbbbbbb", answer="y",
+                         installs={"FTL_HASH": "cccccccc", "GITHUB_FTL_HASH": "cccccccc"})
+        self.assertIn("Update finished. Installed now: FTL development cccccccc", out)
+
+    def test_other_branch_on_a_commit_nobody_offered_is_reported_as_failed(self):
+        out = self.check(FTL_BRANCH="development", FTL_HASH="aaaaaaaa", GITHUB_FTL_HASH="bbbbbbbb", answer="y",
+                         installs={"FTL_HASH": "cccccccc"})
+        self.assertIn("Pi-hole update failed: FTL not updated.", out)
+
+    def test_hashes_of_different_lengths_for_one_commit_are_not_an_update(self):
+        # Pi-hole v5.14 records 7 characters of the installed hash and 8 of the latest.
+        out = self.check(CORE_BRANCH="development", CORE_HASH="abcdef1", GITHUB_CORE_HASH="abcdef12", answer="y")
+        self.assertIn("Pi-hole is up to date.", out)
+        self.assertNotIn(UPDATER, self.commands)
+
+    def test_bare_commit_hash_in_place_of_a_version_offers_nothing(self):
+        out = self.check(CORE_VERSION="8badf00", GITHUB_CORE_VERSION="v6.7", answer="y")
+        self.assertIn("Cannot compare versions for Core", out)
+        self.assertNotIn(UPDATER, self.commands)
+
+    def test_record_without_ftl_is_refused(self):
+        core_only = {"CORE_VERSION": "v6.6", "CORE_BRANCH": "master", "GITHUB_CORE_VERSION": "v6.6"}
+        out = self.check(core_only)
+        self.assertIn("has no version for FTL.", out)
+        self.assertNotIn("up to date", out)
+
+    def test_versions_that_were_not_refreshed_are_not_trusted(self):
+        out = self.check(GITHUB_CORE_VERSION="v6.7", answer="y", refreshes=False)
+        self.assertIn("did not rewrite", out)
+        self.assertEqual(self.commands, [CHECKER])
+
+    def test_ctrl_c_is_left_to_the_updater_then_ends_the_script(self):
+        before = signal.getsignal(signal.SIGINT)
+        # Whether or not the update still went through, Ctrl+C ends the script afterwards,
+        # so an option given after --check-updates never runs.
+        for installs in (None, {"CORE_VERSION": "v6.7"}):
+            with self.subTest(installs=installs), self.assertRaises(KeyboardInterrupt):
+                self.check(GITHUB_CORE_VERSION="v6.7", answer="y", press_ctrl_c=True, installs=installs)
+            self.assertEqual(self.commands, [CHECKER, UPDATER])
+            self.assertIs(signal.getsignal(signal.SIGINT), before)
+
+    def test_ctrl_c_while_the_updater_fails_to_start_still_ends_the_script(self):
+        def run(_argv, **_kwargs):
+            signal.getsignal(signal.SIGINT)(signal.SIGINT, None)
+            raise PermissionError("denied")
+
+        with patch.object(pihole_admin.subprocess, "run", run), self.assertLogs(LOGGER, "ERROR") as logs, \
+                self.assertRaises(KeyboardInterrupt):
+            self.admin.update_pihole([])
+        self.assertIn("Could not run 'pihole -up': denied", "\n".join(logs.output))
+
+    def test_missing_versions_file_is_reported(self):
+        with patch.object(pihole_admin, "VERSIONS_FILE", str(Path(self.tmp.name, "missing"))), \
+                patch.object(pihole_admin.os, "geteuid", return_value=1000), \
+                self.assertLogs(LOGGER, "ERROR") as logs:
+            self.admin.check_for_updates()
+        self.assertIn("Could not read Pi-hole's versions", "\n".join(logs.output))
 
     def test_missing_pihole_command_is_reported(self):
-        with patch.dict(sys.modules, {"requests": fake_requests({})}), \
-                patch.object(pihole_admin.subprocess, "run", side_effect=FileNotFoundError), \
+        with patch.object(pihole_admin.subprocess, "run", side_effect=FileNotFoundError), \
+                patch.object(pihole_admin.os, "geteuid", return_value=0), \
                 self.assertLogs(LOGGER, "ERROR") as logs:
             self.admin.check_for_updates()
         self.assertIn("Pi-hole command not found", "\n".join(logs.output))
+
+
+class VersionCompareTests(unittest.TestCase):
+    def state(self, installed, latest):
+        return pihole_admin.Component("Core", installed, latest, "master", "a", "a").state
+
+    def test_versions_compare_as_numbers(self):
+        for installed, latest, expected in (
+                ("v6.9", "v6.10", pihole_admin.UPDATE_AVAILABLE), ("v6.10", "v6.9", pihole_admin.UP_TO_DATE),
+                ("v6.6", "v6.6.1", pihole_admin.UPDATE_AVAILABLE), ("v6.6", "v6.6.0", pihole_admin.UP_TO_DATE),
+                ("v5.18.4", "v6.0", pihole_admin.UPDATE_AVAILABLE), ("", "v6.6", pihole_admin.UNKNOWN),
+                ("v6.6-3-gabc1234", "v6.6", pihole_admin.UP_TO_DATE), ("8badf00", "v6.7", pihole_admin.UNKNOWN),
+                # Pi-hole v5.14 records `git describe --long --dirty --tags`.
+                ("v5.14-0-gabcdef1-dirty", "v5.15", pihole_admin.UPDATE_AVAILABLE),
+                ("6.6", "v6.6", pihole_admin.UNKNOWN), ("v6.6", "N/A", pihole_admin.UNKNOWN)):
+            with self.subTest(installed=installed, latest=latest):
+                self.assertEqual(self.state(installed, latest), expected)
 
 
 class CommandFailureTests(AdminTestCase):
@@ -152,13 +281,73 @@ class CommandFailureTests(AdminTestCase):
 
     def test_pihole_update_that_cannot_start_is_reported(self):
         with patch.object(pihole_admin.subprocess, "run", side_effect=PermissionError("denied")), \
-                patch("builtins.print"), \
                 self.assertLogs(LOGGER, "ERROR") as logs:
-            self.admin.update_pihole()
+            self.admin.update_pihole([])
         self.assertIn("Could not run 'pihole -up': denied", "\n".join(logs.output))
 
 
+class PathTests(AdminTestCase):
+    def test_cron_path_gains_the_folders_pihole_needs(self):
+        with patch.dict(os.environ, {"PATH": "/usr/bin:/bin"}):
+            pihole_admin.extend_path()
+            self.assertEqual(os.environ["PATH"], "/usr/bin:/bin:/usr/sbin:/usr/local/bin")
+            pihole_admin.extend_path()
+            self.assertEqual(os.environ["PATH"], "/usr/bin:/bin:/usr/sbin:/usr/local/bin")
+
+    def test_main_extends_the_path_before_it_runs_a_command(self):
+        seen = []
+
+        def admin():
+            seen.append(os.environ["PATH"])
+            return self.admin
+
+        with patch.object(sys, "argv", ["pihole_admin.py", "--clean", "30"]), \
+                patch.object(pihole_admin, "PiholeDBAdmin", admin), \
+                patch.dict(os.environ, {"PATH": "/usr/bin:/bin"}), self.assertLogs(LOGGER, "INFO"):
+            pihole_admin.main()
+        self.assertEqual(seen, ["/usr/bin:/bin:/usr/sbin:/usr/local/bin"])
+
+
+class ExitCodeTests(AdminTestCase):
+    def run_main(self, *argv):
+        with patch.object(sys, "argv", ["pihole_admin.py", *argv]), \
+                patch.object(pihole_admin, "PiholeDBAdmin", return_value=self.admin), \
+                patch.dict(os.environ), self.assertLogs(LOGGER, "INFO"):
+            return pihole_admin.main()
+
+    def test_a_failed_command_exits_one(self):
+        self.assertEqual(self.run_main("--advanced-query", "SELECT no_such_column FROM queries"), 1)
+
+    def test_one_failure_among_several_commands_exits_one(self):
+        self.assertEqual(self.run_main("--clean", "30", "--advanced-query", "SELECT nope"), 1)
+
+    def test_success_exits_zero(self):
+        self.assertEqual(self.run_main("--clean", "30"), 0)
+
+    def test_the_error_counter_is_detached_afterwards(self):
+        # Not through run_main: assertLogs swaps the handler list and would hide a leftover.
+        with patch.object(sys, "argv", ["pihole_admin.py", "--advanced-query", "SELECT nope"]), \
+                patch.object(pihole_admin, "PiholeDBAdmin", return_value=self.admin), \
+                patch.dict(os.environ), patch.object(self.admin.logger, "disabled", True):
+            pihole_admin.main()
+        self.assertFalse(any(isinstance(handler, pihole_admin.ErrorCounter)
+                             for handler in self.admin.logger.handlers))
+        self.assertEqual(self.run_main("--clean", "30"), 0)
+
+    def test_run_passes_the_exit_code_on(self):
+        with patch.object(pihole_admin, "main", return_value=1), self.assertRaises(SystemExit) as caught:
+            pihole_admin.run()
+        self.assertEqual(caught.exception.code, 1)
+
+
 class DatabaseTests(AdminTestCase):
+    def test_statistic_whose_query_fails_is_an_error(self):
+        # The test database has no gravity table, so that count cannot be made.
+        with self.assertLogs(LOGGER, "ERROR") as logs:
+            stats = self.admin.get_statistics()
+        self.assertIn("Query failed: SELECT COUNT(*) FROM gravity", "\n".join(logs.output))
+        self.assertEqual(stats["total_domains"], 0)
+
     def test_custom_statement_without_rows_does_not_crash(self):
         self.run_sql(self.queries, "INSERT INTO query_storage (timestamp, domain) VALUES (1, 'a.example')")
         with self.assertLogs(LOGGER, "INFO") as logs:
@@ -343,9 +532,9 @@ class DuplicateTests(AdminTestCase):
         script = Path(script_dir or self.tmp.name, "pihole_admin.py")
         out = io.StringIO()
         with patch("builtins.input", **reply) as asked, patch.object(pihole_admin, "__file__", str(script)), \
-                redirect_stdout(out), self.assertLogs(LOGGER, "INFO"):
+                redirect_stdout(out), self.assertLogs(LOGGER, "INFO") as logs:
             pihole_admin.remove_duplicates(self.admin, assume_yes)
-        return asked, out.getvalue()
+        return asked, out.getvalue() + "\n".join(logs.output)
 
     def two_copies(self):
         self.run_sql(self.gravity, "DELETE FROM domainlist")
@@ -366,7 +555,7 @@ class DuplicateTests(AdminTestCase):
         self.two_copies()
         asked, out = self.run_command(["y", "y"], script_dir=Path(self.tmp.name, "missing"))
         self.assertEqual(asked.call_count, 2)
-        self.assertIn("Could not save the list", out)
+        self.assertIn("ERROR:PiholeDBAdmin:Could not save the list", out)
         self.assertIn("Removed 1 entries.", out)
 
     def test_yes_neither_asks_nor_saves(self):
