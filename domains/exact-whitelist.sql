@@ -20,10 +20,10 @@ auth.samsungosp.com -- Samsung TV - Samsung account sign-in
 auth.split.io -- Split.io host - The MyFitnessPal app cannot log in without it
 avpro.global.yamaha.com -- Yamaha AV receivers - Firmware updates (blocking it stops updates on the RX-V685)
 bbuseruploads.s3.amazonaws.com -- Amazon S3 bucket - Maintainer added it to download x264 source code
-beacons-npa.gov.uk -- Bannau Brycheiniog National Park Authority website - Caught by mmotti's original beacon regex
+beacons-npa.gov.uk -- Bannau Brycheiniog National Park Authority website - HaGeZi Pro blocks it
 best.aliexpress.com -- AliExpress shopping site
 bit.ly -- Bitly - URL shortener
-bitcoin.org -- Bitcoin project website - Block List Project's crypto and fraud lists block it
+bitcoin.org -- Bitcoin project website - Prigent's cryptojacking list (Firebog) blocks it
 bufferapp.com -- Buffer - Social media management (redirects to buffer.com)
 bugmenot.com -- BugMeNot - Shared logins for sites that force sign-up
 cdn.samsungcloudsolution.com -- Samsung TV - System update check
@@ -45,7 +45,7 @@ crl.entrust.net -- Entrust certificate revocation host - Maintainer added it for
 d.adguard-dns.com -- AdGuard DNS server - HaGeZi's DoH list blocks it; iPhones with an AdGuard DNS profile cannot load Messages photos without it
 d29g4g2dyqv443.cloudfront.net -- CloudFront host - Maintainer added it for the Nvidia CUDA Toolkit website
 dcape-na.amazon.com -- Amazon host - Maintainer added it to sign in to Amazon apps on Windows Subsystem for Android
-ddns.net -- ddns.net dynamic DNS domain - Block List Project's malware list blocks it
+ddns.net -- ddns.net dynamic DNS domain - HaGeZi's DynDNS list blocks it; only the bare domain is allowed
 dev.virtualearth.net -- Microsoft Bing Maps host - Windows uses it to check for updates to offline maps
 developer.n.shifen.com -- Baidu host - CNAME target of libs.baidu.com
 deviceportal.nettvservices.com -- Philips TV (TP Vision) host - Perflyst says apps need it
@@ -59,7 +59,7 @@ dl.google.com -- Google downloads - Pi-hole users list it for Chrome updates on 
 dns.msftncsi.com -- Windows network connectivity check (NCSI) - If this lookup fails, Windows shows the network alert in the taskbar
 download.sonarr.tv -- Sonarr TV download manager host - Pi-hole users list it for Sonarr
 dualstack.osff.map.fastly.net -- Fastly host (map.fastly.net) - Which site uses it is unverified
-dyndns.org -- Dyn dynamic DNS domain (Oracle certificate) - Block List Project's malware list blocks it
+dyndns.org -- Dyn dynamic DNS domain (Oracle certificate) - HaGeZi's DynDNS list blocks it; only the bare domain is allowed
 dynupdate.no-ip.com -- No-IP host - Listed in anudeep's allowlist
 ecn.dev.virtualearth.net -- Microsoft Bing Maps host - In Windows' Maps endpoint list and required by Microsoft 365
 ecs.office.com -- Microsoft feature deployment service - Microsoft lists it as an Intune feature-deployment dependency
@@ -68,7 +68,7 @@ emea.ng.msg.teams.microsoft.com -- Microsoft Teams host under the documented *.t
 emea.pptservicescast.officeapps.live.com -- Microsoft 365 / Office Online host under the documented *.officeapps.live.com endpoint - Exact role unverified
 entitlement.auth.adobe.com -- Adobe host - WatchESPN needs it (Pi-hole forum, anudeep)
 epg.corio.com -- Philips TV host - Perflyst says apps need it
-fairuse.org -- fairuse.org - Block List Project's malware list blocks it; maintainer described it as a fair use information site
+fairuse.org -- fairuse.org - HaGeZi's DynDNS list blocks it as a dynamic DNS domain; only the bare domain is allowed
 fe3cr.delivery.mp.microsoft.com -- Microsoft update service - Microsoft lists it for Defender security updates
 fonts.loli.net -- loli.net Google Fonts mirror (China) - Served Google Fonts CSS when tested
 fonts.loli.net.cdn.cloudflare.net -- Cloudflare CNAME target of fonts.loli.net (Google Fonts mirror)
@@ -76,7 +76,7 @@ forms.office.com -- Microsoft Forms - Surveys and quizzes
 forums.sonarr.tv -- Sonarr TV download manager - Forums
 fpdownload.adobe.com -- Adobe host - WatchESPN needs it (Pi-hole forum, anudeep)
 g.live.com -- Microsoft OneDrive host - Pi-hole users also list it for backing up BitLocker keys to a Microsoft account
-g2a.com -- G2A.COM website - Block List Project's fraud list blocks it
+g2a.com -- G2A.COM website - No list in this collection blocks it now; Block List Project's fraud list did until 11.13.2026
 gateway.cname.ustclug.org -- gateway.cname.ustclug.org - Role unverified
 gdlp01.c-wss.com -- Canon host - Pi-hole users list it for Canon printers
 geo-prod.do.dsp.mp.microsoft.com -- Microsoft Delivery Optimization host - Pi-hole users list it for the Microsoft Store
@@ -103,7 +103,7 @@ imgs.xkcd.com -- xkcd host - Listed in anudeep's allowlist
 index.crates.io -- crates.io package index
 infolink.pavv.co.kr -- Samsung TV - App store and sign-in - Caught by the pavv.co.kr regex
 insights-collector.gog.com -- GOG-run host - Maintainer reported GOG Galaxy updates need it
-intercom.io -- Intercom website (redirects to intercom.com) - Block List Project's tracking list blocks it
+intercom.io -- Intercom website (redirects to intercom.com) - No list in this collection blocks it now; Block List Project's tracking list did until 11.13.2026
 ipv6.msftncsi.com -- Windows network connectivity check (NCSI) domain - Microsoft documents *.msftncsi.com for NCSI
 itv.ard.de -- ARD (German public TV) - HbbTV red-button media library on smart TVs
 j.mp -- Bitly short link domain
@@ -127,7 +127,7 @@ login.live.com -- Microsoft account sign-in (Outlook.com, OneDrive and Microsoft
 login.microsoftonline.com -- Microsoft Entra ID sign-in - Required by Microsoft 365
 logincdn.msauth.net -- Microsoft sign-in host (msauth.net) - Listed among Microsoft's OneDrive endpoints and required by Microsoft 365
 mamservice.manage.microsoft.com -- Microsoft Intune host under the documented *.manage.microsoft.com - Exact role unverified
-mat1.gtimg.com -- Tencent static file host (China) - Block List Project's malware and abuse lists block it
+mat1.gtimg.com -- Tencent static file host (China) - No list in this collection blocks it now; Block List Project's malware and abuse lists did until 11.13.2026
 mat1.gtimg.com.tegsea.tc.qq.com -- Tencent host - Former CNAME target of mat1.gtimg.com
 materialdesignicons.b-cdn.net -- Material Design Icons host - Redirects to jsDelivr
 mathjax.rstudio.com -- MathJax library CDN on rstudio.com - Served MathJax 2.7.9 when tested
@@ -143,7 +143,7 @@ mrs-efz.ms-acdc.office.com -- Microsoft 365 (office.com) service host - Exact ro
 mscomajax.vo.msecnd.net -- Microsoft-run host (msecnd.net, required by Microsoft 365) - Exact role unverified
 my.plexapp.com -- Plex host - Redirects to watch.plex.tv
 mytaxes.ads.taj.gov.jm -- Jamaica government host - Maintainer described it as the Tax Administration Jamaica taxpayer portal - Caught by the ad regex
-name.com -- Name.com domain registrar - Block List Project's redirect list blocks it
+name.com -- Name.com domain registrar - No list in this collection blocks it now; Block List Project's redirect list did until 11.13.2026
 netdna.bootstrapcdn.com -- BootstrapCDN - Serves Font Awesome files
 netflix.com -- Netflix - Main site
 ngfts.lge.com -- LG webOS TV - LG Content Store thumbnails and cover art
@@ -215,7 +215,7 @@ storage.signal.org -- Signal messenger host - Pi-hole users list it for Signal
 storeedgefd.dsx.mp.microsoft.com -- Microsoft Store - Loads the Store app's content
 styles.redditmedia.com -- Reddit host - Pi-hole users list it for Reddit
 substrate.office.com -- Microsoft 365 host - Microsoft lists it among Office endpoints in Windows
-surveymonkey.com -- SurveyMonkey - Online surveys - Block List Project's malware list blocks it
+surveymonkey.com -- SurveyMonkey - Online surveys - No list in this collection blocks it now; Block List Project's malware list did until 11.13.2026
 sysctl.org -- Cameleon hosts file (sysctl.org) - Blocklist source site
 t.co -- t.co - X (Twitter) domain
 t.paydaythegame.com -- PAYDAY 3 host - Maintainer reported the game needs it to load saved profiles
@@ -251,7 +251,7 @@ vidtech.cbsinteractive.com -- CBS Interactive host - Redirects to avia.cbsivideo
 viewer.content.glympse.com -- Glympse host - Papa John's 'Where's my pizza' order tracker needs it
 vimeo.com -- Vimeo - Video platform
 vo.aicdn.com -- CNAME target of upcdn.b0.upaiyun.com
-wallpapers.com -- Wallpapers.com - Free wallpaper site - Block List Project's fraud list blocks it
+wallpapers.com -- Wallpapers.com - Free wallpaper site - No list in this collection blocks it now; Block List Project's fraud list did until 11.13.2026
 webmail.adv.oabsp.org.br -- OAB Sao Paulo webmail - Caught by the ad regex
 weeklyad.target.com.edgesuite.net -- Target - Weekly ad pages (Akamai host)
 widget-cdn.rpxnow.com -- rpxnow.com widget host - Pi-hole users list it for Fox News
@@ -269,7 +269,7 @@ www.aliexpress.com -- AliExpress shopping site
 www.appleiphonecell.com -- Apple-related host - Pi-hole users list it with captive.apple.com for iOS
 www.duplicatephotocleaner.com -- Duplicate Photo Cleaner - Duplicate photo finder app site
 www.ecdinterface.philips.com -- Philips-run host - Perflyst ties it to the Philips Hue Bridge
-www.g2a.com -- G2A.COM website - Block List Project's fraud list blocks it
+www.g2a.com -- G2A.COM website - No list in this collection blocks it now; Block List Project's fraud list did until 11.13.2026
 www.howtogeek.com -- How-To Geek - Technology help site
 www.msftconnecttest.com -- Windows network connectivity check (NCSI) - Used by Windows 10 and later
 www.msftncsi.com -- Windows network connectivity check (NCSI) - Used by Windows 8.1 and earlier
@@ -278,9 +278,9 @@ www.propublica.org -- ProPublica - Investigative journalism site
 www.shellcheck.net -- ShellCheck - Shell script checker
 www.solaredge.com -- SolarEdge website
 www.squaretrade.com -- SquareTrade (Allstate) - Product protection plans
-www.trustpilot.com -- Trustpilot website - Block List Project's scam and phishing lists block it
+www.trustpilot.com -- Trustpilot website - No list in this collection blocks it now; Block List Project's scam and phishing lists did until 11.13.2026
 www.vbsedit.com -- VbsEdit - VBScript editor
-www.wallpapers.com -- Wallpapers.com - Free wallpaper site - Block List Project's fraud list blocks it
+www.wallpapers.com -- Wallpapers.com - Free wallpaper site - No list in this collection blocks it now; Block List Project's fraud list did until 11.13.2026
 x-default-stgec.uplynk.com -- Uplynk host - Maintainer added it for Discovery+ playback on Nvidia Shield TV
 xbox.ipv6.microsoft.com -- Microsoft Xbox Live - Listed as required for full Xbox Live functionality
 yastatic.net -- Yandex-run host (redirects to yandex.ru)

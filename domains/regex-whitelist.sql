@@ -20,7 +20,7 @@
 ^(benchmarks|commons|empoweringtrust|support\.benchmarks|www)\.ul\.com(\.cdn\.cloudflare\.net)?$ -- Five ul.com hosts (benchmarks, support.benchmarks, www and two more) plus their Cloudflare CNAMEs
 ^(blog|business|careers|contests|dev|email|insights|meta|talent|www\.careers)\.stackoverflow\.com$ -- Stack Overflow hosts blog, business, careers, contests, dev, email, insights, meta, talent and www.careers
 ^(blog|community(-cdn|-staging)?|d-cloudflare|docs|downloads(-staging)?|et|guide|help|learn|models(-r2)?)\.topazlabs\.com$ -- Topaz Labs hosts (blog, community, docs, downloads, guide, help, learn, models and others)
-^(calendar|dns|docs|home|inbox|clients[1-6]?|mail|meet|pay(|ments)|photos|sites|time|wallet|workspace|www)\.google\.com$ -- Google hosts calendar, dns, docs, home, inbox, clients, mail, meet, pay, photos, sites, time, wallet, workspace and www.google.com
+^(calendar|docs|home|inbox|clients[1-6]?|mail|meet|pay(|ments)|photos|sites|time|wallet|workspace|www)\.google\.com$ -- Google hosts calendar, docs, home, inbox, clients, mail, meet, pay, photos, sites, time, wallet, workspace and www.google.com
 ^(alt[0-9]-)?mtalk\.google\.com$ -- Google push notifications (mtalk.google.com and alt0-9-mtalk) - Pi-hole users list mtalk for Android app push
 ^cdn\.(datatables\.net|discordapp\.com|embed\.ly|embedly\.com|materialdesignicons\.com|mathjax\.org|plyr\.io|signal\.org)$ -- cdn. hosts of datatables.net, discordapp.com, embed.ly, embedly.com, materialdesignicons.com, mathjax.org, plyr.io and signal.org
 ^(cdn\.embed\.ly|cdn\.jsdelivr\.net|cdnjs\.loli\.net)\.cdn\.cloudflare\.net$ -- Cloudflare CNAME names of cdn.embed.ly, cdn.jsdelivr.net and cdnjs.loli.net

@@ -5,9 +5,43 @@ comment in Pi-hole. The adlist descriptions in `adlists.txt` appear only in the 
 because `adlist.py` gives every adlist the same fixed comment. This page lists the evidence behind each note, so
 anyone can check what a domain is and why it is allowed or blocked.
 
-Collected and checked on 2026-11-13 and 2026-11-14. Web sources were fetched without JavaScript and every quote
+Collected and checked on 2026-11-13, 2026-11-14 and 2026-11-21. Web sources were fetched without JavaScript and every quote
 below was confirmed to appear on the live page. Pages change; a quote that no longer appears means the source changed
 after that date.
+
+## Filter changes on 2026-11-21
+
+A review of how the lists in this collection overlap. Each change below either removes a duplicate, removes a rule
+that no longer matches anything, or narrows what the collection blocks by default.
+
+Every adlist was downloaded on 2026-11-21 and compared using Pi-hole v6 matching (an Adblock-style
+`||example.com^` line also covers subdomains; a hosts line covers only that name). Regexes were compiled and tested with
+libtre, the regex library Pi-hole uses. The broad block rules were also tested against the Chrome UX Report list of
+the one million most visited sites ([zakird/crux-top-lists](https://github.com/zakird/crux-top-lists)).
+
+- Adlists removed: HaGeZi DGA 30 days, Gambling, URL Shortener and Referral. Together they were about 3.5 million of the
+  collection's 6.1 million entries. HaGeZi describes URL Shortener as meant for high-security setups and recommends
+  against DNS-level referral blocking, and this repository already allowed the most common shorteners. Anyone who wants
+  these lists can still add them from HaGeZi's page.
+- Adlists removed: HaGeZi native LG webOS, Roku and TikTok. HaGeZi Multi PRO already contained every domain in them
+  except HaGeZi's own test hostname; HaGeZi's FAQ says the native tracker lists are built into each Multi tier.
+- Adlists removed: FadeMind UncheckyAds (9 domains, 8 already in HaGeZi Multi PRO) and Perflyst Fire TV, Android tracking
+  and Session Replay (last changed 2023-07-13, 2021-11-24 and 2020-05-14). Perflyst's Smart TV list stays.
+- The DoH adlist's description now says what the file holds: HaGeZi's encrypted-DNS-only list. HaGeZi publishes the
+  VPN and proxy version as a separate file.
+- Regex allowlist: the Google rule no longer allows `dns.google.com`, which HaGeZi's encrypted DNS list blocks.
+- Regex blocklist: removed 16 rules that matched none of 5.2 million blocklist names or the one million sites (ten
+  provider patterns already noted as having no matches, and six domains that did not resolve on 2026-11-13); six rules
+  whose domains HaGeZi Multi PRO already blocks with all subdomains; `^adserver-.*\.amazonaws\.com$`, which the
+  general adserv rule already covers; and the general `count`, `pixel` and `mads` rules, which matched 20 popular sites
+  that no list blocks (for example a government visa site and a bank). `deimos3.apple.com` is no longer blocked: the
+  only source found lists it among Apple hosts to allow. The `getbeamer.com` rule was removed because HaGeZi Multi PRO
+  already blocks its tracking hosts (`app`, `gmetrics` and `push`); the `gammaentertainment.com` rule was removed
+  because its note rested on a single report and no list in the collection blocks it.
+- Exact blocklist: removed 16 entries that HaGeZi Multi PRO or HaGeZi's encrypted DNS list already block with all
+  subdomains, and 9 CloudFront and rackcdn hosts whose owner could not be confirmed.
+- Exact allowlist: notes that named Block List Project now say which list in this collection blocks the domain today,
+  or that none does, and the `beacons-npa.gov.uk` note now names HaGeZi Multi PRO. No allow entries were removed.
 
 ## Filter changes on 2026-11-14
 
@@ -53,7 +87,7 @@ Flags:
 - `nxdomain`: DNS returned NXDOMAIN on 2026-11-13
 - `other`: note repeats the maintainer's earlier report, cited by commit
 
-Flag counts: `nxdomain` 5, `other` 57, `review` 1, `unverified_purpose` 69.
+Flag counts: `other` 37, `review` 1, `unverified_purpose` 51.
 
 ## Open questions
 
@@ -63,15 +97,7 @@ Entries that are still open: their purpose is unverified, or their DNS name did 
 
 - exact-blacklist.sql: `qt2-ngfts.lge.com` - LG host sharing ngfts.lge.com's Akamai name - Proposed for blocking in HaGeZi #309; role unverified. It shares ngfts.lge.com's CNAME and 'SDP 2.0' page; blocking may affect LG Content Store images. The old 'file transfer' note had no source.
 
-### DNS returned NXDOMAIN on 2026-11-13 (5)
-
-- regex-blacklist.sql: `(\.|^)gardensuny\.com$` - gardensuny.com - Maintainer reported it as malicious; DNS returned NXDOMAIN on 2026-11-13.
-- regex-blacklist.sql: `(\.|^)hokaclearances\.com$` - hokaclearances.com - Maintainer reported it as malicious; DNS returned NXDOMAIN on 2026-11-13.
-- regex-blacklist.sql: `(\.|^)lstartanalystconcepts\.org\.uk$` - lstartanalystconcepts.org.uk - Maintainer labeled it BitTorrent background tracking; DNS returned NXDOMAIN on 2026-11-13.
-- regex-blacklist.sql: `(\.|^)shadowadcity\.com$` - shadowadcity.com - Maintainer labeled it a 1337x.to redirect; DNS returned NXDOMAIN on 2026-11-13.
-- regex-blacklist.sql: `(\.|^)steamcommurnily\.com$` - steamcommurnily.com - Maintainer reported it as malicious; DNS returned NXDOMAIN on 2026-11-13.
-
-### Purpose unverified (68)
+### Purpose unverified (50)
 
 - exact-whitelist.sql: `clients.config.office.net` - Microsoft 365 host under the documented *.office.net endpoint - Exact role unverified. Microsoft documents only the *.office.net wildcard.
 - exact-whitelist.sql: `continuum.dds.microsoft.com` - Microsoft-run host - Purpose unverified (old note said Your Phone notification mirroring, no source found). No Microsoft document names this host; the Your Phone claim in the old note has no source.
@@ -89,7 +115,6 @@ Entries that are still open: their purpose is unverified, or their DNS name did 
 - exact-blacklist.sql: `sas.samsungcloudsolution.com` - Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung. Perflyst lists it without a per-host reason; the specific function of this host is not documented.
 - exact-blacklist.sql: `vdterms.samsungcloudsolution.com` - Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung. Perflyst lists it without a per-host reason; the specific function of this host is not documented.
 - exact-blacklist.sql: `samsungcloudsolution.com` - Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung. Perflyst lists it without a per-host reason; the specific function of this host is not documented.
-- exact-blacklist.sql: `prderrordumphsm.samsungcloudsolution.com` - Samsung TV host - Perflyst blocks it. Perflyst gives no reason.
 - exact-blacklist.sql: `aic.api.lgtviot.com` - LG webOS TV host (lgtviot.com) - Proposed for blocking in HaGeZi issue #309; role unverified. The old note said 'IoT telemetry'; no source states what the host does.
 - exact-blacklist.sql: `aic.lgtviot.com` - LG webOS TV host (lgtviot.com) - Proposed for blocking in HaGeZi issue #309; role unverified. The old note said 'IoT telemetry'; no source states what the host does.
 - exact-blacklist.sql: `aic.sports.lgtviot.com` - LG webOS TV host (lgtviot.com) - Listed in HaGeZi issue #309; role unverified. Only listed, no function stated.
@@ -108,23 +133,8 @@ Entries that are still open: their purpose is unverified, or their DNS name did 
 - exact-whitelist.sql: `rover.ebay.com` - eBay-run host (rover.ebay.com). The old note said eBay links pass through it; not verified.
 - exact-whitelist.sql: `static.opensubtitles.org` - OpenSubtitles host. Exact role unverified.
 - exact-whitelist.sql: `yastatic.net` - Yandex-run host (redirects to yandex.ru). Exact role unverified.
-- exact-blacklist.sql: `assets.sr.roku.com` - Roku service host - Listed in community Roku ad and telemetry blocklists; exact role unverified. Roku does not document this host; community lists block it as home-screen ads or telemetry.
-- exact-blacklist.sql: `cloudservices.roku.com` - Roku service host - Listed in community Roku ad and telemetry blocklists; exact role unverified. Roku does not document this host; community lists block it as home-screen ads or telemetry.
-- exact-blacklist.sql: `wwwimg.roku.com` - Roku service host - Listed in community Roku ad and telemetry blocklists; exact role unverified. Roku does not document this host; community lists block it as home-screen ads or telemetry.
 - exact-blacklist.sql: `events-test.redditmedia.com` - Reddit-run host - Maintainer labeled it an event collector; exact role unverified.
 - exact-blacklist.sql: `events-test-v2.redditmedia.com` - Reddit-run host - Maintainer labeled it an event collector; exact role unverified.
-- exact-blacklist.sql: `d3m1uefep57n8q.cloudfront.net` - CloudFront host - Maintainer added it in 2023 as Twitch video ads; customer unverified. CloudFront certificates do not show the customer.
-- exact-blacklist.sql: `a21ed24aedde648804e7-228765c84088fef4ff5e70f2710398e9.r17.cf1.rackcdn.com` - rackcdn.com host - Maintainer added it in 2023 as Twitch video ads; customer unverified. The CDN does not show which customer owns the container.
-- exact-blacklist.sql: `d20qwf0wrdtevy.cloudfront.net` - CloudFront host - Maintainer added it in 2023 as an ad server; customer unverified. CloudFront certificates do not show the customer.
-- exact-blacklist.sql: `d2u28gf9o4d1cv.cloudfront.net` - CloudFront host - Maintainer added it in 2023 as an ad server; customer unverified. CloudFront certificates do not show the customer.
-- exact-blacklist.sql: `d186rixkn5ruba.cloudfront.net` - CloudFront host - Labeled Twitch video ads in 2023, AdultTime ads since 2024; customer unverified. The maintainer's own labels conflict (Twitch in 2023, AdultTime from 2024; d3aqoihi2n8ty8 was briefly allowed as needed for Twitch live streams). The customer cannot be read from CloudFront.
-- exact-blacklist.sql: `d1ut6fykkt3imt.cloudfront.net` - CloudFront host - Labeled Twitch video ads in 2023, AdultTime ads since 2024; customer unverified. The maintainer's own labels conflict (Twitch in 2023, AdultTime from 2024; d3aqoihi2n8ty8 was briefly allowed as needed for Twitch live streams). The customer cannot be read from CloudFront.
-- exact-blacklist.sql: `d3aqoihi2n8ty8.cloudfront.net` - CloudFront host - Labeled Twitch video ads in 2023, AdultTime ads since 2024; customer unverified. The maintainer's own labels conflict (Twitch in 2023, AdultTime from 2024; d3aqoihi2n8ty8 was briefly allowed as needed for Twitch live streams). The customer cannot be read from CloudFront.
-- exact-blacklist.sql: `d306ecvlh9tfv.cloudfront.net` - CloudFront host - Maintainer added it in 2022 for AdultTime ads; customer unverified. Added on 2022-07-01 with the label 'AdultTime' (commit 795190d). CloudFront does not show the customer.
-- exact-blacklist.sql: `d3cqix4sol87xw.cloudfront.net` - CloudFront host - Maintainer added it in 2022 for AdultTime ads; customer unverified. Added on 2022-07-01 with the label 'AdultTime' (commit 795190d). CloudFront does not show the customer.
-- exact-blacklist.sql: `doug1izaerwt3.cloudfront.net` - CloudFront host - Maintainer labeled it IObit desktop pop-up ads; customer unverified. The IObit label is the maintainer's; CloudFront does not show the customer.
-- exact-blacklist.sql: `lynx-prod-beacon-alb-498367235.us-east-1.elb.amazonaws.com` - Amazon AWS load balancer named 'beacon' - Owner and purpose unverified. AWS load balancer names do not show the customer.
-- exact-blacklist.sql: `service.idsync.analytics.yahoo.com` - Yahoo analytics host (idsync) - Block List Project's ads list blocks it. Exact role unverified.
 - exact-blacklist.sql: `nevoai-iothub-54-prod.azure-devices.net` - Microsoft Azure IoT Hub instance named 'nevoai' - Customer unverified (old note: LG Smart TV). Azure IoT Hub names do not show the customer.
 - regex-whitelist.sql: `(\.|^)1drv\.ms$` - 1drv.ms and its subdomains. No fetched source names 1drv.ms; the old note said OneDrive short links.
 - regex-whitelist.sql: `^apps\.bdimg\.(com|jomodns\.com)$` - apps.bdimg.com and apps.bdimg.jomodns.com. No fetched source; the old note said Baidu static file CDN.
@@ -134,8 +144,6 @@ Entries that are still open: their purpose is unverified, or their DNS name did 
 - regex-whitelist.sql: `^europe\.(cp\.wd|smartscreen(-prod|))\.microsoft\.com$` - Microsoft hosts europe.cp.wd, europe.smartscreen and europe.smartscreen-prod.microsoft.com. Microsoft documents SmartScreen hosts, but these Europe names are not in the cached pages.
 - regex-whitelist.sql: `(\.|^)redd\.it$` - redd.it and its subdomains. No fetched source; the old note said Reddit images, video and short links.
 - regex-blacklist.sql: `(\.|^)antivirushub\.com$` - antivirushub.com - Maintainer added it as a 1337x.to redirect domain; it resolved on 2026-11-13. No source for the 1337x redirect claim; no blocklist in the maintainer's Pi-hole contains it.
-- regex-blacklist.sql: `(\.|^)buybuggle\.com$` - buybuggle.com - Maintainer reported it as a malware site; DNS gave no answer on 2026-11-13. No source for the malware claim.
-- regex-blacklist.sql: `(\.|^)deimos3\.apple\.com$` - deimos3.apple.com - Apple host; a Pi-hole forum post lists it among Apple hosts to allow. Decision 2026-11-14: kept. No evidence that blocking it breaks anything, and Apple's current network page does not list it; the old 'iTunes U tracking' label is unproven.
 - regex-blacklist.sql: `(\.|^)filesupdating\.com$` - filesupdating.com - Maintainer labeled it iTop VPN; it resolved on 2026-11-13. No source describes it.
 - regex-blacklist.sql: `(\.|^)samsungelectronics\.com$` - samsungelectronics.com - Perflyst's Samsung TV rules block it. Perflyst gives no description.
 - regex-blacklist.sql: `(\.|^)samsungrm\.net$` - samsungrm.net - Perflyst's Samsung TV rules block it. Perflyst gives no description.
@@ -1263,10 +1271,11 @@ Note: AD.nl (DPG Media) website - Caught by mmotti's original ad regex
 
 ### `beacons-npa.gov.uk`
 
-Note: Bannau Brycheiniog National Park Authority website - Caught by mmotti's original beacon regex
+Note: Bannau Brycheiniog National Park Authority website - HaGeZi Pro blocks it
 
 - Site title (function): Title of the page the host serves: `Bannau Brycheiniog National Park Authority`
 - mmotti's original regex list blocks it (tested with pihole-FTL) (allow_reason): mmotti's regexes that match it (tested with pihole-FTL): `^beacons?`
+- HaGeZi Pro blocks it (allow_reason): checked 2026-11-21: `pro.txt` contains `||beacons-npa.gov.uk^`
 
 ### `mytaxes.ads.taj.gov.jm`
 
@@ -1326,82 +1335,93 @@ Note: Cross Validated (stats.stackexchange.com) - Caught by mmotti's original st
 
 ### `ddns.net`
 
-Note: ddns.net dynamic DNS domain - Block List Project's malware list blocks it
+Note: ddns.net dynamic DNS domain - HaGeZi's DynDNS list blocks it; only the bare domain is allowed
 
 - Block List Project's malware list blocks it (allow_reason): Block List Project lists that contain it: `malware`
 - No HTTPS site; DNS answers (observation): DNS status: `NOERROR`
 - Note on the evidence: Decision 2026-11-14: kept. Only the bare domain is allowed; customer hostnames under it stay blockable.
+- HaGeZi's DynDNS list blocks it (allow_reason): checked 2026-11-21: `dyndns.txt` contains `||ddns.net^`
 
 ### `dyndns.org`
 
-Note: Dyn dynamic DNS domain (Oracle certificate) - Block List Project's malware list blocks it
+Note: Dyn dynamic DNS domain (Oracle certificate) - HaGeZi's DynDNS list blocks it; only the bare domain is allowed
 
 - Oracle certificate (owner): TLS certificate subject: `Oracle Corporation`
 - Block List Project's malware list blocks it (allow_reason): Block List Project lists that contain it: `malware`
 - Site (function): Title of the page the host serves: `My Dyn Account`
 - Note on the evidence: Decision 2026-11-14: kept. Only the bare domain is allowed; customer hostnames under it stay blockable.
+- HaGeZi's DynDNS list blocks it (allow_reason): checked 2026-11-21: `dyndns.txt` contains `||dyndns.org^`
 
 ### `fairuse.org`
 
-Note: fairuse.org - Block List Project's malware list blocks it; maintainer described it as a fair use information site
+Note: fairuse.org - HaGeZi's DynDNS list blocks it as a dynamic DNS domain; only the bare domain is allowed
 
 - Block List Project's malware list blocks it (allow_reason): Block List Project lists that contain it: `malware`
 - Maintainer's original line (function): commit [f3f9cbb](https://github.com/slyfox1186/pihole-regex/commit/f3f9cbb) added the line `fairuse.org -- Fair use information site - Blocked by the Block List Project malware list`
+- HaGeZi's DynDNS list blocks it (allow_reason): checked 2026-11-21: `dyndns.txt` contains `||fairuse.org^`. The earlier 'fair use information site' label had no source and was dropped.
 
 ### `g2a.com`
 
-Note: G2A.COM website - Block List Project's fraud list blocks it
+Note: G2A.COM website - No list in this collection blocks it now; Block List Project's fraud list did until 11.13.2026
 
 - Block List Project's fraud list blocks it (allow_reason): Block List Project lists that contain it: `fraud`
+- Not blocked by this collection (observation): checked 2026-11-21 against every adlist in `adlists.txt`; none contains it. Block List Project was dropped on 2026-11-13.
 
 ### `www.g2a.com`
 
-Note: G2A.COM website - Block List Project's fraud list blocks it
+Note: G2A.COM website - No list in this collection blocks it now; Block List Project's fraud list did until 11.13.2026
 
 - G2A runs it (owner): TLS certificate subject: `G2A.COM Limited`
 - Block List Project's fraud list blocks it (allow_reason): Block List Project lists that contain it: `fraud`
+- Not blocked by this collection (observation): checked 2026-11-21 against every adlist in `adlists.txt`; none contains it. Block List Project was dropped on 2026-11-13.
 
 ### `name.com`
 
-Note: Name.com domain registrar - Block List Project's redirect list blocks it
+Note: Name.com domain registrar - No list in this collection blocks it now; Block List Project's redirect list did until 11.13.2026
 
 - Site title (function): Title of the page the host serves: `Domain Names`
 - Block List Project's redirect list blocks it (allow_reason): Block List Project lists that contain it: `redirect`
+- Not blocked by this collection (observation): checked 2026-11-21 against every adlist in `adlists.txt`; none contains it. Block List Project was dropped on 2026-11-13.
 
 ### `wallpapers.com`
 
-Note: Wallpapers.com - Free wallpaper site - Block List Project's fraud list blocks it
+Note: Wallpapers.com - Free wallpaper site - No list in this collection blocks it now; Block List Project's fraud list did until 11.13.2026
 
 - Site title (function): Title of the page the host serves: `Wallpapers.com`
 - Block List Project's fraud list blocks it (allow_reason): Block List Project lists that contain it: `fraud`
+- Not blocked by this collection (observation): checked 2026-11-21 against every adlist in `adlists.txt`; none contains it. Block List Project was dropped on 2026-11-13.
 
 ### `www.wallpapers.com`
 
-Note: Wallpapers.com - Free wallpaper site - Block List Project's fraud list blocks it
+Note: Wallpapers.com - Free wallpaper site - No list in this collection blocks it now; Block List Project's fraud list did until 11.13.2026
 
 - Site title (function): Title of the page the host serves: `Wallpapers.com`
 - Block List Project's fraud list blocks it (allow_reason): Block List Project lists that contain it: `fraud`
+- Not blocked by this collection (observation): checked 2026-11-21 against every adlist in `adlists.txt`; none contains it. Block List Project was dropped on 2026-11-13.
 
 ### `www.trustpilot.com`
 
-Note: Trustpilot website - Block List Project's scam and phishing lists block it
+Note: Trustpilot website - No list in this collection blocks it now; Block List Project's scam and phishing lists did until 11.13.2026
 
 - Block List Project's scam list blocks it (allow_reason): Block List Project lists that contain it: `scam`
 - Block List Project's phishing list blocks it (allow_reason): Block List Project lists that contain it: `phishing`
+- Not blocked by this collection (observation): checked 2026-11-21 against every adlist in `adlists.txt`; none contains it. Block List Project was dropped on 2026-11-13.
 
 ### `bitcoin.org`
 
-Note: Bitcoin project website - Block List Project's crypto and fraud lists block it
+Note: Bitcoin project website - Prigent's cryptojacking list (Firebog) blocks it
 
 - Site title (function): Title of the page the host serves: `Bitcoin`
 - Block List Project's crypto list blocks it (allow_reason): Block List Project lists that contain it: `crypto`
+- Prigent's cryptojacking list blocks it (allow_reason): checked 2026-11-21: `https://v.firebog.net/hosts/Prigent-Crypto.txt` contains `bitcoin.org`
 
 ### `surveymonkey.com`
 
-Note: SurveyMonkey - Online surveys - Block List Project's malware list blocks it
+Note: SurveyMonkey - Online surveys - No list in this collection blocks it now; Block List Project's malware list did until 11.13.2026
 
 - Site title (function): Title of the page the host serves: `SurveyMonkey`
 - Block List Project's malware list blocks it (allow_reason): Block List Project lists that contain it: `malware`
+- Not blocked by this collection (observation): checked 2026-11-21 against every adlist in `adlists.txt`; none contains it. Block List Project was dropped on 2026-11-13.
 
 ### `secure.surveymonkey.com`
 
@@ -1419,10 +1439,11 @@ Note: Buffer - Social media management (redirects to buffer.com)
 
 ### `intercom.io`
 
-Note: Intercom website (redirects to intercom.com) - Block List Project's tracking list blocks it
+Note: Intercom website (redirects to intercom.com) - No list in this collection blocks it now; Block List Project's tracking list did until 11.13.2026
 
 - Redirects to Intercom's site (observation): Address the host's web page ends at: `intercom.com`
 - Block List Project's tracking list blocks it (allow_reason): Block List Project lists that contain it: `tracking`
+- Not blocked by this collection (observation): checked 2026-11-21 against every adlist in `adlists.txt`; none contains it. Block List Project was dropped on 2026-11-13.
 
 ### `insights-collector.gog.com`
 
@@ -1743,11 +1764,12 @@ Note: Material Design Icons host - Redirects to jsDelivr
 
 ### `mat1.gtimg.com`
 
-Note: Tencent static file host (China) - Block List Project's malware and abuse lists block it
+Note: Tencent static file host (China) - No list in this collection blocks it now; Block List Project's malware and abuse lists did until 11.13.2026
 
 - Tencent certificate (Chinese company name) (owner): TLS certificate subject: `E8`
 - Block List Project malware list (allow_reason): Block List Project lists that contain it: `malware`
 - Note on the evidence: Decision 2026-11-14: kept. Kept from the 2022 'crucial CDN' set; no list currently in this repo's adlists blocks it.
+- Not blocked by this collection (observation): checked 2026-11-21 against every adlist in `adlists.txt`; none contains it. Block List Project was dropped on 2026-11-13.
 
 ### `mat1.gtimg.com.tegsea.tc.qq.com`
 
@@ -2184,14 +2206,6 @@ Note: AdGuard DNS server - HaGeZi's DoH list blocks it; iPhones with an AdGuard 
 
 ## Exact blocklist (exact-blacklist.sql)
 
-### `acr0.samsungcloudsolution.com`
-
-Note: Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung
-
-- Samsung runs it (owner): TLS certificate subject: `Samsung Electronics`
-- Listed by Perflyst under Samsung (product): [https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt](https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt) lists `acr0.samsungcloudsolution.com` under the heading "Samsung"
-- Its CNAME is Samsung's ACR API (function): DNS CNAME chain: `acrapiprdnew.trafficmanager.net.`
-
 ### `fkp.samsungcloudsolution.com`
 
 Note: Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung
@@ -2256,13 +2270,6 @@ Note: Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV dat
 - Purpose of Perflyst's list (function): [https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt](https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt): "This is a blocklist to block smart-TVs sending metadata back home"
 - Flags: `unverified_purpose`. Perflyst lists it without a per-host reason; the specific function of this host is not documented.
 
-### `prderrordumphsm.samsungcloudsolution.com`
-
-Note: Samsung TV host - Perflyst blocks it
-
-- Perflyst blocks it under Samsung (product): [https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt](https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt) lists `prderrordumphsm.samsungcloudsolution.com` under the heading "Samsung"
-- Flags: `unverified_purpose`. Perflyst gives no reason.
-
 ### `aic.api.lgtviot.com`
 
 Note: LG webOS TV host (lgtviot.com) - Proposed for blocking in HaGeZi issue #309; role unverified
@@ -2313,38 +2320,6 @@ Note: LG webOS TV online service host - Role unverified
 - Looked up by the maintainer's LG webOS TV (observation): Lookups on the maintainer's network, by device type (LG webOS TV): `1`
 - Flags: `unverified_purpose`. No source describes it.
 
-### `assets.sr.roku.com`
-
-Note: Roku service host - Listed in community Roku ad and telemetry blocklists; exact role unverified
-
-- Listed in a community Roku ad and telemetry blocklist (product): [https://gist.githubusercontent.com/sidward35/cea28bedd0ec0b1bceec8c2b22c163c4/raw](https://gist.githubusercontent.com/sidward35/cea28bedd0ec0b1bceec8c2b22c163c4/raw): "0.0.0.0 cloudservices.roku.com 0.0.0.0 assets.sr.roku.com 0.0.0.0 prod.mobile.roku.com 0.0.0.0 wwwimg.roku.com"
-- Block List Project's tracking list also blocks it (observation): Block List Project lists that contain it: `tracking`
-- Flags: `unverified_purpose`. Roku does not document this host; community lists block it as home-screen ads or telemetry.
-
-### `cloudservices.roku.com`
-
-Note: Roku service host - Listed in community Roku ad and telemetry blocklists; exact role unverified
-
-- Listed in a community Roku ad and telemetry blocklist (product): [https://gist.githubusercontent.com/sidward35/cea28bedd0ec0b1bceec8c2b22c163c4/raw](https://gist.githubusercontent.com/sidward35/cea28bedd0ec0b1bceec8c2b22c163c4/raw): "0.0.0.0 cloudservices.roku.com 0.0.0.0 assets.sr.roku.com 0.0.0.0 prod.mobile.roku.com 0.0.0.0 wwwimg.roku.com"
-- Block List Project's tracking list also blocks it (observation): Block List Project lists that contain it: `tracking`
-- Flags: `unverified_purpose`. Roku does not document this host; community lists block it as home-screen ads or telemetry.
-
-### `wwwimg.roku.com`
-
-Note: Roku service host - Listed in community Roku ad and telemetry blocklists; exact role unverified
-
-- Listed in a community Roku ad and telemetry blocklist (product): [https://gist.githubusercontent.com/sidward35/cea28bedd0ec0b1bceec8c2b22c163c4/raw](https://gist.githubusercontent.com/sidward35/cea28bedd0ec0b1bceec8c2b22c163c4/raw): "0.0.0.0 cloudservices.roku.com 0.0.0.0 assets.sr.roku.com 0.0.0.0 prod.mobile.roku.com 0.0.0.0 wwwimg.roku.com"
-- Block List Project's tracking list also blocks it (observation): Block List Project lists that contain it: `tracking`
-- Flags: `unverified_purpose`. Roku does not document this host; community lists block it as home-screen ads or telemetry.
-
-### `doh.dns.apple.com`
-
-Note: Apple DNS over HTTPS (DoH) server - Apple lists it for DoH
-
-- Apple runs it (owner): TLS certificate subject: `Apple Inc.`
-- Apple's network requirements (function): [https://support.apple.com/en-us/101555](https://support.apple.com/en-us/101555): "doh.dns.apple.com 443 TCP iOS, iPadOS, tvOS, macOS, and visionOS Used for DNS over HTTPS (DoH)"
-- Looked up by the maintainer's iPhone (observation): Lookups on the maintainer's network, by device type (iPhone): `12`
-
 ### `datarouter.ol.epicgames.com`
 
 Note: Epic Games data collection (hardware, operating system and app performance data) - Data Router
@@ -2379,47 +2354,11 @@ Note: Reddit-run host - Maintainer labeled it an event collector; exact role unv
 - Maintainer's earlier note (product): commit [10a4010](https://github.com/slyfox1186/pihole-regex/commit/10a4010) added the line `events-test-v2.redditmedia.com -- Reddit event collector (same service as events.redditmedia.com)`
 - Flags: `other`, `unverified_purpose`.
 
-### `unagi-na.amazon.com`
-
-Note: Amazon device and app metrics host - Fire TV analytics uploads go here
-
-- Amazon lists it for metrics and reporting (owner): [https://docs.aws.amazon.com/workspaces-web/latest/adminguide/allowed.html](https://docs.aws.amazon.com/workspaces-web/latest/adminguide/allowed.html): "WorkSpaces Secure Browser metrics and reporting *.execute-api. { region} .amazonaws.com unagi-na.amazon.com"
-- dumbtv.org: Fire TV analytics pipeline (function): [https://dumbtv.org/blocked](https://dumbtv.org/blocked): "An analytics pipeline that uploads reports from several Amazon services to unagi-na.amazon.com"
-- Looked up 2,346 times by the maintainer's Samsung device and 209 by iPhones (observation): Lookups on the maintainer's network, by device type (Samsung device): `2346`
-- HaGeZi's lists in this Pi-hole block it (observation): gravity_rules: `||unagi-na.amazon.com^ in raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt`
-- Freevee report not confirmed by another US user (observation): [https://github.com/hagezi/dns-blocklists/issues/186](https://github.com/hagezi/dns-blocklists/issues/186): "So it wouldn't be `unagi-na.amazon.com`, would it? If it works for me?"
-- Blink report: HaGeZi kept it blocked (observation): [https://github.com/hagezi/dns-blocklists/issues/11586](https://github.com/hagezi/dns-blocklists/issues/11586): "Of those only `unagi-na.amazon.com` is blocked in Pro and Native - Amazon."
-- Note on the evidence: Decision 2026-11-14: kept. HaGeZi Pro and HaGeZi's Amazon tracker list also block it; reports that blocking it breaks Freevee or Blink were not confirmed (HaGeZi #186, #11586).
-
-### `ipv6.unagi-na.amazon.com`
-
-Note: Amazon host ipv6.unagi-na (see unagi-na.amazon.com: device and app metrics)
-
-- unagi-na is Amazon metrics (function): [https://dumbtv.org/blocked](https://dumbtv.org/blocked): "An analytics pipeline that uploads reports from several Amazon services to unagi-na.amazon.com"
-- Resolves through CloudFront (observation): DNS CNAME chain: `cloudfront.net`
-
-### `applytics.nordvpn.com`
-
-Note: NordVPN analytics host - Contacted even with analytics turned off, per a report on NordVPN's issue tracker
-
-- Report on NordVPN's own issue tracker (function): [https://github.com/NordSecurity/nordvpn-linux/issues/1035](https://github.com/NordSecurity/nordvpn-linux/issues/1035): "many requests are being sent to `applytics.nordvpn.com` during use, despite analytics being turned off"
-- Looked up 1,952 times by the maintainer's desktop PC (observation): Lookups on the maintainer's network, by device type (Linux desktop PC): `1952`
-- Block List Project's ads list also blocks it (observation): Block List Project lists that contain it: `ads`
-
 ### `usage.truenas.com`
 
 Note: TrueNAS analytics data collection host
 
 - TrueNAS security docs (function): [https://www.truenas.com/docs/solutions/optimizations/security/](https://www.truenas.com/docs/solutions/optimizations/security/): "Analytics data collection to https://usage.truenas.com/submit"
-
-### `munchkin.marketo.net`
-
-Note: Adobe Marketo Munchkin - Marketing tracking script that records site visitors
-
-- Adobe runs it (owner): TLS certificate subject: `Adobe Inc`
-- Adobe: Munchkin tracks visitors (function): [https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/add-munchkin-tracking-code-to-your-website](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/add-munchkin-tracking-code-to-your-website): "custom JavaScript tracking code, called Munchkin, tracks all individuals who visit your website"
-- Loaded from this host (function): [https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/javascriptapi/leadtracking/lead-tracking](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/javascriptapi/leadtracking/lead-tracking): "s.src = '//munchkin.marketo.net/munchkin.js'"
-- Looked up by the maintainer's desktop PC (observation): Lookups on the maintainer's network, by device type (Linux desktop PC): `11`
 
 ### `snap.licdn.com`
 
@@ -2427,13 +2366,6 @@ Note: LinkedIn Insight Tag script host
 
 - LinkedIn runs it (owner): TLS certificate subject: `Linkedin Corporation`
 - The Insight Tag loads from it (function): [https://www.rudderstack.com/docs/destinations/streaming-destinations/linkedin-insight-tag/](https://www.rudderstack.com/docs/destinations/streaming-destinations/linkedin-insight-tag/): "RudderStack loads the LinkedIn Insight Tag native SDK from https://snap.licdn.com"
-- Block List Project's ads list also blocks it (observation): Block List Project lists that contain it: `ads`
-
-### `cdn.inspectlet.com`
-
-Note: Inspectlet session recording script host
-
-- Inspectlet's install snippet loads it (function): [https://docs.inspectlet.com/docs/installing-inspectlet](https://docs.inspectlet.com/docs/installing-inspectlet): "'://cdn.inspectlet.com/inspectlet.js'"
 - Block List Project's ads list also blocks it (observation): Block List Project lists that contain it: `ads`
 
 ### `banners.hangmyads.com`
@@ -2445,81 +2377,6 @@ Note: HangMyAds ad network (Portugal) - Maintainer labeled this host as serving 
 - mmotti's original banner regex also blocks it (observation): mmotti's regexes that match it (tested with pihole-FTL): `banners`
 - Maintainer's earlier note (product): commit [2c53c1f](https://github.com/slyfox1186/pihole-regex/commit/2c53c1f) added the line `banners.hangmyads.com -- HangMyAds ad network banners`
 - Flags: `other`.
-
-### `d3m1uefep57n8q.cloudfront.net`
-
-Note: CloudFront host - Maintainer added it in 2023 as Twitch video ads; customer unverified
-
-- Maintainer's original line (product): commit [8d9a6a5](https://github.com/slyfox1186/pihole-regex/commit/8d9a6a5) added the line `(1, 'd3m1uefep57n8q.cloudfront.net', 1, 'Twitch - Video ads - SlyEBL')`
-- Flags: `unverified_purpose`. CloudFront certificates do not show the customer.
-
-### `a21ed24aedde648804e7-228765c84088fef4ff5e70f2710398e9.r17.cf1.rackcdn.com`
-
-Note: rackcdn.com host - Maintainer added it in 2023 as Twitch video ads; customer unverified
-
-- Maintainer's original line (product): commit [a05d2b9](https://github.com/slyfox1186/pihole-regex/commit/a05d2b9) added the line `(1, 'a21ed24aedde648804e7-228765c84088fef4ff5e70f2710398e9.r17.cf1.rackcdn.com', 1, 'twitch.tv - Video ads - SlyEWL')`
-- Akamai CNAME (observation): DNS CNAME chain: `a19.dscg10.akamai.net.`
-- Flags: `unverified_purpose`. The CDN does not show which customer owns the container.
-
-### `d20qwf0wrdtevy.cloudfront.net`
-
-Note: CloudFront host - Maintainer added it in 2023 as an ad server; customer unverified
-
-- Maintainer's original line (product): commit [3e8e2c9](https://github.com/slyfox1186/pihole-regex/commit/3e8e2c9) added the line `(1, 'd20qwf0wrdtevy.cloudfront.net', 1, 'Cloudfront CDN ad server - SlyEBL')`
-- Flags: `unverified_purpose`. CloudFront certificates do not show the customer.
-
-### `d2u28gf9o4d1cv.cloudfront.net`
-
-Note: CloudFront host - Maintainer added it in 2023 as an ad server; customer unverified
-
-- Maintainer's original line (product): commit [3e8e2c9](https://github.com/slyfox1186/pihole-regex/commit/3e8e2c9) added the line `(1, 'd2u28gf9o4d1cv.cloudfront.net', 1, 'Cloudfront CDN ad server - SlyEBL')`
-- Flags: `unverified_purpose`. CloudFront certificates do not show the customer.
-
-### `d186rixkn5ruba.cloudfront.net`
-
-Note: CloudFront host - Labeled Twitch video ads in 2023, AdultTime ads since 2024; customer unverified
-
-- Maintainer's original 2023 line (product): commit [ca9d5a1](https://github.com/slyfox1186/pihole-regex/commit/ca9d5a1) added the line `(1, 'd186rixkn5ruba.cloudfront.net', 1, 'Twitch.tv - Video Ads - SlyEBL')`
-- Maintainer's 2024 AdultTime label (product): commit [cabdbab](https://github.com/slyfox1186/pihole-regex/commit/cabdbab) added the line `d186rixkn5ruba.cloudfront.net -- AdultTime Ads`
-- Flags: `unverified_purpose`. The maintainer's own labels conflict (Twitch in 2023, AdultTime from 2024; d3aqoihi2n8ty8 was briefly allowed as needed for Twitch live streams). The customer cannot be read from CloudFront.
-
-### `d1ut6fykkt3imt.cloudfront.net`
-
-Note: CloudFront host - Labeled Twitch video ads in 2023, AdultTime ads since 2024; customer unverified
-
-- Maintainer's original 2023 line (product): commit [ca9d5a1](https://github.com/slyfox1186/pihole-regex/commit/ca9d5a1) added the line `(1, 'd1ut6fykkt3imt.cloudfront.net', 1, 'Twitch.tv - Video Ads - SlyEBL')`
-- Maintainer's 2024 AdultTime label (product): commit [cabdbab](https://github.com/slyfox1186/pihole-regex/commit/cabdbab) added the line `d1ut6fykkt3imt.cloudfront.net -- AdultTime Ads`
-- Flags: `unverified_purpose`. The maintainer's own labels conflict (Twitch in 2023, AdultTime from 2024; d3aqoihi2n8ty8 was briefly allowed as needed for Twitch live streams). The customer cannot be read from CloudFront.
-
-### `d3aqoihi2n8ty8.cloudfront.net`
-
-Note: CloudFront host - Labeled Twitch video ads in 2023, AdultTime ads since 2024; customer unverified
-
-- Maintainer's original 2023 line (product): commit [ca9d5a1](https://github.com/slyfox1186/pihole-regex/commit/ca9d5a1) added the line `(1, 'd3aqoihi2n8ty8.cloudfront.net', 1, 'Twitch.tv - Video Ads - SlyEBL')`
-- Maintainer's 2024 AdultTime label (product): commit [cabdbab](https://github.com/slyfox1186/pihole-regex/commit/cabdbab) added the line `d3aqoihi2n8ty8.cloudfront.net -- AdultTime Ads`
-- Flags: `unverified_purpose`. The maintainer's own labels conflict (Twitch in 2023, AdultTime from 2024; d3aqoihi2n8ty8 was briefly allowed as needed for Twitch live streams). The customer cannot be read from CloudFront.
-
-### `d306ecvlh9tfv.cloudfront.net`
-
-Note: CloudFront host - Maintainer added it in 2022 for AdultTime ads; customer unverified
-
-- Maintainer's label when added (product): commit [795190d](https://github.com/slyfox1186/pihole-regex/commit/795190d) added the line `(0, 'd306ecvlh9tfv.cloudfront.net', 1, 'SlyEBL - AdultTime')`
-- Flags: `unverified_purpose`. Added on 2022-07-01 with the label 'AdultTime' (commit 795190d). CloudFront does not show the customer.
-
-### `d3cqix4sol87xw.cloudfront.net`
-
-Note: CloudFront host - Maintainer added it in 2022 for AdultTime ads; customer unverified
-
-- Maintainer's label when added (product): commit [795190d](https://github.com/slyfox1186/pihole-regex/commit/795190d) added the line `(0, 'd3cqix4sol87xw.cloudfront.net', 1, 'SlyEBL - AdultTime')`
-- Flags: `unverified_purpose`. Added on 2022-07-01 with the label 'AdultTime' (commit 795190d). CloudFront does not show the customer.
-
-### `doug1izaerwt3.cloudfront.net`
-
-Note: CloudFront host - Maintainer labeled it IObit desktop pop-up ads; customer unverified
-
-- Block List Project's ads list also blocks it (observation): Block List Project lists that contain it: `ads`
-- Maintainer's earlier note (product): commit [0a7a3ac](https://github.com/slyfox1186/pihole-regex/commit/0a7a3ac) added the line `doug1izaerwt3.cloudfront.net -- IObit desktop app pop-up ads`
-- Flags: `unverified_purpose`. The IObit label is the maintainer's; CloudFront does not show the customer.
 
 ### `codes.iobit.com`
 
@@ -2545,28 +2402,12 @@ Note: IObit host - Maintainer labeled it IObit surveys
 - Maintainer's earlier note (product): commit [f3f9cbb](https://github.com/slyfox1186/pihole-regex/commit/f3f9cbb) added the line `survey.iobit.com -- IObit surveys`
 - Flags: `other`.
 
-### `stats.iobit.com`
-
-Note: IObit host - mmotti's original stats regex also blocks it
-
-- mmotti's original stats regex also blocks it (observation): mmotti's regexes that match it (tested with pihole-FTL): `^stat`
-- Maintainer's earlier note (product): commit [0a7a3ac](https://github.com/slyfox1186/pihole-regex/commit/0a7a3ac) added the line `stats.iobit.com -- IObit desktop app pop-up ads`
-- Flags: `other`.
-
 ### `api.itopvpn.com`
 
 Note: iTop VPN host - Maintainer reported it as telemetry
 
 - Maintainer's original line (product): commit [c377502](https://github.com/slyfox1186/pihole-regex/commit/c377502) added the line `(1, 'api.itopvpn.com', 1, 'iTop VPN Telemetry - SlyEBL')`
 - Its root page redirects to google.com (observation): Address the host's web page ends at: `www.google.com`
-- Flags: `other`.
-
-### `stats.itopvpn.com`
-
-Note: iTop VPN host - Maintainer labeled it telemetry; mmotti's original stats regex also blocks it
-
-- mmotti's original stats regex also blocks it (observation): mmotti's regexes that match it (tested with pihole-FTL): `^stat`
-- Maintainer's earlier note (product): commit [cabdbab](https://github.com/slyfox1186/pihole-regex/commit/cabdbab) added the line `stats.itopvpn.com -- iTop VPN Telemetry`
 - Flags: `other`.
 
 ### `bench.utorrent.com`
@@ -2577,25 +2418,11 @@ Note: uTorrent host - Maintainer reported it serves ads in the desktop app
 - Maintainer's earlier note (product): commit [f3f9cbb](https://github.com/slyfox1186/pihole-regex/commit/f3f9cbb) added the line `bench.utorrent.com -- uTorrent desktop app ads`
 - Flags: `other`.
 
-### `lynx-prod-beacon-alb-498367235.us-east-1.elb.amazonaws.com`
-
-Note: Amazon AWS load balancer named 'beacon' - Owner and purpose unverified
-
-- Block List Project's basic list also blocks it (observation): Block List Project lists that contain it: `basic`
-- Flags: `unverified_purpose`. AWS load balancer names do not show the customer.
-
 ### `prod.ups-ats.us-east-1.aolp-ds-prd.aws.oath.cloud`
 
 Note: oath.cloud host whose CNAME names an online-targeting service
 
 - CNAME to Oath's online targeting service (function): DNS CNAME chain: `dcs-online-targeting-prd.aws.oath.cloud.`
-
-### `service.idsync.analytics.yahoo.com`
-
-Note: Yahoo analytics host (idsync) - Block List Project's ads list blocks it
-
-- Block List Project's ads list also blocks it (observation): Block List Project lists that contain it: `ads`
-- Flags: `unverified_purpose`. Exact role unverified.
 
 ### `mindfieldonline.com`
 
@@ -2940,9 +2767,9 @@ Note: Topaz Labs hosts (blog, community, docs, downloads, guide, help, learn, mo
   - models-r2.topazlabs.com: DNS NOERROR; not named in the sources fetched; 0 lookups on the maintainer's network
   - models.topazlabs.com: DNS NOERROR; not named in the sources fetched; 0 lookups on the maintainer's network
 
-### `^(calendar|dns|docs|home|inbox|clients[1-6]?|mail|meet|pay(|ments)|photos|sites|time|wallet|workspace|www)\.google\.com$`
+### `^(calendar|docs|home|inbox|clients[1-6]?|mail|meet|pay(|ments)|photos|sites|time|wallet|workspace|www)\.google\.com$`
 
-Note: Google hosts calendar, dns, docs, home, inbox, clients, mail, meet, pay, photos, sites, time, wallet, workspace and www.google.com
+Note: Google hosts calendar, docs, home, inbox, clients, mail, meet, pay, photos, sites, time, wallet, workspace and www.google.com
 
 - Pi-hole forum: Google Maps and other Google services (product): [https://discourse.pi-hole.net/raw/212](https://discourse.pi-hole.net/raw/212) lists `clients4.google.com` under the heading "Google Maps and other Google services"
 - Used on the maintainer's network (observation): Matching lookups on the maintainer's network: `mail.google.com`
@@ -3597,14 +3424,6 @@ Note: LG Channels app launch hosts (aic reported to HaGeZi) and their eic/kic re
 
 ## Regex blocklist (regex-blacklist.sql)
 
-### `^a-content-[a-z0-9]+-[0-9]+\.[a-z]{2}-[a-z]+-[0-9]\.elb\.amazonaws\.com$`
-
-Note: a-content AWS load balancer pattern - No matches in the 2.17M-name test corpus on 2026-11-13
-
-- Matches 0 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `0`
-- Maintainer's earlier note (product): commit [2c047d2](https://github.com/slyfox1186/pihole-regex/commit/2c047d2) added the line `^a-content-[a-z0-9]+-[0-9]+\.[a-z]{2}-[a-z]+-[0-9]\.elb\.amazonaws\.com$ -- Yahoo`
-- Flags: `other`. Decision 2026-11-14: kept. No current matches, so it neither blocks nor breaks anything today.
-
 ### `^aax(-[a-z0-9]+)*(\.[a-z0-9-]+)?\.amazon\.com$`
 
 Note: Amazon aax hosts (aax-*.amazon.com) - Most of its 20 matches come from ad blocklists
@@ -3626,21 +3445,6 @@ Note: Generic rule - Blocks names that start with adimage or adimg
 
 - Same rule as mmotti's regex list (product): [https://raw.githubusercontent.com/mmotti/pihole-regex/master/regex.list](https://raw.githubusercontent.com/mmotti/pihole-regex/master/regex.list): "^adim(age|g)s?[0-9]*[_.-]"
 - Matches 37 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `37`
-
-### `(\.|^)ad-score\.com$`
-
-Note: ad-score.com - Seven lists block it, including HaGeZi Pro, EasyList, AdGuard DNS and Peter Lowe's
-
-- Seven lists in the maintainer's Pi-hole block it (observation): Number of blocklists (in the maintainer's Pi-hole) that contain `ad-score.com`: `7`
-- Note on the evidence: The maintainer's earlier note said Overwolf desktop app; no source ties ad-score.com to Overwolf.
-
-### `^adserver-.*\.amazonaws\.com$`
-
-Note: Matches amazonaws.com names starting adserver- (the 14 corpus matches are load balancers)
-
-- Matches 14 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `14`
-- pihole-FTL: an S3 name also matches (scope): pihole-FTL regex-test results (full record): {"adserver-example.s3.amazonaws.com": "match", "adserver-2084671375.us-east-1.elb.amazonaws.com": "match"}
-- Note on the evidence: Who runs each name cannot be seen.
 
 ### `^(.+[_.-])?adse?rv(er?|ice)?s?[0-9]*[_.-]`
 
@@ -3719,67 +3523,12 @@ Note: api.*.hismarttv.com hosts - Perflyst's Smart TV rules block them
 - Perflyst's Smart TV regex list has the same rule (product): [https://perflyst.github.io/PiHoleBlocklist/regex.list](https://perflyst.github.io/PiHoleBlocklist/regex.list): "^api\..*\.hismarttv\.com$"
 - Matches 3 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `3`
 
-### `(\.|^)buybuggle\.com$`
-
-Note: buybuggle.com - Maintainer reported it as a malware site; DNS gave no answer on 2026-11-13
-
-- buybuggle.com DNS status on 2026-11-13 (observation): DNS status `buybuggle.com`: `no-answer`
-- Maintainer's earlier note (product): commit [5f939e2](https://github.com/slyfox1186/pihole-regex/commit/5f939e2) added the line `(\.|^)buybuggle\.com$ -- Hacker website - They install a backdoor trojan on your pc and remote in secretly to record you on webcam and copy a list of all your file paths`
-- Flags: `other`, `unverified_purpose`. No source for the malware claim.
-
 ### `^(collect|usage)-(eu|us)-fy[0-9]+\.myhomescreen\.tv$`
 
 Note: Panasonic Viera TV hosts collect-/usage-*.myhomescreen.tv - Perflyst blocks them
 
 - Perflyst blocks these hosts under Panasonic (product): [https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt](https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt) lists `collect-us-fy2022.myhomescreen.tv` under the heading "Panasonic Viera &amp; panny tv"
 - Matches 36 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `36`
-
-### `^count(ers?)?[0-9]*(\.|[_-][^.]*\.)[^.]+\.[^.]+`
-
-Note: Generic rule - Blocks count/counter names with three or more labels (counter-strike.net still works)
-
-- Matches 272 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `272`
-- Narrowed in the 2026-11-12 audit (product): commit [f3f9cbb](https://github.com/slyfox1186/pihole-regex/commit/f3f9cbb) message: "make the pixel, beacon and count rules need three labels"
-- mmotti's original count rule (product): [https://raw.githubusercontent.com/mmotti/pihole-regex/master/regex.list](https://raw.githubusercontent.com/mmotti/pihole-regex/master/regex.list): "^count(ers?)?[0-9]*[_.-]"
-
-### `(\.|^)deimos3\.apple\.com$`
-
-Note: deimos3.apple.com - Apple host; a Pi-hole forum post lists it among Apple hosts to allow
-
-- Named on the Pi-hole forum's Apple allow list (observation): [https://discourse.pi-hole.net/raw/212](https://discourse.pi-hole.net/raw/212): "*.digicert.com deimos3.apple.com *.symcb.com"
-- Flags: `unverified_purpose`. Decision 2026-11-14: kept. No evidence that blocking it breaks anything, and Apple's current network page does not list it; the old 'iTunes U tracking' label is unproven.
-
-### `^dms-[a-z0-9]+report\.wc\.yahoodns\.net$`
-
-Note: Yahoo DNS name pattern dms-*report.wc.yahoodns.net - No matches in the 2.17M-name test corpus on 2026-11-13
-
-- Matches 0 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `0`
-- Maintainer's earlier note (product): commit [2c047d2](https://github.com/slyfox1186/pihole-regex/commit/2c047d2) added the line `^dms-[a-z0-9]+report\.wc\.yahoodns\.net$ -- Yahoo`
-- Flags: `other`. Decision 2026-11-14: kept. No current matches, so it neither blocks nor breaks anything today.
-
-### `^dns-[a-z0-9]+\.sombrero\.yahoo\.net$`
-
-Note: Yahoo DNS name pattern dns-*.sombrero.yahoo.net - No matches in the 2.17M-name test corpus on 2026-11-13
-
-- Matches 0 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `0`
-- Maintainer's earlier note (product): commit [2c047d2](https://github.com/slyfox1186/pihole-regex/commit/2c047d2) added the line `^dns-[a-z0-9]+\.sombrero\.yahoo\.net$ -- Yahoo`
-- Flags: `other`. Decision 2026-11-14: kept. No current matches, so it neither blocks nor breaks anything today.
-
-### `^ds-beap[0-9]\.[a-z]{2}\.[a-z0-9]+\.yahoodns\.net$`
-
-Note: Yahoo DNS name pattern ds-beap*.yahoodns.net - No matches in the 2.17M-name test corpus on 2026-11-13
-
-- Matches 0 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `0`
-- Maintainer's earlier note (product): commit [2c047d2](https://github.com/slyfox1186/pihole-regex/commit/2c047d2) added the line `^ds-beap[0-9]\.[a-z]{2}\.[a-z0-9]+\.yahoodns\.net$ -- Yahoo`
-- Flags: `other`. Decision 2026-11-14: kept. No current matches, so it neither blocks nor breaks anything today.
-
-### `^ds-global[0-9]\.l[0-9]\.search\.[a-z0-9]+\.yahoo\.com$`
-
-Note: Yahoo search host pattern ds-global*.search.*.yahoo.com - No matches in the 2.17M-name test corpus on 2026-11-13
-
-- Matches 0 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `0`
-- Maintainer's earlier note (product): commit [0b382a7](https://github.com/slyfox1186/pihole-regex/commit/0b382a7) added the line `^ds-global[0-9]\.l[0-9]\.search\.[a-z0-9]+\.yahoo\.com$ -- Yahoo`
-- Flags: `other`. Decision 2026-11-14: kept. No current matches, so it neither blocks nor breaks anything today.
 
 ### `(\.|^)filesupdating\.com$`
 
@@ -3789,60 +3538,12 @@ Note: filesupdating.com - Maintainer labeled it iTop VPN; it resolved on 2026-11
 - Maintainer's earlier note (product): commit [2c047d2](https://github.com/slyfox1186/pihole-regex/commit/2c047d2) added the line `(\.|^)filesupdating\.com$ -- iTop VPN`
 - Flags: `other`, `unverified_purpose`. No source describes it.
 
-### `(\.|^)gammaentertainment\.com$`
-
-Note: gammaentertainment.com - Maintainer labeled it AdultTime
-
-- gammaentertainment.com DNS status on 2026-11-13 (observation): DNS status `gammaentertainment.com`: `NOERROR`
-- Maintainer's earlier note (product): commit [2c047d2](https://github.com/slyfox1186/pihole-regex/commit/2c047d2) added the line `(\.|^)gammaentertainment\.com$ -- AdultTime`
-- Flags: `other`.
-
-### `(\.|^)gardensuny\.com$`
-
-Note: gardensuny.com - Maintainer reported it as malicious; DNS returned NXDOMAIN on 2026-11-13
-
-- gardensuny.com DNS status on 2026-11-13 (observation): DNS status `gardensuny.com`: `NXDOMAIN`
-- Maintainer's earlier note (product): commit [5f939e2](https://github.com/slyfox1186/pihole-regex/commit/5f939e2) added the line `(\.|^)gardensuny\.com$ -- Hacker website - They install a backdoor trojan on your pc and remote in secretly to record you on webcam and copy a list of all your file paths`
-- Flags: `nxdomain`, `other`.
-
-### `(\.|^)getbeamer\.com$`
-
-Note: getbeamer.com and its subdomains - Maintainer reported it on AdultTime; its gmetrics host is in a blocklist
-
-- getbeamer.com DNS status on 2026-11-13 (observation): DNS status `getbeamer.com`: `NOERROR`
-- Its metrics host is in a blocklist (observation): Sample matching names: `gmetrics.getbeamer.com`
-- Maintainer's earlier note (product): commit [0a7a3ac](https://github.com/slyfox1186/pihole-regex/commit/0a7a3ac) added the line `(\.|^)getbeamer\.com$ -- Beamer announcement and notification widget (seen on AdultTime)`
-- Flags: `other`.
-
-### `(^|\.)giraffic\.com$`
-
-Note: giraffic.com - Perflyst's Smart TV rules block it
-
-- Perflyst's Smart TV regex list has the same rule (product): [https://perflyst.github.io/PiHoleBlocklist/regex.list](https://perflyst.github.io/PiHoleBlocklist/regex.list): "(^|\.)giraffic\.com$"
-- giraffic.com DNS status on 2026-11-13 (observation): DNS status `giraffic.com`: `NOERROR`
-
-### `(\.|^)hokaclearances\.com$`
-
-Note: hokaclearances.com - Maintainer reported it as malicious; DNS returned NXDOMAIN on 2026-11-13
-
-- hokaclearances.com DNS status on 2026-11-13 (observation): DNS status `hokaclearances.com`: `NXDOMAIN`
-- Maintainer's earlier note (product): commit [5f939e2](https://github.com/slyfox1186/pihole-regex/commit/5f939e2) added the line `(\.|^)hokaclearances\.com$ -- Hacker website - They install a backdoor trojan on your pc and remote in secretly to record you on webcam and copy a list of all your file paths`
-- Flags: `nxdomain`, `other`.
-
 ### `(\.|^)internetat\.tv$`
 
 Note: internetat.tv - Perflyst's Smart TV rules block it
 
 - Perflyst's Smart TV regex list has the same rule (product): [https://perflyst.github.io/PiHoleBlocklist/regex.list](https://perflyst.github.io/PiHoleBlocklist/regex.list): "(^|\.)internetat\.tv$"
 - Matches 3 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `3`
-
-### `(\.|^)lgsmartad\.com$`
-
-Note: lgsmartad.com - Perflyst's Smart TV rules and nine lists, including HaGeZi's LG list, block it
-
-- Perflyst's Smart TV regex list has the same rule (product): [https://perflyst.github.io/PiHoleBlocklist/regex.list](https://perflyst.github.io/PiHoleBlocklist/regex.list): "(^|\.)lgsmartad\.com"
-- Matches 110 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `110`
-- Nine lists in the maintainer's Pi-hole block it (observation): Number of blocklists (in the maintainer's Pi-hole) that contain `lgsmartad.com`: `9`
 
 ### `(^|\.)lgtvcommon\.com$`
 
@@ -3861,52 +3562,12 @@ Note: Matches log.spotify.com, log plus any digits under spotify.com, and subdom
 - pihole-FTL: subdomain matches (scope): pihole-FTL regex-test results (full record): {"log.spotify.com": "match", "log2.spotify.com": "match", "log123.spotify.com": "match", "x.log2.spotify.com": "match", "logger.spotify.com": "no match"}
 - pihole-FTL: logger does not match (scope): pihole-FTL regex-test results (full record): {"log.spotify.com": "match", "log2.spotify.com": "match", "log123.spotify.com": "match", "x.log2.spotify.com": "match", "logger.spotify.com": "no match"}
 
-### `(\.|^)lstartanalystconcepts\.org\.uk$`
-
-Note: lstartanalystconcepts.org.uk - Maintainer labeled it BitTorrent background tracking; DNS returned NXDOMAIN on 2026-11-13
-
-- lstartanalystconcepts.org.uk DNS status on 2026-11-13 (observation): DNS status `lstartanalystconcepts.org.uk`: `NXDOMAIN`
-- Maintainer's earlier note (product): commit [25a4252](https://github.com/slyfox1186/pihole-regex/commit/25a4252) added the line `(\.|^)lstartanalystconcepts\.org\.uk$ -- BitTorrent - Background Tracking`
-- Flags: `nxdomain`, `other`.
-
-### `^mads\.`
-
-Note: Generic rule - Blocks names that start with mads.
-
-- Same rule as mmotti's regex list (product): [https://raw.githubusercontent.com/mmotti/pihole-regex/master/regex.list](https://raw.githubusercontent.com/mmotti/pihole-regex/master/regex.list): "^count(ers?)?[0-9]*[_.-] ^mads\."
-- Matches 6 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `6`
-
-### `^nado-ecs-lb-[a-z]+-[a-z]+-[0-9]-[0-9]+\.[a-z]+-[a-z]+-[0-9]\.elb\.amazonaws\.com$`
-
-Note: nado-ecs-lb AWS load balancer pattern - No matches in the 2.17M-name test corpus on 2026-11-13
-
-- Matches 0 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `0`
-- Maintainer's earlier note (product): commit [2c047d2](https://github.com/slyfox1186/pihole-regex/commit/2c047d2) added the line `^nado-ecs-lb-[a-z]+-[a-z]+-[0-9]-[0-9]+\.[a-z]+-[a-z]+-[0-9]\.elb\.amazonaws\.com$ -- Yahoo`
-- Flags: `other`. Decision 2026-11-14: kept. No current matches, so it neither blocks nor breaks anything today.
-
 ### `(\.|^)pavv\.co\.kr$`
 
 Note: pavv.co.kr (Samsung) - infolink.pavv.co.kr is allowed for the app store and sign-in
 
 - Perflyst's Smart TV regex list has the same rule (product): [https://perflyst.github.io/PiHoleBlocklist/regex.list](https://perflyst.github.io/PiHoleBlocklist/regex.list): "(^|\.)pavv\.co\.kr$"
 - Matches 2 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `2`
-
-### `^pixels?(\.|-[^.]*\.)[^.]+\.[^.]+`
-
-Note: Generic rule - Blocks pixel/pixels names with three or more labels (pixels.com still works)
-
-- Matches 284 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `284`
-- Matched a lookup on the maintainer's network (observation): Matching lookups on the maintainer's network: `pixel.adsafeprotected.com`
-- Narrowed in the 2026-11-12 audit (product): commit [f3f9cbb](https://github.com/slyfox1186/pihole-regex/commit/f3f9cbb) message: "make the pixel, beacon and count rules need three labels"
-- mmotti's original pixel rule (product): [https://raw.githubusercontent.com/mmotti/pihole-regex/master/regex.list](https://raw.githubusercontent.com/mmotti/pihole-regex/master/regex.list): "^pixels?[-.]"
-
-### `^prod-elb-ats-[0-9]+\.[a-z]{2}-[a-z]+-[0-9]\.elb\.amazonaws\.com$`
-
-Note: prod-elb-ats AWS load balancer pattern - No matches in the 2.17M-name test corpus on 2026-11-13
-
-- Matches 0 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `0`
-- Maintainer's earlier note (product): commit [2c047d2](https://github.com/slyfox1186/pihole-regex/commit/2c047d2) added the line `^prod-elb-ats-[0-9]+\.[a-z]{2}-[a-z]+-[0-9]\.elb\.amazonaws\.com$ -- Yahoo`
-- Flags: `other`. Decision 2026-11-14: kept. No current matches, so it neither blocks nor breaks anything today.
 
 ### `(^|\.)samsungcloudsolution\.net$`
 
@@ -3939,14 +3600,6 @@ Note: samsungrm.net - Perflyst's Samsung TV rules block it
 - Matches 2 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `2`
 - Flags: `unverified_purpose`. Perflyst gives no description.
 
-### `(\.|^)shadowadcity\.com$`
-
-Note: shadowadcity.com - Maintainer labeled it a 1337x.to redirect; DNS returned NXDOMAIN on 2026-11-13
-
-- shadowadcity.com DNS status on 2026-11-13 (observation): DNS status `shadowadcity.com`: `NXDOMAIN`
-- Maintainer's earlier note (product): commit [2c047d2](https://github.com/slyfox1186/pihole-regex/commit/2c047d2) added the line `(\.|^)shadowadcity\.com$ -- 1337x.to - Sneaky redirect domains that probably log your IP and any other information it gets from your browser sending a GET or POST request.`
-- Flags: `nxdomain`, `other`.
-
 ### `(\.|^)smartshare\.lgtvsdp\.com$`
 
 Note: smartshare.lgtvsdp.com - Perflyst's Smart TV rules block it
@@ -3962,14 +3615,6 @@ Note: Sony TV hosts under ssm*.internet.sony.tv (the ssm hosts themselves stay r
 - Perflyst leaves ssm1.internet.sony.tv unblocked (product): [https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt](https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt): "#ssm1.internet.sony.tv # https://github.com/notracking/hosts-blocklists/issues/384"
 - Flags: `unverified_purpose`. What the per-device subdomains do is unverified; Perflyst deliberately does not block the ssm hosts.
 
-### `^ssp-ats-prod-[a-z\-]+-[0-9]\.one-mobile-prod\.aws\.oath\.cloud$`
-
-Note: oath.cloud ssp-ats-prod pattern - No matches in the 2.17M-name test corpus on 2026-11-13
-
-- Matches 0 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `0`
-- Maintainer's earlier note (product): commit [2c047d2](https://github.com/slyfox1186/pihole-regex/commit/2c047d2) added the line `^ssp-ats-prod-[a-z\-]+-[0-9]\.one-mobile-prod\.aws\.oath\.cloud$ -- Yahoo`
-- Flags: `other`. Decision 2026-11-14: kept. No current matches, so it neither blocks nor breaks anything today.
-
 ### `^stat(s|istics)?[0-9]*[-_]`
 
 Note: Generic rule - Blocks names starting stat-, stats- or statistics-
@@ -3977,22 +3622,6 @@ Note: Generic rule - Blocks names starting stat-, stats- or statistics-
 - Matches 85 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `85`
 - mmotti's original stats rule (product): [https://raw.githubusercontent.com/mmotti/pihole-regex/master/regex.list](https://raw.githubusercontent.com/mmotti/pihole-regex/master/regex.list): "^stat(s|istics)?[0-9]*[_.-]"
 - Maintainer's narrowed rule (product): commit [1677a89](https://github.com/slyfox1186/pihole-regex/commit/1677a89) added the line `^stat(s|istics)?[0-9]*[-_] -- stats/metrics (narrowed to avoid false positives)`
-
-### `(\.|^)steamcommurnily\.com$`
-
-Note: steamcommurnily.com - Maintainer reported it as malicious; DNS returned NXDOMAIN on 2026-11-13
-
-- steamcommurnily.com DNS status on 2026-11-13 (observation): DNS status `steamcommurnily.com`: `NXDOMAIN`
-- Maintainer's earlier note (product): commit [52189ee](https://github.com/slyfox1186/pihole-regex/commit/52189ee) added the line `(\.|^)steamcommurnily\.com$ -- Confirmed hacker website with malicious intent - DANGER`
-- Flags: `nxdomain`, `other`.
-
-### `(\.|^)stickyadstv\.com\.akadns\.net$`
-
-Note: FreeWheel StickyAds Akamai name (stickyadstv.com.akadns.net)
-
-- FreeWheel bought StickyADS.tv (owner): [https://www.lightreading.com/video-broadcast/comcast-s-freewheel-buys-stickyads-tv](https://www.lightreading.com/video-broadcast/comcast-s-freewheel-buys-stickyads-tv): "Comcast's FreeWheel Buys StickyADS.tv"
-- StevenBlack and AdAway block it (observation): Number of blocklists (in the maintainer's Pi-hole) that contain `stickyadstv.com.akadns.net`: `2`
-- Matches 9 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `9`
 
 ### `(^|\.)telemetry[-_][a-z0-9]`
 
@@ -4002,13 +3631,6 @@ Note: Generic rule - Blocks telemetry- and telemetry_ names
 - mmotti's original telemetry rule (product): [https://raw.githubusercontent.com/mmotti/pihole-regex/master/regex.list](https://raw.githubusercontent.com/mmotti/pihole-regex/master/regex.list): "^(.+[_.-])?telemetry[_.-]"
 - Maintainer's narrowed rule (product): commit [1677a89](https://github.com/slyfox1186/pihole-regex/commit/1677a89) added the line `(^|\.)telemetry[-_][a-z0-9] -- telemetry (narrowed to avoid false positives)`
 
-### `(\.|^)trafyield\.com$`
-
-Note: trafyield.com - Five lists block it, including HaGeZi Pro and HaGeZi TIF
-
-- Five lists in the maintainer's Pi-hole block it (observation): Number of blocklists (in the maintainer's Pi-hole) that contain `trafyield.com`: `5`
-- Note on the evidence: The maintainer's earlier note tied it to 1337x.to redirects.
-
 ### `(\.|^)tvinteractive\.tv$`
 
 Note: tvinteractive.tv - Perflyst's Smart TV rules block it
@@ -4016,29 +3638,6 @@ Note: tvinteractive.tv - Perflyst's Smart TV rules block it
 - Perflyst's Smart TV regex list has the same rule (product): [https://perflyst.github.io/PiHoleBlocklist/regex.list](https://perflyst.github.io/PiHoleBlocklist/regex.list): "(\.|^)tvinteractive\.tv$"
 - Matches 5 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `5`
 - Flags: `unverified_purpose`. Perflyst gives no description; the old note said Vizio Inscape viewing data.
-
-### `^uplynk-beacon-newvpc-[0-9]+\.[a-z]{2}-[a-z]+-[0-9]\.elb\.amazonaws\.com$`
-
-Note: uplynk-beacon AWS load balancer pattern - No matches in the 2.17M-name test corpus on 2026-11-13
-
-- Matches 0 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `0`
-- Maintainer's earlier note (product): commit [2c047d2](https://github.com/slyfox1186/pihole-regex/commit/2c047d2) added the line `^uplynk-beacon-newvpc-[0-9]+\.[a-z]{2}-[a-z]+-[0-9]\.elb\.amazonaws\.com$ -- Yahoo`
-- Flags: `other`. Decision 2026-11-14: kept. No current matches, so it neither blocks nor breaks anything today.
-
-### `(\.|^)usage\.trackjs\.com$`
-
-Note: TrackJS usage beacon
-
-- TrackJS's CSP lists it as an image beacon host (function): [https://docs.trackjs.com/browser-agent/installation/](https://docs.trackjs.com/browser-agent/installation/): "img-src usage.trackjs.com"
-- TrackJS changelog calls it the usage beacon (function): [https://raw.githubusercontent.com/TrackJs/trackjs-package/master/CHANGELOG.md](https://raw.githubusercontent.com/TrackJs/trackjs-package/master/CHANGELOG.md): "stopped usage beacon from sending when tracker is disabled"
-
-### `^v-[a-z0-9]+\.wc\.yahoodns\.net$`
-
-Note: Yahoo DNS name pattern v-*.wc.yahoodns.net - No matches in the 2.17M-name test corpus on 2026-11-13
-
-- Matches 0 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `0`
-- Maintainer's earlier note (product): commit [2c047d2](https://github.com/slyfox1186/pihole-regex/commit/2c047d2) added the line `^v-[a-z0-9]+\.wc\.yahoodns\.net$ -- Yahoo`
-- Flags: `other`. Decision 2026-11-14: kept. No current matches, so it neither blocks nor breaks anything today.
 
 ### `^[a-z]{2}-[a-z]{2}-[a-z]{2}\.ybp\.gysm\.yahoodns\.net$`
 
@@ -4098,13 +3697,6 @@ Note: hostsVN by bigdargon - Firebog Advertising list
 
 - Firebog lists it under this name (product): [https://firebog.net/](https://firebog.net/): "hostsVN: https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts"
 - The list's own header (function): [https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts](https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts): "Title: hostsVN"
-
-### `https://raw.githubusercontent.com/FadeMind/hosts.extras/master/UncheckyAds/hosts`
-
-Note: FadeMind UncheckyAds - Ad sources used by Windows software installers
-
-- Firebog lists it under this name (product): [https://firebog.net/](https://firebog.net/): "Fademind's Unchecky Ads: https://raw.githubusercontent.com/FadeMind/hosts.extras/master/UncheckyAds/hosts"
-- FadeMind's README (function): [https://raw.githubusercontent.com/FadeMind/hosts.extras/master/README.md](https://raw.githubusercontent.com/FadeMind/hosts.extras/master/README.md): "Windows installers ads sources"
 
 ### `https://v.firebog.net/hosts/AdguardDNS.txt`
 
@@ -4244,49 +3836,27 @@ Note: HaGeZi Amazon native tracker list - Trackers built into Amazon devices, ap
 
 - The list's own header (function): [https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.amazon.txt](https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.amazon.txt): "Title: HaGeZi's Amazon Tracker - blocks built-in trackers from devices, apps, and OSes!"
 
-### `https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.lgwebos.txt`
-
-Note: HaGeZi LG webOS native tracker list - Trackers built into LG webOS devices, apps and operating systems
-
-- The list's own header (function): [https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.lgwebos.txt](https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.lgwebos.txt): "Title: HaGeZi's LG webOS Tracker - blocks built-in trackers from devices, apps, and OSes!"
-
-### `https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.roku.txt`
-
-Note: HaGeZi Roku native tracker list - Trackers built into Roku devices, apps and operating systems
-
-- The list's own header (function): [https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.roku.txt](https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.roku.txt): "Title: HaGeZi's Roku Tracker - blocks built-in trackers from devices, apps, and OSes!"
-
 ### `https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.samsung.txt`
 
 Note: HaGeZi Samsung native tracker list - Trackers built into Samsung devices, apps and operating systems
 
 - The list's own header (function): [https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.samsung.txt](https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.samsung.txt): "Title: HaGeZi's Samsung Tracker - blocks built-in trackers from devices, apps, and OSes!"
 
-### `https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.tiktok.txt`
+### `https://hagezi-mirror.dnsbunker.org/adblock/dyndns.txt`
 
-Note: HaGeZi TikTok native tracker list - Trackers built into TikTok devices, apps and operating systems
+Note: HaGeZi Dynamic DNS - Dynamic DNS providers often abused to host malware and phishing
 
-- The list's own header (function): [https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.tiktok.txt](https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.tiktok.txt): "Title: HaGeZi's TikTok Tracker - blocks built-in trackers from devices, apps, and OSes!"
+- The list's own header (function): [https://hagezi-mirror.dnsbunker.org/adblock/dyndns.txt](https://hagezi-mirror.dnsbunker.org/adblock/dyndns.txt): "Title: HaGeZi's DynDNS - guards against dynamic DNS abuse!"
+- The list's own header (function): [https://hagezi-mirror.dnsbunker.org/adblock/dyndns.txt](https://hagezi-mirror.dnsbunker.org/adblock/dyndns.txt): "Blocks dynamic DNS services that get abused for phishing campaigns and other shady activity."
+- Official mirror (source): [https://github.com/hagezi/dns-blocklists](https://github.com/hagezi/dns-blocklists) lists hagezi-mirror.dnsbunker.org as its build mirror, published with every build.
 
-### `https://perflyst.github.io/PiHoleBlocklist/AmazonFireTV.txt`
+### `https://hagezi-mirror.dnsbunker.org/adblock/doh.txt`
 
-Note: Perflyst Amazon Fire TV list
+Note: HaGeZi Encrypted DNS Bypass (DoH only) - Encrypted DNS servers that devices can use to bypass Pi-hole
 
-- Perflyst's README (product): [https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/README.md](https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/README.md): "| Amazon Fire TV | [Link](https://perflyst.github.io/PiHoleBlocklist/AmazonFireTV.txt) |"
-
-### `https://perflyst.github.io/PiHoleBlocklist/android-tracking.txt`
-
-Note: Perflyst Android tracking list
-
-- Perflyst's README (product): [https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/README.md](https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/README.md): "| Android Tracking | [Link](https://perflyst.github.io/PiHoleBlocklist/android-tracking.txt) |"
-- The list's own header (function): [https://perflyst.github.io/PiHoleBlocklist/android-tracking.txt](https://perflyst.github.io/PiHoleBlocklist/android-tracking.txt): "LineageOS 14.1"
-
-### `https://perflyst.github.io/PiHoleBlocklist/SessionReplay.txt`
-
-Note: Perflyst session replay blocklist - Includes FullStory and SessionCam domains
-
-- Perflyst's README (product): [https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/README.md](https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/README.md): "| Session Reply | [Link](https://perflyst.github.io/PiHoleBlocklist/SessionReplay.txt) |"
-- The list's own header (function): [https://perflyst.github.io/PiHoleBlocklist/SessionReplay.txt](https://perflyst.github.io/PiHoleBlocklist/SessionReplay.txt): "fullstory.com"
+- The list's own header (function): [https://hagezi-mirror.dnsbunker.org/adblock/doh.txt](https://hagezi-mirror.dnsbunker.org/adblock/doh.txt): "Title: HaGeZi's Encrypted DNS Bypass - stop people from sneaking around your DNS!"
+- The list's own header (function): [https://hagezi-mirror.dnsbunker.org/adblock/doh.txt](https://hagezi-mirror.dnsbunker.org/adblock/doh.txt): "Prevent methods to bypass your DNS, blocks encrypted DNS only"
+- Official mirror (source): [https://github.com/hagezi/dns-blocklists](https://github.com/hagezi/dns-blocklists) lists hagezi-mirror.dnsbunker.org as its build mirror, published with every build.
 
 ### `https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt`
 

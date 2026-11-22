@@ -1,7 +1,19 @@
 # Pi-hole® v6+ FTLDNS: Advanced Filter Collection
 - Maximize the efficiency of your Pi-hole setup with our extensive collection of Regular Expressions (RegEx) and Exact Match filters. Designed to block a broad range of domains effectively, our filters simplify your blocking strategy by minimizing the need for numerous individual entries. Additionally, this repository includes customizable Exact Match filters for precise domain blocking, tools to facilitate the easy management of Adlist Group entries, and a script that sets up unbound as Pi-hole's own recursive DNS resolver.
 
-## Last updated on 11.14.2026:
+## Last updated on 11.21.2026:
+This update makes the collection lighter and easier on your Pi-hole. Most of the work removes overlap: several lists and rules were already covered by HaGeZi Multi PRO, the main list in this collection. The core protection against ads, trackers, malware and phishing (HaGeZi Multi PRO, HaGeZi Threat Intelligence Feeds and the Firebog lists) stays in place.
+
+- Gravity is about 3.5 million entries smaller. The HaGeZi DGA, Gambling, URL Shortener and Referral lists from the 11.14 update are no longer part of the default set. They are specialty lists that HaGeZi offers for specific needs, such as strict security or family filtering, and they make gravity updates much heavier on smaller devices. If you want any of them, you can add them yourself from [HaGeZi's page](https://github.com/hagezi/dns-blocklists).
+- Removed the HaGeZi native LG webOS, Roku and TikTok lists and the FadeMind UncheckyAds list. HaGeZi Multi PRO already includes their domains, so this does not change what gets blocked.
+- Removed Perflyst's Fire TV, Android tracking and Session Replay lists, which have not been updated since 2023 or earlier. HaGeZi Multi PRO covers most of their domains. Perflyst's Smart TV list stays.
+- Tidied the RegEx and Exact blocklists. 54 entries were removed, most of them because the adlists already block them or because they no longer match any active domain. The general `count`, `pixel` and `mads` rules were also retired, since they sometimes caught ordinary websites.
+- The Google allow rule no longer covers `dns.google.com`, so HaGeZi's encrypted DNS list can do its job.
+- Updated the descriptions of several allow entries so they name the list that blocks each domain today. No allow entries were removed.
+
+To get these changes, run `sudo python3 adlist.py` (it removes the lists that left the collection and offers to update gravity), then `sudo python3 pi.py -a`. Lists and entries you added yourself are never touched. The details and sources for every change are in [docs/domain-notes-sources.md](docs/domain-notes-sources.md).
+
+## Updated on 11.14.2026:
 Every entry now has a description that says what the domain is and what it does, backed by sources you can check in [docs/domain-notes-sources.md](docs/domain-notes-sources.md). While checking every entry we also fixed four rules:
 
 - Twitch extensions work again. A blocked Twitch server turned out to be the one that loads every extension, not an ad server.
