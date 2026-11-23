@@ -5,9 +5,7 @@
 # (pi.py, adlist.py, unbound.py and lint_domain_lists.py) need nothing
 # beyond Python itself.
 #
-# Install everything at once:
-#
-#     pip install -r requirements.txt
+# Install everything at once: `pip install -r requirements.txt`
 #
 # Or install only what you need. Each package loads only when a command uses
 # it, so --help, --stats, --backup and --optimize run with none installed.
