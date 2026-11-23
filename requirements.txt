@@ -1,19 +1,35 @@
-# Pi-hole RegEx: Python dependencies
+# Python packages for scripts/pihole_admin.py
+# ===========================================
 #
-# The installer scripts pi.py and adlist.py use only the standard library.
+# Only scripts/pihole_admin.py uses these packages. The other scripts
+# (pi.py, adlist.py, unbound.py and lint_domain_lists.py) need nothing
+# beyond Python itself.
 #
-# scripts/pihole_admin.py advanced toolkit:
-#   pip install -r requirements.txt
+# Install everything at once:
+#
+#     pip install -r requirements.txt
+#
+# Or install only what you need. Each package loads only when a command uses
+# it, so --help, --stats, --backup and --optimize run with none installed.
 
-# Every package is loaded only by the commands noted beside it; a command
-# whose package is missing falls back or prints an install hint.
 
-# ---- Core ----
-tabulate       # tables for --report, --top-domains, --query, --advanced-query
+# Needed for any command that prints a table
+# (--report, --top-domains, --query, --advanced-query)
+tabulate
 
-# ---- Optional: scripts/pihole_admin.py advanced features ----
-matplotlib     # charts for --report and --analyze-query-trends
-pandas         # --analyze-query-trends
-seaborn        # nicer chart styling (optional, on top of matplotlib)
-rapidfuzz      # fast --find-similar (falls back to fuzzywuzzy, then stdlib difflib)
-tld            # --categorize-domains (falls back to a simple extractor)
+# Charts for --report and --analyze-query-trends
+matplotlib
+
+# Query-trend analysis for --analyze-query-trends
+pandas
+
+# Nicer grid styling on the charts (optional; charts work without it)
+seaborn
+
+# Faster --find-similar (without it the script uses fuzzywuzzy if installed,
+# otherwise Python's own difflib)
+rapidfuzz
+
+# More accurate --categorize-domains (without it the script uses a simpler
+# last-two-labels guess)
+tld

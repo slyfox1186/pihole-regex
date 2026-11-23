@@ -13,6 +13,8 @@ To get these changes, run `sudo python3 pi.py -a`. Entries you added yourself ar
 
 `pihole_admin.py` moved into the `scripts` folder with the other scripts. Run it as `python3 scripts/pihole_admin.py`.
 
+The [sources page](docs/domain-notes-sources.md) is easier to read: a contents list at the top, and one small table of evidence per entry.
+
 ## Updated on 11.21.2026:
 This update makes the collection lighter and easier on your Pi-hole. Most of the work removes overlap: several lists and rules were already covered by HaGeZi Multi PRO, the main list in this collection. The core protection against ads, trackers, malware and phishing (HaGeZi Multi PRO, HaGeZi Threat Intelligence Feeds and the Firebog lists) stays in place.
 
