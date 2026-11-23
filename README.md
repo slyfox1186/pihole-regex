@@ -1,7 +1,17 @@
 # Pi-hole® v6+ FTLDNS: Advanced Filter Collection
 - Maximize the efficiency of your Pi-hole setup with our extensive collection of Regular Expressions (RegEx) and Exact Match filters. Designed to block a broad range of domains effectively, our filters simplify your blocking strategy by minimizing the need for numerous individual entries. Additionally, this repository includes customizable Exact Match filters for precise domain blocking, tools to facilitate the easy management of Adlist Group entries, and a script that sets up unbound as Pi-hole's own recursive DNS resolver.
 
-## Last updated on 11.21.2026:
+## Last updated on 11.22.2026:
+We checked every entry in the RegEx and Exact lists against the adlists, and removed the ones the adlists already handle. Nothing new gets through, and your Pi-hole has a little less to load.
+
+- Removed 9 Exact blocks that the adlists already block: eight Samsung TV hosts under `samsungcloudsolution.com` (including `vdterms.samsungcloudsolution.com`) and LinkedIn's `snap.licdn.com`.
+- Shortened the RegEx block rule for the ViperSoftX malware. HaGeZi's lists already block 39 of its 50 domains, so the rule now lists only the other 11.
+- Stopped allowing 5 tracking hosts that several adlists block (Akamai, Adobe and mParticle analytics, a Microsoft tracking host, and a widget host listed for Fox News). If one of them was holding up something you use, add it back to your own allowlist with `pihole allow <domain>`.
+- Every other allow entry stays, including the ones no list blocks today. They protect services like Microsoft sign-in, Apple updates and Xbox Live in case a list starts blocking them later.
+
+To get these changes, run `sudo python3 pi.py -a`. Entries you added yourself are never touched. The details for every change are in [docs/domain-notes-sources.md](docs/domain-notes-sources.md).
+
+## Updated on 11.21.2026:
 This update makes the collection lighter and easier on your Pi-hole. Most of the work removes overlap: several lists and rules were already covered by HaGeZi Multi PRO, the main list in this collection. The core protection against ads, trackers, malware and phishing (HaGeZi Multi PRO, HaGeZi Threat Intelligence Feeds and the Firebog lists) stays in place.
 
 - Gravity is about 3.5 million entries smaller. The HaGeZi DGA, Gambling, URL Shortener and Referral lists from the 11.14 update are no longer part of the default set. They are specialty lists that HaGeZi offers for specific needs, such as strict security or family filtering, and they make gravity updates much heavier on smaller devices. If you want any of them, you can add them yourself from [HaGeZi's page](https://github.com/hagezi/dns-blocklists).

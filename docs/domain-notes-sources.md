@@ -5,9 +5,33 @@ comment in Pi-hole. The adlist descriptions in `adlists.txt` appear only in the 
 because `adlist.py` gives every adlist the same fixed comment. This page lists the evidence behind each note, so
 anyone can check what a domain is and why it is allowed or blocked.
 
-Collected and checked on 2026-11-13, 2026-11-14 and 2026-11-21. Web sources were fetched without JavaScript and every quote
+Collected and checked on 2026-11-13, 2026-11-14, 2026-11-21 and 2026-11-22. Web sources were fetched without JavaScript and every quote
 below was confirmed to appear on the live page. Pages change; a quote that no longer appears means the source changed
 after that date.
+
+## Filter changes on 2026-11-22
+
+Every entry in the four `.sql` lists was checked with `pihole -q` on Pi-hole v6 (FTL v6.9) right after a gravity update.
+`pihole -q` also reports Adblock-style `||example.com^` lines for subdomains. A block entry counted as covered only when
+an adlist in `adlists.txt` blocks it (the StevenBlack list that Pi-hole installs by default was not counted). A RegEx
+block rule counted as covered only when the adlists block every name it can match, tested with a random subdomain of
+each domain the rule names.
+
+- Exact blocklist: removed `samsungcloudsolution.com`, `fkp`, `notice`, `noticecdn`, `oempprd`, `prov`, `sas` and
+  `vdterms.samsungcloudsolution.com` (Perflyst's Smart TV list blocks all eight) and `snap.licdn.com` (AdAway and
+  hostsVN block it).
+- RegEx blocklist: the ViperSoftX rule now lists only the 11 of its 50 names whose subdomains no adlist blocks; HaGeZi
+  Threat Intelligence Feeds blocks the other 39 with all subdomains. No other rule is fully covered: the lists block
+  the bare Samsung, LG and Spotify names that some rules target, but not their subdomains, and the general rules
+  (`ads`, `analytics`, `stats` and the like) match names no list contains.
+- Exact allowlist: stopped allowing five tracking hosts that two or more adlists block: `79423.analytics.edgekey.net`
+  (Akamai analytics), `appleglobal.102.112.2o7.net` (Adobe analytics), `mparticle.map.fastly.net` (mParticle),
+  `romeccs.microsoft.com` (WindowsSpyBlocker and HaGeZi Multi PRO) and `widget-cdn.rpxnow.com`. The other allows that
+  two lists block were kept because they keep a service working: Microsoft Defender's `spynet2` and `spynetalt`,
+  Samsung's `lcprd1.samsungcloudsolution.net` connection test and LG's `us.rdx2.lgtvsdp.com` cover art.
+- Allowlists: 247 exact and 78 RegEx allows unblock nothing today (no adlist, block rule or CNAME target blocks them).
+  They were kept on purpose as a safety net for services such as Microsoft sign-in, Apple updates and Xbox Live, in
+  case a list adds one of them later.
 
 ## Filter changes on 2026-11-21
 
@@ -97,7 +121,7 @@ Entries that are still open: their purpose is unverified, or their DNS name did 
 
 - exact-blacklist.sql: `qt2-ngfts.lge.com` - LG host sharing ngfts.lge.com's Akamai name - Proposed for blocking in HaGeZi #309; role unverified. It shares ngfts.lge.com's CNAME and 'SDP 2.0' page; blocking may affect LG Content Store images. The old 'file transfer' note had no source.
 
-### Purpose unverified (50)
+### Purpose unverified (42)
 
 - exact-whitelist.sql: `clients.config.office.net` - Microsoft 365 host under the documented *.office.net endpoint - Exact role unverified. Microsoft documents only the *.office.net wildcard.
 - exact-whitelist.sql: `continuum.dds.microsoft.com` - Microsoft-run host - Purpose unverified (old note said Your Phone notification mirroring, no source found). No Microsoft document names this host; the Your Phone claim in the old note has no source.
@@ -107,14 +131,6 @@ Entries that are still open: their purpose is unverified, or their DNS name did 
 - exact-whitelist.sql: `mrs-efz.ms-acdc.office.com` - Microsoft 365 (office.com) service host - Exact role unverified. Only the *.office.com wildcard is documented.
 - exact-whitelist.sql: `mscomajax.vo.msecnd.net` - Microsoft-run host (msecnd.net, required by Microsoft 365) - Exact role unverified. Microsoft documents only the *.msecnd.net wildcard; its root redirects to Microsoft's ASP.NET site.
 - exact-whitelist.sql: `win1710.ipv6.microsoft.com` - Microsoft IPv6 host - Purpose unverified. No source names win1710.ipv6.microsoft.com; win10 and win1910 variants are documented as Teredo server names in Microsoft Q&amp;A, so this is an inference.
-- exact-blacklist.sql: `fkp.samsungcloudsolution.com` - Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung. Perflyst lists it without a per-host reason; the specific function of this host is not documented.
-- exact-blacklist.sql: `notice.samsungcloudsolution.com` - Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung. Perflyst lists it without a per-host reason; the specific function of this host is not documented.
-- exact-blacklist.sql: `noticecdn.samsungcloudsolution.com` - Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung. Perflyst lists it without a per-host reason; the specific function of this host is not documented.
-- exact-blacklist.sql: `oempprd.samsungcloudsolution.com` - Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung. Perflyst lists it without a per-host reason; the specific function of this host is not documented.
-- exact-blacklist.sql: `prov.samsungcloudsolution.com` - Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung. Perflyst lists it without a per-host reason; the specific function of this host is not documented.
-- exact-blacklist.sql: `sas.samsungcloudsolution.com` - Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung. Perflyst lists it without a per-host reason; the specific function of this host is not documented.
-- exact-blacklist.sql: `vdterms.samsungcloudsolution.com` - Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung. Perflyst lists it without a per-host reason; the specific function of this host is not documented.
-- exact-blacklist.sql: `samsungcloudsolution.com` - Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung. Perflyst lists it without a per-host reason; the specific function of this host is not documented.
 - exact-blacklist.sql: `aic.api.lgtviot.com` - LG webOS TV host (lgtviot.com) - Proposed for blocking in HaGeZi issue #309; role unverified. The old note said 'IoT telemetry'; no source states what the host does.
 - exact-blacklist.sql: `aic.lgtviot.com` - LG webOS TV host (lgtviot.com) - Proposed for blocking in HaGeZi issue #309; role unverified. The old note said 'IoT telemetry'; no source states what the host does.
 - exact-blacklist.sql: `aic.sports.lgtviot.com` - LG webOS TV host (lgtviot.com) - Listed in HaGeZi issue #309; role unverified. Only listed, no function stated.
@@ -480,15 +496,6 @@ Note: Microsoft Teams host - Microsoft lists it for the Teams app
 - Microsoft runs it (owner): TLS certificate subject: `O = Microsoft Corporation`
 - Microsoft: endpoint of the Teams application (product): [https://learn.microsoft.com/en-us/windows/privacy/windows-11-endpoints-non-enterprise-editions](https://learn.microsoft.com/en-us/windows/privacy/windows-11-endpoints-non-enterprise-editions): "HTTP statics.teams.cdn.live.net HTTP statics.teams.cdn.office.net"
 
-### `romeccs.microsoft.com`
-
-Note: Microsoft host - A public settings file posted as a GitHub gist names it as CcsDefaultServerName
-
-- Windows' CDP settings file names it as the default CCS server (function): [https://gist.github.com/iidx/797e22e89f01d68add6bdc74160d2e33](https://gist.github.com/iidx/797e22e89f01d68add6bdc74160d2e33): "CcsDefaultServerName"
-- Same file context (function): [https://gist.github.com/iidx/797e22e89f01d68add6bdc74160d2e33](https://gist.github.com/iidx/797e22e89f01d68add6bdc74160d2e33): "romeccs.microsoft.com"
-- CNAME to Microsoft's CCS traffic manager (observation): DNS CNAME chain: `ccs-geo.trafficmanager.net.`
-- Note on the evidence: The gist does not say where the file came from.
-
 ### `settings-win.data.microsoft.com`
 
 Note: Microsoft Windows settings service - Lets apps such as the Xbox app update their configuration
@@ -822,15 +829,6 @@ Note: Uplynk host - Maintainer added it for Discovery+ playback on Nvidia Shield
 - Maintainer's original reason (consequence): commit [28ee6d6](https://github.com/slyfox1186/pihole-regex/commit/28ee6d6) added the line `x-default-stgec.uplynk.com`
 - Flags: `other`.
 
-### `79423.analytics.edgekey.net`
-
-Note: Akamai host - Red Hat Online Learning videos do not record course progress when it is blocked
-
-- Akamai certificate (owner): TLS certificate subject: `Akamai Technologies`
-- Pi-hole forum report (consequence): [https://discourse.pi-hole.net/raw/212](https://discourse.pi-hole.net/raw/212): "When blocked, video would play; however, not show progress (continually showing it was loading) and thus not record your progression through the video in the course progress tracker."
-- Listed under Red Hat Online Learning (product): [https://discourse.pi-hole.net/raw/212](https://discourse.pi-hole.net/raw/212) lists `79423.analytics.edgekey.net` under the heading "Red Hat Online Learning (subscription required)"
-- Block List Project's ads list blocks it (allow_reason): Block List Project lists that contain it: `ads`
-
 ### `assets.adobedtm.com`
 
 Note: Adobe-run host - Pi-hole users report Lowe's online checkout fails when it is blocked
@@ -861,13 +859,6 @@ Note: Split.io host - The MyFitnessPal app cannot log in without it
 Note: Glympse host - Papa John's 'Where's my pizza' order tracker needs it
 
 - Pi-hole forum report (consequence): [https://discourse.pi-hole.net/raw/212](https://discourse.pi-hole.net/raw/212): "The papa john's where's my pizza requires: viewer.content.glympse.com"
-
-### `widget-cdn.rpxnow.com`
-
-Note: rpxnow.com widget host - Pi-hole users list it for Fox News
-
-- Listed under Fox News (product): [https://discourse.pi-hole.net/raw/212](https://discourse.pi-hole.net/raw/212) lists `widget-cdn.rpxnow.com` under the heading "Fox News"
-- Note on the evidence: The old note said teambeachbody.com; the source names Fox News.
 
 ### `gravatar.com`
 
@@ -1463,15 +1454,6 @@ Note: PAYDAY 3 host - Maintainer reported the game needs it to load saved profil
 - Maintainer's first-hand report when it was added (consequence): commit [997f633](https://github.com/slyfox1186/pihole-regex/commit/997f633) added the line `(0, 't.paydaythegame.com', 1, 'PayDay 3 is a video game and this domain is required to load into your saved profile - SlyEWL')`
 - Flags: `other`. Decision 2026-11-14: kept. The only evidence is the maintainer's own first-hand breakage report; tracking lists block this one host, and allowing it is narrow.
 
-### `mparticle.map.fastly.net`
-
-Note: mParticle host on Fastly - Maintainer reported weather.com search needs it
-
-- Block List Project's tracking list blocks it (allow_reason): Block List Project lists that contain it: `tracking`
-- Maintainer's original line (consequence): commit [5ebf5e2](https://github.com/slyfox1186/pihole-regex/commit/5ebf5e2) added the line `mparticle.map.fastly.net`
-- Maintainer's first-hand report when it was added (consequence): commit [b7c12d6](https://github.com/slyfox1186/pihole-regex/commit/b7c12d6) added the line `mparticle.map.fastly.net -- weather.com searching`
-- Flags: `other`. Decision 2026-11-14: kept. The only evidence is the maintainer's own first-hand breakage report; tracking lists block this one host, and allowing it is narrow.
-
 ### `nvidia.tt.omtrdc.net`
 
 Note: Adobe-run host (omtrdc.net) for nvidia.com - Maintainer reported the Nvidia CUDA Toolkit site needs it
@@ -1479,18 +1461,6 @@ Note: Adobe-run host (omtrdc.net) for nvidia.com - Maintainer reported the Nvidi
 - Adobe runs omtrdc.net (owner): TLS certificate subject: `Adobe Inc.`
 - Maintainer's earlier note (product): commit [652f298](https://github.com/slyfox1186/pihole-regex/commit/652f298) added the line `nvidia.tt.omtrdc.net -- Adobe Target for nvidia.com - Allowed for the Nvidia CUDA Toolkit website`
 - Maintainer's first-hand report when it was added (consequence): commit [b871acb](https://github.com/slyfox1186/pihole-regex/commit/b871acb) added the line `nvidia.tt.omtrdc.net -- Nvidia CUDA SDK Toolkit Website`
-- Flags: `other`. Decision 2026-11-14: kept. The only evidence is the maintainer's own first-hand breakage report; tracking lists block this one host, and allowing it is narrow.
-
-### `appleglobal.102.112.2o7.net`
-
-Note: Adobe 2o7.net tracking host for Apple - Maintainer reported adding Apple account recovery contacts needs it
-
-- Adobe runs 2o7.net (owner): TLS certificate subject: `Adobe Inc.`
-- Block List Project's malware list blocks it (allow_reason): Block List Project lists that contain it: `malware`
-- FadeMind lists 2o7 as a tracking network (function): [https://raw.githubusercontent.com/FadeMind/hosts.extras/master/README.md](https://raw.githubusercontent.com/FadeMind/hosts.extras/master/README.md): "2o7 Network tracking **MIRROR**"
-- FadeMind's 2o7 list blocks it (observation): gravity_lists: `add.2o7Net`
-- Maintainer's earlier note (product): commit [0a7a3ac](https://github.com/slyfox1186/pihole-regex/commit/0a7a3ac) added the line `appleglobal.102.112.2o7.net -- Adobe Analytics (2o7) host for Apple - Required to add someone to your Apple account recovery list`
-- Maintainer's first-hand report when it was added (consequence): commit [5e9845c](https://github.com/slyfox1186/pihole-regex/commit/5e9845c) added the line `(0, 'appleglobal.102.112.2o7.net', 1, 'Apple iOS - Requried to add someone to your account recovery list')`
 - Flags: `other`. Decision 2026-11-14: kept. The only evidence is the maintainer's own first-hand breakage report; tracking lists block this one host, and allowing it is narrow.
 
 ### `7ba3f64df98de730df38846b54ecfbdf7f61f80f.cws.conviva.com`
@@ -2206,70 +2176,6 @@ Note: AdGuard DNS server - HaGeZi's DoH list blocks it; iPhones with an AdGuard 
 
 ## Exact blocklist (exact-blacklist.sql)
 
-### `fkp.samsungcloudsolution.com`
-
-Note: Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung
-
-- Perflyst blocks it under Samsung (product): [https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt](https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt) lists `fkp.samsungcloudsolution.com` under the heading "Samsung"
-- Purpose of Perflyst's list (function): [https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt](https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt): "This is a blocklist to block smart-TVs sending metadata back home"
-- Flags: `unverified_purpose`. Perflyst lists it without a per-host reason; the specific function of this host is not documented.
-
-### `notice.samsungcloudsolution.com`
-
-Note: Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung
-
-- Perflyst blocks it under Samsung (product): [https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt](https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt) lists `notice.samsungcloudsolution.com` under the heading "Samsung"
-- Purpose of Perflyst's list (function): [https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt](https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt): "This is a blocklist to block smart-TVs sending metadata back home"
-- Flags: `unverified_purpose`. Perflyst lists it without a per-host reason; the specific function of this host is not documented.
-
-### `noticecdn.samsungcloudsolution.com`
-
-Note: Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung
-
-- Perflyst blocks it under Samsung (product): [https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt](https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt) lists `noticecdn.samsungcloudsolution.com` under the heading "Samsung"
-- Purpose of Perflyst's list (function): [https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt](https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt): "This is a blocklist to block smart-TVs sending metadata back home"
-- Flags: `unverified_purpose`. Perflyst lists it without a per-host reason; the specific function of this host is not documented.
-
-### `oempprd.samsungcloudsolution.com`
-
-Note: Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung
-
-- Perflyst blocks it under Samsung (product): [https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt](https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt) lists `oempprd.samsungcloudsolution.com` under the heading "Samsung"
-- Purpose of Perflyst's list (function): [https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt](https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt): "This is a blocklist to block smart-TVs sending metadata back home"
-- Flags: `unverified_purpose`. Perflyst lists it without a per-host reason; the specific function of this host is not documented.
-
-### `prov.samsungcloudsolution.com`
-
-Note: Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung
-
-- Perflyst blocks it under Samsung (product): [https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt](https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt) lists `prov.samsungcloudsolution.com` under the heading "Samsung"
-- Purpose of Perflyst's list (function): [https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt](https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt): "This is a blocklist to block smart-TVs sending metadata back home"
-- Flags: `unverified_purpose`. Perflyst lists it without a per-host reason; the specific function of this host is not documented.
-
-### `sas.samsungcloudsolution.com`
-
-Note: Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung
-
-- Perflyst blocks it under Samsung (product): [https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt](https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt) lists `sas.samsungcloudsolution.com` under the heading "Samsung"
-- Purpose of Perflyst's list (function): [https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt](https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt): "This is a blocklist to block smart-TVs sending metadata back home"
-- Flags: `unverified_purpose`. Perflyst lists it without a per-host reason; the specific function of this host is not documented.
-
-### `vdterms.samsungcloudsolution.com`
-
-Note: Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung
-
-- Perflyst blocks it under Samsung (product): [https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt](https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt) lists `vdterms.samsungcloudsolution.com` under the heading "Samsung"
-- Purpose of Perflyst's list (function): [https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt](https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt): "This is a blocklist to block smart-TVs sending metadata back home"
-- Flags: `unverified_purpose`. Perflyst lists it without a per-host reason; the specific function of this host is not documented.
-
-### `samsungcloudsolution.com`
-
-Note: Samsung TV host - Blocked by Perflyst's Smart TV list, which blocks TV data sent back to Samsung
-
-- Perflyst blocks it under Samsung (product): [https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt](https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt) lists `samsungcloudsolution.com` under the heading "Samsung"
-- Purpose of Perflyst's list (function): [https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt](https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt): "This is a blocklist to block smart-TVs sending metadata back home"
-- Flags: `unverified_purpose`. Perflyst lists it without a per-host reason; the specific function of this host is not documented.
-
 ### `aic.api.lgtviot.com`
 
 Note: LG webOS TV host (lgtviot.com) - Proposed for blocking in HaGeZi issue #309; role unverified
@@ -2359,14 +2265,6 @@ Note: Reddit-run host - Maintainer labeled it an event collector; exact role unv
 Note: TrueNAS analytics data collection host
 
 - TrueNAS security docs (function): [https://www.truenas.com/docs/solutions/optimizations/security/](https://www.truenas.com/docs/solutions/optimizations/security/): "Analytics data collection to https://usage.truenas.com/submit"
-
-### `snap.licdn.com`
-
-Note: LinkedIn Insight Tag script host
-
-- LinkedIn runs it (owner): TLS certificate subject: `Linkedin Corporation`
-- The Insight Tag loads from it (function): [https://www.rudderstack.com/docs/destinations/streaming-destinations/linkedin-insight-tag/](https://www.rudderstack.com/docs/destinations/streaming-destinations/linkedin-insight-tag/): "RudderStack loads the LinkedIn Insight Tag native SDK from https://snap.licdn.com"
-- Block List Project's ads list also blocks it (observation): Block List Project lists that contain it: `ads`
 
 ### `banners.hangmyads.com`
 
@@ -3492,12 +3390,13 @@ Note: Generic rule - Blocks names that start with advert, adverts or advertising
 - Same rule as mmotti's regex list (product): [https://raw.githubusercontent.com/mmotti/pihole-regex/master/regex.list](https://raw.githubusercontent.com/mmotti/pihole-regex/master/regex.list): "^advert(s|is(ing|ements?))?[0-9]*[_.-]"
 - Matches 66 names in the 2.17M-name test corpus (blocklists, query log, repo lists) on 2026-11-13 (observation): Names it matches in a 2.17M-name test corpus: `66`
 
-### `(^|\.)(ahoravideo|bideo|fairu|privatproxy|wmail)-(blog|cdn|chat|endpoint|schnellvpn)\.(com|xyz)$`
+### `(^|\.)(ahoravideo-(blog|cdn)\.com|bideo-(cdn|schnellvpn)\.com|fairu-(chat|endpoint|schnellvpn)\.com|fairu-schnellvpn\.xyz|privatproxy-(chat|schnellvpn)\.com|wmail-blog\.com)$`
 
-Note: ViperSoftX malware command servers - All 50 names its domain generator builds
+Note: ViperSoftX malware command servers - The 11 of its 50 generated names whose subdomains no adlist blocks
 
 - The malware's PowerShell builds these names (function): [https://chris.partridge.tech/2022/evolution-of-vipersoftx-dga/](https://chris.partridge.tech/2022/evolution-of-vipersoftx-dga/): "@("wmail", "fairu", "bideo", "privatproxy", "ahoravideo")"
 - Expands to 50 names (scope): Names it matches in a 2.17M-name test corpus: `50`
+- Narrowed on 2026-11-22 (observation): `pihole -q` on a subdomain of each name showed HaGeZi Threat Intelligence Feeds (and HaGeZi Multi PRO) block 39 of the 50 with all subdomains; the rule keeps the other 11
 
 ### `^analytics?[_.-]`
 

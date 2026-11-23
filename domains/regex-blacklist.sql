@@ -5,7 +5,7 @@
 (^|\.)ad([sx][0-9]*|[0-9]+|system)[_.-]|(^|\.)adv[0-9]*([_-]|\.[^.]+\.[^.]+) -- Generic ad rule - ads/adx (+digits), ad+digits or adsystem before . - or _; adv (+digits) needs - or _ or two more labels
 ^adtrack(er|ing)?[0-9]*[_.-] -- Generic rule - Blocks names that start with adtrack/adtracker/adtracking
 ^advert(s|is(ing|ements?))?[0-9]*[_.-] -- Generic rule - Blocks names that start with advert, adverts or advertising
-(^|\.)(ahoravideo|bideo|fairu|privatproxy|wmail)-(blog|cdn|chat|endpoint|schnellvpn)\.(com|xyz)$ -- ViperSoftX malware command servers - All 50 names its domain generator builds
+(^|\.)(ahoravideo-(blog|cdn)\.com|bideo-(cdn|schnellvpn)\.com|fairu-(chat|endpoint|schnellvpn)\.com|fairu-schnellvpn\.xyz|privatproxy-(chat|schnellvpn)\.com|wmail-blog\.com)$ -- ViperSoftX malware command servers - The 11 of its 50 generated names whose subdomains no adlist blocks
 ^analytics?[_.-] -- Generic rule - Blocks names that start with analytic or analytics
 (\.|^)antivirushub\.com$ -- antivirushub.com - Maintainer added it as a 1337x.to redirect domain; it resolved on 2026-11-13
 ^api\..*\.hismarttv\.com$ -- api.*.hismarttv.com hosts - Perflyst's Smart TV rules block them

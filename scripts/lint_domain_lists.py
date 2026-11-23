@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import shutil
 import subprocess
@@ -28,7 +29,8 @@ COMMON_PREFIXES = ("(\\.|^)", "(^|\\.)", "(?:^|\\.)")
 TRE_BAD_EXTENSION = re.compile(r"(?<!\\)\(\?(?!#|[inrU-]*[:)])")
 HOSTNAME_LABEL = re.compile(r"^[a-z0-9_]([a-z0-9_-]{0,61}[a-z0-9_])?$")
 IANA_TLDS_URL = "https://data.iana.org/TLD/tlds-alpha-by-domain.txt"
-USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64; rv:159.0) Gecko/20100101 Firefox/159.0"
+FIREFOX_VERSIONS_URL = "https://product-details.mozilla.org/1.0/firefox_versions.json"
+USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64; rv:160.0) Gecko/20100101 Firefox/160.0"
 
 
 @dataclass(frozen=True)
@@ -166,8 +168,26 @@ def hostname_problem(name: str) -> str | None:
     return None
 
 
+def current_user_agent() -> str:
+    """USER_AGENT with the Firefox version Mozilla currently ships, so it never goes stale.
+
+    Falls back to USER_AGENT when Mozilla's version feed cannot be read, because a stale
+    version number must not stop the TLD check.
+    """
+    request = urllib.request.Request(FIREFOX_VERSIONS_URL, headers={"User-Agent": USER_AGENT})
+    try:
+        with urllib.request.urlopen(request, timeout=15) as response:
+            latest = json.load(response)["LATEST_FIREFOX_VERSION"]
+    except (OSError, ValueError, KeyError, TypeError):
+        return USER_AGENT
+    major = str(latest).split(".", 1)[0]
+    if not major.isdigit():
+        return USER_AGENT
+    return re.sub(r"rv:\d+\.0\) Gecko/20100101 Firefox/\d+\.0", f"rv:{major}.0) Gecko/20100101 Firefox/{major}.0", USER_AGENT)
+
+
 def fetch_iana_tlds() -> set[str]:
-    request = urllib.request.Request(IANA_TLDS_URL, headers={"User-Agent": USER_AGENT})
+    request = urllib.request.Request(IANA_TLDS_URL, headers={"User-Agent": current_user_agent()})
     try:
         with urllib.request.urlopen(request, timeout=30) as response:
             text = response.read().decode("ascii", "replace")

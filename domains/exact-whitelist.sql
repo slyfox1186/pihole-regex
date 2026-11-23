@@ -1,4 +1,3 @@
-79423.analytics.edgekey.net -- Akamai host - Red Hat Online Learning videos do not record course progress when it is blocked
 7ba3f64df98de730df38846b54ecfbdf7f61f80f.cws.conviva.com -- Conviva host - Maintainer reported Disney+ watch history needs it
 adverts.ie -- Adverts.ie website - Caught by mmotti's original advert regex
 aic-ngfts.lge.com -- LG webOS TV - LG Content Store cover art; HaGeZi issue #309 reports cover art breaks when blocked
@@ -11,7 +10,6 @@ api.roku.com -- Roku host - Maintainer added it for Disney+ and other Roku apps
 api.termius.com -- Termius SSH client host (redirects to termius.com)
 api.themoviedb.org -- The Movie Database (TMDB) API - Maintainer added it for Plex metadata
 appboot.netflix.com -- Netflix host - Netflix breaks when it is blocked (Perflyst, anudeep)
-appleglobal.102.112.2o7.net -- Adobe 2o7.net tracking host for Apple - Maintainer reported adding Apple account recovery contacts needs it
 applicast.ga.sony.net -- Sony Bravia TV - AppliCast app widget service; Perflyst says apps need it
 apt.sonarr.tv -- Sonarr TV download manager host - Pi-hole users list it for Sonarr
 arc.msn.com -- Microsoft Windows Spotlight - Lock screen images, tips and suggested apps; also listed for the Xbox Series X/S Store app
@@ -138,7 +136,6 @@ mirror.clarkson.edu -- Clarkson University mirror site
 mirror.msys2.org -- MSYS2 package mirror - Redirects to repo.msys2.org
 mirror.umd.edu -- University of Maryland free software mirror
 mobileandroidapi.punchh.com -- Punchh (PAR) host - Pi-hole users list it for Punchh loyalty apps (Farmer Boys, El Pollo Loco and others)
-mparticle.map.fastly.net -- mParticle host on Fastly - Maintainer reported weather.com search needs it
 mrs-efz.ms-acdc.office.com -- Microsoft 365 (office.com) service host - Exact role unverified
 mscomajax.vo.msecnd.net -- Microsoft-run host (msecnd.net, required by Microsoft 365) - Exact role unverified
 my.plexapp.com -- Plex host - Redirects to watch.plex.tv
@@ -176,7 +173,6 @@ raw.githubusercontent.com -- GitHub raw file host - This repo's scripts download
 redirector.gvt1.com -- Google host - Pi-hole users list it for Android TV
 res-1.cdn.office.net -- Microsoft 365 CDN host - Microsoft lists *.cdn.office.net for Microsoft 365 app updates
 res.cloudinary.com -- Cloudinary host - Listed in anudeep's allowlist
-romeccs.microsoft.com -- Microsoft host - A public settings file posted as a GitHub gist names it as CcsDefaultServerName
 rover.ebay.com -- eBay-run host (rover.ebay.com)
 s.mzstatic.com -- Apple static content host - Apple Music tracks fail without it; Apple lists it for Classroom
 scontent.fgdl5-1.fna.fbcdn.net -- Facebook (Meta) host - Pi-hole users list it for Facebook
@@ -254,7 +250,6 @@ vo.aicdn.com -- CNAME target of upcdn.b0.upaiyun.com
 wallpapers.com -- Wallpapers.com - Free wallpaper site - No list in this collection blocks it now; Block List Project's fraud list did until 11.13.2026
 webmail.adv.oabsp.org.br -- OAB Sao Paulo webmail - Caught by the ad regex
 weeklyad.target.com.edgesuite.net -- Target - Weekly ad pages (Akamai host)
-widget-cdn.rpxnow.com -- rpxnow.com widget host - Pi-hole users list it for Fox News
 wikipedia.org -- Wikipedia
 win10.ipv6.microsoft.com -- Microsoft Teredo IPv6 server - Xbox networking on Windows uses Teredo
 win10.prod.http1.netflix.com -- Netflix host - Maintainer reported it is required for signing in
