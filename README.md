@@ -210,14 +210,23 @@ python3 scripts/pihole_admin.py --help     # full list of commands
 
 Exit codes: 0 done, 1 something failed, 2 bad option, 130 cancelled.
 
-## Linting the filter lists
-`scripts/lint_domain_lists.py` checks the `.sql` lists for control characters,
-duplicate patterns, invalid hostnames, invalid regexes, and whitelist/blacklist
-overlaps. Pi-hole compiles regexes with the TRE engine, which has no lookahead or
-lookbehind, so the linter rejects those. When `pihole-FTL` is installed it also
-compiles every regex with Pi-hole's own engine. The overlap checks use `pcre2grep`
-(skipped with a warning if it is not installed):
+## Checking Your Changes to the Filter Lists
+If you edit any of the four `.sql` lists in `domains/`, run `scripts/lint_domain_lists.py` before you add them to Pi-hole or share them. You do not need it to install or update the published lists, and `pi.py` and `adlist.py` never run it. It only reads the lists; it changes nothing in your files or in Pi-hole.
+
 ```bash
-python3 scripts/lint_domain_lists.py
-python3 scripts/lint_domain_lists.py --check-tlds   # also check top-level domains against IANA's list
+python3 scripts/lint_domain_lists.py                # run from the repository root
+python3 scripts/lint_domain_lists.py --verbose      # also list the intended exceptions
+python3 scripts/lint_domain_lists.py --check-tlds   # also check top-level domains against IANA's list (downloads it)
 ```
+
+Findings about an entry name its file and line number. The script sorts what it finds into three groups:
+
+- Errors: hidden control characters, exact entries that are not valid hostnames, and regexes that fail to compile. When `pihole-FTL` is installed, every regex is compiled with Pi-hole's own engine. Without it, the script rejects syntax that Pi-hole's TRE engine does not support, such as lookahead and lookbehind.
+- Warnings: duplicate entries, a `.` that matches any character where `\.` was probably meant, stray `\s` or `\c` escapes, an allow regex that matches a domain on the exact blocklist (the allow wins), and the same regex in both the allow and block regex lists.
+- Intended exceptions: a domain on the exact allowlist that a block regex also matches. This is how one service is let through a broad block rule, so it is not a problem.
+
+The checks of regexes against the exact lists need `pcre2grep` (`sudo apt install pcre2-utils`). Without it they are skipped with a warning.
+
+Fix every error. Look at each warning, since some are deliberate.
+
+Exit codes: 0 no problems found, 1 warnings only (or the `--check-tlds` download failed), 2 errors or bad option.
