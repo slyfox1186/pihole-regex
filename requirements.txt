@@ -5,14 +5,11 @@
 #
 # All other scripts need nothing more beyond Python itself.
 #
-# Install all of the pip packages: **pip install -r requirements.txt**
+# To install the pip packages, execute: pip install -r requirements.txt
 #
-# Or install only what you need. Each package loads only when a command uses
-# it, so --help, --stats, --backup and --optimize run with none installed.
 
-
-# Needed for any command that prints a table
-# (--report, --top-domains, --query, --advanced-query)
+# Needed for any command that prints a table (--report, --top-domains,
+# --query, --advanced-query)
 tabulate
 
 # Charts for --report and --analyze-query-trends
@@ -24,8 +21,8 @@ pandas
 # Nicer grid styling on the charts (optional; charts work without it)
 seaborn
 
-# Faster --find-similar (without it the script uses fuzzywuzzy
-# if installed, otherwise Python's own difflib)
+# Faster --find-similar (without it the script uses fuzzywuzzy if
+# installed, otherwise Python's own difflib)
 rapidfuzz
 
 # More accurate --categorize-domains (without it the script
