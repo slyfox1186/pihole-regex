@@ -1,11 +1,11 @@
 # Python packages for scripts/pihole_admin.py
 # ===========================================
 #
-# Only scripts/pihole_admin.py uses these packages. The other scripts
-# (pi.py, adlist.py, unbound.py and lint_domain_lists.py) need nothing
-# beyond Python itself.
+# Only scripts/pihole_admin.py requires these packages to work.
 #
-# Install everything at once: `pip install -r requirements.txt`
+# All other scripts need nothing more beyond Python itself.
+#
+# Install all of the pip packages: **pip install -r requirements.txt**
 #
 # Or install only what you need. Each package loads only when a command uses
 # it, so --help, --stats, --backup and --optimize run with none installed.
@@ -24,10 +24,10 @@ pandas
 # Nicer grid styling on the charts (optional; charts work without it)
 seaborn
 
-# Faster --find-similar (without it the script uses fuzzywuzzy if installed,
-# otherwise Python's own difflib)
+# Faster --find-similar (without it the script uses fuzzywuzzy
+# if installed, otherwise Python's own difflib)
 rapidfuzz
 
-# More accurate --categorize-domains (without it the script uses a simpler
-# last-two-labels guess)
+# More accurate --categorize-domains (without it the script
+# uses a simpler last-two-labels guess)
 tld
