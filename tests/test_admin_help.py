@@ -9,7 +9,7 @@ from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 
-import pihole_admin
+from scripts import pihole_admin
 
 SCRIPT = Path(pihole_admin.__file__)
 ANSI = re.compile(r"\033\[[0-9;]*m")

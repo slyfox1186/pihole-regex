@@ -13,7 +13,7 @@ from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 
-import pihole_admin
+from scripts import pihole_admin
 
 LOGGER = "PiholeDBAdmin"
 HAVE_MATPLOTLIB = importlib.util.find_spec("matplotlib") is not None

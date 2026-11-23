@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# pihole_admin.py
+# scripts/pihole_admin.py
 
 from __future__ import annotations
 

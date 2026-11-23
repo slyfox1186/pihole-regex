@@ -11,6 +11,8 @@ We checked every entry in the RegEx and Exact lists against the adlists, and rem
 
 To get these changes, run `sudo python3 pi.py -a`. Entries you added yourself are never touched. The details for every change are in [docs/domain-notes-sources.md](docs/domain-notes-sources.md).
 
+`pihole_admin.py` moved into the `scripts` folder with the other scripts. Run it as `python3 scripts/pihole_admin.py`.
+
 ## Updated on 11.21.2026:
 This update makes the collection lighter and easier on your Pi-hole. Most of the work removes overlap: several lists and rules were already covered by HaGeZi Multi PRO, the main list in this collection. The core protection against ads, trackers, malware and phishing (HaGeZi Multi PRO, HaGeZi Threat Intelligence Feeds and the Firebog lists) stays in place.
 
@@ -84,6 +86,7 @@ This collection is built and tested for Pi-hole (FTLDNS) version 6 or newer. Sev
 | [`pi.py`](#regex-and-exact-lists) | Adds, updates, removes and searches the RegEx and Exact lists in Pi-hole, and backs up Pi-hole's database |
 | [`adlist.py`](#adlists) | Adds, removes and turns off or on this collection's adlists |
 | [`unbound.py`](#recursive-dns-with-unbound-optional) | Installs unbound as Pi-hole's own recursive DNS resolver, or removes it completely (Debian-based systems only) |
+| [`pihole_admin.py`](#advanced-pi-hole-database-administrator) | Optional toolkit for Pi-hole's databases: statistics, backups, cleanup and reports |
 
 ### Remote Management Tools
 For managing your Pi-hole remotely, consider using one of the following SSH clients:
@@ -181,7 +184,7 @@ the removal confirmation.
 `pi.py` and `adlist.py` only change entries they manage, which are tagged in their comment. Entries you added with a comment of your own are never touched. Older versions of `pi.py` left some comments empty, so `pi.py` also takes over an entry that has no comment and matches one of the repository's domains. Add `--dry-run` to any change to see it first.
 
 ## Advanced: Pi-hole Database Administrator
-`pihole_admin.py` is an optional power-user toolkit for managing the Pi-hole
+`scripts/pihole_admin.py` is an optional power-user toolkit for managing the Pi-hole
 databases directly (statistics, backups, optimization, removal of duplicate entries,
 query analysis, and reporting).
 
@@ -196,9 +199,9 @@ Each package is loaded only when a command needs it, so `--help`, `--stats`,
 which options need which package.
 
 ```bash
-python3 pihole_admin.py --stats
-python3 pihole_admin.py --report
-python3 pihole_admin.py --help     # full list of commands
+python3 scripts/pihole_admin.py --stats
+python3 scripts/pihole_admin.py --report
+python3 scripts/pihole_admin.py --help     # full list of commands
 ```
 
 `--check-updates` compares the installed Core, Web and FTL versions with the latest releases (Pi-hole v5.14 or newer). With sudo it also offers to run `pihole -up`, and afterwards checks that the new versions are installed.
